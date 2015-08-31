@@ -1,0 +1,23 @@
+.dataTable__container {
+  border-top: 1px solid $componentStrokeColor;
+  @include box-shadow(
+    -1px 0 0 $componentStrokeColor, 
+    1px 0 0 $componentStrokeColor
+  );
+  -webkit-font-smoothing: subpixel-antialiased;
+  max-width: $maxWidth;
+  margin: 0 auto;
+}
+
+  .dataTable__table {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    color: #474b4e;
+    font-weight: 400;
+    font-size: 13px;
+  }
+  
+    @import 'thead';
+    @import 'tbody';

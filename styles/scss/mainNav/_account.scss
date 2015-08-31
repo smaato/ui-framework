@@ -1,0 +1,43 @@
+.mainNavBar__account {
+  color: $mainNavTextColor;
+  float: right;
+  line-height: 22px;
+  overflow: hidden;
+  height: 22px;
+  padding: 2px 8px 3px 4px;
+  margin: 8px 0 9px;
+  @include border-radius(20px);
+  font-size: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  label {
+    overflow: hidden;
+    display: inline-block;
+    cursor: pointer;
+    @media #{$viewport_normalScreen} { display: none; }
+  }
+  .dropdownArrow {
+    margin-top: 6px;
+  }
+  .icon {
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    margin-right: 2px;
+    position: relative;
+    display: inline-block;
+    vertical-align:top;
+    background: scale-lightness($mainNavBackgroundColor, 10%);
+    @include border-radius(22px);
+    &:before {
+      font-size: 11px;
+      left: 5px;
+      color: $mainNavTextColor;
+      opacity: .6;
+    }
+  }
+  &:hover { 
+    background: scale-lightness($mainNavBackgroundColor, -13%);
+    @include transition(.1s all ease-in-out); 
+  }
+}

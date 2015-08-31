@@ -1,0 +1,12 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
+
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+body, input, textarea {
+  @extend .font-roboto;
+  color: $componentTextColor;
+}

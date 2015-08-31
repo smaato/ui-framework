@@ -1,0 +1,19 @@
+.titleBar__buttonContainer {
+  display: table-cell;
+  vertical-align: middle;
+  background: white;
+} 
+
+  .titleBar__button {
+    float: right;
+    margin: 12px 15px 12px 0;
+    .icon {
+      display: inline-block;
+      height: 12px;
+      width: 10px;
+      font-size: 10px;
+      margin: 0 2px 0 0;
+      opacity: .7;
+      line-height: 14px;
+    }
+  }

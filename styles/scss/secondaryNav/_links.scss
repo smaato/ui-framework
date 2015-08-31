@@ -1,0 +1,77 @@
+.secondaryNavBar__linksWrapper {
+  display: table-cell;
+  width: 100%;
+  vertical-align: bottom;
+}
+
+  .secondaryNavBar__linksContainer {
+    padding: 0;
+    overflow: hidden;
+    height: 42px;
+    padding-right: 30px;
+  }
+  
+    .secondaryNavBar__link {
+      float: left;
+      margin: 7px 10px 0 0;
+      @include transition(
+        .2s margin ease-in-out, 
+        .06s background ease-in-out
+      );
+      @media #{$viewport_normalScreen} { margin: 7px 0 0 0; }
+      &:hover { background: rgba(255, 255, 255, .15); }
+      a {
+        color: white;
+        font-size: 13px;
+        display: block;
+        line-height: 31px;
+        padding: 0 12px 4px;
+        .icon {
+          display: inline-block;
+          width: 12px;
+          height: 12px;
+          font-size: 12px;
+          line-height: 15px;
+          margin-right: 4px;
+        }
+      }
+      &.selected {
+        background: $secondaryNavSelectedColor; 
+        a { 
+          color: scale-lightness(
+            scale-saturation($secondaryNavBackgroundColor, -70%), -13%
+          );
+          cursor: default; 
+        }
+      }
+    }
+    
+    .secondaryNavBar__ellipsis {
+      margin-top: 14px;
+      width: 20px;
+      color: white;
+      opacity: .6;
+      cursor: pointer;
+      display: inline-block;
+      float: left;
+      position: absolute;
+      z-index: 1;
+      &:hover { opacity: 1; }
+    }
+    
+    .secondaryNavBar__mask {
+      width:0px;
+      height:50px;
+      display: inline-block;
+      position:relative;
+      vertical-align: middle;
+      z-index:2; 
+      float: left;
+      .secondaryNavBar__maskInner {
+        position:absolute;
+        width:30px;
+        top: 0;
+        bottom: 0;
+        background: $secondaryNavBackgroundColor;
+      }
+    }

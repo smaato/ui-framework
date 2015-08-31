@@ -1,0 +1,38 @@
+.dataTable__tableControls {
+  margin: 0 auto;
+  text-align: center;
+  left: 0;
+  right: 0;
+  .fixedThead & {
+    position: fixed;
+    top: 0;
+    z-index: 5;
+  }
+}
+
+  .dataTable__tableControls__liner {
+    max-width: $maxWidth;
+    margin: 0 auto;
+    border-top: 1px solid $componentStrokeColor;
+    background: $componentBackgroundColor;
+    display: table;
+    width: 100%;
+    text-align: left;
+    @include box-shadow(
+      -1px 0 0 $componentStrokeColor, 
+      1px 0 0 $componentStrokeColor
+    );
+  }
+
+.dataTable__tableControls__placeholder {
+  .fixedThead & {
+    height: 71px;
+    max-width: $maxWidth;
+    margin: 0 auto;
+    background: $componentBackgroundColor;
+  }
+}
+
+  @import 'filters';
+  @import 'batch';
+  @import 'search';

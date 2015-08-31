@@ -1,0 +1,18 @@
+.secondaryNavBar {
+  background: $secondaryNavBackgroundColor;
+  display: table;
+  height: 42px;
+  width: 100%;
+}
+
+  .secondaryNavBar__liner {
+    max-width: $maxWidth;
+    margin: 0 auto;
+    @media #{$viewport_wideScreen} {
+      padding: 0 15px;
+    }
+  }
+
+
+    @import 'links';
+    @import 'dateRange';
