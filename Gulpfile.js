@@ -122,8 +122,12 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('jade', function() {
-  return gulp.src('./src/examples/**/*.jade')
+  return gulp.src([
+      './src/examples/**/*.jade',
+      '!./src/examples/_partials/**/*.jade'
+    ])
     .pipe(jade({
+      pretty: true,
       locals: {
         DATE_TIME: (new Date().getTime())
       }
