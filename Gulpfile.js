@@ -227,9 +227,9 @@ gulp.task('postcss', function () {
     }),
     mqpacker
   ];
-  return gulp.src('./dist/css/dist.css')
+  return gulp.src('./dist/css/examples/index.css')
     .pipe(postcss(processors))
-    .pipe(gulp.dest('./dist/css'));
+    .pipe(gulp.dest('./dist/css/examples'));
 });
 
 gulp.task('production', function(callback) {
@@ -261,7 +261,7 @@ gulp.task('watch', function() {
   gulp.watch([
     './src/examples/**/*.scss',
     './src/framework/**/*.scss'
-  ], ['sass']);
+  ], ['sass', 'postcss']);
   gulp.watch(['./Gulpfile'], ['jade','scripts']);
 });
 
@@ -269,6 +269,7 @@ gulp.task('default', [
   'copy',
   'connect',
   'sass',
+  'postcss',
   'jade',
   'lint',
   'scripts',
