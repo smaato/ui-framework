@@ -5,11 +5,29 @@ block title
   title Title Bar
 
 block content
+  #titleBar
+  
+  #titleBarButton
 
-  .titleBar
-    label.titleBar__title
-      | Cars, Trucks, &amp; Motorcycles
-    .titleBar__buttonContainer
-      a.titleBar__button.button.button--primary(href='')
-        span.icon.glyphicons-plus
-        | New Automobile
+block component
+  div.
+    <script type="text/jsx">
+
+      window.renderComponent('titleBar', (
+        <TitleBar
+          label='Title bar example'
+          buttons={(
+            <TitleBarButton
+              label='Add something'
+            />
+          )}
+        />
+      ));
+
+      window.renderComponent('titleBarButton', (
+        <TitleBarButton
+          label='Title bar button'
+        />
+      ));
+
+    </script>
