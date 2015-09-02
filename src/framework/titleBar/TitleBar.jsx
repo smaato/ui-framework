@@ -11,13 +11,16 @@ export default class TitleBar extends Component {
   }
 
   render() {
+    let buttons = this.props.buttons.map((button) => {
+      return button;
+    });
     return (
       <div className='titleBar'>
         <label className='titleBar__title'>
           {this.props.label}
         </label>
         <div className='titleBar__buttonContainer'>
-          {this.props.buttons}
+          {buttons}
         </div>
       </div>
     );
@@ -27,5 +30,5 @@ export default class TitleBar extends Component {
 
 TitleBar.propTypes = {
   label: PropTypes.string,
-  buttons: PropTypes.element
+  buttons: PropTypes.array
 };

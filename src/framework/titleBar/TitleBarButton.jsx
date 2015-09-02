@@ -11,12 +11,16 @@ export default class TitleBarButton extends Component {
   }
 
   render() {
+    // TODO: This component can be improved by allowing properties such as
+    // `icon` (with values like "plus" and "minus") and `level` ("primary".
+    // "success", "warning", "danger", "default") to be passed in to enable
+    // further control over the appearance of the button.
     return (
         <a
-          className='titleBar__button button button--primary'
+          className='titleBarButton button button--primary'
           href='#'
         >
-          <span className='icon glyphicons-plus'>
+          <span className='titleBarButton__icon glyphicons-plus'>
           </span>
           {this.props.label}
         </a>

@@ -153,7 +153,9 @@ gulp.task('clean:init', function(callback) {
   return del([
     'dist/**/*',
     'dist/'
-  ], callback);
+  ], {
+    force: true
+  }, callback);
 });
 
 gulp.task('clean', function(callback) {
@@ -277,14 +279,17 @@ gulp.task('watch', function() {
   gulp.watch(['./Gulpfile'], ['jade','scripts']);
 });
 
-gulp.task('default', [
-  'clean',
-  'copy',
-  'connect',
-  'sass',
-  'postcss',
-  'jade',
-  'lint',
-  'scripts',
-  'watch'
-]);
+gulp.task('default', function(callback) {
+  runSequence(
+    'clean:init',
+    'copy',
+    'connect',
+    'sass',
+    'postcss',
+    'jade',
+    'lint',
+    'scripts',
+    'watch',
+    callback
+  );
+});
