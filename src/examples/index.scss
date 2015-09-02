@@ -1,6 +1,17 @@
 
 @import '../framework/index';
 
+.examplesHome {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
 .exampleComponent {
   padding: 20px;
 }
