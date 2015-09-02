@@ -1,0 +1,28 @@
+#examplesNavMenuButton.examplesNavMenuButton
+  | Nav
+  
+#examplesNavMenu.examplesNavMenu
+
+script.
+
+  var menu = $('#examplesNavMenu');
+
+  var nav = [
+    'tableView',
+    'titleBar'
+  ];
+
+  for (var i = 0; i < nav.length; i++) {
+    var value = nav[i];
+    var markup = [
+      '<a class="examplesNavButton" href="',
+      '/' + value + '/' + value + '.html"',
+      '>' + value + '</a>'
+    ].join('');
+    var button = $(markup);
+    menu.append(button);
+  }
+
+  $('#examplesNavMenuButton').on('click', function() {
+    menu.toggleClass('is-examples-nav-menu-visible');
+  });

@@ -1,2 +1,52 @@
 
 @import '../framework/index';
+
+.examplesNavMenuButton {
+  position: fixed;
+  z-index: 1000;
+  top: 5px;
+  left: 5px;
+  padding: 8px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  background: white;
+  color: #626262;
+  border: 1px solid #D8D8D8;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    color: #1CC4EC;
+  }
+}
+
+.examplesNavMenu {
+  position: fixed;
+  z-index: 999;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  padding: 40px;
+  background: white;
+  color: #626262;
+  border: 1px solid #D8D8D8;
+  display: none;
+
+  &.is-examples-nav-menu-visible {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+
+  .examplesNavButton {
+    padding: 4px 0;
+    font-size: 11px;
+    font-weight: 700;
+    color: #626262;
+
+    &:hover {
+      color: #1CC4EC;
+    }
+  }
