@@ -1,14 +1,14 @@
 
   .titleBarButton {
-    float: right;
     margin: 12px 15px 12px 0;
-    .icon {
+  }
+
+    .titleBarButton__icon {
       display: inline-block;
       height: 12px;
       width: 10px;
       font-size: 10px;
       margin: 0 2px 0 0;
-      opacity: .7;
+      opacity: 0.7;
       line-height: 14px;
     }
-  }

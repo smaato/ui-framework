@@ -20,7 +20,7 @@ export default class TitleBarButton extends Component {
           className='titleBarButton button button--primary'
           href='#'
         >
-          <span className='icon glyphicons-plus'>
+          <span className='titleBarButton__icon glyphicons-plus'>
           </span>
           {this.props.label}
         </a>

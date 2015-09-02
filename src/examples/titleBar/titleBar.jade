@@ -5,9 +5,12 @@ block title
   title Title Bar
 
 block content
-  #titleBar
+
+  .exampleContainer.exampleContainer--clear
+    #titleBar
   
-  #titleBarButton
+  .exampleContainer
+    #titleBarButton
 
 block component
   div.
@@ -16,11 +19,14 @@ block component
       window.renderComponent('titleBar', (
         <TitleBar
           label='Title bar example'
-          buttons={(
+          buttons={[
             <TitleBarButton
               label='Add something'
+            />,
+            <TitleBarButton
+              label='Add something else'
             />
-          )}
+          ]}
         />
       ));
 

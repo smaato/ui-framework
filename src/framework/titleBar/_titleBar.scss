@@ -1,7 +1,13 @@
+
+/**
+ * 1. Flexbox layout positions the title and buttonContainer children
+ *    horizontally.
+ */
 .titleBar {
   max-width: $maxWidth;
   margin: 0 auto;
-  display: table;
+  display: flex; /* 1 */
+  background: $titleBarBackgroundColor;
   width: 100%;
   box-shadow:
     -1px 0 0 $componentStrokeColor, 
@@ -9,19 +15,31 @@
   ;
 }
 
+  /**
+   * 1. Flexbox layout lets us center the title text vertically.
+   * 2. Because the parent container is positioning this element with flexbox,
+   *    we can specify that it should grow to fill its container.
+   */
   .titleBar__title {
-    background: $titleBarBackgroundColor;
     color: $titleBarTextColor;
     font-size: 16px;
     padding-left: 15px;
     line-height: 54px;
-    display: table-cell;
-    background: white;
-    vertical-align: middle;
+    display: flex; /* 1 */
+    align-items: center; /* 1 */
+    flex-grow: 1; /* 2 */
   }
 
+  /**
+   * 1. Flexbox layout lets us center the title text vertically.
+   * 2. Because the parent container is positioning this element with flexbox,
+   *    we can specify that it should grow to fill its container.
+   * 3. Position the buttons at the end of the container, i.e. right-aligning
+   *    them.
+   */
   .titleBar__buttonContainer {
-    display: table-cell;
-    vertical-align: middle;
-    background: white;
+    display: flex; /* 1 */
+    align-items: center; /* 1 */
+    flex-grow: 1; /* 2 */
+    justify-content: flex-end; /* 3 */
   } 

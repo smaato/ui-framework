@@ -50,3 +50,15 @@
       color: #1CC4EC;
     }
   }
+
+.exampleContainer {
+  max-width: 1200px;
+  margin: 10px auto;
+  padding: 20px;
+  background: white;
+  border: 1px solid #D8D8D8;
+}
+
+.exampleContainer--clear {
+  background: transparent;
+}
