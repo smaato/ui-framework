@@ -234,6 +234,14 @@ gulp.task('postcss', function () {
     .pipe(gulp.dest('./dist/css/examples'));
 });
 
+gulp.task('css', function(callback) {
+  runSequence(
+    'sass',
+    'postcss',
+    callback
+  );
+});
+
 gulp.task('production', function(callback) {
   runSequence(
     'copy',
@@ -265,7 +273,7 @@ gulp.task('watch', function() {
   gulp.watch([
     './src/examples/**/*.scss',
     './src/framework/**/*.scss'
-  ], ['sass', 'postcss']);
+  ], ['css']);
   gulp.watch(['./Gulpfile'], ['jade','scripts']);
 });
 
