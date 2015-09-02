@@ -1,6 +1,10 @@
 
 @import '../framework/index';
 
+.exampleComponent {
+  padding: 20px;
+}
+
 .examplesNavMenuButton {
   position: fixed;
   z-index: 1000;
@@ -43,14 +47,24 @@
   }
 }
 
-  .examplesNavButton {
+  .examplesNavButton,
+  .examplesNavMenuTitle {
     padding: 6px 10px;
-    font-size: 11px;
     font-weight: 700;
     color: #626262;
     border: 1px solid transparent;
     max-width: 120px;
+  }
 
+  .examplesNavMenuTitle {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 10px;
+    opacity: 0.8;
+  }
+
+  .examplesNavButton {
+    font-size: 11px;
     &:hover {
       color: #1CC4EC;
       border-color: #D8D8D8;
