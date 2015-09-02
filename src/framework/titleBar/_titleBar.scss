@@ -1,0 +1,27 @@
+.titleBar {
+  max-width: $maxWidth;
+  margin: 0 auto;
+  display: table;
+  width: 100%;
+  box-shadow:
+    -1px 0 0 $componentStrokeColor, 
+    1px 0 0 $componentStrokeColor
+  ;
+}
+
+  .titleBar__title {
+    background: $titleBarBackgroundColor;
+    color: $titleBarTextColor;
+    font-size: 16px;
+    padding-left: 15px;
+    line-height: 54px;
+    display: table-cell;
+    background: white;
+    vertical-align: middle;
+  }
+
+  .titleBar__buttonContainer {
+    display: table-cell;
+    vertical-align: middle;
+    background: white;
+  } 

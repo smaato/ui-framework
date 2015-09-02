@@ -11,4 +11,4 @@ for (let key in framework) {
 // Support inline JSX in our examples.
 import React from 'react';
 window.React = React;
-import jsxTransformer from '../../vendor/jsxTransformer.js';
+import jsxTransformer from '../../vendor/JSXTransformer.min.js';
