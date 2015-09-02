@@ -80,9 +80,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('scripts', function() {
-  // TODO: Add components to avoid this task from causing a warning.
-  return;
-  return gulp.src('./src/framework/index.jsx')
+  return gulp.src('./src/examples/index.js')
     // Use through2 to check if there is an error,
     // and turn the results into a pipe.
     .pipe(through2.obj(function (file, enc, next) {
@@ -122,8 +120,12 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('jade', function() {
-  return gulp.src('./src/examples/**/*.jade')
+  return gulp.src([
+      './src/examples/**/*.jade',
+      '!./src/examples/_partials/**/*.jade'
+    ])
     .pipe(jade({
+      pretty: true,
       locals: {
         DATE_TIME: (new Date().getTime())
       }
@@ -156,8 +158,8 @@ gulp.task('clean:init', function(callback) {
 
 gulp.task('clean', function(callback) {
   return del([
-    'dist/css/dist.css',
-    'dist/css/dist.css.map',
+    'dist/css/examples/dist.css',
+    'dist/css/examples/dist.css.map',
     'dist/js/dist.js',
     'dist/js/dist.js.map'
   ], callback);
@@ -255,6 +257,8 @@ gulp.task('production', function(callback) {
 gulp.task('watch', function() {
   gulp.watch(['./src/examples/**/*.jade'], ['jade']);
   gulp.watch([
+    './src/examples/**/*.jsx',
+    './src/examples/**/*.js',
     './src/framework/**/*.jsx',
     './src/framework/**/*.js'
   ], ['lint','scripts']);
@@ -266,6 +270,7 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', [
+  'clean',
   'copy',
   'connect',
   'sass',
@@ -273,6 +278,5 @@ gulp.task('default', [
   'jade',
   'lint',
   'scripts',
-  'test',
   'watch'
 ]);

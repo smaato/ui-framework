@@ -1,0 +1,33 @@
+
+extends ../_partials/_exampleLayout.jade
+
+block title
+  title Title Bar
+
+block content
+  #titleBar
+  
+  #titleBarButton
+
+block component
+  div.
+    <script type="text/jsx">
+
+      window.renderComponent('titleBar', (
+        <TitleBar
+          label='Title bar example'
+          buttons={(
+            <TitleBarButton
+              label='Add something'
+            />
+          )}
+        />
+      ));
+
+      window.renderComponent('titleBarButton', (
+        <TitleBarButton
+          label='Title bar button'
+        />
+      ));
+
+    </script>
