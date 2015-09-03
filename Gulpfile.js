@@ -172,7 +172,7 @@ gulp.task('replace', function() {
 gulp.task('connect', function () {
   return connect.server({
     root: ['dist'],
-    port: 8000,
+    port: 8001,
     livereload: true
   });
 });

@@ -2691,15 +2691,15 @@ body {
   display: none;
 }
 .checkbox__input:checked + label.checkbox__faux__input {
-  background: #26a2d2;
-  border-color: #26a2d2;
+  background: #26a3d2;
+  border-color: #26a3d2;
   box-shadow: 0 0 0 transparent;
 }
 .checkbox__input:checked + label.checkbox__faux__input:before {
-  color: #fcfefe;
+  color: #fdfeff;
 }
 .checkbox__input:checked + label.checkbox__faux__input:after {
-  color: #26a2d2;
+  color: #26a3d2;
 }
 
 .checkbox__faux__input {
@@ -2708,10 +2708,10 @@ body {
   cursor: pointer;
   vertical-align: middle;
   margin: 0;
-  background: #fefefe;
-  border: 1px solid #c5cacc;
+  background: #feffff;
+  border: 1px solid #c5cbcd;
   border-radius: 2px;
-  box-shadow: inset 0 1px 0 #e9eced;
+  box-shadow: inset 0 1px 0 #eaedee;
   width: 10px;
   height: 10px;
 }
@@ -3121,8 +3121,8 @@ body {
 
 .dataTable__roundedBackground, .dataTable__filter, .dataTable__addFilter a, .dataTable__ellipsis .icon, .dataTable__ellipsis .add {
   font-size: 11px;
-  background: #edf4f5;
-  border: 1px solid #d0d9db;
+  background: #eef4f5;
+  border: 1px solid #d1dadb;
   border-radius: 2px;
   padding: 0 8px;
   line-height: 24px;
@@ -3154,8 +3154,8 @@ body {
   top: 0;
   bottom: 0;
   z-index: 5;
-  background: #edf4f5;
-  box-shadow: -10px 0 5px #edf4f5;
+  background: #eef4f5;
+  box-shadow: -10px 0 5px #eef4f5;
 }
 .dataTable__filter:hover .remove {
   opacity: 1;
@@ -3250,11 +3250,11 @@ body {
   margin: 0;
   height: 23px;
   padding: 5px 27px 5px 11px;
-  color: #121313;
+  color: #131314;
   width: 140px;
 }
 .dataTable__search__input .icon {
-  color: #b2b7b8;
+  color: #b2b7b9;
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -3337,7 +3337,7 @@ body {
   display: none;
 }
 .dataTable__thead__cell.sortable:hover a {
-  background: #eff2f3;
+  background: #f0f3f3;
   cursor: pointer;
 }
 .dataTable__thead__cell.sortable.selected a {
@@ -3360,7 +3360,7 @@ body {
 .dataTable__thead__cellLiner a, .dataTable__thead__cellLiner .checkboxWrapper {
   font-size: 12px;
   font-weight: 300;
-  color: #6e7071;
+  color: #6e7172;
   padding: 0 8px;
   display: block;
   line-height: 30px;
@@ -3454,7 +3454,7 @@ body {
   right: 0;
   padding: 5px 4px 0;
   z-index: 3;
-  color: #aeb0b0;
+  color: #afb0b1;
   background: #f7fafb;
   box-shadow: -4px 0 10px 2px #f7fafb;
   opacity: 0;
@@ -3480,7 +3480,7 @@ body {
 }
 
 .dataTable__tbody__cellLiner .icon {
-  color: #c7ced0;
+  color: #c8cfd0;
   padding: 0;
   display: inline-block;
   width: 14px;
@@ -3496,7 +3496,7 @@ body {
 }
 .dataTable__tbody__cellLiner .glyphicons-more:hover,
 .dataTable__tbody__cellLiner .glyphicons-cogwheel:hover {
-  color: #8d9193;
+  color: #8d9293;
 }
 
 .dataTable__tbody__cellLiner .glyphicons-leaf {
