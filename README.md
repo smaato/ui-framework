@@ -105,8 +105,9 @@ Install this repo as an NPM dependency to gain access to its UI components.
 In your JS:
 
 ```javascript
-import framework from 'path/to/node_modules/ui-framework/src/framework/index.js';
-var TitleBar = framework.TitleBar;
+import Framework from 'ui-framework';
+
+var TitleBar = Framework.TitleBar;
 // Now you can use the TitleBar React component.
 ```
 
