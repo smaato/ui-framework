@@ -145,8 +145,7 @@ gulp.task('sass', function () {
       console.log(error.stack);
       this.emit('end');
     })
-    .pipe(gulp.dest('./dist/css'))
-    .pipe(connect.reload());
+    .pipe(gulp.dest('./dist/css'));
 });
 
 gulp.task('clean:init', function(callback) {
@@ -233,7 +232,8 @@ gulp.task('postcss', function () {
   ];
   return gulp.src('./dist/css/examples/index.css')
     .pipe(postcss(processors))
-    .pipe(gulp.dest('./dist/css/examples'));
+    .pipe(gulp.dest('./dist/css/examples'))
+    .pipe(connect.reload());
 });
 
 gulp.task('css', function(callback) {
