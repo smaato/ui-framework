@@ -1,5 +1,8 @@
-node_modules
-coverage
-dist
-.DS_Store
 .sass-cache
+.DS_Store
+coverage
+dist/*
+!dist/assets
+!dist/css
+!dist/js
+node_modules
