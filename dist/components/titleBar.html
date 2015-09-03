@@ -1,0 +1,92 @@
+
+<html>
+  <head>
+    <title>Title Bar</title>
+    <link rel="stylesheet" href="../css/index.css?v=1441291938701"/>
+    <script src="../js/index.js?v=1441291938701"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  </head>
+  <body class="exampleComponent">
+    <div id="examplesNavMenuButton" class="examplesNavMenuButton">Nav</div>
+    <div id="examplesNavMenu" class="examplesNavMenu"></div>
+    <script>
+      var menu = $('#examplesNavMenu');
+      
+      var integrations = [
+        'tableView'
+      ];
+      
+      var components = [
+        'titleBar'
+      ];
+      
+      function addNavItems(source, rootDir) {
+        for (var i = 0; i < source.length; i++) {
+          var value = source[i];
+          var markup = [
+            '<a class="examplesNavButton" href="',
+            '/' + rootDir + '/' + value + '.html"',
+            '>' + value + '</a>'
+          ].join('');
+          var button = $(markup);
+          menu.append(button);
+        }
+      }
+      
+      function addTitle(name) {
+        menu.append($('<div class="examplesNavMenuTitle">' + name + '</div>'));
+      }
+      
+      addTitle('Integrations');
+      addNavItems(integrations, 'integrations');
+      
+      addTitle('Components');
+      addNavItems(components, 'components');
+      
+      $('#examplesNavMenuButton').on('click', function() {
+        menu.toggleClass('is-examples-nav-menu-visible');
+      });
+    </script>
+    <div class="exampleContainer exampleContainer--clear">
+      <div id="titleBar"></div>
+    </div>
+    <div class="exampleContainer">
+      <div id="titleBarButton"></div>
+    </div>
+    <script>
+      // Render a component into an element with an ID.
+      window.renderComponent = function(elementId, component) {
+        React.render(
+          component,
+          document.getElementById(elementId)
+        );
+      };
+      
+    </script>
+    <div>
+      <script type="text/jsx">
+      
+        window.renderComponent('titleBar', (
+          <TitleBar
+            label='Title bar example'
+            buttons={[
+              <TitleBarButton
+                label='Add something'
+              />,
+              <TitleBarButton
+                label='Add something else'
+              />
+            ]}
+          />
+        ));
+      
+        window.renderComponent('titleBarButton', (
+          <TitleBarButton
+            label='Title bar button'
+          />
+        ));
+      
+      </script>
+    </div>
+  </body>
+</html>
