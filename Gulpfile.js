@@ -107,7 +107,6 @@ gulp.task('scripts', function() {
       console.log(error.stack);
       this.emit('end');
     })
-    .pipe(rename('dist.js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(sourcemaps.init({
       loadMaps: true
@@ -138,7 +137,7 @@ gulp.task('sass', function () {
   return gulp.src('./src/examples/index.scss')
     .pipe(compass({
       css: 'dist/css',
-      sass: 'src',
+      sass: 'src/examples',
       sourcemap: true
     }))
     .on('error', function (error) {
@@ -158,15 +157,6 @@ gulp.task('clean:init', function(callback) {
   }, callback);
 });
 
-gulp.task('clean', function(callback) {
-  return del([
-    'dist/css/examples/dist.css',
-    'dist/css/examples/dist.css.map',
-    'dist/js/dist.js',
-    'dist/js/dist.js.map'
-  ], callback);
-});
-
 gulp.task('copy', function() {
   gulp.src('./src/assets/**')
   .pipe(gulp.dest('./dist/assets'));
@@ -176,7 +166,6 @@ gulp.task('replace', function() {
   return gulp.src(['./dist/index.html'])
     .pipe(replace(/\.js/, '.min.js'))
     .pipe(replace(/\.css/, '.min.css'))
-    .pipe(replace(/"/g, "'"))
     .pipe(gulp.dest('./dist/'));
 });
 
@@ -209,18 +198,18 @@ gulp.task('test', [
  */
 
 gulp.task('uglify', function() {
-  return gulp.src('./dist/js/dist.js')
+  return gulp.src('./dist/js/index.js')
     .pipe(uglify({
       mangle: true
     }))
-    .pipe(rename('dist.min.js'))
+    .pipe(rename('index.min.js'))
     .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('cssmin', function() {
-  return gulp.src('./dist/css/dist.css')
+  return gulp.src('./dist/css/index.css')
     .pipe(cssmin())
-    .pipe(rename('dist.min.css'))
+    .pipe(rename('index.min.css'))
     .pipe(gulp.dest('dist/css'));
 });
 
@@ -231,9 +220,9 @@ gulp.task('postcss', function () {
     }),
     mqpacker
   ];
-  return gulp.src('./dist/css/examples/index.css')
+  return gulp.src('./dist/css/index.css')
     .pipe(postcss(processors))
-    .pipe(gulp.dest('./dist/css/examples'));
+    .pipe(gulp.dest('./dist/css'));
 });
 
 gulp.task('css', function(callback) {
@@ -255,7 +244,6 @@ gulp.task('production', function(callback) {
     'cssmin',
     'uglify',
     'replace',
-    'clean',
     callback
   );
 });
