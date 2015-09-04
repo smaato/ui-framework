@@ -2,12 +2,7 @@
 // ES6 polyfill, courtesy of Babel.
 import 'babel-core/polyfill';
 
-// Import components.
-import TitleBar from './titleBar/TitleBar.jsx';
-import TitleBarButton from './titleBar/TitleBarButton.jsx';
+// Import framework separately to disregard the polyfill on release
+import framework from './framework';
 
-// Export components.
-export default {
-  TitleBar: TitleBar,
-  TitleBarButton: TitleBarButton
-}
+export default framework;

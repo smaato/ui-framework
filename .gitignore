@@ -1,5 +1,4 @@
-node_modules
-coverage
-dist
-.DS_Store
 .sass-cache
+.DS_Store
+coverage
+node_modules
