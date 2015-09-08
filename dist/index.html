@@ -1,0 +1,67 @@
+
+<html>
+  <head>
+    <title>Smaato Base UI</title>
+    <link rel="stylesheet" href="/css/index.css?v=1441736253662"/>
+    <script src="/js/index.js?v=1441736253662"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  </head>
+  <body class="exampleComponent">
+    <div id="examplesNavMenuButton" class="examplesNavMenuButton">Nav</div>
+    <div id="examplesNavMenu" class="examplesNavMenu"></div>
+    <script>
+      var menu = $('#examplesNavMenu');
+      
+      var integrations = [
+        'tableView'
+      ];
+      
+      var components = [
+        'titleBar'
+      ];
+      
+      function addNavItems(source, rootDir) {
+        for (var i = 0; i < source.length; i++) {
+          var value = source[i];
+          var markup = [
+            '<a class="examplesNavButton" href="',
+            '/' + rootDir + '/' + value + '.html"',
+            '>' + value + '</a>'
+          ].join('');
+          var button = $(markup);
+          menu.append(button);
+        }
+      }
+      
+      function addTitle(name) {
+        menu.append($('<div class="examplesNavMenuTitle">' + name + '</div>'));
+      }
+      
+      addTitle('Integrations');
+      addNavItems(integrations, 'integrations');
+      
+      addTitle('Components');
+      addNavItems(components, 'components');
+      
+      $('#examplesNavMenuButton').on('click', function() {
+        menu.toggleClass('is-examples-nav-menu-visible');
+      });
+    </script>
+    <div class="examplesHome">
+      <div>
+        <h1>Welcome to the Smaato UI Framework.</h1>
+        <p>Click the "Nav" button in the top left corner to view the examples.</p>
+      </div>
+    </div>
+    <script>
+      // Render a component into an element with an ID.
+      window.renderComponent = function(elementId, component) {
+        React.render(
+          component,
+          document.getElementById(elementId)
+        );
+      };
+      
+    </script>
+  </body>
+</html>
