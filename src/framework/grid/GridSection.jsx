@@ -32,20 +32,17 @@ export default class GridSection extends Component {
       rows = this.props.children;
     }
 
-    const sectionTag = this.props.section ? this.props.section : 'tbody';
     let sectionEl;
-    function sectionClassName (sectionTag) {
-      return 'dataTable__' + sectionTag;
-    }
-    switch (sectionTag) {
+    let sectionClassName = [this.props.rootClass, this.props.section].join('__');
+    switch (this.props.section) {
     case 'thead':
-      sectionEl = <thead className={sectionClassName(sectionTag)}>{rows}</thead>;
+      sectionEl = <thead className={sectionClassName}>{rows}</thead>;
       break;
     case 'tfoot':
-      sectionEl = <tfoot className={sectionClassName(sectionTag)}>{rows}</tfoot>;
+      sectionEl = <tfoot className={sectionClassName}>{rows}</tfoot>;
       break;
     default:
-      sectionEl = <tbody className={sectionClassName(sectionTag)}>{rows}</tbody>;
+      sectionEl = <tbody className={sectionClassName}>{rows}</tbody>;
       break;
     }
 
@@ -62,4 +59,8 @@ export default class GridSection extends Component {
 GridSection.propTypes = {
   sectionTag: PropTypes.string,
   rows: PropTypes.array
+};
+
+GridSection.defaultProps = {
+  section: 'tbody'
 };

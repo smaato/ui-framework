@@ -12,8 +12,7 @@ export default class GridRow extends Component {
   }
 
   render() {
-    const section = this.props.section;
-    let rowClassName = 'dataTable__' + section + '__row';
+    let rowClassName = [this.props.rootClass, this.props.section, 'row'].join('__');
     if (this.props.placeholder) {
       rowClassName += (' ' + rowClassName + '--placeholder');
     }
@@ -26,9 +25,7 @@ export default class GridRow extends Component {
         cell = cell || {};
         Object.assign(cell, rowProps);
         delete cell.cells;
-        return <GridCell {...cell}>
-          {cell ? cell.content : null}
-          </GridCell>;
+        return <GridCell {...cell}/>;
       });
     } else {
       content = this.props.children;

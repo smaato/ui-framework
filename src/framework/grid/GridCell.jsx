@@ -11,8 +11,9 @@ export default class GridCell extends Component {
   }
 
   render() {
-    const section = this.props.section ? this.props.section : 'tbody';
-    let cellClassName = 'dataTable__' + section + '__cell';
+    let cellContent;
+    let cellClassName = [this.props.rootClass, this.props.section, 'cell'].join('__');
+
     if (this.props.sortable) {
       cellClassName += ' sortable';
     }
@@ -23,13 +24,31 @@ export default class GridCell extends Component {
       cellClassName += ' reverse';
     }
 
-    const cellContent = <span className={'dataTable__' + section + '__cellLiner'}>
-        {this.props.children}
+    if (this.props.content && this.props.sortable) {
+      cellContent = <a>
+        {this.props.content}
+        <span className="arrowUp">
+          <span className="arrowUp__centerLine"></span>
+        </span>
+        <span className="arrowDown">
+          <span className="arrowDown__centerLine"></span>
+        </span>
+      </a>;
+    } else if (this.props.content && !this.props.sortable) {
+      // TODO: Get rid of extra span
+      cellContent = <span>{this.props.content}</span>;
+    } else {
+      // TODO: Get rid of extra span
+      cellContent = <span>{this.props.children}</span>;
+    }
+
+    const cellContentWrap = <span className={[this.props.rootClass, this.props.section, 'cellLiner'].join('__')}>
+        { cellContent }
       </span>;
 
-    const cellEl = section === 'thead' ?
-      <th className={cellClassName}>{cellContent}</th> :
-      <td className={cellClassName}>{cellContent}</td>;
+    const cellEl = this.props.section === 'thead' ?
+      <th className={cellClassName}>{cellContentWrap}</th> :
+      <td className={cellClassName}>{cellContentWrap}</td>;
 
     return (
       // TODO: figure out a way to get rid of div wrapper

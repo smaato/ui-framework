@@ -24110,6 +24110,16 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }return target;
+};
+
 var _createClass = (function () {
   function defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
@@ -24176,7 +24186,7 @@ var Grid = (function (_Component) {
   _createClass(Grid, [{
     key: 'render',
     value: function render() {
-      return _react2['default'].createElement('div', { className: this.props.rootClass + '__container' }, _react2['default'].createElement('table', { className: this.props.rootClass + '__table' }, _react2['default'].createElement(_GridSectionJsx2['default'], {
+      return _react2['default'].createElement('div', { className: [this.props.rootClass, 'container'].join('__') }, _react2['default'].createElement('table', { className: [this.props.rootClass, 'table'].join('__') }, _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, this.props, {
         section: 'thead',
         rows: [{
           //placeholder: true,
@@ -24184,58 +24194,59 @@ var Grid = (function (_Component) {
             content: _react2['default'].createElement('span', { className: 'checkboxWrapper' }, _react2['default'].createElement('input', { type: 'checkbox', name: 'table_batch', id: 'table_batch', className: 'checkbox__input' }), _react2['default'].createElement('label', { htmlFor: 'table_batch', className: 'checkbox__faux__input' }))
           }, {
             sortable: true,
-            content: _react2['default'].createElement('a', null, 'Name', _react2['default'].createElement('span', { className: 'arrowUp' }, _react2['default'].createElement('span', { className: 'arrowUp__centerLine' })), _react2['default'].createElement('span', { className: 'arrowDown' }, _react2['default'].createElement('span', { className: 'arrowDown__centerLine' })))
+            content: 'Name'
           }, {
             sortable: true,
-            content: _react2['default'].createElement('a', null, 'Status', _react2['default'].createElement('span', { className: 'arrowUp' }, _react2['default'].createElement('span', { className: 'arrowUp__centerLine' })), _react2['default'].createElement('span', { className: 'arrowDown' }, _react2['default'].createElement('span', { className: 'arrowDown__centerLine' })))
+            content: 'Status'
           }, {
             sortable: true,
-            content: _react2['default'].createElement('a', null, 'Fuel', _react2['default'].createElement('span', { className: 'arrowUp' }, _react2['default'].createElement('span', { className: 'arrowUp__centerLine' })), _react2['default'].createElement('span', { className: 'arrowDown' }, _react2['default'].createElement('span', { className: 'arrowDown__centerLine' })))
+            content: 'Fuel'
           }, {
             sortable: true,
-            content: _react2['default'].createElement('a', null, 'Passangers', _react2['default'].createElement('span', { className: 'arrowUp' }, _react2['default'].createElement('span', { className: 'arrowUp__centerLine' })), _react2['default'].createElement('span', { className: 'arrowDown' }, _react2['default'].createElement('span', { className: 'arrowDown__centerLine' })))
+            content: 'Passengers'
           }, {
             sortable: true,
-            content: _react2['default'].createElement('a', null, 'Cylinders', _react2['default'].createElement('span', { className: 'arrowUp' }, _react2['default'].createElement('span', { className: 'arrowUp__centerLine' })), _react2['default'].createElement('span', { className: 'arrowDown' }, _react2['default'].createElement('span', { className: 'arrowDown__centerLine' })))
+            content: 'Cylinders'
           }, {
             sortable: true,
-            content: _react2['default'].createElement('a', null, 'Fuel Economy', _react2['default'].createElement('span', { className: 'arrowUp' }, _react2['default'].createElement('span', { className: 'arrowUp__centerLine' })), _react2['default'].createElement('span', { className: 'arrowDown' }, _react2['default'].createElement('span', { className: 'arrowDown__centerLine' })))
+            content: 'Fuel Economy'
           }, {
             sortable: true,
             selected: true,
             reverse: true,
-            content: _react2['default'].createElement('a', null, '# Sold', _react2['default'].createElement('span', { className: 'arrowUp' }, _react2['default'].createElement('span', { className: 'arrowUp__centerLine' })), _react2['default'].createElement('span', { className: 'arrowDown' }, _react2['default'].createElement('span', { className: 'arrowDown__centerLine' })))
+            content: '# Sold'
           }, {
             sortable: true,
-            content: _react2['default'].createElement('a', null, 'Registered', _react2['default'].createElement('span', { className: 'arrowUp' }, _react2['default'].createElement('span', { className: 'arrowUp__centerLine' })), _react2['default'].createElement('span', { className: 'arrowDown' }, _react2['default'].createElement('span', { className: 'arrowDown__centerLine' })))
+            content: 'Registered'
           }, null]
         }]
-      }), _react2['default'].createElement(_GridSectionJsx2['default'], {
+      })), _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, this.props, {
         section: 'tbody',
         rows: [{
           cells: [{
             content: _react2['default'].createElement('span', { className: 'checkboxWrapper' }, _react2['default'].createElement('input', { type: 'checkbox', name: 'item_1', id: 'item_1', className: 'checkbox__input' }), _react2['default'].createElement('label', { htmlFor: 'item_1', className: 'checkbox__faux__input' }))
           }, {
-            content: _react2['default'].createElement('a', { href: '#', className: this.props.rootClass + '__tbody__cellValue--link blueLink' }, 'Ford F150')
+            content: _react2['default'].createElement('a', { href: '#', className: [this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--link blueLink' }, 'Ford F150')
           }, {
-            content: _react2['default'].createElement('a', { href: '#', className: this.props.rootClass + '__tbody__cellValue--editable' }, 'In Production')
+
+            content: _react2['default'].createElement('a', { href: '#', className: [this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable' }, 'In Production')
           }, {
-            content: _react2['default'].createElement('a', { href: '#', className: this.props.rootClass + '__tbody__cellValue--editable' }, 'Diesel, Unleaded')
+            content: _react2['default'].createElement('a', { href: '#', className: [this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable' }, 'Diesel, Unleaded')
           }, {
-            content: _react2['default'].createElement('a', { href: '#', className: this.props.rootClass + '__tbody__cellValue--editable' }, _react2['default'].createElement('span', { className: 'icon glyphicons-user' }), '3, 5, 6')
+            content: _react2['default'].createElement('a', { href: '#', className: [this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable' }, _react2['default'].createElement('span', { className: 'icon glyphicons-user' }), '3, 5, 6')
           }, {
-            content: _react2['default'].createElement('a', { href: '#', className: this.props.rootClass + '__tbody__cellValue--editable' }, '6, 8')
+            content: _react2['default'].createElement('a', { href: '#', className: [this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable' }, '6, 8')
           }, {
-            content: _react2['default'].createElement('a', { href: '#', className: this.props.rootClass + '__tbody__cellValue--editable' }, '25mpg', _react2['default'].createElement('span', { className: 'icon glyphicons-leaf' }))
+            content: _react2['default'].createElement('a', { href: '#', className: [this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable' }, '25mpg', _react2['default'].createElement('span', { className: 'icon glyphicons-leaf' }))
           }, {
-            content: _react2['default'].createElement('span', { className: this.props.rootClass + '__tbody__cellValue--readOnly' }, '202.1k', _react2['default'].createElement('span', { className: this.props.rootClass + '__tbody__cellChange up' }, '+2%'))
+            content: _react2['default'].createElement('span', { className: [this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--readOnly' }, '202.1k', _react2['default'].createElement('span', { className: [this.props.rootClass, 'tbody', 'cellChange'].join('__') + ' up' }, '+2%'))
           }, {
-            content: _react2['default'].createElement('span', { className: this.props.rootClass + '__tbody__cellValue--readOnly' }, '200.5k', _react2['default'].createElement('span', { className: this.props.rootClass + '__tbody__cellChange down' }, '-2%'))
+            content: _react2['default'].createElement('span', { className: [this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--readOnly' }, '200.5k', _react2['default'].createElement('span', { className: [this.props.rootClass, 'tbody', 'cellChange'].join('__') + ' down' }, '-2%'))
           }, {
             content: _react2['default'].createElement('span', null, _react2['default'].createElement('a', { href: '', className: 'icon glyphicons-more' }), _react2['default'].createElement('a', { href: '', className: 'icon glyphicons-cogwheel' }))
           }]
         }]
-      }), _react2['default'].createElement(_GridSectionJsx2['default'], {
+      })), _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, this.props, {
         section: 'tfoot',
         rows: [{
           whatever: 'whatever',
@@ -24245,7 +24256,7 @@ var Grid = (function (_Component) {
             content: 'Registered'
           }, null]
         }]
-      })));
+      }))));
     }
   }]);
 
@@ -24332,8 +24343,9 @@ var GridCell = (function (_Component) {
   _createClass(GridCell, [{
     key: 'render',
     value: function render() {
-      var section = this.props.section ? this.props.section : 'tbody';
-      var cellClassName = 'dataTable__' + section + '__cell';
+      var cellContent = undefined;
+      var cellClassName = [this.props.rootClass, this.props.section, 'cell'].join('__');
+
       if (this.props.sortable) {
         cellClassName += ' sortable';
       }
@@ -24344,9 +24356,19 @@ var GridCell = (function (_Component) {
         cellClassName += ' reverse';
       }
 
-      var cellContent = _react2['default'].createElement('span', { className: 'dataTable__' + section + '__cellLiner' }, this.props.children);
+      if (this.props.content && this.props.sortable) {
+        cellContent = _react2['default'].createElement('a', null, this.props.content, _react2['default'].createElement('span', { className: 'arrowUp' }, _react2['default'].createElement('span', { className: 'arrowUp__centerLine' })), _react2['default'].createElement('span', { className: 'arrowDown' }, _react2['default'].createElement('span', { className: 'arrowDown__centerLine' })));
+      } else if (this.props.content && !this.props.sortable) {
+        // TODO: Get rid of extra span
+        cellContent = _react2['default'].createElement('span', null, this.props.content);
+      } else {
+        // TODO: Get rid of extra span
+        cellContent = _react2['default'].createElement('span', null, this.props.children);
+      }
 
-      var cellEl = section === 'thead' ? _react2['default'].createElement('th', { className: cellClassName }, cellContent) : _react2['default'].createElement('td', { className: cellClassName }, cellContent);
+      var cellContentWrap = _react2['default'].createElement('span', { className: [this.props.rootClass, this.props.section, 'cellLiner'].join('__') }, cellContent);
+
+      var cellEl = this.props.section === 'thead' ? _react2['default'].createElement('th', { className: cellClassName }, cellContentWrap) : _react2['default'].createElement('td', { className: cellClassName }, cellContentWrap);
 
       return(
         // TODO: figure out a way to get rid of div wrapper
@@ -24440,8 +24462,7 @@ var GridRow = (function (_Component) {
     value: function render() {
       var _this = this;
 
-      var section = this.props.section;
-      var rowClassName = 'dataTable__' + section + '__row';
+      var rowClassName = [this.props.rootClass, this.props.section, 'row'].join('__');
       if (this.props.placeholder) {
         rowClassName += ' ' + rowClassName + '--placeholder';
       }
@@ -24455,7 +24476,7 @@ var GridRow = (function (_Component) {
             cell = cell || {};
             Object.assign(cell, rowProps);
             delete cell.cells;
-            return _react2['default'].createElement(_GridCellJsx2['default'], cell, cell ? cell.content : null);
+            return _react2['default'].createElement(_GridCellJsx2['default'], cell);
           });
         })();
       } else {
@@ -24575,20 +24596,17 @@ var GridSection = (function (_Component) {
         rows = this.props.children;
       }
 
-      var sectionTag = this.props.section ? this.props.section : 'tbody';
       var sectionEl = undefined;
-      function sectionClassName(sectionTag) {
-        return 'dataTable__' + sectionTag;
-      }
-      switch (sectionTag) {
+      var sectionClassName = [this.props.rootClass, this.props.section].join('__');
+      switch (this.props.section) {
         case 'thead':
-          sectionEl = _react2['default'].createElement('thead', { className: sectionClassName(sectionTag) }, rows);
+          sectionEl = _react2['default'].createElement('thead', { className: sectionClassName }, rows);
           break;
         case 'tfoot':
-          sectionEl = _react2['default'].createElement('tfoot', { className: sectionClassName(sectionTag) }, rows);
+          sectionEl = _react2['default'].createElement('tfoot', { className: sectionClassName }, rows);
           break;
         default:
-          sectionEl = _react2['default'].createElement('tbody', { className: sectionClassName(sectionTag) }, rows);
+          sectionEl = _react2['default'].createElement('tbody', { className: sectionClassName }, rows);
           break;
       }
 
@@ -24607,6 +24625,10 @@ exports['default'] = GridSection;
 GridSection.propTypes = {
   sectionTag: _react.PropTypes.string,
   rows: _react.PropTypes.array
+};
+
+GridSection.defaultProps = {
+  section: 'tbody'
 };
 module.exports = exports['default'];
 

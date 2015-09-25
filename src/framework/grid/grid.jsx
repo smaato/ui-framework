@@ -13,9 +13,10 @@ export default class Grid extends Component {
 
   render() {
     return (
-      <div className={this.props.rootClass + '__container'}>
-        <table className={this.props.rootClass + '__table'}>
+      <div className={[this.props.rootClass, 'container'].join('__')}>
+        <table className={[this.props.rootClass, 'table'].join('__')}>
           <GridSection
+            {...this.props}
             section="thead"
             rows={
               [
@@ -30,101 +31,37 @@ export default class Grid extends Component {
                     },
                     {
                       sortable: true,
-                      content: <a>
-                        Name
-                        <span className="arrowUp">
-                          <span className="arrowUp__centerLine"></span>
-                        </span>
-                        <span className="arrowDown">
-                          <span className="arrowDown__centerLine"></span>
-                        </span>
-                      </a>
+                      content: 'Name'
                     },
                     {
                       sortable: true,
-                      content: <a>
-                        Status
-                        <span className="arrowUp">
-                          <span className="arrowUp__centerLine"></span>
-                        </span>
-                        <span className="arrowDown">
-                          <span className="arrowDown__centerLine"></span>
-                        </span>
-                      </a>
+                      content: 'Status'
                     },
                     {
                       sortable: true,
-                      content: <a>
-                        Fuel
-                        <span className="arrowUp">
-                          <span className="arrowUp__centerLine"></span>
-                        </span>
-                        <span className="arrowDown">
-                          <span className="arrowDown__centerLine"></span>
-                        </span>
-                      </a>
+                      content: 'Fuel'
                     },
                     {
                       sortable: true,
-                      content: <a>
-                        Passangers
-                        <span className="arrowUp">
-                          <span className="arrowUp__centerLine"></span>
-                        </span>
-                        <span className="arrowDown">
-                          <span className="arrowDown__centerLine"></span>
-                        </span>
-                      </a>
+                      content: 'Passengers'
                     },
                     {
                       sortable: true,
-                      content: <a>
-                        Cylinders
-                        <span className="arrowUp">
-                          <span className="arrowUp__centerLine"></span>
-                        </span>
-                        <span className="arrowDown">
-                          <span className="arrowDown__centerLine"></span>
-                        </span>
-                      </a>
+                      content: 'Cylinders'
                     },
                     {
                       sortable: true,
-                      content: <a>
-                        Fuel Economy
-                        <span className="arrowUp">
-                          <span className="arrowUp__centerLine"></span>
-                        </span>
-                        <span className="arrowDown">
-                          <span className="arrowDown__centerLine"></span>
-                        </span>
-                      </a>
+                      content: 'Fuel Economy'
                     },
                     {
                       sortable: true,
                       selected: true,
                       reverse: true,
-                      content: <a>
-                        # Sold
-                        <span className="arrowUp">
-                          <span className="arrowUp__centerLine"></span>
-                        </span>
-                        <span className="arrowDown">
-                          <span className="arrowDown__centerLine"></span>
-                        </span>
-                      </a>
+                      content: '# Sold'
                     },
                     {
                       sortable: true,
-                      content: <a>
-                        Registered
-                        <span className="arrowUp">
-                          <span className="arrowUp__centerLine"></span>
-                        </span>
-                        <span className="arrowDown">
-                          <span className="arrowDown__centerLine"></span>
-                        </span>
-                      </a>
+                      content: 'Registered'
                     },
                     null
                   ]
@@ -134,6 +71,7 @@ export default class Grid extends Component {
             >
           </GridSection>
           <GridSection
+            {...this.props}
             section="tbody"
             rows={
               [
@@ -146,39 +84,40 @@ export default class Grid extends Component {
                       </span>
                     },
                     {
-                      content: <a href="#" className={this.props.rootClass + '__tbody__cellValue--link blueLink'}>Ford F150</a>
+                      content: <a href="#" className={[this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--link blueLink'}>Ford F150</a>
                     },
                     {
-                      content: <a href="#" className={this.props.rootClass + '__tbody__cellValue--editable'}>In Production</a>
+
+                      content: <a href="#" className={[this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable'}>In Production</a>
                     },
                     {
-                      content: <a href="#" className={this.props.rootClass + '__tbody__cellValue--editable'}>Diesel, Unleaded</a>
+                      content: <a href="#" className={[this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable'}>Diesel, Unleaded</a>
                     },
                     {
-                      content: <a href="#" className={this.props.rootClass + '__tbody__cellValue--editable'}>
+                      content: <a href="#" className={[this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable'}>
                         <span className="icon glyphicons-user"></span>
                         3, 5, 6
                       </a>
                     },
                     {
-                      content: <a href="#" className={this.props.rootClass + '__tbody__cellValue--editable'}>6, 8</a>
+                      content: <a href="#" className={[this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable'}>6, 8</a>
                     },
                     {
-                      content: <a href="#" className={this.props.rootClass + '__tbody__cellValue--editable'}>
+                      content: <a href="#" className={[this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable'}>
                         25mpg
                         <span className="icon glyphicons-leaf"></span>
                       </a>
                     },
                     {
-                      content: <span className={this.props.rootClass + '__tbody__cellValue--readOnly'}>
+                      content: <span className={[this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--readOnly'}>
                         202.1k
-                        <span className={this.props.rootClass + '__tbody__cellChange up'}>+2%</span>
+                        <span className={[this.props.rootClass, 'tbody', 'cellChange'].join('__') + ' up'}>+2%</span>
                       </span>
                     },
                     {
-                      content: <span className={this.props.rootClass + '__tbody__cellValue--readOnly'}>
+                      content: <span className={[this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--readOnly'}>
                         200.5k
-                        <span className={this.props.rootClass + '__tbody__cellChange down'}>-2%</span>
+                        <span className={[this.props.rootClass, 'tbody', 'cellChange'].join('__') + ' down'}>-2%</span>
                       </span>
                     },
                     {
@@ -194,6 +133,7 @@ export default class Grid extends Component {
             >
           </GridSection>
           <GridSection
+            {...this.props}
             section="tfoot"
             rows={
               [
