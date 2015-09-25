@@ -1,0 +1,29 @@
+
+extends ../_partials/_componentLayout.jade
+
+block title
+  title Grid
+
+block content
+
+  .exampleContainer.exampleContainer--clear
+    #grid
+
+block component
+  div.
+    <script type="text/jsx">
+
+      window.renderComponent('grid', (
+        <Grid />
+      ));
+
+    </script>
+    <script type="text/javascript">
+      var $window = $(window);
+      var $body = $("body");
+      $window.scroll(function() {
+        var scrollTop = $body.scrollTop();
+        if(scrollTop > 139) $body.addClass("fixedThead");
+        else $body.removeClass("fixedThead");
+      });
+    </script>
