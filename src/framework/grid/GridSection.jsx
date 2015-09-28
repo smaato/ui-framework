@@ -13,24 +13,13 @@ export default class GridSection extends Component {
   }
 
   render() {
-    let rows;
-    if (this.props.rows) {
-      const sectionProps = this.props;
-      rows = this.props.rows.map(function (row, index) {
-        let rowProps = Object.assign(row, sectionProps);
-        delete rowProps.rows;
-        if (row.cells) {
-          return <GridRow {...rowProps} key={index} />;
-        } else {
-          // TODO: Most likely this does not work
-          return <GridRow {...rowProps} key={index}>
-            {row.props.children}
-          </GridRow>;
-        }
-      });
-    } else {
-      rows = this.props.children;
-    }
+    const sectionProps = this.props;
+
+    let rows = this.props.rows.map(function (row, index) {
+      let rowProps = Object.assign(row, sectionProps);
+      delete rowProps.rows;
+      return <GridRow {...rowProps} key={index} />;
+    });
 
     let sectionClassName = [this.props.rootClass, this.props.section].join('__');
 

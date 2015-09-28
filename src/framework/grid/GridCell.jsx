@@ -50,6 +50,7 @@ export default class GridCell extends Component {
 
       let wrapBefore = contentWrap.before;
       let wrapAfter = contentWrap.after;
+
       // Before and after can have its own wraps, that have the same props as contentWrap
       // TODO: extend this with modifier, href and same for before section
       if (contentWrap.after && contentWrap.afterWrap && contentWrap.afterWrap.appendClass) {
@@ -70,16 +71,13 @@ export default class GridCell extends Component {
           {wrapAfter}
         </span>
       }
-
     } else if (this.props.content) {
       // TODO: Get rid of extra span
       cellContent = <span>{this.props.content}</span>;
-    } else {
-      // TODO: Get rid of extra span
-      cellContent = <span>{this.props.children}</span>;
     }
 
-    const cellContentWrap = <span className={cellClassNameMain + 'Liner'}>
+    const cellContentWrap =
+      <span className={cellClassNameMain + 'Liner'}>
         { cellContent }
       </span>;
 
