@@ -12,11 +12,11 @@ export default class Grid extends Component {
   }
 
   componentWillMount() {
+    var $body = $('body');
+
     $(window).on('scroll.grid', function() {
-      var $body = $("body");
-      var scrollTop = $body.scrollTop();
-      if(scrollTop > 139) $body.addClass("fixedThead");
-      else $body.removeClass("fixedThead");
+      var isStick = $body.scrollTop() > $('.dataTable__table').offset().top - 1 /* 1px css table border */;
+      $body[isStick ? 'addClass' : 'removeClass']('fixedThead');
     });
   }
 

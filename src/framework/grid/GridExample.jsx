@@ -98,7 +98,10 @@ export default class GridExample extends Component {
       ]
     };
 
-    var tbodyRows = [tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow];
+    var tbodyRows = [
+      tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow,
+      tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow
+    ];
 
     var data = {
       thead: [

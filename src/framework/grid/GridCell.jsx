@@ -78,7 +78,7 @@ export default class GridCell extends Component {
 
     const cellContentWrap =
       <span className={cellClassNameMain + 'Liner'}>
-        { cellContent }
+        {cellContent}
       </span>;
 
     return (
