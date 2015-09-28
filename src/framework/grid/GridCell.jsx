@@ -24,6 +24,7 @@ export default class GridCell extends Component {
       cellClassName += ' reverse';
     }
 
+    // Only for thead
     if (this.props.content && this.props.sortable) {
       cellContent = <a>
         {this.props.content}
@@ -34,7 +35,32 @@ export default class GridCell extends Component {
           <span className="arrowDown__centerLine"></span>
         </span>
       </a>;
-    } else if (this.props.content && !this.props.sortable) {
+    // Only for tbody
+    } else if (this.props.content && this.props.preset) {
+      const preset = this.props.preset;
+      let presetClass = [this.props.rootClass, 'tbody', 'cellValue'].join('__');
+      if (preset.modifier) {
+        // In theory could be many modifiers, but for now one is good enough
+        presetClass += preset.modifier[0];
+      }
+      if (preset.appendClass) {
+        presetClass += preset.appendClass;
+      }
+      if (preset.href) {
+        cellContent = <a href={preset.href} className={presetClass}>
+          {preset.before}
+          {this.props.content}
+          {preset.after}
+        </a>
+      } else {
+        cellContent = <span className={presetClass}>
+          {preset.before}
+          {this.props.content}
+          {preset.after}
+        </span>
+      }
+
+    } else if (this.props.content) {
       // TODO: Get rid of extra span
       cellContent = <span>{this.props.content}</span>;
     } else {
@@ -59,7 +85,3 @@ export default class GridCell extends Component {
   }
 
 }
-
-GridCell.propTypes = {
-  section: PropTypes.string
-};

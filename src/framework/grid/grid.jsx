@@ -84,41 +84,65 @@ export default class Grid extends Component {
                       </span>
                     },
                     {
-                      content: <a href="#" className={[this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--link blueLink'}>Ford F150</a>
+                      preset: {
+                        modifier: ['link'],
+                        href: '#',
+                        appendClass: ' blueLink'
+                      },
+                      content: 'Ford F150'
                     },
                     {
-
-                      content: <a href="#" className={[this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable'}>In Production</a>
+                      preset: {
+                        modifier: ['editable'],
+                        href: '#'
+                      },
+                      content: 'In Production'
                     },
                     {
-                      content: <a href="#" className={[this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable'}>Diesel, Unleaded</a>
+                      preset: {
+                        modifier: ['editable'],
+                        href: '#'
+                      },
+                      content: 'Diesel, Unleaded'
                     },
                     {
-                      content: <a href="#" className={[this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable'}>
-                        <span className="icon glyphicons-user"></span>
-                        3, 5, 6
-                      </a>
+                      preset: {
+                        modifier: ['editable'],
+                        href: '#',
+                        before: <span className="icon glyphicons-user"></span>
+                      },
+                      content: '3, 5, 6'
                     },
                     {
-                      content: <a href="#" className={[this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable'}>6, 8</a>
+                      preset: {
+                        modifier: ['editable'],
+                        href: '#'
+                      },
+                      content: '6, 8'
                     },
                     {
-                      content: <a href="#" className={[this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable'}>
-                        25mpg
-                        <span className="icon glyphicons-leaf"></span>
-                      </a>
+                      preset: {
+                        modifier: ['editable'],
+                        href: '#',
+                        after: <span className="icon glyphicons-leaf"></span>
+                      },
+                      content: '25mpg'
                     },
                     {
-                      content: <span className={[this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--readOnly'}>
-                        202.1k
-                        <span className={[this.props.rootClass, 'tbody', 'cellChange'].join('__') + ' up'}>+2%</span>
-                      </span>
+                      preset: {
+                        modifier: ['readOnly'],
+                        href: '#',
+                        after: <span className={[this.props.rootClass, 'tbody', 'cellChange'].join('__') + ' up'}>+2%</span>
+                      },
+                      content: '202.1k'
                     },
                     {
-                      content: <span className={[this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--readOnly'}>
-                        200.5k
-                        <span className={[this.props.rootClass, 'tbody', 'cellChange'].join('__') + ' down'}>-2%</span>
-                      </span>
+                      preset: {
+                        modifier: ['readOnly'],
+                        href: '#',
+                        after: <span className={[this.props.rootClass, 'tbody', 'cellChange'].join('__') + ' down'}>-2%</span>
+                      },
+                      content: '200.5k'
                     },
                     {
                       content: <span>
@@ -138,7 +162,6 @@ export default class Grid extends Component {
             rows={
               [
                 {
-                  whatever: 'whatever',
                   cells: [
                     null,
                     null,

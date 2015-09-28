@@ -24226,22 +24226,58 @@ var Grid = (function (_Component) {
           cells: [{
             content: _react2['default'].createElement('span', { className: 'checkboxWrapper' }, _react2['default'].createElement('input', { type: 'checkbox', name: 'item_1', id: 'item_1', className: 'checkbox__input' }), _react2['default'].createElement('label', { htmlFor: 'item_1', className: 'checkbox__faux__input' }))
           }, {
-            content: _react2['default'].createElement('a', { href: '#', className: [this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--link blueLink' }, 'Ford F150')
+            preset: {
+              modifier: ['link'],
+              href: '#',
+              appendClass: ' blueLink'
+            },
+            content: 'Ford F150'
           }, {
-
-            content: _react2['default'].createElement('a', { href: '#', className: [this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable' }, 'In Production')
+            preset: {
+              modifier: ['editable'],
+              href: '#'
+            },
+            content: 'In Production'
           }, {
-            content: _react2['default'].createElement('a', { href: '#', className: [this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable' }, 'Diesel, Unleaded')
+            preset: {
+              modifier: ['editable'],
+              href: '#'
+            },
+            content: 'Diesel, Unleaded'
           }, {
-            content: _react2['default'].createElement('a', { href: '#', className: [this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable' }, _react2['default'].createElement('span', { className: 'icon glyphicons-user' }), '3, 5, 6')
+            preset: {
+              modifier: ['editable'],
+              href: '#',
+              before: _react2['default'].createElement('span', { className: 'icon glyphicons-user' })
+            },
+            content: '3, 5, 6'
           }, {
-            content: _react2['default'].createElement('a', { href: '#', className: [this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable' }, '6, 8')
+            preset: {
+              modifier: ['editable'],
+              href: '#'
+            },
+            content: '6, 8'
           }, {
-            content: _react2['default'].createElement('a', { href: '#', className: [this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--editable' }, '25mpg', _react2['default'].createElement('span', { className: 'icon glyphicons-leaf' }))
+            preset: {
+              modifier: ['editable'],
+              href: '#',
+              after: _react2['default'].createElement('span', { className: 'icon glyphicons-leaf' })
+            },
+            content: '25mpg'
           }, {
-            content: _react2['default'].createElement('span', { className: [this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--readOnly' }, '202.1k', _react2['default'].createElement('span', { className: [this.props.rootClass, 'tbody', 'cellChange'].join('__') + ' up' }, '+2%'))
+            preset: {
+              modifier: ['readOnly'],
+              href: '#',
+              after: _react2['default'].createElement('span', { className: [this.props.rootClass, 'tbody', 'cellChange'].join('__') + ' up' }, '+2%')
+            },
+            content: '202.1k'
           }, {
-            content: _react2['default'].createElement('span', { className: [this.props.rootClass, 'tbody', 'cellValue'].join('__') + '--readOnly' }, '200.5k', _react2['default'].createElement('span', { className: [this.props.rootClass, 'tbody', 'cellChange'].join('__') + ' down' }, '-2%'))
+            preset: {
+              modifier: ['readOnly'],
+              href: '#',
+              after: _react2['default'].createElement('span', { className: [this.props.rootClass, 'tbody', 'cellChange'].join('__') + ' down' }, '-2%')
+            },
+            content: '200.5k'
           }, {
             content: _react2['default'].createElement('span', null, _react2['default'].createElement('a', { href: '', className: 'icon glyphicons-more' }), _react2['default'].createElement('a', { href: '', className: 'icon glyphicons-cogwheel' }))
           }]
@@ -24249,7 +24285,6 @@ var Grid = (function (_Component) {
       })), _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, this.props, {
         section: 'tfoot',
         rows: [{
-          whatever: 'whatever',
           cells: [null, null, null, null, null, null, null, {
             content: '152.1m'
           }, {
@@ -24356,15 +24391,32 @@ var GridCell = (function (_Component) {
         cellClassName += ' reverse';
       }
 
+      // Only for thead
       if (this.props.content && this.props.sortable) {
         cellContent = _react2['default'].createElement('a', null, this.props.content, _react2['default'].createElement('span', { className: 'arrowUp' }, _react2['default'].createElement('span', { className: 'arrowUp__centerLine' })), _react2['default'].createElement('span', { className: 'arrowDown' }, _react2['default'].createElement('span', { className: 'arrowDown__centerLine' })));
-      } else if (this.props.content && !this.props.sortable) {
-        // TODO: Get rid of extra span
-        cellContent = _react2['default'].createElement('span', null, this.props.content);
-      } else {
-        // TODO: Get rid of extra span
-        cellContent = _react2['default'].createElement('span', null, this.props.children);
-      }
+        // Only for tbody
+      } else if (this.props.content && this.props.preset) {
+          var preset = this.props.preset;
+          var presetClass = [this.props.rootClass, 'tbody', 'cellValue'].join('__');
+          if (preset.modifier) {
+            // In theory could be many modifiers, but for now one is good enough
+            presetClass += preset.modifier[0];
+          }
+          if (preset.appendClass) {
+            presetClass += preset.appendClass;
+          }
+          if (preset.href) {
+            cellContent = _react2['default'].createElement('a', { href: preset.href, className: presetClass }, preset.before, this.props.content, preset.after);
+          } else {
+            cellContent = _react2['default'].createElement('span', { className: presetClass }, preset.before, this.props.content, preset.after);
+          }
+        } else if (this.props.content) {
+          // TODO: Get rid of extra span
+          cellContent = _react2['default'].createElement('span', null, this.props.content);
+        } else {
+          // TODO: Get rid of extra span
+          cellContent = _react2['default'].createElement('span', null, this.props.children);
+        }
 
       var cellContentWrap = _react2['default'].createElement('span', { className: [this.props.rootClass, this.props.section, 'cellLiner'].join('__') }, cellContent);
 
@@ -24381,10 +24433,6 @@ var GridCell = (function (_Component) {
 })(_react.Component);
 
 exports['default'] = GridCell;
-
-GridCell.propTypes = {
-  section: _react.PropTypes.string
-};
 module.exports = exports['default'];
 
 },{"react":338}],343:[function(require,module,exports){
@@ -24493,7 +24541,6 @@ var GridRow = (function (_Component) {
 exports['default'] = GridRow;
 
 GridRow.propTypes = {
-  section: _react.PropTypes.string,
   cells: _react.PropTypes.array
 };
 module.exports = exports['default'];
@@ -24623,7 +24670,7 @@ var GridSection = (function (_Component) {
 exports['default'] = GridSection;
 
 GridSection.propTypes = {
-  sectionTag: _react.PropTypes.string,
+  section: _react2['default'].PropTypes.oneOf(['thead', 'tbody', 'tfoot']),
   rows: _react.PropTypes.array
 };
 

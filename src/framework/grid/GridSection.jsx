@@ -57,7 +57,7 @@ export default class GridSection extends Component {
 }
 
 GridSection.propTypes = {
-  sectionTag: PropTypes.string,
+  section: React.PropTypes.oneOf(['thead', 'tbody', 'tfoot']),
   rows: PropTypes.array
 };
 
