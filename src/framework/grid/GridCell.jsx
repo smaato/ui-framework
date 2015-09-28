@@ -83,15 +83,8 @@ export default class GridCell extends Component {
         { cellContent }
       </span>;
 
-    const cellEl = this.props.section === 'thead' ?
-      <th className={cellClassName}>{cellContentWrap}</th> :
-      <td className={cellClassName}>{cellContentWrap}</td>;
-
     return (
-      // TODO: figure out a way to get rid of div wrapper
-      <div>
-        {cellEl}
-      </div>
+      <div className={cellClassName}>{cellContentWrap}</div>
     );
   }
 

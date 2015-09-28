@@ -32,9 +32,9 @@ export default class GridRow extends Component {
     }
 
     return (
-      <tr className={rowClassName}>
+      <div className={rowClassName}>
         {content}
-      </tr>
+      </div>
     );
   }
 

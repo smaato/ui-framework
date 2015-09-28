@@ -24186,117 +24186,19 @@ var Grid = (function (_Component) {
   _createClass(Grid, [{
     key: 'render',
     value: function render() {
-      return _react2['default'].createElement('div', { className: [this.props.rootClass, 'container'].join('__') }, _react2['default'].createElement('table', { className: [this.props.rootClass, 'table'].join('__') }, _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, this.props, {
+      var data = this.props.data;
+      var sectionProps = Object.assign({}, this.props);
+      delete sectionProps.data;
+
+      return _react2['default'].createElement('div', { className: [this.props.rootClass, 'container'].join('__') }, _react2['default'].createElement('div', { className: [this.props.rootClass, 'table'].join('__') }, _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, sectionProps, {
         section: 'thead',
-        rows: [{
-          //placeholder: true,
-          cells: [{
-            content: _react2['default'].createElement('span', { className: 'checkboxWrapper' }, _react2['default'].createElement('input', { type: 'checkbox', name: 'table_batch', id: 'table_batch', className: 'checkbox__input' }), _react2['default'].createElement('label', { htmlFor: 'table_batch', className: 'checkbox__faux__input' }))
-          }, {
-            sortable: true,
-            content: 'Name'
-          }, {
-            sortable: true,
-            content: 'Status'
-          }, {
-            sortable: true,
-            content: 'Fuel'
-          }, {
-            sortable: true,
-            content: 'Passengers'
-          }, {
-            sortable: true,
-            content: 'Cylinders'
-          }, {
-            sortable: true,
-            content: 'Fuel Economy'
-          }, {
-            sortable: true,
-            selected: true,
-            reverse: true,
-            content: '# Sold'
-          }, {
-            sortable: true,
-            content: 'Registered'
-          }, null]
-        }]
-      })), _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, this.props, {
+        rows: data.thead
+      })), _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, sectionProps, {
         section: 'tbody',
-        rows: [{
-          cells: [{
-            content: _react2['default'].createElement('span', { className: 'checkboxWrapper' }, _react2['default'].createElement('input', { type: 'checkbox', name: 'item_1', id: 'item_1', className: 'checkbox__input' }), _react2['default'].createElement('label', { htmlFor: 'item_1', className: 'checkbox__faux__input' }))
-          }, {
-            contentWrap: {
-              modifier: ['link'],
-              href: '#',
-              appendClass: ' blueLink'
-            },
-            content: 'Ford F150'
-          }, {
-            contentWrap: {
-              modifier: ['editable'],
-              href: '#'
-            },
-            content: 'In Production'
-          }, {
-            contentWrap: {
-              modifier: ['editable'],
-              href: '#'
-            },
-            content: 'Diesel, Unleaded'
-          }, {
-            contentWrap: {
-              modifier: ['editable'],
-              href: '#',
-              before: _react2['default'].createElement('span', { className: 'icon glyphicons-user' })
-            },
-            content: '3, 5, 6'
-          }, {
-            contentWrap: {
-              modifier: ['editable'],
-              href: '#'
-            },
-            content: '6, 8'
-          }, {
-            contentWrap: {
-              modifier: ['editable'],
-              href: '#',
-              after: _react2['default'].createElement('span', { className: 'icon glyphicons-leaf' })
-            },
-            content: '25mpg'
-          }, {
-            contentWrap: {
-              modifier: ['readOnly'],
-              href: '#',
-              after: '+2%',
-              afterWrap: {
-                appendClass: 'Change up'
-              }
-            },
-            content: '202.1k'
-          }, {
-            contentWrap: {
-              modifier: ['readOnly'],
-              href: '#',
-              after: '-2%',
-              afterWrap: {
-                appendClass: 'Change down'
-              }
-            },
-            content: '200.5k'
-          }, {
-            content: _react2['default'].createElement('span', null, _react2['default'].createElement('a', { href: '', className: 'icon glyphicons-more' }), _react2['default'].createElement('a', { href: '', className: 'icon glyphicons-cogwheel' }))
-          }]
-        }]
-      })), _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, this.props, {
+        rows: data.tbody
+      })), _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, sectionProps, {
         section: 'tfoot',
-        rows: [{
-          cells: [null, null, null, null, null, null, null, {
-            content: '152.1m'
-          }, {
-            content: 'Registered'
-          }, null]
-        }]
+        rows: data.tfoot
       }))));
     }
   }]);
@@ -24307,7 +24209,8 @@ var Grid = (function (_Component) {
 exports['default'] = Grid;
 
 Grid.propTypes = {
-  rootClass: _react.PropTypes.string
+  rootClass: _react.PropTypes.string,
+  data: _react.PropTypes.object
 };
 
 Grid.defaultProps = {
@@ -24437,12 +24340,7 @@ var GridCell = (function (_Component) {
 
       var cellContentWrap = _react2['default'].createElement('span', { className: cellClassNameMain + 'Liner' }, cellContent);
 
-      var cellEl = this.props.section === 'thead' ? _react2['default'].createElement('th', { className: cellClassName }, cellContentWrap) : _react2['default'].createElement('td', { className: cellClassName }, cellContentWrap);
-
-      return(
-        // TODO: figure out a way to get rid of div wrapper
-        _react2['default'].createElement('div', null, cellEl)
-      );
+      return _react2['default'].createElement('div', { className: cellClassName }, cellContentWrap);
     }
   }]);
 
@@ -24548,7 +24446,7 @@ var GridRow = (function (_Component) {
         content = this.props.children;
       }
 
-      return _react2['default'].createElement('tr', { className: rowClassName }, content);
+      return _react2['default'].createElement('div', { className: rowClassName }, content);
     }
   }]);
 
@@ -24651,7 +24549,7 @@ var GridSection = (function (_Component) {
             if (row.cells) {
               return _react2['default'].createElement(_GridRowJsx2['default'], rowProps);
             } else {
-              // TODO: test this, it most likely does not work
+              // TODO: Most likely this does not work
               return _react2['default'].createElement(_GridRowJsx2['default'], rowProps, row.props.children);
             }
           });
@@ -24660,24 +24558,9 @@ var GridSection = (function (_Component) {
         rows = this.props.children;
       }
 
-      var sectionEl = undefined;
       var sectionClassName = [this.props.rootClass, this.props.section].join('__');
-      switch (this.props.section) {
-        case 'thead':
-          sectionEl = _react2['default'].createElement('thead', { className: sectionClassName }, rows);
-          break;
-        case 'tfoot':
-          sectionEl = _react2['default'].createElement('tfoot', { className: sectionClassName }, rows);
-          break;
-        default:
-          sectionEl = _react2['default'].createElement('tbody', { className: sectionClassName }, rows);
-          break;
-      }
 
-      return(
-        // TODO: figure out a way to get rid of div wrapper
-        _react2['default'].createElement('div', null, sectionEl)
-      );
+      return _react2['default'].createElement('div', { className: sectionClassName }, rows);
     }
   }]);
 

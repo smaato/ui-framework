@@ -22,7 +22,7 @@ export default class GridSection extends Component {
         if (row.cells) {
           return <GridRow {...rowProps} />;
         } else {
-          // TODO: test this, it most likely does not work
+          // TODO: Most likely this does not work
           return <GridRow {...rowProps}>
             {row.props.children}
           </GridRow>;
@@ -32,25 +32,10 @@ export default class GridSection extends Component {
       rows = this.props.children;
     }
 
-    let sectionEl;
     let sectionClassName = [this.props.rootClass, this.props.section].join('__');
-    switch (this.props.section) {
-    case 'thead':
-      sectionEl = <thead className={sectionClassName}>{rows}</thead>;
-      break;
-    case 'tfoot':
-      sectionEl = <tfoot className={sectionClassName}>{rows}</tfoot>;
-      break;
-    default:
-      sectionEl = <tbody className={sectionClassName}>{rows}</tbody>;
-      break;
-    }
 
     return (
-      // TODO: figure out a way to get rid of div wrapper
-      <div>
-      { sectionEl }
-      </div>
+      <div className={sectionClassName}>{rows}</div>
     );
   }
 

@@ -1,0 +1,27 @@
+
+@mixin section-common() {
+  &__row {
+    display: table-row;
+  }
+  &__cell {
+    display: table-cell;
+  }
+}
+
+.dataTable {
+  &__table {
+    display: table;
+  }
+  &__thead {
+    display: table-header-group;
+    @include section-common();
+  }
+  &__tbody {
+    display: table-row-group;
+    @include section-common();
+  }
+  &__tfoot {
+    display: table-footer-group;
+    @include section-common();
+  }
+}
