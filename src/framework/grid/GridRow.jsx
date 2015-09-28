@@ -21,13 +21,14 @@ export default class GridRow extends Component {
 
     if (this.props.cells) {
       let rowProps = this.props;
-      content = this.props.cells.map((cell) => {
+      content = this.props.cells.map((cell, index) => {
         cell = cell || {};
         Object.assign(cell, rowProps);
         delete cell.cells;
-        return <GridCell {...cell}/>;
+        return <GridCell {...cell} key={index} />;
       });
     } else {
+      // TODO: Check if this works
       content = this.props.children;
     }
 

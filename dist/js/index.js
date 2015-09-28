@@ -24357,6 +24357,16 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }return target;
+};
+
 var _createClass = (function () {
   function defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
@@ -24435,14 +24445,15 @@ var GridRow = (function (_Component) {
       if (this.props.cells) {
         (function () {
           var rowProps = _this.props;
-          content = _this.props.cells.map(function (cell) {
+          content = _this.props.cells.map(function (cell, index) {
             cell = cell || {};
             Object.assign(cell, rowProps);
             delete cell.cells;
-            return _react2['default'].createElement(_GridCellJsx2['default'], cell);
+            return _react2['default'].createElement(_GridCellJsx2['default'], _extends({}, cell, { key: index }));
           });
         })();
       } else {
+        // TODO: Check if this works
         content = this.props.children;
       }
 
@@ -24466,6 +24477,16 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }return target;
+};
 
 var _createClass = (function () {
   function defineProperties(target, props) {
@@ -24543,14 +24564,14 @@ var GridSection = (function (_Component) {
       if (this.props.rows) {
         (function () {
           var sectionProps = _this.props;
-          rows = _this.props.rows.map(function (row) {
+          rows = _this.props.rows.map(function (row, index) {
             var rowProps = Object.assign(row, sectionProps);
             delete rowProps.rows;
             if (row.cells) {
-              return _react2['default'].createElement(_GridRowJsx2['default'], rowProps);
+              return _react2['default'].createElement(_GridRowJsx2['default'], _extends({}, rowProps, { key: index }));
             } else {
               // TODO: Most likely this does not work
-              return _react2['default'].createElement(_GridRowJsx2['default'], rowProps, row.props.children);
+              return _react2['default'].createElement(_GridRowJsx2['default'], _extends({}, rowProps, { key: index }), row.props.children);
             }
           });
         })();

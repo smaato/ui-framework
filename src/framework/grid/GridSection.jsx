@@ -16,14 +16,14 @@ export default class GridSection extends Component {
     let rows;
     if (this.props.rows) {
       const sectionProps = this.props;
-      rows = this.props.rows.map(function (row) {
+      rows = this.props.rows.map(function (row, index) {
         let rowProps = Object.assign(row, sectionProps);
         delete rowProps.rows;
         if (row.cells) {
-          return <GridRow {...rowProps} />;
+          return <GridRow {...rowProps} key={index} />;
         } else {
           // TODO: Most likely this does not work
-          return <GridRow {...rowProps}>
+          return <GridRow {...rowProps} key={index}>
             {row.props.children}
           </GridRow>;
         }
