@@ -24226,56 +24226,62 @@ var Grid = (function (_Component) {
           cells: [{
             content: _react2['default'].createElement('span', { className: 'checkboxWrapper' }, _react2['default'].createElement('input', { type: 'checkbox', name: 'item_1', id: 'item_1', className: 'checkbox__input' }), _react2['default'].createElement('label', { htmlFor: 'item_1', className: 'checkbox__faux__input' }))
           }, {
-            preset: {
+            contentWrap: {
               modifier: ['link'],
               href: '#',
               appendClass: ' blueLink'
             },
             content: 'Ford F150'
           }, {
-            preset: {
+            contentWrap: {
               modifier: ['editable'],
               href: '#'
             },
             content: 'In Production'
           }, {
-            preset: {
+            contentWrap: {
               modifier: ['editable'],
               href: '#'
             },
             content: 'Diesel, Unleaded'
           }, {
-            preset: {
+            contentWrap: {
               modifier: ['editable'],
               href: '#',
               before: _react2['default'].createElement('span', { className: 'icon glyphicons-user' })
             },
             content: '3, 5, 6'
           }, {
-            preset: {
+            contentWrap: {
               modifier: ['editable'],
               href: '#'
             },
             content: '6, 8'
           }, {
-            preset: {
+            contentWrap: {
               modifier: ['editable'],
               href: '#',
               after: _react2['default'].createElement('span', { className: 'icon glyphicons-leaf' })
             },
             content: '25mpg'
           }, {
-            preset: {
+            contentWrap: {
               modifier: ['readOnly'],
               href: '#',
-              after: _react2['default'].createElement('span', { className: [this.props.rootClass, 'tbody', 'cellChange'].join('__') + ' up' }, '+2%')
+              after: '+2%',
+              afterWrap: {
+                appendClass: 'Change up'
+              }
             },
             content: '202.1k'
           }, {
-            preset: {
+            contentWrap: {
               modifier: ['readOnly'],
               href: '#',
-              after: _react2['default'].createElement('span', { className: [this.props.rootClass, 'tbody', 'cellChange'].join('__') + ' down' }, '-2%')
+              after: '-2%',
+              afterWrap: {
+                appendClass: 'Change down'
+              }
             },
             content: '200.5k'
           }, {
@@ -24379,7 +24385,8 @@ var GridCell = (function (_Component) {
     key: 'render',
     value: function render() {
       var cellContent = undefined;
-      var cellClassName = [this.props.rootClass, this.props.section, 'cell'].join('__');
+      var cellClassNameMain = [this.props.rootClass, this.props.section, 'cell'].join('__');
+      var cellClassName = cellClassNameMain;
 
       if (this.props.sortable) {
         cellClassName += ' sortable';
@@ -24395,20 +24402,30 @@ var GridCell = (function (_Component) {
       if (this.props.content && this.props.sortable) {
         cellContent = _react2['default'].createElement('a', null, this.props.content, _react2['default'].createElement('span', { className: 'arrowUp' }, _react2['default'].createElement('span', { className: 'arrowUp__centerLine' })), _react2['default'].createElement('span', { className: 'arrowDown' }, _react2['default'].createElement('span', { className: 'arrowDown__centerLine' })));
         // Only for tbody
-      } else if (this.props.content && this.props.preset) {
-          var preset = this.props.preset;
-          var presetClass = [this.props.rootClass, 'tbody', 'cellValue'].join('__');
-          if (preset.modifier) {
+      } else if (this.props.content && this.props.contentWrap) {
+          var contentWrap = this.props.contentWrap;
+          var wrapClass = cellClassNameMain + 'Value';
+          if (contentWrap.modifier) {
             // In theory could be many modifiers, but for now one is good enough
-            presetClass += preset.modifier[0];
+            wrapClass += '--' + contentWrap.modifier[0];
           }
-          if (preset.appendClass) {
-            presetClass += preset.appendClass;
+          if (contentWrap.appendClass) {
+            wrapClass += contentWrap.appendClass;
           }
-          if (preset.href) {
-            cellContent = _react2['default'].createElement('a', { href: preset.href, className: presetClass }, preset.before, this.props.content, preset.after);
+
+          var wrapBefore = contentWrap.before;
+          var wrapAfter = contentWrap.after;
+          // Before and after can have its own wraps, that have the same props as contentWrap
+          // TODO: extend this with modifier, href and same for before section
+          if (contentWrap.after && contentWrap.afterWrap && contentWrap.afterWrap.appendClass) {
+            var afterWrapClass = cellClassNameMain + contentWrap.afterWrap.appendClass;
+            wrapAfter = _react2['default'].createElement('span', { className: afterWrapClass }, contentWrap.after);
+          }
+
+          if (contentWrap.href) {
+            cellContent = _react2['default'].createElement('a', { href: contentWrap.href, className: wrapClass }, wrapBefore, this.props.content, wrapAfter);
           } else {
-            cellContent = _react2['default'].createElement('span', { className: presetClass }, preset.before, this.props.content, preset.after);
+            cellContent = _react2['default'].createElement('span', { className: wrapClass }, wrapBefore, this.props.content, wrapAfter);
           }
         } else if (this.props.content) {
           // TODO: Get rid of extra span
@@ -24418,7 +24435,7 @@ var GridCell = (function (_Component) {
           cellContent = _react2['default'].createElement('span', null, this.props.children);
         }
 
-      var cellContentWrap = _react2['default'].createElement('span', { className: [this.props.rootClass, this.props.section, 'cellLiner'].join('__') }, cellContent);
+      var cellContentWrap = _react2['default'].createElement('span', { className: cellClassNameMain + 'Liner' }, cellContent);
 
       var cellEl = this.props.section === 'thead' ? _react2['default'].createElement('th', { className: cellClassName }, cellContentWrap) : _react2['default'].createElement('td', { className: cellClassName }, cellContentWrap);
 

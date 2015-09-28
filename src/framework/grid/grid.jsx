@@ -84,7 +84,7 @@ export default class Grid extends Component {
                       </span>
                     },
                     {
-                      preset: {
+                      contentWrap: {
                         modifier: ['link'],
                         href: '#',
                         appendClass: ' blueLink'
@@ -92,21 +92,21 @@ export default class Grid extends Component {
                       content: 'Ford F150'
                     },
                     {
-                      preset: {
+                      contentWrap: {
                         modifier: ['editable'],
                         href: '#'
                       },
                       content: 'In Production'
                     },
                     {
-                      preset: {
+                      contentWrap: {
                         modifier: ['editable'],
                         href: '#'
                       },
                       content: 'Diesel, Unleaded'
                     },
                     {
-                      preset: {
+                      contentWrap: {
                         modifier: ['editable'],
                         href: '#',
                         before: <span className="icon glyphicons-user"></span>
@@ -114,14 +114,14 @@ export default class Grid extends Component {
                       content: '3, 5, 6'
                     },
                     {
-                      preset: {
+                      contentWrap: {
                         modifier: ['editable'],
                         href: '#'
                       },
                       content: '6, 8'
                     },
                     {
-                      preset: {
+                      contentWrap: {
                         modifier: ['editable'],
                         href: '#',
                         after: <span className="icon glyphicons-leaf"></span>
@@ -129,18 +129,24 @@ export default class Grid extends Component {
                       content: '25mpg'
                     },
                     {
-                      preset: {
+                      contentWrap: {
                         modifier: ['readOnly'],
                         href: '#',
-                        after: <span className={[this.props.rootClass, 'tbody', 'cellChange'].join('__') + ' up'}>+2%</span>
+                        after: '+2%',
+                        afterWrap: {
+                          appendClass: 'Change up'
+                        }
                       },
                       content: '202.1k'
                     },
                     {
-                      preset: {
+                      contentWrap: {
                         modifier: ['readOnly'],
                         href: '#',
-                        after: <span className={[this.props.rootClass, 'tbody', 'cellChange'].join('__') + ' down'}>-2%</span>
+                        after: '-2%',
+                        afterWrap: {
+                          appendClass: 'Change down'
+                        }
                       },
                       content: '200.5k'
                     },
