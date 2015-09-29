@@ -31,10 +31,10 @@ export default class GridSection extends Component {
       return <GridRow {...rowProps} key={index} />;
     });
 
-    let sectionClassName = [this.props.rootClass, this.props.section].join('__');
+    let sectionClass = [this.props.rootClass, this.props.section].join('__');
 
     return (
-      <div className={sectionClassName}>{rows}</div>
+      <div className={sectionClass}>{rows}</div>
     );
   }
 

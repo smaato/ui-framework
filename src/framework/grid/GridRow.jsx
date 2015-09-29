@@ -12,14 +12,14 @@ export default class GridRow extends Component {
   }
 
   render() {
-    let rowClassNameMain = [this.props.rootClass, this.props.section, 'row'].join('__');
-    let rowClassName = rowClassNameMain;
+    let baseRowClass = [this.props.rootClass, this.props.section, 'row'].join('__');
+    let rowClass = baseRowClass;
     // Only for thead. Sticky row
     if (this.props.placeholder) {
-      rowClassName += (' ' + rowClassNameMain + '--placeholder');
+      rowClass += (' ' + baseRowClass + '--placeholder');
     }
     if (this.props.appendClass) {
-      rowClassName += this.props.appendClass;
+      rowClass += this.props.appendClass;
     }
 
     let content = this.props.cells.map((cell, index) => {
@@ -29,7 +29,7 @@ export default class GridRow extends Component {
     });
 
     return (
-      <div className={rowClassName}>
+      <div className={rowClass}>
         {content}
       </div>
     );
