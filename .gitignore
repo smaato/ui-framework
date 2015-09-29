@@ -2,3 +2,7 @@
 .DS_Store
 coverage
 node_modules
+dist/components
+dist/integrations
+dist/js
+dist/index.html
