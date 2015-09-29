@@ -24,6 +24,9 @@ export default class GridCell extends Component {
     if (this.props.reverse) {
       cellClassName += ' reverse';
     }
+    if (this.props.appendClass) {
+      cellClassName += this.props.appendClass;
+    }
 
     // Only for thead
     if (this.props.content && this.props.sortable) {

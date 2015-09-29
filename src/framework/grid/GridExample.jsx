@@ -85,9 +85,11 @@ export default class GridExample extends Component {
     * */
 
     var tbodyRowConfig = {
+      appendClass: ' row-test',
       cells: [
         null,
         {
+          appendClass: ' cell-test',
           contentWrap: {
             modifier: ['link'],
             href: '#',

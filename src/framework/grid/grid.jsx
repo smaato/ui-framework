@@ -52,7 +52,7 @@ export default class Grid extends Component {
     });
 
     return (
-      <div className={[this.props.rootClass, 'container'].join('__')}>
+      <div className={[this.props.rootClass, 'container'].join('__') + (this.props.appendClass || '')}>
         {/* Sticky header background. TODO: improve */}
         <div className={[this.props.rootClass, 'thead', 'placeholder'].join('__')}>
           <div className={[this.props.rootClass, 'thead', 'placeholder', 'liner'].join('__')}></div>
@@ -82,6 +82,7 @@ export default class Grid extends Component {
 
 Grid.propTypes = {
   rootClass: PropTypes.string,
+  appendClass: PropTypes.string,
   data: PropTypes.object.isRequired,
   config: PropTypes.object
 };

@@ -24227,7 +24227,7 @@ var Grid = (function (_Component) {
         });
       });
 
-      return _react2['default'].createElement('div', { className: [this.props.rootClass, 'container'].join('__') }, _react2['default'].createElement('div', { className: [this.props.rootClass, 'thead', 'placeholder'].join('__') }, _react2['default'].createElement('div', { className: [this.props.rootClass, 'thead', 'placeholder', 'liner'].join('__') })), _react2['default'].createElement('div', { className: [this.props.rootClass, 'table'].join('__') }, _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, sectionProps, {
+      return _react2['default'].createElement('div', { className: [this.props.rootClass, 'container'].join('__') + (this.props.appendClass || '') }, _react2['default'].createElement('div', { className: [this.props.rootClass, 'thead', 'placeholder'].join('__') }, _react2['default'].createElement('div', { className: [this.props.rootClass, 'thead', 'placeholder', 'liner'].join('__') })), _react2['default'].createElement('div', { className: [this.props.rootClass, 'table'].join('__') }, _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, sectionProps, {
         section: 'thead',
         rows: sectionsData.thead
       })), _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, sectionProps, {
@@ -24247,6 +24247,7 @@ exports['default'] = Grid;
 
 Grid.propTypes = {
   rootClass: _react.PropTypes.string,
+  appendClass: _react.PropTypes.string,
   data: _react.PropTypes.object.isRequired,
   config: _react.PropTypes.object
 };
@@ -24338,6 +24339,9 @@ var GridCell = (function (_Component) {
       }
       if (this.props.reverse) {
         cellClassName += ' reverse';
+      }
+      if (this.props.appendClass) {
+        cellClassName += this.props.appendClass;
       }
 
       // Only for thead
@@ -24482,7 +24486,9 @@ var GridExample = (function (_Component) {
       * */
 
       var tbodyRowConfig = {
+        appendClass: ' row-test',
         cells: [null, {
+          appendClass: ' cell-test',
           contentWrap: {
             modifier: ['link'],
             href: '#',
@@ -24659,18 +24665,22 @@ var GridRow = (function (_Component) {
   _createClass(GridRow, [{
     key: 'render',
     value: function render() {
-      var rowClassName = [this.props.rootClass, this.props.section, 'row'].join('__');
+      var _this = this;
+
+      var rowClassNameMain = [this.props.rootClass, this.props.section, 'row'].join('__');
+      var rowClassName = rowClassNameMain;
       // Only for thead. Sticky row
       if (this.props.placeholder) {
-        rowClassName += ' ' + rowClassName + '--placeholder';
+        rowClassName += ' ' + rowClassNameMain + '--placeholder';
+      }
+      if (this.props.appendClass) {
+        rowClassName += this.props.appendClass;
       }
 
-      var rowProps = this.props;
       var content = this.props.cells.map(function (cell, index) {
-        cell = cell || {};
-        Object.assign(cell, rowProps);
-        delete cell.cells;
-        return _react2['default'].createElement(_GridCellJsx2['default'], _extends({}, cell, { key: index }));
+        var cellProps = Object.assign({}, _this.props, cell);
+        delete cellProps.cells;
+        return _react2['default'].createElement(_GridCellJsx2['default'], _extends({}, cellProps, { key: index }));
       });
 
       return _react2['default'].createElement('div', { className: rowClassName }, content);

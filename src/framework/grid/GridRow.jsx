@@ -12,18 +12,20 @@ export default class GridRow extends Component {
   }
 
   render() {
-    let rowClassName = [this.props.rootClass, this.props.section, 'row'].join('__');
+    let rowClassNameMain = [this.props.rootClass, this.props.section, 'row'].join('__');
+    let rowClassName = rowClassNameMain;
     // Only for thead. Sticky row
     if (this.props.placeholder) {
-      rowClassName += (' ' + rowClassName + '--placeholder');
+      rowClassName += (' ' + rowClassNameMain + '--placeholder');
+    }
+    if (this.props.appendClass) {
+      rowClassName += this.props.appendClass;
     }
 
-    let rowProps = this.props;
     let content = this.props.cells.map((cell, index) => {
-      cell = cell || {};
-      Object.assign(cell, rowProps);
-      delete cell.cells;
-      return <GridCell {...cell} key={index} />;
+      let cellProps = Object.assign({}, this.props, cell);
+      delete cellProps.cells;
+      return <GridCell {...cellProps} key={index} />;
     });
 
     return (
