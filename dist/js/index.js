@@ -24207,6 +24207,7 @@ var Grid = (function (_Component) {
       var sectionProps = Object.assign({}, this.props);
       delete sectionProps.data;
       delete sectionProps.config;
+      delete sectionProps.appendClass;
       // Will hold rows for each section
       var sectionsData = Object.assign({}, gridConfig);
 
@@ -24624,8 +24625,6 @@ var GridRow = (function (_Component) {
   _createClass(GridRow, [{
     key: 'render',
     value: function render() {
-      var _this = this;
-
       var baseRowClass = [this.props.rootClass, this.props.section, 'row'].join('__');
       var rowClass = baseRowClass;
       // Only for thead. Sticky row
@@ -24636,9 +24635,11 @@ var GridRow = (function (_Component) {
         rowClass += this.props.appendClass;
       }
 
+      var rowPropsForCell = Object.assign({}, this.props);
+      delete rowPropsForCell.appendClass;
+      delete rowPropsForCell.cells;
       var content = this.props.cells.map(function (cell, index) {
-        var cellProps = Object.assign({}, _this.props, cell);
-        delete cellProps.cells;
+        var cellProps = Object.assign({}, rowPropsForCell, cell);
         return _react2['default'].createElement(_GridCellJsx2['default'], _extends({}, cellProps, { key: index }));
       });
 

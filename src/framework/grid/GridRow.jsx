@@ -22,9 +22,11 @@ export default class GridRow extends Component {
       rowClass += this.props.appendClass;
     }
 
+    let rowPropsForCell = Object.assign({}, this.props);
+    delete rowPropsForCell.appendClass;
+    delete rowPropsForCell.cells;
     let content = this.props.cells.map((cell, index) => {
-      let cellProps = Object.assign({}, this.props, cell);
-      delete cellProps.cells;
+      let cellProps = Object.assign({}, rowPropsForCell, cell);
       return <GridCell {...cellProps} key={index} />;
     });
 

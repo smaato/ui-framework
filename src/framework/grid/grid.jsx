@@ -31,6 +31,7 @@ export default class Grid extends Component {
     var sectionProps = Object.assign({}, this.props);
     delete sectionProps.data;
     delete sectionProps.config;
+    delete sectionProps.appendClass;
     // Will hold rows for each section
     let sectionsData = Object.assign({}, gridConfig);
 
