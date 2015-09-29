@@ -36,5 +36,5 @@ export default class GridRow extends Component {
 }
 
 GridRow.propTypes = {
-  cells: PropTypes.array
+  cells: PropTypes.array.isRequired
 };

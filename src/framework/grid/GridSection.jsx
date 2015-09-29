@@ -32,7 +32,7 @@ export default class GridSection extends Component {
 
 GridSection.propTypes = {
   section: React.PropTypes.oneOf(['thead', 'tbody', 'tfoot']),
-  rows: PropTypes.array
+  rows: PropTypes.array.isRequired
 };
 
 GridSection.defaultProps = {

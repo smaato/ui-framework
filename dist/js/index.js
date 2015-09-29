@@ -24201,11 +24201,36 @@ var Grid = (function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var data = this.props.data;
+      var gridData = this.props.data;
+      var gridConfig = this.props.config;
+      // These are the props to be passed down to GridSection component
       var sectionProps = Object.assign({}, this.props);
       delete sectionProps.data;
+      delete sectionProps.config;
+      // Will hold rows for each section
+      var sectionsData = Object.assign({}, gridConfig);
+
+      // Merge gridData into gridConfig
+      Object.keys(gridData).forEach(function (sectionName) {
+        gridData[sectionName].forEach(function (rowData, rowIndex) {
+          rowData.forEach(function (cellData, cellIndex) {
+            // Section is an array of rows
+            sectionsData[sectionName] = sectionsData[sectionName] || [];
+            // Row is an object
+            sectionsData[sectionName][rowIndex] = sectionsData[sectionName][rowIndex] || {};
+            // Cells is an array of objects
+            sectionsData[sectionName][rowIndex].cells = sectionsData[sectionName][rowIndex].cells || [];
+            // Cell is an object
+            sectionsData[sectionName][rowIndex].cells[cellIndex] = sectionsData[sectionName][rowIndex].cells[cellIndex] || {};
+            sectionsData[sectionName][rowIndex].cells[cellIndex].content = cellData;
+          });
+        });
+      });
+
       // Enable sticky thead
-      var theadData = [data.thead[0], Object.assign({}, data.thead[0])];
+      // Note: causes only one row to be rendered in thead, other rows are ignored
+      // TODO: move this to GridSection
+      var theadData = [sectionsData.thead[0], Object.assign({}, sectionsData.thead[0])];
       theadData[1].placeholder = true;
 
       return _react2['default'].createElement('div', { className: [this.props.rootClass, 'container'].join('__') }, _react2['default'].createElement('div', { className: [this.props.rootClass, 'thead', 'placeholder'].join('__') }, _react2['default'].createElement('div', { className: [this.props.rootClass, 'thead', 'placeholder', 'liner'].join('__') })), _react2['default'].createElement('div', { className: [this.props.rootClass, 'table'].join('__') }, _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, sectionProps, {
@@ -24213,10 +24238,10 @@ var Grid = (function (_Component) {
         rows: theadData
       })), _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, sectionProps, {
         section: 'tbody',
-        rows: data.tbody
+        rows: sectionsData.tbody
       })), _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, sectionProps, {
         section: 'tfoot',
-        rows: data.tfoot
+        rows: sectionsData.tfoot
       }))));
     }
   }]);
@@ -24228,7 +24253,8 @@ exports['default'] = Grid;
 
 Grid.propTypes = {
   rootClass: _react.PropTypes.string,
-  data: _react.PropTypes.object
+  data: _react.PropTypes.object.isRequired,
+  config: _react.PropTypes.object
 };
 
 Grid.defaultProps = {
@@ -24440,48 +24466,61 @@ var GridExample = (function (_Component) {
   _createClass(GridExample, [{
     key: 'render',
     value: function render() {
-      var tbodyRow = {
-        cells: [{
-          content: _react2['default'].createElement('span', { className: 'checkboxWrapper' }, _react2['default'].createElement('input', { type: 'checkbox', name: 'item_1', id: 'item_1', className: 'checkbox__input' }), _react2['default'].createElement('label', { htmlFor: 'item_1', className: 'checkbox__faux__input' }))
-        }, {
+      /*
+       * Pure data
+       * */
+
+      // An array of cells
+      var tbodyDataRow = [_react2['default'].createElement('span', { className: 'checkboxWrapper' }, _react2['default'].createElement('input', { type: 'checkbox', name: 'item_1', id: 'item_1', className: 'checkbox__input' }), _react2['default'].createElement('label', { htmlFor: 'item_1', className: 'checkbox__faux__input' })), 'Ford F150', 'In Production', 'Diesel, Unleaded', '3, 5, 6', '6, 8', '25mpg', '202.1k', '200.5k', _react2['default'].createElement('span', null, _react2['default'].createElement('a', { href: '', className: 'icon glyphicons-more' }), _react2['default'].createElement('a', { href: '', className: 'icon glyphicons-cogwheel' }))];
+
+      // Section is an array of rows
+      var tbodyDataRows = [tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow];
+
+      // Data is a map: section name to array of rows
+      var data = {
+        thead: [[_react2['default'].createElement('span', { className: 'checkboxWrapper' }, _react2['default'].createElement('input', { type: 'checkbox', name: 'table_batch', id: 'table_batch', className: 'checkbox__input' }), _react2['default'].createElement('label', { htmlFor: 'table_batch', className: 'checkbox__faux__input' })), 'Name', 'Status', 'Fuel', 'Passengers', 'Cylinders', 'Fuel Economy', '# Sold', 'Registered', null]],
+        tbody: tbodyDataRows,
+        tfoot: [[null, null, null, null, null, null, null, '152.1m', 'Registered', null]]
+      };
+
+      /*
+      * Config (how to display data)
+      * */
+
+      var tbodyRowConfig = {
+        cells: [null, {
           contentWrap: {
             modifier: ['link'],
             href: '#',
             appendClass: ' blueLink'
-          },
-          content: 'Ford F150'
+          }
         }, {
           contentWrap: {
             modifier: ['editable'],
             href: '#'
-          },
-          content: 'In Production'
+          }
         }, {
           contentWrap: {
             modifier: ['editable'],
             href: '#'
-          },
-          content: 'Diesel, Unleaded'
+          }
         }, {
           contentWrap: {
             modifier: ['editable'],
             href: '#',
             before: _react2['default'].createElement('span', { className: 'icon glyphicons-user' })
-          },
-          content: '3, 5, 6'
+          }
         }, {
           contentWrap: {
             modifier: ['editable'],
             href: '#'
-          },
-          content: '6, 8'
+          }
         }, {
           contentWrap: {
             modifier: ['editable'],
             href: '#',
             after: _react2['default'].createElement('span', { className: 'icon glyphicons-leaf' })
-          },
-          content: '25mpg'
+          }
         }, {
           contentWrap: {
             modifier: ['readOnly'],
@@ -24490,8 +24529,7 @@ var GridExample = (function (_Component) {
             afterWrap: {
               appendClass: 'Change up'
             }
-          },
-          content: '202.1k'
+          }
         }, {
           contentWrap: {
             modifier: ['readOnly'],
@@ -24500,59 +24538,40 @@ var GridExample = (function (_Component) {
             afterWrap: {
               appendClass: 'Change down'
             }
-          },
-          content: '200.5k'
-        }, {
-          content: _react2['default'].createElement('span', null, _react2['default'].createElement('a', { href: '', className: 'icon glyphicons-more' }), _react2['default'].createElement('a', { href: '', className: 'icon glyphicons-cogwheel' }))
-        }]
+          }
+        }, null]
       };
 
-      var tbodyRows = [tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow, tbodyRow];
+      var tbodyConfig = [tbodyRowConfig, tbodyRowConfig, tbodyRowConfig, tbodyRowConfig, tbodyRowConfig, tbodyRowConfig, tbodyRowConfig, tbodyRowConfig, tbodyRowConfig, tbodyRowConfig, tbodyRowConfig, tbodyRowConfig, tbodyRowConfig, tbodyRowConfig, tbodyRowConfig, tbodyRowConfig, tbodyRowConfig, tbodyRowConfig, tbodyRowConfig, tbodyRowConfig];
 
-      var data = {
+      var config = {
         thead: [{
-          cells: [{
-            content: _react2['default'].createElement('span', { className: 'checkboxWrapper' }, _react2['default'].createElement('input', { type: 'checkbox', name: 'table_batch', id: 'table_batch', className: 'checkbox__input' }), _react2['default'].createElement('label', { htmlFor: 'table_batch', className: 'checkbox__faux__input' }))
+          cells: [null, {
+            sortable: true
           }, {
-            sortable: true,
-            content: 'Name'
+            sortable: true
           }, {
-            sortable: true,
-            content: 'Status'
+            sortable: true
           }, {
-            sortable: true,
-            content: 'Fuel'
+            sortable: true
           }, {
-            sortable: true,
-            content: 'Passengers'
+            sortable: true
           }, {
-            sortable: true,
-            content: 'Cylinders'
-          }, {
-            sortable: true,
-            content: 'Fuel Economy'
+            sortable: true
           }, {
             sortable: true,
             selected: true,
-            reverse: true,
-            content: '# Sold'
+            reverse: true
           }, {
-            sortable: true,
-            content: 'Registered'
+            sortable: true
           }, null]
         }],
-        tbody: tbodyRows,
-        tfoot: [{
-          cells: [null, null, null, null, null, null, null, {
-            content: '152.1m'
-          }, {
-            content: 'Registered'
-          }, null]
-        }]
+        tbody: tbodyConfig
       };
 
       return _react2['default'].createElement(_GridJsx2['default'], {
-        data: data
+        data: data,
+        config: config
       });
     }
   }]);
@@ -24670,7 +24689,7 @@ var GridRow = (function (_Component) {
 exports['default'] = GridRow;
 
 GridRow.propTypes = {
-  cells: _react.PropTypes.array
+  cells: _react.PropTypes.array.isRequired
 };
 module.exports = exports['default'];
 
@@ -24782,7 +24801,7 @@ exports['default'] = GridSection;
 
 GridSection.propTypes = {
   section: _react2['default'].PropTypes.oneOf(['thead', 'tbody', 'tfoot']),
-  rows: _react.PropTypes.array
+  rows: _react.PropTypes.array.isRequired
 };
 
 GridSection.defaultProps = {

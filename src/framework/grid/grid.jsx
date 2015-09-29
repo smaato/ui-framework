@@ -25,11 +25,39 @@ export default class Grid extends Component {
   }
 
   render() {
-    let data = this.props.data;
-    let sectionProps = Object.assign({}, this.props);
+    var gridData = this.props.data;
+    var gridConfig = this.props.config;
+    // These are the props to be passed down to GridSection component
+    var sectionProps = Object.assign({}, this.props);
     delete sectionProps.data;
+    delete sectionProps.config;
+    // Will hold rows for each section
+    let sectionsData = Object.assign({}, gridConfig);
+
+    // Merge gridData into gridConfig
+    Object.keys(gridData).forEach(function(sectionName) {
+      gridData[sectionName].forEach(function (rowData, rowIndex) {
+        rowData.forEach(function (cellData, cellIndex) {
+          // Section is an array of rows
+          sectionsData[sectionName] = sectionsData[sectionName] || [];
+          // Row is an object
+          sectionsData[sectionName][rowIndex] = sectionsData[sectionName][rowIndex] || {};
+          // Cells is an array of objects
+          sectionsData[sectionName][rowIndex].cells = sectionsData[sectionName][rowIndex].cells || [];
+          // Cell is an object
+          sectionsData[sectionName][rowIndex].cells[cellIndex] = sectionsData[sectionName][rowIndex].cells[cellIndex] || {};
+          sectionsData[sectionName][rowIndex].cells[cellIndex].content = cellData;
+        });
+      });
+    });
+
     // Enable sticky thead
-    let theadData = [data.thead[0], Object.assign({}, data.thead[0])];
+    // Note: causes only one row to be rendered in thead, other rows are ignored
+    // TODO: move this to GridSection
+    let theadData = [
+      sectionsData.thead[0],
+      Object.assign({}, sectionsData.thead[0])
+    ];
     theadData[1].placeholder = true;
 
     return (
@@ -47,12 +75,12 @@ export default class Grid extends Component {
           <GridSection
             {...sectionProps}
             section="tbody"
-            rows={data.tbody}
+            rows={sectionsData.tbody}
           />
           <GridSection
             {...sectionProps}
             section="tfoot"
-            rows={data.tfoot}
+            rows={sectionsData.tfoot}
           />
         </div>
       </div>
@@ -63,7 +91,8 @@ export default class Grid extends Component {
 
 Grid.propTypes = {
   rootClass: PropTypes.string,
-  data: PropTypes.object
+  data: PropTypes.object.isRequired,
+  config: PropTypes.object
 };
 
 Grid.defaultProps = {
