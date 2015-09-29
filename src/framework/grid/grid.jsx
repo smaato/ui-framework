@@ -51,15 +51,6 @@ export default class Grid extends Component {
       });
     });
 
-    // Enable sticky thead
-    // Note: causes only one row to be rendered in thead, other rows are ignored
-    // TODO: move this to GridSection
-    let theadData = [
-      sectionsData.thead[0],
-      Object.assign({}, sectionsData.thead[0])
-    ];
-    theadData[1].placeholder = true;
-
     return (
       <div className={[this.props.rootClass, 'container'].join('__')}>
         {/* Sticky header background. TODO: improve */}
@@ -70,7 +61,7 @@ export default class Grid extends Component {
           <GridSection
             {...sectionProps}
             section="thead"
-            rows={theadData}
+            rows={sectionsData.thead}
           />
           <GridSection
             {...sectionProps}

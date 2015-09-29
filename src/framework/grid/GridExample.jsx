@@ -81,7 +81,7 @@ export default class GridExample extends Component {
     };
 
     /*
-    * Config (how to display data)
+    * Config (how to display data). Not required
     * */
 
     var tbodyRowConfig = {

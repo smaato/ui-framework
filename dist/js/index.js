@@ -24227,15 +24227,9 @@ var Grid = (function (_Component) {
         });
       });
 
-      // Enable sticky thead
-      // Note: causes only one row to be rendered in thead, other rows are ignored
-      // TODO: move this to GridSection
-      var theadData = [sectionsData.thead[0], Object.assign({}, sectionsData.thead[0])];
-      theadData[1].placeholder = true;
-
       return _react2['default'].createElement('div', { className: [this.props.rootClass, 'container'].join('__') }, _react2['default'].createElement('div', { className: [this.props.rootClass, 'thead', 'placeholder'].join('__') }, _react2['default'].createElement('div', { className: [this.props.rootClass, 'thead', 'placeholder', 'liner'].join('__') })), _react2['default'].createElement('div', { className: [this.props.rootClass, 'table'].join('__') }, _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, sectionProps, {
         section: 'thead',
-        rows: theadData
+        rows: sectionsData.thead
       })), _react2['default'].createElement(_GridSectionJsx2['default'], _extends({}, sectionProps, {
         section: 'tbody',
         rows: sectionsData.tbody
@@ -24484,7 +24478,7 @@ var GridExample = (function (_Component) {
       };
 
       /*
-      * Config (how to display data)
+      * Config (how to display data). Not required
       * */
 
       var tbodyRowConfig = {
@@ -24781,6 +24775,13 @@ var GridSection = (function (_Component) {
     key: 'render',
     value: function render() {
       var sectionProps = this.props;
+
+      // Enable sticky thead
+      // Note: causes only one row to be rendered in thead, other rows are ignored
+      if (sectionProps.thead) {
+        var firstTheadRow = sectionProps.thead[0];
+        sectionProps.thead = [firstTheadRow, Object.assign({ placeholder: true }, firstTheadRow)];
+      }
 
       var rows = this.props.rows.map(function (row, index) {
         var rowProps = Object.assign(row, sectionProps);
