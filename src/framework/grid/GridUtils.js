@@ -1,84 +1,83 @@
 
-export default class GridUtils {
+// TODO: Before & after need this unfortunately, naming could be improved in CSS
+let _baseCellClass;
 
-  constructor(args) {
-    Object.assign(this, args);
+function _wrapCellContent (content, wrap, baseWrapClass) {
+  if (!wrap) return content;
+
+  let wrapClass = baseWrapClass;
+  let wrapBefore;
+  let wrapAfter;
+
+  // Styles
+
+  if (wrap.modifier) {
+    // In theory could be many modifiers, right now only one is used
+    wrapClass += '--' + wrap.modifier[0];
+  }
+  if (wrap.appendClass) {
+    wrapClass += wrap.appendClass;
   }
 
-  wrapContent(content, wrap, baseWrapClass) {
-    if (!wrap) return content;
+  // Content
 
-    let wrapClass = baseWrapClass;
-    let wrapBefore;
-    let wrapAfter;
+  // Recursion
+  if (wrap.before)
+    wrapBefore = _wrapCellContent(wrap.before, wrap.beforeWrap, _baseCellClass);
 
-    // Styles
+  if (wrap.after)
+    wrapAfter = _wrapCellContent(wrap.after, wrap.afterWrap, _baseCellClass);
 
-    if (wrap.modifier) {
-      // In theory could be many modifiers, right now only one is used
-      wrapClass += '--' + wrap.modifier[0];
-    }
-    if (wrap.appendClass) {
-      wrapClass += wrap.appendClass;
-    }
-
-    // Content
-
-    // Recursion
-    if (wrap.before)
-      wrapBefore = this.wrapContent(wrap.before, wrap.beforeWrap, this.baseCellClass);
-
-    if (wrap.after)
-      wrapAfter = this.wrapContent(wrap.after, wrap.afterWrap, this.baseCellClass);
-
-    if (wrap.href) {
-      content =
-        <a href={wrap.href} className={wrapClass}>
+  if (wrap.href) {
+    content =
+      <a href={wrap.href} className={wrapClass}>
+        {wrapBefore}
+        {content}
+        {wrapAfter}
+      </a>
+  } else {
+    content =
+      <span className={wrapClass}>
           {wrapBefore}
-          {content}
-          {wrapAfter}
-        </a>
-    } else {
-      content =
-        <span className={wrapClass}>
-          {wrapBefore}
-          {content}
-          {wrapAfter}
+        {content}
+        {wrapAfter}
         </span>
-    }
-
-    return content;
-
   }
 
-  generateCell() {
-    let cellContent = this.props.content;
-    let cellClass = this.baseCellClass;
+  return content;
+
+}
+
+export default {
+
+  generateCell(props, baseCellClass) {
+    let cellContent = props.content;
+    let cellClass = _baseCellClass = baseCellClass;
 
     /*
      * Only for thead
      * */
 
-    if (this.props.section === 'thead') {
+    if (props.section === 'thead') {
 
       // Styles
 
-      if (this.props.sortable) {
+      if (props.sortable) {
         cellClass += ' sortable';
       }
-      if (this.props.selected) {
+      if (props.selected) {
         cellClass += ' selected';
       }
-      if (this.props.reverse) {
+      if (props.reverse) {
         cellClass += ' reverse';
       }
 
       // Content
 
-      if (this.props.sortable) {
+      if (props.sortable) {
         cellContent =
           <a>
-            {this.props.content}
+            {props.content}
             <span className="arrowUp">
               <span className="arrowUp__centerLine"></span>
             </span>
@@ -94,16 +93,16 @@ export default class GridUtils {
 
     } else {
 
-      cellContent = this.wrapContent(
-        this.props.content,
-        this.props.contentWrap,
-        this.baseCellClass + 'Value'
+      cellContent = _wrapCellContent(
+        props.content,
+        props.contentWrap,
+        baseCellClass + 'Value'
       );
 
     }
 
-    if (this.props.appendClass) {
-      cellClass += this.props.appendClass;
+    if (props.appendClass) {
+      cellClass += props.appendClass;
     }
 
     return {
@@ -112,4 +111,4 @@ export default class GridUtils {
     };
   }
 
-}
+};

@@ -24316,9 +24316,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _GridUtilsJs = require('./GridUtils.js');
+var _gridUtilsJs = require('./gridUtils.js');
 
-var _GridUtilsJs2 = _interopRequireDefault(_GridUtilsJs);
+var _gridUtilsJs2 = _interopRequireDefault(_gridUtilsJs);
 
 var GridCell = (function (_Component) {
   _inherits(GridCell, _Component);
@@ -24334,12 +24334,7 @@ var GridCell = (function (_Component) {
     value: function render() {
       var baseCellClass = [this.props.rootClass, this.props.section, 'cell'].join('__');
 
-      var gridUtils = new _GridUtilsJs2['default']({
-        props: this.props,
-        baseCellClass: baseCellClass
-      });
-
-      var cell = gridUtils.generateCell();
+      var cell = _gridUtilsJs2['default'].generateCell(this.props, baseCellClass);
 
       return _react2['default'].createElement('div', { className: cell.cellClass }, _react2['default'].createElement('span', { className: baseCellClass + 'Liner' }, cell.cellContent));
     }
@@ -24351,7 +24346,7 @@ var GridCell = (function (_Component) {
 exports['default'] = GridCell;
 module.exports = exports['default'];
 
-},{"./GridUtils.js":346,"react":338}],343:[function(require,module,exports){
+},{"./gridUtils.js":346,"react":338}],343:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -24781,122 +24776,97 @@ GridSection.defaultProps = {
 module.exports = exports['default'];
 
 },{"./GridCell.jsx":342,"./GridRow.jsx":344,"react":338}],346:[function(require,module,exports){
+
+// TODO: Before & after need this unfortunately, naming could be improved in CSS
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
+var _baseCellClass = undefined;
 
-var _createClass = (function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
-})();
+function _wrapCellContent(content, wrap, baseWrapClass) {
+  if (!wrap) return content;
 
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError('Cannot call a class as a function');
+  var wrapClass = baseWrapClass;
+  var wrapBefore = undefined;
+  var wrapAfter = undefined;
+
+  // Styles
+
+  if (wrap.modifier) {
+    // In theory could be many modifiers, right now only one is used
+    wrapClass += '--' + wrap.modifier[0];
   }
+  if (wrap.appendClass) {
+    wrapClass += wrap.appendClass;
+  }
+
+  // Content
+
+  // Recursion
+  if (wrap.before) wrapBefore = _wrapCellContent(wrap.before, wrap.beforeWrap, _baseCellClass);
+
+  if (wrap.after) wrapAfter = _wrapCellContent(wrap.after, wrap.afterWrap, _baseCellClass);
+
+  if (wrap.href) {
+    content = React.createElement('a', { href: wrap.href, className: wrapClass }, wrapBefore, content, wrapAfter);
+  } else {
+    content = React.createElement('span', { className: wrapClass }, wrapBefore, content, wrapAfter);
+  }
+
+  return content;
 }
 
-var GridUtils = (function () {
-  function GridUtils(args) {
-    _classCallCheck(this, GridUtils);
+exports['default'] = {
 
-    Object.assign(this, args);
-  }
+  generateCell: function generateCell(props, baseCellClass) {
+    var cellContent = props.content;
+    var cellClass = _baseCellClass = baseCellClass;
 
-  _createClass(GridUtils, [{
-    key: 'wrapContent',
-    value: function wrapContent(content, wrap, baseWrapClass) {
-      if (!wrap) return content;
+    /*
+     * Only for thead
+     * */
 
-      var wrapClass = baseWrapClass;
-      var wrapBefore = undefined;
-      var wrapAfter = undefined;
+    if (props.section === 'thead') {
 
       // Styles
 
-      if (wrap.modifier) {
-        // In theory could be many modifiers, right now only one is used
-        wrapClass += '--' + wrap.modifier[0];
+      if (props.sortable) {
+        cellClass += ' sortable';
       }
-      if (wrap.appendClass) {
-        wrapClass += wrap.appendClass;
+      if (props.selected) {
+        cellClass += ' selected';
+      }
+      if (props.reverse) {
+        cellClass += ' reverse';
       }
 
       // Content
 
-      // Recursion
-      if (wrap.before) wrapBefore = this.wrapContent(wrap.before, wrap.beforeWrap, this.baseCellClass);
-
-      if (wrap.after) wrapAfter = this.wrapContent(wrap.after, wrap.afterWrap, this.baseCellClass);
-
-      if (wrap.href) {
-        content = React.createElement('a', { href: wrap.href, className: wrapClass }, wrapBefore, content, wrapAfter);
-      } else {
-        content = React.createElement('span', { className: wrapClass }, wrapBefore, content, wrapAfter);
+      if (props.sortable) {
+        cellContent = React.createElement('a', null, props.content, React.createElement('span', { className: 'arrowUp' }, React.createElement('span', { className: 'arrowUp__centerLine' })), React.createElement('span', { className: 'arrowDown' }, React.createElement('span', { className: 'arrowDown__centerLine' })));
       }
-
-      return content;
-    }
-  }, {
-    key: 'generateCell',
-    value: function generateCell() {
-      var cellContent = this.props.content;
-      var cellClass = this.baseCellClass;
 
       /*
-       * Only for thead
+       * Only for tbody & tfoot
        * */
+    } else {
 
-      if (this.props.section === 'thead') {
-
-        // Styles
-
-        if (this.props.sortable) {
-          cellClass += ' sortable';
-        }
-        if (this.props.selected) {
-          cellClass += ' selected';
-        }
-        if (this.props.reverse) {
-          cellClass += ' reverse';
-        }
-
-        // Content
-
-        if (this.props.sortable) {
-          cellContent = React.createElement('a', null, this.props.content, React.createElement('span', { className: 'arrowUp' }, React.createElement('span', { className: 'arrowUp__centerLine' })), React.createElement('span', { className: 'arrowDown' }, React.createElement('span', { className: 'arrowDown__centerLine' })));
-        }
-
-        /*
-         * Only for tbody & tfoot
-         * */
-      } else {
-
-          cellContent = this.wrapContent(this.props.content, this.props.contentWrap, this.baseCellClass + 'Value');
-        }
-
-      if (this.props.appendClass) {
-        cellClass += this.props.appendClass;
+        cellContent = _wrapCellContent(props.content, props.contentWrap, baseCellClass + 'Value');
       }
 
-      return {
-        cellContent: cellContent,
-        cellClass: cellClass
-      };
+    if (props.appendClass) {
+      cellClass += props.appendClass;
     }
-  }]);
 
-  return GridUtils;
-})();
+    return {
+      cellContent: cellContent,
+      cellClass: cellClass
+    };
+  }
 
-exports['default'] = GridUtils;
+};
 module.exports = exports['default'];
 
 },{}],347:[function(require,module,exports){
