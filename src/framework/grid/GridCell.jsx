@@ -3,6 +3,7 @@ import React, {
   Component,
   PropTypes
 } from 'react';
+import classnames from 'classnames';
 
 export default class GridCell extends Component {
 
@@ -16,15 +17,15 @@ export default class GridCell extends Component {
 
     switch (this.props.section) {
       case 'header':
-        cellClass = 'dataTable__thead__cell';
+        cellClass = classnames('dataTable__thead__cell', this.props.classes.headerCell);
         insideClass = 'dataTable__thead__cellLiner';
         break;
       case 'body':
-        cellClass = 'dataTable__tbody__cell';
+        cellClass = classnames('dataTable__tbody__cell', this.props.classes.bodyCell);
         insideClass = 'dataTable__tbody__cellLiner';
         break;
       case 'footer':
-        cellClass = 'dataTable__tfoot__cell';
+        cellClass = classnames('dataTable__tfoot__cell', this.props.classes.footerCell);
         insideClass = 'dataTable__tfoot__cellLiner';
         break;
     }
@@ -41,7 +42,7 @@ export default class GridCell extends Component {
 }
 
 GridCell.propTypes = {
-  appendClass: React.PropTypes.string,
-  content: React.PropTypes.string.isRequired,
+  classes: React.PropTypes.object,
+  content: React.PropTypes.string,
   section: React.PropTypes.oneOf(['header', 'body', 'footer']).isRequired,
 };

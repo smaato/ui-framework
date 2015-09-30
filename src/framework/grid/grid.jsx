@@ -3,6 +3,9 @@ import React, {
   Component,
   PropTypes
 } from 'react';
+// This was initially known as React.addons.classSet, but eventually became separate npm module
+// More on https://facebook.github.io/react/docs/class-name-manipulation.html
+import classnames from 'classnames';
 import GridHeader from './sections/GridHeader.jsx';
 import GridBody from './sections/GridBody.jsx';
 import GridFooter from './sections/GridFooter.jsx';
@@ -14,11 +17,13 @@ export default class Grid extends Component {
   }
 
   render() {
+    let classes = this.props.classes || {};
+
     return (
-      <div className={'dataTable__container' + (this.props.appendClass || '')}>
-        <div className='dataTable__table'>
+      <div className={classnames('dataTable__container', classes.container)}>
+        <div className={classnames('dataTable__table', classes.table)}>
           <GridHeader
-            appendClass={this.props.appendClass}
+            classes={classes}
             rows={
               // An array of rows
               [
@@ -30,7 +35,7 @@ export default class Grid extends Component {
             }
           />
           <GridBody
-            appendClass={this.props.appendClass}
+            classes={classes}
             rows={
               // An array of rows
               this.props.data.body.map((dataRow) => {
@@ -42,7 +47,7 @@ export default class Grid extends Component {
             }
           />
           <GridFooter
-            appendClass={this.props.appendClass}
+            classes={classes}
             rows={
               // An array of rows
               [
@@ -61,7 +66,7 @@ export default class Grid extends Component {
 }
 
 Grid.propTypes = {
-  appendClass: PropTypes.string,
+  classes: PropTypes.object,
   data: PropTypes.object.isRequired,
   renderer: PropTypes.object.isRequired,
 };

@@ -3,6 +3,7 @@ import React, {
   Component,
   PropTypes
 } from 'react';
+import classnames from 'classnames';
 import GridCell from './GridCell.jsx';
 
 export default class GridRow extends Component {
@@ -16,24 +17,20 @@ export default class GridRow extends Component {
 
     switch (this.props.section) {
       case 'header':
-        rowClass = 'dataTable__thead__row';
+        rowClass = classnames('dataTable__thead__row', this.props.classes.headerRow);
         break;
       case 'body':
-        rowClass = 'dataTable__tbody__row';
+        rowClass = classnames('dataTable__tbody__row', this.props.classes.bodyRow);
         break;
       case 'footer':
-        rowClass = 'dataTable__tfoot__row';
+        rowClass = classnames('dataTable__tfoot__row', this.props.classes.footerRow);
         break;
-    }
-    
-    if (this.props.appendClass) {
-      rowClass += this.props.appendClass;
     }
 
     let content = this.props.cells.map((cell, index) => {
       return <GridCell
         section={this.props.section}
-        appendClass={this.props.appendClass}
+        classes={this.props.classes}
         content={cell}
         key={index}
       />;
@@ -49,7 +46,7 @@ export default class GridRow extends Component {
 }
 
 GridRow.propTypes = {
-  appendClass: PropTypes.string,
+  classes: PropTypes.object,
   cells: PropTypes.array.isRequired,
   section: React.PropTypes.oneOf(['header', 'body', 'footer']).isRequired,
 };

@@ -15,7 +15,7 @@ export default class GridBody extends Component {
     return (
       <GridSection
         section="body"
-        appendClass={this.props.appendClass}
+        classes={this.props.classes}
         rows={this.props.rows}
       />
     );
@@ -24,6 +24,6 @@ export default class GridBody extends Component {
 }
 
 GridBody.propTypes = {
-  appendClass: PropTypes.string,
+  classes: PropTypes.object,
   rows: PropTypes.array.isRequired,
 };
