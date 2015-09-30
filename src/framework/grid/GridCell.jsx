@@ -41,5 +41,7 @@ export default class GridCell extends Component {
 }
 
 GridCell.propTypes = {
+  appendClass: React.PropTypes.string,
+  content: React.PropTypes.string.isRequired,
   section: React.PropTypes.oneOf(['header', 'body', 'footer']).isRequired,
 };

@@ -45,6 +45,7 @@ export default class GridSection extends Component {
 }
 
 GridSection.propTypes = {
+  appendClass: PropTypes.string,
   section: React.PropTypes.oneOf(['header', 'body', 'footer']).isRequired,
-  rows: PropTypes.array.isRequired
+  rows: PropTypes.array.isRequired,
 };

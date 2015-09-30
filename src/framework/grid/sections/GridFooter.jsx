@@ -24,6 +24,6 @@ export default class GridFooter extends Component {
 }
 
 GridFooter.propTypes = {
-  rows: PropTypes.array.isRequired,
   appendClass: PropTypes.string,
+  rows: PropTypes.array.isRequired,
 };

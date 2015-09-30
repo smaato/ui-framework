@@ -24,6 +24,6 @@ export default class GridHeader extends Component {
 }
 
 GridHeader.propTypes = {
-  rows: PropTypes.array.isRequired,
   appendClass: PropTypes.string,
+  rows: PropTypes.array.isRequired,
 };

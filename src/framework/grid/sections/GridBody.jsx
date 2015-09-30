@@ -24,6 +24,6 @@ export default class GridBody extends Component {
 }
 
 GridBody.propTypes = {
-  rows: PropTypes.array.isRequired,
   appendClass: PropTypes.string,
+  rows: PropTypes.array.isRequired,
 };

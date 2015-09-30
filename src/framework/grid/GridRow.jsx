@@ -49,6 +49,7 @@ export default class GridRow extends Component {
 }
 
 GridRow.propTypes = {
+  appendClass: PropTypes.string,
   cells: PropTypes.array.isRequired,
   section: React.PropTypes.oneOf(['header', 'body', 'footer']).isRequired,
 };
