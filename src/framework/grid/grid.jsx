@@ -13,16 +13,13 @@ export default class Grid extends Component {
 
   render() {
     var gridData = this.props.data;
-    var gridConfig = this.props.config;
     // These are the props to be passed down to GridSection component
     var sectionProps = Object.assign({}, this.props);
     delete sectionProps.data;
-    delete sectionProps.config;
     delete sectionProps.appendClass;
     // Will hold rows for each section
-    let sectionsData = Object.assign({}, gridConfig);
+    let sectionsData = {};
 
-    // Merge gridData into gridConfig
     Object.keys(gridData).forEach(function(sectionName) {
       gridData[sectionName].forEach(function (rowData, rowIndex) {
         rowData.forEach(function (cellData, cellIndex) {
@@ -67,8 +64,7 @@ export default class Grid extends Component {
 Grid.propTypes = {
   rootClass: PropTypes.string,
   appendClass: PropTypes.string,
-  data: PropTypes.object.isRequired,
-  config: PropTypes.object
+  data: PropTypes.object.isRequired
 };
 
 Grid.defaultProps = {

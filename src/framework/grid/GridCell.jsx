@@ -3,7 +3,6 @@ import React, {
   Component,
   PropTypes
 } from 'react';
-import gridUtils from './gridUtils.js';
 
 export default class GridCell extends Component {
 
@@ -14,12 +13,10 @@ export default class GridCell extends Component {
   render() {
     let baseCellClass = [this.props.rootClass, this.props.section, 'cell'].join('__');
 
-    let cell = gridUtils.generateCell(this.props, baseCellClass);
-
     return (
-      <div className={cell.cellClass}>
+      <div className={baseCellClass}>
         <span className={baseCellClass + 'Liner'}>
-          {cell.cellContent}
+          {this.props.content}
         </span>
       </div>
     );
