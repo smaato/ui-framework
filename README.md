@@ -31,6 +31,17 @@ gulp production
 
 _Generates minified distribution with sourcemaps in ./dist/_
 
+#### Deployment
+
+To manually deploy the working copy the following command can be used where
+- accessKeyId is the AWS access key id,
+- bucket is the AWS S3 bucket and
+- secretAccessKey is the AWS secret access key.
+
+```bash
+gulp deploy --accessKeyId=XXX --bucket=XXX --secretAccessKey=XXX
+```
+
 ## Contributing to the framework
 
 #### Folder structure

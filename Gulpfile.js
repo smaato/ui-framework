@@ -31,7 +31,9 @@ var fs = require('fs'),
   source = require('vinyl-source-stream'),
   sourcemaps = require('gulp-sourcemaps'),
   KarmaServer = require('karma').Server,
-  path = require('path');
+  path = require('path'),
+  awspublish = require('gulp-awspublish'),
+  minimist = require('minimist');
 
 /**
  * @description Default Tasks
@@ -246,6 +248,25 @@ gulp.task('production', function(callback) {
     'replace',
     callback
   );
+});
+
+/**
+ * @description Deployment Task, example: "gulp deploy --accessKeyId=XXX --bucket=XXX --secretAccessKey=XXX"
+ */
+
+gulp.task('deploy', ['production'], function() {
+  var options = minimist(process.argv.slice(2));
+  var publisher = awspublish.create({
+    accessKeyId: options.accessKeyId,
+    params: {
+      Bucket: options.bucket
+    },
+    secretAccessKey: options.secretAccessKey
+  });
+  return gulp.src('./dist/**/*.*')
+    .pipe(publisher.publish())
+    .pipe(publisher.sync())
+    .pipe(awspublish.reporter());
 });
 
 /**
