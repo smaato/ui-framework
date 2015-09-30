@@ -5,7 +5,6 @@
   "description": "Smaato UI Framework (React and SCSS)",
   "dependencies": {
     "babel-core": "5.8.22",
-    "classname": "0.0.0",
     "classnames": "2.1.3",
     "react": "0.13.3"
   },
