@@ -1,27 +1,40 @@
 
-@mixin section-common() {
-  &__row {
-    display: table-row;
-  }
-  &__cell {
-    display: table-cell;
-  }
+.dataTable__table {
+  display: table;
 }
 
-.dataTable {
-  &__table {
-    display: table;
-  }
-  &__thead {
+  .dataTable__thead {
     display: table-header-group;
-    @include section-common();
   }
-  &__tbody {
+
+    .dataTable__thead__row {
+      display: table-row;
+    }
+
+      .dataTable__thead__cell {
+        display: table-cell;
+      }
+
+  .dataTable__tbody {
     display: table-row-group;
-    @include section-common();
   }
-  &__tfoot {
+
+    .dataTable__tbody__row {
+      display: table-row;
+    }
+
+      .dataTable__tbody__cell {
+        display: table-cell;
+      }
+
+  .dataTable__tfoot {
     display: table-footer-group;
-    @include section-common();
   }
-}
+
+    .dataTable__tfoot__row {
+      display: table-row;
+    }
+
+      .dataTable__tfoot__cell {
+        display: table-cell;
+      }
