@@ -11,7 +11,7 @@ export default class GridCell extends Component {
   }
 
   render() {
-    let baseCellClass = [this.props.rootClass, this.props.section, 'cell'].join('__');
+    let baseCellClass = [this.props.rootClass, 'tbody', 'cell'].join('__');
 
     return (
       <div className={baseCellClass}>

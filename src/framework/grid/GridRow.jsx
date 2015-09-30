@@ -12,18 +12,19 @@ export default class GridRow extends Component {
   }
 
   render() {
-    let baseRowClass = [this.props.rootClass, this.props.section, 'row'].join('__');
+    let baseRowClass = [this.props.rootClass, 'tbody', 'row'].join('__');
     let rowClass = baseRowClass;
     if (this.props.appendClass) {
       rowClass += this.props.appendClass;
     }
 
-    let rowPropsForCell = Object.assign({}, this.props);
-    delete rowPropsForCell.appendClass;
-    delete rowPropsForCell.cells;
     let content = this.props.cells.map((cell, index) => {
-      let cellProps = Object.assign({}, rowPropsForCell, cell);
-      return <GridCell {...cellProps} key={index} />;
+      return <GridCell
+        rootClass={this.props.rootClass}
+        appendClass={this.props.appendClass}
+        content={cell}
+        key={index}
+      />;
     });
 
     return (

@@ -13,28 +13,31 @@ export default class GridSection extends Component {
   }
 
   render() {
-    const sectionProps = this.props;
-
-    let rows = this.props.rows.map(function (row, index) {
-      let rowProps = Object.assign(row, sectionProps);
-      delete rowProps.rows;
-      return <GridRow {...rowProps} key={index} />;
+    let rows = this.props.rows.map((row, index) => {
+      return <GridRow
+        rootClass={this.props.rootClass}
+        appendClass={this.props.appendClass}
+        cells={row}
+        key={index}
+      />;
     });
 
-    let sectionClass = [this.props.rootClass, this.props.section].join('__');
+    let sectionClass = [this.props.rootClass, 'tbody'].join('__');
 
     return (
-      <div className={sectionClass}>{rows}</div>
+      <div className={sectionClass}>
+        {rows}
+      </div>
     );
   }
 
 }
 
 GridSection.propTypes = {
-  section: React.PropTypes.oneOf(['thead', 'tbody', 'tfoot']),
+  section: React.PropTypes.oneOf(['header', 'body', 'footer']),
   rows: PropTypes.array.isRequired
 };
 
 GridSection.defaultProps = {
-  section: 'tbody'
+  section: 'body'
 };

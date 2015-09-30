@@ -11,77 +11,86 @@ export default class GridExample extends Component {
   }
 
   render() {
-    /*
-     * Pure data
-     * */
 
-    // An array of cells
-    var tbodyDataRow = [
-      <span className="checkboxWrapper">
-        <input type="checkbox" name="item_1" id="item_1" className="checkbox__input"/>
-        <label htmlFor="item_1" className="checkbox__faux__input"></label>
-      </span>,
-      'Ford F150',
-      'In Production',
-      'Diesel, Unleaded',
-      '3, 5, 6',
-      '6, 8',
-      '25mpg',
-      '202.1k',
-      '200.5k',
-      <span>
-        <a href="" className="icon glyphicons-more"></a>
-        <a href="" className="icon glyphicons-cogwheel"></a>
-      </span>
-    ];
+    var bodyDataRow = {
+      id: 1,
+      name: 'Ford F150',
+      status: 'In Production',
+      fuel: 'Diesel, Unleaded',
+      passengers: '3, 5, 6',
+      cylinders: '6, 8',
+      fuelEconomy: '25mpg',
+      sold: '202.1k',
+      registered: '200.5k',
+    };
 
-    // Section is an array of rows
-    var tbodyDataRows = [
-      tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow,
-      tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow,
-      tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow,
-      tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow, tbodyDataRow
-    ];
-
-    // Data is a map: section name to array of rows
     var data = {
-      thead: [
-        [
-          <span className="checkboxWrapper">
-            <input type="checkbox" name="table_batch" id="table_batch" className="checkbox__input"/>
-            <label htmlFor="table_batch" className="checkbox__faux__input"></label>
-          </span>,
-          'Name',
-          'Status',
-          'Fuel',
-          'Passengers',
-          'Cylinders',
-          'Fuel Economy',
-          '# Sold',
-          'Registered',
-          null
-        ]
+      header: {
+        name: 'Name',
+        status: 'Status',
+        fuel: 'Fuel',
+        passengers: 'Passangers',
+        cylinders: 'Cylinders',
+        fuelEconomy: 'Fuel Economy',
+        sold: '# Sold',
+        registered: 'Registered',
+      },
+      body: [
+        bodyDataRow, bodyDataRow, bodyDataRow, bodyDataRow, bodyDataRow,
+        bodyDataRow, bodyDataRow, bodyDataRow, bodyDataRow, bodyDataRow,
+        bodyDataRow, bodyDataRow, bodyDataRow, bodyDataRow, bodyDataRow,
+        bodyDataRow, bodyDataRow, bodyDataRow, bodyDataRow, bodyDataRow
       ],
-      tbody: tbodyDataRows,
-      tfoot: [
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          '152.1m',
-          'Registered',
-          null
-        ]
+      footer: {
+        name: null,
+        status: null,
+        fuel: null,
+        passengers: null,
+        cylinders: null,
+        fuelEconomy: null,
+        sold: '152.1m',
+        registered: 'Registered',
+      }
+    };
+
+    var renderer = {
+      header: [
+        (item) => { return item.name },
+        (item) => { return item.status },
+        (item) => { return item.fuel },
+        (item) => { return item.passengers },
+        (item) => { return item.cylinders },
+        (item) => { return item.fuelEconomy },
+        (item) => { return item.sold },
+        (item) => { return item.registered },
+      ],
+      body: [
+        // For now it is a copy-paste for all sections, but in future this can be used to wrap content into HTML
+        (item) => { return item.name },
+        (item) => { return item.status },
+        (item) => { return item.fuel },
+        (item) => { return item.passengers },
+        (item) => { return item.cylinders },
+        (item) => { return item.fuelEconomy },
+        (item) => { return item.sold },
+        (item) => { return item.registered },
+      ],
+      footer: [
+        (item) => { return item.name },
+        (item) => { return item.status },
+        (item) => { return item.fuel },
+        (item) => { return item.passengers },
+        (item) => { return item.cylinders },
+        (item) => { return item.fuelEconomy },
+        (item) => { return item.sold },
+        (item) => { return item.registered },
       ]
     };
 
     return (
       <Grid
         data={data}
+        renderer={renderer}
       />
     );
   }
