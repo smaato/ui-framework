@@ -15,7 +15,6 @@ export default class GridHeader extends Component {
     return (
       <GridSection
         section="header"
-        rootClass={this.props.rootClass}
         appendClass={this.props.appendClass}
         rows={this.props.rows}
       />
@@ -26,6 +25,5 @@ export default class GridHeader extends Component {
 
 GridHeader.propTypes = {
   rows: PropTypes.array.isRequired,
-  rootClass: PropTypes.string.isRequired,
   appendClass: PropTypes.string,
 };

@@ -15,10 +15,9 @@ export default class Grid extends Component {
 
   render() {
     return (
-      <div className={[this.props.rootClass, 'container'].join('__') + (this.props.appendClass || '')}>
-        <div className={[this.props.rootClass, 'table'].join('__')}>
+      <div className={'dataTable__container' + (this.props.appendClass || '')}>
+        <div className='dataTable__table'>
           <GridHeader
-            rootClass={this.props.rootClass}
             appendClass={this.props.appendClass}
             rows={
               // An array of rows
@@ -31,7 +30,6 @@ export default class Grid extends Component {
             }
           />
           <GridBody
-            rootClass={this.props.rootClass}
             appendClass={this.props.appendClass}
             rows={
               // An array of rows
@@ -44,7 +42,6 @@ export default class Grid extends Component {
             }
           />
           <GridFooter
-            rootClass={this.props.rootClass}
             appendClass={this.props.appendClass}
             rows={
               // An array of rows
@@ -64,12 +61,7 @@ export default class Grid extends Component {
 }
 
 Grid.propTypes = {
-  rootClass: PropTypes.string,
   appendClass: PropTypes.string,
   data: PropTypes.object.isRequired,
   renderer: PropTypes.object.isRequired,
-};
-
-Grid.defaultProps = {
-  rootClass: 'dataTable'
 };

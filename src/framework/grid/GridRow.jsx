@@ -12,15 +12,27 @@ export default class GridRow extends Component {
   }
 
   render() {
-    let baseRowClass = [this.props.rootClass, 'tbody', 'row'].join('__');
-    let rowClass = baseRowClass;
+    let rowClass;
+
+    switch (this.props.section) {
+      case 'header':
+        rowClass = 'dataTable__thead__row';
+        break;
+      case 'body':
+        rowClass = 'dataTable__tbody__row';
+        break;
+      case 'footer':
+        rowClass = 'dataTable__tfoot__row';
+        break;
+    }
+    
     if (this.props.appendClass) {
       rowClass += this.props.appendClass;
     }
 
     let content = this.props.cells.map((cell, index) => {
       return <GridCell
-        rootClass={this.props.rootClass}
+        section={this.props.section}
         appendClass={this.props.appendClass}
         content={cell}
         key={index}
@@ -37,5 +49,6 @@ export default class GridRow extends Component {
 }
 
 GridRow.propTypes = {
-  cells: PropTypes.array.isRequired
+  cells: PropTypes.array.isRequired,
+  section: React.PropTypes.oneOf(['header', 'body', 'footer']).isRequired,
 };

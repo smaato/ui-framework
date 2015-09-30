@@ -11,11 +11,27 @@ export default class GridCell extends Component {
   }
 
   render() {
-    let baseCellClass = [this.props.rootClass, 'tbody', 'cell'].join('__');
+    let cellClass;
+    let insideClass;
 
+    switch (this.props.section) {
+      case 'header':
+        cellClass = 'dataTable__thead__cell';
+        insideClass = 'dataTable__thead__cellLiner';
+        break;
+      case 'body':
+        cellClass = 'dataTable__tbody__cell';
+        insideClass = 'dataTable__tbody__cellLiner';
+        break;
+      case 'footer':
+        cellClass = 'dataTable__tfoot__cell';
+        insideClass = 'dataTable__tfoot__cellLiner';
+        break;
+    }
+    
     return (
-      <div className={baseCellClass}>
-        <span className={baseCellClass + 'Liner'}>
+      <div className={cellClass}>
+        <span className={insideClass}>
           {this.props.content}
         </span>
       </div>
@@ -23,3 +39,7 @@ export default class GridCell extends Component {
   }
 
 }
+
+GridCell.propTypes = {
+  section: React.PropTypes.oneOf(['header', 'body', 'footer']).isRequired,
+};

@@ -14,14 +14,26 @@ export default class GridSection extends Component {
   render() {
     let rows = this.props.rows.map((row, index) => {
       return <GridRow
-        rootClass={this.props.rootClass}
+        section={this.props.section}
         appendClass={this.props.appendClass}
         cells={row}
         key={index}
       />;
     });
 
-    let sectionClass = [this.props.rootClass, 'tbody'].join('__');
+    let sectionClass;
+
+    switch (this.props.section) {
+      case 'header':
+        sectionClass = 'dataTable__thead';
+        break;
+      case 'body':
+        sectionClass = 'dataTable__tbody';
+        break;
+      case 'footer':
+        sectionClass = 'dataTable__tfoot';
+        break;
+    }
 
     return (
       <div className={sectionClass}>
@@ -33,10 +45,6 @@ export default class GridSection extends Component {
 }
 
 GridSection.propTypes = {
-  section: React.PropTypes.oneOf(['header', 'body', 'footer']),
+  section: React.PropTypes.oneOf(['header', 'body', 'footer']).isRequired,
   rows: PropTypes.array.isRequired
-};
-
-GridSection.defaultProps = {
-  section: 'body'
 };

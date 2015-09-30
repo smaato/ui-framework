@@ -15,7 +15,6 @@ export default class GridFooter extends Component {
     return (
       <GridSection
         section="footer"
-        rootClass={this.props.rootClass}
         appendClass={this.props.appendClass}
         rows={this.props.rows}
       />
@@ -26,6 +25,5 @@ export default class GridFooter extends Component {
 
 GridFooter.propTypes = {
   rows: PropTypes.array.isRequired,
-  rootClass: PropTypes.string.isRequired,
   appendClass: PropTypes.string,
 };
