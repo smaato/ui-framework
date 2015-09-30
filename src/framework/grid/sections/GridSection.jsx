@@ -3,8 +3,7 @@ import React, {
   Component,
   PropTypes
 } from 'react';
-import GridRow from './GridRow.jsx';
-import GridCell from './GridCell.jsx';
+import GridRow from './../GridRow.jsx';
 
 export default class GridSection extends Component {
 

@@ -3,7 +3,9 @@ import React, {
   Component,
   PropTypes
 } from 'react';
-import GridSection from './GridSection.jsx';
+import GridHeader from './sections/GridHeader.jsx';
+import GridBody from './sections/GridBody.jsx';
+import GridFooter from './sections/GridFooter.jsx';
 
 export default class Grid extends Component {
 
@@ -15,8 +17,7 @@ export default class Grid extends Component {
     return (
       <div className={[this.props.rootClass, 'container'].join('__') + (this.props.appendClass || '')}>
         <div className={[this.props.rootClass, 'table'].join('__')}>
-          <GridSection
-            section="header"
+          <GridHeader
             rootClass={this.props.rootClass}
             appendClass={this.props.appendClass}
             rows={
@@ -29,8 +30,7 @@ export default class Grid extends Component {
               ]
             }
           />
-          <GridSection
-            section="body"
+          <GridBody
             rootClass={this.props.rootClass}
             appendClass={this.props.appendClass}
             rows={
@@ -43,8 +43,7 @@ export default class Grid extends Component {
               })
             }
           />
-          <GridSection
-            section="footer"
+          <GridFooter
             rootClass={this.props.rootClass}
             appendClass={this.props.appendClass}
             rows={
