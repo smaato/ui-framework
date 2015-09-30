@@ -1,12 +1,12 @@
 
 // Import components.
-import GridExample from './grid/GridExample.jsx';
+import Grid from './grid/Grid.jsx';
 import TitleBar from './titleBar/TitleBar.jsx';
 import TitleBarButton from './titleBar/TitleBarButton.jsx';
 
 // Export components.
 export default {
-  GridExample: GridExample,
+  Grid: Grid,
   TitleBar: TitleBar,
   TitleBarButton: TitleBarButton
 };

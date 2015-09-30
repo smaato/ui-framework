@@ -3,7 +3,6 @@ import React, {
   Component,
   PropTypes
 } from 'react';
-import Grid from './Grid.jsx';
 
 export default class GridExample extends Component {
 
