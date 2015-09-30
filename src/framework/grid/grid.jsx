@@ -11,19 +11,6 @@ export default class Grid extends Component {
     super(props);
   }
 
-  componentWillMount() {
-    var $body = $('body');
-
-    $(window).on('scroll.grid', function() {
-      var isStick = $body.scrollTop() > $('.dataTable__table').offset().top - 1 /* 1px css table border */;
-      $body[isStick ? 'addClass' : 'removeClass']('fixedThead');
-    });
-  }
-
-  componentWillUnmount() {
-    $(window).off('scroll.grid');
-  }
-
   render() {
     var gridData = this.props.data;
     var gridConfig = this.props.config;
@@ -54,10 +41,6 @@ export default class Grid extends Component {
 
     return (
       <div className={[this.props.rootClass, 'container'].join('__') + (this.props.appendClass || '')}>
-        {/* Sticky header background. TODO: improve */}
-        <div className={[this.props.rootClass, 'thead', 'placeholder'].join('__')}>
-          <div className={[this.props.rootClass, 'thead', 'placeholder', 'liner'].join('__')}></div>
-        </div>
         <div className={[this.props.rootClass, 'table'].join('__')}>
           <GridSection
             {...sectionProps}

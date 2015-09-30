@@ -15,16 +15,6 @@ export default class GridSection extends Component {
   render() {
     const sectionProps = this.props;
 
-    // Enable sticky thead
-    // Note: causes only one row to be rendered in thead, other rows are ignored
-    if (sectionProps.thead) {
-      let firstTheadRow = sectionProps.thead[0];
-      sectionProps.thead = [
-        firstTheadRow,
-        Object.assign({ placeholder: true }, firstTheadRow)
-      ];
-    }
-
     let rows = this.props.rows.map(function (row, index) {
       let rowProps = Object.assign(row, sectionProps);
       delete rowProps.rows;

@@ -14,10 +14,6 @@ export default class GridRow extends Component {
   render() {
     let baseRowClass = [this.props.rootClass, this.props.section, 'row'].join('__');
     let rowClass = baseRowClass;
-    // Only for thead. Sticky row
-    if (this.props.placeholder) {
-      rowClass += (' ' + baseRowClass + '--placeholder');
-    }
     if (this.props.appendClass) {
       rowClass += this.props.appendClass;
     }
