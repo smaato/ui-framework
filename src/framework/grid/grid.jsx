@@ -17,46 +17,42 @@ export default class Grid extends Component {
   }
 
   render() {
+    // Style classes
     const classes = this.props.classes || {};
+    const containerClass = classNames('dataTable__container', classes.container);
+    const tableClass = classNames('dataTable__table', classes.table);
+
+    // Header
+    const headerCells = this.props.renderer.header.map((cellRenderer) => {
+      return cellRenderer(this.props.data.header);
+    });
+
+    // Body
+    const bodyRows = this.props.data.body.map((dataRow) => {
+      return this.props.renderer.body.map((cellRenderer) => {
+        return cellRenderer(dataRow);
+      });
+    });
+
+    // Footer
+    const footerCells = this.props.renderer.footer.map((cellRenderer) => {
+      return cellRenderer(this.props.data.footer);
+    });
 
     return (
-      <div className={classNames('dataTable__container', classes.container)}>
-        <div className={classNames('dataTable__table', classes.table)}>
+      <div className={containerClass}>
+        <div className={tableClass}>
           <GridHeader
             classes={classes}
-            rows={
-              // An array of rows
-              [
-                // Will be an array (row) of strings (cells)
-                this.props.renderer.header.map((cellRenderer) => {
-                  return cellRenderer(this.props.data.header);
-                })
-              ]
-            }
+            cells={headerCells}
           />
           <GridBody
             classes={classes}
-            rows={
-              // An array of rows
-              this.props.data.body.map((dataRow) => {
-                // Will be an array (row) of strings (cells)
-                return this.props.renderer.body.map((cellRenderer) => {
-                  return cellRenderer(dataRow);
-                });
-              })
-            }
+            rows={bodyRows}
           />
           <GridFooter
             classes={classes}
-            rows={
-              // An array of rows
-              [
-                // Will be an array (row) of strings (cells)
-                this.props.renderer.footer.map((cellRenderer) => {
-                  return cellRenderer(this.props.data.footer);
-                })
-              ]
-            }
+            cells={footerCells}
           />
         </div>
       </div>

@@ -15,17 +15,12 @@ export default class GridFooter extends Component {
   render() {
     const sectionClass = classNames('dataTable__tfoot', this.props.classes.footer);
 
-    const rows = this.props.rows.map((row, index) => {
-      return <GridFooterRow
-        classes={this.props.classes}
-        cells={row}
-        key={index}
-      />;
-    });
-
     return (
       <div className={sectionClass}>
-        {rows}
+        <GridFooterRow
+          classes={this.props.classes}
+          cells={this.props.cells}
+        />
       </div>
     );
   }
@@ -34,5 +29,5 @@ export default class GridFooter extends Component {
 
 GridFooter.propTypes = {
   classes: PropTypes.object,
-  rows: PropTypes.array.isRequired,
+  cells: PropTypes.array.isRequired,
 };
