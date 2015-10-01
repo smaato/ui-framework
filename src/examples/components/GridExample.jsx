@@ -91,21 +91,17 @@ export default class GridExample extends Component {
 
     return (
       <Grid
-        classes={
-          {
-            container: 'prefix-container',
-            table: 'prefix-table',
-            header: 'prefix-header',
-            headerRow: 'prefix-headerRow',
-            headerCell: 'prefix-headerCell',
-            body: 'prefix-body',
-            bodyRow: 'prefix-bodyRow',
-            bodyCell: 'prefix-bodyCell',
-            footer: 'prefix-footer',
-            footerRow: 'prefix-footerRow',
-            footerCell: 'prefix-footerCell',
-          }
-        }
+        classContainer="prefix-container"
+        classTable="prefix-table"
+        classHeader="prefix-header"
+        classHeaderRow="prefix-headerRow"
+        classHeaderCell="prefix-headerCell"
+        classBody="prefix-body"
+        classBodyRow="prefix-bodyRow"
+        classBodyCell="prefix-bodyCell"
+        classFooter="prefix-footer"
+        classFooterRow="prefix-footerRow"
+        classFooterCell="prefix-footerCell"
         data={data}
         renderer={renderer}
       />

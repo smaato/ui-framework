@@ -12,7 +12,7 @@ export default class GridHeaderCell extends Component {
   }
 
   render() {
-    const cellClass = classNames('dataTable__thead__cell', this.props.classes.headerCell);
+    const cellClass = classNames('dataTable__thead__cell', this.props.classHeaderCell);
 
     return (
       <div className={cellClass}>
@@ -24,6 +24,6 @@ export default class GridHeaderCell extends Component {
 }
 
 GridHeaderCell.propTypes = {
-  classes: React.PropTypes.object,
+  classHeaderCell: PropTypes.string,
   content: React.PropTypes.string,
 };

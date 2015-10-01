@@ -12,7 +12,7 @@ export default class GridBodyCell extends Component {
   }
 
   render() {
-    const cellClass = classNames('dataTable__tbody__cell', this.props.classes.bodyCell);
+    const cellClass = classNames('dataTable__tbody__cell', this.props.classBodyCell);
 
     return (
       <div className={cellClass}>
@@ -24,6 +24,6 @@ export default class GridBodyCell extends Component {
 }
 
 GridBodyCell.propTypes = {
-  classes: React.PropTypes.object,
+  classBodyCell: React.PropTypes.string,
   content: React.PropTypes.string,
 };

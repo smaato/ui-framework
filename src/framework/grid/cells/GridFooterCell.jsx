@@ -12,7 +12,7 @@ export default class GridFooterCell extends Component {
   }
 
   render() {
-    const cellClass = classNames('dataTable__tfoot__cell', this.props.classes.footerCell);
+    const cellClass = classNames('dataTable__tfoot__cell', this.props.classFooterCell);
 
     return (
       <div className={cellClass}>
@@ -24,6 +24,6 @@ export default class GridFooterCell extends Component {
 }
 
 GridFooterCell.propTypes = {
-  classes: React.PropTypes.object,
+  classFooterCell: PropTypes.string,
   content: React.PropTypes.string,
 };

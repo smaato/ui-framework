@@ -18,9 +18,8 @@ export default class Grid extends Component {
 
   render() {
     // Style classes
-    const classes = this.props.classes || {};
-    const containerClass = classNames('dataTable__container', classes.container);
-    const tableClass = classNames('dataTable__table', classes.table);
+    const containerClass = classNames('dataTable__container', this.props.classContainer);
+    const tableClass = classNames('dataTable__table', this.props.classTable);
 
     // Header
     const headerCells = this.props.renderer.header.map((cellRenderer) => {
@@ -43,15 +42,21 @@ export default class Grid extends Component {
       <div className={containerClass}>
         <div className={tableClass}>
           <GridHeader
-            classes={classes}
+            classHeader={this.props.classHeader}
+            classHeaderRow={this.props.classHeaderRow}
+            classHeaderCell={this.props.classHeaderCell}
             cells={headerCells}
           />
           <GridBody
-            classes={classes}
+            classBody={this.props.classBody}
+            classBodyRow={this.props.classBodyRow}
+            classBodyCell={this.props.classBodyCell}
             rows={bodyRows}
           />
           <GridFooter
-            classes={classes}
+            classFooter={this.props.classFooter}
+            classFooterRow={this.props.classFooterRow}
+            classFooterCell={this.props.classFooterCell}
             cells={footerCells}
           />
         </div>
@@ -62,7 +67,17 @@ export default class Grid extends Component {
 }
 
 Grid.propTypes = {
-  classes: PropTypes.object,
+  classContainer: PropTypes.string,
+  classTable: PropTypes.string,
+  classHeader: PropTypes.string,
+  classHeaderRow: PropTypes.string,
+  classHeaderCell: PropTypes.string,
+  classBody: PropTypes.string,
+  classBodyRow: PropTypes.string,
+  classBodyCell: PropTypes.string,
+  classFooter: PropTypes.string,
+  classFooterRow: PropTypes.string,
+  classFooterCell: PropTypes.string,
   data: PropTypes.object.isRequired,
   renderer: PropTypes.object.isRequired,
 };

@@ -13,12 +13,13 @@ export default class GridHeader extends Component {
   }
 
   render() {
-    const sectionClass = classNames('dataTable__thead', this.props.classes.header);
+    const sectionClass = classNames('dataTable__thead', this.props.classHeader);
 
     return (
       <div className={sectionClass}>
         <GridHeaderRow
-          classes={this.props.classes}
+          classHeaderRow={this.props.classHeaderRow}
+          classHeaderCell={this.props.classHeaderCell}
           cells={this.props.cells}
         />
       </div>
@@ -28,6 +29,8 @@ export default class GridHeader extends Component {
 }
 
 GridHeader.propTypes = {
-  classes: PropTypes.object,
+  classHeader: PropTypes.string,
+  classHeaderRow: PropTypes.string,
+  classHeaderCell: PropTypes.string,
   cells: PropTypes.array.isRequired,
 };
