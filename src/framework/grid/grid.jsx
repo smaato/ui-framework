@@ -21,21 +21,11 @@ export default class Grid extends Component {
     const containerClass = classNames('dataTable__container', this.props.classContainer);
     const tableClass = classNames('dataTable__table', this.props.classTable);
 
-    // Header
-    const headerCells = this.props.renderer.header.map((cellRenderer) => {
-      return cellRenderer(this.props.data.header);
-    });
-
     // Body
-    const bodyRows = this.props.data.body.map((dataRow) => {
-      return this.props.renderer.body.map((cellRenderer) => {
+    const bodyRows = this.props.bodyRows.map((dataRow) => {
+      return this.props.bodyRenderer.map((cellRenderer) => {
         return cellRenderer(dataRow);
       });
-    });
-
-    // Footer
-    const footerCells = this.props.renderer.footer.map((cellRenderer) => {
-      return cellRenderer(this.props.data.footer);
     });
 
     return (
@@ -45,7 +35,7 @@ export default class Grid extends Component {
             classHeader={this.props.classHeader}
             classHeaderRow={this.props.classHeaderRow}
             classHeaderCell={this.props.classHeaderCell}
-            cells={headerCells}
+            cells={this.props.headerCells}
           />
           <GridBody
             classBody={this.props.classBody}
@@ -57,7 +47,7 @@ export default class Grid extends Component {
             classFooter={this.props.classFooter}
             classFooterRow={this.props.classFooterRow}
             classFooterCell={this.props.classFooterCell}
-            cells={footerCells}
+            cells={this.props.footerCells}
           />
         </div>
       </div>
@@ -78,6 +68,8 @@ Grid.propTypes = {
   classFooter: PropTypes.string,
   classFooterRow: PropTypes.string,
   classFooterCell: PropTypes.string,
-  data: PropTypes.object.isRequired,
-  renderer: PropTypes.object.isRequired,
+  headerCells: PropTypes.array,
+  bodyRows: PropTypes.array.isRequired,
+  bodyRenderer: PropTypes.array.isRequired,
+  footerCells: PropTypes.array,
 };

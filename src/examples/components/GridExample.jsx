@@ -12,8 +12,8 @@ export default class GridExample extends Component {
 
   render() {
 
-    const bodyDataRow = {
-      id: 1,
+    const bodyRow = {
+      id: null,
       name: 'Ford F150',
       status: 'In Production',
       fuel: 'Diesel, Unleaded',
@@ -24,70 +24,45 @@ export default class GridExample extends Component {
       registered: '200.5k',
     };
 
-    const bodyData = [];
+    const bodyRows = [];
     for (let i = 0; i < 20; i++) {
-      bodyData.push(
-        Object.assign(bodyDataRow, {id: i})
+      bodyRows.push(
+        Object.assign(bodyRow, {id: i})
       );
     }
 
-    const data = {
-      header: {
-        name: 'Name',
-        status: 'Status',
-        fuel: 'Fuel',
-        passengers: 'Passangers',
-        cylinders: 'Cylinders',
-        fuelEconomy: 'Fuel Economy',
-        sold: '# Sold',
-        registered: 'Registered',
-      },
-      body: bodyData,
-      footer: {
-        name: null,
-        status: null,
-        fuel: null,
-        passengers: null,
-        cylinders: null,
-        fuelEconomy: null,
-        sold: '152.1m',
-        registered: 'Registered',
-      }
-    };
+    const headerCells = [
+      'Name',
+      'Status',
+      'Fuel',
+      'Passangers',
+      'Cylinders',
+      'Fuel Economy',
+      '# Sold',
+      'Registered',
+    ];
 
-    const renderer = {
-      header: [
-        (item) => { return item.name },
-        (item) => { return item.status },
-        (item) => { return item.fuel },
-        (item) => { return item.passengers },
-        (item) => { return item.cylinders },
-        (item) => { return item.fuelEconomy },
-        (item) => { return item.sold },
-        (item) => { return item.registered },
-      ],
-      body: [
-        // For now it is a copy-paste for all sections, but in future this can be used to wrap content into HTML
-        (item) => { return item.name },
-        (item) => { return item.status },
-        (item) => { return item.fuel },
-        (item) => { return item.passengers },
-        (item) => { return item.cylinders },
-        (item) => { return item.fuelEconomy },
-        (item) => { return item.sold },
-        (item) => { return item.registered },
-      ],
-      footer: [
-        (item) => { return item.name },
-        (item) => { return item.status },
-        (item) => { return item.fuel },
-        (item) => { return item.passengers },
-        (item) => { return item.cylinders },
-        (item) => { return item.fuelEconomy },
-        (item) => { return item.sold },
-        (item) => { return item.registered },
-      ]
-    };
+    const footerCells = [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      '152.1m',
+      'Registered',
+    ];
+
+    const bodyRenderer = [
+      (item) => { return item.name },
+      (item) => { return item.status },
+      (item) => { return item.fuel },
+      (item) => { return item.passengers },
+      (item) => { return item.cylinders },
+      (item) => { return item.fuelEconomy },
+      (item) => { return item.sold },
+      (item) => { return item.registered },
+    ];
 
     return (
       <Grid
@@ -102,8 +77,10 @@ export default class GridExample extends Component {
         classFooter="prefix-footer"
         classFooterRow="prefix-footerRow"
         classFooterCell="prefix-footerCell"
-        data={data}
-        renderer={renderer}
+        headerCells={headerCells}
+        bodyRows={bodyRows}
+        bodyRenderer={bodyRenderer}
+        footerCells={footerCells}
       />
     );
   }
