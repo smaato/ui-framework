@@ -7,34 +7,22 @@
     display: table-header-group;
   }
 
-    .dataTable__thead__row {
-      display: table-row;
-    }
-
-      .dataTable__thead__cell {
-        display: table-cell;
-      }
-
   .dataTable__tbody {
     display: table-row-group;
   }
-
-    .dataTable__tbody__row {
-      display: table-row;
-    }
-
-      .dataTable__tbody__cell {
-        display: table-cell;
-      }
 
   .dataTable__tfoot {
     display: table-footer-group;
   }
 
+    .dataTable__thead__row,
+    .dataTable__tbody__row,
     .dataTable__tfoot__row {
       display: table-row;
     }
 
+      .dataTable__thead__cell,
+      .dataTable__tbody__cell,
       .dataTable__tfoot__cell {
         display: table-cell;
       }
