@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 // This was initially known as React.addons.classSet, but eventually became separate npm module
 // More on https://facebook.github.io/react/docs/class-name-manipulation.html
-import classnames from 'classnames';
+import classNames from 'classnames';
 import GridHeader from './sections/GridHeader.jsx';
 import GridBody from './sections/GridBody.jsx';
 import GridFooter from './sections/GridFooter.jsx';
@@ -20,8 +20,8 @@ export default class Grid extends Component {
     let classes = this.props.classes || {};
 
     return (
-      <div className={classnames('dataTable__container', classes.container)}>
-        <div className={classnames('dataTable__table', classes.table)}>
+      <div className={classNames('dataTable__container', classes.container)}>
+        <div className={classNames('dataTable__table', classes.table)}>
           <GridHeader
             classes={classes}
             rows={

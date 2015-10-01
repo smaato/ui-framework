@@ -3,7 +3,7 @@ import React, {
   Component,
   PropTypes
 } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 
 export default class GridCell extends Component {
 
@@ -17,15 +17,15 @@ export default class GridCell extends Component {
 
     switch (this.props.section) {
       case 'header':
-        cellClass = classnames('dataTable__thead__cell', this.props.classes.headerCell);
+        cellClass = classNames('dataTable__thead__cell', this.props.classes.headerCell);
         insideClass = 'dataTable__thead__cellLiner';
         break;
       case 'body':
-        cellClass = classnames('dataTable__tbody__cell', this.props.classes.bodyCell);
+        cellClass = classNames('dataTable__tbody__cell', this.props.classes.bodyCell);
         insideClass = 'dataTable__tbody__cellLiner';
         break;
       case 'footer':
-        cellClass = classnames('dataTable__tfoot__cell', this.props.classes.footerCell);
+        cellClass = classNames('dataTable__tfoot__cell', this.props.classes.footerCell);
         insideClass = 'dataTable__tfoot__cellLiner';
         break;
     }

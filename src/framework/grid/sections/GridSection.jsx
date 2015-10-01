@@ -3,7 +3,7 @@ import React, {
   Component,
   PropTypes
 } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import GridRow from './../GridRow.jsx';
 
 export default class GridSection extends Component {
@@ -26,13 +26,13 @@ export default class GridSection extends Component {
 
     switch (this.props.section) {
       case 'header':
-        sectionClass = classnames('dataTable__thead', this.props.classes.header);
+        sectionClass = classNames('dataTable__thead', this.props.classes.header);
         break;
       case 'body':
-        sectionClass = classnames('dataTable__tbody', this.props.classes.body);
+        sectionClass = classNames('dataTable__tbody', this.props.classes.body);
         break;
       case 'footer':
-        sectionClass = classnames('dataTable__tfoot', this.props.classes.footer);
+        sectionClass = classNames('dataTable__tfoot', this.props.classes.footer);
         break;
     }
 

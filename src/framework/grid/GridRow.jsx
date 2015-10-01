@@ -3,7 +3,7 @@ import React, {
   Component,
   PropTypes
 } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import GridCell from './GridCell.jsx';
 
 export default class GridRow extends Component {
@@ -17,13 +17,13 @@ export default class GridRow extends Component {
 
     switch (this.props.section) {
       case 'header':
-        rowClass = classnames('dataTable__thead__row', this.props.classes.headerRow);
+        rowClass = classNames('dataTable__thead__row', this.props.classes.headerRow);
         break;
       case 'body':
-        rowClass = classnames('dataTable__tbody__row', this.props.classes.bodyRow);
+        rowClass = classNames('dataTable__tbody__row', this.props.classes.bodyRow);
         break;
       case 'footer':
-        rowClass = classnames('dataTable__tfoot__row', this.props.classes.footerRow);
+        rowClass = classNames('dataTable__tfoot__row', this.props.classes.footerRow);
         break;
     }
 
