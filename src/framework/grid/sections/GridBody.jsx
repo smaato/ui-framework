@@ -3,7 +3,8 @@ import React, {
   Component,
   PropTypes
 } from 'react';
-import GridSection from './GridSection.jsx';
+import classNames from 'classnames';
+import GridBodyRow from '../rows/GridBodyRow.jsx';
 
 export default class GridBody extends Component {
 
@@ -12,12 +13,20 @@ export default class GridBody extends Component {
   }
 
   render() {
-    return (
-      <GridSection
-        section="body"
+    const sectionClass = classNames('dataTable__tbody', this.props.classes.body);
+
+    const rows = this.props.rows.map((row, index) => {
+      return <GridBodyRow
         classes={this.props.classes}
-        rows={this.props.rows}
-      />
+        cells={row}
+        key={index}
+      />;
+    });
+
+    return (
+      <div className={sectionClass}>
+        {rows}
+      </div>
     );
   }
 

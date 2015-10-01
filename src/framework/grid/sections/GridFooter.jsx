@@ -3,7 +3,8 @@ import React, {
   Component,
   PropTypes
 } from 'react';
-import GridSection from './GridSection.jsx';
+import classNames from 'classnames';
+import GridFooterRow from '../rows/GridFooterRow.jsx';
 
 export default class GridFooter extends Component {
 
@@ -12,12 +13,20 @@ export default class GridFooter extends Component {
   }
 
   render() {
-    return (
-      <GridSection
-        section="footer"
+    const sectionClass = classNames('dataTable__tfoot', this.props.classes.footer);
+
+    const rows = this.props.rows.map((row, index) => {
+      return <GridFooterRow
         classes={this.props.classes}
-        rows={this.props.rows}
-      />
+        cells={row}
+        key={index}
+      />;
+    });
+
+    return (
+      <div className={sectionClass}>
+        {rows}
+      </div>
     );
   }
 

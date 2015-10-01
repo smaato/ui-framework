@@ -17,7 +17,7 @@ export default class Grid extends Component {
   }
 
   render() {
-    let classes = this.props.classes || {};
+    const classes = this.props.classes || {};
 
     return (
       <div className={classNames('dataTable__container', classes.container)}>
