@@ -12,7 +12,7 @@ export default class GridExample extends Component {
 
   render() {
 
-    var bodyDataRow = {
+    const bodyDataRow = {
       id: 1,
       name: 'Ford F150',
       status: 'In Production',
@@ -24,7 +24,14 @@ export default class GridExample extends Component {
       registered: '200.5k',
     };
 
-    var data = {
+    const bodyData = [];
+    for (let i = 0; i < 20; i++) {
+      bodyData.push(
+        Object.assign(bodyDataRow, {id: i})
+      );
+    }
+
+    const data = {
       header: {
         name: 'Name',
         status: 'Status',
@@ -35,12 +42,7 @@ export default class GridExample extends Component {
         sold: '# Sold',
         registered: 'Registered',
       },
-      body: [
-        bodyDataRow, bodyDataRow, bodyDataRow, bodyDataRow, bodyDataRow,
-        bodyDataRow, bodyDataRow, bodyDataRow, bodyDataRow, bodyDataRow,
-        bodyDataRow, bodyDataRow, bodyDataRow, bodyDataRow, bodyDataRow,
-        bodyDataRow, bodyDataRow, bodyDataRow, bodyDataRow, bodyDataRow
-      ],
+      body: bodyData,
       footer: {
         name: null,
         status: null,
@@ -53,7 +55,7 @@ export default class GridExample extends Component {
       }
     };
 
-    var renderer = {
+    const renderer = {
       header: [
         (item) => { return item.name },
         (item) => { return item.status },
