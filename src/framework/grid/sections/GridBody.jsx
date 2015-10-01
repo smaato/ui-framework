@@ -20,7 +20,7 @@ export default class GridBody extends Component {
         classBodyRow={this.props.classBodyRow}
         classBodyCell={this.props.classBodyCell}
         cells={row}
-        key={row.id}
+        key={index}
       />;
     });
 
