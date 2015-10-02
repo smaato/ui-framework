@@ -1,0 +1,18 @@
+
+extends ../../_partials/_componentLayout
+
+block title
+  title Grid
+
+block content
+
+  .exampleContainer.exampleContainer--clear
+    #grid
+
+block component
+  div.
+    <script type="text/jsx">
+      window.renderComponent('grid', (
+        <GridExample />
+      ));
+    </script>

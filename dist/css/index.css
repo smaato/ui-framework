@@ -3508,6 +3508,34 @@ body {
   top: 1px;
 }
 
+.dataTable__table {
+  display: table;
+}
+
+.dataTable__thead {
+  display: table-header-group;
+}
+
+.dataTable__tbody {
+  display: table-row-group;
+}
+
+.dataTable__tfoot {
+  display: table-footer-group;
+}
+
+.dataTable__thead__row,
+.dataTable__tbody__row,
+.dataTable__tfoot__row {
+  display: table-row;
+}
+
+.dataTable__thead__cell,
+.dataTable__tbody__cell,
+.dataTable__tfoot__cell {
+  display: table-cell;
+}
+
 .examplesHome {
   font-size: 24px;
   line-height: 36px;
@@ -3615,6 +3643,17 @@ body {
 
 .exampleContainer--clear {
   background: transparent;
+}
+
+.gridExample__container {
+  box-shadow: none;
+  border: 1px solid #d4dadc;
+}
+
+.gridExample__headerCell,
+.gridExample__bodyCell,
+.gridExample__footerCell {
+  padding: 10px;
 }
 
 @media (max-width: 1320px){
