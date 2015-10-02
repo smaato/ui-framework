@@ -3645,6 +3645,17 @@ body {
   background: transparent;
 }
 
+.gridExample__container {
+  box-shadow: none;
+  border: 1px solid #d4dadc;
+}
+
+.gridExample__headerCell,
+.gridExample__bodyCell,
+.gridExample__footerCell {
+  padding: 10px;
+}
+
 @media (max-width: 1320px){
   .mainNavBar__liner{
     padding: 0 8px 0 15px;

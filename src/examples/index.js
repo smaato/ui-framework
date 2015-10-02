@@ -8,7 +8,7 @@ for (let key in framework) {
   window[key] = component;
 }
 
-import GridExample from './components/GridExample.jsx';
+import GridExample from './components/Grid/GridExample.jsx';
 window.GridExample = GridExample;
 
 // Support inline JSX in our examples.

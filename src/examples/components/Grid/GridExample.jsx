@@ -66,17 +66,17 @@ export default class GridExample extends Component {
 
     return (
       <Grid
-        classContainer="prefix-container"
-        classTable="prefix-table"
-        classHeader="prefix-header"
-        classHeaderRow="prefix-headerRow"
-        classHeaderCell="prefix-headerCell"
-        classBody="prefix-body"
-        classBodyRow="prefix-bodyRow"
-        classBodyCell="prefix-bodyCell"
-        classFooter="prefix-footer"
-        classFooterRow="prefix-footerRow"
-        classFooterCell="prefix-footerCell"
+        classContainer="gridExample__container"
+        classTable="gridExample__table"
+        classHeader="gridExample__header"
+        classHeaderRow="gridExample__headerRow"
+        classHeaderCell="gridExample__headerCell"
+        classBody="gridExample__body"
+        classBodyRow="gridExample__bodyRow"
+        classBodyCell="gridExample__bodyCell"
+        classFooter="gridExample__footer"
+        classFooterRow="gridExample__footerRow"
+        classFooterCell="gridExample__footerCell"
         headerCells={headerCells}
         bodyRows={bodyRows}
         bodyRenderer={bodyRenderer}
