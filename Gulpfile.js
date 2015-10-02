@@ -251,17 +251,17 @@ gulp.task('production', function(callback) {
 });
 
 /**
- * @description Deployment Task, example: "gulp deploy --accessKeyId=XXX --bucket=XXX --secretAccessKey=XXX"
+ * @description Deployment Task, see README for instructions
  */
 
 gulp.task('deploy', ['production'], function() {
-  var options = minimist(process.argv.slice(2));
+  var cl_args = minimist(process.argv.slice(2));
   var publisher = awspublish.create({
-    accessKeyId: options.accessKeyId,
+    accessKeyId: cl_args.accessKeyId || process.env.AWS_ACCESS_KEY_ID,
     params: {
-      Bucket: options.bucket
+      Bucket: cl_args.bucket || process.env.AWS_BUCKET_UI_FRAMEWORK
     },
-    secretAccessKey: options.secretAccessKey
+    secretAccessKey: cl_args.secretAccessKey || process.env.AWS_SECRET_ACCESS_KEY
   });
   return gulp.src('./dist/**/*.*')
     .pipe(publisher.publish())
