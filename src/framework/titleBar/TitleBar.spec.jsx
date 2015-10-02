@@ -11,8 +11,7 @@ function renderShallowComponent(component) {
 }
 
 describe('TextInput', () => {
-
-  function makeShallow(isValid) {
+  function makeShallow() {
     return renderShallowComponent(
       <TitleBar
       />
@@ -20,17 +19,14 @@ describe('TextInput', () => {
   }
 
   describe('Structure', () => {
-
     let titleBar;
 
-    beforeEach(function() {
+    beforeEach(() => {
       titleBar = makeShallow(false);
     });
 
-    it('is a div', function() {
+    it('is a div', () => {
       expect(titleBar.type).toEqual('div');
     });
-
   });
-
 });

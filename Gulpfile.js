@@ -36,42 +36,12 @@ var del = require('del'),
 
 gulp.task('lint', function() {
   return gulp.src([
-    './framework/**/*.jsx',
-    './framework/**/*.js'
+    './src/examples/**/*.jsx',
+    './src/examples/**/*.js',
+    './src/framework/**/*.jsx',
+    './src/framework/**/*.js'
   ])
-  .pipe(eslint({
-    baseConfig: {
-      ecmaFeatures: {
-        arrowFunctions: true,
-        blockBindings: true,
-        classes: true,
-        defaultParams: true,
-        destructuring: true,
-        forOf: false,
-        generators: false,
-        modules: true,
-        objectLiteralComputedProperties: true,
-        objectLiteralDuplicateProperties: false,
-        objectLiteralShorthandMethods: true,
-        objectLiteralShorthandProperties: true,
-        spread: true,
-        superInFunctions: true,
-        templateStrings: true,
-        jsx: true
-      }
-    },
-    env: {
-      browser: true,
-      node: true,
-      es6: true
-    },
-    rules: {
-      quotes: [2, 'single'],
-      strict: [2, 'never'],
-      'no-var': 1
-    },
-    useEslintrc: false
-  }))
+  .pipe(eslint())
   .pipe(eslint.format())
 });
 

@@ -1,7 +1,7 @@
 
 import React, {
   Component,
-  PropTypes
+  PropTypes,
 } from 'react';
 import classNames from 'classnames';
 import GridHeaderCell from './../cells/GridHeaderCell.jsx';
@@ -16,11 +16,13 @@ export default class GridHeaderRow extends Component {
     const rowClass = classNames('dataTable__thead__row', this.props.classHeaderRow);
 
     const content = this.props.cells.map((cell, index) => {
-      return <GridHeaderCell
-        classHeaderCell={this.props.classHeaderCell}
-        content={cell}
-        key={index}
-      />;
+      return (
+        <GridHeaderCell
+          classHeaderCell={this.props.classHeaderCell}
+          content={cell}
+          key={index}
+        />
+      );
     });
 
     return (

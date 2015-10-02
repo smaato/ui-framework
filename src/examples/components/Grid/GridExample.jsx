@@ -1,8 +1,8 @@
 
 import React, {
   Component,
-  PropTypes
 } from 'react';
+import Grid from '../../../framework/grid/Grid.jsx';
 
 export default class GridExample extends Component {
 
@@ -11,7 +11,6 @@ export default class GridExample extends Component {
   }
 
   render() {
-
     const bodyRow = {
       id: null,
       name: 'Ford F150',
@@ -54,14 +53,14 @@ export default class GridExample extends Component {
     ];
 
     const bodyRenderer = [
-      (item) => { return item.name },
-      (item) => { return item.status },
-      (item) => { return item.fuel },
-      (item) => { return item.passengers },
-      (item) => { return item.cylinders },
-      (item) => { return item.fuelEconomy },
-      (item) => { return item.sold },
-      (item) => { return item.registered },
+      (item) => { return item.name; },
+      (item) => { return item.status; },
+      (item) => { return item.fuel; },
+      (item) => { return item.passengers; },
+      (item) => { return item.cylinders; },
+      (item) => { return item.fuelEconomy; },
+      (item) => { return item.sold; },
+      (item) => { return item.registered; },
     ];
 
     return (

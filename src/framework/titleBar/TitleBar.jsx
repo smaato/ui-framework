@@ -1,7 +1,7 @@
 
 import React, {
   Component,
-  PropTypes
+  PropTypes,
 } from 'react';
 
 export default class TitleBar extends Component {
@@ -11,15 +11,15 @@ export default class TitleBar extends Component {
   }
 
   render() {
-    let buttons = this.props.buttons.map((button) => {
+    const buttons = this.props.buttons.map((button) => {
       return button;
     });
     return (
-      <div className='titleBar'>
-        <label className='titleBar__title'>
+      <div className="titleBar">
+        <label className="titleBar__title">
           {this.props.label}
         </label>
-        <div className='titleBar__buttonContainer'>
+        <div className="titleBar__buttonContainer">
           {buttons}
         </div>
       </div>
@@ -30,5 +30,5 @@ export default class TitleBar extends Component {
 
 TitleBar.propTypes = {
   label: PropTypes.string,
-  buttons: PropTypes.array
+  buttons: PropTypes.array,
 };

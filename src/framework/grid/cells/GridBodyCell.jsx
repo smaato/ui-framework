@@ -1,7 +1,7 @@
 
 import React, {
   Component,
-  PropTypes
+  PropTypes,
 } from 'react';
 import classNames from 'classnames';
 
@@ -24,6 +24,6 @@ export default class GridBodyCell extends Component {
 }
 
 GridBodyCell.propTypes = {
-  classBodyCell: React.PropTypes.string,
-  content: React.PropTypes.string,
+  classBodyCell: PropTypes.string,
+  content: PropTypes.string,
 };

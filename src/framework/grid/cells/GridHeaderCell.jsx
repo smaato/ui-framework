@@ -1,7 +1,7 @@
 
 import React, {
   Component,
-  PropTypes
+  PropTypes,
 } from 'react';
 import classNames from 'classnames';
 
@@ -25,5 +25,5 @@ export default class GridHeaderCell extends Component {
 
 GridHeaderCell.propTypes = {
   classHeaderCell: PropTypes.string,
-  content: React.PropTypes.string,
+  content: PropTypes.string,
 };

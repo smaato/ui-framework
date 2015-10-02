@@ -1,7 +1,7 @@
 
 import React, {
   Component,
-  PropTypes
+  PropTypes,
 } from 'react';
 import classNames from 'classnames';
 import GridBodyCell from './../cells/GridBodyCell.jsx';
@@ -16,11 +16,13 @@ export default class GridBodyRow extends Component {
     const rowClass = classNames('dataTable__tbody__row', this.props.classBodyRow);
 
     const content = this.props.cells.map((cell, index) => {
-      return <GridBodyCell
-        classBodyCell={this.props.classBodyCell}
-        content={cell}
-        key={index}
-      />;
+      return (
+        <GridBodyCell
+          classBodyCell={this.props.classBodyCell}
+          content={cell}
+          key={index}
+        />
+      );
     });
 
     return (
