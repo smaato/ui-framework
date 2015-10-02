@@ -7,14 +7,11 @@
  * - jade render => html
  */
 
-var fs = require('fs'),
-  del = require('del'),
+var del = require('del'),
   gulp = require('gulp'),
   jade = require('gulp-jade'),
   compass = require('gulp-compass'),
-  react = require('gulp-react'),
   through2 = require('through2'),
-  reactify = require('reactify'),
   babelify = require('babelify'),
   cssmin = require('gulp-cssmin'),
   rename = require('gulp-rename'),
@@ -71,7 +68,6 @@ gulp.task('lint', function() {
       es6: true
     },
     rules: {
-      strict: 0,
       quotes: [2, 'single'],
       strict: [2, 'never'],
       'no-var': 1
@@ -161,7 +157,7 @@ gulp.task('clean:init', function(callback) {
 gulp.task('copy', function() {
   gulp.src('./src/assets/**')
   .pipe(gulp.dest('./dist/assets'));
-})
+});
 
 gulp.task('replace', function() {
   return gulp.src(['./dist/index.html'])
