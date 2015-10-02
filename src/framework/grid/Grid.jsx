@@ -1,7 +1,7 @@
 
 import React, {
   Component,
-  PropTypes
+  PropTypes,
 } from 'react';
 // This was initially known as React.addons.classSet, but eventually became separate npm module
 // More on https://facebook.github.io/react/docs/class-name-manipulation.html

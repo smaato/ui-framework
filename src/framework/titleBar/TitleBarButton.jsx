@@ -1,7 +1,7 @@
 
 import React, {
   Component,
-  PropTypes
+  PropTypes,
 } from 'react';
 
 export default class TitleBarButton extends Component {
@@ -17,10 +17,10 @@ export default class TitleBarButton extends Component {
     // further control over the appearance of the button.
     return (
         <a
-          className='titleBarButton button button--primary'
-          href='#'
+          className="titleBarButton button button--primary"
+          href="#"
         >
-          <span className='titleBarButton__icon glyphicons-plus'>
+          <span className="titleBarButton__icon glyphicons-plus">
           </span>
           {this.props.label}
         </a>
@@ -30,5 +30,5 @@ export default class TitleBarButton extends Component {
 }
 
 TitleBarButton.propTypes = {
-  label: PropTypes.string
+  label: PropTypes.string,
 };

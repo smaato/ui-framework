@@ -1,7 +1,7 @@
 
 import React, {
   Component,
-  PropTypes
+  PropTypes,
 } from 'react';
 import classNames from 'classnames';
 import GridFooterRow from '../rows/GridFooterRow.jsx';

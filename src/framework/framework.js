@@ -8,5 +8,5 @@ import TitleBarButton from './titleBar/TitleBarButton.jsx';
 export default {
   Grid: Grid,
   TitleBar: TitleBar,
-  TitleBarButton: TitleBarButton
+  TitleBarButton: TitleBarButton,
 };

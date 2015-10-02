@@ -3,10 +3,10 @@
 import framework from '../framework/index.js';
 
 // Expose all framework components to the JSX in our examples.
-for (let key in framework) {
+Object.keys(framework).forEach((key) => {
   const component = framework[key];
   window[key] = component;
-}
+});
 
 import GridExample from './components/Grid/GridExample.jsx';
 window.GridExample = GridExample;
@@ -14,4 +14,4 @@ window.GridExample = GridExample;
 // Support inline JSX in our examples.
 import React from 'react';
 window.React = React;
-import jsxTransformer from '../../vendor/JSXTransformer.min.js';
+import '../../vendor/JSXTransformer.min.js';
