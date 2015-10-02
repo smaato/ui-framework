@@ -35,7 +35,7 @@ export default class GridExample extends Component {
       'Name',
       'Status',
       'Fuel',
-      'Passangers',
+      'Passengers',
       'Cylinders',
       'Fuel Economy',
       '# Sold',
