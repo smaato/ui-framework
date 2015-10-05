@@ -251,13 +251,13 @@ gulp.task('production', function(callback) {
  */
 
 gulp.task('deploy', ['production'], function() {
-  var cl_args = minimist(process.argv.slice(2));
+  var commandLineArguments = minimist(process.argv.slice(2));
   var publisher = awspublish.create({
-    accessKeyId: cl_args.accessKeyId || process.env.AWS_ACCESS_KEY_ID,
+    accessKeyId: commandLineArguments.accessKeyId || process.env.AWS_ACCESS_KEY_ID,
     params: {
-      Bucket: cl_args.bucket || process.env.AWS_BUCKET_UI_FRAMEWORK
+      Bucket: commandLineArguments.bucket || process.env.AWS_BUCKET_BUYER_TOOLS
     },
-    secretAccessKey: cl_args.secretAccessKey || process.env.AWS_SECRET_ACCESS_KEY
+    secretAccessKey: commandLineArguments.secretAccessKey || process.env.AWS_SECRET_ACCESS_KEY
   });
   return gulp.src('./dist/**/*.*')
     .pipe(publisher.publish())
