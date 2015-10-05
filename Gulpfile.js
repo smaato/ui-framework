@@ -28,7 +28,9 @@ var del = require('del'),
   source = require('vinyl-source-stream'),
   sourcemaps = require('gulp-sourcemaps'),
   KarmaServer = require('karma').Server,
-  path = require('path');
+  path = require('path'),
+  awspublish = require('gulp-awspublish'),
+  minimist = require('minimist');
 
 /**
  * @description Default Tasks
@@ -212,6 +214,25 @@ gulp.task('production', function(callback) {
     'replace',
     callback
   );
+});
+
+/**
+ * @description Deployment Task, see README for instructions
+ */
+
+gulp.task('deploy', ['production'], function() {
+  var commandLineArguments = minimist(process.argv.slice(2));
+  var publisher = awspublish.create({
+    accessKeyId: commandLineArguments.accessKeyId || process.env.AWS_ACCESS_KEY_ID,
+    params: {
+      Bucket: commandLineArguments.bucket || process.env.AWS_BUCKET_BUYER_TOOLS
+    },
+    secretAccessKey: commandLineArguments.secretAccessKey || process.env.AWS_SECRET_ACCESS_KEY
+  });
+  return gulp.src('./dist/**/*.*')
+    .pipe(publisher.publish())
+    .pipe(publisher.sync())
+    .pipe(awspublish.reporter());
 });
 
 /**
