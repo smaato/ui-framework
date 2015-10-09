@@ -25,5 +25,9 @@ export default class GridBodyCell extends Component {
 
 GridBodyCell.propTypes = {
   classBodyCell: PropTypes.string,
-  content: PropTypes.string,
+  content: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.element,
+  ]),
 };

@@ -25,5 +25,9 @@ export default class GridHeaderCell extends Component {
 
 GridHeaderCell.propTypes = {
   classHeaderCell: PropTypes.string,
-  content: PropTypes.string,
+  content: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.element,
+  ]),
 };

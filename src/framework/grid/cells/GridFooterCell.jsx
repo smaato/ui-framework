@@ -25,5 +25,9 @@ export default class GridFooterCell extends Component {
 
 GridFooterCell.propTypes = {
   classFooterCell: PropTypes.string,
-  content: PropTypes.string,
+  content: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.element,
+  ]),
 };
