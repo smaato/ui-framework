@@ -3,7 +3,7 @@ import React, {
   Component,
 } from 'react';
 import Grid from '../../../framework/grid/Grid.jsx';
-import CheckBox from '../../../framework/CheckBox/CheckBox.jsx';
+import CheckBox from '../../../framework/checkBox/CheckBox.jsx';
 
 export default class GridExample extends Component {
 

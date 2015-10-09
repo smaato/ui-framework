@@ -18,8 +18,16 @@ export default class CheckBox extends Component {
 
     return (
       <span className={classWrapper}>
-        <input type="checkbox" name={this.props.id} id={this.props.id} className={classInput}/>
-        <label htmlFor={this.props.id} className={classLabel}></label>
+        <input
+          type="checkbox"
+          name={this.props.id}
+          id={this.props.id}
+          className={classInput}
+        />
+        <label
+          htmlFor={this.props.id}
+          className={classLabel}
+        />
       </span>
     );
   }
@@ -33,5 +41,5 @@ CheckBox.propTypes = {
   id: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
-  ]),
+  ]).isRequired,
 };
