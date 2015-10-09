@@ -1,4 +1,9 @@
 
+/* TODO: The same core classes are used for the Caleb's table and Grid component.
+The problem is that html structure of the Grid starts to diverge, so it gets harder to have the same classes.
+Here are some overrides, that correct styling for different DOM on example page.
+One solution would be to make a copy of Caleb's styles, rename, apply to grid and work further on those. */
+
 .gridExample__container {
   box-shadow: none;
   border: 1px solid $componentStrokeColor;
@@ -8,4 +13,8 @@
 .gridExample__bodyCell,
 .gridExample__footerCell {
   padding: 10px;
+}
+
+.checkBoxExample__wrapper {
+  padding: 0 !important;
 }
