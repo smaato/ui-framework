@@ -32,6 +32,6 @@ CheckBox.propTypes = {
   classLabel: PropTypes.string,
   id: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.number
-  ])
+    PropTypes.number,
+  ]),
 };
