@@ -3,6 +3,7 @@ import React, {
   Component,
 } from 'react';
 import Grid from '../../../framework/grid/Grid.jsx';
+import CheckBox from '../../../framework/CheckBox/CheckBox.jsx';
 
 export default class GridExample extends Component {
 
@@ -26,11 +27,17 @@ export default class GridExample extends Component {
     const bodyRows = [];
     for (let i = 0; i < 20; i++) {
       bodyRows.push(
-        Object.assign(bodyRow, {id: i})
+        Object.assign({}, bodyRow, {id: i})
       );
     }
 
     const headerCells = [
+      <CheckBox
+        id="select-all"
+        classWrapper="prefix-checkbox-wrapper"
+        classInput="prefix-checkbox-input"
+        classLabel="prefix-checkbox-label"
+      />,
       'Name',
       'Status',
       'Fuel',
@@ -48,11 +55,17 @@ export default class GridExample extends Component {
       null,
       null,
       null,
+      null,
       '152.1m',
       'Registered',
     ];
 
     const bodyRenderer = [
+      (item) => {
+        return (
+          <CheckBox id={item.id} />
+        );
+      },
       (item) => { return item.name; },
       (item) => { return item.status; },
       (item) => { return item.fuel; },
