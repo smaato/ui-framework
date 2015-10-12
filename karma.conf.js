@@ -18,6 +18,8 @@ module.exports = function(config) {
       'src/framework/**/*.js'
     ],
     exclude: [
+      // If this is not excluded it will complain that that babel-core is already included
+      'src/framework/index.js'
     ],
     browsers: ['PhantomJS'],
     // The reporters with which to surface test results.
