@@ -1,9 +1,5 @@
 .dataTable__container {
-  border-top: 1px solid $componentStrokeColor;
-  box-shadow:
-    -1px 0 0 $componentStrokeColor, 
-    1px 0 0 $componentStrokeColor
-  ;
+  border: 1px solid $componentStrokeColor;
   -webkit-font-smoothing: subpixel-antialiased;
   max-width: $maxWidth;
   margin: 0 auto;
@@ -21,3 +17,4 @@
 
     @import 'thead';
     @import 'tbody';
+    @import 'tfood';

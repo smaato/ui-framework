@@ -16,7 +16,9 @@ export default class GridFooterCell extends Component {
 
     return (
       <div className={cellClass}>
-        {this.props.content}
+        <div className="dataTable__tfoot__cellLiner">
+          {this.props.content}
+        </div>
       </div>
     );
   }
