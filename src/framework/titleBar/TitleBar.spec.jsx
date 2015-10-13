@@ -1,8 +1,7 @@
 
-import React from 'react/addons';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 import TitleBar from './TitleBar.jsx';
-
-const TestUtils = React.addons.TestUtils;
 
 function renderShallowComponent(component) {
   const renderer = TestUtils.createRenderer();

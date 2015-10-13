@@ -1,5 +1,4 @@
 
-import React from 'react/addons';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import Sizzle from 'sizzle';
@@ -9,11 +8,11 @@ const createComponent = function createComponent(reactComponent) {
   return component;
 };
 
-export class TestCase {
+export default class TestCase {
 
   constructor(reactComponent) {
     this.component = createComponent(reactComponent);
-    this.dom = React.findDOMNode(this.component);
+    this.dom = ReactDOM.findDOMNode(this.component);
   }
 
   click(node = this.dom) {
@@ -34,9 +33,3 @@ export class TestCase {
   }
 
 }
-
-export default {
-  createComponent: createComponent,
-  simulate: TestUtils.Simulate,
-  getDom: ReactDOM.findDOMNode,
-};
