@@ -51,6 +51,7 @@
     "minimist": "^1.2.0",
     "reactify": "1.1.1",
     "run-sequence": "1.1.2",
+    "sizzle": "2.2.0",
     "through2": "2.0.0",
     "vinyl-buffer": "1.0.0",
     "vinyl-source-stream": "1.1.0"

@@ -16,7 +16,9 @@ export default class GridBodyCell extends Component {
 
     return (
       <div className={cellClass}>
-        {this.props.content}
+        <div className="dataTable__tbody__cellLiner">
+          {this.props.content}
+        </div>
       </div>
     );
   }
@@ -25,5 +27,9 @@ export default class GridBodyCell extends Component {
 
 GridBodyCell.propTypes = {
   classBodyCell: PropTypes.string,
-  content: PropTypes.string,
+  content: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.element,
+  ]),
 };

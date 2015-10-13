@@ -16,7 +16,9 @@ export default class GridHeaderCell extends Component {
 
     return (
       <div className={cellClass}>
-        {this.props.content}
+        <div className="dataTable__thead__cellLiner">
+          {this.props.content}
+        </div>
       </div>
     );
   }
@@ -25,5 +27,9 @@ export default class GridHeaderCell extends Component {
 
 GridHeaderCell.propTypes = {
   classHeaderCell: PropTypes.string,
-  content: PropTypes.string,
+  content: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.element,
+  ]),
 };
