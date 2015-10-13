@@ -1,6 +1,6 @@
 
-import React from 'react/addons';
-import { TestCase } from '../../test/TestUtils.js';
+import React from 'react';
+import TestCase from '../../test/TestCase.js';
 import CheckBox from './CheckBox.jsx';
 
 describe('CheckBox', () => {
