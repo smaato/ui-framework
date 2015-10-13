@@ -1,11 +1,11 @@
 
 import React from 'react/addons';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
 import Sizzle from 'sizzle';
 
-const ReactTestUtils = React.addons.TestUtils;
-
 const createComponent = function createComponent(reactComponent) {
-  const component = ReactTestUtils.renderIntoDocument(reactComponent);
+  const component = TestUtils.renderIntoDocument(reactComponent);
   return component;
 };
 
@@ -17,7 +17,7 @@ export class TestCase {
   }
 
   click(node = this.dom) {
-    ReactTestUtils.Simulate.click(node);
+    TestUtils.Simulate.click(node);
   }
 
   // Mimic $.find()
@@ -37,6 +37,6 @@ export class TestCase {
 
 export default {
   createComponent: createComponent,
-  simulate: ReactTestUtils.Simulate,
-  getDom: React.findDOMNode,
+  simulate: TestUtils.Simulate,
+  getDom: ReactDOM.findDOMNode,
 };

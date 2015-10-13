@@ -14,4 +14,6 @@ window.GridExample = GridExample;
 // Support inline JSX in our examples.
 import React from 'react';
 window.React = React;
+import ReactDOM from 'react-dom';
+window.ReactDOM = ReactDOM;
 import '../../vendor/JSXTransformer.min.js';
