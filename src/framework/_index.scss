@@ -2,11 +2,13 @@
 // Libraries
 @import 'compass';
 
+// Global
+@import 'global/index';
+
 // Components
-@import 'global/base';
-@import 'forms/base';
-@import 'mainNav/base';
-@import 'secondaryNav/base';
+@import 'checkBox/index';
+@import 'dataTable/index';
+@import 'grid/index';
+@import 'mainNav/index';
+@import 'secondaryNav/index';
 @import 'titleBar/index';
-@import 'dataTable/base';
-@import 'grid/base';
