@@ -3,19 +3,17 @@
 }
 
   .dataTable__tbody__cell {
+    padding: 10px 8px;
     white-space: nowrap;
     border-bottom: 1px dashed $componentStrokeColor;
     font-weight: 300;
   }
   
     .dataTable__tbody__cell {
-      padding: 10px 8px;
       &:first-child {
-        width: 1%;
         padding-left: 15px;
       }
       &:last-child {
-        width: 1%;
         padding-right: 15px;
       }
     }

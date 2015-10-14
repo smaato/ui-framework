@@ -2993,11 +2993,6 @@ body {
   display: inline-block;
 }
 
-.dataTable__thead__cell:first-child,
-.dataTable__thead__cell:last-child {
-  width: 1%;
-}
-
 .dataTable__thead__cellLiner {
   display: block;
   z-index: 6;
@@ -3042,20 +3037,16 @@ body {
 }
 
 .dataTable__tbody__cell {
+  padding: 10px 8px;
   white-space: nowrap;
   border-bottom: 1px dashed #d4dadc;
   font-weight: 300;
 }
 
-.dataTable__tbody__cell {
-  padding: 10px 8px;
-}
 .dataTable__tbody__cell:first-child {
-  width: 1%;
   padding-left: 15px;
 }
 .dataTable__tbody__cell:last-child {
-  width: 1%;
   padding-right: 15px;
 }
 
@@ -3170,11 +3161,6 @@ body {
   line-height: 30px;
 }
 
-.dataTable__tfoot__cell:first-child,
-.dataTable__tfoot__cell:last-child {
-  width: 1%;
-}
-
 .dataTable__tfoot__cellLiner {
   padding: 0 8px;
   height: 31px;
@@ -3189,33 +3175,139 @@ body {
 }
 
 .dataTable__table {
-  display: table;
+  display: block;
 }
 
 .dataTable__thead {
-  display: table-header-group;
+  display: block;
 }
 
 .dataTable__tbody {
-  display: table-row-group;
+  display: block;
+  overflow-y: auto;
 }
 
 .dataTable__tfoot {
-  display: table-footer-group;
+  display: block;
 }
 
 .dataTable__thead__row,
 .dataTable__tbody__row,
 .dataTable__tfoot__row {
-  display: table-row;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.dataTable__tbody__row:nth-of-type(odd) {
+  background-color: #f9f9f9;
+  /* 1 */
+}
+.dataTable--reverseStriped .dataTable__tbody__row:nth-of-type(odd) {
+  background-color: transparent;
+  /* 1 */
+}
+.dataTable--reverseStriped .dataTable__tbody__row:nth-of-type(even) {
+  background-color: #f9f9f9;
+  /* 1 */
 }
 
 .dataTable__thead__cell,
 .dataTable__tbody__cell,
 .dataTable__tfoot__cell {
-  display: table-cell;
+  width: 100px;
+  box-sizing: border-box;
+}
+.dataTable__thead__cell:first-child,
+.dataTable__tbody__cell:first-child,
+.dataTable__tfoot__cell:first-child {
+  width: 35px;
+}
+.dataTable__thead__cell:last-child,
+.dataTable__tbody__cell:last-child,
+.dataTable__tfoot__cell:last-child {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
+.gridLoadingRow {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 200px;
+  border: 4px dashed rgba(255, 173, 0, 0.5);
+}
+
+/**
+ * Courtesy http://projects.lukehaas.me/css-loaders/
+ */
+.spinner {
+  display: inline-block;
+  font-size: 0.1em;
+  text-indent: -9999em;
+  width: 11em;
+  height: 11em;
+  border-radius: 50%;
+  background: #ffffff;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5) 10%, rgba(0, 0, 0, 0) 42%);
+  position: relative;
+  -webkit-animation: spin 1.4s infinite linear;
+          animation: spin 1.4s infinite linear;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+}
+.spinner:before {
+  width: 50%;
+  height: 50%;
+  background: transparent;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+}
+.spinner:after {
+  background: #fff;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  content: '';
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
 .mainNavBar {
   box-shadow: 0 42px 0 #2799c4;
   background: #354a53;

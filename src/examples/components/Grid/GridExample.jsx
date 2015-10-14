@@ -4,11 +4,21 @@ import React, {
 } from 'react';
 import Grid from '../../../framework/grid/Grid.jsx';
 import CheckBox from '../../../framework/checkBox/CheckBox.jsx';
+import GridLoadingRow from '../../../framework/grid/rows/GridLoadingRow.jsx';
 
 export default class GridExample extends Component {
 
   constructor(props) {
     super(props);
+  }
+
+  lazyLoadContacts() {
+    const data = {};
+    return new Promise((resolve) => {
+      window.setTimeout(() => {
+        resolve(data);
+      }, 2000);
+    });
   }
 
   render() {
@@ -25,7 +35,7 @@ export default class GridExample extends Component {
     };
 
     const bodyRows = [];
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 500; i++) {
       bodyRows.push(
         Object.assign({}, bodyRow, {id: i})
       );
@@ -38,6 +48,7 @@ export default class GridExample extends Component {
         classInput="checkBoxExample__input"
         classLabel="checkBoxExample__label"
       />,
+      'Id',
       'Name',
       'Status',
       'Fuel',
@@ -56,6 +67,7 @@ export default class GridExample extends Component {
       null,
       null,
       null,
+      null,
       '152.1m',
       'Registered',
     ];
@@ -66,7 +78,8 @@ export default class GridExample extends Component {
           <CheckBox id={item.id} />
         );
       },
-      (item) => { return item.name; },
+      (item) => { return item.id},
+      (item) => { return item.name},
       (item) => { return item.status; },
       (item) => { return item.fuel; },
       (item) => { return item.passengers; },
@@ -75,6 +88,9 @@ export default class GridExample extends Component {
       (item) => { return item.sold; },
       (item) => { return item.registered; },
     ];
+
+    const ROW_HEIGHT = 39;
+    const BODY_HEIGHT = 500;
 
     return (
       <Grid
@@ -93,6 +109,15 @@ export default class GridExample extends Component {
         bodyRows={bodyRows}
         bodyRenderer={bodyRenderer}
         footerCells={footerCells}
+        // Scroll
+        rowHeight={ROW_HEIGHT}
+        bodyHeight={BODY_HEIGHT}
+        overflowRecycledRowsCount={20}
+        reverseZebraStripeClass="dataTable--reverseStriped"
+        lazyLoadRows={this.lazyLoadContacts.bind(this)}
+        loadingRow={(
+          <GridLoadingRow />
+        )}
       />
     );
   }
