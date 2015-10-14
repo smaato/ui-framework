@@ -6,41 +6,53 @@ import Grid from '../../../framework/grid/Grid.jsx';
 import CheckBox from '../../../framework/checkBox/CheckBox.jsx';
 import GridLoadingRow from '../../../framework/grid/rows/GridLoadingRow.jsx';
 
+function generateRows(prevArray, numberOfItemsToGenerate) {
+  const newArray = prevArray.slice(0);
+  const bodyRow = {
+    id: null,
+    name: 'Ford F150',
+    status: 'In Production',
+    fuel: 'Diesel, Unleaded',
+    passengers: '3, 5, 6',
+    cylinders: '6, 8',
+    fuelEconomy: '25mpg',
+    sold: '202.1k',
+    registered: '200.5k',
+  };
+  const indexStart = prevArray.length;
+  let indexEnd = prevArray.length + numberOfItemsToGenerate;
+  const indexMax = 200;
+  indexEnd = indexEnd > indexMax ? indexMax : indexEnd;
+  for (let i = indexStart; i < indexEnd; i++) {
+    newArray.push(
+      Object.assign({}, bodyRow, {id: i})
+    );
+  }
+  return newArray;
+}
+
 export default class GridExample extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      bodyRows: generateRows([], 30),
+    };
   }
 
   lazyLoadContacts() {
-    const data = {};
     return new Promise((resolve) => {
       window.setTimeout(() => {
-        resolve(data);
+        const newArray = generateRows(this.state.bodyRows, 30);
+        this.setState({
+          bodyRows: newArray,
+        });
+        resolve(newArray);
       }, 2000);
     });
   }
 
   render() {
-    const bodyRow = {
-      id: null,
-      name: 'Ford F150',
-      status: 'In Production',
-      fuel: 'Diesel, Unleaded',
-      passengers: '3, 5, 6',
-      cylinders: '6, 8',
-      fuelEconomy: '25mpg',
-      sold: '202.1k',
-      registered: '200.5k',
-    };
-
-    const bodyRows = [];
-    for (let i = 0; i < 500; i++) {
-      bodyRows.push(
-        Object.assign({}, bodyRow, {id: i})
-      );
-    }
-
     const headerCells = [
       <CheckBox
         id="select-all"
@@ -78,8 +90,8 @@ export default class GridExample extends Component {
           <CheckBox id={item.id} />
         );
       },
-      (item) => { return item.id},
-      (item) => { return item.name},
+      (item) => { return item.id; },
+      (item) => { return item.name; },
       (item) => { return item.status; },
       (item) => { return item.fuel; },
       (item) => { return item.passengers; },
@@ -106,7 +118,7 @@ export default class GridExample extends Component {
         classFooterRow="gridExample__footerRow"
         classFooterCell="gridExample__footerCell"
         headerCells={headerCells}
-        bodyRows={bodyRows}
+        bodyRows={this.state.bodyRows}
         bodyRenderer={bodyRenderer}
         footerCells={footerCells}
         // Scroll
