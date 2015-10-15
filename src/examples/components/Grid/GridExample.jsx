@@ -7,7 +7,7 @@ import CheckBox from '../../../framework/checkBox/CheckBox.jsx';
 import GridLoadingRow from '../../../framework/grid/rows/GridLoadingRow.jsx';
 
 function generateRows(prevArray, numberOfItemsToGenerate) {
-  const newArray = prevArray.slice(0);
+  const newArray = [];
   const bodyRow = {
     id: null,
     name: 'Ford F150',
@@ -21,53 +21,34 @@ function generateRows(prevArray, numberOfItemsToGenerate) {
   };
   const indexStart = prevArray.length;
   let indexEnd = prevArray.length + numberOfItemsToGenerate;
-  const indexMax = 200;
-  let isLastPage;
-  if (indexEnd >= indexMax) {
-    indexEnd = indexMax;
-    isLastPage = true;
-  } else {
-    isLastPage = false;
-  }
+  const indexMax = 80;
+  indexEnd = indexEnd >= indexMax ? indexMax : indexEnd;
   for (let i = indexStart; i < indexEnd; i++) {
     newArray.push(
       Object.assign({}, bodyRow, {id: i})
     );
   }
-  return {
-    newArray,
-    isLastPage,
-  };
+  return newArray;
 }
 
 export default class GridExample extends Component {
 
   constructor(props) {
     super(props);
-    const generatedRows = generateRows([], 30);
     this.state = {
-      bodyRows: generatedRows.newArray,
-      isLastPage: generatedRows.isLastPage,
-      isLoadingBodyRows: false,
+      bodyRows: generateRows([], 30),
     };
   }
 
   lazyLoadContacts() {
-    if (this.state.isLoadingBodyRows) return;
-    this.setState({
-      isLoadingBodyRows: true,
-    });
     return new Promise((resolve) => {
       window.setTimeout(() => {
         const generatedRows = generateRows(this.state.bodyRows, 20);
         this.setState({
-          bodyRows: generatedRows.newArray,
-          isLastPage: generatedRows.isLastPage,
+          bodyRows: [...this.state.bodyRows, ...generatedRows],
         });
-        resolve(generatedRows.newArray);
-        this.setState({
-          isLoadingBodyRows: false,
-        });
+        // It is only needed to determine if last page is reached
+        resolve(generatedRows);
       }, 2000);
     });
   }

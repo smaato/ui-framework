@@ -12,6 +12,8 @@ export default class GridBody extends Component {
     super(props);
     this.state = {
       scrollPosition: 0,
+      isLoadingBodyRows: false,
+      isLastPage: false,
     };
   }
 
@@ -37,11 +39,29 @@ export default class GridBody extends Component {
       scrollPosition: scrollPosition,
     });
     // Lazily load rows as the user scrolls.
-    if (this.props.lazyLoadRows) {
+    if (this.props.lazyLoadRows && !this.state.isLoadingBodyRows && !this.state.isLastPage) {
       // If scroll position is a certain distance from the bottom, invoke callback.
       const distanceFromBottom = (scrollableNode.scrollHeight - scrollableNode.offsetHeight) - scrollPosition;
       if (distanceFromBottom <= 1000) {
-        this.props.lazyLoadRows();
+        this.loadingPromise = this.props.lazyLoadRows();
+        if (this.loadingPromise) {
+          this.setState({
+            isLoadingBodyRows: true,
+          });
+          this.loadingPromise.then((result) => {
+            // If it returns undefined or empty array, then last page reached
+            if (!result || result.length === 0) {
+              this.setState({
+                isLastPage: true,
+                isLoadingBodyRows: false,
+              });
+            } else {
+              this.setState({
+                isLoadingBodyRows: false,
+              });
+            }
+          });
+        }
       }
     }
   }
@@ -116,7 +136,7 @@ export default class GridBody extends Component {
         <div style={{minHeight: `${followingRowsHeight}px`}}></div>
 
         {/* A row to indicate loading progress */}
-        {loadingRow}
+        {this.state.isLoadingBodyRows ? loadingRow : null}
       </div>
     );
   }
