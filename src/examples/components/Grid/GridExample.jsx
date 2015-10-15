@@ -22,32 +22,52 @@ function generateRows(prevArray, numberOfItemsToGenerate) {
   const indexStart = prevArray.length;
   let indexEnd = prevArray.length + numberOfItemsToGenerate;
   const indexMax = 200;
-  indexEnd = indexEnd > indexMax ? indexMax : indexEnd;
+  let isLastPage;
+  if (indexEnd >= indexMax) {
+    indexEnd = indexMax;
+    isLastPage = true;
+  } else {
+    isLastPage = false;
+  }
   for (let i = indexStart; i < indexEnd; i++) {
     newArray.push(
       Object.assign({}, bodyRow, {id: i})
     );
   }
-  return newArray;
+  return {
+    newArray,
+    isLastPage,
+  };
 }
 
 export default class GridExample extends Component {
 
   constructor(props) {
     super(props);
+    const generatedRows = generateRows([], 30);
     this.state = {
-      bodyRows: generateRows([], 30),
+      bodyRows: generatedRows.newArray,
+      isLastPage: generatedRows.isLastPage,
+      isLoadingBodyRows: false,
     };
   }
 
   lazyLoadContacts() {
+    if (this.state.isLoadingBodyRows) return;
+    this.setState({
+      isLoadingBodyRows: true,
+    });
     return new Promise((resolve) => {
       window.setTimeout(() => {
-        const newArray = generateRows(this.state.bodyRows, 30);
+        const generatedRows = generateRows(this.state.bodyRows, 20);
         this.setState({
-          bodyRows: newArray,
+          bodyRows: generatedRows.newArray,
+          isLastPage: generatedRows.isLastPage,
         });
-        resolve(newArray);
+        resolve(generatedRows.newArray);
+        this.setState({
+          isLoadingBodyRows: false,
+        });
       }, 2000);
     });
   }
