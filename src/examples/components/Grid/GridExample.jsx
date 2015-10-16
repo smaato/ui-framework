@@ -102,7 +102,7 @@ export default class GridExample extends Component {
       (item) => { return item.registered; },
     ];
 
-    const ROW_HEIGHT = 39;
+    const ROW_HEIGHT = 34;
     const BODY_HEIGHT = 500;
 
     return (
@@ -123,6 +123,7 @@ export default class GridExample extends Component {
         bodyRenderer={bodyRenderer}
         footerCells={footerCells}
         // Scroll
+        // TODO: ideally height should either be dynamically calculated or this value should be set to the cell
         rowHeight={ROW_HEIGHT}
         bodyHeight={BODY_HEIGHT}
         overflowRecycledRowsCount={20}
