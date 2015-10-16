@@ -3036,6 +3036,16 @@ body {
   background: #ffffff;
 }
 
+.dataTable__tbody__row:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+.dataTable--reverseStriped .dataTable__tbody__row:nth-of-type(odd) {
+  background-color: transparent;
+}
+.dataTable--reverseStriped .dataTable__tbody__row:nth-of-type(even) {
+  background-color: #f9f9f9;
+}
+
 .dataTable__tbody__cell {
   padding: 10px 8px;
   white-space: nowrap;
@@ -3065,8 +3075,10 @@ body {
 .dataTable__tbody__cellValue--link,
 .dataTable__tbody__cellValue--readOnly,
 .dataTable__tbody__cellValue--editable {
-  margin-left: -6px;
   padding: 4px 5px;
+  margin-left: -6px;
+  margin-top: -4px;
+  margin-bottom: -4px;
   display: inline-block;
   overflow: hidden;
   min-width: 40px;
@@ -3174,6 +3186,20 @@ body {
   padding-right: 15px;
 }
 
+.gridLoadingRow {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 200px;
+  border: 4px dashed rgba(255, 173, 0, 0.5);
+}
+
 .dataTable__table {
   display: block;
 }
@@ -3199,16 +3225,6 @@ body {
   display: flex;
 }
 
-.dataTable__tbody__row:nth-of-type(odd) {
-  background-color: #f9f9f9;
-}
-.dataTable--reverseStriped .dataTable__tbody__row:nth-of-type(odd) {
-  background-color: transparent;
-}
-.dataTable--reverseStriped .dataTable__tbody__row:nth-of-type(even) {
-  background-color: #f9f9f9;
-}
-
 .dataTable__thead__cell,
 .dataTable__tbody__cell,
 .dataTable__tfoot__cell {
@@ -3227,20 +3243,6 @@ body {
       -ms-flex: 1;
           flex: 1;
   text-align: right;
-}
-
-.gridLoadingRow {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  min-height: 200px;
-  border: 4px dashed rgba(255, 173, 0, 0.5);
 }
 
 /**
