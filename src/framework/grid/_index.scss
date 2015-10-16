@@ -24,14 +24,14 @@
 
     .dataTable__tbody__row {
       &:nth-of-type(odd) {
-        background-color: #f9f9f9; /* 1 */
+        background-color: #f9f9f9;
       }
       .dataTable--reverseStriped & {
         &:nth-of-type(odd) {
-          background-color: transparent; /* 1 */
+          background-color: transparent;
         }
         &:nth-of-type(even) {
-          background-color: #f9f9f9; /* 1 */
+          background-color: #f9f9f9;
         }
       }
     }
@@ -39,13 +39,14 @@
       .dataTable__thead__cell,
       .dataTable__tbody__cell,
       .dataTable__tfoot__cell {
-        width: 100px;
+        width: 120px;
         box-sizing: border-box;
         &:first-child {
           width: 35px;
         }
         &:last-child {
           flex: 1;// Takes the remainder of the space
+          text-align: right;
         }
       }
 
