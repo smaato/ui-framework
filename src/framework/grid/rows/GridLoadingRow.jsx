@@ -2,7 +2,7 @@
 // Import exports from various modules.
 import React from 'react';
 
-import Spinner from '../../progress/Spinner.jsx';
+import Spinner from '../../spinner/Spinner.jsx';
 
 // Define stateless functional component.
 const GridLoadingRow = () => {
