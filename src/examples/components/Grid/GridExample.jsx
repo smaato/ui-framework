@@ -6,7 +6,7 @@ import Grid from '../../../framework/grid/Grid.jsx';
 import CheckBox from '../../../framework/checkBox/CheckBox.jsx';
 import GridLoadingRow from '../../../framework/grid/rows/GridLoadingRow.jsx';
 
-function generateRows(prevArray, numberOfItemsToGenerate) {
+function generateRows(indexStart, numberOfItems) {
   const newArray = [];
   const bodyRow = {
     id: null,
@@ -19,8 +19,7 @@ function generateRows(prevArray, numberOfItemsToGenerate) {
     sold: '202.1k',
     registered: '200.5k',
   };
-  const indexStart = prevArray.length;
-  let indexEnd = prevArray.length + numberOfItemsToGenerate;
+  let indexEnd = indexStart + numberOfItems;
   const indexMax = 80;
   indexEnd = indexEnd >= indexMax ? indexMax : indexEnd;
   for (let i = indexStart; i < indexEnd; i++) {
@@ -36,14 +35,14 @@ export default class GridExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bodyRows: generateRows([], 30),
+      bodyRows: generateRows(0, 30),
     };
   }
 
   lazyLoadContacts() {
     return new Promise((resolve) => {
       window.setTimeout(() => {
-        const generatedRows = generateRows(this.state.bodyRows, 20);
+        const generatedRows = generateRows(this.state.bodyRows.length, 20);
         this.setState({
           bodyRows: [...this.state.bodyRows, ...generatedRows],
         });
@@ -123,7 +122,9 @@ export default class GridExample extends Component {
         bodyRenderer={bodyRenderer}
         footerCells={footerCells}
         // Scroll
-        // TODO: ideally height should either be dynamically calculated or this value should be set to the cell
+        // TODO: change to have a single source of truth.
+        // Height should either be dynamically calculated or
+        // the supplied value should be set as inline CSS to the cell.
         rowHeight={ROW_HEIGHT}
         bodyHeight={BODY_HEIGHT}
         overflowRecycledRowsCount={20}
