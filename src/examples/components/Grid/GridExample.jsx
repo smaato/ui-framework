@@ -36,20 +36,35 @@ export default class GridExample extends Component {
     super(props);
     this.state = {
       bodyRows: generateRows(0, 30),
+      isLoadingBodyRows: false,
+      isLastPage: false,
     };
   }
 
   lazyLoadContacts() {
-    return new Promise((resolve) => {
-      window.setTimeout(() => {
-        const generatedRows = generateRows(this.state.bodyRows.length, 20);
+    if (this.state.isLoadingBodyRows || this.state.isLastPage) return;
+
+    this.setState({
+      isLoadingBodyRows: true,
+    });
+
+    // Fake request
+    window.setTimeout(() => {
+      const generatedRows = generateRows(this.state.bodyRows.length, 20);
+
+      // If it returns an empty array, then last page reached
+      if (generatedRows.length === 0) {
+        this.setState({
+          isLastPage: true,
+          isLoadingBodyRows: false,
+        });
+      } else {
         this.setState({
           bodyRows: [...this.state.bodyRows, ...generatedRows],
+          isLoadingBodyRows: false,
         });
-        // It is only needed to determine if last page is reached
-        resolve(generatedRows);
-      }, 2000);
-    });
+      }
+    }, 2000);
   }
 
   render() {
@@ -130,9 +145,7 @@ export default class GridExample extends Component {
         overflowRecycledRowsCount={20}
         reverseZebraStripeClass="dataTable--reverseStriped"
         lazyLoadRows={this.lazyLoadContacts.bind(this)}
-        loadingRow={(
-          <GridLoadingRow />
-        )}
+        loadingRow={this.state.isLoadingBodyRows ? <GridLoadingRow /> : null}
         loadDistanceFromBottom={1000}
       />
     );
