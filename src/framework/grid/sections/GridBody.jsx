@@ -42,7 +42,7 @@ export default class GridBody extends Component {
     if (this.props.lazyLoadRows && !this.state.isLoadingBodyRows && !this.state.isLastPage) {
       // If scroll position is a certain distance from the bottom, invoke callback.
       const distanceFromBottom = (scrollableNode.scrollHeight - scrollableNode.offsetHeight) - scrollPosition;
-      if (distanceFromBottom <= 1000) {
+      if (distanceFromBottom <= this.props.loadDistanceFromBottom) {
         this.loadingPromise = this.props.lazyLoadRows();
         if (this.loadingPromise) {
           this.setState({
@@ -155,4 +155,5 @@ GridBody.propTypes = {
   overflowRecycledRowsCount: PropTypes.number,
   reverseZebraStripeClass: PropTypes.string,
   loadingRow: PropTypes.element,
+  loadDistanceFromBottom: PropTypes.number,
 };

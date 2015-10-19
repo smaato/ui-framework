@@ -133,6 +133,7 @@ export default class GridExample extends Component {
         loadingRow={(
           <GridLoadingRow />
         )}
+        loadDistanceFromBottom={1000}
       />
     );
   }

@@ -48,6 +48,7 @@ export default class Grid extends Component {
             overflowRecycledRowsCount={this.props.overflowRecycledRowsCount}
             reverseZebraStripeClass={this.props.reverseZebraStripeClass}
             loadingRow={this.props.loadingRow}
+            loadDistanceFromBottom={this.props.loadDistanceFromBottom}
           />
           <GridFooter
             classFooter={this.props.classFooter}
@@ -85,6 +86,7 @@ Grid.propTypes = {
   overflowRecycledRowsCount: PropTypes.number,
   reverseZebraStripeClass: PropTypes.string,
   loadingRow: PropTypes.element,
+  loadDistanceFromBottom: PropTypes.number,
 };
 
 Grid.defaultProps = {
