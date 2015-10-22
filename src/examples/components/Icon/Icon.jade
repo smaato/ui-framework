@@ -1,0 +1,18 @@
+
+extends ../../_partials/_componentLayout
+
+block title
+  title Icon
+
+block content
+
+  .exampleContainer.exampleContainer--clear
+    #icon
+
+block component
+  div.
+    <script type="text/jsx">
+      window.renderComponent('icon', (
+        <Icon className="glyphicons-cogwheel" />
+      ));
+    </script>
