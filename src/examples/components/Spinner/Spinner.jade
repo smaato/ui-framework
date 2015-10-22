@@ -1,0 +1,18 @@
+
+extends ../../_partials/_componentLayout
+
+block title
+  title Spinner
+
+block content
+
+  .exampleContainer.exampleContainer--clear
+    #spinner
+
+block component
+  div.
+    <script type="text/jsx">
+      window.renderComponent('spinner', (
+        <Spinner id="checkboxExample" />
+      ));
+    </script>

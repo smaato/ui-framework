@@ -42,6 +42,13 @@ export default class Grid extends Component {
             classBodyRow={this.props.classBodyRow}
             classBodyCell={this.props.classBodyCell}
             rows={bodyRows}
+            rowHeight={this.props.rowHeight}
+            bodyHeight={this.props.bodyHeight}
+            lazyLoadRows={this.props.lazyLoadRows}
+            overflowRecycledRowsCount={this.props.overflowRecycledRowsCount}
+            reverseZebraStripeClass={this.props.reverseZebraStripeClass}
+            loadingRow={this.props.loadingRow}
+            loadDistanceFromBottom={this.props.loadDistanceFromBottom}
           />
           <GridFooter
             classFooter={this.props.classFooter}
@@ -72,4 +79,16 @@ Grid.propTypes = {
   bodyRows: PropTypes.array.isRequired,
   bodyRenderer: PropTypes.array.isRequired,
   footerCells: PropTypes.array,
+  // Scroll
+  rowHeight: PropTypes.number.isRequired,
+  bodyHeight: PropTypes.number.isRequired,
+  lazyLoadRows: PropTypes.func,
+  overflowRecycledRowsCount: PropTypes.number,
+  reverseZebraStripeClass: PropTypes.string,
+  loadingRow: PropTypes.element,
+  loadDistanceFromBottom: PropTypes.number,
+};
+
+Grid.defaultProps = {
+  overflowRecycledRowsCount: 10,
 };
