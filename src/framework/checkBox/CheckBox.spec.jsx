@@ -1,12 +1,12 @@
 
 import React from 'react';
-import TestCase from '../../test/TestCase.js';
+import { TestCaseFactory } from 'react-test-kit';
 import CheckBox from './CheckBox.jsx';
 
 describe('CheckBox', () => {
   describe('DOM structure', () => {
     it('span contains input and label', () => {
-      const testCase = new TestCase(<CheckBox />);
+      const testCase = TestCaseFactory.createFromElement(<CheckBox />);
       expect(testCase.dom.tagName).toBe('SPAN');
       expect(testCase.dom.children[0].tagName).toBe('INPUT');
       expect(testCase.dom.children[1].tagName).toBe('LABEL');
@@ -17,7 +17,7 @@ describe('CheckBox', () => {
     describe('id', () => {
       describe('when not set', () => {
         it('input "id" and "name" as well as label "for" attributes are non-existent', () => {
-          const testCase = new TestCase(<CheckBox />);
+          const testCase = TestCaseFactory.createFromElement(<CheckBox />);
           expect(testCase.first('input').getAttribute('id')).toBe(null);
           expect(testCase.first('input').getAttribute('name')).toBe(null);
           expect(testCase.first('label').getAttribute('for')).toBe(null);
@@ -26,7 +26,7 @@ describe('CheckBox', () => {
 
       describe('when set', () => {
         it('input "id" and "name" as well as label "for" attributes are set', () => {
-          const testCase = new TestCase(<CheckBox id="good-id" />);
+          const testCase = TestCaseFactory.createFromElement(<CheckBox id="good-id" />);
           expect(testCase.first('input').getAttribute('id')).toBe('good-id');
           expect(testCase.first('input').getAttribute('name')).toBe('good-id');
           expect(testCase.first('label').getAttribute('for')).toBe('good-id');
@@ -37,7 +37,7 @@ describe('CheckBox', () => {
     describe('class props', () => {
       describe('when not set', () => {
         it('elements have default classes', () => {
-          const testCase = new TestCase(<CheckBox id="" />);
+          const testCase = TestCaseFactory.createFromElement(<CheckBox id="" />);
           expect(testCase.dom.getAttribute('class')).toBe('checkboxWrapper');
           expect(testCase.first('input').getAttribute('class')).toBe('checkbox__input');
           expect(testCase.first('label').getAttribute('class')).toBe('checkbox__faux__input');
@@ -46,7 +46,7 @@ describe('CheckBox', () => {
 
       describe('when set', () => {
         it('classes are passed to corresponding elements', () => {
-          const testCase = new TestCase(
+          const testCase = TestCaseFactory.createFromElement(
             <CheckBox
               id=""
               classWrapper="classWrapper"
