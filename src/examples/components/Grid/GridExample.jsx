@@ -41,7 +41,7 @@ export default class GridExample extends Component {
     };
   }
 
-  lazyLoadContacts() {
+  lazyLoadBodyRows() {
     if (this.state.isLoadingBodyRows || this.state.isLastPage) return;
 
     this.setState({
@@ -144,7 +144,7 @@ export default class GridExample extends Component {
         bodyHeight={BODY_HEIGHT}
         overflowRecycledRowsCount={20}
         reverseZebraStripeClass="dataTable--reverseStriped"
-        lazyLoadRows={this.lazyLoadContacts.bind(this)}
+        lazyLoadRows={this.lazyLoadBodyRows.bind(this)}
         loadingRow={this.state.isLoadingBodyRows ? <GridLoadingRow /> : null}
         loadDistanceFromBottom={1000}
       />
