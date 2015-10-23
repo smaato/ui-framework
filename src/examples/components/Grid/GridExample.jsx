@@ -4,6 +4,8 @@ import React, {
 } from 'react';
 import Grid from '../../../framework/grid/Grid.jsx';
 import CheckBox from '../../../framework/checkBox/CheckBox.jsx';
+import IconCog from '../../../framework/iconCog/IconCog.jsx';
+import IconEllipsis from '../../../framework/iconEllipsis/IconEllipsis.jsx';
 import GridLoadingRow from '../../../framework/grid/rows/GridLoadingRow.jsx';
 
 function generateRows(indexStart, numberOfItems) {
@@ -84,6 +86,7 @@ export default class GridExample extends Component {
       'Fuel Economy',
       '# Sold',
       'Registered',
+      null,
     ];
 
     const footerCells = [
@@ -97,6 +100,7 @@ export default class GridExample extends Component {
       null,
       '152.1m',
       'Registered',
+      null,
     ];
 
     const bodyRenderer = [
@@ -105,15 +109,21 @@ export default class GridExample extends Component {
           <CheckBox id={item.id} />
         );
       },
-      (item) => { return item.id; },
-      (item) => { return item.name; },
-      (item) => { return item.status; },
-      (item) => { return item.fuel; },
-      (item) => { return item.passengers; },
-      (item) => { return item.cylinders; },
-      (item) => { return item.fuelEconomy; },
-      (item) => { return item.sold; },
-      (item) => { return item.registered; },
+      item => item.id,
+      item => item.name,
+      item => item.status,
+      item => item.fuel,
+      item => item.passengers,
+      item => item.cylinders,
+      item => item.fuelEconomy,
+      item => item.sold,
+      item => item.registered,
+      () => (
+        <span>
+          <IconEllipsis />
+          <IconCog />
+        </span>
+      ),
     ];
 
     const ROW_HEIGHT = 34;
