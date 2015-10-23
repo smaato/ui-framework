@@ -3142,9 +3142,6 @@ body {
 .dataTable__tbody__cellLiner .icon {
   color: #c8cfd0;
   padding: 0;
-  display: inline-block;
-  width: 14px;
-  height: 11px;
   vertical-align: top;
 }
 
@@ -3243,6 +3240,13 @@ body {
       -ms-flex: 1;
           flex: 1;
   text-align: right;
+}
+
+.icon {
+  display: inline-block;
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
 }
 
 .mainNavBar {
