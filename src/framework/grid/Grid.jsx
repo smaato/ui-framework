@@ -3,12 +3,14 @@ import React, {
   Component,
   PropTypes,
 } from 'react';
-// This was initially known as React.addons.classSet, but eventually became separate npm module
-// More on https://facebook.github.io/react/docs/class-name-manipulation.html
 import classNames from 'classnames';
-import GridHeader from './sections/GridHeader.jsx';
-import GridBody from './sections/GridBody.jsx';
-import GridFooter from './sections/GridFooter.jsx';
+import GridHeader from './header/GridHeader.jsx';
+import GridBody from './body/GridBody.jsx';
+import GridFooter from './footer/GridFooter.jsx';
+
+export {
+  default as GridLoadingRow,
+} from './loading/GridLoadingRow.jsx';
 
 export default class Grid extends Component {
 

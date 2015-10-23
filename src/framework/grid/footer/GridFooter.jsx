@@ -4,7 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
-import GridFooterRow from '../rows/GridFooterRow.jsx';
+import GridFooterRow from './GridFooterRow.jsx';
 
 export default class GridFooter extends Component {
 
