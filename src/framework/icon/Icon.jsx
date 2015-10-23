@@ -22,5 +22,5 @@ export default class Icon extends Component {
 }
 
 Icon.propTypes = {
-  className: PropTypes.string,
+  className: PropTypes.string.isRequired,
 };
