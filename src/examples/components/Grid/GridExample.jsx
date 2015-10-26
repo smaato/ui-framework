@@ -69,12 +69,7 @@ export default class GridExample extends Component {
 
   render() {
     const headerCells = [
-      <CheckBox
-        id="select-all"
-        classWrapper="checkBoxExample__wrapper"
-        classInput="checkBoxExample__input"
-        classLabel="checkBoxExample__label"
-      />,
+      <CheckBox id="select-all" />,
       'Id',
       'Name',
       'Status',

@@ -3,7 +3,6 @@ import React, {
   Component,
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
 
 export default class CheckBox extends Component {
 
@@ -12,21 +11,17 @@ export default class CheckBox extends Component {
   }
 
   render() {
-    const classWrapper = classNames('checkboxWrapper', this.props.classWrapper);
-    const classInput = classNames('checkbox__input', this.props.classInput);
-    const classLabel = classNames('checkbox__faux__input', this.props.classLabel);
-
     return (
-      <span className={classWrapper}>
+      <span className="checkboxWrapper">
         <input
           type="checkbox"
           name={this.props.id}
           id={this.props.id}
-          className={classInput}
+          className="checkbox__input"
         />
         <label
           htmlFor={this.props.id}
-          className={classLabel}
+          className="checkbox__faux__input"
         />
       </span>
     );
@@ -35,9 +30,6 @@ export default class CheckBox extends Component {
 }
 
 CheckBox.propTypes = {
-  classWrapper: PropTypes.string,
-  classInput: PropTypes.string,
-  classLabel: PropTypes.string,
   id: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
