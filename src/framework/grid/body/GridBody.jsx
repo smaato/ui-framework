@@ -4,7 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
-import GridBodyRow from '../rows/GridBodyRow.jsx';
+import GridBodyRow from './GridBodyRow.jsx';
 
 export default class GridBody extends Component {
 

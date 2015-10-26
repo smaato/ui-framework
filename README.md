@@ -3,11 +3,47 @@
 
 > Smaato UI Framework (React, SCSS)
 
+## Usage
+
+Install this repo as an NPM dependency to gain access to its UI components.
+
+#### As a React library
+
+In your JS:
+
+```javascript
+import {
+  CheckBox,
+  Grid,
+  GridLoadingRow,
+  Spinner,
+  TitleBar,
+  TitleBarButton,
+} from 'ui-framework';
+```
+
+#### As a SCSS library
+
+In your SCSS:
+
+```javascript
+@import 'path/to/node_modules/ui-framework/src/framework/index';
+// Now you can use the SCSS styles, mixins, functions, and variables.
+```
+
+Keep in mind that you will be expected to use PostCSS and Autoprefixer to
+add vendor-prefixed properties to your compiled CSS.
+
+#### As a CSS library
+
+This is not yet supported but we can add the compiled CSS file to the repo, so
+that simpler projects will have access to the CSS, if such a use case arises.
+
+## Getting Started
+
 Work on examples in the `src/examples` directory.
 
 Work on framework components in the `src/framework` directory.
-
-## Getting Started
 
 #### Setup & Run
 
@@ -112,35 +148,3 @@ should be documented in a file in the `examples/components` directory.
 
 Composing components together into common UI patterns should be documented in
 the `examples/integrations` directory.
-
-## Usage
-
-Install this repo as an NPM dependency to gain access to its UI components.
-
-#### As a React library
-
-In your JS:
-
-```javascript
-import Framework from 'ui-framework';
-
-var TitleBar = Framework.TitleBar;
-// Now you can use the TitleBar React component.
-```
-
-#### As a SCSS library
-
-In your SCSS:
-
-```javascript
-@import 'path/to/node_modules/ui-framework/src/framework/index';
-// Now you can use the SCSS styles, mixins, functions, and variables.
-```
-
-Keep in mind that you will be expected to use PostCSS and Autoprefixer to
-add vendor-prefixed properties to your compiled CSS.
-
-#### As a CSS library
-
-This is not yet supported but we can add the compiled CSS file to the repo, so
-that simpler projects will have access to the CSS, if such a use case arises.
