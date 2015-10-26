@@ -14,28 +14,41 @@ block content
 
 block component
   div.
-    <script type="text/jsx">
+    <script>
+      window.renderComponent(
+        'titleBar',
+        window.React.createElement(
+          window.TitleBar,
+          {
+            label: "checkboxExample",
+            buttons: [
+              window.React.createElement(
+                window.TitleBarButton,
+                {
+                  label: 'Add something',
+                  key: 'button1'
+                }
+              ),
+              window.React.createElement(
+                window.TitleBarButton,
+                {
+                  label: 'Add something else',
+                  key: 'button2'
+                }
+              )
+            ]
+          }
+        )
+      );
 
-      window.renderComponent('titleBar', (
-        <TitleBar
-          label='Title bar example'
-          buttons={[
-            <TitleBarButton
-              label='Add something'
-              key="button1"
-            />,
-            <TitleBarButton
-              label='Add something else'
-              key="button2"
-            />
-          ]}
-        />
-      ));
-
-      window.renderComponent('titleBarButton', (
-        <TitleBarButton
-          label='Title bar button'
-        />
-      ));
+      window.renderComponent(
+        'titleBarButton',
+        window.React.createElement(
+          window.TitleBarButton,
+          {
+            label: 'Title bar button',
+          }
+        )
+      );
 
     </script>

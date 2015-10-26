@@ -11,8 +11,14 @@ block content
 
 block component
   div.
-    <script type="text/jsx">
-      window.renderComponent('check-box', (
-        <CheckBox id="checkboxExample" />
-      ));
+    <script>
+      window.renderComponent(
+        'check-box',
+        window.React.createElement(
+          window.CheckBox,
+          {
+            id: "checkboxExample"
+          }
+        )
+      );
     </script>

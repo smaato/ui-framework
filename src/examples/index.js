@@ -16,4 +16,3 @@ import React from 'react';
 window.React = React;
 import ReactDOM from 'react-dom';
 window.ReactDOM = ReactDOM;
-import '../../vendor/JSXTransformer.min.js';

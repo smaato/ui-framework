@@ -11,8 +11,14 @@ block content
 
 block component
   div.
-    <script type="text/jsx">
-      window.renderComponent('spinner', (
-        <Spinner id="checkboxExample" />
-      ));
+    <script>
+      window.renderComponent(
+        'spinner',
+        window.React.createElement(
+          window.Spinner,
+          {
+            id: 'checkboxExample'
+          }
+        )
+      );
     </script>

@@ -11,8 +11,12 @@ block content
 
 block component
   div.
-    <script type="text/jsx">
-      window.renderComponent('grid', (
-        <GridExample />
-      ));
+    <script>
+      window.renderComponent(
+        'grid',
+        window.React.createElement(
+          window.GridExample,
+          null
+        )
+      );
     </script>
