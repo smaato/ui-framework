@@ -1,7 +1,7 @@
 
 import React from 'react';
 import renderComponent from '../../renderComponent.js';
-import { CheckBox } from '../../../framework/index.js';
+import { CheckBox } from '../../../framework/framework.js';
 
 export default function() {
   renderComponent(

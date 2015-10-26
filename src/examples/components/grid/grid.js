@@ -6,9 +6,10 @@ import React, {
 // Stuff for rendering in Jade
 import renderComponent from '../../renderComponent.js';
 
-import Grid from '../../../framework/grid/Grid.jsx';
 import CheckBox from '../../../framework/checkBox/CheckBox.jsx';
-import GridLoadingRow from '../../../framework/grid/rows/GridLoadingRow.jsx';
+import Grid, {
+  GridLoadingRow,
+} from '../../../framework/grid/Grid.jsx';
 
 function generateRows(indexStart, numberOfItems) {
   const newArray = [];

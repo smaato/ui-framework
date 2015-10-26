@@ -1,7 +1,7 @@
 
 import React from 'react';
 import renderComponent from '../../renderComponent.js';
-import { Spinner } from '../../../framework/index.js';
+import { Spinner } from '../../../framework/framework.js';
 
 export default function() {
   renderComponent(

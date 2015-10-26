@@ -1,16 +1,12 @@
 
-// Import components.
-import CheckBox from './checkBox/CheckBox.jsx';
-import Grid from './grid/Grid.jsx';
-import Spinner from './spinner/Spinner.jsx';
-import TitleBar from './titleBar/TitleBar.jsx';
-import TitleBarButton from './titleBar/TitleBarButton.jsx';
+export * from './checkBox/CheckBox.jsx';
+export { default as CheckBox } from './checkBox/CheckBox.jsx';
 
-// Export components.
-export default {
-  CheckBox: CheckBox,
-  Grid: Grid,
-  Spinner: Spinner,
-  TitleBar: TitleBar,
-  TitleBarButton: TitleBarButton,
-};
+export * from './grid/Grid.jsx';
+export { default as Grid } from './grid/Grid.jsx';
+
+export * from './spinner/Spinner.jsx';
+export { default as Spinner } from './spinner/Spinner.jsx';
+
+export * from './titleBar/TitleBar.jsx';
+export { default as TitleBar } from './titleBar/TitleBar.jsx';

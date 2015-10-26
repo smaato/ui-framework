@@ -4,21 +4,21 @@ import React, {
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
-import GridBodyCell from './../cells/GridBodyCell.jsx';
+import GridHeaderCell from './GridHeaderCell.jsx';
 
-export default class GridBodyRow extends Component {
+export default class GridHeaderRow extends Component {
 
   constructor(props) {
     super(props);
   }
 
   render() {
-    const rowClass = classNames('dataTable__tbody__row', this.props.classBodyRow);
+    const rowClass = classNames('dataTable__thead__row', this.props.classHeaderRow);
 
     const content = this.props.cells.map((cell, index) => {
       return (
-        <GridBodyCell
-          classBodyCell={this.props.classBodyCell}
+        <GridHeaderCell
+          classHeaderCell={this.props.classHeaderCell}
           content={cell}
           key={index}
         />
@@ -34,8 +34,8 @@ export default class GridBodyRow extends Component {
 
 }
 
-GridBodyRow.propTypes = {
-  classBodyRow: PropTypes.string,
-  classBodyCell: PropTypes.string,
+GridHeaderRow.propTypes = {
+  classHeaderRow: PropTypes.string,
+  classHeaderCell: PropTypes.string,
   cells: PropTypes.array.isRequired,
 };

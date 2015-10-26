@@ -1,7 +1,7 @@
 
 import React from 'react';
 import renderComponent from '../../renderComponent.js';
-import { TitleBar, TitleBarButton } from '../../../framework/index.js';
+import { TitleBar, TitleBarButton } from '../../../framework/framework.js';
 
 export default function() {
   renderComponent('titleBar', (
