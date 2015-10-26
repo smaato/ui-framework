@@ -2,6 +2,10 @@
 import React, {
   Component,
 } from 'react';
+
+// Stuff for rendering in Jade
+import renderComponent from '../../renderComponent.js';
+
 import Grid from '../../../framework/grid/Grid.jsx';
 import CheckBox from '../../../framework/checkBox/CheckBox.jsx';
 import GridLoadingRow from '../../../framework/grid/rows/GridLoadingRow.jsx';
@@ -30,7 +34,7 @@ function generateRows(indexStart, numberOfItems) {
   return newArray;
 }
 
-export default class GridExample extends Component {
+class GridExample extends Component {
 
   constructor(props) {
     super(props);
@@ -151,4 +155,11 @@ export default class GridExample extends Component {
     );
   }
 
+}
+
+export default function() {
+  renderComponent(
+    'grid',
+    <GridExample />
+  );
 }

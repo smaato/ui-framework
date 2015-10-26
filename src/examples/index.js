@@ -1,18 +1,23 @@
 
-// Import framework for use in our examples.
-import framework from '../framework/index.js';
+import './_partials/navigation.js';
 
-// Expose all framework components to the JSX in our examples.
-Object.keys(framework).forEach((key) => {
-  const component = framework[key];
-  window[key] = component;
-});
+import checkBox from './components/CheckBox/checkBox.js';
+import grid from './components/Grid/grid.js';
+import spinner from './components/Spinner/spinner.js';
+import titleBar from './components/titleBar/titleBar.js';
 
-import GridExample from './components/Grid/GridExample.jsx';
-window.GridExample = GridExample;
+// This holds scripts for each example page
+const _pages = {
+  checkBox,
+  grid,
+  spinner,
+  titleBar,
+};
 
-// Support inline JSX in our examples.
-import React from 'react';
-window.React = React;
-import ReactDOM from 'react-dom';
-window.ReactDOM = ReactDOM;
+// This is just a wrapper to hold all global stuff, to pollute less
+const app = {
+  // This executes scripts for a specific page
+  render: (key) => _pages[key](),
+};
+
+window.app = app;
