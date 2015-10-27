@@ -38,17 +38,17 @@ var del = require('del'),
 
 gulp.task('lint', function() {
   return gulp.src([
-    './src/examples/**/*.jsx',
-    './src/examples/**/*.js',
-    './src/framework/**/*.jsx',
-    './src/framework/**/*.js'
+    './src/guide/**/*.jsx',
+    './src/guide/**/*.js',
+    './src/guide/**/*.jsx',
+    './src/guide/**/*.js'
   ])
   .pipe(eslint())
   .pipe(eslint.format())
 });
 
 gulp.task('scripts', function() {
-  return gulp.src('./src/examples/index.js')
+  return gulp.src('./src/guide/index.js')
     // Use through2 to check if there is an error,
     // and turn the results into a pipe.
     .pipe(through2.obj(function (file, enc, next) {
@@ -88,8 +88,7 @@ gulp.task('scripts', function() {
 
 gulp.task('jade', function() {
   return gulp.src([
-      './src/examples/**/*.jade',
-      '!./src/examples/_partials/**/*.jade'
+      './src/guide/index.jade'
     ])
     .pipe(jade({
       pretty: true,
@@ -102,10 +101,10 @@ gulp.task('jade', function() {
 });
 
 gulp.task('sass', function () {
-  return gulp.src('./src/examples/index.scss')
+  return gulp.src('./src/guide/index.scss')
     .pipe(compass({
       css: 'dist/css',
-      sass: 'src/examples',
+      sass: 'src/guide',
       sourcemap: true
     }))
     .on('error', function (error) {
@@ -138,9 +137,10 @@ gulp.task('replace', function() {
 
 gulp.task('connect', function () {
   return connect.server({
-    root: ['dist'],
+    fallback: 'dist/index.html',
+    livereload: true,
     port: 8001,
-    livereload: true
+    root: ['dist']
   });
 });
 
@@ -240,15 +240,15 @@ gulp.task('deploy', ['production'], function() {
  */
 
 gulp.task('watch', function() {
-  gulp.watch(['./src/examples/**/*.jade'], ['jade']);
+  gulp.watch(['./src/guide/index.jade'], ['jade']);
   gulp.watch([
-    './src/examples/**/*.jsx',
-    './src/examples/**/*.js',
+    './src/guide/**/*.jsx',
+    './src/guide/**/*.js',
     './src/framework/**/*.jsx',
     './src/framework/**/*.js'
   ], ['lint','scripts']);
   gulp.watch([
-    './src/examples/**/*.scss',
+    './src/guide/**/*.scss',
     './src/framework/**/*.scss'
   ], ['css']);
   gulp.watch(['./Gulpfile'], ['jade','scripts']);

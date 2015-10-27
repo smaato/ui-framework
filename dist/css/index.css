@@ -2682,6 +2682,10 @@ body {
   overflow-x: hidden;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .checkboxWrapper {
   display: inline-block;
   vertical-align: middle;
@@ -3672,8 +3676,15 @@ body {
   height: 100%;
 }
 
-.exampleComponent {
-  padding: 20px;
+.examplePage {
+  padding: 40px 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.examplePage--fullScreen {
+  padding: 0;
+  max-width: initial;
 }
 
 .examplesNavMenuButton {
@@ -3745,7 +3756,7 @@ body {
 }
 
 .examplesNavButton {
-  font-size: 11px;
+  font-size: 14px;
 }
 .examplesNavButton:hover {
   color: #1CC4EC;
@@ -3753,8 +3764,7 @@ body {
 }
 
 .exampleContainer {
-  max-width: 1200px;
-  margin: 10px auto;
+  margin-bottom: 16px;
   padding: 20px;
   background: white;
   border: 1px solid #D8D8D8;
@@ -3762,6 +3772,23 @@ body {
 
 .exampleContainer--clear {
   background: transparent;
+}
+
+.examplePageTitle {
+  margin-bottom: 16px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.examplePageSubTitle {
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.examplePageText {
+  margin-bottom: 16px;
+  font-size: 14px;
 }
 
 @media (max-width: 1320px){

@@ -1,0 +1,120 @@
+
+@import '../framework/index';
+
+.examplesHome {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+$contentWidth: 1200px;
+
+.examplePage {
+  padding: 40px 30px;
+  max-width: $contentWidth;
+  margin: 0 auto;
+}
+
+.examplePage--fullScreen {
+  padding: 0;
+  max-width: initial;
+}
+
+.examplesNavMenuButton {
+  position: fixed;
+  z-index: 1000;
+  top: 5px;
+  left: 5px;
+  padding: 8px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  background: white;
+  color: #626262;
+  border: 1px solid #D8D8D8;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    color: #1CC4EC;
+  }
+}
+
+.examplesNavMenu {
+  position: fixed;
+  z-index: 999;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  padding: 40px;
+  background: white;
+  color: #626262;
+  border: 1px solid #D8D8D8;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  transform: translateY(calc(-100% - 20px));
+  transition: transform 0.2s ease-out;
+
+  &.is-examples-nav-menu-visible {
+    transform: translateY(0);
+  }
+}
+
+  .examplesNavButton,
+  .examplesNavMenuTitle {
+    padding: 6px 10px;
+    font-weight: 700;
+    color: #626262;
+    border: 1px solid transparent;
+    max-width: 120px;
+  }
+
+  .examplesNavMenuTitle {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 10px;
+    opacity: 0.8;
+  }
+
+  .examplesNavButton {
+    font-size: 14px;
+    &:hover {
+      color: #1CC4EC;
+      border-color: #D8D8D8;
+    }
+  }
+
+.exampleContainer {
+  margin-bottom: 16px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #D8D8D8;
+}
+
+.exampleContainer--clear {
+  background: transparent;
+}
+
+.examplePageTitle {
+  margin-bottom: 16px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.examplePageSubTitle {
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.examplePageText {
+  margin-bottom: 16px;
+  font-size: 14px;
+}
