@@ -1,22 +1,21 @@
 
-// Import components.
-import CheckBox from './checkBox/CheckBox.jsx';
-import Grid from './grid/Grid.jsx';
-import Icon from './icon/Icon.jsx';
-import IconCog from './iconCog/IconCog.jsx';
-import IconEllipsis from './iconEllipsis/IconEllipsis.jsx';
-import Spinner from './spinner/Spinner.jsx';
-import TitleBar from './titleBar/TitleBar.jsx';
-import TitleBarButton from './titleBar/TitleBarButton.jsx';
+export * from './checkBox/CheckBox.jsx';
+export { default as CheckBox } from './checkBox/CheckBox.jsx';
 
-// Export components.
-export default {
-  CheckBox: CheckBox,
-  Grid: Grid,
-  Icon: Icon,
-  IconCog: IconCog,
-  IconEllipsis: IconEllipsis,
-  Spinner: Spinner,
-  TitleBar: TitleBar,
-  TitleBarButton: TitleBarButton,
-};
+export * from './grid/Grid.jsx';
+export { default as Grid } from './grid/Grid.jsx';
+
+export * from './icon/Icon.jsx';
+export { default as Icon } from './icon/Icon.jsx';
+
+export * from './iconCog/IconCog.jsx';
+export { default as IconCog } from './iconCog/IconCog.jsx';
+
+export * from './iconEllipsis/IconEllipsis.jsx';
+export { default as IconEllipsis } from './iconEllipsis/IconEllipsis.jsx';
+
+export * from './spinner/Spinner.jsx';
+export { default as Spinner } from './spinner/Spinner.jsx';
+
+export * from './titleBar/TitleBar.jsx';
+export { default as TitleBar } from './titleBar/TitleBar.jsx';

@@ -2,11 +2,13 @@
 import React, {
   Component,
 } from 'react';
-import Grid from '../../../framework/grid/Grid.jsx';
-import CheckBox from '../../../framework/checkBox/CheckBox.jsx';
-import IconCog from '../../../framework/iconCog/IconCog.jsx';
-import IconEllipsis from '../../../framework/iconEllipsis/IconEllipsis.jsx';
-import GridLoadingRow from '../../../framework/grid/rows/GridLoadingRow.jsx';
+import {
+  Grid,
+  CheckBox,
+  GridLoadingRow,
+  IconCog,
+  IconEllipsis,
+} from '../../../framework/framework.js';
 
 function generateRows(indexStart, numberOfItems) {
   const newArray = [];

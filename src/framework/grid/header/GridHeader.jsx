@@ -4,7 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
-import GridHeaderRow from '../rows/GridHeaderRow.jsx';
+import GridHeaderRow from './GridHeaderRow.jsx';
 
 export default class GridHeader extends Component {
 

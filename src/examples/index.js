@@ -1,12 +1,26 @@
 
 // Import framework for use in our examples.
-import framework from '../framework/index.js';
+import {
+  CheckBox,
+  Grid,
+  GridLoadingRow,
+  Icon,
+  IconCog,
+  IconEllipsis,
+  Spinner,
+  TitleBar,
+  TitleBarButton,
+} from '../framework/framework.js';
 
-// Expose all framework components to the JSX in our examples.
-Object.keys(framework).forEach((key) => {
-  const component = framework[key];
-  window[key] = component;
-});
+window.CheckBox = CheckBox;
+window.Grid = Grid;
+window.GridLoadingRow = GridLoadingRow;
+window.Icon = Icon;
+window.IconCog = IconCog;
+window.IconEllipsis = IconEllipsis;
+window.Spinner = Spinner;
+window.TitleBar = TitleBar;
+window.TitleBarButton = TitleBarButton;
 
 import GridExample from './components/Grid/GridExample.jsx';
 window.GridExample = GridExample;
