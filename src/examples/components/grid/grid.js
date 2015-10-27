@@ -6,10 +6,13 @@ import React, {
 // Stuff for rendering in Jade
 import renderComponent from '../../renderComponent.js';
 
-import CheckBox from '../../../framework/checkBox/CheckBox.jsx';
-import Grid, {
+import {
+  Grid,
+  CheckBox,
   GridLoadingRow,
-} from '../../../framework/grid/Grid.jsx';
+  IconCog,
+  IconEllipsis,
+} from '../../../framework/framework.js';
 
 function generateRows(indexStart, numberOfItems) {
   const newArray = [];
@@ -74,12 +77,7 @@ class GridExample extends Component {
 
   render() {
     const headerCells = [
-      <CheckBox
-        id="select-all"
-        classWrapper="checkBoxExample__wrapper"
-        classInput="checkBoxExample__input"
-        classLabel="checkBoxExample__label"
-      />,
+      <CheckBox id="select-all" />,
       'Id',
       'Name',
       'Status',
@@ -89,6 +87,7 @@ class GridExample extends Component {
       'Fuel Economy',
       '# Sold',
       'Registered',
+      null,
     ];
 
     const footerCells = [
@@ -102,6 +101,7 @@ class GridExample extends Component {
       null,
       '152.1m',
       'Registered',
+      null,
     ];
 
     const bodyRenderer = [
@@ -110,15 +110,21 @@ class GridExample extends Component {
           <CheckBox id={item.id} />
         );
       },
-      (item) => { return item.id; },
-      (item) => { return item.name; },
-      (item) => { return item.status; },
-      (item) => { return item.fuel; },
-      (item) => { return item.passengers; },
-      (item) => { return item.cylinders; },
-      (item) => { return item.fuelEconomy; },
-      (item) => { return item.sold; },
-      (item) => { return item.registered; },
+      item => item.id,
+      item => item.name,
+      item => item.status,
+      item => item.fuel,
+      item => item.passengers,
+      item => item.cylinders,
+      item => item.fuelEconomy,
+      item => item.sold,
+      item => item.registered,
+      () => (
+        <span>
+          <IconEllipsis />
+          <IconCog />
+        </span>
+      ),
     ];
 
     const ROW_HEIGHT = 34;

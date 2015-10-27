@@ -9,6 +9,7 @@ $(() => {
   const components = [
     'CheckBox',
     'Grid',
+    'Icon',
     'Spinner',
     'titleBar',
   ];

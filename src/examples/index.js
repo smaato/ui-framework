@@ -3,6 +3,7 @@ import './navigation.js';
 
 import checkBox from './components/checkBox/checkBox.js';
 import grid from './components/grid/grid.js';
+import icon from './components/icon/icon.js';
 import spinner from './components/spinner/spinner.js';
 import titleBar from './components/titleBar/titleBar.js';
 
@@ -10,6 +11,7 @@ import titleBar from './components/titleBar/titleBar.js';
 const _pages = {
   checkBox,
   grid,
+  icon,
   spinner,
   titleBar,
 };

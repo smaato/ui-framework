@@ -33,32 +33,5 @@ describe('CheckBox', () => {
         });
       });
     });
-
-    describe('class props', () => {
-      describe('when not set', () => {
-        it('elements have default classes', () => {
-          const testCase = TestCaseFactory.createFromElement(<CheckBox id="" />);
-          expect(testCase.dom.getAttribute('class')).toBe('checkboxWrapper');
-          expect(testCase.first('input').getAttribute('class')).toBe('checkbox__input');
-          expect(testCase.first('label').getAttribute('class')).toBe('checkbox__faux__input');
-        });
-      });
-
-      describe('when set', () => {
-        it('classes are passed to corresponding elements', () => {
-          const testCase = TestCaseFactory.createFromElement(
-            <CheckBox
-              id=""
-              classWrapper="classWrapper"
-              classInput="classInput"
-              classLabel="classLabel"
-            />
-          );
-          expect(testCase.dom.getAttribute('class')).toContain('classWrapper');
-          expect(testCase.first('input').getAttribute('class')).toContain('classInput');
-          expect(testCase.first('label').getAttribute('class')).toContain('classLabel');
-        });
-      });
-    });
   });
 });
