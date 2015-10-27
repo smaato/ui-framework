@@ -8,8 +8,8 @@ describe('CheckBox', () => {
     it('span contains input and label', () => {
       const testCase = TestCaseFactory.createFromElement(<CheckBox />);
       expect(testCase.dom.tagName).toBe('SPAN');
-      expect(testCase.dom.children[0].tagName.toLowerCase()).toBe('input');
-      expect(testCase.dom.children[1].tagName.toLowerCase()).toBe('label');
+      expect(testCase.dom.children[0].tagName).toBe('INPUT');
+      expect(testCase.dom.children[1].tagName).toBe('LABEL');
     });
   });
 

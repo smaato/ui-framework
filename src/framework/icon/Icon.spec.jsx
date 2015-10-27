@@ -7,7 +7,7 @@ describe('Icon', () => {
   describe('DOM structure', () => {
     it('is one span element', () => {
       const testCase = TestCaseFactory.createFromElement(<Icon className="" />);
-      expect(testCase.dom.tagName.toLowerCase()).toBe('span');
+      expect(testCase.dom.tagName).toBe('SPAN');
       expect(testCase.dom.getAttribute('class')).toBe('icon');
     });
   });
