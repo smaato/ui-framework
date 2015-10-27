@@ -1,5 +1,5 @@
 
-import './_partials/navigation.js';
+import './navigation.js';
 
 import checkBox from './components/checkBox/checkBox.js';
 import grid from './components/grid/grid.js';
