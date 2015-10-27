@@ -2,18 +2,19 @@
 extends ../../_partials/_componentLayout
 
 block title
-  title Title Bar
+  title Icon
 
 block content
 
   .exampleContainer.exampleContainer--clear
-    #titleBar
-  
-  .exampleContainer
-    #titleBarButton
+    span#icon
+    | &nbsp;
+    span#icon-ellipsis
+    | &nbsp;
+    span#icon-cog
 
 block component
   div.
     <script>
-      window.app.render('titleBar');
+      window.app.render('icon');
     </script>

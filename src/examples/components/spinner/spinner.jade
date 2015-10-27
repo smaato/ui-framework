@@ -2,17 +2,15 @@
 extends ../../_partials/_componentLayout
 
 block title
-  title Grid
+  title Spinner
 
 block content
 
   .exampleContainer.exampleContainer--clear
-    #grid
+    #spinner
 
 block component
   div.
-    <script type="text/jsx">
-      window.renderComponent('grid', (
-        <GridExample />
-      ));
+    <script>
+      window.app.render('spinner');
     </script>

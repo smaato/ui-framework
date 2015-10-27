@@ -1,33 +1,26 @@
 
-// Import framework for use in our examples.
-import {
-  CheckBox,
-  Grid,
-  GridLoadingRow,
-  Icon,
-  IconCog,
-  IconEllipsis,
-  Spinner,
-  TitleBar,
-  TitleBarButton,
-} from '../framework/framework.js';
+import './navigation.js';
 
-window.CheckBox = CheckBox;
-window.Grid = Grid;
-window.GridLoadingRow = GridLoadingRow;
-window.Icon = Icon;
-window.IconCog = IconCog;
-window.IconEllipsis = IconEllipsis;
-window.Spinner = Spinner;
-window.TitleBar = TitleBar;
-window.TitleBarButton = TitleBarButton;
+import checkBox from './components/checkBox/checkBox.js';
+import grid from './components/grid/grid.js';
+import icon from './components/icon/icon.js';
+import spinner from './components/spinner/spinner.js';
+import titleBar from './components/titleBar/titleBar.js';
 
-import GridExample from './components/Grid/GridExample.jsx';
-window.GridExample = GridExample;
+// Holds scripts for each example page
+const _pages = {
+  checkBox,
+  grid,
+  icon,
+  spinner,
+  titleBar,
+};
 
-// Support inline JSX in our examples.
-import React from 'react';
-window.React = React;
-import ReactDOM from 'react-dom';
-window.ReactDOM = ReactDOM;
-import '../../vendor/JSXTransformer.min.js';
+// A wrapper to hold all global stuff
+const app = {
+  // This executes scripts for a specific page
+  render: (key) => _pages[key](),
+};
+
+// The only global variable we export to window
+window.app = app;
