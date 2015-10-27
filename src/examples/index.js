@@ -4,6 +4,9 @@ import {
   CheckBox,
   Grid,
   GridLoadingRow,
+  Icon,
+  IconCog,
+  IconEllipsis,
   Spinner,
   TitleBar,
   TitleBarButton,
@@ -12,6 +15,9 @@ import {
 window.CheckBox = CheckBox;
 window.Grid = Grid;
 window.GridLoadingRow = GridLoadingRow;
+window.Icon = Icon;
+window.IconCog = IconCog;
+window.IconEllipsis = IconEllipsis;
 window.Spinner = Spinner;
 window.TitleBar = TitleBar;
 window.TitleBarButton = TitleBarButton;

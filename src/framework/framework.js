@@ -5,6 +5,15 @@ export { default as CheckBox } from './checkBox/CheckBox.jsx';
 export * from './grid/Grid.jsx';
 export { default as Grid } from './grid/Grid.jsx';
 
+export * from './icon/Icon.jsx';
+export { default as Icon } from './icon/Icon.jsx';
+
+export * from './iconCog/IconCog.jsx';
+export { default as IconCog } from './iconCog/IconCog.jsx';
+
+export * from './iconEllipsis/IconEllipsis.jsx';
+export { default as IconEllipsis } from './iconEllipsis/IconEllipsis.jsx';
+
 export * from './spinner/Spinner.jsx';
 export { default as Spinner } from './spinner/Spinner.jsx';
 
