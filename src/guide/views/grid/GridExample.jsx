@@ -9,8 +9,9 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
-  Grid,
   CheckBox,
+  Grid,
+  GridBodyEditableCell,
   GridLoadingRow,
   IconCog,
   IconEllipsis,
@@ -116,7 +117,34 @@ export default class GridExample extends Component {
       item => item.name,
       item => item.status,
       item => item.fuel,
-      item => item.passengers,
+      item => <GridBodyEditableCell
+        content={item.passengers}
+        onClick={() => {
+          // Temp replacement for the edit modal
+          let newValue = window.prompt(
+            'Edit this:',
+            item.passengers
+          );
+          // Cancelled
+          if (newValue === null) {
+            return;
+          }
+          // If value deleted and empty string is rendered, there is nothing
+          // to click in view to change it back, so it fixes that
+          if (newValue === '') {
+            newValue = 'deleted';
+          }
+          const newBodyRows = this.state.bodyRows.map((row) => {
+            if (row.id === item.id) {
+              row.passengers = newValue;
+            }
+            return row;
+          });
+          this.setState({
+            bodyRow: newBodyRows,
+          });
+        }}
+      />,
       item => item.cylinders,
       item => item.fuelEconomy,
       item => item.sold,
