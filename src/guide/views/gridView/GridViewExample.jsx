@@ -12,6 +12,7 @@ export default class GridViewExample extends Component {
   }
 
   componentDidMount() {
+    // Add scroll handler when we view this page.
     const $window = $(window);
     const $body = $('body');
     $window.scroll(() => {
@@ -25,10 +26,18 @@ export default class GridViewExample extends Component {
   }
 
   shouldComponentUpdate() {
+    // Stop React from affecting this page so we can use jQuery instead.
     return false;
   }
 
+  componentWillUnmount() {
+    // Remove scroll handler when we leave this page.
+    const $window = $(window);
+    $window.off('scroll');
+  }
+
   render() {
+    // Build the rows using a for-loop.
     const rows = [];
     for (let i = 0; i < 300; i++) {
       rows.push(

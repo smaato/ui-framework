@@ -33,35 +33,39 @@ export default class Navigation extends Component {
   }
 
   render() {
-    const navButtons = [];
+    const navItems = [];
 
-    navButtons.push(
+    navItems.push(
       <NavTitle key="components">Components</NavTitle>
     );
 
     for (let i = 0; i < this.props.componentRoutes.length; i++) {
       const route = this.props.componentRoutes[i];
-      navButtons.push(
+      navItems.push(
         <NavButton
           path={route.path}
           onClick={this.onClickNavButton.bind(this)}
           key={`component${i}`}
-        />
+        >
+          {route.name}
+        </NavButton>
       );
     }
 
-    navButtons.push(
+    navItems.push(
       <NavTitle key="integrations">Integrations</NavTitle>
     );
 
     for (let i = 0; i < this.props.integrationRoutes.length; i++) {
       const route = this.props.integrationRoutes[i];
-      navButtons.push(
+      navItems.push(
         <NavButton
           path={route.path}
           onClick={this.onClickNavButton.bind(this)}
           key={`integration${i}`}
-        />
+        >
+          {route.name}
+        </NavButton>
       );
     }
 
@@ -73,7 +77,7 @@ export default class Navigation extends Component {
       <div
         className={navMenuClasses}
       >
-        {navButtons}
+        {navItems}
       </div>
     );
 

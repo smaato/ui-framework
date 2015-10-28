@@ -12,7 +12,7 @@ const NavButton = (props) => {
       to={`/${props.path}`}
       onClick={props.onClick}
     >
-      {props.path}
+      {props.children}
     </Link>
   );
 };
