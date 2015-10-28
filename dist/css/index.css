@@ -2682,10 +2682,6 @@ body {
   overflow-x: hidden;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 .checkboxWrapper {
   display: inline-block;
   vertical-align: middle;
@@ -3666,6 +3662,9 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
