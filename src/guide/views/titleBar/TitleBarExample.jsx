@@ -5,8 +5,6 @@ import React, {
 
 import Page, {
   Example,
-  SubTitle,
-  Title,
 } from '../../components/page/Page.jsx';
 
 import {
@@ -22,12 +20,9 @@ export default class TitleBarExample extends Component {
 
   render() {
     return (
-      <Page>
-
-        <Title>TitleBar</Title>
+      <Page title={this.props.route.name}>
 
         <Example isClear>
-
           <TitleBar
             label="Title bar example"
             buttons={[
@@ -41,17 +36,12 @@ export default class TitleBarExample extends Component {
               />,
             ]}
           />
-
         </Example>
 
-        <Example>
-
-          <SubTitle>TitleBarButton</SubTitle>
-
+        <Example title="TitleBarButton">
           <TitleBarButton
             label="Title bar button"
           />
-
         </Example>
 
       </Page>

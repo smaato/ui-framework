@@ -6,6 +6,19 @@ import React, {
 import { Link } from 'react-router';
 
 const NavButton = (props) => {
+  if (props.href) {
+    return (
+      <a
+        className="examplesNavButton"
+        target="_blank"
+        href={props.href}
+        onClick={props.onClick}
+      >
+        {props.children}
+      </a>
+    );
+  }
+
   return (
     <Link
       className="examplesNavButton"
@@ -18,8 +31,9 @@ const NavButton = (props) => {
 };
 
 NavButton.propTypes = {
-  path: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  path: PropTypes.string,
+  href: PropTypes.string,
 };
 
 export default NavButton;

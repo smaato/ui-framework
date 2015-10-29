@@ -5,7 +5,6 @@ import React, {
 
 import Page, {
   Example,
-  Title,
 } from '../../components/page/Page.jsx';
 
 import { Spinner } from '../../../framework/framework.js';
@@ -18,9 +17,7 @@ export default class SpinnerExample extends Component {
 
   render() {
     return (
-      <Page>
-
-        <Title>Spinner</Title>
+      <Page title={this.props.route.name}>
 
         <Example>
           <Spinner />

@@ -5,7 +5,6 @@ import React, {
 
 import Page, {
   Example,
-  Title,
 } from '../../components/page/Page.jsx';
 
 import {
@@ -133,9 +132,7 @@ export default class GridExample extends Component {
     const BODY_HEIGHT = 500;
 
     return (
-      <Page>
-
-        <Title>Grid</Title>
+      <Page title={this.props.route.name}>
 
         <Example isClear>
 

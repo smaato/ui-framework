@@ -33,41 +33,30 @@ export default class Navigation extends Component {
   }
 
   render() {
+    const addRoutesToNav = function addRoutesToNav(name, routeItems, navItems) {
+      navItems.push(
+        <NavTitle key={name}>{name}</NavTitle>
+      );
+      for (let i = 0; i < routeItems.length; i++) {
+        const route = routeItems[i];
+        navItems.push(
+          <NavButton
+            href={route.href}
+            path={route.path}
+            onClick={this.onClickNavButton.bind(this)}
+            key={`${name}${i}`}
+          >
+            {route.name}
+          </NavButton>
+        );
+      }
+    }.bind(this);
+
     const navItems = [];
 
-    navItems.push(
-      <NavTitle key="components">Components</NavTitle>
-    );
-
-    for (let i = 0; i < this.props.componentRoutes.length; i++) {
-      const route = this.props.componentRoutes[i];
-      navItems.push(
-        <NavButton
-          path={route.path}
-          onClick={this.onClickNavButton.bind(this)}
-          key={`component${i}`}
-        >
-          {route.name}
-        </NavButton>
-      );
-    }
-
-    navItems.push(
-      <NavTitle key="integrations">Integrations</NavTitle>
-    );
-
-    for (let i = 0; i < this.props.integrationRoutes.length; i++) {
-      const route = this.props.integrationRoutes[i];
-      navItems.push(
-        <NavButton
-          path={route.path}
-          onClick={this.onClickNavButton.bind(this)}
-          key={`integration${i}`}
-        >
-          {route.name}
-        </NavButton>
-      );
-    }
+    addRoutesToNav('Components', this.props.componentRoutes, navItems);
+    addRoutesToNav('Integrations', this.props.integrationRoutes, navItems);
+    addRoutesToNav('Prototypes', this.props.prototypeRoutes, navItems);
 
     const navMenuClasses = classNames('examplesNavMenu', {
       'is-examples-nav-menu-visible': this.state.isMenuOpen,
@@ -99,4 +88,5 @@ export default class Navigation extends Component {
 Navigation.propTypes = {
   componentRoutes: PropTypes.array,
   integrationRoutes: PropTypes.array,
+  prototypeRoutes: PropTypes.array,
 };

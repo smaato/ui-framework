@@ -1,4 +1,8 @@
 
+/**
+ * Lowercases input and replaces spaces with hyphens:
+ * e.g. 'GridView Example' -> 'gridview-example'
+ */
 export function slugify(str) {
   const parts = str
   .toLowerCase()

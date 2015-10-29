@@ -4,6 +4,8 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
+import Title from './Title.jsx';
+
 export { default as Example } from './Example.jsx';
 export { default as Title } from './Title.jsx';
 export { default as SubTitle } from './SubTitle.jsx';
@@ -20,8 +22,16 @@ export default class Page extends Component {
       'examplePage--fullScreen': this.props.isFullScreen,
     });
 
+    let title;
+    if (this.props.title) {
+      title = (
+        <Title>{this.props.title}</Title>
+      );
+    }
+
     return (
       <div className={classes}>
+        {title}
         {this.props.children}
       </div>
     );
