@@ -121,7 +121,7 @@ export default class GridExample extends Component {
         content={item.passengers}
         onClick={() => {
           // Temp replacement for the edit modal
-          let newValue = window.prompt(
+          let newValue = window.prompt(// eslint-disable-line no-alert
             'Edit this:',
             item.passengers
           );
@@ -141,7 +141,7 @@ export default class GridExample extends Component {
             return row;
           });
           this.setState({
-            bodyRow: newBodyRows,
+            bodyRows: newBodyRows,
           });
         }}
       />,
