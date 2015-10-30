@@ -9,6 +9,10 @@ import GridBody from './body/GridBody.jsx';
 import GridFooter from './footer/GridFooter.jsx';
 
 export {
+  default as GridBodyEditableCell,
+} from './body/GridBodyEditableCell.jsx';
+
+export {
   default as GridLoadingRow,
 } from './loading/GridLoadingRow.jsx';
 
