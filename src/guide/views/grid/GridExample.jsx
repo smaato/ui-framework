@@ -22,7 +22,7 @@ export default class GridExample extends Component {
     super(props);
     this.state = {
       bodyRows: [],
-      isInitialLoad: null,
+      isInitialLoad: true,
       isLoadingBodyRows: false,
       isLastPage: false,
     };
@@ -34,12 +34,6 @@ export default class GridExample extends Component {
 
   lazyLoadBodyRows() {
     if (this.state.isLoadingBodyRows || this.state.isLastPage) return;
-    // it is null by default and never again
-    if (this.state.isInitialLoad === null) {
-      this.setState({
-        isInitialLoad: true,
-      });
-    }
 
     this.setState({
       isLoadingBodyRows: true,
