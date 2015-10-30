@@ -5,7 +5,6 @@ import React, {
 
 import Page, {
   Example,
-  Title,
 } from '../../components/page/Page.jsx';
 
 import { CheckBox } from '../../../framework/framework.js';
@@ -18,8 +17,7 @@ export default class CheckBoxExample extends Component {
 
   render() {
     return (
-      <Page>
-        <Title>Check box</Title>
+      <Page title={this.props.route.name}>
         <Example>
           <CheckBox id="checkboxExample" />
         </Example>

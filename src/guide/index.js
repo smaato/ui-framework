@@ -17,7 +17,7 @@ import Route from './services/route/Route';
 
 const store = configureStore();
 
-const childRoutes = Route.getList();
+const childRoutes = Route.getAppRoutes();
 childRoutes.push({
   path: '*',
   component: NotFoundView,

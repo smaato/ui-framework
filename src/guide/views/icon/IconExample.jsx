@@ -5,9 +5,7 @@ import React, {
 
 import Page, {
   Example,
-  SubTitle,
   Text,
-  Title,
 } from '../../components/page/Page.jsx';
 
 import {
@@ -24,23 +22,19 @@ export default class IconExample extends Component {
 
   render() {
     return (
-      <Page>
-
-        <Title>Icon</Title>
+      <Page title={this.props.route.name}>
 
         <Example>
           <Icon className="glyphicons-cogwheel" />
         </Example>
 
-        <Example>
-          <SubTitle>IconEllipsis</SubTitle>
+        <Example title="IconEllipsis">
           <Text>Reveal additional options when the user clicks this icon.</Text>
           <IconEllipsis />
         </Example>
 
 
-        <Example>
-          <SubTitle>IconCog</SubTitle>
+        <Example title="IconCog">
           <Text>Allows the user to edit settings when clicked.</Text>
           <IconCog />
         </Example>

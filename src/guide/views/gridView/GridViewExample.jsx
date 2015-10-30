@@ -16,7 +16,7 @@ export default class GridViewExample extends Component {
     const $window = $(window);
     const $body = $('body');
     $window.scroll(() => {
-      const scrollTop = $body.scrollTop();
+      const scrollTop = $window.scrollTop();
       if (scrollTop > 139) {
         $body.addClass('fixedThead');
       } else {

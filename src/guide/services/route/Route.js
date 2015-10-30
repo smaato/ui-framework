@@ -35,10 +35,17 @@ const integrations = [{
   component: GridViewExample,
 }];
 
+// Protoypes should point to HTML files and can be named whatever you want.
+const prototypes = [{
+  name: 'Grid View',
+  href: '/prototype/gridView.html',
+}];
+
 export default {
   components: slugifyEach(components, 'name', 'path'),
   integrations: slugifyEach(integrations, 'name', 'path'),
-  getList: function getList() {
+  prototypes: prototypes.slice(),
+  getAppRoutes: function getAppRoutes() {
     const list = this.components.concat(this.integrations);
     return list;
   },

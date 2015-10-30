@@ -24,6 +24,7 @@ export default class App extends Component {
         <Navigation
           componentRoutes={Route.components}
           integrationRoutes={Route.integrations}
+          prototypeRoutes={Route.prototypes}
         />
 
         {/* Frame the app's different views. */}
