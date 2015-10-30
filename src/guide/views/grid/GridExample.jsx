@@ -21,10 +21,15 @@ export default class GridExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bodyRows: this.generateRows(0, 30),
+      bodyRows: [],
+      isInitialLoad: true,
       isLoadingBodyRows: false,
       isLastPage: false,
     };
+  }
+
+  componentDidMount() {
+    this.lazyLoadBodyRows();
   }
 
   lazyLoadBodyRows() {
@@ -37,6 +42,12 @@ export default class GridExample extends Component {
     // Fake request
     window.setTimeout(() => {
       const generatedRows = this.generateRows(this.state.bodyRows.length, 20);
+
+      if (this.state.isInitialLoad) {
+        this.setState({
+          isInitialLoad: false,
+        });
+      }
 
       // If it returns an empty array, then last page reached
       if (generatedRows.length === 0) {
@@ -180,6 +191,7 @@ export default class GridExample extends Component {
             bodyRows={this.state.bodyRows}
             bodyRenderer={bodyRenderer}
             footerCells={footerCells}
+            initialLoadingRow={this.state.isInitialLoad ? <GridLoadingRow isInitial /> : null}
             // Scroll
             // TODO: change to have a single source of truth.
             // Height should either be dynamically calculated or
@@ -189,7 +201,7 @@ export default class GridExample extends Component {
             overflowRecycledRowsCount={20}
             reverseZebraStripeClass="dataTable--reverseStriped"
             lazyLoadRows={this.lazyLoadBodyRows.bind(this)}
-            loadingRow={this.state.isLoadingBodyRows ? <GridLoadingRow /> : null}
+            loadingRow={this.state.isLoadingBodyRows && !this.state.isInitialLoad ? <GridLoadingRow /> : null}
             loadDistanceFromBottom={1000}
           />
 
