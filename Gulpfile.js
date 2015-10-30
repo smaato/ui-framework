@@ -38,8 +38,8 @@ var del = require('del'),
 
 gulp.task('lint', function() {
   return gulp.src([
-    './src/examples/**/*.jsx',
-    './src/examples/**/*.js',
+    './src/guide/**/*.jsx',
+    './src/guide/**/*.js',
     './src/framework/**/*.jsx',
     './src/framework/**/*.js'
   ])
@@ -48,7 +48,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('scripts', function() {
-  return gulp.src('./src/examples/index.js')
+  return gulp.src('./src/guide/index.js')
     // Use through2 to check if there is an error,
     // and turn the results into a pipe.
     .pipe(through2.obj(function (file, enc, next) {
@@ -88,8 +88,22 @@ gulp.task('scripts', function() {
 
 gulp.task('jade', function() {
   return gulp.src([
-      './src/examples/**/*.jade',
-      '!./src/examples/_partials/**/*.jade'
+      './src/**/*.jade',
+      '!./src/guide/index.jade'
+    ])
+    .pipe(jade({
+      pretty: true,
+      locals: {
+        DATE_TIME: (new Date().getTime())
+      }
+    }))
+    .pipe(gulp.dest('./dist'))
+    .pipe(connect.reload());
+});
+
+gulp.task('jade:index', function() {
+  return gulp.src([
+      './src/guide/index.jade'
     ])
     .pipe(jade({
       pretty: true,
@@ -102,10 +116,10 @@ gulp.task('jade', function() {
 });
 
 gulp.task('sass', function () {
-  return gulp.src('./src/examples/index.scss')
+  return gulp.src('./src/guide/index.scss')
     .pipe(compass({
       css: 'dist/css',
-      sass: 'src/examples',
+      sass: 'src/guide',
       sourcemap: true
     }))
     .on('error', function (error) {
@@ -113,6 +127,20 @@ gulp.task('sass', function () {
       this.emit('end');
     })
     .pipe(gulp.dest('./dist/css'));
+});
+
+gulp.task('sass:prototype', function () {
+  return gulp.src('./src/prototype/*.scss')
+    .pipe(compass({
+      css: 'dist/prototype',
+      sass: 'src/prototype',
+      sourcemap: true
+    }))
+    .on('error', function (error) {
+      console.log(error.stack);
+      this.emit('end');
+    })
+    .pipe(gulp.dest('./dist/prototype'));
 });
 
 gulp.task('clean:init', function(callback) {
@@ -138,9 +166,10 @@ gulp.task('replace', function() {
 
 gulp.task('connect', function () {
   return connect.server({
-    root: ['dist'],
+    fallback: 'dist/index.html',
+    livereload: true,
     port: 8001,
-    livereload: true
+    root: ['dist']
   });
 });
 
@@ -193,10 +222,31 @@ gulp.task('postcss', function () {
     .pipe(connect.reload());
 });
 
+gulp.task('postcss:prototype', function () {
+  var processors = [
+    autoprefixer({
+      browsers: ['last 2 versions']
+    }),
+    mqpacker
+  ];
+  return gulp.src('./dist/prototype/*.css')
+    .pipe(postcss(processors))
+    .pipe(gulp.dest('./dist/prototype'))
+    .pipe(connect.reload());
+});
+
 gulp.task('css', function(callback) {
   runSequence(
     'sass',
     'postcss',
+    callback
+  );
+});
+
+gulp.task('css:prototype', function(callback) {
+  runSequence(
+    'sass:prototype',
+    'postcss:prototype',
     callback
   );
 });
@@ -240,17 +290,20 @@ gulp.task('deploy', ['production'], function() {
  */
 
 gulp.task('watch', function() {
-  gulp.watch(['./src/examples/**/*.jade'], ['jade']);
+  gulp.watch(['./src/**/*.jade'], ['jade', 'jade:index']);
   gulp.watch([
-    './src/examples/**/*.jsx',
-    './src/examples/**/*.js',
+    './src/guide/**/*.jsx',
+    './src/guide/**/*.js',
     './src/framework/**/*.jsx',
     './src/framework/**/*.js'
   ], ['lint','scripts']);
   gulp.watch([
-    './src/examples/**/*.scss',
+    './src/guide/**/*.scss',
     './src/framework/**/*.scss'
   ], ['css']);
+  gulp.watch([
+    './src/prototype/**/*.scss'
+  ], ['css:prototype']);
   gulp.watch(['./Gulpfile'], ['jade','scripts']);
 });
 
@@ -259,9 +312,10 @@ gulp.task('default', function(callback) {
     'clean:init',
     'copy',
     'connect',
-    'sass',
-    'postcss',
+    'css',
+    'css:prototype',
     'jade',
+    'jade:index',
     'lint',
     'scripts',
     'watch',
