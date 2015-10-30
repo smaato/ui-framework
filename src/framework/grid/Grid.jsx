@@ -50,6 +50,7 @@ export default class Grid extends Component {
             rows={bodyRows}
             rowHeight={this.props.rowHeight}
             bodyHeight={this.props.bodyHeight}
+            initialLoadingRow={this.props.initialLoadingRow}
             lazyLoadRows={this.props.lazyLoadRows}
             overflowRecycledRowsCount={this.props.overflowRecycledRowsCount}
             reverseZebraStripeClass={this.props.reverseZebraStripeClass}
@@ -85,6 +86,8 @@ Grid.propTypes = {
   bodyRows: PropTypes.array.isRequired,
   bodyRenderer: PropTypes.array.isRequired,
   footerCells: PropTypes.array,
+  // Initial loading state
+  initialLoadingRow: PropTypes.element,
   // Scroll
   rowHeight: PropTypes.number.isRequired,
   bodyHeight: PropTypes.number.isRequired,

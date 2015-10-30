@@ -3197,6 +3197,11 @@ body {
   border: 4px dashed rgba(255, 173, 0, 0.5);
 }
 
+.gridLoadingRow--initial {
+  box-sizing: border-box;
+  height: 100%;
+}
+
 .dataTable__table {
   display: block;
 }
