@@ -16,6 +16,10 @@ export {
   default as GridLoadingRow,
 } from './loading/GridLoadingRow.jsx';
 
+export {
+  default as GridEmptyRow,
+} from './empty/GridEmptyRow.jsx';
+
 export default class Grid extends Component {
 
   constructor(props) {
@@ -50,7 +54,11 @@ export default class Grid extends Component {
             rows={bodyRows}
             rowHeight={this.props.rowHeight}
             bodyHeight={this.props.bodyHeight}
+            // Initial loading state
             initialLoadingRow={this.props.initialLoadingRow}
+            // Empty state
+            emptyRow={this.props.emptyRow}
+            // Scroll
             lazyLoadRows={this.props.lazyLoadRows}
             overflowRecycledRowsCount={this.props.overflowRecycledRowsCount}
             reverseZebraStripeClass={this.props.reverseZebraStripeClass}
@@ -88,6 +96,8 @@ Grid.propTypes = {
   footerCells: PropTypes.array,
   // Initial loading state
   initialLoadingRow: PropTypes.element,
+  // Empty state
+  emptyRow: PropTypes.element,
   // Scroll
   rowHeight: PropTypes.number.isRequired,
   bodyHeight: PropTypes.number.isRequired,
