@@ -3183,6 +3183,21 @@ body {
   padding-right: 15px;
 }
 
+.gridEmptyRow {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 4px dashed rgba(0, 0, 255, 0.5);
+  box-sizing: border-box;
+  height: 100%;
+}
+
 .gridLoadingRow {
   display: -webkit-flex;
   display: -ms-flexbox;

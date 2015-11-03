@@ -100,8 +100,11 @@ export default class GridBody extends Component {
       optionalClasses
     );
 
-    // Create the loading progress indicator.
-    const { initialLoadingRow, loadingRow } = this.props;
+    const {
+      initialLoadingRow,
+      loadingRow,
+      emptyRow,
+    } = this.props;
 
     return (
       <div
@@ -110,6 +113,12 @@ export default class GridBody extends Component {
         onScroll={this.onScroll.bind(this)}
         style={{height: bodyHeight}}
       >
+        {/* A row to indicate initial loading progress */}
+        {initialLoadingRow}
+
+        {/* A row to indicate empty state */}
+        {emptyRow}
+
         {/* Fake the preceding rows */}
         <div style={{minHeight: `${precedingRowsHeight}px`}}></div>
 
@@ -120,7 +129,6 @@ export default class GridBody extends Component {
         <div style={{minHeight: `${followingRowsHeight}px`}}></div>
 
         {/* A row to indicate loading progress */}
-        {initialLoadingRow}
         {loadingRow}
       </div>
     );
@@ -135,6 +143,8 @@ GridBody.propTypes = {
   rows: PropTypes.array.isRequired,
   // Initial loading state
   initialLoadingRow: PropTypes.element,
+  // Empty state
+  emptyRow: PropTypes.element,
   // Scroll
   rowHeight: PropTypes.number.isRequired,
   bodyHeight: PropTypes.number.isRequired,

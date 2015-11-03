@@ -11,6 +11,7 @@ import {
   CheckBox,
   Grid,
   GridBodyEditableCell,
+  GridEmptyRow,
   GridLoadingRow,
   IconCog,
   IconEllipsis,
@@ -20,16 +21,29 @@ export default class GridExample extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      bodyRows: [],
-      isInitialLoad: true,
-      isLoadingBodyRows: false,
-      isLastPage: false,
-    };
+    this.initializeState();
   }
 
   componentDidMount() {
     this.lazyLoadBodyRows();
+  }
+
+  // It is extracted to a function to easily reset to initial state
+  initializeState() {
+    const bodyRowsMax = 80;
+    this.state = {
+      bodyRows: [],
+      bodyRowsMax,
+      // bodyRowsMax can be set to zero temporarily to demo empty state,
+      // so this is needed to revert that
+      bodyRowsMaxInitial: bodyRowsMax,
+      isInitialLoad: true,
+      isLoadingBodyRows: false,
+      isLastPage: false,
+      isEmpty: false,
+      // Reference to fake server request, provides ability to cancel it
+      lazyLoadingTimeoutId: null,
+    };
   }
 
   lazyLoadBodyRows() {
@@ -40,28 +54,30 @@ export default class GridExample extends Component {
     });
 
     // Fake request
-    window.setTimeout(() => {
+    const lazyLoadingTimeoutId = window.setTimeout(() => {
+      // Current state
       const generatedRows = this.generateRows(this.state.bodyRows.length, 20);
+      const isInitialLoad = this.state.isInitialLoad;
+      const isResultEmpty = generatedRows.length === 0;
 
-      if (this.state.isInitialLoad) {
-        this.setState({
-          isInitialLoad: false,
-        });
-      }
+      // Next state
+      const bodyRows = isResultEmpty ?
+        this.state.bodyRows : [...this.state.bodyRows, ...generatedRows];
+      const isLastPage = isResultEmpty;
+      const isEmpty = isResultEmpty && isInitialLoad;
 
-      // If it returns an empty array, then last page reached
-      if (generatedRows.length === 0) {
-        this.setState({
-          isLastPage: true,
-          isLoadingBodyRows: false,
-        });
-      } else {
-        this.setState({
-          bodyRows: [...this.state.bodyRows, ...generatedRows],
-          isLoadingBodyRows: false,
-        });
-      }
+      this.setState({
+        bodyRows,
+        isInitialLoad: false,
+        isLoadingBodyRows: false,
+        isLastPage,
+        isEmpty,
+      });
     }, 2000);
+
+    this.setState({
+      lazyLoadingTimeoutId,
+    });
   }
 
   generateRows(indexStart, numberOfItems) {
@@ -78,7 +94,7 @@ export default class GridExample extends Component {
       registered: '200.5k',
     };
     let indexEnd = indexStart + numberOfItems;
-    const indexMax = 80;
+    const indexMax = this.state.bodyRowsMax;
     indexEnd = indexEnd >= indexMax ? indexMax : indexEnd;
     for (let i = indexStart; i < indexEnd; i++) {
       newArray.push(
@@ -86,6 +102,30 @@ export default class GridExample extends Component {
       );
     }
     return newArray;
+  }
+
+  toggleEmptyRows() {
+    // Cancel fake ongoing request
+    window.clearTimeout(this.state.lazyLoadingTimeoutId);
+
+    // Toggle bodyRowsMax initial and 0
+    const bodyRowsMax = this.state.bodyRowsMax === 0 ?
+      this.state.bodyRowsMaxInitial : 0;
+
+    // Reset to initial state to simulate initial load
+    // with a different value of bodyRowsMax
+    this.initializeState();
+
+    this.setState(
+      {
+        bodyRowsMax,
+      },
+      // When we have the desired state we request server to load the new
+      // data set.
+      // Since setting state is batched and not sequential this
+      // needs to be called as callback or else it won't work as expected.
+      this.lazyLoadBodyRows
+    );
   }
 
   render() {
@@ -170,10 +210,37 @@ export default class GridExample extends Component {
     const ROW_HEIGHT = 34;
     const BODY_HEIGHT = 500;
 
+    const isEmptyStateEnabled = this.state.bodyRowsMax === 0;
+
+    let initialLoadingRow;
+    let emptyRow;
+    let loadingRow;
+    if (this.state.isInitialLoad) {
+      initialLoadingRow = <GridLoadingRow isInitial />;
+    }
+    if (this.state.isEmpty) {
+      emptyRow = <GridEmptyRow />;
+    }
+    if (this.state.isLoadingBodyRows && !this.state.isInitialLoad && !this.state.isEmpty) {
+      loadingRow = <GridLoadingRow />;
+    }
+
     return (
       <Page title={this.props.route.name}>
 
         <Example isClear>
+
+          <p>
+            <button
+              type="button"
+              onClick={this.toggleEmptyRows.bind(this)}
+            >
+              {isEmptyStateEnabled ? 'Disable ' : 'Enable '}
+              empty state
+            </button>
+          </p>
+
+          <br/>
 
           <Grid
             classContainer="gridExample__container"
@@ -191,7 +258,10 @@ export default class GridExample extends Component {
             bodyRows={this.state.bodyRows}
             bodyRenderer={bodyRenderer}
             footerCells={footerCells}
-            initialLoadingRow={this.state.isInitialLoad ? <GridLoadingRow isInitial /> : null}
+            // Initial loading indicator
+            initialLoadingRow={initialLoadingRow}
+            // Empty state indicator
+            emptyRow={emptyRow}
             // Scroll
             // TODO: change to have a single source of truth.
             // Height should either be dynamically calculated or
@@ -201,7 +271,7 @@ export default class GridExample extends Component {
             overflowRecycledRowsCount={20}
             reverseZebraStripeClass="dataTable--reverseStriped"
             lazyLoadRows={this.lazyLoadBodyRows.bind(this)}
-            loadingRow={this.state.isLoadingBodyRows && !this.state.isInitialLoad ? <GridLoadingRow /> : null}
+            loadingRow={loadingRow}
             loadDistanceFromBottom={1000}
           />
 
