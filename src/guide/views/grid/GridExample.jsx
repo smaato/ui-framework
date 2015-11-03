@@ -55,26 +55,23 @@ export default class GridExample extends Component {
 
     // Fake request
     const lazyLoadingTimeoutId = window.setTimeout(() => {
+      // Current state
       const generatedRows = this.generateRows(this.state.bodyRows.length, 20);
       const isInitialLoad = this.state.isInitialLoad;
       const isResultEmpty = generatedRows.length === 0;
 
-      if (!isResultEmpty) {
-        this.setState({
-          bodyRows: [...this.state.bodyRows, ...generatedRows],
-        });
-      }
-
-      if (isInitialLoad) {
-        this.setState({
-          isInitialLoad: false,
-        });
-      }
+      // Next state
+      const bodyRows = isResultEmpty ?
+        this.state.bodyRows : [...this.state.bodyRows, ...generatedRows];
+      const isLastPage = isResultEmpty;
+      const isEmpty = isResultEmpty && isInitialLoad;
 
       this.setState({
-        isEmpty: isResultEmpty && isInitialLoad,
-        isLastPage: isResultEmpty,
+        bodyRows,
+        isInitialLoad: false,
         isLoadingBodyRows: false,
+        isLastPage,
+        isEmpty,
       });
     }, 2000);
 
@@ -215,6 +212,19 @@ export default class GridExample extends Component {
 
     const isEmptyStateEnabled = this.state.bodyRowsMax === 0;
 
+    let initialLoadingRow;
+    let emptyRow;
+    let loadingRow;
+    if (this.state.isInitialLoad) {
+      initialLoadingRow = <GridLoadingRow isInitial />;
+    }
+    if (this.state.isEmpty) {
+      emptyRow = <GridEmptyRow />;
+    }
+    if (this.state.isLoadingBodyRows && !this.state.isInitialLoad && !this.state.isEmpty) {
+      loadingRow = <GridLoadingRow />;
+    }
+
     return (
       <Page title={this.props.route.name}>
 
@@ -249,13 +259,9 @@ export default class GridExample extends Component {
             bodyRenderer={bodyRenderer}
             footerCells={footerCells}
             // Initial loading indicator
-            initialLoadingRow={
-              this.state.isInitialLoad ? <GridLoadingRow isInitial /> : null
-            }
+            initialLoadingRow={initialLoadingRow}
             // Empty state indicator
-            emptyRow={
-              this.state.isEmpty ? <GridEmptyRow /> : null
-            }
+            emptyRow={emptyRow}
             // Scroll
             // TODO: change to have a single source of truth.
             // Height should either be dynamically calculated or
@@ -265,13 +271,7 @@ export default class GridExample extends Component {
             overflowRecycledRowsCount={20}
             reverseZebraStripeClass="dataTable--reverseStriped"
             lazyLoadRows={this.lazyLoadBodyRows.bind(this)}
-            loadingRow={
-              this.state.isLoadingBodyRows &&
-              !this.state.isInitialLoad &&
-              !this.state.isEmpty ?
-              <GridLoadingRow /> :
-              null
-            }
+            loadingRow={loadingRow}
             loadDistanceFromBottom={1000}
           />
 
