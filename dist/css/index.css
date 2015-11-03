@@ -2997,25 +2997,6 @@ body {
   z-index: 6;
   padding: 0 8px;
 }
-.dataTable__thead__cellLiner a,
-.dataTable__thead__cellLiner .checkboxWrapper {
-  font-size: 12px;
-  font-weight: 300;
-  color: #6e7172;
-  display: block;
-  height: 31px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 90px;
-  vertical-align: middle;
-}
-.dataTable__thead__cellLiner a .checkbox__faux__input,
-.dataTable__thead__cellLiner .checkboxWrapper .checkbox__faux__input {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 9px 0 0;
-}
 
 .dataTable__thead__cell:first-child .dataTable__thead__cellLiner {
   padding-left: 15px;
@@ -3067,7 +3048,7 @@ body {
 }
 
 .dataTable__tbody__cellLiner {
-  max-width: 100%;
+  width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -3248,7 +3229,7 @@ body {
 .dataTable__thead__cell,
 .dataTable__tbody__cell,
 .dataTable__tfoot__cell {
-  width: 120px;
+  width: 100px;
   box-sizing: border-box;
 }
 .dataTable__thead__cell:first-child,
@@ -3262,6 +3243,9 @@ body {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+
+.dataTable__tbody__cell:last-child .dataTable__tbody__cellLiner {
   text-align: right;
 }
 

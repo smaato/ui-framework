@@ -38,7 +38,7 @@
 
         .dataTable__tbody__cellLiner {
           // 4 props to make ellipsis work
-          max-width: 100%;
+          width: 100%;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
