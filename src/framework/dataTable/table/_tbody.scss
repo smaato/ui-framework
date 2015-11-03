@@ -17,10 +17,14 @@
   }
 
     .dataTable__tbody__cell {
-      padding: 10px 8px;
-      white-space: nowrap;
+      box-sizing: border-box;
+      padding-left: 8px;
+      padding-right: 8px;
       border-bottom: 1px dashed $componentStrokeColor;
       font-weight: 300;
+      // Vertical align
+      display: flex;
+      align-items: center;
     }
 
       .dataTable__tbody__cell {
@@ -33,30 +37,29 @@
       }
 
         .dataTable__tbody__cellLiner {
-          white-space: nowrap;
+          // 4 props to make ellipsis work
+          max-width: 100%;
+          overflow: hidden;
           text-overflow: ellipsis;
-          max-width: 120px;
-          display: inline-block;
-          vertical-align: middle;
-
-          .checkboxWrapper {
-            display: block;
-            height: 11px;
-          }
-
+          white-space: nowrap;
+          // Or else 'g' is cut off at the bottom
+          line-height: 1.2;
         }
 
           .dataTable__tbody__cellValue--link,
           .dataTable__tbody__cellValue--readOnly,
           .dataTable__tbody__cellValue--editable {
+            box-sizing: border-box;
             padding: 4px 5px;
-            margin-left: -6px; // 5px padding + 1px border
-            margin-top: -4px; // cancel padding
-            margin-bottom: -4px; // cancel padding
             display: inline-block;
-            overflow: hidden;
+            vertical-align: middle;
             min-width: 40px;
             color: $componentTextColor;
+            // 4 props to make ellipsis work
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
 
           .dataTable__tbody__cellValue--readOnly {
@@ -71,7 +74,6 @@
           }
 
           .dataTable__tbody__cellValue--editable {
-            text-overflow: ellipsis;
             border: 1px dashed transparent;
             border-radius: 4px;
             transition: .1s all ease-in-out;

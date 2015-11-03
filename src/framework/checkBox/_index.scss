@@ -17,10 +17,9 @@ $checkedColor: tint(scale-saturation($blue, 30%), 5%);
   }
   
   .checkbox__faux__input {
-    display: block;
+    display: inline-block;
     position: relative;
     cursor: pointer;
-    vertical-align: middle;
     margin: 0;
     background: tint($componentBackgroundColor, 90%);
     border: 1px solid shade($componentStrokeColor, 7%);
