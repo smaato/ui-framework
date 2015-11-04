@@ -28,14 +28,16 @@
       .dataTable__thead__cell,
       .dataTable__tbody__cell,
       .dataTable__tfoot__cell {
-        width: 120px;
+        width: 100px;
         box-sizing: border-box;
         &:first-child {
           width: 35px;
         }
         &:last-child {
-          flex: 1;// Takes the remainder of the space
-          text-align: right;
+          flex: 1;// Occupies the remainder of the space
         }
       }
 
+        .dataTable__tbody__cell:last-child .dataTable__tbody__cellLiner {
+          text-align: right;
+        }

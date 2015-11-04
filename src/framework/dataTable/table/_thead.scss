@@ -75,26 +75,6 @@
       padding: 0 8px;
 
       @extend .dataTable__theadBG;
-
-      a,
-      .checkboxWrapper {
-        font-size: 12px;
-        font-weight: 300;
-        color: tint($componentTextColor, 10%);
-        display: block;
-        height: 31px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 90px;
-        vertical-align: middle;
-
-        .checkbox__faux__input {
-          display: inline-block;
-          vertical-align: middle;
-          margin: 9px 0 0;
-        }
-      }
     }
 
     .dataTable__thead__cell:first-child .dataTable__thead__cellLiner {

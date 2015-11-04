@@ -81,6 +81,7 @@ export default class GridBody extends Component {
           classBodyCell={this.props.classBodyCell}
           key={key}
           cells={row}
+          rowHeight={this.props.rowHeight}
         />
       );
     }

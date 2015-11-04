@@ -26,7 +26,7 @@ export default class GridBodyRow extends Component {
     });
 
     return (
-      <div className={rowClass}>
+      <div className={rowClass} style={{height: this.props.rowHeight}}>
         {content}
       </div>
     );
@@ -38,4 +38,5 @@ GridBodyRow.propTypes = {
   classBodyRow: PropTypes.string,
   classBodyCell: PropTypes.string,
   cells: PropTypes.array.isRequired,
+  rowHeight: PropTypes.number.isRequired,
 };

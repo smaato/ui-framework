@@ -2703,10 +2703,9 @@ body {
 }
 
 .checkbox__faux__input {
-  display: block;
+  display: inline-block;
   position: relative;
   cursor: pointer;
-  vertical-align: middle;
   margin: 0;
   background: #feffff;
   border: 1px solid #c5cbcd;
@@ -2998,25 +2997,6 @@ body {
   z-index: 6;
   padding: 0 8px;
 }
-.dataTable__thead__cellLiner a,
-.dataTable__thead__cellLiner .checkboxWrapper {
-  font-size: 12px;
-  font-weight: 300;
-  color: #6e7172;
-  display: block;
-  height: 31px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 90px;
-  vertical-align: middle;
-}
-.dataTable__thead__cellLiner a .checkbox__faux__input,
-.dataTable__thead__cellLiner .checkboxWrapper .checkbox__faux__input {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 9px 0 0;
-}
 
 .dataTable__thead__cell:first-child .dataTable__thead__cellLiner {
   padding-left: 15px;
@@ -3047,10 +3027,16 @@ body {
 }
 
 .dataTable__tbody__cell {
-  padding: 10px 8px;
-  white-space: nowrap;
+  padding-left: 8px;
+  padding-right: 8px;
   border-bottom: 1px dashed #d4dadc;
   font-weight: 300;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .dataTable__tbody__cell:first-child {
@@ -3061,28 +3047,26 @@ body {
 }
 
 .dataTable__tbody__cellLiner {
-  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 120px;
-  display: inline-block;
-  vertical-align: middle;
-}
-.dataTable__tbody__cellLiner .checkboxWrapper {
-  display: block;
-  height: 11px;
+  white-space: nowrap;
+  line-height: 1.2;
 }
 
 .dataTable__tbody__cellValue--link,
 .dataTable__tbody__cellValue--readOnly,
 .dataTable__tbody__cellValue--editable {
+  box-sizing: border-box;
   padding: 4px 5px;
-  margin-left: -6px;
-  margin-top: -4px;
-  margin-bottom: -4px;
   display: inline-block;
-  overflow: hidden;
+  vertical-align: middle;
   min-width: 40px;
   color: #5e6162;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .dataTable__tbody__cellValue--readOnly {
@@ -3099,7 +3083,6 @@ body {
 }
 
 .dataTable__tbody__cellValue--editable {
-  text-overflow: ellipsis;
   border: 1px dashed transparent;
   border-radius: 4px;
   transition: .1s all ease-in-out;
@@ -3245,7 +3228,7 @@ body {
 .dataTable__thead__cell,
 .dataTable__tbody__cell,
 .dataTable__tfoot__cell {
-  width: 120px;
+  width: 100px;
   box-sizing: border-box;
 }
 .dataTable__thead__cell:first-child,
@@ -3259,6 +3242,9 @@ body {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+
+.dataTable__tbody__cell:last-child .dataTable__tbody__cellLiner {
   text-align: right;
 }
 
