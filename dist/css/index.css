@@ -2930,6 +2930,7 @@ body {
 }
 
 .dataGrid__table {
+  display: block;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -3198,10 +3199,6 @@ body {
 .gridLoadingRow--initial {
   box-sizing: border-box;
   height: 100%;
-}
-
-.dataGrid__table {
-  display: block;
 }
 
 .dataGrid__thead {
