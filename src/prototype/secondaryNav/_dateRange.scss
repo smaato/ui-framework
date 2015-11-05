@@ -1,0 +1,87 @@
+.p-dateRange {
+  display: table-cell;
+  white-space: nowrap;
+  padding: 0;
+  vertical-align: middle;
+}
+  
+  .p-dateRange__option {
+    display: inline-block;
+    color: $secondaryNavTextColor;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 42px;
+    padding: 0 0 0 8px;
+    vertical-align: middle;
+    &:not(.p-dateRange__option--required) {
+      @media #{$viewport_normalScreen} { display: none; }
+    }
+    &.p-dateRange__option--required {
+      display: inline-block;
+    }
+  }
+  
+    .p-dateRange__trigger {
+      color: $secondaryNavTextColor;
+      .icon {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        font-size: 12px;
+        line-height: 15px;
+        margin-right: 3px;
+      }
+    }
+    
+    .p-dateRange__compareToggle input {
+      border: 1px solid scale-lightness($secondaryNavBackgroundColor, 65%);
+      background: scale-lightness($secondaryNavBackgroundColor, 32%);
+      -webkit-appearance: none;
+      width: 11px;
+      height: 11px;
+      border-radius: 2px;
+      margin: 0 1px -1px 0;
+    }
+    
+    .p-dateRange__goTo {
+      display: inline-block;
+      width: 42px;
+      vertical-align: middle;
+      overflow: hidden;
+      &:hover a {
+        background-image: linear-gradient(
+          scale-lightness($secondaryNavBackgroundColor, 41%), 
+          scale-lightness($secondaryNavBackgroundColor, 35%)
+        );
+        box-shadow: 0 2px 0 scale-lightness($secondaryNavBackgroundColor, -5%);
+      }
+      a {
+        transition: .1s all ease-in-out;
+        border: 1px solid scale-lightness($secondaryNavBackgroundColor, 65%);
+        background-image: linear-gradient(
+          scale-lightness($secondaryNavBackgroundColor, 38%), 
+          scale-lightness($secondaryNavBackgroundColor, 32%)
+        );
+        display: inline-block;
+        text-align: center;
+        line-height: 50px;
+        margin: 2px 0;
+        padding: 5px 0 2px;
+        float: left;
+        &.next, &.prev {
+          span { opacity: .7; }
+          &:hover span { opacity: 1; }
+        }
+        &.prev {
+          border-radius: 4px 0 0 4px;
+          padding-right: 4px;
+          padding-left: 6px;
+        }
+        &.next {
+          border-radius: 0 4px 4px 0;
+          border-left: 0;
+          padding-left: 3px;
+          padding-right: 6px;
+        }
+      }
+    }
