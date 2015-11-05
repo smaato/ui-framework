@@ -13,7 +13,7 @@ export default class GridHeader extends Component {
   }
 
   render() {
-    const sectionClass = classNames('dataTable__thead', this.props.classHeader);
+    const sectionClass = classNames('dataGrid__thead', this.props.classHeader);
 
     return (
       <div className={sectionClass}>

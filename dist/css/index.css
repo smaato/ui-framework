@@ -759,7 +759,7 @@ body, input, textarea {
   content: "\E136";
 }
 
-.glyphicons-cogwheel:before, .dataTable__tbody__cellValue--editable:before {
+.glyphicons-cogwheel:before, .dataGrid__tbody__cellValue--editable:before {
   content: "\E137";
 }
 
@@ -2659,7 +2659,7 @@ body, input, textarea {
   position: relative;
 }
 
-[class*="glyphicons"]:before, .glyphicons:before, .checkbox__faux__input:before, .checkbox__faux__input:after, .dataTable__tbody__cellValue--editable:before {
+[class*="glyphicons"]:before, .glyphicons:before, .checkbox__faux__input:before, .checkbox__faux__input:after, .dataGrid__tbody__cellValue--editable:before {
   display: block;
   position: absolute;
   font-family: "Glyphicons Regular";
@@ -2730,19 +2730,19 @@ body {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-.dataTable__tableControls {
+.dataGrid__tableControls {
   margin: 0 auto;
   text-align: center;
   left: 0;
   right: 0;
 }
-.fixedThead .dataTable__tableControls {
+.fixedThead .dataGrid__tableControls {
   position: fixed;
   top: 0;
   z-index: 5;
 }
 
-.dataTable__tableControls__liner {
+.dataGrid__tableControls__liner {
   max-width: 1200px;
   margin: 0 auto;
   border-top: 1px solid #d4dadc;
@@ -2753,21 +2753,21 @@ body {
   box-shadow: -1px 0 0 #d4dadc, 1px 0 0 #d4dadc;
 }
 
-.fixedThead .dataTable__tableControls__placeholder {
+.fixedThead .dataGrid__tableControls__placeholder {
   height: 71px;
   max-width: 1200px;
   margin: 0 auto;
   background: #f7fafb;
 }
 
-.dataTable__filtersWrapper {
+.dataGrid__filtersWrapper {
   display: table-cell;
   vertical-align: top;
   padding: 7px 0 7px 15px;
   width: 100%;
 }
 
-.dataTable__filtersContainer {
+.dataGrid__filtersContainer {
   display: inline-block;
   overflow: hidden;
   height: 26px;
@@ -2775,7 +2775,7 @@ body {
   padding-right: 65px;
 }
 
-.dataTable__roundedBackground, .dataTable__filter, .dataTable__addFilter a, .dataTable__ellipsis .icon, .dataTable__ellipsis .add {
+.dataGrid__roundedBackground, .dataGrid__filter, .dataGrid__addFilter a, .dataGrid__ellipsis .icon, .dataGrid__ellipsis .add {
   font-size: 11px;
   background: #eef4f5;
   border: 1px solid #d1dadb;
@@ -2793,15 +2793,15 @@ body {
   color: #5e6162;
 }
 
-.dataTable__filter {
+.dataGrid__filter {
   float: left;
   margin: 0 2px 0 0;
   z-index: 4;
 }
-.dataTable__filter strong {
+.dataGrid__filter strong {
   font-weight: 400;
 }
-.dataTable__filter .remove {
+.dataGrid__filter .remove {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -2813,11 +2813,11 @@ body {
   background: #eef4f5;
   box-shadow: -10px 0 5px #eef4f5;
 }
-.dataTable__filter:hover .remove {
+.dataGrid__filter:hover .remove {
   opacity: 1;
 }
 
-.dataTable__addFilter {
+.dataGrid__addFilter {
   box-shadow: 60px 0 0 #f7fafb, 40px 0 0 #f7fafb;
   position: relative;
   z-index: 3;
@@ -2826,20 +2826,20 @@ body {
   margin-left: -30px;
   float: left;
 }
-.dataTable__addFilter a {
+.dataGrid__addFilter a {
   cursor: pointer;
   left: 30px;
   font-size: 16px;
 }
 
-.dataTable__ellipsis {
+.dataGrid__ellipsis {
   display: inline-block;
   float: left;
   width: 60px;
   position: absolute;
   z-index: 1;
 }
-.dataTable__ellipsis .icon {
+.dataGrid__ellipsis .icon {
   display: inline-block;
   width: 8px;
   height: 24px;
@@ -2847,25 +2847,25 @@ body {
   cursor: pointer;
   font-size: 12px;
 }
-.dataTable__ellipsis .icon:before {
+.dataGrid__ellipsis .icon:before {
   margin-left: 6px;
   opacity: .6;
 }
-.dataTable__ellipsis .icon:hover:before {
+.dataGrid__ellipsis .icon:hover:before {
   opacity: 1;
 }
-.dataTable__ellipsis .add {
+.dataGrid__ellipsis .add {
   font-size: 16px;
   margin: 0 0 0 -2px;
 }
 
-.dataTable__batch {
+.dataGrid__batch {
   display: table-cell;
   vertical-align: middle;
   padding-right: 5px;
 }
 
-.dataTable__batch__button {
+.dataGrid__batch__button {
   display: inline-block;
   color: black;
   border: 1px dashed #496b77;
@@ -2875,7 +2875,7 @@ body {
   padding: 5px 17px 5px 8px;
   white-space: nowrap;
 }
-.dataTable__batch__button .icon {
+.dataGrid__batch__button .icon {
   width: 12px;
   float: left;
   height: 10px;
@@ -2883,13 +2883,13 @@ body {
   font-size: 10px;
 }
 
-.dataTable__search {
+.dataGrid__search {
   display: table-cell;
   vertical-align: middle;
   padding-right: 15px;
 }
 
-.dataTable__search__input {
+.dataGrid__search__input {
   display: inline-block;
   vertical-align: middle;
   line-height: 0px;
@@ -2897,7 +2897,7 @@ body {
   height: 24px;
   overflow: hidden;
 }
-.dataTable__search__input input {
+.dataGrid__search__input input {
   border-radius: 20px;
   border: 1px solid #c9cfd1;
   background: white;
@@ -2909,7 +2909,7 @@ body {
   color: #131314;
   width: 140px;
 }
-.dataTable__search__input .icon {
+.dataGrid__search__input .icon {
   color: #b2b7b9;
   width: 20px;
   height: 20px;
@@ -2918,18 +2918,18 @@ body {
   top: 11px;
   right: 0;
 }
-.dataTable__search__input .icon:before {
+.dataGrid__search__input .icon:before {
   font-size: 11px;
 }
 
-.dataTable__container {
+.dataGrid__container {
   border: 1px solid #d4dadc;
   -webkit-font-smoothing: subpixel-antialiased;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.dataTable__table {
+.dataGrid__table {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -2939,13 +2939,13 @@ body {
   font-size: 13px;
 }
 
-.dataTable__theadBG, .fixedThead .dataTable__thead__placeholder__liner, .dataTable__thead__cellLiner {
+.dataGrid__theadBG, .fixedThead .dataGrid__thead__placeholder__liner, .dataGrid__thead__cellLiner {
   border-bottom: 1px solid #d4dadc;
   background: #f7fafb;
   height: 31px;
 }
 
-.fixedThead .dataTable__thead__placeholder {
+.fixedThead .dataGrid__thead__placeholder {
   left: 0;
   right: 0;
   top: 40px;
@@ -2953,7 +2953,7 @@ body {
   z-index: 5;
   text-align: center;
 }
-.fixedThead .dataTable__thead__placeholder__liner {
+.fixedThead .dataGrid__thead__placeholder__liner {
   border-top: 1px solid #d4dadc;
   max-width: 1200px;
   margin: 0 auto;
@@ -2962,71 +2962,71 @@ body {
   border-right: 1px solid #d4dadc;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.05);
 }
-.fixedThead .dataTable__thead__row:not(.dataTable__thead__row--placeholder) .dataTable__thead__cellLiner {
+.fixedThead .dataGrid__thead__row:not(.dataGrid__thead__row--placeholder) .dataGrid__thead__cellLiner {
   position: fixed !important;
   top: 41px;
 }
 
-.dataTable__thead__cell {
+.dataGrid__thead__cell {
   vertical-align: middle;
   line-height: 30px;
 }
-.dataTable__thead__cell.sortable span.arrowDown,
-.dataTable__thead__cell.sortable span.arrowUp {
+.dataGrid__thead__cell.sortable span.arrowDown,
+.dataGrid__thead__cell.sortable span.arrowUp {
   display: none;
 }
-.dataTable__thead__cell.sortable:hover a {
+.dataGrid__thead__cell.sortable:hover a {
   background: #f0f3f3;
   cursor: pointer;
 }
-.dataTable__thead__cell.sortable.selected a {
+.dataGrid__thead__cell.sortable.selected a {
   white-space: nowrap;
 }
-.dataTable__thead__cell.sortable.selected a span.arrowDown {
+.dataGrid__thead__cell.sortable.selected a span.arrowDown {
   display: inline-block;
 }
-.dataTable__thead__cell.sortable.selected.reverse span.arrowDown {
+.dataGrid__thead__cell.sortable.selected.reverse span.arrowDown {
   display: none;
 }
-.dataTable__thead__cell.sortable.selected.reverse span.arrowUp {
+.dataGrid__thead__cell.sortable.selected.reverse span.arrowUp {
   display: inline-block;
 }
 
-.dataTable__thead__cellLiner {
+.dataGrid__thead__cellLiner {
   display: block;
   z-index: 6;
   padding: 0 8px;
 }
 
-.dataTable__thead__cell:first-child .dataTable__thead__cellLiner {
+.dataGrid__thead__cell:first-child .dataGrid__thead__cellLiner {
   padding-left: 15px;
 }
 
-.dataTable__thead__cell:last-child .dataTable__thead__cellLiner {
+.dataGrid__thead__cell:last-child .dataGrid__thead__cellLiner {
   padding-right: 15px;
 }
 
-.dataTable__thead__row--placeholder .dataTable__thead__cellLiner {
+.dataGrid__thead__row--placeholder .dataGrid__thead__cellLiner {
   height: 0;
   border: 0;
   overflow: hidden;
 }
 
-.dataTable__tbody {
+.dataGrid__tbody {
   background: #ffffff;
 }
 
-.dataTable__tbody__row:nth-of-type(odd) {
+.dataGrid__tbody__row:nth-of-type(odd) {
   background-color: #f9f9f9;
 }
-.dataTable--reverseStriped .dataTable__tbody__row:nth-of-type(odd) {
+.dataGrid--reverseStriped .dataGrid__tbody__row:nth-of-type(odd) {
   background-color: transparent;
 }
-.dataTable--reverseStriped .dataTable__tbody__row:nth-of-type(even) {
+.dataGrid--reverseStriped .dataGrid__tbody__row:nth-of-type(even) {
   background-color: #f9f9f9;
 }
 
-.dataTable__tbody__cell {
+.dataGrid__tbody__cell {
   padding-left: 8px;
   padding-right: 8px;
   border-bottom: 1px dashed #d4dadc;
@@ -3039,14 +3039,14 @@ body {
           align-items: center;
 }
 
-.dataTable__tbody__cell:first-child {
+.dataGrid__tbody__cell:first-child {
   padding-left: 15px;
 }
-.dataTable__tbody__cell:last-child {
+.dataGrid__tbody__cell:last-child {
   padding-right: 15px;
 }
 
-.dataTable__tbody__cellLiner {
+.dataGrid__tbody__cellLiner {
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3054,9 +3054,9 @@ body {
   line-height: 1.2;
 }
 
-.dataTable__tbody__cellValue--link,
-.dataTable__tbody__cellValue--readOnly,
-.dataTable__tbody__cellValue--editable {
+.dataGrid__tbody__cellValue--link,
+.dataGrid__tbody__cellValue--readOnly,
+.dataGrid__tbody__cellValue--editable {
   box-sizing: border-box;
   padding: 4px 5px;
   display: inline-block;
@@ -3069,26 +3069,26 @@ body {
   white-space: nowrap;
 }
 
-.dataTable__tbody__cellValue--readOnly {
+.dataGrid__tbody__cellValue--readOnly {
   cursor: default;
 }
 
-.dataTable__tbody__cellValue--link {
+.dataGrid__tbody__cellValue--link {
   cursor: pointer;
   color: #2799c4;
   font-weight: 400;
 }
-.dataTable__tbody__cellValue--link:hover {
+.dataGrid__tbody__cellValue--link:hover {
   opacity: .8;
 }
 
-.dataTable__tbody__cellValue--editable {
+.dataGrid__tbody__cellValue--editable {
   border: 1px dashed transparent;
   border-radius: 4px;
   transition: .1s all ease-in-out;
   position: relative;
 }
-.dataTable__tbody__cellValue--editable:before {
+.dataGrid__tbody__cellValue--editable:before {
   display: block;
   position: absolute;
   left: auto;
@@ -3102,67 +3102,67 @@ body {
   box-shadow: -4px 0 10px 2px #f7fafb;
   opacity: 0;
 }
-.dataTable__tbody__cellValue--editable:hover {
+.dataGrid__tbody__cellValue--editable:hover {
   border-color: #d4dadc;
   background: #f7fafb;
 }
-.dataTable__tbody__cellValue--editable:hover:before {
+.dataGrid__tbody__cellValue--editable:hover:before {
   opacity: 1;
 }
 
-.dataTable__tbody__cellChange {
+.dataGrid__tbody__cellChange {
   font-size: 12px;
   padding-left: 2px;
   font-weight: 400;
 }
-.dataTable__tbody__cellChange.up {
+.dataGrid__tbody__cellChange.up {
   color: #35d0a0;
 }
-.dataTable__tbody__cellChange.down {
+.dataGrid__tbody__cellChange.down {
   color: #ff2400;
 }
 
-.dataTable__tbody__cellLiner .icon {
+.dataGrid__tbody__cellLiner .icon {
   color: #c8cfd0;
   padding: 0;
   vertical-align: top;
 }
 
-.dataTable__tbody__cellLiner .glyphicons-more,
-.dataTable__tbody__cellLiner .glyphicons-cogwheel {
+.dataGrid__tbody__cellLiner .glyphicons-more,
+.dataGrid__tbody__cellLiner .glyphicons-cogwheel {
   font-size: 14px;
   color: #bcc2c4;
   margin: 0 0 0 15px;
 }
-.dataTable__tbody__cellLiner .glyphicons-more:hover,
-.dataTable__tbody__cellLiner .glyphicons-cogwheel:hover {
+.dataGrid__tbody__cellLiner .glyphicons-more:hover,
+.dataGrid__tbody__cellLiner .glyphicons-cogwheel:hover {
   color: #8d9293;
 }
 
-.dataTable__tbody__cellLiner .glyphicons-leaf {
+.dataGrid__tbody__cellLiner .glyphicons-leaf {
   margin-left: 2px;
   font-size: 9px;
   color: #35d0a0;
 }
-.dataTable__tbody__cellLiner .glyphicons-leaf:before {
+.dataGrid__tbody__cellLiner .glyphicons-leaf:before {
   top: 1px;
 }
 
-.dataTable__tfoot__cell {
+.dataGrid__tfoot__cell {
   vertical-align: middle;
   line-height: 30px;
 }
 
-.dataTable__tfoot__cellLiner {
+.dataGrid__tfoot__cellLiner {
   padding: 0 8px;
   height: 31px;
 }
 
-.dataTable__tfoot__cell:first-child .dataTable__tfoot__cellLiner {
+.dataGrid__tfoot__cell:first-child .dataGrid__tfoot__cellLiner {
   padding-left: 15px;
 }
 
-.dataTable__tfoot__cell:last-child .dataTable__tfoot__cellLiner {
+.dataGrid__tfoot__cell:last-child .dataGrid__tfoot__cellLiner {
   padding-right: 15px;
 }
 
@@ -3200,51 +3200,51 @@ body {
   height: 100%;
 }
 
-.dataTable__table {
+.dataGrid__table {
   display: block;
 }
 
-.dataTable__thead {
+.dataGrid__thead {
   display: block;
 }
 
-.dataTable__tbody {
+.dataGrid__tbody {
   display: block;
   overflow-y: auto;
 }
 
-.dataTable__tfoot {
+.dataGrid__tfoot {
   display: block;
 }
 
-.dataTable__thead__row,
-.dataTable__tbody__row,
-.dataTable__tfoot__row {
+.dataGrid__thead__row,
+.dataGrid__tbody__row,
+.dataGrid__tfoot__row {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.dataTable__thead__cell,
-.dataTable__tbody__cell,
-.dataTable__tfoot__cell {
+.dataGrid__thead__cell,
+.dataGrid__tbody__cell,
+.dataGrid__tfoot__cell {
   width: 100px;
   box-sizing: border-box;
 }
-.dataTable__thead__cell:first-child,
-.dataTable__tbody__cell:first-child,
-.dataTable__tfoot__cell:first-child {
+.dataGrid__thead__cell:first-child,
+.dataGrid__tbody__cell:first-child,
+.dataGrid__tfoot__cell:first-child {
   width: 35px;
 }
-.dataTable__thead__cell:last-child,
-.dataTable__tbody__cell:last-child,
-.dataTable__tfoot__cell:last-child {
+.dataGrid__thead__cell:last-child,
+.dataGrid__tbody__cell:last-child,
+.dataGrid__tfoot__cell:last-child {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
-.dataTable__tbody__cell:last-child .dataTable__tbody__cellLiner {
+.dataGrid__tbody__cell:last-child .dataGrid__tbody__cellLiner {
   text-align: right;
 }
 

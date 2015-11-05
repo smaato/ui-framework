@@ -41,58 +41,58 @@ export default class GridViewExample extends Component {
     const rows = [];
     for (let i = 0; i < 300; i++) {
       rows.push(
-        <div className="dataTable__tbody__row" key={i}>
-          <div className="dataTable__tbody__cell">
-            <span className="dataTable__tbody__cellLiner">
+        <div className="dataGrid__tbody__row" key={i}>
+          <div className="dataGrid__tbody__cell">
+            <span className="dataGrid__tbody__cellLiner">
               <span className="checkboxWrapper">
                 <input type="checkbox" name="item_1" id="item_1" className="checkbox__input" />
                 <label htmlFor="item_1" className="checkbox__faux__input"></label>
               </span>
             </span>
           </div>
-          <div className="dataTable__tbody__cell">
-            <span className="dataTable__tbody__cellLiner">
-              <a href="#" className="dataTable__tbody__cellValue--link blueLink">Ford F150</a>
+          <div className="dataGrid__tbody__cell">
+            <span className="dataGrid__tbody__cellLiner">
+              <a href="#" className="dataGrid__tbody__cellValue--link blueLink">Ford F150</a>
             </span>
           </div>
-          <div className="dataTable__tbody__cell">
-            <span className="dataTable__tbody__cellLiner">
-              <a href="#" className="dataTable__tbody__cellValue--editable">In Production</a>
+          <div className="dataGrid__tbody__cell">
+            <span className="dataGrid__tbody__cellLiner">
+              <a href="#" className="dataGrid__tbody__cellValue--editable">In Production</a>
             </span>
           </div>
-          <div className="dataTable__tbody__cell">
-            <span className="dataTable__tbody__cellLiner">
-              <a href="#" className="dataTable__tbody__cellValue--editable">Diesel, Unleaded</a>
+          <div className="dataGrid__tbody__cell">
+            <span className="dataGrid__tbody__cellLiner">
+              <a href="#" className="dataGrid__tbody__cellValue--editable">Diesel, Unleaded</a>
             </span>
           </div>
-          <div className="dataTable__tbody__cell">
-            <span className="dataTable__tbody__cellLiner">
-              <a href="#" className="dataTable__tbody__cellValue--editable">
+          <div className="dataGrid__tbody__cell">
+            <span className="dataGrid__tbody__cellLiner">
+              <a href="#" className="dataGrid__tbody__cellValue--editable">
                 <span className="icon glyphicons-user"></span>3, 5, 6</a>
               </span>
           </div>
-          <div className="dataTable__tbody__cell">
-            <span className="dataTable__tbody__cellLiner">
-              <a href="#" className="dataTable__tbody__cellValue--editable">6, 8</a>
+          <div className="dataGrid__tbody__cell">
+            <span className="dataGrid__tbody__cellLiner">
+              <a href="#" className="dataGrid__tbody__cellValue--editable">6, 8</a>
             </span>
           </div>
-          <div className="dataTable__tbody__cell">
-            <span className="dataTable__tbody__cellLiner">
-              <a href="#" className="dataTable__tbody__cellValue--editable">25mpg<span className="icon glyphicons-leaf"></span></a>
+          <div className="dataGrid__tbody__cell">
+            <span className="dataGrid__tbody__cellLiner">
+              <a href="#" className="dataGrid__tbody__cellValue--editable">25mpg<span className="icon glyphicons-leaf"></span></a>
             </span>
           </div>
-          <div className="dataTable__tbody__cell">
-            <span className="dataTable__tbody__cellLiner">
-              <span className="dataTable__tbody__cellValue--readOnly">202.1k<span className="dataTable__tbody__cellChange up">+2%</span></span>
+          <div className="dataGrid__tbody__cell">
+            <span className="dataGrid__tbody__cellLiner">
+              <span className="dataGrid__tbody__cellValue--readOnly">202.1k<span className="dataGrid__tbody__cellChange up">+2%</span></span>
             </span>
           </div>
-          <div className="dataTable__tbody__cell">
-            <span className="dataTable__tbody__cellLiner">
-              <span className="dataTable__tbody__cellValue--readOnly">200.5k<span className="dataTable__tbody__cellChange down">-2%</span></span>
+          <div className="dataGrid__tbody__cell">
+            <span className="dataGrid__tbody__cellLiner">
+              <span className="dataGrid__tbody__cellValue--readOnly">200.5k<span className="dataGrid__tbody__cellChange down">-2%</span></span>
             </span>
           </div>
-          <div className="dataTable__tbody__cell">
-            <span className="dataTable__tbody__cellLiner">
+          <div className="dataGrid__tbody__cell">
+            <span className="dataGrid__tbody__cellLiner">
               <a href="" className="icon glyphicons-more"></a>
               <a href="" className="icon glyphicons-cogwheel"></a>
             </span>
@@ -201,26 +201,26 @@ export default class GridViewExample extends Component {
 
         </div>
 
-        <div className="dataTable__tableControls">
+        <div className="dataGrid__tableControls">
 
-          <div className="dataTable__tableControls__liner">
+          <div className="dataGrid__tableControls__liner">
 
-            <div className="dataTable__filtersWrapper">
+            <div className="dataGrid__filtersWrapper">
 
-              <ul className="dataTable__filtersContainer">
-                <li className="dataTable__filter">
+              <ul className="dataGrid__filtersContainer">
+                <li className="dataGrid__filter">
                   <span className="filterTitle">
                     <strong>Status:</strong> In Production
                   </span>
                   <a className="remove" href=""><span className="icon glyphicons-remove-2"></span></a>
                 </li>
-                <li className="dataTable__filter">
+                <li className="dataGrid__filter">
                   <span className="filterTitle">
                     <strong>Cylinders:</strong> 8+
                   </span>
                   <a className="remove" href=""><span className="icon glyphicons-remove-2"></span></a>
                 </li>
-                <li className="dataTable__filter">
+                <li className="dataGrid__filter">
                   <span className="filterTitle">
                     <strong>Passengers:</strong> 2+
                   </span>
@@ -228,7 +228,7 @@ export default class GridViewExample extends Component {
                     <span className="icon glyphicons-remove-2"></span>
                   </a>
                 </li>
-                <li className="dataTable__filter">
+                <li className="dataGrid__filter">
                   <span className="filterTitle">
                     <strong>Fuel Economy:</strong> 10mpg+
                   </span>
@@ -236,7 +236,7 @@ export default class GridViewExample extends Component {
                     <span className="icon glyphicons-remove-2"></span>
                   </a>
                 </li>
-                <li className="dataTable__filter">
+                <li className="dataGrid__filter">
                   <span className="filterTitle">
                     <strong>Fuel:</strong> Not Electric
                   </span>
@@ -245,33 +245,33 @@ export default class GridViewExample extends Component {
                   </a>
                 </li>
 
-                <li className="dataTable__mask">
+                <li className="dataGrid__mask">
                   <span className="mask-inner"></span>
                 </li>
 
-                <li className="dataTable__ellipsis">
+                <li className="dataGrid__ellipsis">
                   <span className="icon glyphicons-more"></span>
                   <a className="add" href="#">+</a>
                 </li>
 
-                <li className="dataTable__addFilter">
+                <li className="dataGrid__addFilter">
                   <a href="#">+</a>
                 </li>
 
               </ul>
             </div>
 
-            <div className="dataTable__batch">
+            <div className="dataGrid__batch">
 
-              <a href="" className="dataTable__batch__button disabled">
+              <a href="" className="dataGrid__batch__button disabled">
                 <span className="icon glyphicons-new-window"></span>Actions
               </a>
 
             </div>
 
-            <div className="dataTable__search">
+            <div className="dataGrid__search">
 
-              <label className="dataTable__search__input">
+              <label className="dataGrid__search__input">
                 <input type="text" />
                 <span className="icon glyphicons-search"></span>
               </label>
@@ -282,27 +282,27 @@ export default class GridViewExample extends Component {
 
         </div>
 
-        <div className="dataTable__tableControls__placeholder"></div>
+        <div className="dataGrid__tableControls__placeholder"></div>
 
-        <div className="dataTable__container">
+        <div className="dataGrid__container">
 
-          <div className="dataTable__thead__placeholder">
-            <div className="dataTable__thead__placeholder__liner"></div>
+          <div className="dataGrid__thead__placeholder">
+            <div className="dataGrid__thead__placeholder__liner"></div>
           </div>
 
-          <div className="dataTable__table"x>
-            <div className="dataTable__thead">
-              <div className="dataTable__thead__row dataTable__thead__row--placeholder">
-                <div className="dataTable__thead__cell">
-                  <span className="dataTable__thead__cellLiner">
+          <div className="dataGrid__table"x>
+            <div className="dataGrid__thead">
+              <div className="dataGrid__thead__row dataGrid__thead__row--placeholder">
+                <div className="dataGrid__thead__cell">
+                  <span className="dataGrid__thead__cellLiner">
                     <span className="checkboxWrapper">
                       <input type="checkbox" name="table_batch" id="table_batch" className="checkbox__input" />
                       <label htmlFor="table_batch" className="checkbox__faux__input"></label>
                     </span>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell sortable">
-                  <span className="dataTable__thead__cellLiner">
+                <div className="dataGrid__thead__cell sortable">
+                  <span className="dataGrid__thead__cellLiner">
                     <a>
                       Name
                       <span className="arrowUp">
@@ -314,8 +314,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell sortable">
-                  <span className="dataTable__thead__cellLiner">
+                <div className="dataGrid__thead__cell sortable">
+                  <span className="dataGrid__thead__cellLiner">
                     <a>
                       Status
                       <span className="arrowUp">
@@ -327,8 +327,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell sortable">
-                  <span className="dataTable__thead__cellLiner">
+                <div className="dataGrid__thead__cell sortable">
+                  <span className="dataGrid__thead__cellLiner">
                     <a>
                       Fuel
                       <span className="arrowUp">
@@ -340,8 +340,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell sortable">
-                  <span className="dataTable__thead__cellLiner">
+                <div className="dataGrid__thead__cell sortable">
+                  <span className="dataGrid__thead__cellLiner">
                     <a>
                       Passengers
                       <span className="arrowUp">
@@ -353,8 +353,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell sortable">
-                  <span className="dataTable__thead__cellLiner">
+                <div className="dataGrid__thead__cell sortable">
+                  <span className="dataGrid__thead__cellLiner">
                     <a>
                       Cylinders
                       <span className="arrowUp">
@@ -366,8 +366,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell sortable">
-                  <span className="dataTable__thead__cellLiner">
+                <div className="dataGrid__thead__cell sortable">
+                  <span className="dataGrid__thead__cellLiner">
                     <a>
                       Fuel Economy
                       <span className="arrowUp">
@@ -379,8 +379,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell sortable selected reverse">
-                  <span className="dataTable__thead__cellLiner">
+                <div className="dataGrid__thead__cell sortable selected reverse">
+                  <span className="dataGrid__thead__cellLiner">
                     <a>
                       # Sold
                       <span className="arrowUp">
@@ -392,8 +392,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell sortable">
-                  <span className="dataTable__thead__cellLiner">
+                <div className="dataGrid__thead__cell sortable">
+                  <span className="dataGrid__thead__cellLiner">
                     <a>
                       Registered
                       <span className="arrowUp">
@@ -405,21 +405,21 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell">
-                  <span className="dataTable__thead__cellLiner"></span>
+                <div className="dataGrid__thead__cell">
+                  <span className="dataGrid__thead__cellLiner"></span>
                 </div>
               </div>
-              <div className="dataTable__thead__row">
-                <div className="dataTable__thead__cell">
-                  <span className="dataTable__thead__cellLiner">
+              <div className="dataGrid__thead__row">
+                <div className="dataGrid__thead__cell">
+                  <span className="dataGrid__thead__cellLiner">
                     <span className="checkboxWrapper">
                       <input type="checkbox" name="table_batch" id="table_batch" className="checkbox__input" />
                       <label htmlFor="table_batch" className="checkbox__faux__input"></label>
                     </span>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell sortable">
-                  <span className="dataTable__thead__cellLiner">
+                <div className="dataGrid__thead__cell sortable">
+                  <span className="dataGrid__thead__cellLiner">
                     <a>
                       Name
                       <span className="arrowUp">
@@ -431,8 +431,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell sortable">
-                  <span className="dataTable__thead__cellLiner">
+                <div className="dataGrid__thead__cell sortable">
+                  <span className="dataGrid__thead__cellLiner">
                     <a>
                       Status
                       <span className="arrowUp">
@@ -444,8 +444,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell sortable">
-                  <span className="dataTable__thead__cellLiner">
+                <div className="dataGrid__thead__cell sortable">
+                  <span className="dataGrid__thead__cellLiner">
                     <a>
                       Fuel
                       <span className="arrowUp">
@@ -457,8 +457,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell sortable">
-                  <span className="dataTable__thead__cellLiner">
+                <div className="dataGrid__thead__cell sortable">
+                  <span className="dataGrid__thead__cellLiner">
                     <a>
                       Passengers
                       <span className="arrowUp">
@@ -470,8 +470,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell sortable">
-                  <span className="dataTable__thead__cellLiner">
+                <div className="dataGrid__thead__cell sortable">
+                  <span className="dataGrid__thead__cellLiner">
                     <a>
                       Cylinders
                       <span className="arrowUp">
@@ -483,8 +483,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell sortable">
-                  <span className="dataTable__thead__cellLiner">
+                <div className="dataGrid__thead__cell sortable">
+                  <span className="dataGrid__thead__cellLiner">
                     <a>
                       Fuel Economy
                       <span className="arrowUp">
@@ -496,8 +496,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell sortable selected reverse">
-                  <span className="dataTable__thead__cellLiner">
+                <div className="dataGrid__thead__cell sortable selected reverse">
+                  <span className="dataGrid__thead__cellLiner">
                     <a>
                       # Sold
                       <span className="arrowUp">
@@ -509,8 +509,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell sortable">
-                  <span className="dataTable__thead__cellLiner">
+                <div className="dataGrid__thead__cell sortable">
+                  <span className="dataGrid__thead__cellLiner">
                     <a>
                       Registered
                       <span className="arrowUp">
@@ -522,26 +522,26 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataTable__thead__cell">
-                  <span className="dataTable__thead__cellLiner"></span>
+                <div className="dataGrid__thead__cell">
+                  <span className="dataGrid__thead__cellLiner"></span>
                 </div>
               </div>
             </div>
-            <div className="dataTable__tbody">
+            <div className="dataGrid__tbody">
               {rows}
             </div>
-            <div className="dataTable__tfoot">
-              <div className="dataTable__tfoot__row">
-                <div className="dataTable__tfoot__cell"><div className="dataTable__tfoot__cellLiner"></div></div>
-                <div className="dataTable__tfoot__cell"><div className="dataTable__tfoot__cellLiner"></div></div>
-                <div className="dataTable__tfoot__cell"><div className="dataTable__tfoot__cellLiner"></div></div>
-                <div className="dataTable__tfoot__cell"><div className="dataTable__tfoot__cellLiner"></div></div>
-                <div className="dataTable__tfoot__cell"><div className="dataTable__tfoot__cellLiner"></div></div>
-                <div className="dataTable__tfoot__cell"><div className="dataTable__tfoot__cellLiner"></div></div>
-                <div className="dataTable__tfoot__cell"><div className="dataTable__tfoot__cellLiner"></div></div>
-                <div className="dataTable__tfoot__cell"><div className="dataTable__tfoot__cellLiner">152.1m</div></div>
-                <div className="dataTable__tfoot__cell"><div className="dataTable__tfoot__cellLiner">Registered</div></div>
-                <div className="dataTable__tfoot__cell"><div className="dataTable__tfoot__cellLiner"></div></div>
+            <div className="dataGrid__tfoot">
+              <div className="dataGrid__tfoot__row">
+                <div className="dataGrid__tfoot__cell"><div className="dataGrid__tfoot__cellLiner"></div></div>
+                <div className="dataGrid__tfoot__cell"><div className="dataGrid__tfoot__cellLiner"></div></div>
+                <div className="dataGrid__tfoot__cell"><div className="dataGrid__tfoot__cellLiner"></div></div>
+                <div className="dataGrid__tfoot__cell"><div className="dataGrid__tfoot__cellLiner"></div></div>
+                <div className="dataGrid__tfoot__cell"><div className="dataGrid__tfoot__cellLiner"></div></div>
+                <div className="dataGrid__tfoot__cell"><div className="dataGrid__tfoot__cellLiner"></div></div>
+                <div className="dataGrid__tfoot__cell"><div className="dataGrid__tfoot__cellLiner"></div></div>
+                <div className="dataGrid__tfoot__cell"><div className="dataGrid__tfoot__cellLiner">152.1m</div></div>
+                <div className="dataGrid__tfoot__cell"><div className="dataGrid__tfoot__cellLiner">Registered</div></div>
+                <div className="dataGrid__tfoot__cell"><div className="dataGrid__tfoot__cellLiner"></div></div>
               </div>
             </div>
 

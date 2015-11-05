@@ -1,0 +1,20 @@
+.dataGrid__tfoot__cell {
+  vertical-align: middle;
+  line-height: 30px;
+}
+
+.dataGrid__tfoot__cell:first-child {
+}
+
+  .dataGrid__tfoot__cellLiner {
+    padding: 0 8px;
+    height: 31px;
+  }
+
+  .dataGrid__tfoot__cell:first-child .dataGrid__tfoot__cellLiner {
+    padding-left: 15px;
+  }
+
+  .dataGrid__tfoot__cell:last-child .dataGrid__tfoot__cellLiner {
+    padding-right: 15px;
+  }

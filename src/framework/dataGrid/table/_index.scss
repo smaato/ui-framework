@@ -1,0 +1,22 @@
+.dataGrid__container {
+  border: 1px solid $componentStrokeColor;
+  -webkit-font-smoothing: subpixel-antialiased;
+  max-width: $maxWidth;
+  margin: 0 auto;
+}
+
+  .dataGrid__table {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    color: #474b4e;
+    font-weight: 400;
+    font-size: 13px;
+  }
+
+    @import 'thead';
+    @import 'tbody';
+    @import 'tfoot';
+    @import 'gridEmptyRow';
+    @import 'gridLoadingRow';
