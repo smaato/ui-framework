@@ -18,34 +18,34 @@
     font-size: 13px;
   }
 
-    @import 'header/thead';
-    @import 'body/tbody';
-    @import 'footer/tfoot';
-    @import 'empty/gridEmptyRow';
-    @import 'loading/gridLoadingRow';
+    @import 'header/index';
+    @import 'body/index';
+    @import 'footer/index';
+    @import 'empty/index';
+    @import 'loading/index';
 
-    .dataGrid__thead {
+    .dataGrid__header {
       display: block;
     }
 
-    .dataGrid__tbody {
+    .dataGrid__body {
       display: block;
       overflow-y: auto;
     }
 
-    .dataGrid__tfoot {
+    .dataGrid__footer {
       display: block;
     }
 
-      .dataGrid__thead__row,
-      .dataGrid__tbody__row,
-      .dataGrid__tfoot__row {
+      .dataGrid__header__row,
+      .dataGrid__body__row,
+      .dataGrid__footer__row {
         display: flex;
       }
 
-        .dataGrid__thead__cell,
-        .dataGrid__tbody__cell,
-        .dataGrid__tfoot__cell {
+        .dataGrid__header__cell,
+        .dataGrid__body__cell,
+        .dataGrid__footer__cell {
           width: 100px;
           box-sizing: border-box;
           &:first-child {
@@ -56,6 +56,6 @@
           }
         }
 
-          .dataGrid__tbody__cell:last-child .dataGrid__tbody__cellLiner {
+          .dataGrid__body__cell:last-child .dataGrid__body__cellLiner {
             text-align: right;
           }

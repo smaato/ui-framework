@@ -12,11 +12,11 @@ export default class GridFooterCell extends Component {
   }
 
   render() {
-    const cellClass = classNames('dataGrid__tfoot__cell', this.props.classFooterCell);
+    const cellClass = classNames('dataGrid__footer__cell', this.props.classFooterCell);
 
     return (
       <div className={cellClass}>
-        <div className="dataGrid__tfoot__cellLiner">
+        <div className="dataGrid__footer__cellLiner">
           {this.props.content}
         </div>
       </div>

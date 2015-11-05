@@ -1,0 +1,33 @@
+.dataGrid__headerBG {
+  border-bottom: 1px solid $componentStrokeColor;
+  background: $componentBackgroundColor;
+  height: 31px;
+}
+
+.fixedThead {
+
+  .dataGrid__header__placeholder {
+    left: 0;
+    right: 0;
+    top: 40px;
+    position: fixed;
+    z-index: 5;
+    text-align: center;
+  }
+  
+    .dataGrid__header__placeholder__liner {
+      border-top: 1px solid $componentStrokeColor;
+      @extend .dataGrid__headerBG;
+      max-width: $maxWidth;
+      margin: 0 auto;
+      text-align: left;
+      border-left: 1px solid $componentStrokeColor;
+      border-right: 1px solid $componentStrokeColor;
+      box-shadow: 0 3px 4px rgba(0, 0, 0, .05);
+    }
+    
+  .dataGrid__header__row:not(.dataGrid__header__row--placeholder) .dataGrid__header__cellLiner {
+    position: fixed !important;
+    top: 41px;
+  }
+}

@@ -1,0 +1,113 @@
+.dataGrid__body__cell {
+  padding-left: 8px;
+  padding-right: 8px;
+  border-bottom: 1px dashed $componentStrokeColor;
+  font-weight: 300;
+  // Vertical align
+  display: flex;
+  align-items: center;
+}
+
+  .dataGrid__body__cell {
+    &:first-child {
+      padding-left: 15px;
+    }
+    &:last-child {
+      padding-right: 15px;
+    }
+  }
+
+    .dataGrid__body__cellLiner {
+      // 4 props to make ellipsis work
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      // Or else 'g' is cut off at the bottom
+      line-height: 1.2;
+    }
+
+      .dataGrid__body__cellValue--link,
+      .dataGrid__body__cellValue--readOnly,
+      .dataGrid__body__cellValue--editable {
+        box-sizing: border-box;
+        padding: 4px 5px;
+        display: inline-block;
+        vertical-align: middle;
+        min-width: 40px;
+        color: $componentTextColor;
+        // 4 props to make ellipsis work
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .dataGrid__body__cellValue--readOnly {
+        cursor: default;
+      }
+
+      .dataGrid__body__cellValue--link {
+        cursor: pointer;
+        color: $linkColor;
+        font-weight: 400;
+        &:hover { opacity: .8; }
+      }
+
+      .dataGrid__body__cellValue--editable {
+        border: 1px dashed transparent;
+        border-radius: 4px;
+        transition: .1s all ease-in-out;
+        position: relative;
+        &:before {
+          @extend .glyphicons-cogwheel:before, .glyphicons:before;
+          display: block;
+          position: absolute;
+          left: auto;
+          font-size: 10px;
+          bottom: 0;
+          right: 0;
+          padding: 5px 4px 0;
+          z-index: 3;
+          color: tint($componentTextColor, 50%);
+          background: $componentBackgroundColor;
+          box-shadow: -4px 0 10px 2px $componentBackgroundColor;
+          opacity: 0;
+        }
+        &:hover {
+          border-color: $componentStrokeColor;
+          background: $componentBackgroundColor;
+          &:before { opacity: 1; }
+        }
+      }
+
+      .dataGrid__body__cellChange {
+        font-size: 12px;
+        padding-left: 2px;
+        font-weight: 400;
+        &.up { color: $green; }
+        &.down { color: $red; }
+      }
+
+    .dataGrid__body__cellLiner .icon {
+      color: shade($lightGrey, 15%);
+      padding: 0;
+      vertical-align: top;
+    }
+
+    .dataGrid__body__cellLiner .glyphicons-more,
+    .dataGrid__body__cellLiner .glyphicons-cogwheel {
+      font-size: 14px;
+      color: shade($lightGrey, 20%);
+      margin: 0 0 0 15px;
+      &:hover { color: shade($lightGrey, 40%); }
+    }
+
+    .dataGrid__body__cellLiner .glyphicons-leaf {
+      margin-left: 2px;
+      font-size: 9px;
+      color: $green;
+      &:before {
+        top: 1px;
+      }
+    }

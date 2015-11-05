@@ -759,7 +759,7 @@ body, input, textarea {
   content: "\E136";
 }
 
-.glyphicons-cogwheel:before, .dataGrid__tbody__cellValue--editable:before {
+.glyphicons-cogwheel:before, .dataGrid__body__cellValue--editable:before {
   content: "\E137";
 }
 
@@ -2659,7 +2659,7 @@ body, input, textarea {
   position: relative;
 }
 
-[class*="glyphicons"]:before, .glyphicons:before, .checkbox__faux__input:before, .checkbox__faux__input:after, .dataGrid__tbody__cellValue--editable:before {
+[class*="glyphicons"]:before, .glyphicons:before, .checkbox__faux__input:before, .checkbox__faux__input:after, .dataGrid__body__cellValue--editable:before {
   display: block;
   position: absolute;
   font-family: "Glyphicons Regular";
@@ -2940,13 +2940,13 @@ body {
   font-size: 13px;
 }
 
-.dataGrid__theadBG, .fixedThead .dataGrid__thead__placeholder__liner, .dataGrid__thead__cellLiner {
+.dataGrid__headerBG, .fixedThead .dataGrid__header__placeholder__liner, .dataGrid__header__cellLiner {
   border-bottom: 1px solid #d4dadc;
   background: #f7fafb;
   height: 31px;
 }
 
-.fixedThead .dataGrid__thead__placeholder {
+.fixedThead .dataGrid__header__placeholder {
   left: 0;
   right: 0;
   top: 40px;
@@ -2954,7 +2954,7 @@ body {
   z-index: 5;
   text-align: center;
 }
-.fixedThead .dataGrid__thead__placeholder__liner {
+.fixedThead .dataGrid__header__placeholder__liner {
   border-top: 1px solid #d4dadc;
   max-width: 1200px;
   margin: 0 auto;
@@ -2963,71 +2963,71 @@ body {
   border-right: 1px solid #d4dadc;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.05);
 }
-.fixedThead .dataGrid__thead__row:not(.dataGrid__thead__row--placeholder) .dataGrid__thead__cellLiner {
+.fixedThead .dataGrid__header__row:not(.dataGrid__header__row--placeholder) .dataGrid__header__cellLiner {
   position: fixed !important;
   top: 41px;
 }
 
-.dataGrid__thead__cell {
+.dataGrid__header__cell {
   vertical-align: middle;
   line-height: 30px;
 }
-.dataGrid__thead__cell.sortable span.arrowDown,
-.dataGrid__thead__cell.sortable span.arrowUp {
+.dataGrid__header__cell.sortable span.arrowDown,
+.dataGrid__header__cell.sortable span.arrowUp {
   display: none;
 }
-.dataGrid__thead__cell.sortable:hover a {
+.dataGrid__header__cell.sortable:hover a {
   background: #f0f3f3;
   cursor: pointer;
 }
-.dataGrid__thead__cell.sortable.selected a {
+.dataGrid__header__cell.sortable.selected a {
   white-space: nowrap;
 }
-.dataGrid__thead__cell.sortable.selected a span.arrowDown {
+.dataGrid__header__cell.sortable.selected a span.arrowDown {
   display: inline-block;
 }
-.dataGrid__thead__cell.sortable.selected.reverse span.arrowDown {
+.dataGrid__header__cell.sortable.selected.reverse span.arrowDown {
   display: none;
 }
-.dataGrid__thead__cell.sortable.selected.reverse span.arrowUp {
+.dataGrid__header__cell.sortable.selected.reverse span.arrowUp {
   display: inline-block;
 }
 
-.dataGrid__thead__cellLiner {
+.dataGrid__header__cellLiner {
   display: block;
   z-index: 6;
   padding: 0 8px;
 }
 
-.dataGrid__thead__cell:first-child .dataGrid__thead__cellLiner {
+.dataGrid__header__cell:first-child .dataGrid__header__cellLiner {
   padding-left: 15px;
 }
 
-.dataGrid__thead__cell:last-child .dataGrid__thead__cellLiner {
+.dataGrid__header__cell:last-child .dataGrid__header__cellLiner {
   padding-right: 15px;
 }
 
-.dataGrid__thead__row--placeholder .dataGrid__thead__cellLiner {
+.dataGrid__header__row--placeholder .dataGrid__header__cellLiner {
   height: 0;
   border: 0;
   overflow: hidden;
 }
 
-.dataGrid__tbody {
+.dataGrid__body {
   background: #ffffff;
 }
 
-.dataGrid__tbody__row:nth-of-type(odd) {
+.dataGrid__body__row:nth-of-type(odd) {
   background-color: #f9f9f9;
 }
-.dataGrid--reverseStriped .dataGrid__tbody__row:nth-of-type(odd) {
+.dataGrid--reverseStriped .dataGrid__body__row:nth-of-type(odd) {
   background-color: transparent;
 }
-.dataGrid--reverseStriped .dataGrid__tbody__row:nth-of-type(even) {
+.dataGrid--reverseStriped .dataGrid__body__row:nth-of-type(even) {
   background-color: #f9f9f9;
 }
 
-.dataGrid__tbody__cell {
+.dataGrid__body__cell {
   padding-left: 8px;
   padding-right: 8px;
   border-bottom: 1px dashed #d4dadc;
@@ -3040,14 +3040,14 @@ body {
           align-items: center;
 }
 
-.dataGrid__tbody__cell:first-child {
+.dataGrid__body__cell:first-child {
   padding-left: 15px;
 }
-.dataGrid__tbody__cell:last-child {
+.dataGrid__body__cell:last-child {
   padding-right: 15px;
 }
 
-.dataGrid__tbody__cellLiner {
+.dataGrid__body__cellLiner {
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3055,9 +3055,9 @@ body {
   line-height: 1.2;
 }
 
-.dataGrid__tbody__cellValue--link,
-.dataGrid__tbody__cellValue--readOnly,
-.dataGrid__tbody__cellValue--editable {
+.dataGrid__body__cellValue--link,
+.dataGrid__body__cellValue--readOnly,
+.dataGrid__body__cellValue--editable {
   box-sizing: border-box;
   padding: 4px 5px;
   display: inline-block;
@@ -3070,26 +3070,26 @@ body {
   white-space: nowrap;
 }
 
-.dataGrid__tbody__cellValue--readOnly {
+.dataGrid__body__cellValue--readOnly {
   cursor: default;
 }
 
-.dataGrid__tbody__cellValue--link {
+.dataGrid__body__cellValue--link {
   cursor: pointer;
   color: #2799c4;
   font-weight: 400;
 }
-.dataGrid__tbody__cellValue--link:hover {
+.dataGrid__body__cellValue--link:hover {
   opacity: .8;
 }
 
-.dataGrid__tbody__cellValue--editable {
+.dataGrid__body__cellValue--editable {
   border: 1px dashed transparent;
   border-radius: 4px;
   transition: .1s all ease-in-out;
   position: relative;
 }
-.dataGrid__tbody__cellValue--editable:before {
+.dataGrid__body__cellValue--editable:before {
   display: block;
   position: absolute;
   left: auto;
@@ -3103,67 +3103,67 @@ body {
   box-shadow: -4px 0 10px 2px #f7fafb;
   opacity: 0;
 }
-.dataGrid__tbody__cellValue--editable:hover {
+.dataGrid__body__cellValue--editable:hover {
   border-color: #d4dadc;
   background: #f7fafb;
 }
-.dataGrid__tbody__cellValue--editable:hover:before {
+.dataGrid__body__cellValue--editable:hover:before {
   opacity: 1;
 }
 
-.dataGrid__tbody__cellChange {
+.dataGrid__body__cellChange {
   font-size: 12px;
   padding-left: 2px;
   font-weight: 400;
 }
-.dataGrid__tbody__cellChange.up {
+.dataGrid__body__cellChange.up {
   color: #35d0a0;
 }
-.dataGrid__tbody__cellChange.down {
+.dataGrid__body__cellChange.down {
   color: #ff2400;
 }
 
-.dataGrid__tbody__cellLiner .icon {
+.dataGrid__body__cellLiner .icon {
   color: #c8cfd0;
   padding: 0;
   vertical-align: top;
 }
 
-.dataGrid__tbody__cellLiner .glyphicons-more,
-.dataGrid__tbody__cellLiner .glyphicons-cogwheel {
+.dataGrid__body__cellLiner .glyphicons-more,
+.dataGrid__body__cellLiner .glyphicons-cogwheel {
   font-size: 14px;
   color: #bcc2c4;
   margin: 0 0 0 15px;
 }
-.dataGrid__tbody__cellLiner .glyphicons-more:hover,
-.dataGrid__tbody__cellLiner .glyphicons-cogwheel:hover {
+.dataGrid__body__cellLiner .glyphicons-more:hover,
+.dataGrid__body__cellLiner .glyphicons-cogwheel:hover {
   color: #8d9293;
 }
 
-.dataGrid__tbody__cellLiner .glyphicons-leaf {
+.dataGrid__body__cellLiner .glyphicons-leaf {
   margin-left: 2px;
   font-size: 9px;
   color: #35d0a0;
 }
-.dataGrid__tbody__cellLiner .glyphicons-leaf:before {
+.dataGrid__body__cellLiner .glyphicons-leaf:before {
   top: 1px;
 }
 
-.dataGrid__tfoot__cell {
+.dataGrid__footer__cell {
   vertical-align: middle;
   line-height: 30px;
 }
 
-.dataGrid__tfoot__cellLiner {
+.dataGrid__footer__cellLiner {
   padding: 0 8px;
   height: 31px;
 }
 
-.dataGrid__tfoot__cell:first-child .dataGrid__tfoot__cellLiner {
+.dataGrid__footer__cell:first-child .dataGrid__footer__cellLiner {
   padding-left: 15px;
 }
 
-.dataGrid__tfoot__cell:last-child .dataGrid__tfoot__cellLiner {
+.dataGrid__footer__cell:last-child .dataGrid__footer__cellLiner {
   padding-right: 15px;
 }
 
@@ -3201,47 +3201,47 @@ body {
   height: 100%;
 }
 
-.dataGrid__thead {
+.dataGrid__header {
   display: block;
 }
 
-.dataGrid__tbody {
+.dataGrid__body {
   display: block;
   overflow-y: auto;
 }
 
-.dataGrid__tfoot {
+.dataGrid__footer {
   display: block;
 }
 
-.dataGrid__thead__row,
-.dataGrid__tbody__row,
-.dataGrid__tfoot__row {
+.dataGrid__header__row,
+.dataGrid__body__row,
+.dataGrid__footer__row {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.dataGrid__thead__cell,
-.dataGrid__tbody__cell,
-.dataGrid__tfoot__cell {
+.dataGrid__header__cell,
+.dataGrid__body__cell,
+.dataGrid__footer__cell {
   width: 100px;
   box-sizing: border-box;
 }
-.dataGrid__thead__cell:first-child,
-.dataGrid__tbody__cell:first-child,
-.dataGrid__tfoot__cell:first-child {
+.dataGrid__header__cell:first-child,
+.dataGrid__body__cell:first-child,
+.dataGrid__footer__cell:first-child {
   width: 35px;
 }
-.dataGrid__thead__cell:last-child,
-.dataGrid__tbody__cell:last-child,
-.dataGrid__tfoot__cell:last-child {
+.dataGrid__header__cell:last-child,
+.dataGrid__body__cell:last-child,
+.dataGrid__footer__cell:last-child {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
-.dataGrid__tbody__cell:last-child .dataGrid__tbody__cellLiner {
+.dataGrid__body__cell:last-child .dataGrid__body__cellLiner {
   text-align: right;
 }
 

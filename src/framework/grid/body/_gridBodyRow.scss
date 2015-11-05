@@ -1,0 +1,13 @@
+.dataGrid__body__row {
+  &:nth-of-type(odd) {
+    background-color: #f9f9f9;
+  }
+  .dataGrid--reverseStriped & {
+    &:nth-of-type(odd) {
+      background-color: transparent;
+    }
+    &:nth-of-type(even) {
+      background-color: #f9f9f9;
+    }
+  }
+}

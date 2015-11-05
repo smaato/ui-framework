@@ -13,7 +13,7 @@ export default class GridFooterRow extends Component {
   }
 
   render() {
-    const rowClass = classNames('dataGrid__tfoot__row', this.props.classFooterRow);
+    const rowClass = classNames('dataGrid__footer__row', this.props.classFooterRow);
 
     const content = this.props.cells.map((cell, index) => {
       return (
