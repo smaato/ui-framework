@@ -38,7 +38,7 @@ const integrations = [{
 // Protoypes should point to HTML files and can be named whatever you want.
 const prototypes = [{
   name: 'Grid View',
-  href: '/prototype/gridView.html',
+  href: '/prototype/gridView/gridView.html',
 }];
 
 export default {
