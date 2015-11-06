@@ -12,11 +12,11 @@ export default class GridHeaderCell extends Component {
   }
 
   render() {
-    const cellClass = classNames('dataTable__thead__cell', this.props.classHeaderCell);
+    const cellClass = classNames('grid__header__cell', this.props.classHeaderCell);
 
     return (
       <div className={cellClass}>
-        <div className="dataTable__thead__cellLiner">
+        <div className="grid__header__cellLiner">
           {this.props.content}
         </div>
       </div>

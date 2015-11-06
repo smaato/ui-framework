@@ -1,0 +1,56 @@
+.grid__header__cell {
+  vertical-align: middle;
+  line-height: 30px;
+
+  &.sortable {
+    span.arrowDown,
+    span.arrowUp {
+      display: none;
+    }
+    &:hover a {
+      background: shade($componentBackgroundColor, 3%);
+      cursor: pointer;
+    }
+    &.selected {
+      a {
+        white-space: nowrap;
+        span.arrowDown {
+          display: inline-block;
+        }
+      }
+      &.reverse {
+        span.arrowDown {
+          display: none;
+        }
+        span.arrowUp {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+
+.grid__header__cell:first-child {
+}
+
+  .grid__header__cellLiner {
+    display: block;
+    z-index: 6;
+    padding: 0 8px;
+
+    @extend .grid__headerBG;
+  }
+
+  .grid__header__cell:first-child .grid__header__cellLiner {
+    padding-left: 15px;
+  }
+
+  .grid__header__cell:last-child .grid__header__cellLiner {
+    padding-right: 15px;
+  }
+
+  .grid__header__row--placeholder .grid__header__cellLiner {
+    height: 0;
+    border: 0;
+    overflow: hidden;
+  }

@@ -1,63 +1,62 @@
 html
   head
     title Grid View Prototype
-    link(rel='stylesheet', href='/css/index.css')
-    link(rel='stylesheet', href='/prototype/gridView.css')
+    link(rel='stylesheet', href='/prototype/prototype.css')
   body
-    .mainNavBar
-      .mainNavBar__liner
-        a.mainNavBar__account
+    .p-mainNavBar
+      .p-mainNavBar__liner
+        a.p-mainNavBar__account
           span.icon.glyphicons-user
           label han.solo@smaato.com
           span.dropdownArrow
-        a.mainNavBar__logo(href='#') Smaato
-        ul.mainNavBar__links__container
-          li.mainNavBar__link.selected
+        a.p-mainNavBar__logo(href='#') Smaato
+        ul.p-mainNavBar__links__container
+          li.p-mainNavBar__link.selected
             a(href='#') Transportation
-          li.mainNavBar__link
+          li.p-mainNavBar__link
             a(href='#') Camping
-          li.mainNavBar__link
+          li.p-mainNavBar__link
             a(href='#') Storage
-          li.mainNavBar__link
+          li.p-mainNavBar__link
             a(href='#') Misc
-    .secondaryNavBar
-      .secondaryNavBar__liner
-        .secondaryNavBar__linksWrapper
-          ul.secondaryNavBar__linksContainer
-            li.secondaryNavBar__link.selected
+    .p-secondaryNavBar
+      .p-secondaryNavBar__liner
+        .p-secondaryNavBar__linksWrapper
+          ul.p-secondaryNavBar__linksContainer
+            li.p-secondaryNavBar__link.selected
               a(href='#')
                 span.icon.glyphicons-car
                 | Automobile
-            li.secondaryNavBar__link
+            li.p-secondaryNavBar__link
               a(href='#')
                 span.icon.glyphicons-train
                 | Train
-            li.secondaryNavBar__link
+            li.p-secondaryNavBar__link
               a(href='#')
                 span.icon.glyphicons-airplane
                 | Airplane
-            li.secondaryNavBar__link
+            li.p-secondaryNavBar__link
               a(href='#')
                 span.icon.glyphicons-bicycle
                 | Bicycle
-            li.secondaryNavBar__link
+            li.p-secondaryNavBar__link
               a(href='#')
                 span.icon.glyphicons-person-walking
                 | Walking
-            li.secondaryNavBar__ellipsis.glyphicons-more
-            li.secondaryNavBar__mask
-              .secondaryNavBar__maskInner
-        ul.dateRange
-          li.dateRange__option.dateRange__option--required
-            a.dateRange__trigger
+            li.p-secondaryNavBar__ellipsis.glyphicons-more
+            li.p-secondaryNavBar__mask
+              .p-secondaryNavBar__maskInner
+        ul.p-dateRange
+          li.p-dateRange__option.p-dateRange__option--required
+            a.p-dateRange__trigger
               span.icon.glyphicons-calendar
               | Jul 18-Jul 28
-          li.dateRange__option
-            label.dateRange__compareToggle
+          li.p-dateRange__option
+            label.p-dateRange__compareToggle
               input(type='checkbox')
               |  Compare
-          li.dateRange__option
-            span.dateRange__goTo
+          li.p-dateRange__option
+            span.p-dateRange__goTo
               a.prev(href='')
                 span.prevArrow
               a.next(href='')

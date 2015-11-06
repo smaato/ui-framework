@@ -13,7 +13,7 @@ export default class GridBodyRow extends Component {
   }
 
   render() {
-    const rowClass = classNames('dataTable__tbody__row', this.props.classBodyRow);
+    const rowClass = classNames('grid__body__row', this.props.classBodyRow);
 
     const content = this.props.cells.map((cell, index) => {
       return (

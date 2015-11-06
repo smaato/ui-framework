@@ -28,8 +28,8 @@ export default class Grid extends Component {
 
   render() {
     // Style classes
-    const containerClass = classNames('dataTable__container', this.props.classContainer);
-    const tableClass = classNames('dataTable__table', this.props.classTable);
+    const containerClass = classNames('grid__container', this.props.classContainer);
+    const tableClass = classNames('grid__table', this.props.classTable);
 
     // Body
     const bodyRows = this.props.bodyRows.map((dataRow) => {

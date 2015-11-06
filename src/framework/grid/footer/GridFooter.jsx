@@ -13,7 +13,7 @@ export default class GridFooter extends Component {
   }
 
   render() {
-    const sectionClass = classNames('dataTable__tfoot', this.props.classFooter);
+    const sectionClass = classNames('grid__footer', this.props.classFooter);
 
     return (
       <div className={sectionClass}>
