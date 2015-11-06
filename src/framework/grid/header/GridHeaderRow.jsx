@@ -21,6 +21,8 @@ export default class GridHeaderRow extends Component {
           classHeaderCell={this.props.classHeaderCell}
           content={cell}
           key={index}
+          // Sorting
+          sorting={this.props.sorting[index]}
         />
       );
     });
@@ -38,4 +40,6 @@ GridHeaderRow.propTypes = {
   classHeaderRow: PropTypes.string,
   classHeaderCell: PropTypes.string,
   cells: PropTypes.array.isRequired,
+  // Sorting
+  sorting: PropTypes.array,
 };

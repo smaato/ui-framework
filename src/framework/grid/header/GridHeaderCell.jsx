@@ -12,12 +12,40 @@ export default class GridHeaderCell extends Component {
   }
 
   render() {
-    const cellClass = classNames('grid__header__cell', this.props.classHeaderCell);
+    let cellClass;
+    let content;
+
+    if (this.props.sorting && this.props.sorting.sortable) {
+      cellClass = classNames(
+        'grid__header__cell',
+        'sortable',
+        this.props.sorting.selected ? 'selected' : null,
+        this.props.sorting.reverse ? 'reverse' : null
+      );
+      content = (
+        <a>
+          {this.props.content}
+          {String.fromCharCode(160)}
+          <span className="arrowUp">
+            <span className="arrowUp__centerLine"></span>
+          </span>
+          <span className="arrowDown">
+            <span className="arrowDown__centerLine"></span>
+          </span>
+        </a>
+      );
+    } else {
+      cellClass = classNames(
+        'grid__header__cell',
+        this.props.classHeaderCell
+      );
+      content = this.props.content;
+    }
 
     return (
       <div className={cellClass}>
         <div className="grid__header__cellLiner">
-          {this.props.content}
+          {content}
         </div>
       </div>
     );
@@ -32,4 +60,6 @@ GridHeaderCell.propTypes = {
     PropTypes.number,
     PropTypes.element,
   ]),
+  // Sorting
+  sorting: PropTypes.object,
 };

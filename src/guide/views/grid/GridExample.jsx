@@ -207,6 +207,45 @@ export default class GridExample extends Component {
       ),
     ];
 
+    const sorting = [
+      {
+        sortable: false,
+      },
+      {
+        sortable: true,
+        default: true,
+        selected: true,
+        reverse: true,
+      },
+      {
+        sortable: true,
+      },
+      {
+        sortable: true,
+      },
+      {
+        sortable: true,
+      },
+      {
+        sortable: true,
+      },
+      {
+        sortable: true,
+      },
+      {
+        sortable: true,
+      },
+      {
+        sortable: true,
+      },
+      {
+        sortable: true,
+      },
+      {
+        sortable: false,
+      },
+    ];
+
     const ROW_HEIGHT = 34;
     const BODY_HEIGHT = 500;
 
@@ -273,6 +312,8 @@ export default class GridExample extends Component {
             lazyLoadRows={this.lazyLoadBodyRows.bind(this)}
             loadingRow={loadingRow}
             loadDistanceFromBottom={1000}
+            // sorting
+            sorting={sorting}
           />
 
         </Example>

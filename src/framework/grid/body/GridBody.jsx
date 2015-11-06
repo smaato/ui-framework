@@ -154,4 +154,6 @@ GridBody.propTypes = {
   reverseZebraStripeClass: PropTypes.string,
   loadingRow: PropTypes.element,
   loadDistanceFromBottom: PropTypes.number,
+  // Sorting
+  sorting: PropTypes.array,
 };
