@@ -31,6 +31,42 @@ export default class GridExample extends Component {
   // It is extracted to a function to easily reset to initial state
   initializeState() {
     const bodyRowsMax = 80;
+    const sorting = [
+      {
+        sortable: false,
+      },
+      {
+        sortable: true,
+        selected: true,
+      },
+      {
+        sortable: true,
+      },
+      {
+        sortable: true,
+      },
+      {
+        sortable: true,
+      },
+      {
+        sortable: true,
+      },
+      {
+        sortable: true,
+      },
+      {
+        sortable: true,
+      },
+      {
+        sortable: true,
+      },
+      {
+        sortable: true,
+      },
+      {
+        sortable: false,
+      },
+    ];
     this.state = {
       bodyRows: [],
       bodyRowsMax,
@@ -43,6 +79,8 @@ export default class GridExample extends Component {
       isEmpty: false,
       // Reference to fake server request, provides ability to cancel it
       lazyLoadingTimeoutId: null,
+      // Sorting
+      sorting: sorting,
     };
   }
 
@@ -207,44 +245,20 @@ export default class GridExample extends Component {
       ),
     ];
 
-    const sorting = [
-      {
-        sortable: false,
-      },
-      {
-        sortable: true,
-        default: true,
-        selected: true,
-        reverse: true,
-      },
-      {
-        sortable: true,
-      },
-      {
-        sortable: true,
-      },
-      {
-        sortable: true,
-      },
-      {
-        sortable: true,
-      },
-      {
-        sortable: true,
-      },
-      {
-        sortable: true,
-      },
-      {
-        sortable: true,
-      },
-      {
-        sortable: true,
-      },
-      {
-        sortable: false,
-      },
-    ];
+    function sortingFunc(index) {
+      // Copy
+      const sorting = this.state.sorting.slice();
+      if (!sorting[index].selected) {
+        sorting.forEach((item, itemIndex) => {
+          sorting[itemIndex].selected = itemIndex === index;
+        });
+      } else {
+        sorting[index].reverse = !sorting[index].reverse;
+      }
+      this.setState({
+        sorting: sorting,
+      });
+    }
 
     const ROW_HEIGHT = 34;
     const BODY_HEIGHT = 500;
@@ -313,7 +327,8 @@ export default class GridExample extends Component {
             loadingRow={loadingRow}
             loadDistanceFromBottom={1000}
             // sorting
-            sorting={sorting}
+            sorting={this.state.sorting}
+            sortingFunc={sortingFunc.bind(this)}
           />
 
         </Example>

@@ -22,8 +22,15 @@ export default class GridHeaderCell extends Component {
         this.props.sorting.selected ? 'selected' : null,
         this.props.sorting.reverse ? 'reverse' : null
       );
+
+      const sortingFunc = () => {
+        this.props.sortingFunc(this.props.index);
+      };
+
       content = (
-        <a>
+        <a
+          onClick={sortingFunc}
+        >
           {this.props.content}
           {String.fromCharCode(160)}
           <span className="arrowUp">
@@ -62,4 +69,6 @@ GridHeaderCell.propTypes = {
   ]),
   // Sorting
   sorting: PropTypes.object,
+  sortingFunc: PropTypes.func,
+  index: PropTypes.number,
 };

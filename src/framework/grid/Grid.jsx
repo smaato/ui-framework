@@ -48,6 +48,7 @@ export default class Grid extends Component {
             cells={this.props.headerCells}
             // Sorting
             sorting={this.props.sorting}
+            sortingFunc={this.props.sortingFunc}
           />
           <GridBody
             classBody={this.props.classBody}
@@ -112,6 +113,7 @@ Grid.propTypes = {
   loadDistanceFromBottom: PropTypes.number,
   // Sorting
   sorting: PropTypes.array,
+  sortingFunc: PropTypes.func,
 };
 
 Grid.defaultProps = {

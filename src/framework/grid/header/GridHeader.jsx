@@ -23,6 +23,7 @@ export default class GridHeader extends Component {
           cells={this.props.cells}
           // Sorting
           sorting={this.props.sorting}
+          sortingFunc={this.props.sortingFunc}
         />
       </div>
     );
@@ -37,4 +38,5 @@ GridHeader.propTypes = {
   cells: PropTypes.array.isRequired,
   // Sorting
   sorting: PropTypes.array,
+  sortingFunc: PropTypes.func,
 };
