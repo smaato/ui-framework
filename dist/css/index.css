@@ -3111,18 +3111,6 @@ body {
   opacity: 1;
 }
 
-.grid__body__cellChange {
-  font-size: 12px;
-  padding-left: 2px;
-  font-weight: 400;
-}
-.grid__body__cellChange.up {
-  color: #35d0a0;
-}
-.grid__body__cellChange.down {
-  color: #ff2400;
-}
-
 .grid__body__cellLiner .icon {
   color: #c8cfd0;
   padding: 0;
@@ -3199,6 +3187,18 @@ body {
 .gridLoadingRow--initial {
   box-sizing: border-box;
   height: 100%;
+}
+
+.grid__body__cellChange {
+  font-size: 12px;
+  padding-left: 2px;
+  font-weight: 400;
+}
+.grid__body__cellChange.up {
+  color: #35d0a0;
+}
+.grid__body__cellChange.down {
+  color: #ff2400;
 }
 
 .grid__header {

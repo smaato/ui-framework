@@ -1,0 +1,11 @@
+.grid__body__cellChange {
+  font-size: 12px;
+  padding-left: 2px;
+  font-weight: 400;
+  &.up {
+    color: $green;
+  }
+  &.down {
+    color: $red;
+  }
+}

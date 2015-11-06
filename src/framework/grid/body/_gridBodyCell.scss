@@ -81,14 +81,6 @@
         }
       }
 
-      .grid__body__cellChange {
-        font-size: 12px;
-        padding-left: 2px;
-        font-weight: 400;
-        &.up { color: $green; }
-        &.down { color: $red; }
-      }
-
     .grid__body__cellLiner .icon {
       color: shade($lightGrey, 15%);
       padding: 0;

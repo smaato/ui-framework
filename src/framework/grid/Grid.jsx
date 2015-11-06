@@ -20,6 +20,10 @@ export {
   default as GridEmptyRow,
 } from './empty/GridEmptyRow.jsx';
 
+export {
+  default as GridKpi,
+} from './kpi/GridKpi.jsx';
+
 export default class Grid extends Component {
 
   constructor(props) {

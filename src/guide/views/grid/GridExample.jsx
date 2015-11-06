@@ -12,6 +12,7 @@ import {
   Grid,
   GridBodyEditableCell,
   GridEmptyRow,
+  GridKpi,
   GridLoadingRow,
   IconCog,
   IconEllipsis,
@@ -197,7 +198,32 @@ export default class GridExample extends Component {
       />,
       item => item.cylinders,
       item => item.fuelEconomy,
-      item => item.sold,
+      item => {
+        return (
+          <div>
+            {item.sold}
+            {String.fromCharCode(160)}
+            <GridKpi
+              className="up"
+              content="+2%"
+              title="+2%"
+            />
+          </div>
+        );
+      },
+      item => {
+        return (
+          <div>
+            {item.registered}
+            {String.fromCharCode(160)}
+            <GridKpi
+              className="down"
+              content="-2%"
+              title="-2%"
+            />
+          </div>
+        );
+      },
       item => item.registered,
       () => (
         <span>
