@@ -1,4 +1,4 @@
-.dataGrid__headerBG {
+.grid__headerBG {
   border-bottom: 1px solid $componentStrokeColor;
   background: $componentBackgroundColor;
   height: 31px;
@@ -6,7 +6,7 @@
 
 .fixedThead {
 
-  .dataGrid__header__placeholder {
+  .grid__header__placeholder {
     left: 0;
     right: 0;
     top: 40px;
@@ -15,9 +15,9 @@
     text-align: center;
   }
   
-    .dataGrid__header__placeholder__liner {
+    .grid__header__placeholder__liner {
       border-top: 1px solid $componentStrokeColor;
-      @extend .dataGrid__headerBG;
+      @extend .grid__headerBG;
       max-width: $maxWidth;
       margin: 0 auto;
       text-align: left;
@@ -26,7 +26,7 @@
       box-shadow: 0 3px 4px rgba(0, 0, 0, .05);
     }
     
-  .dataGrid__header__row:not(.dataGrid__header__row--placeholder) .dataGrid__header__cellLiner {
+  .grid__header__row:not(.grid__header__row--placeholder) .grid__header__cellLiner {
     position: fixed !important;
     top: 41px;
   }

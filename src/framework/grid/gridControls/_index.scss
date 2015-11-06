@@ -1,4 +1,4 @@
-.dataGrid__tableControls {
+.grid__tableControls {
   margin: 0 auto;
   text-align: center;
   left: 0;
@@ -10,7 +10,7 @@
   }
 }
 
-  .dataGrid__tableControls__liner {
+  .grid__tableControls__liner {
     max-width: $maxWidth;
     margin: 0 auto;
     border-top: 1px solid $componentStrokeColor;
@@ -24,7 +24,7 @@
     ;
   }
 
-.dataGrid__tableControls__placeholder {
+.grid__tableControls__placeholder {
   .fixedThead & {
     height: 71px;
     max-width: $maxWidth;

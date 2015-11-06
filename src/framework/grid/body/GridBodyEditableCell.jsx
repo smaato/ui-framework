@@ -13,7 +13,7 @@ export default class GridBodyEditableCell extends Component {
   render() {
     return (
       <a
-        className="dataGrid__body__cellValue--editable"
+        className="grid__body__cellValue--editable"
         href="#"
         onClick={this.props.onClick.bind(this)}
       >

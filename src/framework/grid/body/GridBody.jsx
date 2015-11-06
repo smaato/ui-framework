@@ -96,7 +96,7 @@ export default class GridBody extends Component {
         isZebraStripingReversed;
     }
     const sectionClass = classNames(
-      'dataGrid__body',
+      'grid__body',
       this.props.classBody,
       optionalClasses
     );

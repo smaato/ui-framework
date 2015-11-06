@@ -1,11 +1,11 @@
-.dataGrid__filtersWrapper {
+.grid__filtersWrapper {
   display: table-cell;
   vertical-align: top;
   padding: 7px 0 7px 15px; 
   width: 100%;
 }
 
-  .dataGrid__filtersContainer {
+  .grid__filtersContainer {
     display: inline-block;
     overflow: hidden;
     height: 26px;
@@ -13,7 +13,7 @@
     padding-right: 65px;
   }
   
-    .dataGrid__roundedBackground {
+    .grid__roundedBackground {
       font-size: 11px;
       background: shade(scale-saturation($componentBackgroundColor, 60%), 3%);
       border: 1px solid shade(scale-saturation($componentBackgroundColor, 100%), 14%);
@@ -31,8 +31,8 @@
       color: $componentTextColor;
     }
   
-    .dataGrid__filter {
-      @extend .dataGrid__roundedBackground;
+    .grid__filter {
+      @extend .grid__roundedBackground;
       float:left;
       margin: 0 2px 0 0;
       z-index: 4;
@@ -54,7 +54,7 @@
       &:hover .remove { opacity: 1; }
     }
     
-    .dataGrid__addFilter {
+    .grid__addFilter {
       box-shadow: 60px 0 0 $componentBackgroundColor, 40px 0 0 $componentBackgroundColor;
       position: relative;
       z-index: 3;
@@ -64,20 +64,20 @@
       float: left;
       a {
         cursor: pointer;
-        @extend .dataGrid__roundedBackground;
+        @extend .grid__roundedBackground;
         left: 30px;
         font-size: 16px;
       }
     }
     
-    .dataGrid__ellipsis {
+    .grid__ellipsis {
       display: inline-block;
       float: left;
       width: 60px;
       position: absolute;
       z-index: 1;
       .icon {
-        @extend .dataGrid__roundedBackground;
+        @extend .grid__roundedBackground;
         display: inline-block;
         width:8px;
         height: 24px;
@@ -93,7 +93,7 @@
         }
       }
       .add {
-        @extend .dataGrid__roundedBackground;
+        @extend .grid__roundedBackground;
         font-size: 16px;
         margin: 0 0 0 -2px;
       }

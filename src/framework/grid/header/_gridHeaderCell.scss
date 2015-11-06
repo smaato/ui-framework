@@ -1,4 +1,4 @@
-.dataGrid__header__cell {
+.grid__header__cell {
   vertical-align: middle;
   line-height: 30px;
 
@@ -30,26 +30,26 @@
   }
 }
 
-.dataGrid__header__cell:first-child {
+.grid__header__cell:first-child {
 }
 
-  .dataGrid__header__cellLiner {
+  .grid__header__cellLiner {
     display: block;
     z-index: 6;
     padding: 0 8px;
 
-    @extend .dataGrid__headerBG;
+    @extend .grid__headerBG;
   }
 
-  .dataGrid__header__cell:first-child .dataGrid__header__cellLiner {
+  .grid__header__cell:first-child .grid__header__cellLiner {
     padding-left: 15px;
   }
 
-  .dataGrid__header__cell:last-child .dataGrid__header__cellLiner {
+  .grid__header__cell:last-child .grid__header__cellLiner {
     padding-right: 15px;
   }
 
-  .dataGrid__header__row--placeholder .dataGrid__header__cellLiner {
+  .grid__header__row--placeholder .grid__header__cellLiner {
     height: 0;
     border: 0;
     overflow: hidden;

@@ -269,7 +269,7 @@ export default class GridExample extends Component {
             rowHeight={ROW_HEIGHT}
             bodyHeight={BODY_HEIGHT}
             overflowRecycledRowsCount={20}
-            reverseZebraStripeClass="dataTable--reverseStriped"
+            reverseZebraStripeClass="grid--reverseStriped"
             lazyLoadRows={this.lazyLoadBodyRows.bind(this)}
             loadingRow={loadingRow}
             loadDistanceFromBottom={1000}

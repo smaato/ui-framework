@@ -41,58 +41,58 @@ export default class GridViewExample extends Component {
     const rows = [];
     for (let i = 0; i < 100; i++) {
       rows.push(
-        <div className="dataGrid__body__row" key={i}>
-          <div className="dataGrid__body__cell">
-            <span className="dataGrid__body__cellLiner">
+        <div className="grid__body__row" key={i}>
+          <div className="grid__body__cell">
+            <span className="grid__body__cellLiner">
               <span className="checkboxWrapper">
                 <input type="checkbox" name="item_1" id="item_1" className="checkbox__input" />
                 <label htmlFor="item_1" className="checkbox__faux__input"></label>
               </span>
             </span>
           </div>
-          <div className="dataGrid__body__cell">
-            <span className="dataGrid__body__cellLiner">
-              <a href="#" className="dataGrid__body__cellValue--link blueLink">Ford F150</a>
+          <div className="grid__body__cell">
+            <span className="grid__body__cellLiner">
+              <a href="#" className="grid__body__cellValue--link blueLink">Ford F150</a>
             </span>
           </div>
-          <div className="dataGrid__body__cell">
-            <span className="dataGrid__body__cellLiner">
-              <a href="#" className="dataGrid__body__cellValue--editable">In Production</a>
+          <div className="grid__body__cell">
+            <span className="grid__body__cellLiner">
+              <a href="#" className="grid__body__cellValue--editable">In Production</a>
             </span>
           </div>
-          <div className="dataGrid__body__cell">
-            <span className="dataGrid__body__cellLiner">
-              <a href="#" className="dataGrid__body__cellValue--editable">Diesel, Unleaded</a>
+          <div className="grid__body__cell">
+            <span className="grid__body__cellLiner">
+              <a href="#" className="grid__body__cellValue--editable">Diesel, Unleaded</a>
             </span>
           </div>
-          <div className="dataGrid__body__cell">
-            <span className="dataGrid__body__cellLiner">
-              <a href="#" className="dataGrid__body__cellValue--editable">
+          <div className="grid__body__cell">
+            <span className="grid__body__cellLiner">
+              <a href="#" className="grid__body__cellValue--editable">
                 <span className="icon glyphicons-user"></span>3, 5, 6</a>
               </span>
           </div>
-          <div className="dataGrid__body__cell">
-            <span className="dataGrid__body__cellLiner">
-              <a href="#" className="dataGrid__body__cellValue--editable">6, 8</a>
+          <div className="grid__body__cell">
+            <span className="grid__body__cellLiner">
+              <a href="#" className="grid__body__cellValue--editable">6, 8</a>
             </span>
           </div>
-          <div className="dataGrid__body__cell">
-            <span className="dataGrid__body__cellLiner">
-              <a href="#" className="dataGrid__body__cellValue--editable">25mpg<span className="icon glyphicons-leaf"></span></a>
+          <div className="grid__body__cell">
+            <span className="grid__body__cellLiner">
+              <a href="#" className="grid__body__cellValue--editable">25mpg<span className="icon glyphicons-leaf"></span></a>
             </span>
           </div>
-          <div className="dataGrid__body__cell">
-            <span className="dataGrid__body__cellLiner">
-              <span className="dataGrid__body__cellValue--readOnly">202.1k<span className="dataGrid__body__cellChange up">+2%</span></span>
+          <div className="grid__body__cell">
+            <span className="grid__body__cellLiner">
+              <span className="grid__body__cellValue--readOnly">202.1k<span className="grid__body__cellChange up">+2%</span></span>
             </span>
           </div>
-          <div className="dataGrid__body__cell">
-            <span className="dataGrid__body__cellLiner">
-              <span className="dataGrid__body__cellValue--readOnly">200.5k<span className="dataGrid__body__cellChange down">-2%</span></span>
+          <div className="grid__body__cell">
+            <span className="grid__body__cellLiner">
+              <span className="grid__body__cellValue--readOnly">200.5k<span className="grid__body__cellChange down">-2%</span></span>
             </span>
           </div>
-          <div className="dataGrid__body__cell">
-            <span className="dataGrid__body__cellLiner">
+          <div className="grid__body__cell">
+            <span className="grid__body__cellLiner">
               <a href="" className="icon glyphicons-more"></a>
               <a href="" className="icon glyphicons-cogwheel"></a>
             </span>
@@ -201,26 +201,26 @@ export default class GridViewExample extends Component {
 
         </div>
 
-        <div className="dataGrid__tableControls">
+        <div className="grid__tableControls">
 
-          <div className="dataGrid__tableControls__liner">
+          <div className="grid__tableControls__liner">
 
-            <div className="dataGrid__filtersWrapper">
+            <div className="grid__filtersWrapper">
 
-              <ul className="dataGrid__filtersContainer">
-                <li className="dataGrid__filter">
+              <ul className="grid__filtersContainer">
+                <li className="grid__filter">
                   <span className="filterTitle">
                     <strong>Status:</strong> In Production
                   </span>
                   <a className="remove" href=""><span className="icon glyphicons-remove-2"></span></a>
                 </li>
-                <li className="dataGrid__filter">
+                <li className="grid__filter">
                   <span className="filterTitle">
                     <strong>Cylinders:</strong> 8+
                   </span>
                   <a className="remove" href=""><span className="icon glyphicons-remove-2"></span></a>
                 </li>
-                <li className="dataGrid__filter">
+                <li className="grid__filter">
                   <span className="filterTitle">
                     <strong>Passengers:</strong> 2+
                   </span>
@@ -228,7 +228,7 @@ export default class GridViewExample extends Component {
                     <span className="icon glyphicons-remove-2"></span>
                   </a>
                 </li>
-                <li className="dataGrid__filter">
+                <li className="grid__filter">
                   <span className="filterTitle">
                     <strong>Fuel Economy:</strong> 10mpg+
                   </span>
@@ -236,7 +236,7 @@ export default class GridViewExample extends Component {
                     <span className="icon glyphicons-remove-2"></span>
                   </a>
                 </li>
-                <li className="dataGrid__filter">
+                <li className="grid__filter">
                   <span className="filterTitle">
                     <strong>Fuel:</strong> Not Electric
                   </span>
@@ -245,33 +245,33 @@ export default class GridViewExample extends Component {
                   </a>
                 </li>
 
-                <li className="dataGrid__mask">
+                <li className="grid__mask">
                   <span className="mask-inner"></span>
                 </li>
 
-                <li className="dataGrid__ellipsis">
+                <li className="grid__ellipsis">
                   <span className="icon glyphicons-more"></span>
                   <a className="add" href="#">+</a>
                 </li>
 
-                <li className="dataGrid__addFilter">
+                <li className="grid__addFilter">
                   <a href="#">+</a>
                 </li>
 
               </ul>
             </div>
 
-            <div className="dataGrid__batch">
+            <div className="grid__batch">
 
-              <a href="" className="dataGrid__batch__button disabled">
+              <a href="" className="grid__batch__button disabled">
                 <span className="icon glyphicons-new-window"></span>Actions
               </a>
 
             </div>
 
-            <div className="dataGrid__search">
+            <div className="grid__search">
 
-              <label className="dataGrid__search__input">
+              <label className="grid__search__input">
                 <input type="text" />
                 <span className="icon glyphicons-search"></span>
               </label>
@@ -282,27 +282,27 @@ export default class GridViewExample extends Component {
 
         </div>
 
-        <div className="dataGrid__tableControls__placeholder"></div>
+        <div className="grid__tableControls__placeholder"></div>
 
-        <div className="dataGrid__container">
+        <div className="grid__container">
 
-          <div className="dataGrid__header__placeholder">
-            <div className="dataGrid__header__placeholder__liner"></div>
+          <div className="grid__header__placeholder">
+            <div className="grid__header__placeholder__liner"></div>
           </div>
 
-          <div className="dataGrid__table"x>
-            <div className="dataGrid__header">
-              <div className="dataGrid__header__row dataGrid__header__row--placeholder">
-                <div className="dataGrid__header__cell">
-                  <span className="dataGrid__header__cellLiner">
+          <div className="grid__table"x>
+            <div className="grid__header">
+              <div className="grid__header__row grid__header__row--placeholder">
+                <div className="grid__header__cell">
+                  <span className="grid__header__cellLiner">
                     <span className="checkboxWrapper">
                       <input type="checkbox" name="table_batch" id="table_batch" className="checkbox__input" />
                       <label htmlFor="table_batch" className="checkbox__faux__input"></label>
                     </span>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell sortable">
-                  <span className="dataGrid__header__cellLiner">
+                <div className="grid__header__cell sortable">
+                  <span className="grid__header__cellLiner">
                     <a>
                       Name
                       <span className="arrowUp">
@@ -314,8 +314,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell sortable">
-                  <span className="dataGrid__header__cellLiner">
+                <div className="grid__header__cell sortable">
+                  <span className="grid__header__cellLiner">
                     <a>
                       Status
                       <span className="arrowUp">
@@ -327,8 +327,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell sortable">
-                  <span className="dataGrid__header__cellLiner">
+                <div className="grid__header__cell sortable">
+                  <span className="grid__header__cellLiner">
                     <a>
                       Fuel
                       <span className="arrowUp">
@@ -340,8 +340,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell sortable">
-                  <span className="dataGrid__header__cellLiner">
+                <div className="grid__header__cell sortable">
+                  <span className="grid__header__cellLiner">
                     <a>
                       Passengers
                       <span className="arrowUp">
@@ -353,8 +353,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell sortable">
-                  <span className="dataGrid__header__cellLiner">
+                <div className="grid__header__cell sortable">
+                  <span className="grid__header__cellLiner">
                     <a>
                       Cylinders
                       <span className="arrowUp">
@@ -366,8 +366,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell sortable">
-                  <span className="dataGrid__header__cellLiner">
+                <div className="grid__header__cell sortable">
+                  <span className="grid__header__cellLiner">
                     <a>
                       Fuel Economy
                       <span className="arrowUp">
@@ -379,8 +379,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell sortable selected reverse">
-                  <span className="dataGrid__header__cellLiner">
+                <div className="grid__header__cell sortable selected reverse">
+                  <span className="grid__header__cellLiner">
                     <a>
                       # Sold
                       <span className="arrowUp">
@@ -392,8 +392,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell sortable">
-                  <span className="dataGrid__header__cellLiner">
+                <div className="grid__header__cell sortable">
+                  <span className="grid__header__cellLiner">
                     <a>
                       Registered
                       <span className="arrowUp">
@@ -405,21 +405,21 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell">
-                  <span className="dataGrid__header__cellLiner"></span>
+                <div className="grid__header__cell">
+                  <span className="grid__header__cellLiner"></span>
                 </div>
               </div>
-              <div className="dataGrid__header__row">
-                <div className="dataGrid__header__cell">
-                  <span className="dataGrid__header__cellLiner">
+              <div className="grid__header__row">
+                <div className="grid__header__cell">
+                  <span className="grid__header__cellLiner">
                     <span className="checkboxWrapper">
                       <input type="checkbox" name="table_batch" id="table_batch" className="checkbox__input" />
                       <label htmlFor="table_batch" className="checkbox__faux__input"></label>
                     </span>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell sortable">
-                  <span className="dataGrid__header__cellLiner">
+                <div className="grid__header__cell sortable">
+                  <span className="grid__header__cellLiner">
                     <a>
                       Name
                       <span className="arrowUp">
@@ -431,8 +431,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell sortable">
-                  <span className="dataGrid__header__cellLiner">
+                <div className="grid__header__cell sortable">
+                  <span className="grid__header__cellLiner">
                     <a>
                       Status
                       <span className="arrowUp">
@@ -444,8 +444,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell sortable">
-                  <span className="dataGrid__header__cellLiner">
+                <div className="grid__header__cell sortable">
+                  <span className="grid__header__cellLiner">
                     <a>
                       Fuel
                       <span className="arrowUp">
@@ -457,8 +457,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell sortable">
-                  <span className="dataGrid__header__cellLiner">
+                <div className="grid__header__cell sortable">
+                  <span className="grid__header__cellLiner">
                     <a>
                       Passengers
                       <span className="arrowUp">
@@ -470,8 +470,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell sortable">
-                  <span className="dataGrid__header__cellLiner">
+                <div className="grid__header__cell sortable">
+                  <span className="grid__header__cellLiner">
                     <a>
                       Cylinders
                       <span className="arrowUp">
@@ -483,8 +483,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell sortable">
-                  <span className="dataGrid__header__cellLiner">
+                <div className="grid__header__cell sortable">
+                  <span className="grid__header__cellLiner">
                     <a>
                       Fuel Economy
                       <span className="arrowUp">
@@ -496,8 +496,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell sortable selected reverse">
-                  <span className="dataGrid__header__cellLiner">
+                <div className="grid__header__cell sortable selected reverse">
+                  <span className="grid__header__cellLiner">
                     <a>
                       # Sold
                       <span className="arrowUp">
@@ -509,8 +509,8 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell sortable">
-                  <span className="dataGrid__header__cellLiner">
+                <div className="grid__header__cell sortable">
+                  <span className="grid__header__cellLiner">
                     <a>
                       Registered
                       <span className="arrowUp">
@@ -522,26 +522,26 @@ export default class GridViewExample extends Component {
                     </a>
                   </span>
                 </div>
-                <div className="dataGrid__header__cell">
-                  <span className="dataGrid__header__cellLiner"></span>
+                <div className="grid__header__cell">
+                  <span className="grid__header__cellLiner"></span>
                 </div>
               </div>
             </div>
-            <div className="dataGrid__body">
+            <div className="grid__body">
               {rows}
             </div>
-            <div className="dataGrid__footer">
-              <div className="dataGrid__footer__row">
-                <div className="dataGrid__footer__cell"><div className="dataGrid__footer__cellLiner"></div></div>
-                <div className="dataGrid__footer__cell"><div className="dataGrid__footer__cellLiner"></div></div>
-                <div className="dataGrid__footer__cell"><div className="dataGrid__footer__cellLiner"></div></div>
-                <div className="dataGrid__footer__cell"><div className="dataGrid__footer__cellLiner"></div></div>
-                <div className="dataGrid__footer__cell"><div className="dataGrid__footer__cellLiner"></div></div>
-                <div className="dataGrid__footer__cell"><div className="dataGrid__footer__cellLiner"></div></div>
-                <div className="dataGrid__footer__cell"><div className="dataGrid__footer__cellLiner"></div></div>
-                <div className="dataGrid__footer__cell"><div className="dataGrid__footer__cellLiner">152.1m</div></div>
-                <div className="dataGrid__footer__cell"><div className="dataGrid__footer__cellLiner">Registered</div></div>
-                <div className="dataGrid__footer__cell"><div className="dataGrid__footer__cellLiner"></div></div>
+            <div className="grid__footer">
+              <div className="grid__footer__row">
+                <div className="grid__footer__cell"><div className="grid__footer__cellLiner"></div></div>
+                <div className="grid__footer__cell"><div className="grid__footer__cellLiner"></div></div>
+                <div className="grid__footer__cell"><div className="grid__footer__cellLiner"></div></div>
+                <div className="grid__footer__cell"><div className="grid__footer__cellLiner"></div></div>
+                <div className="grid__footer__cell"><div className="grid__footer__cellLiner"></div></div>
+                <div className="grid__footer__cell"><div className="grid__footer__cellLiner"></div></div>
+                <div className="grid__footer__cell"><div className="grid__footer__cellLiner"></div></div>
+                <div className="grid__footer__cell"><div className="grid__footer__cellLiner">152.1m</div></div>
+                <div className="grid__footer__cell"><div className="grid__footer__cellLiner">Registered</div></div>
+                <div className="grid__footer__cell"><div className="grid__footer__cellLiner"></div></div>
               </div>
             </div>
 

@@ -1,10 +1,10 @@
-.dataGrid__batch {
+.grid__batch {
   display: table-cell;
   vertical-align: middle;
   padding-right: 5px;
 }
 
-  .dataGrid__batch__button {
+  .grid__batch__button {
     display: inline-block;
     color: shade(scale-saturation($componentTextColor, 100%), 100%);
     border: 1px dashed scale-saturation($componentTextColor, 22%);

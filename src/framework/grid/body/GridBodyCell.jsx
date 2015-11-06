@@ -12,11 +12,11 @@ export default class GridBodyCell extends Component {
   }
 
   render() {
-    const cellClass = classNames('dataGrid__body__cell', this.props.classBodyCell);
+    const cellClass = classNames('grid__body__cell', this.props.classBodyCell);
 
     return (
       <div className={cellClass}>
-        <div className="dataGrid__body__cellLiner">
+        <div className="grid__body__cellLiner">
           {this.props.content}
         </div>
       </div>

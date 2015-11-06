@@ -1,4 +1,4 @@
-.dataGrid__body__cell {
+.grid__body__cell {
   padding-left: 8px;
   padding-right: 8px;
   border-bottom: 1px dashed $componentStrokeColor;
@@ -8,7 +8,7 @@
   align-items: center;
 }
 
-  .dataGrid__body__cell {
+  .grid__body__cell {
     &:first-child {
       padding-left: 15px;
     }
@@ -17,7 +17,7 @@
     }
   }
 
-    .dataGrid__body__cellLiner {
+    .grid__body__cellLiner {
       // 4 props to make ellipsis work
       width: 100%;
       overflow: hidden;
@@ -27,9 +27,9 @@
       line-height: 1.2;
     }
 
-      .dataGrid__body__cellValue--link,
-      .dataGrid__body__cellValue--readOnly,
-      .dataGrid__body__cellValue--editable {
+      .grid__body__cellValue--link,
+      .grid__body__cellValue--readOnly,
+      .grid__body__cellValue--editable {
         box-sizing: border-box;
         padding: 4px 5px;
         display: inline-block;
@@ -43,18 +43,18 @@
         white-space: nowrap;
       }
 
-      .dataGrid__body__cellValue--readOnly {
+      .grid__body__cellValue--readOnly {
         cursor: default;
       }
 
-      .dataGrid__body__cellValue--link {
+      .grid__body__cellValue--link {
         cursor: pointer;
         color: $linkColor;
         font-weight: 400;
         &:hover { opacity: .8; }
       }
 
-      .dataGrid__body__cellValue--editable {
+      .grid__body__cellValue--editable {
         border: 1px dashed transparent;
         border-radius: 4px;
         transition: .1s all ease-in-out;
@@ -81,7 +81,7 @@
         }
       }
 
-      .dataGrid__body__cellChange {
+      .grid__body__cellChange {
         font-size: 12px;
         padding-left: 2px;
         font-weight: 400;
@@ -89,21 +89,21 @@
         &.down { color: $red; }
       }
 
-    .dataGrid__body__cellLiner .icon {
+    .grid__body__cellLiner .icon {
       color: shade($lightGrey, 15%);
       padding: 0;
       vertical-align: top;
     }
 
-    .dataGrid__body__cellLiner .glyphicons-more,
-    .dataGrid__body__cellLiner .glyphicons-cogwheel {
+    .grid__body__cellLiner .glyphicons-more,
+    .grid__body__cellLiner .glyphicons-cogwheel {
       font-size: 14px;
       color: shade($lightGrey, 20%);
       margin: 0 0 0 15px;
       &:hover { color: shade($lightGrey, 40%); }
     }
 
-    .dataGrid__body__cellLiner .glyphicons-leaf {
+    .grid__body__cellLiner .glyphicons-leaf {
       margin-left: 2px;
       font-size: 9px;
       color: $green;

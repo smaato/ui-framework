@@ -1,8 +1,8 @@
-.dataGrid__body__row {
+.grid__body__row {
   &:nth-of-type(odd) {
     background-color: #f9f9f9;
   }
-  .dataGrid--reverseStriped & {
+  .grid--reverseStriped & {
     &:nth-of-type(odd) {
       background-color: transparent;
     }
