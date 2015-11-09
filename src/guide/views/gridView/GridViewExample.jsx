@@ -2,6 +2,7 @@
 import React, {
   Component,
 } from 'react';
+import $ from 'jquery';
 
 import Page from '../../components/page/Page.jsx';
 
