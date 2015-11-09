@@ -30,7 +30,6 @@
       .grid__body__cellValue--link,
       .grid__body__cellValue--readOnly,
       .grid__body__cellValue--editable {
-        box-sizing: border-box;
         padding: 4px 5px;
         display: inline-block;
         vertical-align: middle;
@@ -79,14 +78,6 @@
           background: $componentBackgroundColor;
           &:before { opacity: 1; }
         }
-      }
-
-      .grid__body__cellChange {
-        font-size: 12px;
-        padding-left: 2px;
-        font-weight: 400;
-        &.up { color: $green; }
-        &.down { color: $red; }
       }
 
     .grid__body__cellLiner .icon {

@@ -23,6 +23,7 @@
     @import 'footer/index';
     @import 'empty/index';
     @import 'loading/index';
+    @import 'kpi/index';
 
     .grid__header {
       display: block;
@@ -47,7 +48,6 @@
         .grid__body__cell,
         .grid__footer__cell {
           width: 100px;
-          box-sizing: border-box;
           &:first-child {
             width: 35px;
           }

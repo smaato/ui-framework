@@ -1,0 +1,13 @@
+.gridKpi {
+  font-size: 12px;
+  padding-left: 2px;
+  font-weight: 400;
+}
+
+.gridKpi--positive {
+  color: $green;
+}
+
+.gridKpi--negative {
+  color: $red;
+}

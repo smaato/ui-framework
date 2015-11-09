@@ -39,6 +39,10 @@ q:before, q:after {
   content: none;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 /* Color Menu */
 /* Global Colors */
 /* Generic Components Colors */
@@ -2711,8 +2715,8 @@ body {
   border: 1px solid #c5cbcd;
   border-radius: 2px;
   box-shadow: inset 0 1px 0 #eaedee;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
 }
 .checkbox__faux__input:before, .checkbox__faux__input:after {
   line-height: 10px;
@@ -3058,7 +3062,6 @@ body {
 .grid__body__cellValue--link,
 .grid__body__cellValue--readOnly,
 .grid__body__cellValue--editable {
-  box-sizing: border-box;
   padding: 4px 5px;
   display: inline-block;
   vertical-align: middle;
@@ -3109,18 +3112,6 @@ body {
 }
 .grid__body__cellValue--editable:hover:before {
   opacity: 1;
-}
-
-.grid__body__cellChange {
-  font-size: 12px;
-  padding-left: 2px;
-  font-weight: 400;
-}
-.grid__body__cellChange.up {
-  color: #35d0a0;
-}
-.grid__body__cellChange.down {
-  color: #ff2400;
 }
 
 .grid__body__cellLiner .icon {
@@ -3178,7 +3169,6 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   border: 4px dashed rgba(0, 0, 255, 0.5);
-  box-sizing: border-box;
   height: 100%;
 }
 
@@ -3197,8 +3187,21 @@ body {
 }
 
 .gridLoadingRow--initial {
-  box-sizing: border-box;
   height: 100%;
+}
+
+.gridKpi {
+  font-size: 12px;
+  padding-left: 2px;
+  font-weight: 400;
+}
+
+.gridKpi--positive {
+  color: #35d0a0;
+}
+
+.gridKpi--negative {
+  color: #ff2400;
 }
 
 .grid__header {
@@ -3226,7 +3229,6 @@ body {
 .grid__body__cell,
 .grid__footer__cell {
   width: 100px;
-  box-sizing: border-box;
 }
 .grid__header__cell:first-child,
 .grid__body__cell:first-child,
