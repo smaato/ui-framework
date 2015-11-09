@@ -253,10 +253,12 @@ gulp.task('css:prototype', function(callback) {
 
 gulp.task('production', function(callback) {
   runSequence(
+    'clean:init',
     'copy',
-    'sass',
-    'postcss',
+    'css',
+    'css:prototype',
     'jade',
+    'jade:index',
     'lint',
     'scripts',
     'cssmin',
@@ -275,7 +277,7 @@ gulp.task('deploy', ['production'], function() {
   var publisher = awspublish.create({
     accessKeyId: commandLineArguments.accessKeyId || process.env.AWS_ACCESS_KEY_ID,
     params: {
-      Bucket: commandLineArguments.bucket || process.env.AWS_BUCKET_BUYER_TOOLS
+      Bucket: commandLineArguments.bucket || process.env.AWS_BUCKET_UI_FRAMEWORK
     },
     secretAccessKey: commandLineArguments.secretAccessKey || process.env.AWS_SECRET_ACCESS_KEY
   });
@@ -311,7 +313,6 @@ gulp.task('default', function(callback) {
   runSequence(
     'clean:init',
     'copy',
-    'connect',
     'css',
     'css:prototype',
     'jade',
@@ -319,6 +320,7 @@ gulp.task('default', function(callback) {
     'lint',
     'scripts',
     'watch',
+    'connect',
     callback
   );
 });
