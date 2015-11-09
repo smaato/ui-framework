@@ -12,6 +12,8 @@ import {
   Grid,
   GridBodyEditableCell,
   GridEmptyRow,
+  GridKpiPositive,
+  GridKpiNegative,
   GridLoadingRow,
   IconCog,
   IconEllipsis,
@@ -197,7 +199,28 @@ export default class GridExample extends Component {
       />,
       item => item.cylinders,
       item => item.fuelEconomy,
-      item => item.sold,
+      item => {
+        return (
+          <div>
+            {item.sold}
+            {String.fromCharCode(160)}
+            <GridKpiPositive
+              title="+2%"
+            >+2%</GridKpiPositive>
+          </div>
+        );
+      },
+      item => {
+        return (
+          <div>
+            {item.registered}
+            {String.fromCharCode(160)}
+            <GridKpiNegative
+              title="-2%"
+            >-2%</GridKpiNegative>
+          </div>
+        );
+      },
       item => item.registered,
       () => (
         <span>
