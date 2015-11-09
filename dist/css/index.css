@@ -3190,15 +3190,17 @@ body {
   height: 100%;
 }
 
-.grid__body__cellChange {
+.gridKpi {
   font-size: 12px;
   padding-left: 2px;
   font-weight: 400;
 }
-.grid__body__cellChange.up {
+
+.gridKpi--positive {
   color: #35d0a0;
 }
-.grid__body__cellChange.down {
+
+.gridKpi--negative {
   color: #ff2400;
 }
 

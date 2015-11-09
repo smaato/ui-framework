@@ -13,7 +13,7 @@ export default class GridKpi extends Component {
 
   render() {
     const className = classNames(
-      'grid__body__cellChange',
+      'gridKpi',
       this.props.className
     );
 
@@ -22,7 +22,7 @@ export default class GridKpi extends Component {
         className={className}
         title={this.props.title}
       >
-        {this.props.content}
+        {this.props.children}
       </span>
     );
   }
@@ -30,6 +30,5 @@ export default class GridKpi extends Component {
 
 GridKpi.propTypes = {
   className: PropTypes.string,
-  content: PropTypes.any.isRequired,
   title: PropTypes.string,
 };

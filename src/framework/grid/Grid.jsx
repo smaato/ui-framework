@@ -21,8 +21,12 @@ export {
 } from './empty/GridEmptyRow.jsx';
 
 export {
-  default as GridKpi,
-} from './kpi/GridKpi.jsx';
+  default as GridKpiPositive,
+} from './kpi/GridKpiPositive.jsx';
+
+export {
+  default as GridKpiNegative,
+} from './kpi/GridKpiNegative.jsx';
 
 export default class Grid extends Component {
 

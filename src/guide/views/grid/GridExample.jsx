@@ -12,7 +12,8 @@ import {
   Grid,
   GridBodyEditableCell,
   GridEmptyRow,
-  GridKpi,
+  GridKpiPositive,
+  GridKpiNegative,
   GridLoadingRow,
   IconCog,
   IconEllipsis,
@@ -203,11 +204,9 @@ export default class GridExample extends Component {
           <div>
             {item.sold}
             {String.fromCharCode(160)}
-            <GridKpi
-              className="up"
-              content="+2%"
+            <GridKpiPositive
               title="+2%"
-            />
+            >+2%</GridKpiPositive>
           </div>
         );
       },
@@ -216,11 +215,9 @@ export default class GridExample extends Component {
           <div>
             {item.registered}
             {String.fromCharCode(160)}
-            <GridKpi
-              className="down"
-              content="-2%"
+            <GridKpiNegative
               title="-2%"
-            />
+            >-2%</GridKpiNegative>
           </div>
         );
       },

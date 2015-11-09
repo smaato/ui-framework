@@ -1,11 +1,13 @@
-.grid__body__cellChange {
+.gridKpi {
   font-size: 12px;
   padding-left: 2px;
   font-weight: 400;
-  &.up {
-    color: $green;
-  }
-  &.down {
-    color: $red;
-  }
+}
+
+.gridKpi--positive {
+  color: $green;
+}
+
+.gridKpi--negative {
+  color: $red;
 }
