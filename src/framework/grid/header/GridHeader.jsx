@@ -22,8 +22,10 @@ export default class GridHeader extends Component {
           classHeaderCell={this.props.classHeaderCell}
           cells={this.props.cells}
           // Sorting
-          sorting={this.props.sorting}
-          sortingFunc={this.props.sortingFunc}
+          sortColumns={this.props.sortColumns}
+          sortDesc={this.props.sortDesc}
+          sortBy={this.props.sortBy}
+          sortFunc={this.props.sortFunc}
         />
       </div>
     );
@@ -37,6 +39,8 @@ GridHeader.propTypes = {
   classHeaderCell: PropTypes.string,
   cells: PropTypes.array.isRequired,
   // Sorting
-  sorting: PropTypes.array,
-  sortingFunc: PropTypes.func,
+  sortColumns: PropTypes.array,
+  sortDesc: PropTypes.bool,
+  sortBy: PropTypes.number,
+  sortFunc: PropTypes.func,
 };

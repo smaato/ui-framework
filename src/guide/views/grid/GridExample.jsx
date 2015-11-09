@@ -33,42 +33,7 @@ export default class GridExample extends Component {
   // It is extracted to a function to easily reset to initial state
   initializeState() {
     const bodyRowsMax = 80;
-    const sorting = [
-      {
-        sortable: false,
-      },
-      {
-        sortable: true,
-        selected: true,
-      },
-      {
-        sortable: true,
-      },
-      {
-        sortable: true,
-      },
-      {
-        sortable: true,
-      },
-      {
-        sortable: true,
-      },
-      {
-        sortable: true,
-      },
-      {
-        sortable: true,
-      },
-      {
-        sortable: true,
-      },
-      {
-        sortable: true,
-      },
-      {
-        sortable: false,
-      },
-    ];
+    // In the app that uses Grid this state should be inside reducer
     this.state = {
       bodyRows: [],
       bodyRowsMax,
@@ -82,7 +47,9 @@ export default class GridExample extends Component {
       // Reference to fake server request, provides ability to cancel it
       lazyLoadingTimeoutId: null,
       // Sorting
-      sorting: sorting,
+      sortColumns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      sortDesc: true,
+      sortBy: 2,
     };
   }
 
@@ -268,18 +235,10 @@ export default class GridExample extends Component {
       ),
     ];
 
-    function sortingFunc(index) {
-      // Copy
-      const sorting = this.state.sorting.slice();
-      if (!sorting[index].selected) {
-        sorting.forEach((item, itemIndex) => {
-          sorting[itemIndex].selected = itemIndex === index;
-        });
-      } else {
-        sorting[index].reverse = !sorting[index].reverse;
-      }
+    function sortFunc(index) {
       this.setState({
-        sorting: sorting,
+        sortBy: index,
+        sortDesc: this.state.sortBy === index ? !this.state.sortDesc : true,
       });
     }
 
@@ -349,9 +308,11 @@ export default class GridExample extends Component {
             lazyLoadRows={this.lazyLoadBodyRows.bind(this)}
             loadingRow={loadingRow}
             loadDistanceFromBottom={1000}
-            // sorting
-            sorting={this.state.sorting}
-            sortingFunc={sortingFunc.bind(this)}
+            // Sorting
+            sortColumns={this.state.sortColumns}
+            sortDesc={this.state.sortDesc}
+            sortBy={this.state.sortBy}
+            sortFunc={sortFunc.bind(this)}
           />
 
         </Example>

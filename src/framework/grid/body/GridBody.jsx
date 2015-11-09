@@ -155,5 +155,6 @@ GridBody.propTypes = {
   loadingRow: PropTypes.element,
   loadDistanceFromBottom: PropTypes.number,
   // Sorting
-  sorting: PropTypes.array,
+  sortDesc: PropTypes.bool,
+  sortBy: PropTypes.number,
 };
