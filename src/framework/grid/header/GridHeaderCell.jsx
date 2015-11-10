@@ -11,23 +11,29 @@ export default class GridHeaderCell extends Component {
     super(props);
   }
 
-  render() {
-    let cellClass;
-    let content;
-
+  renderCellClass() {
     if (this.props.sortEnabled) {
-      cellClass = classNames(
+      return classNames(
         'grid__header__cell',
         'sortable',
         this.props.sortBy === this.props.cellIndex ? 'selected' : null,
         this.props.sortDesc ? null : 'reverse'
       );
+    }
 
+    return classNames(
+      'grid__header__cell',
+      this.props.classHeaderCell
+    );
+  }
+
+  renderContent() {
+    if (this.props.sortEnabled) {
       const sortFunc = () => {
         this.props.sortFunc(this.props.cellIndex);
       };
 
-      content = (
+      return (
         <a
           onClick={sortFunc}
         >
@@ -41,13 +47,14 @@ export default class GridHeaderCell extends Component {
           </span>
         </a>
       );
-    } else {
-      cellClass = classNames(
-        'grid__header__cell',
-        this.props.classHeaderCell
-      );
-      content = this.props.content;
     }
+
+    return this.props.content;
+  }
+
+  render() {
+    const cellClass = this.renderCellClass();
+    const content = this.renderContent();
 
     return (
       <div className={cellClass}>
