@@ -59,10 +59,10 @@ export default class Grid extends Component {
             classHeaderCell={this.props.classHeaderCell}
             cells={this.props.headerCells}
             // Sorting
-            sortColumns={this.props.sortColumns}
+            sortColumnIndexes={this.props.sortColumnIndexes}
             sortDesc={this.props.sortDesc}
-            sortBy={this.props.sortBy}
-            sortFunc={this.props.sortFunc}
+            sortByColumnIndex={this.props.sortByColumnIndex}
+            onSort={this.props.onSort}
           />
           <GridBody
             classBody={this.props.classBody}
@@ -124,10 +124,10 @@ Grid.propTypes = {
   loadingRow: PropTypes.element,
   loadDistanceFromBottom: PropTypes.number,
   // Sorting
-  sortColumns: PropTypes.array,
+  sortColumnIndexes: PropTypes.array,
   sortDesc: PropTypes.bool,
-  sortBy: PropTypes.number,
-  sortFunc: PropTypes.func,
+  sortByColumnIndex: PropTypes.number,
+  onSort: PropTypes.func,
 };
 
 Grid.defaultProps = {

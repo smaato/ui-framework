@@ -16,8 +16,8 @@ export default class GridHeaderRow extends Component {
     const rowClass = classNames('grid__header__row', this.props.classHeaderRow);
 
     const content = this.props.cells.map((cell, index) => {
-      const isSortEnabled = this.props.sortColumns ?
-        this.props.sortColumns.some(item => item === index) :
+      const isSortEnabled = this.props.sortColumnIndexes ?
+        this.props.sortColumnIndexes.some(item => item === index) :
         false;
 
       return (
@@ -29,8 +29,8 @@ export default class GridHeaderRow extends Component {
           cellIndex={index}
           sortEnabled={isSortEnabled}
           sortDesc={this.props.sortDesc}
-          sortBy={this.props.sortBy}
-          sortFunc={this.props.sortFunc}
+          sortByColumnIndex={this.props.sortByColumnIndex}
+          onSort={this.props.onSort}
         />
       );
     });
@@ -49,8 +49,8 @@ GridHeaderRow.propTypes = {
   classHeaderCell: PropTypes.string,
   cells: PropTypes.array.isRequired,
   // Sorting
-  sortColumns: PropTypes.array,
+  sortColumnIndexes: PropTypes.array,
   sortDesc: PropTypes.bool,
-  sortBy: PropTypes.number,
-  sortFunc: PropTypes.func,
+  sortByColumnIndex: PropTypes.number,
+  onSort: PropTypes.func,
 };
