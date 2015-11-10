@@ -28,8 +28,8 @@ export default class GridHeaderRow extends Component {
           // Sorting
           cellIndex={index}
           sortEnabled={isSortEnabled}
-          sortDesc={this.props.sortDesc}
-          sortByColumnIndex={this.props.sortByColumnIndex}
+          isSortDescending={this.props.isSortDescending}
+          sortedColumnIndex={this.props.sortedColumnIndex}
           onSort={this.props.onSort}
         />
       );
@@ -50,7 +50,7 @@ GridHeaderRow.propTypes = {
   cells: PropTypes.array.isRequired,
   // Sorting
   sortColumnIndexes: PropTypes.array,
-  sortDesc: GridHeaderCell.propTypes.sortDesc,
-  sortByColumnIndex: GridHeaderCell.propTypes.sortByColumnIndex,
+  isSortDescending: GridHeaderCell.propTypes.isSortDescending,
+  sortedColumnIndex: GridHeaderCell.propTypes.sortedColumnIndex,
   onSort: GridHeaderCell.propTypes.onSort,
 };

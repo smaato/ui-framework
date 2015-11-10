@@ -60,8 +60,8 @@ export default class Grid extends Component {
             cells={this.props.headerCells}
             // Sorting
             sortColumnIndexes={this.props.sortColumnIndexes}
-            sortDesc={this.props.sortDesc}
-            sortByColumnIndex={this.props.sortByColumnIndex}
+            isSortDescending={this.props.isSortDescending}
+            sortedColumnIndex={this.props.sortedColumnIndex}
             onSort={this.props.onSort}
           />
           <GridBody
@@ -125,8 +125,8 @@ Grid.propTypes = {
   loadDistanceFromBottom: PropTypes.number,
   // Sorting
   sortColumnIndexes: GridHeader.propTypes.sortColumnIndexes,
-  sortDesc: GridHeader.propTypes.sortDesc,
-  sortByColumnIndex: GridHeader.propTypes.sortByColumnIndex,
+  isSortDescending: GridHeader.propTypes.isSortDescending,
+  sortedColumnIndex: GridHeader.propTypes.sortedColumnIndex,
   onSort: GridHeader.propTypes.onSort,
 };
 

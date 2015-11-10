@@ -56,9 +56,9 @@ export default class GridExample extends Component {
       // I disabled those whose render function output DOM elements, unlike
       // those outputting string or number it is not clear how to sort them.
       sortColumnIndexes: [1, 2, 3, 4, 6, 7],
-      sortDesc: true,
+      isSortDescending: true,
       // Index of column to sort by
-      sortByColumnIndex: 2,
+      sortedColumnIndex: 2,
     };
   }
 
@@ -275,8 +275,8 @@ export default class GridExample extends Component {
     ];
 
     function onSort(cellIndex) {
-      const isSortDesc = this.state.sortByColumnIndex === cellIndex ?
-        !this.state.sortDesc : true;
+      const isSortDesc = this.state.sortedColumnIndex === cellIndex ?
+        !this.state.isSortDescending : true;
 
       // In the case of existing API, when lazy loading is enabled, we need to
       // purge bodyRows and request sorted data from the server.
@@ -297,16 +297,16 @@ export default class GridExample extends Component {
 
       this.setState({
         bodyRows,
-        sortByColumnIndex: cellIndex,
-        sortDesc: isSortDesc,
+        sortedColumnIndex: cellIndex,
+        isSortDescending: isSortDesc,
       });
     }
 
     const sortedBodyRows = this.sortFunc(
       this.state.bodyRows,
       bodyRenderer,
-      this.state.sortByColumnIndex,
-      this.state.sortDesc
+      this.state.sortedColumnIndex,
+      this.state.isSortDescending
     );
 
     const ROW_HEIGHT = 34;
@@ -377,8 +377,8 @@ export default class GridExample extends Component {
             loadDistanceFromBottom={1000}
             // Sorting
             sortColumnIndexes={this.state.sortColumnIndexes}
-            sortDesc={this.state.sortDesc}
-            sortByColumnIndex={this.state.sortByColumnIndex}
+            isSortDescending={this.state.isSortDescending}
+            sortedColumnIndex={this.state.sortedColumnIndex}
             onSort={onSort.bind(this)}
           />
 

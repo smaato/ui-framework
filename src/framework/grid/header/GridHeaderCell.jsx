@@ -16,8 +16,8 @@ export default class GridHeaderCell extends Component {
       return classNames(
         'grid__header__cell',
         'sortable',
-        this.props.sortByColumnIndex === this.props.cellIndex ? 'selected' : null,
-        this.props.sortDesc ? null : 'reverse'
+        this.props.sortedColumnIndex === this.props.cellIndex ? 'selected' : null,
+        this.props.isSortDescending ? null : 'reverse'
       );
     }
 
@@ -75,7 +75,7 @@ GridHeaderCell.propTypes = {
   // Sorting
   cellIndex: PropTypes.number,
   sortEnabled: PropTypes.bool,
-  sortDesc: PropTypes.bool,
-  sortByColumnIndex: PropTypes.number,
+  isSortDescending: PropTypes.bool,
+  sortedColumnIndex: PropTypes.number,
   onSort: PropTypes.func,
 };
