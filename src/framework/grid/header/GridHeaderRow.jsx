@@ -50,7 +50,7 @@ GridHeaderRow.propTypes = {
   cells: PropTypes.array.isRequired,
   // Sorting
   sortColumnIndexes: PropTypes.array,
-  sortDesc: PropTypes.bool,
-  sortByColumnIndex: PropTypes.number,
-  onSort: PropTypes.func,
+  sortDesc: GridHeaderCell.propTypes.sortDesc,
+  sortByColumnIndex: GridHeaderCell.propTypes.sortByColumnIndex,
+  onSort: GridHeaderCell.propTypes.onSort,
 };

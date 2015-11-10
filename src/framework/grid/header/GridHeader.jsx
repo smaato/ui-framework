@@ -39,8 +39,8 @@ GridHeader.propTypes = {
   classHeaderCell: PropTypes.string,
   cells: PropTypes.array.isRequired,
   // Sorting
-  sortColumnIndexes: PropTypes.array,
-  sortDesc: PropTypes.bool,
-  sortByColumnIndex: PropTypes.number,
-  onSort: PropTypes.func,
+  sortColumnIndexes: GridHeaderRow.propTypes.sortColumnIndexes,
+  sortDesc: GridHeaderRow.propTypes.sortDesc,
+  sortByColumnIndex: GridHeaderRow.propTypes.sortByColumnIndex,
+  onSort: GridHeaderRow.propTypes.onSort,
 };

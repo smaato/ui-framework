@@ -124,10 +124,10 @@ Grid.propTypes = {
   loadingRow: PropTypes.element,
   loadDistanceFromBottom: PropTypes.number,
   // Sorting
-  sortColumnIndexes: PropTypes.array,
-  sortDesc: PropTypes.bool,
-  sortByColumnIndex: PropTypes.number,
-  onSort: PropTypes.func,
+  sortColumnIndexes: GridHeader.propTypes.sortColumnIndexes,
+  sortDesc: GridHeader.propTypes.sortDesc,
+  sortByColumnIndex: GridHeader.propTypes.sortByColumnIndex,
+  onSort: GridHeader.propTypes.onSort,
 };
 
 Grid.defaultProps = {
