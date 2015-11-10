@@ -81,9 +81,6 @@ export default class Grid extends Component {
             reverseZebraStripeClass={this.props.reverseZebraStripeClass}
             loadingRow={this.props.loadingRow}
             loadDistanceFromBottom={this.props.loadDistanceFromBottom}
-            // Sorting
-            sortDesc={this.props.sortDesc}
-            sortBy={this.props.sortBy}
           />
           <GridFooter
             classFooter={this.props.classFooter}

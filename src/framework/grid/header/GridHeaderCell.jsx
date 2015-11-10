@@ -29,9 +29,7 @@ export default class GridHeaderCell extends Component {
 
   renderContent() {
     if (this.props.sortEnabled) {
-      const sortFunc = () => {
-        this.props.sortFunc(this.props.cellIndex);
-      };
+      const sortFunc = () => this.props.sortFunc(this.props.cellIndex);
 
       return (
         <a

@@ -47,9 +47,9 @@ export default class GridExample extends Component {
       // Reference to fake server request, provides ability to cancel it
       lazyLoadingTimeoutId: null,
       // Sorting
-      sortColumns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      sortColumns: [1, 2, 3, 4, 5, 6, 7, 8, 9],// Array of col indexes
       sortDesc: true,
-      sortBy: 2,
+      sortBy: 2,// Index of column to sort by
     };
   }
 
@@ -165,11 +165,7 @@ export default class GridExample extends Component {
     ];
 
     const bodyRenderer = [
-      (item) => {
-        return (
-          <CheckBox id={item.id} />
-        );
-      },
+      item => <CheckBox id={item.id} />,
       item => item.id,
       item => item.name,
       item => item.status,
@@ -204,28 +200,24 @@ export default class GridExample extends Component {
       />,
       item => item.cylinders,
       item => item.fuelEconomy,
-      item => {
-        return (
-          <div>
-            {item.sold}
-            {String.fromCharCode(160)}
-            <GridKpiPositive
-              title="+2%"
-            >+2%</GridKpiPositive>
-          </div>
-        );
-      },
-      item => {
-        return (
-          <div>
-            {item.registered}
-            {String.fromCharCode(160)}
-            <GridKpiNegative
-              title="-2%"
-            >-2%</GridKpiNegative>
-          </div>
-        );
-      },
+      item => (
+        <div>
+          {item.sold}
+          {String.fromCharCode(160)}
+          <GridKpiPositive
+            title="+2%"
+          >+2%</GridKpiPositive>
+        </div>
+      ),
+      item => (
+        <div>
+          {item.registered}
+          {String.fromCharCode(160)}
+          <GridKpiNegative
+            title="-2%"
+          >-2%</GridKpiNegative>
+        </div>
+      ),
       item => item.registered,
       () => (
         <span>
@@ -236,9 +228,51 @@ export default class GridExample extends Component {
     ];
 
     function sortFunc(index) {
+      const isSortDesc = this.state.sortBy === index ?
+        !this.state.sortDesc : true;
+
+      // In the case of existing API, when lazy loading is enabled, we need to
+      // purge bodyRows and request sorted data from the server.
+      /*
+      if (isLazyLoadEnabled) {
+        this.initializeState();
+        this.lazyLoadBodyRows();
+      }
+      */
+
+      // If lazy loading is not enabled simply sort existing bodyRows
+      const bodyRows = this.state.bodyRows.sort((a, b) => {
+        // We have the data for the row as an object and
+        // renderer for the cell/column, which in theory can output
+        // anything.
+        const cellRenderA = bodyRenderer[index](a);
+        const cellRenderB = bodyRenderer[index](b);
+        const isNumber = typeof cellRenderA === 'number';
+        let cellContentA;
+        let cellContentB;
+        if (isNumber) {
+          cellContentA = cellRenderA;
+          cellContentB = cellRenderB;
+        } else {
+          cellContentA = JSON.stringify(cellRenderA).toLowerCase();
+          cellContentB = JSON.stringify(cellRenderB).toLowerCase();
+        }
+        // Ascending
+        if (cellContentA < cellContentB) {
+          return isSortDesc ? -1 : 1;
+        }
+        // Descending
+        if (cellContentA > cellContentB) {
+          return isSortDesc ? 1 : -1;
+        }
+        // No sorting
+        return 0;
+      });
+
       this.setState({
+        bodyRows,
         sortBy: index,
-        sortDesc: this.state.sortBy === index ? !this.state.sortDesc : true,
+        sortDesc: isSortDesc,
       });
     }
 
