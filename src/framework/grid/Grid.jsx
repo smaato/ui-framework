@@ -58,6 +58,11 @@ export default class Grid extends Component {
             classHeaderRow={this.props.classHeaderRow}
             classHeaderCell={this.props.classHeaderCell}
             cells={this.props.headerCells}
+            // Sorting
+            sortColumnIndexes={this.props.sortColumnIndexes}
+            isSortDescending={this.props.isSortDescending}
+            sortedColumnIndex={this.props.sortedColumnIndex}
+            onSort={this.props.onSort}
           />
           <GridBody
             classBody={this.props.classBody}
@@ -118,6 +123,11 @@ Grid.propTypes = {
   reverseZebraStripeClass: PropTypes.string,
   loadingRow: PropTypes.element,
   loadDistanceFromBottom: PropTypes.number,
+  // Sorting
+  sortColumnIndexes: GridHeader.propTypes.sortColumnIndexes,
+  isSortDescending: GridHeader.propTypes.isSortDescending,
+  sortedColumnIndex: GridHeader.propTypes.sortedColumnIndex,
+  onSort: GridHeader.propTypes.onSort,
 };
 
 Grid.defaultProps = {

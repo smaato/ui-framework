@@ -30,9 +30,15 @@ export default class GridExample extends Component {
     this.lazyLoadBodyRows();
   }
 
+  // Returns a random integer between min (inclusive) and max (inclusive)
+  getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
   // It is extracted to a function to easily reset to initial state
   initializeState() {
     const bodyRowsMax = 80;
+    // In the app that uses Grid this state should be inside reducer
     this.state = {
       bodyRows: [],
       bodyRowsMax,
@@ -45,6 +51,14 @@ export default class GridExample extends Component {
       isEmpty: false,
       // Reference to fake server request, provides ability to cancel it
       lazyLoadingTimeoutId: null,
+      // Sorting
+      // Array of col indexes to enable sorting for.
+      // I disabled those whose render function output DOM elements, unlike
+      // those outputting string or number it is not clear how to sort them.
+      sortColumnIndexes: [1, 2, 3, 4, 6, 7],
+      isSortDescending: true,
+      // Index of column to sort by
+      sortedColumnIndex: 2,
     };
   }
 
@@ -84,23 +98,22 @@ export default class GridExample extends Component {
 
   generateRows(indexStart, numberOfItems) {
     const newArray = [];
-    const bodyRow = {
-      id: null,
-      name: 'Ford F150',
-      status: 'In Production',
-      fuel: 'Diesel, Unleaded',
-      passengers: '3, 5, 6',
-      cylinders: '6, 8',
-      fuelEconomy: '25mpg',
-      sold: '202.1k',
-      registered: '200.5k',
-    };
     let indexEnd = indexStart + numberOfItems;
     const indexMax = this.state.bodyRowsMax;
     indexEnd = indexEnd >= indexMax ? indexMax : indexEnd;
     for (let i = indexStart; i < indexEnd; i++) {
       newArray.push(
-        Object.assign({}, bodyRow, {id: i})
+        {
+          id: i,
+          name: `Ford F${this.getRandomInt(0, 50000)}`,
+          status: 'In Production',
+          fuel: 'Diesel, Unleaded',
+          passengers: this.getRandomInt(0, 100),
+          cylinders: this.getRandomInt(0, 8),
+          fuelEconomy: `${this.getRandomInt(0, 200000)}mpg`,
+          sold: `${this.getRandomInt(0, 200000)}k`,
+          registered: `${this.getRandomInt(0, 200000)}B`,
+        }
       );
     }
     return newArray;
@@ -128,6 +141,36 @@ export default class GridExample extends Component {
       // needs to be called as callback or else it won't work as expected.
       this.lazyLoadBodyRows
     );
+  }
+
+  sortFunc(bodyRows, bodyRenderer, cellIndex, isSortDesc) {
+    return bodyRows.sort((a, b) => {
+      // We have the data for the row as an object and
+      // renderer for the cell/column, which in theory can output
+      // anything.
+      const cellRenderA = bodyRenderer[cellIndex](a);
+      const cellRenderB = bodyRenderer[cellIndex](b);
+      const isNumber = typeof cellRenderA === 'number';
+      let cellContentA;
+      let cellContentB;
+      if (isNumber) {
+        cellContentA = cellRenderA;
+        cellContentB = cellRenderB;
+      } else {
+        cellContentA = cellRenderA.toString().toLowerCase();
+        cellContentB = cellRenderB.toString().toLowerCase();
+      }
+      // Ascending
+      if (cellContentA < cellContentB) {
+        return isSortDesc ? -1 : 1;
+      }
+      // Descending
+      if (cellContentA > cellContentB) {
+        return isSortDesc ? 1 : -1;
+      }
+      // No sorting
+      return 0;
+    });
   }
 
   render() {
@@ -160,11 +203,7 @@ export default class GridExample extends Component {
     ];
 
     const bodyRenderer = [
-      (item) => {
-        return (
-          <CheckBox id={item.id} />
-        );
-      },
+      item => <CheckBox id={item.id} />,
       item => item.id,
       item => item.name,
       item => item.status,
@@ -200,28 +239,33 @@ export default class GridExample extends Component {
       item => item.cylinders,
       item => item.fuelEconomy,
       item => {
+        const kpi = `+${this.getRandomInt.bind(this)(1, 100)}%`;
         return (
           <div>
             {item.sold}
             {String.fromCharCode(160)}
             <GridKpiPositive
-              title="+2%"
-            >+2%</GridKpiPositive>
+              title={kpi}
+            >
+              {kpi}
+            </GridKpiPositive>
           </div>
         );
       },
       item => {
+        const kpi = `${this.getRandomInt.bind(this)(-100, -1)}%`;
         return (
           <div>
             {item.registered}
             {String.fromCharCode(160)}
             <GridKpiNegative
-              title="-2%"
-            >-2%</GridKpiNegative>
+              title={kpi}
+            >
+              {kpi}
+            </GridKpiNegative>
           </div>
         );
       },
-      item => item.registered,
       () => (
         <span>
           <IconEllipsis />
@@ -229,6 +273,41 @@ export default class GridExample extends Component {
         </span>
       ),
     ];
+
+    function onSort(cellIndex) {
+      const isSortDesc = this.state.sortedColumnIndex === cellIndex ?
+        !this.state.isSortDescending : true;
+
+      // In the case of existing API, when lazy loading is enabled, we need to
+      // purge bodyRows and request sorted data from the server.
+      /*
+      if (isLazyLoadEnabled) {
+        this.initializeState();
+        this.lazyLoadBodyRows();
+      }
+      */
+
+      // If lazy loading is not enabled simply sort existing bodyRows
+      const bodyRows = this.sortFunc(
+        this.state.bodyRows,
+        bodyRenderer,
+        cellIndex,
+        isSortDesc
+      );
+
+      this.setState({
+        bodyRows,
+        sortedColumnIndex: cellIndex,
+        isSortDescending: isSortDesc,
+      });
+    }
+
+    const sortedBodyRows = this.sortFunc(
+      this.state.bodyRows,
+      bodyRenderer,
+      this.state.sortedColumnIndex,
+      this.state.isSortDescending
+    );
 
     const ROW_HEIGHT = 34;
     const BODY_HEIGHT = 500;
@@ -278,7 +357,7 @@ export default class GridExample extends Component {
             classFooterRow="gridExample__footerRow"
             classFooterCell="gridExample__footerCell"
             headerCells={headerCells}
-            bodyRows={this.state.bodyRows}
+            bodyRows={sortedBodyRows}
             bodyRenderer={bodyRenderer}
             footerCells={footerCells}
             // Initial loading indicator
@@ -296,6 +375,11 @@ export default class GridExample extends Component {
             lazyLoadRows={this.lazyLoadBodyRows.bind(this)}
             loadingRow={loadingRow}
             loadDistanceFromBottom={1000}
+            // Sorting
+            sortColumnIndexes={this.state.sortColumnIndexes}
+            isSortDescending={this.state.isSortDescending}
+            sortedColumnIndex={this.state.sortedColumnIndex}
+            onSort={onSort.bind(this)}
           />
 
         </Example>
