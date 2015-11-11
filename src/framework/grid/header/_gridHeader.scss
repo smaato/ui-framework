@@ -14,20 +14,20 @@
     z-index: 5;
     text-align: center;
   }
-  
+
     .grid__header__placeholder__liner {
-      border-top: 1px solid $componentStrokeColor;
       @extend .grid__headerBG;
       max-width: $maxWidth;
+      border-top: 1px solid $componentStrokeColor;
       margin: 0 auto;
       text-align: left;
       border-left: 1px solid $componentStrokeColor;
       border-right: 1px solid $componentStrokeColor;
       box-shadow: 0 3px 4px rgba(0, 0, 0, .05);
     }
-    
+
   .grid__header__row:not(.grid__header__row--placeholder) .grid__header__cellLiner {
-    position: fixed !important;
+    position: fixed;
     top: 41px;
   }
 }

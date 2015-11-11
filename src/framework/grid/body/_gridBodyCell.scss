@@ -12,6 +12,7 @@
     &:first-child {
       padding-left: 15px;
     }
+
     &:last-child {
       padding-right: 15px;
     }
@@ -58,6 +59,7 @@
         border-radius: 4px;
         transition: .1s all ease-in-out;
         position: relative;
+
         &:before {
           @extend .glyphicons-cogwheel:before, .glyphicons:before;
           display: block;
@@ -73,6 +75,7 @@
           box-shadow: -4px 0 10px 2px $componentBackgroundColor;
           opacity: 0;
         }
+
         &:hover {
           border-color: $componentStrokeColor;
           background: $componentBackgroundColor;
@@ -98,6 +101,7 @@
       margin-left: 2px;
       font-size: 9px;
       color: $green;
+
       &:before {
         top: 1px;
       }

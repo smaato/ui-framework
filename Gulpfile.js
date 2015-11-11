@@ -53,6 +53,7 @@ gulp.task('lint', function() {
 gulp.task('lint:scss', function() {
   return gulp.src('./src/framework/**/*.scss')
     .pipe(scsslint({
+      config: './scss-config.yml',
       // Increase when task fails with an error "stdout maxBuffer exceeded"
       // Default is 300 * 1024
       maxBuffer: 1024 * 1024 // 1 Megabyte
@@ -279,6 +280,7 @@ gulp.task('production', function(callback) {
     'jade',
     'jade:index',
     'lint',
+    'lint:scss',
     'scripts',
     'cssmin',
     'uglify',
@@ -317,11 +319,17 @@ gulp.task('watch', function() {
     './src/guide/**/*.js',
     './src/framework/**/*.jsx',
     './src/framework/**/*.js'
-  ], ['lint','scripts']);
+  ], [
+    'lint',
+    'scripts'
+  ]);
   gulp.watch([
     './src/guide/**/*.scss',
     './src/framework/**/*.scss'
-  ], ['css']);
+  ], [
+    'css',
+    'lint:scss'
+  ]);
   gulp.watch([
     './src/prototype/**/*.scss'
   ], ['css:prototype']);
@@ -337,6 +345,7 @@ gulp.task('default', function(callback) {
     'jade',
     'jade:index',
     'lint',
+    'lint:scss',
     'scripts',
     'watch',
     'connect',
