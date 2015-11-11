@@ -1,3 +1,4 @@
+/** postcss-bem-linter: define mainNavBar__account */
 .mainNavBar__account {
   color: $mainNavTextColor;
   float: right;
@@ -41,3 +42,5 @@
     transition: .1s all ease-in-out;
   }
 }
+
+/* postcss-bem-linter: end */

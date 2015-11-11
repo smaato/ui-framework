@@ -2686,11 +2686,13 @@ body {
   overflow-x: hidden;
 }
 
+/** postcss-bem-linter: define checkboxWrapper */
 .checkboxWrapper {
   display: inline-block;
   vertical-align: middle;
 }
 
+/** postcss-bem-linter: define checkbox__input */
 .checkbox__input {
   display: none;
 }
@@ -2706,6 +2708,7 @@ body {
   color: #26a3d2;
 }
 
+/** postcss-bem-linter: define checkbox__faux__input */
 .checkbox__faux__input {
   display: inline-block;
   position: relative;
@@ -2734,6 +2737,7 @@ body {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
+/* postcss-bem-linter: end */
 .grid__tableControls {
   margin: 0 auto;
   text-align: center;
@@ -3277,6 +3281,7 @@ body {
   background-repeat: no-repeat;
 }
 
+/** postcss-bem-linter: define mainNavBar__account */
 .mainNavBar__account {
   color: #ffffff;
   float: right;
@@ -3320,6 +3325,7 @@ body {
   transition: .1s all ease-in-out;
 }
 
+/* postcss-bem-linter: end */
 .mainNavBar__links__container {
   display: inline-block;
 }
