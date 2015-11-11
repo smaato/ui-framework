@@ -1,0 +1,18 @@
+{
+  "env": {
+    "developmentWithHmr": {
+      "plugins": [
+        "react-transform"
+      ],
+      "extra": {
+        "react-transform": {
+          "transforms": [{
+            "transform": "react-transform-hmr",
+            "imports": ["react"],
+            "locals": ["module"]
+          }]
+        }
+      }
+    }
+  }
+}
