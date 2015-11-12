@@ -45,7 +45,7 @@
     "gulp-rename": "1.2.2",
     "gulp-replace": "0.5.4",
     "gulp-sourcemaps": "1.5.2",
-    "gulp-tasks": "git@github.com:SmaatoUI/gulp-tasks.git#6fcb5f26c5f3ffe60a7e70637d34f276933f70e6",
+    "gulp-tasks": "git@github.com:SmaatoUI/gulp-tasks.git#dac623380d3c00b3960a64289cab646bb6cf05e1",
     "gulp-uglify": "1.2.0",
     "gulp-util": "3.0.6",
     "istanbul": "gotwarlost/istanbul#source-map",

@@ -65,12 +65,14 @@ scripts.uglify({
 });
 
 styles.compassAndPostcss({
+  compassSassDir: './src/guide',
   dst: STYLES_DST,
   src: './src/guide/**/*.scss',
   taskName: 'styles',
 });
 
 styles.compassAndPostcss({
+  compassSassDir: './src/prototype',
   dst: './dist/prototype',
   src: './src/prototype/**/*.scss',
   taskName: 'styles:prototype',
