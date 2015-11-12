@@ -39,13 +39,13 @@
       font-size: 11px;
       left: 5px;
       color: $mainNavTextColor;
-      opacity: .6;
+      opacity: 0.6;
     }
   }
 
   &:hover {
     background: scale-lightness($mainNavBackgroundColor, -13%);
-    transition: .1s all ease-in-out;
+    transition: 0.1s all ease-in-out;
   }
 }
 

@@ -23,7 +23,7 @@
       text-align: left;
       border-left: 1px solid $componentStrokeColor;
       border-right: 1px solid $componentStrokeColor;
-      box-shadow: 0 3px 4px rgba(0, 0, 0, .05);
+      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.05);
     }
 
   .grid__header__row:not(.grid__header__row--placeholder) .grid__header__cellLiner {

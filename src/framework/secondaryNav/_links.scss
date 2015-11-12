@@ -14,13 +14,13 @@
     .secondaryNavBar__link {
       float: left;
       margin: 7px 10px 0 0;
-      transition: .2s margin ease-in-out, .06s background ease-in-out;
+      transition: 0.2s margin ease-in-out, 0.06s background ease-in-out;
       @media #{$viewport_normalScreen} {
         margin: 7px 0 0;
       }
 
       &:hover {
-        background: rgba(255, 255, 255, .15);
+        background: rgba(255, 255, 255, 0.15);
       }
 
       a {
@@ -56,7 +56,7 @@
       margin-top: 14px;
       width: 20px;
       color: white;
-      opacity: .6;
+      opacity: 0.6;
       cursor: pointer;
       display: inline-block;
       float: left;

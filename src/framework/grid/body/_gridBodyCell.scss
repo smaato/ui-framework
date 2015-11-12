@@ -51,13 +51,16 @@
         cursor: pointer;
         color: $linkColor;
         font-weight: 400;
-        &:hover { opacity: .8; }
+
+        &:hover {
+          opacity: 0.8;
+        }
       }
 
       .grid__body__cellValue--editable {
         border: 1px dashed transparent;
         border-radius: 4px;
-        transition: .1s all ease-in-out;
+        transition: 0.1s all ease-in-out;
         position: relative;
 
         &:before {
@@ -79,7 +82,10 @@
         &:hover {
           border-color: $componentStrokeColor;
           background: $componentBackgroundColor;
-          &:before { opacity: 1; }
+
+          &:before {
+            opacity: 1;
+          }
         }
       }
 
@@ -94,7 +100,10 @@
       font-size: 14px;
       color: shade($lightGrey, 20%);
       margin: 0 0 0 15px;
-      &:hover { color: shade($lightGrey, 40%); }
+
+      &:hover {
+        color: shade($lightGrey, 40%);
+      }
     }
 
     .grid__body__cellLiner .glyphicons-leaf {

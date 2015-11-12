@@ -4,7 +4,7 @@
   display: inline-block;
   position: relative;
   text-align: center;
-  opacity: .5;
+  opacity: 0.5;
   margin-top: -1px;
 
   .arrowDown__centerLine {
@@ -37,7 +37,7 @@
   display: inline-block;
   position: relative;
   text-align: center;
-  opacity: .5;
+  opacity: 0.5;
   margin-bottom: -1px;
 
   .arrowUp__centerLine {
@@ -80,8 +80,8 @@
     left: 2px;
     display: block;
     content: '';
-    border-bottom: 1px solid #fff;
-    border-right: 1px solid #fff;
+    border-bottom: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
     transform: rotate(45deg);
   }
 }
@@ -101,8 +101,8 @@
     left: 2px;
     display: block;
     content: '';
-    border-bottom: 1px solid #fff;
-    border-right: 1px solid #fff;
+    border-bottom: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
     transform: rotate(135deg);
   }
 }
@@ -129,8 +129,8 @@
     left: 2px;
     display: block;
     content: '';
-    border-bottom: 1px solid #fff;
-    border-right: 1px solid #fff;
+    border-bottom: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
     transform: rotate(-45deg);
   }
 }

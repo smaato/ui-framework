@@ -13,7 +13,7 @@
       font-size: 13px;
       padding: 0 24px;
       font-weight: 400;
-      transition: .2s padding ease-in-out, .06s background ease-in-out;
+      transition: 0.2s padding ease-in-out, 0.06s background ease-in-out;
       @media #{$viewport_normalScreen} {
         padding: 0 14px;
         font-size: 12px;

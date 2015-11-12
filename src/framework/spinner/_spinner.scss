@@ -4,14 +4,14 @@
  */
 .spinner {
   display: inline-block;
-  font-size: .1em;
+  font-size: 0.1em;
   text-indent: -9999em;
   width: 11em;
   height: 11em;
   border-radius: 50%;
   // scss-lint:disable DuplicateProperty
-  background: #fff;
-  background: linear-gradient(to right, rgba(black, .5) 10%, rgba(black, 0) 42%);
+  background: #ffffff;
+  background: linear-gradient(to right, rgba(black, 0.5) 10%, rgba(black, 0) 42%);
   // scss-lint:enable DuplicateProperty
   position: relative;
   animation: spin 1.4s infinite linear;
@@ -29,7 +29,7 @@
   }
 
   &:after {
-    background: #fff;
+    background: #ffffff;
     width: 75%;
     height: 75%;
     border-radius: 50%;
