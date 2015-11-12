@@ -315,10 +315,7 @@ gulp.task('watch', function() {
   gulp.watch([
     './src/guide/**/*.scss',
     './src/framework/**/*.scss'
-  ], [
-    'css',
-    'lint:scss'
-  ]);
+  ], ['css']);
   gulp.watch([
     './src/prototype/**/*.scss'
   ], ['css:prototype']);
