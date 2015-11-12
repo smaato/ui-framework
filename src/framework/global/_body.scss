@@ -1,8 +1,7 @@
 $minWidth: 504px;
 $maxWidth: 1200px;
-$viewport_normalScreen: "(max-width: 800px)";
-$viewport_wideScreen: "(max-width: "+$maxWidth*1.1+")";
-
+$viewport_normalScreen: '(max-width: 800px)';
+$viewport_wideScreen: '(max-width: ' + $maxWidth * 1.1 + ')';
 
 body {
   min-width: $minWidth;

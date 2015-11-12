@@ -3,6 +3,7 @@
   text-align: center;
   left: 0;
   right: 0;
+
   .fixedThead & {
     position: fixed;
     top: 0;
@@ -14,7 +15,7 @@
     max-width: $maxWidth;
     margin: 0 auto;
     border: solid $componentStrokeColor;
-    border-width: 1px 1px 0 1px;
+    border-width: 1px 1px 0;
     background: $componentBackgroundColor;
     display: table;
     width: 100%;
@@ -26,7 +27,6 @@
     .grid__batch,
     .grid__search {
       display: table-cell;
-      vertical-align: middle;
       padding-top: 7px;
       padding-bottom: 7px;
     }

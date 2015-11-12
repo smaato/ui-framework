@@ -10,7 +10,7 @@
     position: relative;
     padding-right: 65px;
   }
-  
+
     .grid__roundedBackground {
       font-size: 11px;
       background: shade(scale-saturation($componentBackgroundColor, 60%), 3%);
@@ -28,15 +28,17 @@
       position: relative;
       color: $componentTextColor;
     }
-  
+
     .grid__filter {
       @extend .grid__roundedBackground;
-      float:left;
+      float: left;
       margin: 0 2px 0 0;
       z-index: 4;
+
       strong {
         font-weight: 400;
       }
+
       .remove {
         position: absolute;
         opacity: 0;
@@ -49,9 +51,12 @@
         background: shade(scale-saturation($componentBackgroundColor, 60%), 3%);
         box-shadow: -10px 0 5px shade(scale-saturation($componentBackgroundColor, 60%), 3%);
       }
-      &:hover .remove { opacity: 1; }
+
+      &:hover .remove {
+        opacity: 1;
+      }
     }
-    
+
     .grid__addFilter {
       box-shadow: 60px 0 0 $componentBackgroundColor, 40px 0 0 $componentBackgroundColor;
       position: relative;
@@ -60,40 +65,45 @@
       display: inline-block;
       margin-left: -30px;
       float: left;
+
       a {
-        cursor: pointer;
         @extend .grid__roundedBackground;
+        cursor: pointer;
         left: 30px;
         font-size: 16px;
       }
     }
-    
+
     .grid__ellipsis {
       display: inline-block;
       float: left;
       width: 60px;
       position: absolute;
       z-index: 1;
+
       .icon {
         @extend .grid__roundedBackground;
         display: inline-block;
-        width:8px;
+        width: 8px;
         height: 24px;
-        z-index:2;
+        z-index: 2;
         cursor: pointer;
         font-size: 12px;
-        &:before { 
-          margin-left: 6px; 
-          opacity: .6;
+
+        &:before {
+          margin-left: 6px;
+          opacity: 0.6;
         }
+
         &:hover:before {
           opacity: 1;
         }
       }
+
       .add {
         @extend .grid__roundedBackground;
         font-size: 16px;
         margin: 0 0 0 -2px;
       }
-      
+
     }

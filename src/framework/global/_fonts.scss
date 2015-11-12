@@ -6,7 +6,9 @@
   -webkit-font-smoothing: antialiased;
 }
 
-body, input, textarea {
+body,
+input,
+textarea {
   @extend .font-roboto;
   color: $componentTextColor;
 }

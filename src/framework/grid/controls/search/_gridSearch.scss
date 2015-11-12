@@ -1,9 +1,10 @@
 .grid__search {
+  vertical-align: middle;
   text-align: right;
 }
 
   .grid__search__input {
-    display: inline-block; 
+    display: inline-block;
     vertical-align: middle;
     line-height: 0;
     position: relative;
@@ -34,6 +35,5 @@
       &:before {
         font-size: 11px;
       }
-    } 
+    }
   }
-  

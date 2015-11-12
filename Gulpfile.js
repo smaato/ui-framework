@@ -7,30 +7,31 @@
  * - jade render => html
  */
 
-var del = require('del'),
-  gulp = require('gulp'),
-  jade = require('gulp-jade'),
-  compass = require('gulp-compass'),
-  through2 = require('through2'),
-  babelify = require('babelify'),
-  cssmin = require('gulp-cssmin'),
-  rename = require('gulp-rename'),
-  eslint = require('gulp-eslint'),
-  uglify = require('gulp-uglify'),
-  buffer = require('vinyl-buffer'),
-  replace = require('gulp-replace'),
-  postcss = require('gulp-postcss'),
-  connect = require('gulp-connect'),
-  browserify = require('browserify'),
-  mqpacker = require('css-mqpacker'),
-  runSequence = require('run-sequence'),
-  autoprefixer = require('autoprefixer'),
-  source = require('vinyl-source-stream'),
-  sourcemaps = require('gulp-sourcemaps'),
-  KarmaServer = require('karma').Server,
-  path = require('path'),
-  awspublish = require('gulp-awspublish'),
-  minimist = require('minimist');
+var autoprefixer = require('autoprefixer');
+var awspublish = require('gulp-awspublish');
+var babelify = require('babelify');
+var browserify = require('browserify');
+var buffer = require('vinyl-buffer');
+var compass = require('gulp-compass');
+var connect = require('gulp-connect');
+var cssmin = require('gulp-cssmin');
+var del = require('del');
+var eslint = require('gulp-eslint');
+var gulp = require('gulp');
+var jade = require('gulp-jade');
+var KarmaServer = require('karma').Server;
+var minimist = require('minimist');
+var mqpacker = require('css-mqpacker');
+var path = require('path');
+var postcss = require('gulp-postcss');
+var rename = require('gulp-rename');
+var replace = require('gulp-replace');
+var runSequence = require('run-sequence');
+var scsslint = require('gulp-scss-lint');
+var source = require('vinyl-source-stream');
+var sourcemaps = require('gulp-sourcemaps');
+var through2 = require('through2');
+var uglify = require('gulp-uglify');
 
 /**
  * @description Default Tasks
@@ -45,6 +46,16 @@ gulp.task('lint', function() {
   ])
   .pipe(eslint())
   .pipe(eslint.format())
+});
+
+gulp.task('lint:scss', function() {
+  return gulp.src('./src/framework/**/*.scss')
+    .pipe(scsslint({
+      config: './scss-config.yml',
+      // Increase when task fails with an error "stdout maxBuffer exceeded"
+      // Default is 300 * 1024
+      maxBuffer: 1024 * 1024 // 1 Megabyte
+    }));
 });
 
 gulp.task('scripts', function() {
@@ -179,13 +190,16 @@ gulp.task('connect', function () {
 
 gulp.task('karma', function (callback) {
   return KarmaServer.start({
-    configFile: __dirname + '/karma.conf.js'
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
   }, function() {
     callback();
   });
 });
 
 gulp.task('test', [
+  'lint',
+  'lint:scss',
   'karma'
 ]);
 
@@ -259,7 +273,6 @@ gulp.task('production', function(callback) {
     'css:prototype',
     'jade',
     'jade:index',
-    'lint',
     'scripts',
     'cssmin',
     'uglify',
@@ -298,7 +311,7 @@ gulp.task('watch', function() {
     './src/guide/**/*.js',
     './src/framework/**/*.jsx',
     './src/framework/**/*.js'
-  ], ['lint','scripts']);
+  ], ['scripts']);
   gulp.watch([
     './src/guide/**/*.scss',
     './src/framework/**/*.scss'
@@ -317,7 +330,6 @@ gulp.task('default', function(callback) {
     'css:prototype',
     'jade',
     'jade:index',
-    'lint',
     'scripts',
     'watch',
     'connect',
