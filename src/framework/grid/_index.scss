@@ -48,9 +48,11 @@
         .grid__body__cell,
         .grid__footer__cell {
           width: 100px;
+
           &:first-child {
             width: 35px;
           }
+
           &:last-child {
             flex: 1;// Occupies the remainder of the space
           }

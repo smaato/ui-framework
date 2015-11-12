@@ -12,6 +12,7 @@
     &:first-child {
       padding-left: 15px;
     }
+
     &:last-child {
       padding-right: 15px;
     }
@@ -50,14 +51,18 @@
         cursor: pointer;
         color: $linkColor;
         font-weight: 400;
-        &:hover { opacity: .8; }
+
+        &:hover {
+          opacity: 0.8;
+        }
       }
 
       .grid__body__cellValue--editable {
         border: 1px dashed transparent;
         border-radius: 4px;
-        transition: .1s all ease-in-out;
+        transition: 0.1s all ease-in-out;
         position: relative;
+
         &:before {
           @extend .glyphicons-cogwheel:before, .glyphicons:before;
           display: block;
@@ -73,10 +78,14 @@
           box-shadow: -4px 0 10px 2px $componentBackgroundColor;
           opacity: 0;
         }
+
         &:hover {
           border-color: $componentStrokeColor;
           background: $componentBackgroundColor;
-          &:before { opacity: 1; }
+
+          &:before {
+            opacity: 1;
+          }
         }
       }
 
@@ -91,13 +100,17 @@
       font-size: 14px;
       color: shade($lightGrey, 20%);
       margin: 0 0 0 15px;
-      &:hover { color: shade($lightGrey, 40%); }
+
+      &:hover {
+        color: shade($lightGrey, 40%);
+      }
     }
 
     .grid__body__cellLiner .glyphicons-leaf {
       margin-left: 2px;
       font-size: 9px;
       color: $green;
+
       &:before {
         top: 1px;
       }
