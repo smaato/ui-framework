@@ -1,12 +1,10 @@
 $checkedColor: tint(scale-saturation($blue, 30%), 5%);
 
-/** postcss-bem-linter: define checkboxWrapper */
 .checkboxWrapper {
   display: inline-block;
   vertical-align: middle;
 }
 
-  /** postcss-bem-linter: define checkbox__input */
   .checkbox__input {
     display: none;
 
@@ -25,7 +23,6 @@ $checkedColor: tint(scale-saturation($blue, 30%), 5%);
     }
   }
 
-  /** postcss-bem-linter: define checkbox__faux__input */
   .checkbox__faux__input {
     display: inline-block;
     position: relative;
@@ -60,5 +57,3 @@ $checkedColor: tint(scale-saturation($blue, 30%), 5%);
       box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     }
   }
-
-/* postcss-bem-linter: end */

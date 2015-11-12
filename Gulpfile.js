@@ -24,8 +24,6 @@ var minimist = require('minimist');
 var mqpacker = require('css-mqpacker');
 var path = require('path');
 var postcss = require('gulp-postcss');
-var postcssBemLinter = require('postcss-bem-linter');
-var postcssReporter = require('postcss-reporter');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
 var runSequence = require('run-sequence');
@@ -230,14 +228,7 @@ gulp.task('postcss', function () {
     autoprefixer({
       browsers: ['last 2 versions']
     }),
-    mqpacker,
-    postcssBemLinter({
-      preset: 'bem'
-    }),
-    // This is to render linter output
-    postcssReporter({
-      clearMessages: true
-    })
+    mqpacker
   ];
   return gulp.src('./dist/css/index.css')
     .pipe(postcss(processors))
