@@ -2734,30 +2734,47 @@ body {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-.grid__tableControls {
+.grid__controls {
   margin: 0 auto;
   text-align: center;
   left: 0;
   right: 0;
 }
-.fixedThead .grid__tableControls {
+.fixedThead .grid__controls {
   position: fixed;
   top: 0;
   z-index: 5;
 }
 
-.grid__tableControls__liner {
+.grid__controls__liner {
   max-width: 1200px;
   margin: 0 auto;
-  border-top: 1px solid #d4dadc;
+  border: solid #d4dadc;
+  border-width: 1px 1px 0 1px;
   background: #f7fafb;
   display: table;
   width: 100%;
   text-align: left;
-  box-shadow: -1px 0 0 #d4dadc, 1px 0 0 #d4dadc;
 }
 
-.fixedThead .grid__tableControls__placeholder {
+.grid__filtersWrapper,
+.grid__batch,
+.grid__search {
+  display: table-cell;
+  vertical-align: middle;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.grid__filtersWrapper {
+  padding-left: 15px;
+}
+
+.grid__search {
+  padding-right: 15px;
+}
+
+.fixedThead .grid__controls__placeholder {
   height: 71px;
   max-width: 1200px;
   margin: 0 auto;
@@ -2765,9 +2782,7 @@ body {
 }
 
 .grid__filtersWrapper {
-  display: table-cell;
   vertical-align: top;
-  padding: 7px 0 7px 15px;
   width: 100%;
 }
 
@@ -2863,12 +2878,6 @@ body {
   margin: 0 0 0 -2px;
 }
 
-.grid__batch {
-  display: table-cell;
-  vertical-align: middle;
-  padding-right: 5px;
-}
-
 .grid__batch__button {
   display: inline-block;
   color: black;
@@ -2888,17 +2897,14 @@ body {
 }
 
 .grid__search {
-  display: table-cell;
-  vertical-align: middle;
-  padding-right: 15px;
+  text-align: right;
 }
 
 .grid__search__input {
   display: inline-block;
   vertical-align: middle;
-  line-height: 0px;
+  line-height: 0;
   position: relative;
-  height: 24px;
   overflow: hidden;
 }
 .grid__search__input input {

@@ -11,10 +11,12 @@ import {
   CheckBox,
   Grid,
   GridBodyEditableCell,
+  GridControls,
   GridEmptyRow,
   GridKpiPositive,
   GridKpiNegative,
   GridLoadingRow,
+  GridSearch,
   IconCog,
   IconEllipsis,
 } from '../../../framework/framework.js';
@@ -343,6 +345,10 @@ export default class GridExample extends Component {
           </p>
 
           <br/>
+
+          <GridControls>
+            <GridSearch/>
+          </GridControls>
 
           <Grid
             classContainer="gridExample__container"

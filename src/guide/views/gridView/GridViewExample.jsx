@@ -202,9 +202,9 @@ export default class GridViewExample extends Component {
 
         </div>
 
-        <div className="grid__tableControls">
+        <div className="grid__controls">
 
-          <div className="grid__tableControls__liner">
+          <div className="grid__controls__liner">
 
             <div className="grid__filtersWrapper">
 
@@ -283,7 +283,7 @@ export default class GridViewExample extends Component {
 
         </div>
 
-        <div className="grid__tableControls__placeholder"></div>
+        <div className="grid__controls__placeholder"></div>
 
         <div className="grid__container">
 
