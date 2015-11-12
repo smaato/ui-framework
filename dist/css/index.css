@@ -165,10 +165,10 @@ textarea {
   padding: 0 12px;
   opacity: 1;
   box-shadow: 0 0 0 transparent;
-  transition: .1s all ease-in-out;
+  transition: 0.1s all ease-in-out;
 }
 .button:hover {
-  opacity: .95;
+  opacity: 0.95;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 .button.button--primary {
@@ -182,7 +182,7 @@ textarea {
   display: inline-block;
   position: relative;
   text-align: center;
-  opacity: .5;
+  opacity: 0.5;
   margin-top: -1px;
 }
 .arrowDown .arrowDown__centerLine {
@@ -214,7 +214,7 @@ textarea {
   display: inline-block;
   position: relative;
   text-align: center;
-  opacity: .5;
+  opacity: 0.5;
   margin-bottom: -1px;
 }
 .arrowUp .arrowUp__centerLine {
@@ -256,8 +256,8 @@ textarea {
   left: 2px;
   display: block;
   content: '';
-  border-bottom: 1px solid #fff;
-  border-right: 1px solid #fff;
+  border-bottom: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
@@ -277,8 +277,8 @@ textarea {
   left: 2px;
   display: block;
   content: '';
-  border-bottom: 1px solid #fff;
-  border-right: 1px solid #fff;
+  border-bottom: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
 }
@@ -304,8 +304,8 @@ textarea {
   left: 2px;
   display: block;
   content: '';
-  border-bottom: 1px solid #fff;
-  border-right: 1px solid #fff;
+  border-bottom: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
@@ -2959,7 +2959,7 @@ body {
 }
 .grid__ellipsis .icon:before {
   margin-left: 6px;
-  opacity: .6;
+  opacity: 0.6;
 }
 .grid__ellipsis .icon:hover:before {
   opacity: 1;
@@ -2981,7 +2981,7 @@ body {
   border: 1px dashed #496b77;
   border-radius: 2px;
   font-size: 11px;
-  opacity: .4;
+  opacity: 0.4;
   padding: 5px 17px 5px 8px;
   white-space: nowrap;
 }
@@ -2989,7 +2989,7 @@ body {
   width: 12px;
   float: left;
   height: 10px;
-  opacity: .7;
+  opacity: 0.7;
   font-size: 10px;
 }
 
@@ -3124,7 +3124,7 @@ body {
 }
 
 .grid__body {
-  background: #fff;
+  background: #ffffff;
 }
 
 .grid__body__row:nth-of-type(odd) {
@@ -3189,13 +3189,13 @@ body {
   font-weight: 400;
 }
 .grid__body__cellValue--link:hover {
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .grid__body__cellValue--editable {
   border: 1px dashed transparent;
   border-radius: 4px;
-  transition: .1s all ease-in-out;
+  transition: 0.1s all ease-in-out;
   position: relative;
 }
 .grid__body__cellValue--editable:before {
@@ -3385,7 +3385,7 @@ body {
 
 /** postcss-bem-linter: define mainNavBar__account */
 .mainNavBar__account {
-  color: #fff;
+  color: #ffffff;
   float: right;
   line-height: 22px;
   height: 22px;
@@ -3418,12 +3418,12 @@ body {
 .mainNavBar__account .icon:before {
   font-size: 11px;
   left: 5px;
-  color: #fff;
-  opacity: .6;
+  color: #ffffff;
+  opacity: 0.6;
 }
 .mainNavBar__account:hover {
   background: #2e4048;
-  transition: .1s all ease-in-out;
+  transition: 0.1s all ease-in-out;
 }
 
 /* postcss-bem-linter: end */
@@ -3435,14 +3435,14 @@ body {
   float: left;
 }
 .mainNavBar__link a {
-  color: #fff;
+  color: #ffffff;
   display: block;
   line-height: 45px;
   text-transform: uppercase;
   font-size: 13px;
   padding: 0 24px;
   font-weight: 400;
-  transition: .2s padding ease-in-out, .06s background ease-in-out;
+  transition: 0.2s padding ease-in-out, 0.06s background ease-in-out;
 }
 .mainNavBar__link:hover {
   background: #3c545e;
@@ -3482,7 +3482,7 @@ body {
 .secondaryNavBar__link {
   float: left;
   margin: 7px 10px 0 0;
-  transition: .2s margin ease-in-out, .06s background ease-in-out;
+  transition: 0.2s margin ease-in-out, 0.06s background ease-in-out;
 }
 .secondaryNavBar__link:hover {
   background: rgba(255, 255, 255, 0.15);
@@ -3503,7 +3503,7 @@ body {
   margin-right: 4px;
 }
 .secondaryNavBar__link.selected {
-  background: #fff;
+  background: #ffffff;
 }
 .secondaryNavBar__link.selected a {
   color: #526f7b;
@@ -3514,7 +3514,7 @@ body {
   margin-top: 14px;
   width: 20px;
   color: white;
-  opacity: .6;
+  opacity: 0.6;
   cursor: pointer;
   display: inline-block;
   float: left;
@@ -3551,7 +3551,7 @@ body {
 
 .dateRange__option {
   display: inline-block;
-  color: #fff;
+  color: #ffffff;
   font-size: 12px;
   font-weight: 400;
   line-height: 42px;
@@ -3563,7 +3563,7 @@ body {
 }
 
 .dateRange__trigger {
-  color: #fff;
+  color: #ffffff;
 }
 .dateRange__trigger .icon {
   display: inline-block;
@@ -3595,7 +3595,7 @@ body {
   box-shadow: 0 2px 0 #2591ba;
 }
 .dateRange__goTo a {
-  transition: .1s all ease-in-out;
+  transition: 0.1s all ease-in-out;
   border: 1px solid #afddef;
   background-image: linear-gradient(#71c4e3, #63bee0);
   display: inline-block;
@@ -3606,7 +3606,7 @@ body {
   float: left;
 }
 .dateRange__goTo a.next span, .dateRange__goTo a.prev span {
-  opacity: .7;
+  opacity: 0.7;
 }
 .dateRange__goTo a.next:hover span, .dateRange__goTo a.prev:hover span {
   opacity: 1;
@@ -3628,12 +3628,12 @@ body {
  */
 .spinner {
   display: inline-block;
-  font-size: .1em;
+  font-size: 0.1em;
   text-indent: -9999em;
   width: 11em;
   height: 11em;
   border-radius: 50%;
-  background: #fff;
+  background: #ffffff;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.5) 10%, rgba(0, 0, 0, 0) 42%);
   position: relative;
   -webkit-animation: spin 1.4s infinite linear;
@@ -3652,7 +3652,7 @@ body {
   content: '';
 }
 .spinner:after {
-  background: #fff;
+  background: #ffffff;
   width: 75%;
   height: 75%;
   border-radius: 50%;
@@ -3697,7 +3697,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   /* 1 */
-  background: #fff;
+  background: #ffffff;
   width: 100%;
   box-shadow: -1px 0 0 #d4dadc, 1px 0 0 #d4dadc;
 }
@@ -3762,7 +3762,7 @@ body {
   width: 10px;
   font-size: 10px;
   margin: 0 2px 0 0;
-  opacity: .7;
+  opacity: 0.7;
   line-height: 14px;
 }
 

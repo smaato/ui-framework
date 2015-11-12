@@ -192,13 +192,16 @@ gulp.task('connect', function () {
 
 gulp.task('karma', function (callback) {
   return KarmaServer.start({
-    configFile: __dirname + '/karma.conf.js'
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
   }, function() {
     callback();
   });
 });
 
 gulp.task('test', [
+  'lint',
+  'lint:scss',
   'karma'
 ]);
 
@@ -279,8 +282,6 @@ gulp.task('production', function(callback) {
     'css:prototype',
     'jade',
     'jade:index',
-    'lint',
-    'lint:scss',
     'scripts',
     'cssmin',
     'uglify',
@@ -319,10 +320,7 @@ gulp.task('watch', function() {
     './src/guide/**/*.js',
     './src/framework/**/*.jsx',
     './src/framework/**/*.js'
-  ], [
-    'lint',
-    'scripts'
-  ]);
+  ], ['scripts']);
   gulp.watch([
     './src/guide/**/*.scss',
     './src/framework/**/*.scss'
@@ -344,8 +342,6 @@ gulp.task('default', function(callback) {
     'css:prototype',
     'jade',
     'jade:index',
-    'lint',
-    'lint:scss',
     'scripts',
     'watch',
     'connect',
