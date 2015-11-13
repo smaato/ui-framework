@@ -42,7 +42,7 @@ lint.eslint({
     './src/guide/**/*.jsx',
     './src/guide/**/*.js',
   ],
-  taskName: 'lint',
+  taskName: 'lintJs',
 });
 
 localWebServer.connect({

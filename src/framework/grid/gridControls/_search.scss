@@ -5,12 +5,13 @@
 }
 
   .grid__search__input {
-    display: inline-block; 
+    display: inline-block;
     vertical-align: middle;
-    line-height: 0px;
+    line-height: 0;
     position: relative;
     height: 24px;
     overflow: hidden;
+
     input {
       border-radius: 20px;
       border: 1px solid shade($componentStrokeColor, 5%);
@@ -23,6 +24,7 @@
       color: shade($componentTextColor, 80%);
       width: 140px;
     }
+
     .icon {
       color: shade($componentStrokeColor, 16%);
       width: 20px;
@@ -31,6 +33,9 @@
       position: absolute;
       top: 11px;
       right: 0;
-      &:before { font-size: 11px; }
-    } 
+
+      &:before {
+        font-size: 11px;
+      }
+    }
   }
