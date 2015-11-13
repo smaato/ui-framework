@@ -1,108 +1,52 @@
 
-/**
- * @description Dependencies
- */
-
-const assets = require('gulp-tasks/src/assets');
-const deploy = require('gulp-tasks/src/deploy');
-const lint = require('gulp-tasks/src/lint');
-const localWebServer = require('gulp-tasks/src/localWebServer');
-const scripts = require('gulp-tasks/src/scripts');
-const styles = require('gulp-tasks/src/styles');
-const templates = require('gulp-tasks/src/templates');
-const tests = require('gulp-tasks/src/tests');
+const gulp = require('gulp');
+const gulpTasks = require('gulp-tasks');
 
 /**
- * @description Constants
+ * @description Main tasks
  */
 
-const SCRIPTS_DST = './dist/js';
-const STYLES_DST = './dist/css';
-
-/**
- * @description Task module configurations
- */
-
-assets.copy({
+gulp.task('assets', gulpTasks.copy({
   dst: './dist/assets',
   src: './src/assets/**/*',
-  taskName: 'assets',
-});
+}).task);
 
-deploy.awsS3({
+gulp.task('deploy', gulpTasks.deploy({
   bucketEnv: 'AWS_BUCKET_UI_FRAMEWORK',
   src: './dist/**/*.*',
-  taskName: 'deploy',
-});
+}).task);
 
-lint.eslint({
-  src: [
-    './src/framework/**/*.jsx',
-    './src/framework/**/*.js',
-    './src/guide/**/*.jsx',
-    './src/guide/**/*.js',
-  ],
-  taskName: 'lintJs',
-});
-
-localWebServer.connect({
-  fallback: './dist/index.html',
-  livereload: true,
-  port: 8001,
-  root: './dist',
-  taskName: 'serveLocally',
-});
-
-scripts.browserifyAndWatchify({
-  dst: SCRIPTS_DST,
+gulp.task('scripts', gulpTasks.compileJs({
+  dst: './dist/js',
   src: './src/guide/index.js',
-  taskName: 'scripts',
-});
+}).task);
 
-scripts.uglify({
-  src: SCRIPTS_DST,
-  taskName: 'minifyScripts',
-});
-
-styles.compassAndPostcss({
+gulp.task('styles', gulpTasks.compileCss({
   compassSassDir: './src/guide',
-  dst: STYLES_DST,
+  dst: './dist/css',
   src: './src/guide/**/*.scss',
-  taskName: 'styles',
-});
+  subTaskPrefix: 'styles',
+}).task);
 
-styles.compassAndPostcss({
+gulp.task('styles:prototype', gulpTasks.compileCss({
   compassSassDir: './src/prototype',
   dst: './dist/prototype',
   src: './src/prototype/**/*.scss',
-  taskName: 'styles:prototype',
-});
+  subTaskPrefix: 'styles:prototype',
+}).task);
 
-styles.minifyCss({
-  src: STYLES_DST,
-  taskName: 'minifyStyles',
-});
-
-templates.jade({
+gulp.task('templates', gulpTasks.compileHtml({
   dst: './dist',
   src: [
     './src/**/*.jade',
     '!./src/guide/index.jade',
   ],
-  taskName: 'templates',
-});
+}).task);
 
-templates.jade({
+gulp.task('templates:index', gulpTasks.compileHtml({
   dst: './dist',
   src: './src/guide/index.jade',
-  taskName: 'templates:index',
-});
-
-tests.karma({
-  configFile: __dirname + '/karma.conf.js',
-  singleRun: true,
-  taskName: 'karma',
-});
+}).task);
 
 /**
  * @description Local task imports

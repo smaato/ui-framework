@@ -4,6 +4,20 @@
  */
 
 const gulp = require('gulp');
+const gulpTasks = require('gulp-tasks');
+
+gulp.task('scriptsThenWatch', gulpTasks.compileJs({
+  dst: './dist/js',
+  src: './src/guide/index.js',
+  watch: true,
+}).task);
+
+gulp.task('serveLocally', gulpTasks.serve({
+  fallback: './dist/index.html',
+  livereload: true,
+  port: 8001,
+  root: './dist',
+}).task);
 
 gulp.task('watch', [
   'templates',
