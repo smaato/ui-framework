@@ -32,6 +32,19 @@ export default class GridExample extends Component {
     this.lazyLoadBodyRows();
   }
 
+  onSearch(term) {
+    this.setState({
+      searchTerm: term,
+    });
+    // In the case of existing API and enabled lazy loading
+    // purge bodyRows and request filtered data from the server.
+    /*
+    // Reset state, but not sorting and searchTerm state
+    this.initializeState();
+    this.lazyLoadBodyRows();
+    */
+  }
+
   // Returns a random integer between min (inclusive) and max (inclusive)
   getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -60,7 +73,9 @@ export default class GridExample extends Component {
       sortColumnIndexes: [1, 2, 3, 4, 6, 7],
       isSortDescending: true,
       // Index of column to sort by
-      sortedColumnIndex: 2,
+      sortedColumnIndex: 1,
+      // Search
+      searchTerm: '',
     };
   }
 
@@ -115,6 +130,8 @@ export default class GridExample extends Component {
           fuelEconomy: `${this.getRandomInt(0, 200000)}mpg`,
           sold: `${this.getRandomInt(0, 200000)}k`,
           registered: `${this.getRandomInt(0, 200000)}B`,
+          kpiSold: `+${this.getRandomInt(0, 100)}%`,
+          kpiRegistered: `-${this.getRandomInt(0, 100)}%`,
         }
       );
     }
@@ -240,34 +257,28 @@ export default class GridExample extends Component {
       />,
       item => item.cylinders,
       item => item.fuelEconomy,
-      item => {
-        const kpi = `+${this.getRandomInt.bind(this)(1, 100)}%`;
-        return (
-          <div>
-            {item.sold}
-            {String.fromCharCode(160)}
-            <GridKpiPositive
-              title={kpi}
-            >
-              {kpi}
-            </GridKpiPositive>
-          </div>
-        );
-      },
-      item => {
-        const kpi = `${this.getRandomInt.bind(this)(-100, -1)}%`;
-        return (
-          <div>
-            {item.registered}
-            {String.fromCharCode(160)}
-            <GridKpiNegative
-              title={kpi}
-            >
-              {kpi}
-            </GridKpiNegative>
-          </div>
-        );
-      },
+      item => (
+        <div>
+          {item.sold}
+          {String.fromCharCode(160)}
+          <GridKpiPositive
+            title={item.kpiSold}
+          >
+            {item.kpiSold}
+          </GridKpiPositive>
+        </div>
+      ),
+      item => (
+        <div>
+          {item.registered}
+          {String.fromCharCode(160)}
+          <GridKpiNegative
+            title={item.kpiRegistered}
+          >
+            {item.kpiRegistered}
+          </GridKpiNegative>
+        </div>
+      ),
       () => (
         <span>
           <IconEllipsis />
@@ -275,6 +286,20 @@ export default class GridExample extends Component {
         </span>
       ),
     ];
+
+    function searchFunc(term) {
+      const _term = term.trim();
+      return this.state.bodyRows.filter(row =>
+        // It will return true when 1st match is found, otherwise false
+        Object.keys(row).some(key => {
+          const cell = row[key];
+          const isTermFound = cell.toString().indexOf(_term) !== -1;
+          return isTermFound;
+        })
+      );
+    }
+
+    const searchedBodyRows = searchFunc.bind(this)(this.state.searchTerm);
 
     function onSort(cellIndex) {
       const isSortDesc = this.state.sortedColumnIndex === cellIndex ?
@@ -289,23 +314,14 @@ export default class GridExample extends Component {
       }
       */
 
-      // If lazy loading is not enabled simply sort existing bodyRows
-      const bodyRows = this.sortFunc(
-        this.state.bodyRows,
-        bodyRenderer,
-        cellIndex,
-        isSortDesc
-      );
-
       this.setState({
-        bodyRows,
         sortedColumnIndex: cellIndex,
         isSortDescending: isSortDesc,
       });
     }
 
     const sortedBodyRows = this.sortFunc(
-      this.state.bodyRows,
+      searchedBodyRows,
       bodyRenderer,
       this.state.sortedColumnIndex,
       this.state.isSortDescending
@@ -347,7 +363,9 @@ export default class GridExample extends Component {
           <br/>
 
           <GridControls>
-            <GridSearch/>
+            <GridSearch
+              onSearch={this.onSearch.bind(this)}
+            />
           </GridControls>
 
           <Grid
