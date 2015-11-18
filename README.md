@@ -84,7 +84,11 @@ If the arguments are not provided via the command line they will be read from th
 - AWS_BUCKET_UI_FRAMEWORK
 - AWS_SECRET_ACCESS_KEY
 
-## Contributing to the framework
+## Maintenance
+
+#### Getting started
+
+* `gem install scss_lint` Install the Ruby gem for SCSS linting.
 
 #### Folder structure
 
