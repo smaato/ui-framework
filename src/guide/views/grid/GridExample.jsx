@@ -38,6 +38,7 @@ export default class GridExample extends Component {
     });
     // In the case of existing API and enabled lazy loading
     // purge bodyRows and request filtered data from the server.
+    // Would be something like the code below
     /*
     // Reset state, but not sorting and searchTerm state
     this.initializeState();
@@ -287,19 +288,19 @@ export default class GridExample extends Component {
       ),
     ];
 
-    function searchFunc(term) {
-      const _term = term.trim();
-      return this.state.bodyRows.filter(row =>
+    function search(rows, term) {
+      const normalizedTerm = term.trim().toLowerCase();
+      return rows.filter(row =>
         // It will return true when 1st match is found, otherwise false
         Object.keys(row).some(key => {
-          const cell = row[key];
-          const isTermFound = cell.toString().indexOf(_term) !== -1;
+          const cellValue = row[key].toString().trim().toLowerCase();
+          const isTermFound = cellValue.indexOf(normalizedTerm) !== -1;
           return isTermFound;
         })
       );
     }
 
-    const searchedBodyRows = searchFunc.bind(this)(this.state.searchTerm);
+    const foundBodyRows = search(this.state.bodyRows, this.state.searchTerm);
 
     function onSort(cellIndex) {
       const isSortDesc = this.state.sortedColumnIndex === cellIndex ?
@@ -321,7 +322,7 @@ export default class GridExample extends Component {
     }
 
     const sortedBodyRows = this.sortFunc(
-      searchedBodyRows,
+      foundBodyRows,
       bodyRenderer,
       this.state.sortedColumnIndex,
       this.state.isSortDescending
