@@ -32,6 +32,14 @@ export {
   default as GridKpiNegative,
 } from './kpi/GridKpiNegative.jsx';
 
+export {
+  default as GridControls,
+} from './controls/GridControls.jsx';
+
+export {
+  default as GridSearch,
+} from './controls/search/GridSearch.jsx';
+
 export default class Grid extends Component {
 
   constructor(props) {
