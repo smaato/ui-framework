@@ -18,6 +18,8 @@ export default class CheckBox extends Component {
           name={this.props.id}
           id={this.props.id}
           className="checkbox__input"
+          onChange={this.props.onChange}
+          checked={this.props.checked}
         />
         <label
           htmlFor={this.props.id}
@@ -34,4 +36,6 @@ CheckBox.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]).isRequired,
+  onChange: PropTypes.func,
+  checked: PropTypes.bool,
 };

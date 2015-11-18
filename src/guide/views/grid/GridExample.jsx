@@ -77,6 +77,8 @@ export default class GridExample extends Component {
       sortedColumnIndex: 1,
       // Search
       searchTerm: '',
+      // Select all
+      isSelectAllChecked: false,
     };
   }
 
@@ -133,6 +135,7 @@ export default class GridExample extends Component {
           registered: `${this.getRandomInt(0, 200000)}B`,
           kpiSold: `+${this.getRandomInt(0, 100)}%`,
           kpiRegistered: `-${this.getRandomInt(0, 100)}%`,
+          isSelected: false,
         }
       );
     }
@@ -193,9 +196,46 @@ export default class GridExample extends Component {
     });
   }
 
+  toggleSelectAll(isSelectAllChecked) {
+    const bodyRows = this.state.bodyRows.map(row => {
+      row.isSelected = isSelectAllChecked;
+      return row;
+    });
+    this.setState({
+      bodyRows,
+      isSelectAllChecked,
+    });
+  }
+
+  toggleIsSelected(id, isChecked) {
+    let bodyRows;
+    if (!isChecked) {
+      bodyRows = this.state.bodyRows.map(row => {
+        row.isSelected = false;
+        return row;
+      });
+    } else {
+      bodyRows = this.state.bodyRows.map(row => {
+        if (row.id === id) {
+          row.isSelected = isChecked;
+        }
+        return row;
+      });
+    }
+    this.setState({
+      bodyRows,
+    });
+  }
+
   render() {
     const headerCells = [
-      <CheckBox id="select-all" />,
+      <CheckBox
+        id="select-all"
+        checked={this.state.isSelectAllChecked}
+        onChange={event =>
+          this.toggleSelectAll.bind(this)(event.target.checked)
+        }
+      />,
       'Id',
       'Name',
       'Status',
@@ -223,7 +263,13 @@ export default class GridExample extends Component {
     ];
 
     const bodyRenderer = [
-      item => <CheckBox id={item.id} />,
+      item => <CheckBox
+        id={item.id}
+        checked={item.isSelected}
+        onChange={event =>
+          this.toggleIsSelected.bind(this)(item.id, event.target.checked)
+        }
+      />,
       item => item.id,
       item => item.name,
       item => item.status,
