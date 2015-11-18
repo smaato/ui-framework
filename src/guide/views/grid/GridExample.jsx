@@ -9,12 +9,13 @@ import Page, {
 
 import {
   CheckBox,
+  EntityService,
   Grid,
   GridBodyEditableCell,
   GridControls,
   GridEmptyRow,
-  GridKpiPositive,
   GridKpiNegative,
+  GridKpiPositive,
   GridLoadingRow,
   GridSearch,
   IconCog,
@@ -261,7 +262,7 @@ export default class GridExample extends Component {
       item => (
         <div>
           {item.sold}
-          {String.fromCharCode(160)}
+          {EntityService.nbsp}
           <GridKpiPositive
             title={item.kpiSold}
           >
@@ -272,7 +273,7 @@ export default class GridExample extends Component {
       item => (
         <div>
           {item.registered}
-          {String.fromCharCode(160)}
+          {EntityService.nbsp}
           <GridKpiNegative
             title={item.kpiRegistered}
           >

@@ -4,6 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
+import EntityService from '../../services/EntityService';
 
 export default class GridHeaderCell extends Component {
 
@@ -36,7 +37,7 @@ export default class GridHeaderCell extends Component {
           onClick={onSort}
         >
           {this.props.content}
-          {String.fromCharCode(160)}
+          {EntityService.nbsp}
           <span className="arrowUp">
             <span className="arrowUp__centerLine"></span>
           </span>
