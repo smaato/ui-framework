@@ -24,5 +24,5 @@ export { default as TitleBar } from './titleBar/TitleBar.jsx';
 
 // Export services
 
-export * from './services/EntityService';
-export { default as EntityService } from './services/EntityService';
+export * from './services/Entity';
+export { default as Entity } from './services/Entity';
