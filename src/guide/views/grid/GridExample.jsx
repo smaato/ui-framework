@@ -20,14 +20,42 @@ import {
   GridSearch,
   IconCog,
   IconEllipsis,
-  NumberAbbreviatorFactory,
 } from '../../../framework/framework.js';
+
+import numeral from 'numeral';
 
 export default class GridExample extends Component {
 
   constructor(props) {
     super(props);
     this.initializeState();
+
+    // Because we need custom abbreviations, we need to overwrite the entire
+    // English language definition.
+    // TODO: Submit PR to numeral.js allowing customization of a language
+    // definition so we won't have to overwrite the entire thing.
+    numeral.language('en', {
+      delimiters: {
+        thousands: ',',
+        decimal: '.',
+      },
+      abbreviations: {
+        thousand: 'k',
+        million: 'M',
+        billion: 'B',
+        trillion: 'T',
+      },
+      ordinal: (number) => {
+        const b = number % 10;
+        return (~~ (number % 100 / 10) === 1) ? 'th' : // eslint-disable-line no-nested-ternary
+          (b === 1) ? 'st' : // eslint-disable-line no-nested-ternary
+          (b === 2) ? 'nd' : // eslint-disable-line no-nested-ternary
+          (b === 3) ? 'rd' : 'th';
+      },
+      currency: {
+        symbol: '$',
+      },
+    });
   }
 
   componentDidMount() {
@@ -117,7 +145,6 @@ export default class GridExample extends Component {
   }
 
   generateRows(indexStart, numberOfItems) {
-    const numberAbbreviator = NumberAbbreviatorFactory.create();
     const newArray = [];
     let indexEnd = indexStart + numberOfItems;
     const indexMax = this.state.bodyRowsMax;
@@ -132,8 +159,8 @@ export default class GridExample extends Component {
           passengers: this.getRandomInt(0, 100),
           cylinders: this.getRandomInt(0, 8),
           fuelEconomy: `${this.getRandomInt(0, 200000)}mpg`,
-          sold: numberAbbreviator.abbreviate(this.getRandomInt(0, 2000000000)),
-          registered: numberAbbreviator.abbreviate(this.getRandomInt(0, 2000000000)),
+          sold: numeral(this.getRandomInt(0, 2000000000)).format('0.[00]a'),
+          registered: numeral(this.getRandomInt(0, 2000000000)).format('0.[00]a'),
           kpiSold: `+${this.getRandomInt(0, 100)}%`,
           kpiRegistered: `-${this.getRandomInt(0, 100)}%`,
         }

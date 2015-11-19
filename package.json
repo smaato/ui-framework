@@ -52,6 +52,7 @@
     "karma-phantomjs-launcher": "0.1.4",
     "karma-phantomjs-shim": "1.0.0",
     "karma-threshold-reporter": "0.1.15",
+    "numeral": "1.5.3",
     "pre-commit": "1.1.2",
     "react-transform-hmr": "1.0.1",
     "run-sequence": "1.1.2",
