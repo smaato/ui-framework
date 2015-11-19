@@ -135,7 +135,9 @@ export default class GridExample extends Component {
           registered: `${this.getRandomInt(0, 200000)}B`,
           kpiSold: `+${this.getRandomInt(0, 100)}%`,
           kpiRegistered: `-${this.getRandomInt(0, 100)}%`,
-          isSelected: false,
+          // TODO: In the case of requesting data from server this
+          // could be a more distinct step when state is mixed in
+          isSelected: this.state.isSelectAllChecked,
         }
       );
     }
@@ -207,23 +209,23 @@ export default class GridExample extends Component {
     });
   }
 
-  toggleIsSelected(id, isChecked) {
-    let bodyRows;
-    if (!isChecked) {
-      bodyRows = this.state.bodyRows.map(row => {
-        row.isSelected = false;
-        return row;
-      });
-    } else {
-      bodyRows = this.state.bodyRows.map(row => {
-        if (row.id === id) {
-          row.isSelected = isChecked;
-        }
-        return row;
-      });
-    }
+  toggleRowSelected(id, isRowSelected) {
+    const bodyRows = this.state.bodyRows.map(row => {
+      if (row.id === id) {
+        row.isSelected = isRowSelected;
+      }
+      return row;
+    });
+
+    const isManuallySelectedAll = bodyRows.every(row => row.isSelected);
+
+    const isSelectAllChecked = isManuallySelectedAll ? true : // eslint-disable-line no-nested-ternary
+      !isRowSelected ? false : // eslint-disable-line no-nested-ternary
+      this.state.isSelectAllChecked;
+
     this.setState({
       bodyRows,
+      isSelectAllChecked,
     });
   }
 
@@ -267,7 +269,7 @@ export default class GridExample extends Component {
         id={item.id}
         checked={item.isSelected}
         onChange={event =>
-          this.toggleIsSelected.bind(this)(item.id, event.target.checked)
+          this.toggleRowSelected.bind(this)(item.id, event.target.checked)
         }
       />,
       item => item.id,
