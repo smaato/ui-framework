@@ -25,8 +25,15 @@ module.exports = function(config) {
     // The reporters with which to surface test results.
     reporters: [
       'dots',
-      'coverage'
+      'coverage',
+      'junit'
     ],
+    coverageReporter: {
+      dir: 'reports/coverage'
+    },
+    junitReporter: {
+      outputDir: 'reports/karma'
+    },
     // Specify preprocessors through which files should be run, excluding test
     // files.
     preprocessors: {
