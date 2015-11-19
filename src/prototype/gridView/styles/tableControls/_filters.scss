@@ -1,7 +1,7 @@
 .dataTable__filtersWrapper {
   display: table-cell;
   vertical-align: top;
-  padding: 7px 0 7px 15px; 
+  padding: 7px 0 7px 15px;
   width: 100%;
 }
 
@@ -12,7 +12,7 @@
     position: relative;
     padding-right: 65px;
   }
-  
+
     .dataTable__roundedBackground {
       font-size: 11px;
       background: shade(scale-saturation($componentBackgroundColor, 60%), 3%);
@@ -30,7 +30,7 @@
       position: relative;
       color: $componentTextColor;
     }
-  
+
     .dataTable__filter {
       @extend .dataTable__roundedBackground;
       float:left;
@@ -53,7 +53,7 @@
       }
       &:hover .remove { opacity: 1; }
     }
-    
+
     .dataTable__addFilter {
       box-shadow: 60px 0 0 $componentBackgroundColor, 40px 0 0 $componentBackgroundColor;
       position: relative;
@@ -64,12 +64,12 @@
       float: left;
       a {
         cursor: pointer;
-        @extend .dataTable__roundedBackground; 
+        @extend .dataTable__roundedBackground;
         left: 30px;
         font-size: 16px;
       }
     }
-    
+
     .dataTable__ellipsis {
       display: inline-block;
       float: left;
@@ -84,8 +84,8 @@
         z-index:2;
         cursor: pointer;
         font-size: 12px;
-        &:before { 
-          margin-left: 6px; 
+        &:before {
+          margin-left: 6px;
           opacity: .6;
         }
         &:hover:before {
@@ -97,5 +97,5 @@
         font-size: 16px;
         margin: 0 0 0 -2px;
       }
-      
+
     }
