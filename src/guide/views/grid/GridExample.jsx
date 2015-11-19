@@ -20,6 +20,7 @@ import {
   GridSearch,
   IconCog,
   IconEllipsis,
+  NumberAbbreviatorFactory,
 } from '../../../framework/framework.js';
 
 export default class GridExample extends Component {
@@ -116,6 +117,7 @@ export default class GridExample extends Component {
   }
 
   generateRows(indexStart, numberOfItems) {
+    const numberAbbreviator = NumberAbbreviatorFactory.create();
     const newArray = [];
     let indexEnd = indexStart + numberOfItems;
     const indexMax = this.state.bodyRowsMax;
@@ -130,8 +132,8 @@ export default class GridExample extends Component {
           passengers: this.getRandomInt(0, 100),
           cylinders: this.getRandomInt(0, 8),
           fuelEconomy: `${this.getRandomInt(0, 200000)}mpg`,
-          sold: `${this.getRandomInt(0, 200000)}k`,
-          registered: `${this.getRandomInt(0, 200000)}B`,
+          sold: numberAbbreviator.abbreviate(this.getRandomInt(0, 2000000000)),
+          registered: numberAbbreviator.abbreviate(this.getRandomInt(0, 2000000000)),
           kpiSold: `+${this.getRandomInt(0, 100)}%`,
           kpiRegistered: `-${this.getRandomInt(0, 100)}%`,
         }

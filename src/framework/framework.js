@@ -26,3 +26,6 @@ export { default as TitleBar } from './titleBar/TitleBar.jsx';
 
 export * from './services/Entity';
 export { default as Entity } from './services/Entity';
+
+export * from './services/NumberAbbreviatorFactory';
+export { default as NumberAbbreviatorFactory } from './services/NumberAbbreviatorFactory';
