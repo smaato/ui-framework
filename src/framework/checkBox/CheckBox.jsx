@@ -18,8 +18,12 @@ export default class CheckBox extends Component {
           name={this.props.id}
           id={this.props.id}
           className="checkbox__input"
-          onChange={this.props.onChange}
+          onClick={this.props.onClick}
           checked={this.props.checked}
+          // Since this is a controlled component
+          // http://facebook.github.io/react/docs/forms.html#controlled-components
+          // React throws console warning when readOnly is not set
+          readOnly
         />
         <label
           htmlFor={this.props.id}
@@ -36,6 +40,6 @@ CheckBox.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]).isRequired,
-  onChange: PropTypes.func,
+  onClick: PropTypes.func,
   checked: PropTypes.bool,
 };

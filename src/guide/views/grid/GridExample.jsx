@@ -232,7 +232,7 @@ export default class GridExample extends Component {
       <CheckBox
         id="select-all"
         checked={this.state.areAllRowsSelected}
-        onChange={event =>
+        onClick={event =>
           this.toggleAllRowsSelected.bind(this)(event.target.checked)
         }
       />,
@@ -266,7 +266,7 @@ export default class GridExample extends Component {
       item => <CheckBox
         id={item.id}
         checked={item.isSelected}
-        onChange={event =>
+        onClick={event =>
           this.toggleRowSelected.bind(this)(item.id, event.target.checked)
         }
       />,
