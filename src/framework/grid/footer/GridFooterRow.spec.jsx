@@ -2,11 +2,12 @@
 import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
 import GridFooterRow from './GridFooterRow.jsx';
+import GridFooterCell from './GridFooterCell.jsx';
 
 describe('GridFooterRow', () => {
   describe('Props', () => {
     describe('cells', () => {
-      it('renders each element as a cell', () => {
+      it('renders a GridFooterCell for each element', () => {
         const props = {
           cells: [
             1,
@@ -15,8 +16,9 @@ describe('GridFooterRow', () => {
           ],
         };
         const testCase = TestCaseFactory.createFromElement(<GridFooterRow {...props} />);
+        const cells = testCase.findComponents(GridFooterCell);
 
-        expect(testCase.dom.childNodes.length).toBe(3);
+        expect(cells.length).toBe(3);
       });
     });
 
@@ -37,19 +39,22 @@ describe('GridFooterRow', () => {
     });
 
     describe('classFooterCell', () => {
-      it('adds a class to each cell when set', () => {
+      it('is passed to cells', () => {
+        const classFooterCell = 'test';
         const props = {
           cells: [
             1,
             2,
             3,
           ],
-          classFooterCell: 'test',
+          classFooterCell: classFooterCell,
         };
         const testCase = TestCaseFactory.createFromElement(<GridFooterRow {...props} />);
-        const cellsWithClass = testCase.find('.test');
+        const cells = testCase.findComponents(GridFooterCell);
 
-        expect(cellsWithClass.length).toBe(3);
+        for (let i = 0, l = cells.length; i < l; i++) {
+          expect(cells[i].props.classFooterCell).toBe(classFooterCell);
+        }
       });
     });
   });
