@@ -1,12 +1,11 @@
 .mainNavBar__links__container {
-  display: inline-block;
+  display: flex;
 }
 
   .mainNavBar__link {
-    float: left;
-
     a {
       color: $mainNavTextColor;
+      // Makes the whole visible area clickable
       display: block;
       line-height: 45px;
       text-transform: uppercase;
