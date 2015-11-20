@@ -78,7 +78,7 @@ export default class GridExample extends Component {
       // Search
       searchTerm: '',
       // Select all
-      isSelectAllChecked: false,
+      areAllRowsSelected: false,
     };
   }
 
@@ -137,7 +137,7 @@ export default class GridExample extends Component {
           kpiRegistered: `-${this.getRandomInt(0, 100)}%`,
           // TODO: In the case of requesting data from server this
           // could be a more distinct step when state is mixed in
-          isSelected: this.state.isSelectAllChecked,
+          isSelected: this.state.areAllRowsSelected,
         }
       );
     }
@@ -198,34 +198,32 @@ export default class GridExample extends Component {
     });
   }
 
-  toggleSelectAll(isSelectAllChecked) {
+  toggleAllRowsSelected(areAllRowsSelected) {
     const bodyRows = this.state.bodyRows.map(row => {
-      row.isSelected = isSelectAllChecked;
+      row.isSelected = areAllRowsSelected;
       return row;
     });
     this.setState({
       bodyRows,
-      isSelectAllChecked,
+      areAllRowsSelected,
     });
   }
 
   toggleRowSelected(id, isRowSelected) {
+    let areAllRowsSelected = true;
     const bodyRows = this.state.bodyRows.map(row => {
       if (row.id === id) {
         row.isSelected = isRowSelected;
       }
+      if (!row.isSelected) {
+        areAllRowsSelected = false;
+      }
       return row;
     });
 
-    const isManuallySelectedAll = bodyRows.every(row => row.isSelected);
-
-    const isSelectAllChecked = isManuallySelectedAll ? true : // eslint-disable-line no-nested-ternary
-      !isRowSelected ? false : // eslint-disable-line no-nested-ternary
-      this.state.isSelectAllChecked;
-
     this.setState({
       bodyRows,
-      isSelectAllChecked,
+      areAllRowsSelected,
     });
   }
 
@@ -233,9 +231,9 @@ export default class GridExample extends Component {
     const headerCells = [
       <CheckBox
         id="select-all"
-        checked={this.state.isSelectAllChecked}
+        checked={this.state.areAllRowsSelected}
         onChange={event =>
-          this.toggleSelectAll.bind(this)(event.target.checked)
+          this.toggleAllRowsSelected.bind(this)(event.target.checked)
         }
       />,
       'Id',
