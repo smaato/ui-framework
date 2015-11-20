@@ -4,8 +4,9 @@ import React, {
   Component,
   PropTypes,
 } from 'react';
-import Spinner from '../../spinner/Spinner.jsx';
 import classNames from 'classnames';
+import Entity from '../../services/Entity';
+import Spinner from '../../spinner/Spinner.jsx';
 
 // Define stateless functional component.
 export default class GridLoadingRow extends Component {
@@ -23,11 +24,7 @@ export default class GridLoadingRow extends Component {
     return (
       <div className={className}>
         <Spinner />
-        {
-          /* React way '&nbsp;'
-             https://facebook.github.io/react/docs/jsx-gotchas.html */
-          String.fromCharCode(160)
-        }
+        {Entity.nbsp}
         <span>Loading...</span>
       </div>
     );
