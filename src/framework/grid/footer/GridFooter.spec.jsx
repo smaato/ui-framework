@@ -2,22 +2,24 @@
 import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
 import GridFooter from './GridFooter.jsx';
+import GridFooterRow from './GridFooterRow.jsx';
 
 describe('GridFooter', () => {
   describe('Props', () => {
     describe('cells', () => {
-      it('renders each element as a cell', () => {
+      it('is passed to row', () => {
+        const cells = [
+          1,
+          2,
+          3,
+        ];
         const props = {
-          cells: [
-            1,
-            2,
-            3,
-          ],
+          cells: cells,
         };
         const testCase = TestCaseFactory.createFromElement(<GridFooter {...props} />);
-        const gridfooterRow = testCase.dom.childNodes[0];
+        const row = testCase.firstComponent(GridFooterRow);
 
-        expect(gridfooterRow.childNodes.length).toBe(3);
+        expect(row.props.cells).toBe(cells);
       });
     });
 
@@ -38,36 +40,38 @@ describe('GridFooter', () => {
     });
 
     describe('classFooterRow', () => {
-      it('adds a class to the footer row when set', () => {
+      it('is passed to row', () => {
+        const classFooterRow = 'test';
         const props = {
           cells: [
             1,
             2,
             3,
           ],
-          classFooterRow: 'test',
+          classFooterRow: classFooterRow,
         };
         const testCase = TestCaseFactory.createFromElement(<GridFooter {...props} />);
-        const rowsWithClass = testCase.find('.test');
+        const row = testCase.firstComponent(GridFooterRow);
 
-        expect(rowsWithClass.length).toBe(1);
+        expect(row.props.classFooterRow).toBe(classFooterRow);
       });
     });
 
     describe('classFooterCell', () => {
-      it('adds a class to each cell when set', () => {
+      it('is passed to row', () => {
+        const classFooterCell = 'test';
         const props = {
           cells: [
             1,
             2,
             3,
           ],
-          classFooterCell: 'test',
+          classFooterCell: classFooterCell,
         };
         const testCase = TestCaseFactory.createFromElement(<GridFooter {...props} />);
-        const cellsWithClass = testCase.find('.test');
+        const row = testCase.firstComponent(GridFooterRow);
 
-        expect(cellsWithClass.length).toBe(3);
+        expect(row.props.classFooterCell).toBe(classFooterCell);
       });
     });
   });
