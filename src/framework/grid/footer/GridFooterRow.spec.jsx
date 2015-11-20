@@ -23,12 +23,12 @@ describe('GridFooterRow', () => {
     describe('classFooterRow', () => {
       it('adds a class when set', () => {
         const props = {
-          classFooterRow: 'test',
           cells: [
             1,
             2,
             3,
           ],
+          classFooterRow: 'test',
         };
         const testCase = TestCaseFactory.createFromElement(<GridFooterRow {...props} />);
 
@@ -39,12 +39,12 @@ describe('GridFooterRow', () => {
     describe('classFooterCell', () => {
       it('adds a class to each cell when set', () => {
         const props = {
-          classFooterCell: 'test',
           cells: [
             1,
             2,
             3,
           ],
+          classFooterCell: 'test',
         };
         const testCase = TestCaseFactory.createFromElement(<GridFooterRow {...props} />);
         const cellsWithClass = testCase.find('.test');
