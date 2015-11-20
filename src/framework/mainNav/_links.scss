@@ -1,13 +1,16 @@
 .mainNavBar__links__container {
   display: flex;
+  height: inherit;
 }
 
   .mainNavBar__link {
+    // This helps to inherit height from parent
+    display: flex;
+
     a {
       color: $mainNavTextColor;
-      // Makes the whole visible area clickable
-      display: block;
-      line-height: 45px;
+      display: flex;
+      align-items: center;
       text-transform: uppercase;
       font-size: 13px;
       padding: 0 24px;

@@ -2,13 +2,16 @@
   background: $mainNavBackgroundColor;
   display: flex;
   justify-content: center;
+  height: 45px;
 }
 
   .mainNavBar__liner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    // This allows children to take height from component root element
+    height: inherit;
+    flex: 1;
     max-width: $maxWidth;
 
     @media #{$viewport_wideScreen} {
