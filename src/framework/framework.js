@@ -1,4 +1,6 @@
 
+// Export components
+
 export * from './checkBox/CheckBox.jsx';
 export { default as CheckBox } from './checkBox/CheckBox.jsx';
 
@@ -19,3 +21,8 @@ export { default as Spinner } from './spinner/Spinner.jsx';
 
 export * from './titleBar/TitleBar.jsx';
 export { default as TitleBar } from './titleBar/TitleBar.jsx';
+
+// Export services
+
+export * from './services/Entity';
+export { default as Entity } from './services/Entity';
