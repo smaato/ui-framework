@@ -107,6 +107,8 @@ export default class GridExample extends Component {
       sortedColumnIndex: 1,
       // Search
       searchTerm: '',
+      // Select all
+      areAllRowsSelected: false,
     };
   }
 
@@ -163,6 +165,9 @@ export default class GridExample extends Component {
           registered: numeral(this.getRandomInt(0, 2000000000)).format('0.[00]a'),
           kpiSold: `+${this.getRandomInt(0, 100)}%`,
           kpiRegistered: `-${this.getRandomInt(0, 100)}%`,
+          // TODO: In the case of requesting data from server this
+          // could be a more distinct step when state is mixed in
+          isSelected: this.state.areAllRowsSelected,
         }
       );
     }
@@ -223,9 +228,44 @@ export default class GridExample extends Component {
     });
   }
 
+  toggleAllRowsSelected(areAllRowsSelected) {
+    const bodyRows = this.state.bodyRows.map(row => {
+      row.isSelected = areAllRowsSelected;
+      return row;
+    });
+    this.setState({
+      bodyRows,
+      areAllRowsSelected,
+    });
+  }
+
+  toggleRowSelected(id, isRowSelected) {
+    let areAllRowsSelected = true;
+    const bodyRows = this.state.bodyRows.map(row => {
+      if (row.id === id) {
+        row.isSelected = isRowSelected;
+      }
+      if (!row.isSelected) {
+        areAllRowsSelected = false;
+      }
+      return row;
+    });
+
+    this.setState({
+      bodyRows,
+      areAllRowsSelected,
+    });
+  }
+
   render() {
     const headerCells = [
-      <CheckBox id="select-all" />,
+      <CheckBox
+        id="select-all"
+        checked={this.state.areAllRowsSelected}
+        onClick={event =>
+          this.toggleAllRowsSelected.bind(this)(event.target.checked)
+        }
+      />,
       'Id',
       'Name',
       'Status',
@@ -253,7 +293,13 @@ export default class GridExample extends Component {
     ];
 
     const bodyRenderer = [
-      item => <CheckBox id={item.id} />,
+      item => <CheckBox
+        id={item.id}
+        checked={item.isSelected}
+        onClick={event =>
+          this.toggleRowSelected.bind(this)(item.id, event.target.checked)
+        }
+      />,
       item => item.id,
       item => item.name,
       item => item.status,
