@@ -3,7 +3,6 @@ import React, {
   Component,
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
 
 export default class AppNav extends Component {
 
@@ -12,22 +11,15 @@ export default class AppNav extends Component {
   }
 
   render() {
-    const links = this.props.links.map((link, index) => {
-      const className = classNames('appNav__link', {
-        'selected': link.isSelected,
-      });
-      return (
-        <li className={className} key={index}>
-          <a href={link.href}>
-            {link.text}
-          </a>
-        </li>
-      );
-    });
+    const anchorsArray = this.props.anchorsArray.map((link, index) => (
+      <li className="appNav__link" key={index}>
+        {link}
+      </li>
+    ));
 
     return (
       <ul className="appNav">
-        {links}
+        {anchorsArray}
       </ul>
     );
   }
@@ -35,7 +27,7 @@ export default class AppNav extends Component {
 }
 
 AppNav.propTypes = {
-  links: PropTypes.array.isRequired,
+  anchorsArray: PropTypes.arrayOf(React.PropTypes.element).isRequired,
 };
 
 export default AppNav;

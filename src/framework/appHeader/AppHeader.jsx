@@ -41,9 +41,9 @@ export default class AppHeader extends Component {
 }
 
 AppHeader.propTypes = {
-  logo: PropTypes.any,
-  nav: PropTypes.any,
-  account: PropTypes.any,
+  logo: PropTypes.element,
+  nav: PropTypes.element,
+  account: PropTypes.element,
 };
 
 export default AppHeader;

@@ -3478,14 +3478,12 @@ body {
   font-weight: 400;
   transition: 0.2s padding ease-in-out, 0.06s background ease-in-out;
 }
-.appNav__link:hover {
+.appNav__link a:hover {
   background: #3c545e;
 }
-.appNav__link.selected {
-  background: #2799c4;
-}
-.appNav__link.selected a {
+.appNav__link a.selected {
   cursor: default;
+  background: #2799c4;
 }
 
 .secondaryNavBar {

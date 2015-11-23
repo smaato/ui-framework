@@ -23,28 +23,40 @@ export default class AppHeaderExample extends Component {
   }
 
   generateLinks() {
-    return [
+    const linksConfig = [
       {
-        isSelected: true,
+        active: true,
         href: '#',
         text: 'Transportation',
       },
       {
-        isSelected: false,
+        active: false,
         href: '#',
         text: 'Camping',
       },
       {
-        isSelected: false,
+        active: false,
         href: '#',
         text: 'Storage',
       },
       {
-        isSelected: false,
+        active: false,
         href: '#',
         text: 'Misc',
       },
     ];
+
+    return linksConfig.map(link => {
+      let activeClass;
+      if (link.active) {
+        activeClass = 'selected';
+      }
+      return (
+        <a href={link.href} className={activeClass}>
+          {link.text}
+        </a>
+      );
+    });
   }
 
   render() {
@@ -56,8 +68,8 @@ export default class AppHeaderExample extends Component {
         <Example>
           <AppHeader
             logo={<AppLogo text="Smaato" />}
-            nav={<AppNav links={links} />}
-            account={<AccountNav email="han.solo@smaato.com"/>}
+            nav={<AppNav anchorsArray={links} />}
+            account={<AccountNav email="han.solo@smaato.com" />}
           />
         </Example>
 
@@ -68,7 +80,7 @@ export default class AppHeaderExample extends Component {
 
         <Example title="AppNav" isDark>
           <Text>Allows the user to add a navigation to the AppHeader.</Text>
-          <AppNav links={links} />
+          <AppNav anchorsArray={links} />
         </Example>
 
         <Example title="AccountNav" isDark>
