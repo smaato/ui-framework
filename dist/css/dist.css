@@ -2766,6 +2766,11 @@ body {
   overflow-x: hidden;
 }
 
+.line {
+  fill: none;
+  stroke-width: 1px;
+}
+
 .checkboxWrapper {
   display: inline-block;
   vertical-align: middle;

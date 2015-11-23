@@ -3,6 +3,7 @@ import { slugifyEach } from '../string/Slug';
 
 // Components
 import AppHeaderExample from '../../views/appHeader/AppHeaderExample.jsx';
+import ChartExample from '../../views/chart/ChartExample.jsx';
 import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
 import GridKpiExample from '../../views/gridKpi/GridKpiExample.jsx';
@@ -17,6 +18,9 @@ import GridViewExample from '../../views/gridView/GridViewExample.jsx';
 const components = [{
   name: 'AppHeader',
   component: AppHeaderExample,
+}, {
+  name: 'Chart',
+  component: ChartExample,
 }, {
   name: 'CheckBox',
   component: CheckBoxExample,
