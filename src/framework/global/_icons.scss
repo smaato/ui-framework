@@ -65,12 +65,12 @@
 }
 
 $dropdownArrowSide: 7px;
-// Could be an overkill, but at least it is clear where this calue comes from.
+// Could be an overkill, but at least it is clear where this value comes from.
 // By applying resulted value to 'top' prop we can perfectly center vertically.
 // First find hypotenuse of the right-angled triangle
 // (formula is square root of 2 multiplied by cathetus),
-// then and divide by 4 to get a half a projection of cathetus to hypotenuse.
-$dropdownTop: (sqrt(2) * ($dropdownArrowSide)) / 4;
+// then divide by 4 to get a half of a projection of cathetus to hypotenuse.
+$dropdownTop: sqrt(2) * $dropdownArrowSide / 4;
 
 .dropdownArrow,
 .dropdownArrow--reverse {

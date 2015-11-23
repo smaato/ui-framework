@@ -47,11 +47,9 @@ export default class AppHeaderExample extends Component {
     ];
 
     return linksConfig.map(link => {
-      let activeClass;
-      if (link.active) {
-        activeClass = 'selected';
-      }
+      const activeClass = link.active ? 'selected' : null;
       return (
+        // react-router's Link component can also be used instead of anchor tag
         <a href={link.href} className={activeClass}>
           {link.text}
         </a>
@@ -80,6 +78,7 @@ export default class AppHeaderExample extends Component {
 
         <Example title="AppNav" isDark>
           <Text>Allows the user to add a navigation to the AppHeader.</Text>
+          <Text>Accepts an array of anchor tags or react-router's Link components</Text>
           <AppNav anchorsArray={links} />
         </Example>
 
@@ -92,7 +91,7 @@ export default class AppHeaderExample extends Component {
         </Example>
 
         <Example title="AccountPicture">
-          <Text>Allows the user to add account picture.</Text>
+          <Text>Renders user account picture.</Text>
           <AccountPicture
             url="http://lorempixel.com/output/business-q-c-22-22-1.jpg"
           />
