@@ -1,9 +1,9 @@
-.mainNavBar__links__container {
+.appNav {
   display: flex;
   height: inherit;
 }
 
-  .mainNavBar__link {
+  .appNav__link {
     // This helps to inherit height from parent
     display: flex;
 

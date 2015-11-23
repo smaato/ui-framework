@@ -9,7 +9,8 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
-  AppAccount,
+  AccountNav,
+  AccountPicture,
   AppHeader,
   AppLogo,
   AppNav,
@@ -56,28 +57,32 @@ export default class AppHeaderExample extends Component {
           <AppHeader
             logo={<AppLogo text="Smaato" />}
             nav={<AppNav links={links} />}
-            account={
-              <AppAccount
-                email="han.solo@smaato.com"
-              />
-            }
+            account={<AccountNav email="han.solo@smaato.com"/>}
           />
         </Example>
 
-        <Example title="AppLogo">
+        <Example title="AppLogo" isDark>
           <Text>Allows the user to add a logo to the AppHeader.</Text>
           <AppLogo text="Smaato" />
         </Example>
 
-        <Example title="AppNav">
+        <Example title="AppNav" isDark>
           <Text>Allows the user to add a navigation to the AppHeader.</Text>
           <AppNav links={links} />
         </Example>
 
-        <Example title="AppAccount">
-          <Text>Allows the user to add account to the AppHeader.</Text>
-          <AppAccount
+        <Example title="AccountNav" isDark>
+          <Text>Allows the user to add account navigation.</Text>
+          <AccountNav
             email="han.solo@smaato.com"
+            pictureUrl="http://lorempixel.com/output/people-q-c-22-22-9.jpg"
+          />
+        </Example>
+
+        <Example title="AccountPicture">
+          <Text>Allows the user to add account picture.</Text>
+          <AccountPicture
+            url="http://lorempixel.com/output/business-q-c-22-22-1.jpg"
           />
         </Example>
 

@@ -13,7 +13,7 @@ export default class AppLogo extends Component {
   render() {
     return (
       <a
-        className="mainNavBar__logo"
+        className="appLogo"
         title={this.props.text}
         href={this.props.href || '#'}>
         {this.props.text}

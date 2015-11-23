@@ -13,10 +13,9 @@ export default class AppNav extends Component {
 
   render() {
     const links = this.props.links.map((link, index) => {
-      const className = classNames(
-        'mainNavBar__link',
-        link.isSelected ? 'selected' : null
-      );
+      const className = classNames('appNav__link', {
+        'selected': link.isSelected,
+      });
       return (
         <li className={className} key={index}>
           <a href={link.href}>
@@ -27,7 +26,7 @@ export default class AppNav extends Component {
     });
 
     return (
-      <ul className="mainNavBar__links__container">
+      <ul className="appNav">
         {links}
       </ul>
     );

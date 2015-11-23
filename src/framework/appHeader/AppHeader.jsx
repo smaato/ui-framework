@@ -5,12 +5,12 @@ import React, {
 } from 'react';
 
 export {
-  default as AppAccount,
-} from './AppAccount.jsx';
+  default as AccountNav,
+} from './AccountNav.jsx';
 
 export {
-  default as AppAccountPhoto,
-} from './AppAccountPhoto.jsx';
+  default as AccountPicture,
+} from './AccountPicture.jsx';
 
 export {
   default as AppLogo,
@@ -28,8 +28,8 @@ export default class AppHeader extends Component {
 
   render() {
     return (
-      <div className="mainNavBar">
-        <div className="mainNavBar__liner">
+      <div className="appHeader">
+        <div className="appHeader__liner">
           {this.props.logo}
           {this.props.nav}
           {this.props.account}

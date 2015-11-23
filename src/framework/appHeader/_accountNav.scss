@@ -1,0 +1,23 @@
+.accountNav {
+  display: flex;
+  align-items: center;
+  color: $mainNavTextColor;
+  padding: 2px 8px 2px 2px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+
+  &:hover {
+    background: scale-lightness($mainNavBackgroundColor, -13%);
+    transition: 0.1s all ease-in-out;
+  }
+}
+
+  .accountNav__email {
+    display: inline-block;
+    margin: 0 3px;
+    cursor: pointer;
+    @media #{$viewport_normalScreen} {
+      display: none;
+    }
+  }

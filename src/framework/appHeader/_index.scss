@@ -1,11 +1,11 @@
-.mainNavBar {
+.appHeader {
   background: $mainNavBackgroundColor;
   display: flex;
   justify-content: center;
   height: 45px;
 }
 
-  .mainNavBar__liner {
+  .appHeader__liner {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -19,6 +19,7 @@
     }
   }
 
-    @import 'logo';
-    @import 'account';
-    @import 'links';
+    @import 'accountNav';
+    @import 'accountPicture';
+    @import 'appLogo';
+    @import 'appNav';

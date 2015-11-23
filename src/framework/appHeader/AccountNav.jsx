@@ -4,9 +4,9 @@ import React, {
   PropTypes,
 } from 'react';
 
-import AppAccountPhoto from './AppAccountPhoto.jsx';
+import AccountPicture from './AccountPicture.jsx';
 
-export default class AppAccount extends Component {
+export default class AccountNav extends Component {
 
   constructor(props) {
     super(props);
@@ -28,11 +28,14 @@ export default class AppAccount extends Component {
 
     return (
       <a
-        className="mainNavBar__account"
+        className="accountNav"
         onClick={this.onClick.bind(this)}
       >
-        <AppAccountPhoto />
-        <span className="mainNavBar__account__user">
+        <AccountPicture
+          url={this.props.pictureUrl}
+          title={this.props.email}
+        />
+        <span className="accountNav__email">
           {this.props.email}
         </span>
         <span className={dropdownClass}></span>
@@ -42,8 +45,9 @@ export default class AppAccount extends Component {
 
 }
 
-AppAccount.propTypes = {
+AccountNav.propTypes = {
   email: PropTypes.string.isRequired,
+  pictureUrl: AccountPicture.propTypes.url,
 };
 
-export default AppAccount;
+export default AccountNav;
