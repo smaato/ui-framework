@@ -7,8 +7,9 @@
   font-size: 12px;
   cursor: pointer;
 
-  label {
-    margin: 0 1px 0 3px;
+  .mainNavBar__account__user {
+    display: inline-block;
+    margin: 0 3px;
     cursor: pointer;
     @media #{$viewport_normalScreen} {
       display: none;

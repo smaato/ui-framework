@@ -240,26 +240,25 @@ textarea {
           transform: rotate(-135deg);
 }
 
-.dropdownArrow {
-  height: 10px;
-  width: 10px;
+.dropdownArrow,
+.dropdownArrow--reverse {
   display: inline-block;
-  vertical-align: top;
   position: relative;
-  text-align: center;
-}
-.dropdownArrow:after {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  top: 0;
-  left: 2px;
-  display: block;
-  content: '';
-  border-bottom: 1px solid #ffffff;
-  border-right: 1px solid #ffffff;
+  height: 7px;
+  width: 7px;
+  border: solid #ffffff;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
+}
+
+.dropdownArrow {
+  border-width: 0 1px 1px 0;
+  top: -2.47487px;
+}
+
+.dropdownArrow--reverse {
+  border-width: 1px 0 0 1px;
+  top: 2.47487px;
 }
 
 .prevArrow {
@@ -3395,6 +3394,7 @@ body {
 }
 
 .mainNavBar__logo {
+  display: block;
   text-indent: -999em;
   width: 76px;
   height: 17px;
@@ -3417,8 +3417,9 @@ body {
   font-size: 12px;
   cursor: pointer;
 }
-.mainNavBar__account label {
-  margin: 0 1px 0 3px;
+.mainNavBar__account .mainNavBar__account__user {
+  display: inline-block;
+  margin: 0 3px;
   cursor: pointer;
 }
 .mainNavBar__account .icon {
@@ -3944,7 +3945,7 @@ body {
   .mainNavBar__logo{
     width: 17px;
   }
-  .mainNavBar__account label{
+  .mainNavBar__account .mainNavBar__account__user{
     display: none;
   }
   .mainNavBar__link a{

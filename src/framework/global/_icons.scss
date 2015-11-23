@@ -64,26 +64,32 @@
   }
 }
 
-.dropdownArrow {
-  height: 10px;
-  width: 10px;
-  display: inline-block;
-  vertical-align: top;
-  position: relative;
-  text-align: center;
+$dropdownArrowSide: 7px;
+// Could be an overkill, but at least it is clear where this calue comes from.
+// By applying resulted value to 'top' prop we can perfectly center vertically.
+// First find hypotenuse of the right-angled triangle
+// (formula is square root of 2 multiplied by cathetus),
+// then and divide by 4 to get a half a projection of cathetus to hypotenuse.
+$dropdownTop: (sqrt(2) * ($dropdownArrowSide)) / 4;
 
-  &:after {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    top: 0;
-    left: 2px;
-    display: block;
-    content: '';
-    border-bottom: 1px solid #ffffff;
-    border-right: 1px solid #ffffff;
-    transform: rotate(45deg);
-  }
+.dropdownArrow,
+.dropdownArrow--reverse {
+  display: inline-block;
+  position: relative;
+  height: $dropdownArrowSide;
+  width: $dropdownArrowSide;
+  border: solid #ffffff;
+  transform: rotate(45deg);
+}
+
+.dropdownArrow {
+  border-width: 0 1px 1px 0;
+  top: -$dropdownTop;
+}
+
+.dropdownArrow--reverse {
+  border-width: 1px 0 0 1px;
+  top: $dropdownTop;
 }
 
 .prevArrow {

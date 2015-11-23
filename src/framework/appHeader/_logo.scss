@@ -1,0 +1,14 @@
+.mainNavBar__logo {
+  display: block;
+  text-indent: -999em;
+  // This is to cut logo image on a smaller screen properly
+  width: 76px;
+  height: 17px;
+  background-image: url($logo_76px);
+  background-size: 76px 17px;
+  background-position: right top;
+  background-repeat: no-repeat;
+  @media #{$viewport_normalScreen} {
+    width: 17px;
+  }
+}
