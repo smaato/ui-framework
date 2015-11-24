@@ -1,6 +1,9 @@
 
 // Export components
 
+export * from './appHeader/AppHeader.jsx';
+export { default as AppHeader } from './appHeader/AppHeader.jsx';
+
 export * from './checkBox/CheckBox.jsx';
 export { default as CheckBox } from './checkBox/CheckBox.jsx';
 

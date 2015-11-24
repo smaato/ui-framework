@@ -1,0 +1,20 @@
+.accountPicture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: scale-lightness($mainNavBackgroundColor, 10%);
+
+  &:before {
+    font-size: 11px;
+    // Somehow vertical-alignment is off in examples page if this is not set
+    line-height: 0;
+    color: $mainNavTextColor;
+    opacity: 0.6;
+    // Cancels inherited from .icon position: absolute
+    position: static;
+  }
+}

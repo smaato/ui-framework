@@ -1,0 +1,47 @@
+.accountNav {
+  display: flex;
+  align-items: center;
+  color: $mainNavTextColor;
+  padding: 2px 8px 2px 2px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+
+  &:hover {
+    background: scale-lightness($mainNavBackgroundColor, -13%);
+    transition: 0.1s all ease-in-out;
+  }
+}
+
+  .accountNav__email {
+    display: inline-block;
+    margin: 0 3px;
+    cursor: pointer;
+    @media #{$viewport_normalScreen} {
+      display: none;
+    }
+  }
+
+  $accountDropdownArrowSide: 7px;
+  // Could be an overkill, but at least it is clear where this value comes from.
+  // By applying resulted value to 'top' prop we can perfectly center vertically.
+  // First find hypotenuse of the right-angled triangle
+  // (formula is square root of 2 multiplied by cathetus),
+  // then divide by 4 to get a half of a projection of cathetus to hypotenuse.
+  $accountDropdownTop: sqrt(2) * $accountDropdownArrowSide / 4;
+
+  .accountDropdownArrow {
+    display: inline-block;
+    position: relative;
+    height: $accountDropdownArrowSide;
+    width: $accountDropdownArrowSide;
+    border: solid #ffffff;
+    transform: rotate(45deg);
+    border-width: 0 1px 1px 0;
+    top: -$accountDropdownTop;
+
+    &.is-account-dropdown-arrow-open {
+      border-width: 1px 0 0 1px;
+      top: $accountDropdownTop;
+    }
+  }

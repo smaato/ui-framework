@@ -1,12 +1,13 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 import classNames from 'classnames';
 
 import SubTitle from './SubTitle.jsx';
 
-export default class Example extends Component {
+class Example extends Component {
 
   constructor(props) {
     super(props);
@@ -15,6 +16,7 @@ export default class Example extends Component {
   render() {
     const classes = classNames('exampleContainer', {
       'exampleContainer--clear': this.props.isClear,
+      'exampleContainer--dark': this.props.isDark,
     });
 
     let title;
@@ -33,3 +35,11 @@ export default class Example extends Component {
   }
 
 }
+
+Example.propTypes = {
+  title: PropTypes.string,
+  isClear: PropTypes.bool,
+  isDark: PropTypes.bool,
+};
+
+export default Example;

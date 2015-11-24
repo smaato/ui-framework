@@ -15,8 +15,27 @@
     cursor: pointer;
     @media #{$viewport_normalScreen} { display: none; }
   }
-  .dropdownArrow {
+  .p-dropdownArrow {
+    height: 10px;
+    width: 10px;
     margin-top: 6px;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    text-align: center;
+
+    &:after {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      top: 0;
+      left: 2px;
+      display: block;
+      content: '';
+      border-bottom: 1px solid #ffffff;
+      border-right: 1px solid #ffffff;
+      transform: rotate(45deg);
+    }
   }
   .icon {
     width: 22px;

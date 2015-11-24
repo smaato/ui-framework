@@ -109,12 +109,6 @@ export default class GridViewExample extends Component {
 
           <div className="mainNavBar__liner">
 
-            <a className="mainNavBar__account">
-              <span className="icon glyphicons-user"></span>
-              <label>han.solo@smaato.com</label>
-              <span className="dropdownArrow"></span>
-            </a>
-
             <a className="mainNavBar__logo" href="#">Smaato</a>
 
             <ul className="mainNavBar__links__container">
@@ -123,6 +117,12 @@ export default class GridViewExample extends Component {
               <li className="mainNavBar__link"><a href="#">Storage</a></li>
               <li className="mainNavBar__link"><a href="#">Misc</a></li>
             </ul>
+
+            <a className="mainNavBar__account">
+              <span className="icon glyphicons-user"></span>
+              <label>han.solo@smaato.com</label>
+              <span className="dropdownArrow"></span>
+            </a>
 
           </div>
 
