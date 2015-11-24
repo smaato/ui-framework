@@ -132,34 +132,39 @@ export default class GridViewExample extends Component {
 
           <div className="secondaryNavBar__liner">
 
-            <div className="secondaryNavBar__linksWrapper">
-
-              <ul className="secondaryNavBar__linksContainer">
-
-                <li className="secondaryNavBar__link selected">
-                  <a href="#"><span className="icon glyphicons-car"></span>Automobile</a>
-                </li>
-                <li className="secondaryNavBar__link">
-                  <a href="#"><span className="icon glyphicons-train"></span>Train</a>
-                </li>
-                <li className="secondaryNavBar__link">
-                  <a href="#"><span className="icon glyphicons-airplane"></span>Airplane</a>
-                </li>
-                <li className="secondaryNavBar__link">
-                  <a href="#"><span className="icon glyphicons-bicycle"></span>Bicycle</a>
-                </li>
-                <li className="secondaryNavBar__link">
-                  <a href="#"><span className="icon glyphicons-person-walking"></span>Walking</a>
-                </li>
-
-                <li className="secondaryNavBar__ellipsis glyphicons-more"></li>
-
-                <li className="secondaryNavBar__mask">
-                  <div className="secondaryNavBar__maskInner"></div>
-                </li>
-
-              </ul>
-            </div>
+            <ul className="secondaryNavBar__linksContainer">
+              <li className="secondaryNavBar__link selected">
+                <a href="#" className="selected">
+                  <span className="icon glyphicons-car" />
+                  Automobile
+                </a>
+              </li>
+              <li className="secondaryNavBar__link">
+                <a href="#">
+                  <span className="icon glyphicons-train" />
+                  Train
+                </a>
+              </li>
+              <li className="secondaryNavBar__link">
+                <a href="#">
+                  <span className="icon glyphicons-airplane" />
+                  Airplane
+                </a>
+              </li>
+              <li className="secondaryNavBar__link">
+                <a href="#">
+                  <span className="icon glyphicons-bicycle" />
+                  Bicycle
+                </a>
+              </li>
+              <li className="secondaryNavBar__link">
+                <a href="#">
+                  <span className="icon glyphicons-person-walking" />
+                  Walking
+                </a>
+              </li>
+              <li className="secondaryNavBar__ellipsis glyphicons-more" />
+            </ul>
 
             <ul className="dateRange">
               <li className="dateRange__option dateRange__option--required">

@@ -8,8 +8,8 @@ const AccountPicture = props => {
 
   return (
     <span className="icon glyphicons-user accountPicture">
-        {picture}
-      </span>
+      {picture}
+    </span>
   );
 };
 
