@@ -1,53 +1,42 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
+import classNames from 'classnames';
 
 import AccountPicture from './AccountPicture.jsx';
 
-export default class AccountNav extends Component {
+const AccountNav  = props => {
+  const dropdownClass = classNames('accountDropdownArrow', {
+    'is-account-dropdown-arrow-open': props.isOpen,
+  });
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false,
-    };
-  }
-
-  onClick() {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    });
-  }
-
-  render() {
-    const dropdownClass = !this.state.isOpen ?
-      'dropdownArrow' :
-      'dropdownArrow--reverse';
-
-    return (
-      <a
-        className="accountNav"
-        onClick={this.onClick.bind(this)}
-      >
-        <AccountPicture
-          url={this.props.pictureUrl}
-          title={this.props.email}
-        />
-        <span className="accountNav__email">
-          {this.props.email}
-        </span>
-        <span className={dropdownClass}></span>
-      </a>
-    );
-  }
-
-}
+  return (
+    <a
+      className="accountNav"
+      onClick={props.onClick}
+    >
+      <AccountPicture
+        url={props.pictureUrl}
+        title={props.email}
+      />
+      <span className="accountNav__email">
+        {props.email}
+      </span>
+      <span className={dropdownClass} />
+    </a>
+  );
+};
 
 AccountNav.propTypes = {
   email: PropTypes.string.isRequired,
   pictureUrl: AccountPicture.propTypes.url,
+  isOpen: PropTypes.bool,
+  onClick: PropTypes.func,
+};
+
+AccountNav.defaultProps = {
+  isOpen: false,
 };
 
 export default AccountNav;

@@ -20,6 +20,15 @@ export default class AppHeaderExample extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      isAccountNavOpen: false,
+    };
+  }
+
+  onAccountNavClick() {
+    this.setState({
+      isAccountNavOpen: !this.state.isAccountNavOpen,
+    });
   }
 
   generateLinks() {
@@ -65,9 +74,15 @@ export default class AppHeaderExample extends Component {
 
         <Example>
           <AppHeader
-            logo={<AppLogo text="Smaato" />}
-            nav={<AppNav anchorsArray={links} />}
-            account={<AccountNav email="han.solo@smaato.com" />}
+            left={<AppLogo text="Smaato" />}
+            center={<AppNav anchors={links} />}
+            right={
+              <AccountNav
+                email="han.solo@smaato.com"
+                onClick={this.onAccountNavClick.bind(this)}
+                isOpen={this.state.isAccountNavOpen}
+              />
+            }
           />
         </Example>
 
@@ -78,8 +93,8 @@ export default class AppHeaderExample extends Component {
 
         <Example title="AppNav" isDark>
           <Text>Allows the user to add a navigation to the AppHeader.</Text>
-          <Text>Accepts an array of anchor tags or react-router's Link components</Text>
-          <AppNav anchorsArray={links} />
+          <Text>Accepts an array of anchor tags or react-router's Link components.</Text>
+          <AppNav anchors={links} />
         </Example>
 
         <Example title="AccountNav" isDark>
@@ -87,13 +102,20 @@ export default class AppHeaderExample extends Component {
           <AccountNav
             email="han.solo@smaato.com"
             pictureUrl="http://lorempixel.com/output/people-q-c-22-22-9.jpg"
+            onClick={this.onAccountNavClick.bind(this)}
+            isOpen={this.state.isAccountNavOpen}
           />
         </Example>
 
+        <Example title="AccountPicture default">
+          <Text>Renders default account picture when image url is not supplied.</Text>
+          <AccountPicture />
+        </Example>
+
         <Example title="AccountPicture">
-          <Text>Renders user account picture.</Text>
+          <Text>Renders user account picture with supplied image url.</Text>
           <AccountPicture
-            url="http://lorempixel.com/output/business-q-c-22-22-1.jpg"
+            url="http://lorempixel.com/output/business-q-c-22-22-10.jpg"
           />
         </Example>
 

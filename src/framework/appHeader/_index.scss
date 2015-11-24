@@ -1,25 +1,5 @@
-.appHeader {
-  background: $mainNavBackgroundColor;
-  display: flex;
-  justify-content: center;
-  height: 45px;
-}
-
-  .appHeader__liner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    // This allows children to take height from component root element
-    height: inherit;
-    flex: 1;
-    max-width: $maxWidth;
-
-    @media #{$viewport_wideScreen} {
-      padding: 0 15px;
-    }
-  }
-
-    @import 'accountNav';
-    @import 'accountPicture';
-    @import 'appLogo';
-    @import 'appNav';
+@import 'accountNav';
+@import 'accountPicture';
+@import 'appHeader';
+@import 'appLogo';
+@import 'appNav';

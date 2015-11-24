@@ -98,6 +98,12 @@ $contentWidth: 1200px;
   padding: 20px;
   background: white;
   border: 1px solid #D8D8D8;
+
+  .examplePageTitle,
+  .examplePageSubTitle,
+  .examplePageText {
+    color: #5e6162;
+  }
 }
 
 .exampleContainer--clear {
@@ -105,7 +111,13 @@ $contentWidth: 1200px;
 }
 
 .exampleContainer--dark {
-  background: #aaaaaa;
+  background: #5e6162;
+
+  .examplePageTitle,
+  .examplePageSubTitle,
+  .examplePageText {
+    color: white;
+  }
 }
 
 .examplePageTitle {

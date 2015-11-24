@@ -1,26 +1,17 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
-export default class AccountPicture extends Component {
+const AccountPicture = props => {
+  const picture = props.url ? <img src={props.url} /> : null;
 
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const picture = this.props.url ? <img src={this.props.url} /> : null;
-
-    return (
-      <span className="icon glyphicons-user accountPicture">
+  return (
+    <span className="icon glyphicons-user accountPicture">
         {picture}
       </span>
-    );
-  }
-
-}
+  );
+};
 
 AccountPicture.propTypes = {
   url: PropTypes.string,

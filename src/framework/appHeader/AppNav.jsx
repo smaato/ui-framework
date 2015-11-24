@@ -1,33 +1,24 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
-export default class AppNav extends Component {
+const AppNav = props => {
+  const anchors = props.anchors.map((link, index) => (
+    <div className="appNav__link" key={index}>
+      {link}
+    </div>
+  ));
 
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const anchorsArray = this.props.anchorsArray.map((link, index) => (
-      <li className="appNav__link" key={index}>
-        {link}
-      </li>
-    ));
-
-    return (
-      <ul className="appNav">
-        {anchorsArray}
-      </ul>
-    );
-  }
-
-}
+  return (
+    <nav className="appNav">
+      {anchors}
+    </nav>
+  );
+};
 
 AppNav.propTypes = {
-  anchorsArray: PropTypes.arrayOf(React.PropTypes.element).isRequired,
+  anchors: PropTypes.arrayOf(React.PropTypes.element).isRequired,
 };
 
 export default AppNav;

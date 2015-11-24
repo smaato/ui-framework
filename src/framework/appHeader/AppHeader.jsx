@@ -1,6 +1,5 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
@@ -20,30 +19,22 @@ export {
   default as AppNav,
 } from './AppNav.jsx';
 
-export default class AppHeader extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div className="appHeader">
-        <div className="appHeader__liner">
-          {this.props.logo}
-          {this.props.nav}
-          {this.props.account}
-        </div>
+const AppHeader = props => {
+  return (
+    <div className="appHeader">
+      <div className="appHeader__liner">
+        {props.left}
+        {props.center}
+        {props.right}
       </div>
-    );
-  }
-
-}
+    </div>
+  );
+};
 
 AppHeader.propTypes = {
-  logo: PropTypes.element,
-  nav: PropTypes.element,
-  account: PropTypes.element,
+  left: PropTypes.element,
+  center: PropTypes.element,
+  right: PropTypes.element,
 };
 
 export default AppHeader;
