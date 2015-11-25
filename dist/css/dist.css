@@ -2843,12 +2843,7 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-.appNav__link a {
   color: #ffffff;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
@@ -2858,10 +2853,10 @@ body {
   font-weight: 400;
   transition: 0.2s padding ease-in-out, 0.06s background ease-in-out;
 }
-.appNav__link a:hover {
+.appNav__link:hover {
   background: #3c545e;
 }
-.appNav__link a.selected {
+.appNav__link.is-app-nav-link-selected {
   cursor: default;
   background: #2799c4;
 }
@@ -3735,34 +3730,31 @@ body {
   height: 34px;
   margin-right: 10px;
   transition: 0.2s margin ease-in-out, 0.06s background ease-in-out;
-}
-.viewHeaderNav__link:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-.viewHeaderNav__link a {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  height: inherit;
   color: white;
   font-size: 13px;
   padding: 0 12px;
 }
-.viewHeaderNav__link a.selected {
+.viewHeaderNav__link.is-view-header-nav-link-selected {
   color: #526f7b;
   background: #ffffff;
   cursor: default;
 }
-.viewHeaderNav__link a > span {
+.viewHeaderNav__link > span {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+}
+.viewHeaderNav__link:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 .viewHeaderNav__link .icon {
   font-size: 12px;
@@ -3951,7 +3943,7 @@ body {
   .appLogo{
     width: 17px;
   }
-  .appNav__link a{
+  .appNav__link{
     padding: 0 14px;
     font-size: 12px;
   }

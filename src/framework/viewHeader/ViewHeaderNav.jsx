@@ -3,22 +3,29 @@ import React, {
   PropTypes,
 } from 'react';
 
+import classNames from 'classnames';
+
 const ViewHeaderNav = props => {
-  const anchors = props.anchors.map((anchor, index) => (
-    <div className="viewHeaderNav__link" key={index}>
-      {anchor}
-    </div>
-  ));
+  const links = props.links.map((link, index) => {
+    return React.createElement(props.linkType, Object.assign({}, link, {
+      className: classNames('viewHeaderNav__link', link.className),
+      key: index,
+    }));
+  });
 
   return (
     <nav className="viewHeaderNav">
-      {anchors}
+      {links}
     </nav>
   );
 };
 
 ViewHeaderNav.propTypes = {
-  anchors: PropTypes.arrayOf(PropTypes.element).isRequired,
+  linkType: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+  ]).isRequired,
+  links: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default ViewHeaderNav;

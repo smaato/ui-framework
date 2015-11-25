@@ -111,20 +111,18 @@ export default class GridViewExample extends Component {
               Smaato
             </a>
             <nav className="appNav">
-              <div className="appNav__link">
-                <a href="#" className="selected">
-                  Transportation
-                </a>
-              </div>
-              <div className="appNav__link">
-                <a href="#">Camping</a>
-              </div>
-              <div className="appNav__link">
-                <a href="#">Storage</a>
-              </div>
-              <div className="appNav__link">
-                <a href="#">Misc</a>
-              </div>
+              <a href="#" className="appNav__link is-app-nav-link-selected ">
+                Transportation
+              </a>
+              <a href="#" className="appNav__link">
+                Camping
+              </a>
+              <a href="#" className="appNav__link">
+                Storage
+              </a>
+              <a href="#" className="appNav__link">
+                Misc
+              </a>
             </nav>
             <a className="accountNav">
               <span className="accountPicture">
@@ -143,53 +141,41 @@ export default class GridViewExample extends Component {
           <div className="viewHeader__liner">
 
             <nav className="viewHeaderNav">
-              <div className="viewHeaderNav__link">
-                <a href="#" className="selected">
-                  <span>
-                    <span className="icon glyphicons-car" />
-                    Automobile
-                  </span>
-                </a>
-              </div>
-              <div className="viewHeaderNav__link">
-                <a href="#">
-                  <span>
-                    <span className="icon glyphicons-train" />
-                    Train
-                  </span>
-                </a>
-              </div>
-              <div className="viewHeaderNav__link">
-                <a href="#">
-                  <span>
-                    <span className="icon glyphicons-airplane" />
-                    Airplane
-                  </span>
-                </a>
-              </div>
-              <div className="viewHeaderNav__link">
-                <a href="#">
-                  <span>
-                    <span className="icon glyphicons-bicycle" />
-                    Bicycle
-                  </span>
-                </a>
-              </div>
-              <div className="viewHeaderNav__link">
-                <a href="#">
-                  <span>
-                    <span className="icon glyphicons-person-walking" />
-                    Walking
-                  </span>
-                </a>
-              </div>
-              <div className="viewHeaderNav__link">
-                <a href="#">
-                  <span className="viewHeaderNav__ellipsis">
-                    <span className="icon glyphicons-more"></span>
-                  </span>
-                </a>
-              </div>
+              <a href="#" className="viewHeaderNav__link is-view-header-nav-link-selected">
+                <span>
+                  <span className="icon glyphicons-car" />
+                  Automobile
+                </span>
+              </a>
+              <a href="#" className="viewHeaderNav__link">
+                <span>
+                  <span className="icon glyphicons-train" />
+                  Train
+                </span>
+              </a>
+              <a href="#" className="viewHeaderNav__link">
+                <span>
+                  <span className="icon glyphicons-airplane" />
+                  Airplane
+                </span>
+              </a>
+              <a href="#" className="viewHeaderNav__link">
+                <span>
+                  <span className="icon glyphicons-bicycle" />
+                  Bicycle
+                </span>
+              </a>
+              <a href="#" className="viewHeaderNav__link">
+                <span>
+                  <span className="icon glyphicons-person-walking" />
+                  Walking
+                </span>
+              </a>
+              <a href="#" className="viewHeaderNav__link">
+                <span className="viewHeaderNav__ellipsis">
+                  <span className="icon glyphicons-more"></span>
+                </span>
+              </a>
             </nav>
 
             <ul className="dateRange">

@@ -3,22 +3,29 @@ import React, {
   PropTypes,
 } from 'react';
 
+import classNames from 'classnames';
+
 const AppNav = props => {
-  const anchors = props.anchors.map((link, index) => (
-    <div className="appNav__link" key={index}>
-      {link}
-    </div>
-  ));
+  const links = props.links.map((link, index) => {
+    return React.createElement(props.linkType, Object.assign({}, link, {
+      className: classNames('appNav__link', link.className),
+      key: index,
+    }));
+  });
 
   return (
     <nav className="appNav">
-      {anchors}
+      {links}
     </nav>
   );
 };
 
 AppNav.propTypes = {
-  anchors: PropTypes.arrayOf(PropTypes.element).isRequired,
+  linkType: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+  ]).isRequired,
+  links: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default AppNav;
