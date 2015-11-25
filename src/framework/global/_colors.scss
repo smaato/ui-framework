@@ -24,12 +24,12 @@ $secondaryButtonColor: $green;
 $titleBarTextColor: $darkGrey;
 $titleBarBackgroundColor: $white;
 
-/* Secondary Nav Colors */
-$secondaryNavTextColor: $white;
-$secondaryNavBackgroundColor: $blue;
-$secondaryNavSelectedColor: $titleBarBackgroundColor;
+/* ViewHeaderNav Colors */
+$viewHeaderNav_textColor: $white;
+$viewHeaderNav_backgroundColor: $blue;
+$viewHeaderNav_selectedColor: $titleBarBackgroundColor;
 
-/* Main Nav Colors */
-$mainNavTextColor: $white;
-$mainNavBackgroundColor: $darkGrey;
-$mainNavSelectedColor: $secondaryNavBackgroundColor;
+/* AppHeaderNav Colors */
+$appHeaderNav_textColor: $white;
+$appHeaderNav_backgroundColor: $darkGrey;
+$appHeaderNav_selectedColor: $viewHeaderNav_backgroundColor;

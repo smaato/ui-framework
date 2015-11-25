@@ -101,7 +101,7 @@ export default class AppHeaderExample extends Component {
           <Text>Allows the user to add account navigation.</Text>
           <AccountNav
             email="han.solo@smaato.com"
-            pictureUrl="http://lorempixel.com/output/people-q-c-22-22-9.jpg"
+            pictureUrl="http://pipsum.com/22x22.jpg"
             onClick={this.onAccountNavClick.bind(this)}
             isOpen={this.state.isAccountNavOpen}
           />
@@ -115,7 +115,7 @@ export default class AppHeaderExample extends Component {
         <Example title="AccountPicture">
           <Text>Renders user account picture with supplied image url.</Text>
           <AccountPicture
-            url="http://lorempixel.com/output/business-q-c-22-22-10.jpg"
+            url="http://pipsum.com/22x22.jpg"
           />
         </Example>
 

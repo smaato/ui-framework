@@ -1,11 +1,11 @@
-.secondaryNavBar {
-  background: $secondaryNavBackgroundColor;
+.viewHeader {
+  background: $viewHeaderNav_backgroundColor;
   display: flex;
   justify-content: center;
   height: 42px;
 }
 
-.secondaryNavBar__liner {
+.viewHeader__liner {
   display: flex;
   align-items: center;
   justify-content: space-between;

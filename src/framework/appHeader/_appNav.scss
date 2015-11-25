@@ -8,7 +8,7 @@
     display: flex;
 
     a {
-      color: $mainNavTextColor;
+      color: $appHeaderNav_textColor;
       display: flex;
       align-items: center;
       text-transform: uppercase;
@@ -16,18 +16,19 @@
       padding: 0 24px;
       font-weight: 400;
       transition: 0.2s padding ease-in-out, 0.06s background ease-in-out;
+
       @media #{$viewport_normalScreen} {
         padding: 0 14px;
         font-size: 12px;
       }
 
       &:hover {
-        background: scale-lightness($mainNavBackgroundColor, 5%);
+        background: scale-lightness($appHeaderNav_backgroundColor, 5%);
       }
 
       &.selected {
         cursor: default;
-        background: $mainNavSelectedColor;
+        background: $appHeaderNav_selectedColor;
       }
     }
   }

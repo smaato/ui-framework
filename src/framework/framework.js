@@ -7,6 +7,9 @@ export { default as AppHeader } from './appHeader/AppHeader.jsx';
 export * from './checkBox/CheckBox.jsx';
 export { default as CheckBox } from './checkBox/CheckBox.jsx';
 
+export * from './dateRange/DateRange.jsx';
+export { default as DateRange } from './dateRange/DateRange.jsx';
+
 export * from './grid/Grid.jsx';
 export { default as Grid } from './grid/Grid.jsx';
 

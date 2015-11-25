@@ -105,66 +105,92 @@ export default class GridViewExample extends Component {
     return (
       <Page isFullScreen>
 
-        <div className="mainNavBar">
-
-          <div className="mainNavBar__liner">
-
-            <a className="mainNavBar__logo" href="#">Smaato</a>
-
-            <ul className="mainNavBar__links__container">
-              <li className="mainNavBar__link selected"><a href="#">Transportation</a></li>
-              <li className="mainNavBar__link"><a href="#">Camping</a></li>
-              <li className="mainNavBar__link"><a href="#">Storage</a></li>
-              <li className="mainNavBar__link"><a href="#">Misc</a></li>
-            </ul>
-
-            <a className="mainNavBar__account">
-              <span className="icon glyphicons-user"></span>
-              <label>han.solo@smaato.com</label>
-              <span className="dropdownArrow"></span>
+        <div className="appHeader">
+          <div className="appHeader__liner">
+            <a className="appLogo" title="Smaato" href="#">
+              Smaato
             </a>
-
+            <nav className="appNav">
+              <div className="appNav__link">
+                <a href="#" className="selected">
+                  Transportation
+                </a>
+              </div>
+              <div className="appNav__link">
+                <a href="#">Camping</a>
+              </div>
+              <div className="appNav__link">
+                <a href="#">Storage</a>
+              </div>
+              <div className="appNav__link">
+                <a href="#">Misc</a>
+              </div>
+            </nav>
+            <a className="accountNav">
+              <span className="accountPicture">
+                <span className="icon glyphicons-user"></span>
+              </span>
+              <span className="accountNav__email">
+                han.solo@smaato.com
+              </span>
+              <span className="accountDropdownArrow"></span>
+            </a>
           </div>
-
         </div>
 
-        <div className="secondaryNavBar">
+        <div className="viewHeader">
 
-          <div className="secondaryNavBar__liner">
+          <div className="viewHeader__liner">
 
-            <ul className="secondaryNavBar__linksContainer">
-              <li className="secondaryNavBar__link selected">
+            <nav className="viewHeaderNav">
+              <div className="viewHeaderNav__link">
                 <a href="#" className="selected">
-                  <span className="icon glyphicons-car" />
-                  Automobile
+                  <span>
+                    <span className="icon glyphicons-car" />
+                    Automobile
+                  </span>
                 </a>
-              </li>
-              <li className="secondaryNavBar__link">
+              </div>
+              <div className="viewHeaderNav__link">
                 <a href="#">
-                  <span className="icon glyphicons-train" />
-                  Train
+                  <span>
+                    <span className="icon glyphicons-train" />
+                    Train
+                  </span>
                 </a>
-              </li>
-              <li className="secondaryNavBar__link">
+              </div>
+              <div className="viewHeaderNav__link">
                 <a href="#">
-                  <span className="icon glyphicons-airplane" />
-                  Airplane
+                  <span>
+                    <span className="icon glyphicons-airplane" />
+                    Airplane
+                  </span>
                 </a>
-              </li>
-              <li className="secondaryNavBar__link">
+              </div>
+              <div className="viewHeaderNav__link">
                 <a href="#">
-                  <span className="icon glyphicons-bicycle" />
-                  Bicycle
+                  <span>
+                    <span className="icon glyphicons-bicycle" />
+                    Bicycle
+                  </span>
                 </a>
-              </li>
-              <li className="secondaryNavBar__link">
+              </div>
+              <div className="viewHeaderNav__link">
                 <a href="#">
-                  <span className="icon glyphicons-person-walking" />
-                  Walking
+                  <span>
+                    <span className="icon glyphicons-person-walking" />
+                    Walking
+                  </span>
                 </a>
-              </li>
-              <li className="secondaryNavBar__ellipsis glyphicons-more" />
-            </ul>
+              </div>
+              <div className="viewHeaderNav__link">
+                <a href="#">
+                  <span className="viewHeaderNav__ellipsis">
+                    <span className="icon glyphicons-more"></span>
+                  </span>
+                </a>
+              </div>
+            </nav>
 
             <ul className="dateRange">
               <li className="dateRange__option dateRange__option--required">

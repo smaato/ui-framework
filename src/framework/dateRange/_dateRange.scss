@@ -5,7 +5,7 @@
 }
 
   .dateRange__option {
-    color: $secondaryNavTextColor;
+    color: $viewHeaderNav_textColor;
     font-size: 12px;
     font-weight: 400;
     padding-left: 8px;
@@ -18,7 +18,7 @@
     }
 
     .dateRange__trigger {
-      color: $secondaryNavTextColor;
+      color: $viewHeaderNav_textColor;
 
       .icon {
         width: 12px;
@@ -29,8 +29,8 @@
 
     .dateRange__compareToggle {
       input {
-        border: 1px solid scale-lightness($secondaryNavBackgroundColor, 65%);
-        background: scale-lightness($secondaryNavBackgroundColor, 32%);
+        border: 1px solid scale-lightness($viewHeaderNav_backgroundColor, 65%);
+        background: scale-lightness($viewHeaderNav_backgroundColor, 32%);
         -webkit-appearance: none;
         width: 11px;
         height: 11px;
@@ -52,18 +52,18 @@
         width: 20px;
         height: 20px;
         transition: 0.1s all ease-in-out;
-        border: 1px solid scale-lightness($secondaryNavBackgroundColor, 65%);
+        border: 1px solid scale-lightness($viewHeaderNav_backgroundColor, 65%);
         background-image: linear-gradient(
-                        scale-lightness($secondaryNavBackgroundColor, 38%),
-                        scale-lightness($secondaryNavBackgroundColor, 32%)
+          scale-lightness($viewHeaderNav_backgroundColor, 38%),
+          scale-lightness($viewHeaderNav_backgroundColor, 32%)
         );
 
         &:hover {
           background-image: linear-gradient(
-                          scale-lightness($secondaryNavBackgroundColor, 41%),
-                          scale-lightness($secondaryNavBackgroundColor, 35%)
+            scale-lightness($viewHeaderNav_backgroundColor, 41%),
+            scale-lightness($viewHeaderNav_backgroundColor, 35%)
           );
-          box-shadow: 0 2px 0 scale-lightness($secondaryNavBackgroundColor, -5%);
+          box-shadow: 0 2px 0 scale-lightness($viewHeaderNav_backgroundColor, -5%);
 
           .prevArrow,
           .nextArrow {

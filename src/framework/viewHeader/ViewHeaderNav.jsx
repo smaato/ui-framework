@@ -1,42 +1,24 @@
 
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 
-const ViewHeaderNav = () => {
+const ViewHeaderNav = props => {
+  const anchors = props.anchors.map((anchor, index) => (
+    <div className="viewHeaderNav__link" key={index}>
+      {anchor}
+    </div>
+  ));
+
   return (
-    <ul className="secondaryNavBar__linksContainer">
-      <li className="secondaryNavBar__link">
-        <a href="#" className="selected">
-          <span className="icon glyphicons-car" />
-          Automobile
-        </a>
-      </li>
-      <li className="secondaryNavBar__link">
-        <a href="#">
-          <span className="icon glyphicons-train" />
-          Train
-        </a>
-      </li>
-      <li className="secondaryNavBar__link">
-        <a href="#">
-          <span className="icon glyphicons-airplane" />
-          Airplane
-        </a>
-      </li>
-      <li className="secondaryNavBar__link">
-        <a href="#">
-          <span className="icon glyphicons-bicycle" />
-          Bicycle
-        </a>
-      </li>
-      <li className="secondaryNavBar__link">
-        <a href="#">
-          <span className="icon glyphicons-person-walking" />
-          Walking
-        </a>
-      </li>
-      <li className="secondaryNavBar__ellipsis glyphicons-more" />
-    </ul>
+    <nav className="viewHeaderNav">
+      {anchors}
+    </nav>
   );
+};
+
+ViewHeaderNav.propTypes = {
+  anchors: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 
 export default ViewHeaderNav;

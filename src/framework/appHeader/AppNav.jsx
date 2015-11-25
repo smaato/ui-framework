@@ -18,7 +18,7 @@ const AppNav = props => {
 };
 
 AppNav.propTypes = {
-  anchors: PropTypes.arrayOf(React.PropTypes.element).isRequired,
+  anchors: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 
 export default AppNav;
