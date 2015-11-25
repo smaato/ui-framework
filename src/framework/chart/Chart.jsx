@@ -16,6 +16,12 @@ export default class LineChart extends Component {
   constructor(props) {
     super(props);
 
+    this.margin = {
+      right: 0,
+      top: 20,
+      bottom: 20,
+    };
+
     this.onResizeHandler = this.onResize.bind(this);
   }
 
@@ -24,12 +30,18 @@ export default class LineChart extends Component {
     this.resizeEventDispatcher = new ThrottledEventDispatcher(
       'resize', `lineChartResize${new Date()}`, window, this.onResizeHandler
     );
+
+    const $node = $(ReactDOM.findDOMNode(this));
+    const svg = d3.select($node.find('svg')[0]);
+    this.container = svg.append('g')
+      .attr('transform', 'translate(' + this.props.marginLeft + ',' + this.margin.top + ')');
   }
 
   shouldComponentUpdate(nextProps) {
     // Every time React tries to render, we'll intercept the attempt here, and
     // do our own re-render.
-    this.renderChart(nextProps);
+    const updateImmediately = this.props.height !== nextProps.height;
+    this.renderChart(nextProps, updateImmediately);
 
     // Prevent React from calling render() more than once (when mounted).
     return false;
@@ -46,14 +58,23 @@ export default class LineChart extends Component {
   renderChart(props, updateImmediately = false) {
     const {
       data,
-      xRange,
+      dateRange,
+      dateFormat,
       yRange,
+      yAxisFormat,
+      marginLeft,
       height,
     } = props;
+
+    const marginRight = this.margin.right;
+    const marginTop = this.margin.top;
+    const marginBottom = this.margin.bottom;
 
     const $node = $(ReactDOM.findDOMNode(this));
     const width = $node.width();
     const svg = d3.select($node.find('svg')[0]);
+
+    const duration = updateImmediately ? 0 : this.props.duration;
 
     // Set the correct dimensions.
     $node.css('height', height);
@@ -63,13 +84,100 @@ export default class LineChart extends Component {
 
     // Create time scale for X axis.
     const xAxisScale = d3.time.scale()
-      .range([0, width])
-      .domain(xRange);
+      .range([0, width - marginLeft - marginRight])
+      .domain(dateRange);
+
+    // Create X axis.
+    const xAxis = d3.svg.axis()
+      .scale(xAxisScale)
+      .ticks(dateFormat)
+      .tickSize(6, 0)
+      .orient('bottom');
+
+    // Style and position X axis elements.
+    function styleXAxis(g) {
+      g.selectAll('line')
+        .attr('class', 'chartXAxisTick__mark');
+
+      g.selectAll('text')
+        .attr('class', 'chartXAxisTick__text');
+    }
+
+    // If no X axis shape exists, create one. Otherwise, update it.
+    const xAxisTransform = height - marginBottom - marginTop;
+    if (!this.xAxis) {
+      this.xAxis = this.container
+        .append('g')
+        .attr('transform', `translate(0, ${xAxisTransform})`)
+        .call(xAxis)
+        .call(styleXAxis);
+    } else {
+      this.xAxis
+        .transition()
+        .duration(duration)
+        .attr('transform', `translate(0, ${xAxisTransform})`)
+        .call(xAxis)
+        .call(styleXAxis);
+    }
 
     // Create linear scale for Y axis.
     const yAxisScale = d3.scale.linear()
-      .range([height, 0])
+      .range([height - marginTop - marginBottom, 0])
       .domain(yRange);
+
+    // Create Y axis.
+    const yAxis = d3.svg.axis()
+      .scale(yAxisScale)
+      .tickSize(width - marginLeft - marginRight)
+      .tickFormat(yAxisFormat)
+      .orient('right');
+
+    // Style and position Y axis elements.
+    function styleYAxis(g) {
+      g.selectAll('path')
+        .attr('class', 'chartYAxis');
+
+      g.selectAll('line')
+        .attr('class', 'chartYAxisTick__mark');
+
+      g.selectAll('text')
+        .attr('class', 'chartYAxisTick__text')
+        .attr('dx', -(width - marginRight));
+
+      const borderRadius = 2;
+      g.selectAll('.tick')
+        .insert('rect', ':last-child')
+        .attr('class', 'chartYAxisTick__background')
+        .attr('x', -marginLeft)
+        .attr('y', -8)
+        .attr('width', marginLeft)
+        .attr('height', 15)
+        .attr('rx', borderRadius)
+        .attr('ry', borderRadius);
+    }
+
+    // If no Y axis shape exists, create one. Otherwise, update it.
+    if (!this.yAxis) {
+      this.yAxis = this.container
+        .append('g')
+        .call(yAxis)
+        .call(styleYAxis);
+    } else {
+      if (updateImmediately) {
+        this.yAxis
+          .call(yAxis);
+      } else {
+        this.yAxis
+          .transition()
+          .duration(duration)
+          .call(yAxis)
+           // Cancel transition on customized attributes
+          .selectAll('text')
+          .tween('attr.dx', null);
+      }
+
+      this.yAxis.call(styleYAxis);
+    }
 
     // Create a line generator for mapping date to temperature.
     const lineGenerator = d3.svg.line()
@@ -77,14 +185,14 @@ export default class LineChart extends Component {
       .x(item => xAxisScale(item.date))
       .y(item => yAxisScale(item.temperature));
 
-    // Bind data to shapes.
-    const lines = svg.selectAll('.chartLine')
+    // Bind data to lines.
+    const lines = this.container.selectAll('.chartLine')
       .data(data)
       .attr('class', 'chartLine');
 
     // Transition from previous lines to new lines.
-    const duration = updateImmediately ? 0 : this.props.duration;
-    lines.transition().duration(duration)
+    lines.transition()
+      .duration(duration)
       .attr('d', item => lineGenerator(item.values))
       .style('stroke', (d, i) => data[i].color);
 
@@ -103,8 +211,9 @@ export default class LineChart extends Component {
   render() {
     // Render will only be called once, after the component mounts.
     return (
-      <div>
-        <svg />
+      <div className="chart">
+        <div className="chart__fakeBackgound"></div>
+        <svg className="chart__svg" />
       </div>
     );
   }
@@ -113,12 +222,16 @@ export default class LineChart extends Component {
 
 LineChart.propTypes = {
   duration: PropTypes.number,
+  yAxisFormat: PropTypes.func,
+  marginLeft: PropTypes.number,
   data: PropTypes.array.isRequired,
-  xRange: PropTypes.array.isRequired,
+  dateRange: PropTypes.array.isRequired,
   yRange: PropTypes.array.isRequired,
+  dateFormat: PropTypes.func.isRequired,
   height: PropTypes.number.isRequired,
 };
 
 LineChart.defaultProps = {
   duration: 1000,
+  marginLeft: 20,
 };

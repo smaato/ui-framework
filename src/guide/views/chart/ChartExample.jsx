@@ -107,6 +107,10 @@ export default class ChartExample extends Component {
   }
 
   render() {
+    function formatTemperature(d) {
+      return `${d}${String.fromCharCode(176)} F`;
+    }
+
     return (
       <Page title={this.props.route.name}>
         <Example>
@@ -122,8 +126,11 @@ export default class ChartExample extends Component {
           </button>
           <Chart
             data={this.state.chartData}
-            xRange={[this.state.minDate, this.state.maxDate]}
+            dateRange={[this.state.minDate, this.state.maxDate]}
+            dateFormat={d3.time.months}
             yRange={[this.state.minTemperature, this.state.maxTemperature]}
+            yAxisFormat={formatTemperature}
+            marginLeft={36}
             height={this.state.chartHeight}
           />
         </Example>

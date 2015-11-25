@@ -209,7 +209,8 @@ export default {
     newYork: '61.1',
     sanFrancisco: '53.4',
     austin: '71.3',
-  }, {
+  }],
+  batch2: [{
     date: '20120511',
     newYork: '59.7',
     sanFrancisco: '53.1',
@@ -459,8 +460,7 @@ export default {
     newYork: '79.6',
     sanFrancisco: '56.4',
     austin: '85.3',
-  }],
-  batch2: [{
+  }, {
     date: '20120630',
     newYork: '84.2',
     sanFrancisco: '58.4',

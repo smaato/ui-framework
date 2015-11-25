@@ -1,5 +1,61 @@
 
-.chartLine {
-  fill: none;
-  stroke-width: 1px;
+.chart {
+  position: relative;
+  background: linear-gradient(#fbfcfd, #f4f6f7);
 }
+
+  .chart__svg {
+    position: relative;
+    z-index: 1;
+  }
+
+  .chart__fakeBackgound {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background-color: #ffffff;
+    border-top: 1px solid #CBD0D3;
+  }
+
+  .chartLine {
+    fill: none;
+    stroke-width: 1px;
+  }
+
+  // .chartXAxis class isn't applied to any elements.
+
+    .chartXAxisTick__mark {
+      stroke: #A3A8AB;
+      shape-rendering: crispEdges;
+    }
+
+    .chartXAxisTick__text {
+      font-size: 12px;
+      font-weight: 400;
+      fill: #4A5459;
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+  .chartYAxis {
+    fill: none;
+  }
+
+    .chartYAxisTick__mark {
+      stroke: #E5E7E8;
+      shape-rendering: crispEdges;
+    }
+
+    .chartYAxisTick__text {
+      font-size: 11px;
+      font-weight: 700;
+      fill: #FFFFFF;
+    }
+
+    .chartYAxisTick__background {
+      fill: #636D70;
+      stroke: none;
+    }
