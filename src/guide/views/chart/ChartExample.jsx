@@ -18,37 +18,56 @@ export default class ChartExample extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      chartData: this.getInitialChartData(),
+      minDate: undefined,
+      maxDate: undefined,
+      minTemperature: undefined,
+      maxTemperature: undefined,
+      chartHeight: 400,
+      useBatch1: false,
+    };
+  }
+
+  componentDidMount() {
+    this.setData(chartExampleData.batch1);
+  }
+
+  onClickChangeData() {
+    this.setState({
+      useBatch1: !this.state.useBatch1,
+    });
+    if (this.state.useBatch1) {
+      this.setData(chartExampleData.batch1);
+    } else {
+      this.setData(chartExampleData.batch2);
+    }
+  }
+
+  onClickChangeHeight() {
+    this.setState({
+      chartHeight: 300 + Math.round(Math.random() * 300),
+    });
+  }
+
+  setData(rawData) {
+    const chartData = this.getInitialChartData();
     let minDate = undefined;
     let maxDate = undefined;
     let minTemperature = undefined;
     let maxTemperature = undefined;
 
-    // Identify the data sources to visualize.
-    const cityChartData = [{
-      name: 'newYork',
-      color: '#1192ca',
-      values: [],
-    }, {
-      name: 'sanFrancisco',
-      color: '#F07171',
-      values: [],
-    }, {
-      name: 'austin',
-      color: '#60C04F',
-      values: [],
-    }];
-
     {
-      const parseDate = d3.time.format('%Y%m%d').parse;
+      const formatDate = d3.time.format('%Y%m%d').parse;
 
-      chartExampleData.forEach(item => {
-        for (const [index, city] of cityChartData.entries()) {
+      rawData.forEach(item => {
+        for (const [index, city] of chartData.entries()) {
           // Format data.
-          const date = parseDate(item.date);
+          const date = formatDate(item.date);
           const temperature = +item[city.name];
 
           // Store formatted data point.
-          cityChartData[index].values.push({
+          chartData[index].values.push({
             date,
             temperature,
           });
@@ -62,23 +81,49 @@ export default class ChartExample extends Component {
       });
     }
 
-    this.state = {
-      chartData: cityChartData,
-      chartXRange: [minDate, maxDate],
-      chartYRange: [minTemperature, maxTemperature],
-      chartHeight: 400,
-    };
+    this.setState({
+      chartData,
+      minDate,
+      maxDate,
+      minTemperature,
+      maxTemperature,
+    });
+  }
+
+  getInitialChartData() {
+    return [{
+      name: 'newYork',
+      color: '#1192ca',
+      values: [],
+    }, {
+      name: 'sanFrancisco',
+      color: '#F07171',
+      values: [],
+    }, {
+      name: 'austin',
+      color: '#60C04F',
+      values: [],
+    }];
   }
 
   render() {
     return (
       <Page title={this.props.route.name}>
         <Example>
+          <button
+            onClick={this.onClickChangeData.bind(this)}
+          >
+            Change data
+          </button>
+          <button
+            onClick={this.onClickChangeHeight.bind(this)}
+          >
+            Change height
+          </button>
           <Chart
-            id="ChartExample"
             data={this.state.chartData}
-            xRange={this.state.chartXRange}
-            yRange={this.state.chartYRange}
+            xRange={[this.state.minDate, this.state.maxDate]}
+            yRange={[this.state.minTemperature, this.state.maxTemperature]}
             height={this.state.chartHeight}
           />
         </Example>

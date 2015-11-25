@@ -1,7 +1,6 @@
 
 import 'd3';
 
-// Import exports from various modules.
 import React, {
   Component,
   PropTypes,
@@ -10,15 +9,21 @@ import React, {
 import $ from 'jquery';
 import ReactDOM from 'react-dom';
 
-// Define the component class and provide it as an export.
+import ThrottledEventDispatcher from '../services/ThrottledEventDispatcher';
+
 export default class LineChart extends Component {
 
   constructor(props) {
     super(props);
+
+    this.onResizeHandler = this.onResize.bind(this);
   }
 
   componentDidMount() {
-    this.renderChart(this.props);
+    // Throttle resize event handling, in an attempt to improve performance.
+    this.resizeEventDispatcher = new ThrottledEventDispatcher(
+      'resize', `lineChartResize${new Date()}`, window, this.onResizeHandler
+    );
   }
 
   shouldComponentUpdate(nextProps) {
@@ -30,9 +35,16 @@ export default class LineChart extends Component {
     return false;
   }
 
-  renderChart(props) {
+  componentWillUnmount() {
+    this.resizeEventDispatcher.teardown();
+  }
+
+  onResize() {
+    this.renderChart(this.props, true);
+  }
+
+  renderChart(props, updateImmediately = false) {
     const {
-      id,
       data,
       xRange,
       yRange,
@@ -41,24 +53,13 @@ export default class LineChart extends Component {
 
     const $node = $(ReactDOM.findDOMNode(this));
     const width = $node.width();
-
-    // Empty the node so we re-render from scratch.
-    $node.empty();
+    const svg = d3.select($node.find('svg')[0]);
 
     // Set the correct dimensions.
     $node.css('height', height);
 
-    // Create the chart SVG, position and size it.
-    const svg = d3.select(`#${id}`).append('svg')
-      .attr('width', width)
-      .attr('height', height);
-
-    // Bind data to shapes.
-    const lineContainers = svg.selectAll('.lineContainer')
-      .data(data)
-      .enter()
-      .append('g')
-      .attr('class', 'lineContainer');
+    // Set dimensions of svg to fill container.
+    svg.attr('width', width).attr('height', height);
 
     // Create time scale for X axis.
     const xAxisScale = d3.time.scale()
@@ -76,30 +77,48 @@ export default class LineChart extends Component {
       .x(item => xAxisScale(item.date))
       .y(item => yAxisScale(item.temperature));
 
-    // Generate lines.
-    lineContainers.append('path')
-      .attr('class', 'line')
-      .attr('d', item => lineGenerator(item.values));
+    // Bind data to shapes.
+    const lines = svg.selectAll('.chartLine')
+      .data(data)
+      .attr('class', 'chartLine');
 
-    // Apply stroke style to each line.
-    for (const [index, lineContainer] of lineContainers[0].entries()) {
-      $(lineContainer).css('stroke', data[index].color);
-    }
+    // Transition from previous lines to new lines.
+    const duration = updateImmediately ? 0 : this.props.duration;
+    lines.transition().duration(duration)
+      .attr('d', item => lineGenerator(item.values))
+      .style('stroke', (d, i) => data[i].color);
+
+    // Add elements that map to added data.
+    lines.enter()
+      .append('path')
+      .attr('class', 'chartLine')
+      .attr('d', item => lineGenerator(item.values))
+      .style('stroke', (d, i) => data[i].color);
+
+    // Remove elements that map to removed data.
+    lines.exit()
+      .remove();
   }
 
   render() {
     // Render will only be called once, after the component mounts.
     return (
-      <div id={this.props.id}></div>
+      <div>
+        <svg />
+      </div>
     );
   }
 
 }
 
 LineChart.propTypes = {
-  id: PropTypes.string.isRequired,
+  duration: PropTypes.number,
   data: PropTypes.array.isRequired,
   xRange: PropTypes.array.isRequired,
   yRange: PropTypes.array.isRequired,
   height: PropTypes.number.isRequired,
+};
+
+LineChart.defaultProps = {
+  duration: 1000,
 };

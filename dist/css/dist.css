@@ -2766,7 +2766,7 @@ body {
   overflow-x: hidden;
 }
 
-.line {
+.chartLine {
   fill: none;
   stroke-width: 1px;
 }
