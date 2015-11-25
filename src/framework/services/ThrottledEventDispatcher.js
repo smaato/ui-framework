@@ -17,6 +17,14 @@ export default class ThrottledEventDispatcher {
     dispatcher = window,
     throttledEventHandler = undefined
   ) {
+    if (!originalEventName) {
+      throw new Error('ThrottledEventDispatcher ctor missing originalEventName.');
+    }
+
+    if (!throttledEventName) {
+      throw new Error('ThrottledEventDispatcher ctor missing throttledEventName.');
+    }
+
     this.originalEventName = originalEventName;
     this.throttledEventName = throttledEventName;
     this.dispatcher = dispatcher;
@@ -37,6 +45,7 @@ export default class ThrottledEventDispatcher {
       this.originalEventName, this.originalEventHandler
     );
 
+    // You can provide an event handler in the ctor for convenience.
     if (throttledEventHandler) {
       this.addEventListener(throttledEventHandler);
     }
@@ -49,8 +58,8 @@ export default class ThrottledEventDispatcher {
     );
 
     // Stop listening to throttled event.
-    for (let i = 0; i < this.throttledEventHandlers.length; i++) {
-      this.removeEventListener(this.throttledEventHandlers[i]);
+    while (this.throttledEventHandlers.length) {
+      this.removeEventListener(this.throttledEventHandlers[0]);
     }
   }
 
@@ -62,6 +71,8 @@ export default class ThrottledEventDispatcher {
   }
 
   removeEventListener(throttledEventHandler) {
+    const index = this.throttledEventHandlers.indexOf(throttledEventHandler);
+    this.throttledEventHandlers.splice(index, 1);
     this.dispatcher.removeEventListener(
       this.throttledEventName, throttledEventHandler
     );
