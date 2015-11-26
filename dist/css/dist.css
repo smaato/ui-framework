@@ -2939,16 +2939,19 @@ body {
 .dateRange__trigger {
   color: #ffffff;
 }
-.dateRange__trigger .icon {
+
+.dateRange__triggerIcon {
   width: 12px;
   font-size: 12px;
   margin-right: 3px;
 }
 
-.dateRange__compareToggle input {
+.dateRange__input {
   border: 1px solid #afddef;
   background: #63bee0;
   -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   width: 11px;
   height: 11px;
   border-radius: 2px;
@@ -2960,8 +2963,8 @@ body {
   display: flex;
 }
 
-.prev,
-.next {
+.dateRange__prev,
+.dateRange__next {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -2977,29 +2980,29 @@ body {
   border: 1px solid #afddef;
   background-image: linear-gradient(#71c4e3, #63bee0);
 }
-.prev:hover,
-.next:hover {
+.dateRange__prev:hover,
+.dateRange__next:hover {
   background-image: linear-gradient(#78c6e4, #6ac1e1);
   box-shadow: 0 2px 0 #2591ba;
 }
-.prev:hover .prevArrow,
-.prev:hover .nextArrow,
-.next:hover .prevArrow,
-.next:hover .nextArrow {
+.dateRange__prev:hover .dateRange__prevArrow,
+.dateRange__prev:hover .dateRange__nextArrow,
+.dateRange__next:hover .dateRange__prevArrow,
+.dateRange__next:hover .dateRange__nextArrow {
   opacity: 1;
 }
 
-.prev {
+.dateRange__prev {
   border-radius: 4px 0 0 4px;
 }
 
-.next {
+.dateRange__next {
   border-radius: 0 4px 4px 0;
   margin-left: -1px;
 }
 
-.prevArrow,
-.nextArrow {
+.dateRange__prevArrow,
+.dateRange__nextArrow {
   opacity: 0.7;
   position: relative;
   display: inline-block;
@@ -3010,13 +3013,13 @@ body {
   border-right: 1px solid #ffffff;
 }
 
-.prevArrow {
+.dateRange__prevArrow {
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
   left: 1px;
 }
 
-.nextArrow {
+.dateRange__nextArrow {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
   left: -1px;
@@ -3740,6 +3743,9 @@ body {
   font-size: 13px;
   padding: 0 12px;
 }
+.viewHeaderNav__link:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
 .viewHeaderNav__link.is-view-header-nav-link-selected {
   color: #526f7b;
   background: #ffffff;
@@ -3752,9 +3758,6 @@ body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-}
-.viewHeaderNav__link:hover {
-  background: rgba(255, 255, 255, 0.15);
 }
 .viewHeaderNav__link .icon {
   font-size: 12px;

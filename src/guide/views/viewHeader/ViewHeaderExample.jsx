@@ -98,6 +98,11 @@ export default class ViewHeaderExample extends Component {
           />
         </Example>
 
+        <Example title="DateRange" isDark>
+          <Text>Allows the user to select a date range.</Text>
+          <DateRange/>
+        </Example>
+
       </Page>
     );
   }

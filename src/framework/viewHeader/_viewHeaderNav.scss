@@ -15,6 +15,11 @@
     font-size: 13px;
     padding: 0 12px;
 
+    // Has to be before .is-view-header-nav-link-selected
+    &:hover {
+      background: rgba(white, 0.15);
+    }
+
     &.is-view-header-nav-link-selected {
       color: scale-lightness(
         scale-saturation($viewHeaderNav_backgroundColor, -70%),
@@ -24,17 +29,13 @@
       cursor: default;
     }
 
-    & > span {
+    > span {
       display: flex;
       align-items: center;
     }
 
     @media #{$viewport_normalScreen} {
       margin-right: 0;
-    }
-
-    &:hover {
-      background: rgba(white, 0.15);
     }
 
       .icon {
