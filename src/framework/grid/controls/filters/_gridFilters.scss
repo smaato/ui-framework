@@ -1,0 +1,69 @@
+.grid__filtersContainer {
+  display: flex;
+
+  > div {
+    display: flex;
+    align-items: center;
+    height: 26px;
+    padding: 0 8px;
+    margin-right: 2px;
+    border: 1px solid shade(scale-saturation($componentBackgroundColor, 100%), 14%);
+    font-size: 11px;
+    background: shade(scale-saturation($componentBackgroundColor, 60%), 3%);
+    border-radius: 2px;
+    cursor: default;
+    color: $componentTextColor;
+  }
+}
+
+  .grid__filter {
+    // Filter name
+    strong {
+      font-weight: 400;
+    }
+
+    .remove {
+      display: flex;
+      margin-left: -$iconSide;
+      cursor: pointer;
+      background: shade(scale-saturation($componentBackgroundColor, 60%), 3%);
+      box-shadow: -10px 0 5px shade(scale-saturation($componentBackgroundColor, 60%), 3%);
+      opacity: 0;
+    }
+
+    &:hover .remove {
+      opacity: 1;
+    }
+  }
+
+    .filterTitle {
+      max-width: 100px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+  .grid__addFilter {
+    box-shadow: 60px 0 0 $componentBackgroundColor, 40px 0 0 $componentBackgroundColor;
+
+    a {
+      font-size: 16px;
+      color: $componentTextColor;
+    }
+  }
+
+    .grid__ellipsis .icon {
+      $gridFilterEllipsis_iconSize: 12px;
+      font-size: $gridFilterEllipsis_iconSize;
+      width: $gridFilterEllipsis_iconSize;
+      height: $gridFilterEllipsis_iconSize;
+      cursor: pointer;
+
+      &:before {
+        opacity: 0.6;
+      }
+
+      &:hover:before {
+        opacity: 1;
+      }
+    }

@@ -18,16 +18,15 @@ export default class GridSearch extends Component {
 
   render() {
     return (
-      <div className="grid__search">
-        <label className="grid__search__input">
-          <input
-            type="text"
-            ref="searchField"
-            onKeyUp={this.onSearch.bind(this)}
-          />
-          <span className="icon glyphicons-search"/>
-        </label>
-      </div>
+      <label className="gridSearch">
+        <input
+          className="gridSearch__input"
+          type="text"
+          ref="searchField"
+          onKeyUp={this.onSearch.bind(this)}
+        />
+        <span className="icon glyphicons-search gridSearch__icon"/>
+      </label>
     );
   }
 }

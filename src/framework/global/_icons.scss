@@ -2579,9 +2579,5 @@ $url_5: url(../../assets/icons/glyphicons-regular.svg#glyphiconsregular);
 
 [class*='glyphicons']:before,
 .glyphicons:before {
-  display: block;
-  position: absolute;
   font-family: 'Glyphicons Regular';
-  top: 0;
-  left: 0;
 }

@@ -14,6 +14,7 @@ import {
   GridBodyEditableCell,
   GridControls,
   GridEmptyRow,
+  GridFilters,
   GridKpiNegative,
   GridKpiPositive,
   GridLoadingRow,
@@ -440,6 +441,8 @@ export default class GridExample extends Component {
           <br/>
 
           <GridControls>
+            <GridFilters
+            />
             <GridSearch
               onSearch={this.onSearch.bind(this)}
             />

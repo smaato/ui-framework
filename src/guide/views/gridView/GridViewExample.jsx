@@ -206,60 +206,58 @@ export default class GridViewExample extends Component {
 
           <div className="grid__controls__liner">
 
-            <div className="grid__filtersWrapper">
-
-              <ul className="grid__filtersContainer">
-                <li className="grid__filter">
-                  <span className="filterTitle">
-                    <strong>Status:</strong> In Production
-                  </span>
-                  <a className="remove" href=""><span className="icon glyphicons-remove-2"></span></a>
-                </li>
-                <li className="grid__filter">
-                  <span className="filterTitle">
-                    <strong>Cylinders:</strong> 8+
-                  </span>
-                  <a className="remove" href=""><span className="icon glyphicons-remove-2"></span></a>
-                </li>
-                <li className="grid__filter">
-                  <span className="filterTitle">
-                    <strong>Passengers:</strong> 2+
-                  </span>
-                  <a className="remove" href="">
-                    <span className="icon glyphicons-remove-2"></span>
-                  </a>
-                </li>
-                <li className="grid__filter">
-                  <span className="filterTitle">
-                    <strong>Fuel Economy:</strong> 10mpg+
-                  </span>
-                  <a className="remove" href="">
-                    <span className="icon glyphicons-remove-2"></span>
-                  </a>
-                </li>
-                <li className="grid__filter">
-                  <span className="filterTitle">
-                    <strong>Fuel:</strong> Not Electric
-                  </span>
-                  <a className="remove" href="">
-                    <span className="icon glyphicons-remove-2"></span>
-                  </a>
-                </li>
-
-                <li className="grid__mask">
-                  <span className="mask-inner"></span>
-                </li>
-
-                <li className="grid__ellipsis">
-                  <span className="icon glyphicons-more"></span>
-                  <a className="add" href="#">+</a>
-                </li>
-
-                <li className="grid__addFilter">
-                  <a href="#">+</a>
-                </li>
-
-              </ul>
+            <div className="grid__filtersContainer">
+              <div className="grid__filter">
+                <span className="filterTitle">
+                  <strong>Status:</strong>
+                  In Production
+                </span>
+                <a className="remove" href="">
+                  <span className="icon glyphicons-remove-2"></span>
+                </a>
+              </div>
+              <div className="grid__filter">
+                <span className="filterTitle">
+                  <strong>Cylinders:</strong>
+                  8+
+                </span>
+                <a className="remove" href="">
+                  <span className="icon glyphicons-remove-2"></span>
+                </a>
+              </div>
+              <div className="grid__filter">
+                <span className="filterTitle">
+                  <strong>Passengers:</strong>
+                  2+
+                </span>
+                <a className="remove" href="">
+                  <span className="icon glyphicons-remove-2"></span>
+                </a>
+              </div>
+              <div className="grid__filter">
+                <span className="filterTitle">
+                  <strong>Fuel Economy:</strong>
+                  10mpg+
+                </span>
+                <a className="remove" href="">
+                  <span className="icon glyphicons-remove-2"></span>
+                </a>
+              </div>
+              <div className="grid__filter">
+                <span className="filterTitle">
+                  <strong>Fuel:</strong>
+                  Not Electric
+                </span>
+                <a className="remove" href="">
+                  <span className="icon glyphicons-remove-2"></span>
+                </a>
+              </div>
+              <div className="grid__addFilter">
+                <a href="#">+</a>
+              </div>
+              <div className="grid__ellipsis">
+                <span className="icon glyphicons-more"></span>
+              </div>
             </div>
 
             <div className="grid__batch">
@@ -270,14 +268,10 @@ export default class GridViewExample extends Component {
 
             </div>
 
-            <div className="grid__search">
-
-              <label className="grid__search__input">
-                <input type="text" />
-                <span className="icon glyphicons-search"></span>
-              </label>
-
-            </div>
+            <label className="gridSearch">
+              <input type="text" className="gridSearch__input" />
+              <span className="icon glyphicons-search gridSearch__icon"></span>
+            </label>
 
           </div>
 
