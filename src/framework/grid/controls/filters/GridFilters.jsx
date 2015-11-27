@@ -5,6 +5,7 @@ import React, {
 } from 'react';
 
 import IconEllipsis from '../../../iconEllipsis/IconEllipsis.jsx';
+import GridFilter from './GridFilter.jsx';
 
 export default class GridFilters extends Component {
 
@@ -12,51 +13,23 @@ export default class GridFilters extends Component {
     super(props);
   }
 
-  onSearch(event) {
-    if (event.key !== 'Enter') return;
-    const searchField = this.refs.searchField;
-    this.props.onSearch(searchField.value);
-  }
-
   render() {
+    const filters = this.props.filtersConfig.map(
+      (filter, index) =>
+      <GridFilter
+        {...filter}
+        key={index}
+        onRemove={this.props.onRemove.bind(this)}
+      />
+    );
+
     return (
       <div className="gridFilters">
-        <div className="gridFilter">
-          <span className="gridFilter__text">
-            <strong className="gridFilter__name">Status:</strong>
-            In Production
-          </span>
-          <span className="icon glyphicons-remove-2 gridFilter__remove"/>
-        </div>
-        <div className="gridFilter">
-          <span className="gridFilter__text">
-            <strong className="gridFilter__name">Cylinders:</strong>
-            8+
-          </span>
-          <span className="icon glyphicons-remove-2 gridFilter__remove"/>
-        </div>
-        <div className="gridFilter">
-          <span className="gridFilter__text">
-            <strong className="gridFilter__name">Passengers:</strong>
-            2+
-          </span>
-          <span className="icon glyphicons-remove-2 gridFilter__remove"/>
-        </div>
-        <div className="gridFilter">
-          <span className="gridFilter__text">
-            <strong className="gridFilter__name">Fuel Economy:</strong>
-            10mpg+
-          </span>
-          <span className="icon glyphicons-remove-2 gridFilter__remove"/>
-        </div>
-        <div className="gridFilter">
-          <span className="gridFilter__text">
-            <strong className="gridFilter__name">Fuel:</strong>
-            Not Electric
-          </span>
-          <span className="icon glyphicons-remove-2 gridFilter__remove"/>
-        </div>
-        <div className="gridFilter__add">+</div>
+        {filters}
+        <div
+          className="gridFilter__add"
+          onClick={() => this.props.onAdd('FilterName', 'FilterValue')}
+        >+</div>
         <div className="gridFilter__ellipsis">
           <IconEllipsis/>
         </div>
@@ -65,6 +38,8 @@ export default class GridFilters extends Component {
   }
 }
 
-GridFilters.defaultProps = {
-  onSearch: PropTypes.func.isRequired,
+GridFilters.propTypes = {
+  filtersConfig: PropTypes.array.isRequired,
+  onRemove: GridFilter.propTypes.onRemove,
+  onAdd: PropTypes.func.isRequired,
 };

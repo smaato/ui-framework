@@ -6,6 +6,10 @@ import $ from 'jquery';
 
 import Page from '../../components/page/Page.jsx';
 
+import {
+  Entity,
+} from '../../../framework/framework.js';
+
 export default class GridViewExample extends Component {
 
   constructor(props) {
@@ -208,6 +212,7 @@ export default class GridViewExample extends Component {
               <div className="gridFilter">
                 <span className="gridFilter__text">
                   <strong className="gridFilter__name">Status:</strong>
+                  {Entity.nbsp}
                   In Production
                 </span>
                 <span className="icon glyphicons-remove-2 gridFilter__remove"/>
@@ -215,6 +220,7 @@ export default class GridViewExample extends Component {
               <div className="gridFilter">
                 <span className="gridFilter__text">
                   <strong className="gridFilter__name">Cylinders:</strong>
+                  {Entity.nbsp}
                   8+
                 </span>
                 <span className="icon glyphicons-remove-2 gridFilter__remove"/>
@@ -222,6 +228,7 @@ export default class GridViewExample extends Component {
               <div className="gridFilter">
                 <span className="gridFilter__text">
                   <strong className="gridFilter__name">Passengers:</strong>
+                  {Entity.nbsp}
                   2+
                 </span>
                 <span className="icon glyphicons-remove-2 gridFilter__remove"/>
@@ -229,6 +236,7 @@ export default class GridViewExample extends Component {
               <div className="gridFilter">
                 <span className="gridFilter__text">
                   <strong className="gridFilter__name">Fuel Economy:</strong>
+                  {Entity.nbsp}
                   10mpg+
                 </span>
                 <span className="icon glyphicons-remove-2 gridFilter__remove"/>
@@ -236,6 +244,7 @@ export default class GridViewExample extends Component {
               <div className="gridFilter">
                 <span className="gridFilter__text">
                   <strong className="gridFilter__name">Fuel:</strong>
+                  {Entity.nbsp}
                   Not Electric
                 </span>
                 <span className="icon glyphicons-remove-2 gridFilter__remove"/>

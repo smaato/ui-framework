@@ -31,6 +31,6 @@ export default class GridSearch extends Component {
   }
 }
 
-GridSearch.defaultProps = {
+GridSearch.propTypes = {
   onSearch: PropTypes.func.isRequired,
 };

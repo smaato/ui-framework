@@ -77,6 +77,26 @@ export default class GridExample extends Component {
     */
   }
 
+  onFilterRemove(name) {
+    const filtersConfig = this.state.filtersConfig
+      .filter(filter => filter.name !== name);
+
+    this.setState({
+      filtersConfig,
+    });
+  }
+
+  onFilterAdd(name, value) {
+    const filtersConfig = this.state.filtersConfig.slice();
+    filtersConfig.push({
+      name,
+      value,
+    });
+    this.setState({
+      filtersConfig,
+    });
+  }
+
   // Returns a random integer between min (inclusive) and max (inclusive)
   getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -110,6 +130,23 @@ export default class GridExample extends Component {
       searchTerm: '',
       // Select all
       areAllRowsSelected: false,
+      // Filters
+      filtersConfig: [{
+        name: 'Status',
+        value: 'In Production',
+      }, {
+        name: 'Cylinders',
+        value: '8+',
+      }, {
+        name: 'Passengers',
+        value: '2+',
+      }, {
+        name: 'Fuel Economy',
+        value: '10mpg+',
+      }, {
+        name: 'Fuel',
+        value: 'Not Electric',
+      }],
     };
   }
 
@@ -442,6 +479,9 @@ export default class GridExample extends Component {
 
           <GridControls>
             <GridFilters
+              filtersConfig={this.state.filtersConfig}
+              onRemove={this.onFilterRemove.bind(this)}
+              onAdd={this.onFilterAdd.bind(this)}
             />
             <GridSearch
               onSearch={this.onSearch.bind(this)}
