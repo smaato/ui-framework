@@ -1,0 +1,13 @@
+.gridFilter__remove {
+  display: flex;
+  margin-left: -$iconSide;
+  cursor: pointer;
+  background: shade(scale-saturation($componentBackgroundColor, 60%), 3%);
+  box-shadow: -10px 0 5px shade(scale-saturation($componentBackgroundColor, 60%), 3%);
+  color: $linkColor;
+  opacity: 0;
+
+  .gridFilter:hover & {
+    opacity: 1;
+  }
+}

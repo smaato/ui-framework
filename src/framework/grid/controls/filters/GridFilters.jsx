@@ -4,8 +4,9 @@ import React, {
   PropTypes,
 } from 'react';
 
-import IconEllipsis from '../../../iconEllipsis/IconEllipsis.jsx';
+import AddFilterButton from './AddFilterButton.jsx';
 import GridFilter from './GridFilter.jsx';
+import GridFiltersEllipsis from './GridFiltersEllipsis.jsx';
 
 export default class GridFilters extends Component {
 
@@ -16,23 +17,20 @@ export default class GridFilters extends Component {
   render() {
     const filters = this.props.filtersConfig.map(
       (filter, index) =>
-      <GridFilter
-        {...filter}
-        key={index}
-        onRemove={this.props.onRemove.bind(this)}
-      />
+        <GridFilter
+          {...filter}
+          key={index}
+          onRemove={this.props.onRemove}
+        />
     );
 
     return (
       <div className="gridFilters">
         {filters}
-        <div
-          className="gridFilter__add"
-          onClick={() => this.props.onAdd('FilterName', 'FilterValue')}
-        >+</div>
-        <div className="gridFilter__ellipsis">
-          <IconEllipsis/>
-        </div>
+        <AddFilterButton
+          onAdd={this.props.onAdd}
+        />
+        <GridFiltersEllipsis/>
       </div>
     );
   }
@@ -41,5 +39,5 @@ export default class GridFilters extends Component {
 GridFilters.propTypes = {
   filtersConfig: PropTypes.array.isRequired,
   onRemove: GridFilter.propTypes.onRemove,
-  onAdd: PropTypes.func.isRequired,
+  onAdd: AddFilterButton.propTypes.onAdd,
 };

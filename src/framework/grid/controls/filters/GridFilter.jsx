@@ -5,6 +5,7 @@ import React, {
 } from 'react';
 
 import Entity from '../../../services/Entity.js';
+import RemoveFilterButton from './RemoveFilterButton.jsx';
 
 export default class GridFilter extends Component {
 
@@ -27,11 +28,9 @@ export default class GridFilter extends Component {
           {Entity.nbsp}
           {this.props.value}
         </span>
-        <span
-          className="icon glyphicons-remove-2 gridFilter__remove"
-          onClick={() => {
-            this.props.onRemove.bind(this)(this.props.name);
-          }}
+        <RemoveFilterButton
+          name={this.props.name}
+          onRemove={this.props.onRemove}
         />
       </div>
     );
@@ -41,5 +40,5 @@ export default class GridFilter extends Component {
 GridFilter.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.any.isRequired,
-  onRemove: PropTypes.func.isRequired,
+  onRemove: RemoveFilterButton.propTypes.onRemove,
 };
