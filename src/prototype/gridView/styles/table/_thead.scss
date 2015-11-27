@@ -44,11 +44,11 @@
       vertical-align: middle;
       &:nth-child(1) {
         width: 1%;
-        a, .checkboxWrapper { padding-left: 15px; }
+        a, .p-checkboxWrapper { padding-left: 15px; }
       }
       &:last-child {
         width: 1%;
-        a, .checkboxWrapper { padding-right: 15px; }
+        a, .p-checkboxWrapper { padding-right: 15px; }
       }
       &.sortable {
         span.arrowDown, span.arrowUp { display: none; }
@@ -73,7 +73,7 @@
         display: block;
         z-index: 6;
         @extend .dataTable__theadBG;
-        a, .checkboxWrapper {
+        a, .p-checkboxWrapper {
           font-size: 12px;
           font-weight: 300;
           color: tint($componentTextColor, 10%);
@@ -86,7 +86,7 @@
           text-overflow: ellipsis;
           max-width: 90px;
           vertical-align: middle;
-          .checkbox__faux__input {
+          .p-checkbox__faux__input {
             display: inline-block;
             vertical-align: middle;
             margin: 9px 0 0;

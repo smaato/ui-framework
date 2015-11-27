@@ -1117,7 +1117,7 @@ textarea {
   content: '\E206';
 }
 
-.glyphicons-ok-2:before, .checkbox__faux__input:before, .checkbox__faux__input:after {
+.glyphicons-ok-2:before, .checkbox__input:checked + .checkbox__faux__input:before, .checkbox__input:checked + .checkbox__faux__input:after {
   content: '\E207';
 }
 
@@ -2740,8 +2740,8 @@ textarea {
 
 [class*='glyphicons']:before,
 .glyphicons:before,
-.checkbox__faux__input:before,
-.checkbox__faux__input:after,
+.checkbox__input:checked + .checkbox__faux__input:before,
+.checkbox__input:checked + .checkbox__faux__input:after,
 .grid__body__cellValue--editable:before {
   font-family: 'Glyphicons Regular';
 }
@@ -2915,53 +2915,58 @@ body {
 }
 
 .checkboxWrapper {
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: inline-block;
   vertical-align: middle;
 }
 
 .checkbox__input {
   display: none;
 }
+
+.checkbox__faux__input {
+  display: block;
+  position: relative;
+  width: 12px;
+  height: 12px;
+  line-height: 12px;
+  border: 1px solid #c5cbcd;
+  border-radius: 2px;
+  cursor: pointer;
+  background: #feffff;
+  box-shadow: inset 0 1px 0 #eaedee;
+}
+.checkbox__faux__input:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
 .checkbox__input:checked + .checkbox__faux__input {
   background: #26a3d2;
   border-color: #26a3d2;
   box-shadow: 0 0 0 transparent;
 }
+.checkbox__input:checked + .checkbox__faux__input:before, .checkbox__input:checked + .checkbox__faux__input:after {
+  font-size: 8px;
+  color: transparent;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
 .checkbox__input:checked + .checkbox__faux__input:before {
+  top: 0;
   color: #fdfeff;
 }
 .checkbox__input:checked + .checkbox__faux__input:after {
+  top: -2px;
   color: #26a3d2;
-}
-
-.checkbox__faux__input {
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  margin: 0;
-  background: #feffff;
-  border: 1px solid #c5cbcd;
-  border-radius: 2px;
-  box-shadow: inset 0 1px 0 #eaedee;
-  width: 12px;
-  height: 12px;
-}
-.checkbox__faux__input:before, .checkbox__faux__input:after {
-  line-height: 10px;
-  font-size: 8px;
-  margin: 0 0 0 1px;
-}
-.checkbox__faux__input:before {
-  color: transparent;
-}
-.checkbox__faux__input:after {
-  color: transparent;
-  margin-top: -2px;
-}
-.checkbox__faux__input:hover {
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .grid__controls {
