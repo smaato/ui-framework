@@ -1,7 +1,7 @@
 $checkedColor: tint(scale-saturation($blue, 30%), 5%);
 
 .checkboxWrapper {
-  display: inline-block;
+  display: inline-flex;
   vertical-align: middle;
 }
 

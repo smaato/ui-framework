@@ -2915,7 +2915,9 @@ body {
 }
 
 .checkboxWrapper {
-  display: inline-block;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   vertical-align: middle;
 }
 
@@ -3028,12 +3030,15 @@ body {
   font-size: 10px;
 }
 
-.grid__filtersContainer {
+.gridFilters {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
-.grid__filtersContainer > div {
+
+.gridFilter,
+.gridFilter__add,
+.gridFilter__ellipsis {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -3051,10 +3056,18 @@ body {
   color: #5e6162;
 }
 
-.grid__filter strong {
+.gridFilter__text {
+  max-width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.gridFilter__name {
   font-weight: 400;
 }
-.grid__filter .remove {
+
+.gridFilter__remove {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -3062,37 +3075,28 @@ body {
   cursor: pointer;
   background: #eef4f5;
   box-shadow: -10px 0 5px #eef4f5;
+  color: #2799c4;
   opacity: 0;
 }
-.grid__filter:hover .remove {
+.gridFilter:hover .gridFilter__remove {
   opacity: 1;
 }
 
-.filterTitle {
-  max-width: 100px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.grid__addFilter {
-  box-shadow: 60px 0 0 #f7fafb, 40px 0 0 #f7fafb;
-}
-.grid__addFilter a {
+.gridFilter__add {
   font-size: 16px;
-  color: #5e6162;
-}
-
-.grid__ellipsis .icon {
-  font-size: 12px;
-  width: 12px;
-  height: 12px;
+  box-shadow: 60px 0 0 #f7fafb, 40px 0 0 #f7fafb;
   cursor: pointer;
 }
-.grid__ellipsis .icon:before {
+
+.gridFilter__ellipsis .icon {
+  font-size: 12px;
+  width: auto;
+  cursor: pointer;
+}
+.gridFilter__ellipsis .icon:before {
   opacity: 0.6;
 }
-.grid__ellipsis .icon:hover:before {
+.gridFilter__ellipsis .icon:hover:before {
   opacity: 1;
 }
 

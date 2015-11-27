@@ -203,76 +203,58 @@ export default class GridViewExample extends Component {
         </div>
 
         <div className="grid__controls">
-
           <div className="grid__controls__liner">
-
-            <div className="grid__filtersContainer">
-              <div className="grid__filter">
-                <span className="filterTitle">
-                  <strong>Status:</strong>
+            <div className="gridFilters">
+              <div className="gridFilter">
+                <span className="gridFilter__text">
+                  <strong className="gridFilter__name">Status:</strong>
                   In Production
                 </span>
-                <a className="remove" href="">
-                  <span className="icon glyphicons-remove-2"></span>
-                </a>
+                <span className="icon glyphicons-remove-2 gridFilter__remove"/>
               </div>
-              <div className="grid__filter">
-                <span className="filterTitle">
-                  <strong>Cylinders:</strong>
+              <div className="gridFilter">
+                <span className="gridFilter__text">
+                  <strong className="gridFilter__name">Cylinders:</strong>
                   8+
                 </span>
-                <a className="remove" href="">
-                  <span className="icon glyphicons-remove-2"></span>
-                </a>
+                <span className="icon glyphicons-remove-2 gridFilter__remove"/>
               </div>
-              <div className="grid__filter">
-                <span className="filterTitle">
-                  <strong>Passengers:</strong>
+              <div className="gridFilter">
+                <span className="gridFilter__text">
+                  <strong className="gridFilter__name">Passengers:</strong>
                   2+
                 </span>
-                <a className="remove" href="">
-                  <span className="icon glyphicons-remove-2"></span>
-                </a>
+                <span className="icon glyphicons-remove-2 gridFilter__remove"/>
               </div>
-              <div className="grid__filter">
-                <span className="filterTitle">
-                  <strong>Fuel Economy:</strong>
+              <div className="gridFilter">
+                <span className="gridFilter__text">
+                  <strong className="gridFilter__name">Fuel Economy:</strong>
                   10mpg+
                 </span>
-                <a className="remove" href="">
-                  <span className="icon glyphicons-remove-2"></span>
-                </a>
+                <span className="icon glyphicons-remove-2 gridFilter__remove"/>
               </div>
-              <div className="grid__filter">
-                <span className="filterTitle">
-                  <strong>Fuel:</strong>
+              <div className="gridFilter">
+                <span className="gridFilter__text">
+                  <strong className="gridFilter__name">Fuel:</strong>
                   Not Electric
                 </span>
-                <a className="remove" href="">
-                  <span className="icon glyphicons-remove-2"></span>
-                </a>
+                <span className="icon glyphicons-remove-2 gridFilter__remove"/>
               </div>
-              <div className="grid__addFilter">
-                <a href="#">+</a>
-              </div>
-              <div className="grid__ellipsis">
-                <span className="icon glyphicons-more"></span>
+              <div className="gridFilter__add">+</div>
+              <div className="gridFilter__ellipsis">
+                <div className="icon glyphicons-more"></div>
               </div>
             </div>
-
             <div className="grid__batch">
-
               <a href="" className="grid__batch__button disabled">
-                <span className="icon glyphicons-new-window"></span>Actions
+                <span className="icon glyphicons-new-window"/>
+                Actions
               </a>
-
             </div>
-
             <label className="gridSearch">
-              <input type="text" className="gridSearch__input" />
-              <span className="icon glyphicons-search gridSearch__icon"></span>
+              <input type="text" className="gridSearch__input"/>
+              <span className="icon glyphicons-search gridSearch__icon"/>
             </label>
-
           </div>
 
         </div>
