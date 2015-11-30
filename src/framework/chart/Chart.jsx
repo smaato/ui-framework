@@ -33,8 +33,10 @@ export default class LineChart extends Component {
 
     const $node = $(ReactDOM.findDOMNode(this));
     const svg = d3.select($node.find('svg')[0]);
+    const marginLeft = this.props.yAxisLabelWidth;
+
     this.container = svg.append('g')
-      .attr('transform', 'translate(' + this.props.marginLeft + ',' + this.margin.top + ')');
+      .attr('transform', 'translate(' + marginLeft + ',' + this.margin.top + ')');
   }
 
   shouldComponentUpdate(nextProps) {
@@ -60,12 +62,12 @@ export default class LineChart extends Component {
       data,
       dateRange,
       dateFormat,
-      yRange,
+      yAxisRange,
       yAxisFormat,
-      marginLeft,
       height,
     } = props;
 
+    const marginLeft = this.props.yAxisLabelWidth;
     const marginRight = this.margin.right;
     const marginTop = this.margin.top;
     const marginBottom = this.margin.bottom;
@@ -74,7 +76,7 @@ export default class LineChart extends Component {
     const width = $node.width();
     const svg = d3.select($node.find('svg')[0]);
 
-    const duration = updateImmediately ? 0 : this.props.duration;
+    const transitionDuration = updateImmediately ? 0 : this.props.transitionDuration;
 
     // Set the correct dimensions.
     $node.css('height', height);
@@ -114,7 +116,7 @@ export default class LineChart extends Component {
     } else {
       this.xAxis
         .transition()
-        .duration(duration)
+        .duration(transitionDuration)
         .attr('transform', `translate(0, ${xAxisTransform})`)
         .call(xAxis)
         .call(styleXAxis);
@@ -123,7 +125,7 @@ export default class LineChart extends Component {
     // Create linear scale for Y axis.
     const yAxisScale = d3.scale.linear()
       .range([height - marginTop - marginBottom, 0])
-      .domain(yRange);
+      .domain(yAxisRange);
 
     // Create Y axis.
     const yAxis = d3.svg.axis()
@@ -169,7 +171,7 @@ export default class LineChart extends Component {
       } else {
         this.yAxis
           .transition()
-          .duration(duration)
+          .duration(transitionDuration)
           .call(yAxis)
            // Cancel transition on customized attributes
           .selectAll('text')
@@ -179,11 +181,11 @@ export default class LineChart extends Component {
       this.yAxis.call(styleYAxis);
     }
 
-    // Create a line generator for mapping date to temperature.
+    // Create a line generator for mapping date to Y axis value.
     const lineGenerator = d3.svg.line()
       .interpolate('basis')
       .x(item => xAxisScale(item.date))
-      .y(item => yAxisScale(item.temperature));
+      .y(item => yAxisScale(item.yValue));
 
     // Bind data to lines.
     const lines = this.container.selectAll('.chartLine')
@@ -192,7 +194,7 @@ export default class LineChart extends Component {
 
     // Transition from previous lines to new lines.
     lines.transition()
-      .duration(duration)
+      .duration(transitionDuration)
       .attr('d', item => lineGenerator(item.values))
       .style('stroke', (d, i) => data[i].color);
 
@@ -221,17 +223,17 @@ export default class LineChart extends Component {
 }
 
 LineChart.propTypes = {
-  duration: PropTypes.number,
-  yAxisFormat: PropTypes.func,
-  marginLeft: PropTypes.number,
   data: PropTypes.array.isRequired,
   dateRange: PropTypes.array.isRequired,
-  yRange: PropTypes.array.isRequired,
   dateFormat: PropTypes.func.isRequired,
+  yAxisRange: PropTypes.array.isRequired,
+  yAxisFormat: PropTypes.func,
+  yAxisLabelWidth: PropTypes.number,
   height: PropTypes.number.isRequired,
+  transitionDuration: PropTypes.number,
 };
 
 LineChart.defaultProps = {
-  duration: 1000,
-  marginLeft: 20,
+  yAxisLabelWidth: 20,
+  transitionDuration: 1000,
 };

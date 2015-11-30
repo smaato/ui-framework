@@ -69,7 +69,7 @@ export default class ChartExample extends Component {
           // Store formatted data point.
           chartData[index].values.push({
             date,
-            temperature,
+            yValue: temperature,
           });
 
           // Derive ranges.
@@ -128,9 +128,9 @@ export default class ChartExample extends Component {
             data={this.state.chartData}
             dateRange={[this.state.minDate, this.state.maxDate]}
             dateFormat={d3.time.months}
-            yRange={[this.state.minTemperature, this.state.maxTemperature]}
+            yAxisRange={[this.state.minTemperature, this.state.maxTemperature]}
             yAxisFormat={formatTemperature}
-            marginLeft={36}
+            yAxisLabelWidth={36}
             height={this.state.chartHeight}
           />
         </Example>
