@@ -3041,9 +3041,9 @@ body {
   display: flex;
 }
 
-.gridFilter,
-.gridFilter__add,
-.gridFilter__ellipsis {
+.gridSelectedFilter,
+.addFilterButton,
+.gridFiltersEllipsis {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -3051,7 +3051,8 @@ body {
       -ms-flex-align: center;
           align-items: center;
   height: 26px;
-  padding: 0 8px;
+  padding-left: 8px;
+  padding-right: 8px;
   margin-right: 2px;
   border: 1px solid #d1dadb;
   font-size: 11px;
@@ -3061,18 +3062,18 @@ body {
   color: #5e6162;
 }
 
-.gridFilter__text {
+.gridSelectedFilter__text {
   max-width: 100px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.gridFilter__name {
+.gridSelectedFilter__name {
   font-weight: 400;
 }
 
-.gridFilter__remove {
+.removeFilterButton {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -3083,26 +3084,68 @@ body {
   color: #2799c4;
   opacity: 0;
 }
-.gridFilter:hover .gridFilter__remove {
+.gridSelectedFilter:hover .removeFilterButton {
   opacity: 1;
 }
 
-.gridFilter__add {
+.addFilterButton {
+  position: relative;
   font-size: 16px;
-  box-shadow: 60px 0 0 #f7fafb, 40px 0 0 #f7fafb;
   cursor: pointer;
 }
+.addFilterButton.addFilterButton--dropdown-opened {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
 
-.gridFilter__ellipsis .icon {
+.gridFiltersEllipsis .icon {
   font-size: 12px;
   width: auto;
   cursor: pointer;
 }
-.gridFilter__ellipsis .icon:before {
+.gridFiltersEllipsis .icon:before {
   opacity: 0.6;
 }
-.gridFilter__ellipsis .icon:hover:before {
+.gridFiltersEllipsis .icon:hover:before {
   opacity: 1;
+}
+
+.gridAddFilterDropdown {
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  z-index: 1;
+  padding: 8px;
+  background: #eef4f5;
+  font-size: 11px;
+  border: 1px solid #d1dadb;
+  border-radius: 0 2px 2px;
+}
+
+.gridAllFilters__item {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+.gridAllFilters__item:not(:last-child) {
+  border-bottom: 1px solid #d1dadb;
+}
+
+.filterValueEditor__filterName {
+  font-weight: 400;
+}
+
+.filterValueEditor__filterName,
+.filterValueEditor__filterValueWrap {
+  margin-bottom: 4px;
+}
+
+.filterValueEditor__buttons {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .gridSearch {

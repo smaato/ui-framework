@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 
 import AddFilterButton from './AddFilterButton.jsx';
-import GridFilter from './GridFilter.jsx';
+import GridSelectedFilter from './GridSelectedFilter.jsx';
 import GridFiltersEllipsis from './GridFiltersEllipsis.jsx';
 
 export default class GridFilters extends Component {
@@ -15,9 +15,9 @@ export default class GridFilters extends Component {
   }
 
   render() {
-    const filters = this.props.filtersConfig.map(
+    const selectedFilters = this.props.selectedFilters.map(
       (filter, index) =>
-        <GridFilter
+        <GridSelectedFilter
           {...filter}
           key={index}
           onRemove={this.props.onRemove}
@@ -26,9 +26,10 @@ export default class GridFilters extends Component {
 
     return (
       <div className="gridFilters">
-        {filters}
+        {selectedFilters}
         <AddFilterButton
           onAdd={this.props.onAdd}
+          allFilters={this.props.allFilters}
         />
         <GridFiltersEllipsis/>
       </div>
@@ -37,7 +38,8 @@ export default class GridFilters extends Component {
 }
 
 GridFilters.propTypes = {
-  filtersConfig: PropTypes.array.isRequired,
-  onRemove: GridFilter.propTypes.onRemove,
+  selectedFilters: PropTypes.array,
+  allFilters: AddFilterButton.propTypes.allFilters,
+  onRemove: GridSelectedFilter.propTypes.onRemove,
   onAdd: AddFilterButton.propTypes.onAdd,
 };

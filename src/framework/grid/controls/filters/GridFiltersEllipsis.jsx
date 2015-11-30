@@ -5,7 +5,7 @@ import IconEllipsis from '../../../iconEllipsis/IconEllipsis.jsx';
 
 const GridFiltersEllipsis = () => {
   return (
-    <div className="gridFilter__ellipsis">
+    <div className="gridFiltersEllipsis">
       <IconEllipsis/>
     </div>
   );

@@ -7,7 +7,7 @@ import React, {
 import Entity from '../../../services/Entity.js';
 import RemoveFilterButton from './RemoveFilterButton.jsx';
 
-export default class GridFilter extends Component {
+export default class GridSelectedFilter extends Component {
 
   constructor(props) {
     super(props);
@@ -17,12 +17,12 @@ export default class GridFilter extends Component {
     const title = `${this.props.name}: ${this.props.value}`;
 
     return (
-      <div className="gridFilter">
+      <div className="gridSelectedFilter">
         <span
-          className="gridFilter__text"
+          className="gridSelectedFilter__text"
           title={title}
         >
-          <strong className="gridFilter__name">
+          <strong className="gridSelectedFilter__name">
             {this.props.name}:
           </strong>
           {Entity.nbsp}
@@ -37,7 +37,7 @@ export default class GridFilter extends Component {
   }
 }
 
-GridFilter.propTypes = {
+GridSelectedFilter.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.any.isRequired,
   onRemove: RemoveFilterButton.propTypes.onRemove,

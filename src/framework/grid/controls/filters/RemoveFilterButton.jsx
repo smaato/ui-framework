@@ -13,7 +13,7 @@ export default class RemoveFilterButton extends Component {
   render() {
     return (
       <span
-        className="icon glyphicons-remove-2 gridFilter__remove"
+        className="icon glyphicons-remove-2 removeFilterButton"
         onClick={() => this.props.onRemove(this.props.name)}
       />
     );

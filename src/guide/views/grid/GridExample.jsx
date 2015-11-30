@@ -78,22 +78,22 @@ export default class GridExample extends Component {
   }
 
   onFilterRemove(name) {
-    const filtersConfig = this.state.filtersConfig
+    const selectedFilters = this.state.selectedFilters
       .filter(filter => filter.name !== name);
 
     this.setState({
-      filtersConfig,
+      selectedFilters,
     });
   }
 
   onFilterAdd(name, value) {
-    const filtersConfig = this.state.filtersConfig.slice();
-    filtersConfig.push({
+    const selectedFilters = this.state.selectedFilters.slice();
+    selectedFilters.push({
       name,
       value,
     });
     this.setState({
-      filtersConfig,
+      selectedFilters,
     });
   }
 
@@ -131,22 +131,7 @@ export default class GridExample extends Component {
       // Select all
       areAllRowsSelected: false,
       // Filters
-      filtersConfig: [{
-        name: 'Status',
-        value: 'In Production',
-      }, {
-        name: 'Cylinders',
-        value: '8+',
-      }, {
-        name: 'Passengers',
-        value: '2+',
-      }, {
-        name: 'Fuel Economy',
-        value: '10mpg+',
-      }, {
-        name: 'Fuel',
-        value: 'Not Electric',
-      }],
+      selectedFilters: [],
     };
   }
 
@@ -460,6 +445,10 @@ export default class GridExample extends Component {
       loadingRow = <GridLoadingRow />;
     }
 
+    const allFilters = this.state.bodyRows.length ?
+      Object.keys(this.state.bodyRows[0]) :
+      [];
+
     return (
       <Page title={this.props.route.name}>
 
@@ -479,7 +468,8 @@ export default class GridExample extends Component {
 
           <GridControls>
             <GridFilters
-              filtersConfig={this.state.filtersConfig}
+              selectedFilters={this.state.selectedFilters}
+              allFilters={allFilters}
               onRemove={this.onFilterRemove.bind(this)}
               onAdd={this.onFilterAdd.bind(this)}
             />

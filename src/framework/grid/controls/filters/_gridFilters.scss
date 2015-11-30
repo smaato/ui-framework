@@ -1,19 +1,26 @@
+$gridSelectedFilter_backgroundColor: shade(scale-saturation($componentBackgroundColor, 60%), 3%);
+$gridSelectedFilter_borderColor: shade(scale-saturation($componentBackgroundColor, 100%), 14%);
+$gridSelectedFilter_borderRadius: 2px;
+$gridSelectedFilter_paddingHorizontal: 8px;
+$gridSelectedFilter_fontSize: 11px;
+
 .gridFilters {
   display: flex;
 }
 
-  .gridFilter,
-  .gridFilter__add,
-  .gridFilter__ellipsis {
+  .gridSelectedFilter,
+  .addFilterButton,
+  .gridFiltersEllipsis {
     display: flex;
     align-items: center;
     height: 26px;
-    padding: 0 8px;
+    padding-left: $gridSelectedFilter_paddingHorizontal;
+    padding-right: $gridSelectedFilter_paddingHorizontal;
     margin-right: 2px;
-    border: 1px solid shade(scale-saturation($componentBackgroundColor, 100%), 14%);
+    border: 1px solid $gridSelectedFilter_borderColor;
     font-size: 11px;
-    background: shade(scale-saturation($componentBackgroundColor, 60%), 3%);
-    border-radius: 2px;
+    background: $gridSelectedFilter_backgroundColor;
+    border-radius: $gridSelectedFilter_borderRadius;
     cursor: default;
     color: $componentTextColor;
   }

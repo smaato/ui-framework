@@ -1,5 +1,10 @@
-.gridFilter__add {
+.addFilterButton {
+  position: relative;
   font-size: 16px;
-  box-shadow: 60px 0 0 $componentBackgroundColor, 40px 0 0 $componentBackgroundColor;
   cursor: pointer;
+
+  &.addFilterButton--dropdown-opened {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 }

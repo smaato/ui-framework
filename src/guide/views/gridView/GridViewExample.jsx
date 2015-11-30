@@ -209,48 +209,48 @@ export default class GridViewExample extends Component {
         <div className="grid__controls">
           <div className="grid__controls__liner">
             <div className="gridFilters">
-              <div className="gridFilter">
-                <span className="gridFilter__text">
-                  <strong className="gridFilter__name">Status:</strong>
+              <div className="gridSelectedFilter">
+                <span className="gridSelectedFilter__text">
+                  <strong className="gridSelectedFilter__name">Status:</strong>
                   {Entity.nbsp}
                   In Production
                 </span>
-                <span className="icon glyphicons-remove-2 gridFilter__remove"/>
+                <span className="icon glyphicons-remove-2 removeFilterButton"/>
               </div>
-              <div className="gridFilter">
-                <span className="gridFilter__text">
-                  <strong className="gridFilter__name">Cylinders:</strong>
+              <div className="gridSelectedFilter">
+                <span className="gridSelectedFilter__text">
+                  <strong className="gridSelectedFilter__name">Cylinders:</strong>
                   {Entity.nbsp}
                   8+
                 </span>
-                <span className="icon glyphicons-remove-2 gridFilter__remove"/>
+                <span className="icon glyphicons-remove-2 removeFilterButton"/>
               </div>
-              <div className="gridFilter">
-                <span className="gridFilter__text">
-                  <strong className="gridFilter__name">Passengers:</strong>
+              <div className="gridSelectedFilter">
+                <span className="gridSelectedFilter__text">
+                  <strong className="gridSelectedFilter__name">Passengers:</strong>
                   {Entity.nbsp}
                   2+
                 </span>
-                <span className="icon glyphicons-remove-2 gridFilter__remove"/>
+                <span className="icon glyphicons-remove-2 removeFilterButton"/>
               </div>
-              <div className="gridFilter">
-                <span className="gridFilter__text">
-                  <strong className="gridFilter__name">Fuel Economy:</strong>
+              <div className="gridSelectedFilter">
+                <span className="gridSelectedFilter__text">
+                  <strong className="gridSelectedFilter__name">Fuel Economy:</strong>
                   {Entity.nbsp}
                   10mpg+
                 </span>
-                <span className="icon glyphicons-remove-2 gridFilter__remove"/>
+                <span className="icon glyphicons-remove-2 removeFilterButton"/>
               </div>
-              <div className="gridFilter">
-                <span className="gridFilter__text">
-                  <strong className="gridFilter__name">Fuel:</strong>
+              <div className="gridSelectedFilter">
+                <span className="gridSelectedFilter__text">
+                  <strong className="gridSelectedFilter__name">Fuel:</strong>
                   {Entity.nbsp}
                   Not Electric
                 </span>
-                <span className="icon glyphicons-remove-2 gridFilter__remove"/>
+                <span className="icon glyphicons-remove-2 removeFilterButton"/>
               </div>
-              <div className="gridFilter__add">+</div>
-              <div className="gridFilter__ellipsis">
+              <div className="addFilterButton">+</div>
+              <div className="gridFiltersEllipsis">
                 <div className="icon glyphicons-more"></div>
               </div>
             </div>

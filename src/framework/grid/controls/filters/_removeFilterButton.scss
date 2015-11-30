@@ -1,4 +1,4 @@
-.gridFilter__remove {
+.removeFilterButton {
   display: flex;
   margin-left: -$iconSide;
   cursor: pointer;
@@ -7,7 +7,7 @@
   color: $linkColor;
   opacity: 0;
 
-  .gridFilter:hover & {
+  .gridSelectedFilter:hover & {
     opacity: 1;
   }
 }
