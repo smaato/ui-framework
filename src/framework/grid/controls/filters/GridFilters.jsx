@@ -6,7 +6,7 @@ import React, {
 
 import AddFilterButton from './AddFilterButton.jsx';
 import GridSelectedFilter from './GridSelectedFilter.jsx';
-import GridFiltersEllipsis from './GridFiltersEllipsis.jsx';
+// import GridFiltersEllipsis from './GridFiltersEllipsis.jsx';
 
 export default class GridFilters extends Component {
 
@@ -31,7 +31,8 @@ export default class GridFilters extends Component {
           onAdd={this.props.onAdd}
           allFilters={this.props.allFilters}
         />
-        <GridFiltersEllipsis/>
+        {/* TODO: Unclear requirements for this feature */}
+        {/* <GridFiltersEllipsis/> */}
       </div>
     );
   }

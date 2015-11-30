@@ -13,7 +13,7 @@ export default class AddFilterDropdown extends Component {
     };
   }
 
-  onFilterNameClick(filterName) {
+  onFilterNameSelect(filterName) {
     this.setState({
       selectedFilterName: filterName,
     });
@@ -32,7 +32,7 @@ export default class AddFilterDropdown extends Component {
           className="gridAllFilters__item"
           key={index}
           onClick={() => {
-            this.onFilterNameClick.bind(this)(filterName);
+            this.onFilterNameSelect.bind(this)(filterName);
           }}
         >
           {filterName}

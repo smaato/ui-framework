@@ -387,19 +387,39 @@ export default class GridExample extends Component {
       ),
     ];
 
+    function normalizeValue(value) {
+      return value.toString().trim().toLowerCase();
+    }
+
+    const allFilters = this.state.bodyRows.length ?
+      Object.keys(this.state.bodyRows[0]) :
+      [];
+
+    function filterRows(rows, filters) {
+      return rows.filter(row =>
+        filters.every(filter => {
+          const normalizedRowValue = normalizeValue(row[filter.name]);
+          const normalizedFilterValue = normalizeValue(filter.value);
+          return normalizedRowValue.indexOf(normalizedFilterValue) !== -1;
+        })
+      );
+    }
+
+    const filteredBodyRows = filterRows(this.state.bodyRows, this.state.selectedFilters);
+
     function search(rows, term) {
-      const normalizedTerm = term.trim().toLowerCase();
+      const normalizedTerm = normalizeValue(term);
       return rows.filter(row =>
         // It will return true when 1st match is found, otherwise false
         Object.keys(row).some(key => {
-          const cellValue = row[key].toString().trim().toLowerCase();
+          const cellValue = normalizeValue(row[key]);
           const isTermFound = cellValue.indexOf(normalizedTerm) !== -1;
           return isTermFound;
         })
       );
     }
 
-    const foundBodyRows = search(this.state.bodyRows, this.state.searchTerm);
+    const foundBodyRows = search(filteredBodyRows, this.state.searchTerm);
 
     function onSort(cellIndex) {
       const isSortDesc = this.state.sortedColumnIndex === cellIndex ?
@@ -444,10 +464,6 @@ export default class GridExample extends Component {
     if (this.state.isLoadingBodyRows && !this.state.isInitialLoad && !this.state.isEmpty) {
       loadingRow = <GridLoadingRow />;
     }
-
-    const allFilters = this.state.bodyRows.length ?
-      Object.keys(this.state.bodyRows[0]) :
-      [];
 
     return (
       <Page title={this.props.route.name}>
