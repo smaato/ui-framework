@@ -14,6 +14,12 @@ export default class AddFilterButton extends Component {
     };
   }
 
+  onClick() {
+    this.setState({
+      isDropdownOpen: !this.state.isDropdownOpen,
+    });
+  }
+
   render() {
     const dropdown = this.state.isDropdownOpen ?
       <AddFilterDropdown
@@ -36,11 +42,7 @@ export default class AddFilterButton extends Component {
     return (
       <div
         className={rootClass}
-        onClick={()=>{
-          this.setState({
-            isDropdownOpen: !this.state.isDropdownOpen,
-          });
-        }}
+        onClick={this.onClick.bind(this)}
       >
         +
         {dropdown}

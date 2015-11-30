@@ -4,6 +4,8 @@ import React, {
   PropTypes,
 } from 'react';
 
+import AddFilterValue from './AddFilterValue.jsx';
+
 export default class AddFilterDropdown extends Component {
 
   constructor(props) {
@@ -26,60 +28,30 @@ export default class AddFilterDropdown extends Component {
   }
 
   render() {
-    const allFilters = this.props.allFilters.map((filterName, index) => {
-      return (
-        <div
-          className="gridAllFilters__item"
-          key={index}
-          onClick={() => {
-            this.onFilterNameSelect.bind(this)(filterName);
-          }}
-        >
-          {filterName}
-        </div>
-      );
-    });
-
-    const filterValueView = (
-      <div className="filterValueEditor">
-        <div className="filterValueEditor__filterName">
-          {this.state.selectedFilterName}
-        </div>
-        <div className="filterValueEditor__filterValueWrap">
-          <input
-            ref="filterValue"
-            type="text"
-            className="filterValueEditor__filterValue"
-          />
-        </div>
-        <div className="filterValueEditor__buttons">
-          <button onClick={this.onBackToAllFiltersClick.bind(this)}>
-            &lt; Back
-          </button>
-          <button
-            onClick={() => {
-              const filterValue = this.refs.filterValue.value;
-              if (!filterValue) {
-                return;
-              }
-              this.props.onAdd(
-                this.state.selectedFilterName,
-                filterValue
-              );
-              this.setState({
-                selectedFilterName: null,
-              });
-            }}
-          >
-            + Add
-          </button>
-        </div>
+    const filterNames = this.props.allFilters.map((filterName, index) => (
+      <div
+        className="gridAllFilters__item"
+        key={index}
+        onClick={() => this.onFilterNameSelect.bind(this)(filterName)}
+      >
+        {filterName}
       </div>
+    ));
+
+    const filterValue = (
+      <AddFilterValue
+        filterName={this.state.selectedFilterName}
+        onBack={this.onBackToAllFiltersClick.bind(this)}
+      />
     );
 
     return (
-      <div className="gridAddFilterDropdown" onClick={event => event.stopPropagation()}>
-        {!this.state.selectedFilterName ? allFilters : filterValueView}
+      <div
+        className="addFilterDropdown"
+        // Since it is inside AddFilterButton, which has it's own onClick
+        onClick={event => event.stopPropagation()}
+      >
+        {!this.state.selectedFilterName ? filterNames : filterValue}
       </div>
     );
   }

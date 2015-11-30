@@ -1,4 +1,4 @@
-.gridAddFilterDropdown {
+.addFilterDropdown {
   position: absolute;
   top: 100%;
   left: -1px;
@@ -8,27 +8,16 @@
   font-size: $gridSelectedFilter_fontSize;
   border: 1px solid $gridSelectedFilter_borderColor;
   border-radius: 0 $gridSelectedFilter_borderRadius $gridSelectedFilter_borderRadius;
+  // Reset inherited
+  cursor: default;
 }
 
   .gridAllFilters__item {
     padding-top: $gridSelectedFilter_paddingHorizontal / 2;
     padding-bottom: $gridSelectedFilter_paddingHorizontal / 2;
+    cursor: pointer;
 
     &:not(:last-child) {
       border-bottom: 1px solid $gridSelectedFilter_borderColor;
     }
-  }
-
-  .filterValueEditor__filterName {
-    font-weight: 400;
-  }
-
-  .filterValueEditor__filterName,
-  .filterValueEditor__filterValueWrap {
-    margin-bottom: $gridSelectedFilter_paddingHorizontal / 2;
-  }
-
-  .filterValueEditor__buttons {
-    display: flex;
-    justify-content: space-between;
   }

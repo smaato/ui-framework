@@ -3110,7 +3110,7 @@ body {
   opacity: 1;
 }
 
-.gridAddFilterDropdown {
+.addFilterDropdown {
   position: absolute;
   top: 100%;
   left: -1px;
@@ -3120,26 +3120,28 @@ body {
   font-size: 11px;
   border: 1px solid #d1dadb;
   border-radius: 0 2px 2px;
+  cursor: default;
 }
 
 .gridAllFilters__item {
   padding-top: 4px;
   padding-bottom: 4px;
+  cursor: pointer;
 }
 .gridAllFilters__item:not(:last-child) {
   border-bottom: 1px solid #d1dadb;
 }
 
-.filterValueEditor__filterName {
+.addFilterValue__filterName {
   font-weight: 400;
 }
 
-.filterValueEditor__filterName,
-.filterValueEditor__filterValueWrap {
+.addFilterValue__filterName,
+.addFilterValue__filterValueWrapper {
   margin-bottom: 4px;
 }
 
-.filterValueEditor__buttons {
+.addFilterValue__buttons {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
