@@ -3123,12 +3123,12 @@ body {
   cursor: default;
 }
 
-.gridAllFilters__item {
+.addFilterName {
   padding-top: 4px;
   padding-bottom: 4px;
   cursor: pointer;
 }
-.gridAllFilters__item:not(:last-child) {
+.addFilterName:not(:last-child) {
   border-bottom: 1px solid #d1dadb;
 }
 

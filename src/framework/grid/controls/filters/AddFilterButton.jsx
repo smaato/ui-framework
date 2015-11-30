@@ -20,17 +20,17 @@ export default class AddFilterButton extends Component {
     });
   }
 
+  onAdd(filterName, filterValue) {
+    this.props.onAdd(filterName, filterValue);
+    this.setState({
+      isDropdownOpen: false,
+    });
+  }
+
   render() {
     const dropdown = this.state.isDropdownOpen ?
       <AddFilterDropdown
-        onAdd={
-          (filterName, filterValue) => {
-            this.props.onAdd(filterName, filterValue);
-            this.setState({
-              isDropdownOpen: false,
-            });
-          }
-        }
+        onAdd={this.onAdd.bind(this)}
         allFilters={this.props.allFilters}
       /> :
       null;

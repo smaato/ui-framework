@@ -1,0 +1,9 @@
+.addFilterName {
+  padding-top: $gridSelectedFilter_paddingHorizontal / 2;
+  padding-bottom: $gridSelectedFilter_paddingHorizontal / 2;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $gridSelectedFilter_borderColor;
+  }
+}

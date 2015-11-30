@@ -24,7 +24,7 @@ export default class AddFilterValue extends Component {
           />
         </div>
         <div className="addFilterValue__buttons">
-          <button onClick={this.onBack}>
+          <button onClick={this.props.onBack}>
             &lt; Back
           </button>
           <button
