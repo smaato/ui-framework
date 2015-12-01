@@ -3007,41 +3007,13 @@ body {
   font-weight: 400;
 }
 
-.removeFilterButton {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-left: -14px;
-  cursor: pointer;
-  background: #eef4f5;
-  box-shadow: -10px 0 5px #eef4f5;
-  color: #2799c4;
-  opacity: 0;
-}
-.addedFilter:hover .removeFilterButton {
-  opacity: 1;
-}
-
-.filterEllipsis .icon {
-  font-size: 12px;
-  width: auto;
+.availableFilter {
+  padding-top: 4px;
+  padding-bottom: 4px;
   cursor: pointer;
 }
-.filterEllipsis .icon:before {
-  opacity: 0.6;
-}
-.filterEllipsis .icon:hover:before {
-  opacity: 1;
-}
-
-.toggleFilterDropdownButton {
-  position: relative;
-  font-size: 16px;
-  cursor: pointer;
-}
-.toggleFilterDropdownButton.toggleFilterDropdownButton--dropdown-opened {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+.availableFilter:not(:last-child) {
+  border-bottom: 1px solid #d1dadb;
 }
 
 .filterDropdown {
@@ -3055,15 +3027,6 @@ body {
   border: 1px solid #d1dadb;
   border-radius: 0 2px 2px;
   cursor: default;
-}
-
-.availableFilterName {
-  padding-top: 4px;
-  padding-bottom: 4px;
-  cursor: pointer;
-}
-.availableFilterName:not(:last-child) {
-  border-bottom: 1px solid #d1dadb;
 }
 
 .filterValueEditor__filterName {
@@ -3082,6 +3045,43 @@ body {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.toggleFilterDropdownButton {
+  position: relative;
+  font-size: 16px;
+  cursor: pointer;
+}
+.toggleFilterDropdownButton.toggleFilterDropdownButton--dropdown-opened {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.filterEllipsis .icon {
+  font-size: 12px;
+  width: auto;
+  cursor: pointer;
+}
+.filterEllipsis .icon:before {
+  opacity: 0.6;
+}
+.filterEllipsis .icon:hover:before {
+  opacity: 1;
+}
+
+.removeFilterButton {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: -14px;
+  cursor: pointer;
+  background: #eef4f5;
+  box-shadow: -10px 0 5px #eef4f5;
+  color: #2799c4;
+  opacity: 0;
+}
+.addedFilter:hover .removeFilterButton {
+  opacity: 1;
 }
 
 .grid__controls {

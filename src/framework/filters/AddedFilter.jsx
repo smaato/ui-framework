@@ -23,7 +23,7 @@ export default class AddedFilter extends Component {
           title={title}
         >
           <strong className="addedFilter__name">
-            {this.props.name}:
+            {this.props.label}:
           </strong>
           {Entity.nbsp}
           {this.props.value}
@@ -39,6 +39,7 @@ export default class AddedFilter extends Component {
 
 AddedFilter.propTypes = {
   name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
   value: PropTypes.any.isRequired,
   onRemove: RemoveFilterButton.propTypes.onRemove,
 };

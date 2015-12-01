@@ -10,11 +10,11 @@ import Page, {
 import {
   CheckBox,
   Entity,
+  Filters,
   Grid,
   GridBodyEditableCell,
   GridControls,
   GridEmptyRow,
-  Filters,
   GridKpiNegative,
   GridKpiPositive,
   GridLoadingRow,
@@ -86,10 +86,11 @@ export default class GridExample extends Component {
     });
   }
 
-  onFilterAdd(name, value) {
+  onFilterAdd(name, label, value) {
     const addedFilters = this.state.addedFilters.slice();
     addedFilters.push({
       name,
+      label,
       value,
     });
     this.setState({
@@ -391,9 +392,18 @@ export default class GridExample extends Component {
       return value.toString().trim().toLowerCase();
     }
 
+    function camelToSpaceCase(value) {
+      const addedSpaces = value.replace( /([A-Z])/g, ' $1');
+      return addedSpaces.charAt(0).toUpperCase() + addedSpaces.slice(1);
+    }
+
     const availableFilters = this.state.bodyRows.length ?
       Object.keys(this.state.bodyRows[0]) :
       [];
+
+    const availableFilterLabels = availableFilters.map(
+      filter => camelToSpaceCase(filter)
+    );
 
     function filterRows(rows, filters) {
       return rows.filter(row =>
@@ -486,6 +496,7 @@ export default class GridExample extends Component {
             <Filters
               addedFilters={this.state.addedFilters}
               availableFilters={availableFilters}
+              availableFilterLabels={availableFilterLabels}
               onRemove={this.onFilterRemove.bind(this)}
               onAdd={this.onFilterAdd.bind(this)}
             />

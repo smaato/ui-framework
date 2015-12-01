@@ -18,7 +18,9 @@ export default class Filters extends Component {
     const addedFilters = this.props.addedFilters.map(
       (filter, index) =>
         <AddedFilter
-          {...filter}
+          name={filter.name}
+          label={filter.label}
+          value={filter.value}
           key={index}
           onRemove={this.props.onRemove}
         />
@@ -30,6 +32,7 @@ export default class Filters extends Component {
         <ToggleFilterDropdownButton
           onAdd={this.props.onAdd}
           availableFilters={this.props.availableFilters}
+          availableFilterLabels={this.props.availableFilterLabels}
         />
         {/* TODO: Unclear requirements for this feature */}
         {/* <FilterEllipsis/> */}
@@ -41,6 +44,7 @@ export default class Filters extends Component {
 Filters.propTypes = {
   addedFilters: PropTypes.arrayOf(PropTypes.object),
   availableFilters: ToggleFilterDropdownButton.propTypes.availableFilters,
+  availableFilterLabels: ToggleFilterDropdownButton.propTypes.availableFilterLabels,
   onRemove: AddedFilter.propTypes.onRemove,
   onAdd: ToggleFilterDropdownButton.propTypes.onAdd,
 };

@@ -20,8 +20,8 @@ export default class ToggleFilterDropdownButton extends Component {
     });
   }
 
-  onAdd(filterName, filterValue) {
-    this.props.onAdd(filterName, filterValue);
+  onAdd(filterName, filterLabel, filterValue) {
+    this.props.onAdd(filterName, filterLabel, filterValue);
     this.setState({
       isDropdownOpen: false,
     });
@@ -32,6 +32,7 @@ export default class ToggleFilterDropdownButton extends Component {
       <FilterDropdown
         onAdd={this.onAdd.bind(this)}
         availableFilters={this.props.availableFilters}
+        availableFilterLabels={this.props.availableFilterLabels}
       /> :
       null;
 
@@ -54,4 +55,5 @@ export default class ToggleFilterDropdownButton extends Component {
 ToggleFilterDropdownButton.propTypes = {
   onAdd: FilterDropdown.propTypes.onAdd,
   availableFilters: FilterDropdown.propTypes.availableFilters,
+  availableFilterLabels: FilterDropdown.propTypes.availableFilterLabels,
 };
