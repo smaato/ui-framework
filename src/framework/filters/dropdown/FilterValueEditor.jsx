@@ -4,7 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-export default class AddFilterValue extends Component {
+export default class FilterValueEditor extends Component {
 
   constructor(props) {
     super(props);
@@ -12,18 +12,18 @@ export default class AddFilterValue extends Component {
 
   render() {
     return (
-      <div className="addFilterValue">
-        <div className="addFilterValue__filterName">
+      <div className="filterValueEditor">
+        <div className="filterValueEditor__filterName">
           {this.props.filterName}
         </div>
-        <div className="addFilterValue__filterValueWrapper">
+        <div className="filterValueEditor__filterValueWrapper">
           <input
             ref="filterValue"
             type="text"
-            className="addFilterValue__filterValue"
+            className="filterValueEditor__filterValue"
           />
         </div>
-        <div className="addFilterValue__buttons">
+        <div className="filterValueEditor__buttons">
           <button onClick={this.props.onBack}>
             &lt; Back
           </button>
@@ -38,7 +38,7 @@ export default class AddFilterValue extends Component {
                 filterValue
               );
               this.setState({
-                selectedFilterName: null,
+                addedFilterName: null,
               });
             }}
           >
@@ -50,7 +50,7 @@ export default class AddFilterValue extends Component {
   }
 }
 
-AddFilterValue.propTypes = {
+FilterValueEditor.propTypes = {
   onBack: PropTypes.func.isRequired,
   filterName: PropTypes.string.isRequired,
 };

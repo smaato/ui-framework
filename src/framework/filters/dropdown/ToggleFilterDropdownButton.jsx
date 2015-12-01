@@ -3,9 +3,9 @@ import React, {
   Component,
 } from 'react';
 import classNames from 'classnames';
-import AddFilterDropdown from './AddFilterDropdown.jsx';
+import FilterDropdown from './FilterDropdown.jsx';
 
-export default class AddFilterButton extends Component {
+export default class ToggleFilterDropdownButton extends Component {
 
   constructor(props) {
     super(props);
@@ -29,14 +29,14 @@ export default class AddFilterButton extends Component {
 
   render() {
     const dropdown = this.state.isDropdownOpen ?
-      <AddFilterDropdown
+      <FilterDropdown
         onAdd={this.onAdd.bind(this)}
-        allFilters={this.props.allFilters}
+        availableFilters={this.props.availableFilters}
       /> :
       null;
 
-    const rootClass = classNames('addFilterButton', {
-      'addFilterButton--dropdown-opened': this.state.isDropdownOpen,
+    const rootClass = classNames('toggleFilterDropdownButton', {
+      'toggleFilterDropdownButton--dropdown-opened': this.state.isDropdownOpen,
     });
 
     return (
@@ -51,7 +51,7 @@ export default class AddFilterButton extends Component {
   }
 }
 
-AddFilterButton.propTypes = {
-  onAdd: AddFilterDropdown.propTypes.onAdd,
-  allFilters: AddFilterDropdown.propTypes.allFilters,
+ToggleFilterDropdownButton.propTypes = {
+  onAdd: FilterDropdown.propTypes.onAdd,
+  availableFilters: FilterDropdown.propTypes.availableFilters,
 };

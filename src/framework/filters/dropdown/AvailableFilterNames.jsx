@@ -4,7 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-export default class AddFilterNames extends Component {
+export default class AvailableFilterNames extends Component {
 
   constructor(props) {
     super(props);
@@ -13,7 +13,7 @@ export default class AddFilterNames extends Component {
   render() {
     const filterNames = this.props.filterNames.map((filterName, index) => (
       <div
-        className="addFilterName"
+        className="availableFilterName"
         key={index}
         onClick={() => this.props.onClick(filterName)}
       >
@@ -22,14 +22,14 @@ export default class AddFilterNames extends Component {
     ));
 
     return (
-      <div className="addFilterNames">
+      <div className="availableFilterNames">
         {filterNames}
       </div>
     );
   }
 }
 
-AddFilterNames.propTypes = {
-  filterNames: PropTypes.array.isRequired,
+AvailableFilterNames.propTypes = {
+  filterNames: PropTypes.arrayOf(PropTypes.string).isRequired,
   onClick: PropTypes.func.isRequired,
 };

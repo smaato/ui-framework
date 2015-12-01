@@ -1,0 +1,13 @@
+.filterValueEditor__filterName {
+  font-weight: 400;
+}
+
+.filterValueEditor__filterName,
+.filterValueEditor__filterValueWrapper {
+  margin-bottom: $addedFilter_paddingHorizontal / 2;
+}
+
+.filterValueEditor__buttons {
+  display: flex;
+  justify-content: space-between;
+}

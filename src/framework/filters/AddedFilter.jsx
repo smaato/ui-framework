@@ -4,10 +4,10 @@ import React, {
   PropTypes,
 } from 'react';
 
-import Entity from '../../../services/Entity.js';
+import Entity from '../services/Entity.js';
 import RemoveFilterButton from './RemoveFilterButton.jsx';
 
-export default class GridSelectedFilter extends Component {
+export default class AddedFilter extends Component {
 
   constructor(props) {
     super(props);
@@ -17,12 +17,12 @@ export default class GridSelectedFilter extends Component {
     const title = `${this.props.name}: ${this.props.value}`;
 
     return (
-      <div className="gridSelectedFilter">
+      <div className="addedFilter">
         <span
-          className="gridSelectedFilter__text"
+          className="addedFilter__text"
           title={title}
         >
-          <strong className="gridSelectedFilter__name">
+          <strong className="addedFilter__name">
             {this.props.name}:
           </strong>
           {Entity.nbsp}
@@ -37,7 +37,7 @@ export default class GridSelectedFilter extends Component {
   }
 }
 
-GridSelectedFilter.propTypes = {
+AddedFilter.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.any.isRequired,
   onRemove: RemoveFilterButton.propTypes.onRemove,

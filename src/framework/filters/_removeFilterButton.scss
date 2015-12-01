@@ -7,7 +7,7 @@
   color: $linkColor;
   opacity: 0;
 
-  .gridSelectedFilter:hover & {
+  .addedFilter:hover & {
     opacity: 1;
   }
 }

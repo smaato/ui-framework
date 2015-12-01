@@ -1,9 +1,9 @@
-.addFilterButton {
+.toggleFilterDropdownButton {
   position: relative;
   font-size: 16px;
   cursor: pointer;
 
-  &.addFilterButton--dropdown-opened {
+  &.toggleFilterDropdownButton--dropdown-opened {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }

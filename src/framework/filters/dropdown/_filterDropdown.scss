@@ -1,0 +1,13 @@
+.filterDropdown {
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  z-index: 1;
+  padding: $addedFilter_paddingHorizontal;
+  background: $addedFilter_backgroundColor;
+  font-size: $addedFilter_fontSize;
+  border: 1px solid $addedFilter_borderColor;
+  border-radius: 0 $addedFilter_borderRadius $addedFilter_borderRadius;
+  // Reset inherited
+  cursor: default;
+}

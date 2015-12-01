@@ -1,0 +1,9 @@
+.availableFilterName {
+  padding-top: $addedFilter_paddingHorizontal / 2;
+  padding-bottom: $addedFilter_paddingHorizontal / 2;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $addedFilter_borderColor;
+  }
+}

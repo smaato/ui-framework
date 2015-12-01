@@ -14,7 +14,7 @@ import {
   GridBodyEditableCell,
   GridControls,
   GridEmptyRow,
-  GridFilters,
+  Filters,
   GridKpiNegative,
   GridKpiPositive,
   GridLoadingRow,
@@ -78,22 +78,22 @@ export default class GridExample extends Component {
   }
 
   onFilterRemove(name) {
-    const selectedFilters = this.state.selectedFilters
+    const addedFilters = this.state.addedFilters
       .filter(filter => filter.name !== name);
 
     this.setState({
-      selectedFilters,
+      addedFilters,
     });
   }
 
   onFilterAdd(name, value) {
-    const selectedFilters = this.state.selectedFilters.slice();
-    selectedFilters.push({
+    const addedFilters = this.state.addedFilters.slice();
+    addedFilters.push({
       name,
       value,
     });
     this.setState({
-      selectedFilters,
+      addedFilters,
     });
   }
 
@@ -131,7 +131,7 @@ export default class GridExample extends Component {
       // Select all
       areAllRowsSelected: false,
       // Filters
-      selectedFilters: [],
+      addedFilters: [],
     };
   }
 
@@ -391,7 +391,7 @@ export default class GridExample extends Component {
       return value.toString().trim().toLowerCase();
     }
 
-    const allFilters = this.state.bodyRows.length ?
+    const availableFilters = this.state.bodyRows.length ?
       Object.keys(this.state.bodyRows[0]) :
       [];
 
@@ -405,7 +405,7 @@ export default class GridExample extends Component {
       );
     }
 
-    const filteredBodyRows = filterRows(this.state.bodyRows, this.state.selectedFilters);
+    const filteredBodyRows = filterRows(this.state.bodyRows, this.state.addedFilters);
 
     function search(rows, term) {
       const normalizedTerm = normalizeValue(term);
@@ -483,9 +483,9 @@ export default class GridExample extends Component {
           <br/>
 
           <GridControls>
-            <GridFilters
-              selectedFilters={this.state.selectedFilters}
-              allFilters={allFilters}
+            <Filters
+              addedFilters={this.state.addedFilters}
+              availableFilters={availableFilters}
               onRemove={this.onFilterRemove.bind(this)}
               onAdd={this.onFilterAdd.bind(this)}
             />

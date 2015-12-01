@@ -2969,6 +2969,121 @@ body {
   color: #26a3d2;
 }
 
+.filters {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.addedFilter,
+.toggleFilterDropdownButton,
+.filterEllipsis {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 26px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-right: 2px;
+  border: 1px solid #d1dadb;
+  font-size: 11px;
+  background: #eef4f5;
+  border-radius: 2px;
+  cursor: default;
+  color: #5e6162;
+}
+
+.addedFilter__text {
+  max-width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.addedFilter__name {
+  font-weight: 400;
+}
+
+.removeFilterButton {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: -14px;
+  cursor: pointer;
+  background: #eef4f5;
+  box-shadow: -10px 0 5px #eef4f5;
+  color: #2799c4;
+  opacity: 0;
+}
+.addedFilter:hover .removeFilterButton {
+  opacity: 1;
+}
+
+.filterEllipsis .icon {
+  font-size: 12px;
+  width: auto;
+  cursor: pointer;
+}
+.filterEllipsis .icon:before {
+  opacity: 0.6;
+}
+.filterEllipsis .icon:hover:before {
+  opacity: 1;
+}
+
+.toggleFilterDropdownButton {
+  position: relative;
+  font-size: 16px;
+  cursor: pointer;
+}
+.toggleFilterDropdownButton.toggleFilterDropdownButton--dropdown-opened {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.filterDropdown {
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  z-index: 1;
+  padding: 8px;
+  background: #eef4f5;
+  font-size: 11px;
+  border: 1px solid #d1dadb;
+  border-radius: 0 2px 2px;
+  cursor: default;
+}
+
+.availableFilterName {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  cursor: pointer;
+}
+.availableFilterName:not(:last-child) {
+  border-bottom: 1px solid #d1dadb;
+}
+
+.filterValueEditor__filterName {
+  font-weight: 400;
+}
+
+.filterValueEditor__filterName,
+.filterValueEditor__filterValueWrapper {
+  margin-bottom: 4px;
+}
+
+.filterValueEditor__buttons {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .grid__controls {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3033,121 +3148,6 @@ body {
   height: 10px;
   opacity: 0.7;
   font-size: 10px;
-}
-
-.gridFilters {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.gridSelectedFilter,
-.addFilterButton,
-.gridFiltersEllipsis {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 26px;
-  padding-left: 8px;
-  padding-right: 8px;
-  margin-right: 2px;
-  border: 1px solid #d1dadb;
-  font-size: 11px;
-  background: #eef4f5;
-  border-radius: 2px;
-  cursor: default;
-  color: #5e6162;
-}
-
-.gridSelectedFilter__text {
-  max-width: 100px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.gridSelectedFilter__name {
-  font-weight: 400;
-}
-
-.removeFilterButton {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-left: -14px;
-  cursor: pointer;
-  background: #eef4f5;
-  box-shadow: -10px 0 5px #eef4f5;
-  color: #2799c4;
-  opacity: 0;
-}
-.gridSelectedFilter:hover .removeFilterButton {
-  opacity: 1;
-}
-
-.addFilterButton {
-  position: relative;
-  font-size: 16px;
-  cursor: pointer;
-}
-.addFilterButton.addFilterButton--dropdown-opened {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.gridFiltersEllipsis .icon {
-  font-size: 12px;
-  width: auto;
-  cursor: pointer;
-}
-.gridFiltersEllipsis .icon:before {
-  opacity: 0.6;
-}
-.gridFiltersEllipsis .icon:hover:before {
-  opacity: 1;
-}
-
-.addFilterDropdown {
-  position: absolute;
-  top: 100%;
-  left: -1px;
-  z-index: 1;
-  padding: 8px;
-  background: #eef4f5;
-  font-size: 11px;
-  border: 1px solid #d1dadb;
-  border-radius: 0 2px 2px;
-  cursor: default;
-}
-
-.addFilterName {
-  padding-top: 4px;
-  padding-bottom: 4px;
-  cursor: pointer;
-}
-.addFilterName:not(:last-child) {
-  border-bottom: 1px solid #d1dadb;
-}
-
-.addFilterValue__filterName {
-  font-weight: 400;
-}
-
-.addFilterValue__filterName,
-.addFilterValue__filterValueWrapper {
-  margin-bottom: 4px;
-}
-
-.addFilterValue__buttons {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 .gridSearch {
@@ -3234,9 +3234,6 @@ body {
   background: #f0f3f3;
   cursor: pointer;
 }
-.grid__header__cell.sortable.selected a {
-  white-space: nowrap;
-}
 .grid__header__cell.sortable.selected a .arrowDown {
   display: inline-block;
 }
@@ -3245,6 +3242,13 @@ body {
 }
 .grid__header__cell.sortable.selected.reverse .arrowUp {
   display: inline-block;
+}
+.grid__header__cell a {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .grid__header__cellLiner {
