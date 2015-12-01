@@ -3056,6 +3056,17 @@ body {
 .toggleFilterDropdownButton.toggleFilterDropdownButton--dropdown-opened {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  border-bottom: 0;
+}
+.toggleFilterDropdownButton.toggleFilterDropdownButton--dropdown-opened:after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 1px;
+  background: #eef4f5;
 }
 
 .filterEllipsis .icon {
@@ -3350,10 +3361,11 @@ body {
 .grid__body__cellValue--editable:before {
   display: block;
   position: absolute;
+  top: 0;
   left: auto;
-  font-size: 10px;
   bottom: 0;
   right: 0;
+  font-size: 10px;
   padding: 5px 4px 0;
   z-index: 3;
   color: #afb0b1;

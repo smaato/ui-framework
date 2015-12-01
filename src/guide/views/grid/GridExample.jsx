@@ -193,7 +193,7 @@ export default class GridExample extends Component {
           kpiRegistered: `-${this.getRandomInt(0, 100)}%`,
           // TODO: In the case of requesting data from server this
           // could be a more distinct step when state is mixed in
-          isSelected: this.state.areAllRowsSelected,
+          _isSelected: this.state.areAllRowsSelected,
         }
       );
     }
@@ -256,7 +256,7 @@ export default class GridExample extends Component {
 
   toggleAllRowsSelected(areAllRowsSelected) {
     const bodyRows = this.state.bodyRows.map(row => {
-      row.isSelected = areAllRowsSelected;
+      row._isSelected = areAllRowsSelected;
       return row;
     });
     this.setState({
@@ -269,9 +269,9 @@ export default class GridExample extends Component {
     let areAllRowsSelected = true;
     const bodyRows = this.state.bodyRows.map(row => {
       if (row.id === id) {
-        row.isSelected = isRowSelected;
+        row._isSelected = isRowSelected;
       }
-      if (!row.isSelected) {
+      if (!row._isSelected) {
         areAllRowsSelected = false;
       }
       return row;
@@ -321,7 +321,7 @@ export default class GridExample extends Component {
     const bodyRenderer = [
       item => <CheckBox
         id={item.id}
-        checked={item.isSelected}
+        checked={item._isSelected}
         onClick={event =>
           this.toggleRowSelected.bind(this)(item.id, event.target.checked)
         }
@@ -404,8 +404,7 @@ export default class GridExample extends Component {
     const FILTER_TYPE_MAX = 'max';
 
     const availableFilters = this.state.bodyRows.length ?
-      Object.keys(this.state.bodyRows[0]) :
-      [];
+      Object.keys(this.state.bodyRows[0]).filter(key => !key.startsWith('_')) : [];
 
     const availableFilterLabels = availableFilters.map(
       filter => camelToSpaceCase(filter)
