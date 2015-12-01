@@ -3,6 +3,7 @@ import React, {
   Component,
   PropTypes,
 } from 'react';
+import FilterValueEditor from './FilterValueEditor.jsx';
 
 export default class AvailableFilters extends Component {
 
@@ -11,16 +12,19 @@ export default class AvailableFilters extends Component {
   }
 
   render() {
-    const availableFilters = this.props.availableFilters.map((filterName, index) => {
-      const filterLabel = this.props.availableFilterLabels[index];
-      return (
-        <div
-          className="availableFilter"
-          key={index}
-          onClick={() => this.props.onClick(filterName, filterLabel)}
-        >
-          {filterLabel}
-        </div>
+    const availableFilters = this.props.availableFilters.map((filterName, filterNameIndex) => {
+      const filterLabel = this.props.availableFilterLabels[filterNameIndex];
+      const filterTypes = this.props.availableFilterTypes[filterNameIndex];
+      return filterTypes.map(
+        (filterType, filterTypeIndex) => (
+          <div
+            className="availableFilter"
+            key={`${filterNameIndex}:${filterTypeIndex}`}
+            onClick={() => this.props.onClick(filterName, filterLabel, filterType)}
+          >
+            {filterTypes.length === 1 ? filterLabel : `${filterLabel}: ${filterType}`}
+          </div>
+        )
       );
     });
 
@@ -33,7 +37,8 @@ export default class AvailableFilters extends Component {
 }
 
 AvailableFilters.propTypes = {
-  availableFilters: PropTypes.arrayOf(PropTypes.string).isRequired,
-  availableFilterLabels: PropTypes.arrayOf(PropTypes.string).isRequired,
+  availableFilters: PropTypes.arrayOf(FilterValueEditor.propTypes.filterName).isRequired,
+  availableFilterLabels: PropTypes.arrayOf(FilterValueEditor.propTypes.filterLabel).isRequired,
+  availableFilterTypes: PropTypes.arrayOf(PropTypes.array).isRequired,
   onClick: PropTypes.func.isRequired,
 };

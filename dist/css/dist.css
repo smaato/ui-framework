@@ -3010,6 +3010,7 @@ body {
 .availableFilter {
   padding-top: 4px;
   padding-bottom: 4px;
+  white-space: nowrap;
   cursor: pointer;
 }
 .availableFilter:not(:last-child) {

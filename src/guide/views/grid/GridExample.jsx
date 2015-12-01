@@ -86,11 +86,12 @@ export default class GridExample extends Component {
     });
   }
 
-  onFilterAdd(name, label, value) {
+  onFilterAdd(name, label, type, value) {
     const addedFilters = this.state.addedFilters.slice();
     addedFilters.push({
       name,
       label,
+      type,
       value,
     });
     this.setState({
@@ -397,6 +398,10 @@ export default class GridExample extends Component {
       return addedSpaces.charAt(0).toUpperCase() + addedSpaces.slice(1);
     }
 
+    const FILTER_TYPE_CONTAINS = 'contains';
+    const FILTER_TYPE_MIN = 'min';
+    const FILTER_TYPE_MAX = 'max';
+
     const availableFilters = this.state.bodyRows.length ?
       Object.keys(this.state.bodyRows[0]) :
       [];
@@ -405,12 +410,38 @@ export default class GridExample extends Component {
       filter => camelToSpaceCase(filter)
     );
 
+    const availableFilterTypes = availableFilters.map(
+      availableFilter => {
+        if (
+          availableFilter === 'id' ||
+          availableFilter === 'cylinders' ||
+          availableFilter === 'passengers'
+        ) {
+          return [FILTER_TYPE_CONTAINS, FILTER_TYPE_MIN, FILTER_TYPE_MAX];
+        }
+        return [FILTER_TYPE_CONTAINS];
+      }
+    );
+
     function filterRows(rows, filters) {
       return rows.filter(row =>
         filters.every(filter => {
-          const normalizedRowValue = normalizeValue(row[filter.name]);
-          const normalizedFilterValue = normalizeValue(filter.value);
-          return normalizedRowValue.indexOf(normalizedFilterValue) !== -1;
+          const rowValue = row[filter.name];
+          const filterValue = filter.value;
+          const filterType = filter.type;
+          let isMatch;
+          switch (filterType) {
+            case FILTER_TYPE_MIN:
+              isMatch = parseInt(rowValue, 10) >= filterValue;
+              break;
+            case FILTER_TYPE_MAX:
+              isMatch = parseInt(rowValue, 10) <= filterValue;
+              break;
+            default:
+              isMatch = normalizeValue(rowValue)
+                .indexOf(normalizeValue(filterValue)) !== -1;
+          }
+          return isMatch;
         })
       );
     }
@@ -497,6 +528,7 @@ export default class GridExample extends Component {
               addedFilters={this.state.addedFilters}
               availableFilters={availableFilters}
               availableFilterLabels={availableFilterLabels}
+              availableFilterTypes={availableFilterTypes}
               onRemove={this.onFilterRemove.bind(this)}
               onAdd={this.onFilterAdd.bind(this)}
             />
