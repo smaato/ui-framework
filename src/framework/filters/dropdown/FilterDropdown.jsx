@@ -26,8 +26,9 @@ export default class FilterDropdown extends Component {
     this.initState(false);
   }
 
-  onAdd(filterName, filterLabel, filterType, filterValue) {
+  onAdd(filterId, filterName, filterLabel, filterType, filterValue) {
     this.props.onAdd(
+      filterId,
       filterName,
       filterLabel,
       filterType,

@@ -77,18 +77,19 @@ export default class GridExample extends Component {
     */
   }
 
-  onFilterRemove(name) {
+  onFilterRemove(id) {
     const addedFilters = this.state.addedFilters
-      .filter(filter => filter.name !== name);
+      .filter(filter => filter.id !== id);
 
     this.setState({
       addedFilters,
     });
   }
 
-  onFilterAdd(name, label, type, value) {
+  onFilterAdd(id, name, label, type, value) {
     const addedFilters = this.state.addedFilters.slice();
     addedFilters.push({
+      id,
       name,
       label,
       type,

@@ -22,7 +22,7 @@ export default class AvailableFilters extends Component {
             key={`${filterNameIndex}:${filterTypeIndex}`}
             onClick={() => this.props.onClick(filterName, filterLabel, filterType)}
           >
-            {filterTypes.length === 1 ? filterLabel : `${filterLabel}: ${filterType}`}
+            {filterTypes.length === 1 ? filterLabel : `${filterLabel} (${filterType})`}
           </div>
         )
       );

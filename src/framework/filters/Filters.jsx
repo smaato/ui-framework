@@ -18,8 +18,10 @@ export default class Filters extends Component {
     const addedFilters = this.props.addedFilters.map(
       (filter, index) =>
         <AddedFilter
+          id={filter.id}
           name={filter.name}
           label={filter.label}
+          type={filter.type}
           value={filter.value}
           key={index}
           onRemove={this.props.onRemove}

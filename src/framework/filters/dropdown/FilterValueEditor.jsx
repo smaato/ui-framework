@@ -15,7 +15,10 @@ export default class FilterValueEditor extends Component {
     if (!filterValue.trim()) {
       return;
     }
+    const filterId = this.props.filterName +
+      this.props.filterType + filterValue;
     this.props.onAdd(
+      filterId,
       this.props.filterName,
       this.props.filterLabel,
       this.props.filterType,
@@ -34,7 +37,7 @@ export default class FilterValueEditor extends Component {
     return (
       <div className="filterValueEditor">
         <div className="filterValueEditor__filterName">
-          {`${this.props.filterLabel}: ${this.props.filterType}`}
+          {`${this.props.filterLabel} (${this.props.filterType})`}
         </div>
         <div className="filterValueEditor__filterValueWrapper">
           <input

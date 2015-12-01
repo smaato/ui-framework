@@ -14,7 +14,7 @@ export default class AddedFilter extends Component {
   }
 
   render() {
-    const title = `${this.props.name}: ${this.props.value}`;
+    const title = `${this.props.label} (${this.props.type}): ${this.props.value}`;
 
     return (
       <div className="addedFilter">
@@ -23,13 +23,13 @@ export default class AddedFilter extends Component {
           title={title}
         >
           <strong className="addedFilter__name">
-            {this.props.label}:
+            {`${this.props.label} (${this.props.type})`}:
           </strong>
           {Entity.nbsp}
           {this.props.value}
         </span>
         <RemoveFilterButton
-          name={this.props.name}
+          id={this.props.id}
           onRemove={this.props.onRemove}
         />
       </div>
@@ -38,8 +38,10 @@ export default class AddedFilter extends Component {
 }
 
 AddedFilter.propTypes = {
+  id: RemoveFilterButton.propTypes.id,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   value: PropTypes.any.isRequired,
   onRemove: RemoveFilterButton.propTypes.onRemove,
 };

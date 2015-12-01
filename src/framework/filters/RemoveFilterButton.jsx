@@ -14,13 +14,13 @@ export default class RemoveFilterButton extends Component {
     return (
       <span
         className="icon glyphicons-remove-2 removeFilterButton"
-        onClick={() => this.props.onRemove(this.props.name)}
+        onClick={() => this.props.onRemove(this.props.id)}
       />
     );
   }
 }
 
 RemoveFilterButton.propTypes = {
-  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   onRemove: PropTypes.func.isRequired,
 };
