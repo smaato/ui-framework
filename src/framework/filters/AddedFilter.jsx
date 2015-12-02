@@ -1,41 +1,33 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
 import Entity from '../services/Entity.js';
 import RemoveFilterButton from './RemoveFilterButton.jsx';
 
-export default class AddedFilter extends Component {
+const AddedFilter = props => {
+  const title = `${props.label} (${props.type}): ${props.value}`;
 
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const title = `${this.props.label} (${this.props.type}): ${this.props.value}`;
-
-    return (
-      <div className="addedFilter">
-        <span
-          className="addedFilter__text"
-          title={title}
-        >
-          <strong className="addedFilter__name">
-            {`${this.props.label} (${this.props.type})`}:
-          </strong>
-          {Entity.nbsp}
-          {this.props.value}
-        </span>
-        <RemoveFilterButton
-          id={this.props.id}
-          onRemove={this.props.onRemove}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="addedFilter">
+      <span
+        className="addedFilter__text"
+        title={title}
+      >
+        <strong className="addedFilter__name">
+          {`${props.label} (${props.type})`}:
+        </strong>
+        {Entity.nbsp}
+        {props.value}
+      </span>
+      <RemoveFilterButton
+        id={props.id}
+        onRemove={props.onRemove}
+      />
+    </div>
+  );
+};
 
 AddedFilter.propTypes = {
   id: RemoveFilterButton.propTypes.id,
@@ -45,3 +37,5 @@ AddedFilter.propTypes = {
   value: PropTypes.any.isRequired,
   onRemove: RemoveFilterButton.propTypes.onRemove,
 };
+
+export default AddedFilter;
