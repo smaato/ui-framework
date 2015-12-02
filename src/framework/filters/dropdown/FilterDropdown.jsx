@@ -14,11 +14,9 @@ export default class FilterDropdown extends Component {
     this.initState(true);
   }
 
-  onFilterNameSelect(filterName, filterLabel, filterType) {
+  onFilterNameSelect(filter) {
     this.setState({
-      addedFilterName: filterName,
-      addedFilterLabel: filterLabel,
-      addedFilterType: filterType,
+      addedFilter: filter,
     });
   }
 
@@ -26,22 +24,14 @@ export default class FilterDropdown extends Component {
     this.initState(false);
   }
 
-  onAdd(filterId, filterName, filterLabel, filterType, filterValue) {
-    this.props.onAdd(
-      filterId,
-      filterName,
-      filterLabel,
-      filterType,
-      filterValue
-    );
+  onAdd(filter) {
+    this.props.onAdd(filter);
     this.initState(false);
   }
 
   initState(isInit) {
     const state = {
-      addedFilterName: null,
-      addedFilterLabel: null,
-      addedFilterType: null,
+      addedFilter: null,
     };
     if (isInit) {
       this.state = state;
@@ -53,24 +43,20 @@ export default class FilterDropdown extends Component {
   render() {
     let subView;
 
-    if (!this.state.addedFilterName) {
+    if (!this.state.addedFilter) {
       subView = (
         <AvailableFilters
           availableFilters={this.props.availableFilters}
-          availableFilterLabels={this.props.availableFilterLabels}
-          availableFilterTypes={this.props.availableFilterTypes}
           onClick={
-            (filterName, filterLabel, filterType) =>
-              this.onFilterNameSelect.bind(this)(filterName, filterLabel, filterType)
+            (filter) =>
+              this.onFilterNameSelect.bind(this)(filter)
           }
         />
       );
     } else {
       subView = (
         <FilterValueEditor
-          filterName={this.state.addedFilterName}
-          filterLabel={this.state.addedFilterLabel}
-          filterType={this.state.addedFilterType}
+          filter={this.state.addedFilter}
           onBack={this.onBackToFilterNames.bind(this)}
           onAdd={this.props.onAdd}
         />
@@ -93,6 +79,4 @@ export default class FilterDropdown extends Component {
 FilterDropdown.propTypes = {
   onAdd: PropTypes.func.isRequired,
   availableFilters: AvailableFilters.propTypes.availableFilters,
-  availableFilterLabels: AvailableFilters.propTypes.availableFilterLabels,
-  availableFilterTypes: AvailableFilters.propTypes.availableFilterTypes,
 };

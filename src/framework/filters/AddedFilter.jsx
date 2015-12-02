@@ -1,13 +1,12 @@
 
-import React, {
-  PropTypes,
-} from 'react';
+import React from 'react';
 
 import Entity from '../services/Entity.js';
 import RemoveFilterButton from './RemoveFilterButton.jsx';
+import FilterValueEditor from './dropdown/FilterValueEditor.jsx';
 
 const AddedFilter = props => {
-  const title = `${props.label} (${props.type}): ${props.value}`;
+  const title = `${props.filter.name} (${props.filter.type}): ${props.filter.value}`;
 
   return (
     <div className="addedFilter">
@@ -16,13 +15,13 @@ const AddedFilter = props => {
         title={title}
       >
         <strong className="addedFilter__name">
-          {`${props.label} (${props.type})`}:
+          {`${props.filter.name} (${props.filter.type})`}:
         </strong>
         {Entity.nbsp}
-        {props.value}
+        {props.filter.value}
       </span>
       <RemoveFilterButton
-        id={props.id}
+        id={props.filter.id}
         onRemove={props.onRemove}
       />
     </div>
@@ -30,11 +29,7 @@ const AddedFilter = props => {
 };
 
 AddedFilter.propTypes = {
-  id: RemoveFilterButton.propTypes.id,
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  value: PropTypes.any.isRequired,
+  filter: FilterValueEditor.propTypes.filter,
   onRemove: RemoveFilterButton.propTypes.onRemove,
 };
 

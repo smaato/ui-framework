@@ -15,15 +15,14 @@ export default class FilterValueEditor extends Component {
     if (!filterValue.trim()) {
       return;
     }
-    const filterId = this.props.filterName +
-      this.props.filterType + filterValue;
-    this.props.onAdd(
-      filterId,
-      this.props.filterName,
-      this.props.filterLabel,
-      this.props.filterType,
-      filterValue
-    );
+    // Id is only for removing filter
+    const filterId = this.props.filter.name + this.props.filter.type + filterValue;
+    const addedFilter = Object.assign({
+      id: filterId,
+      value: filterValue,
+    }, this.props.filter);
+
+    this.props.onAdd(addedFilter);
   }
 
   onKeyUp(event) {
@@ -37,7 +36,7 @@ export default class FilterValueEditor extends Component {
     return (
       <div className="filterValueEditor">
         <div className="filterValueEditor__filterName">
-          {`${this.props.filterLabel} (${this.props.filterType})`}
+          {`${this.props.filter.name} (${this.props.filter.type})`}
         </div>
         <div className="filterValueEditor__filterValueWrapper">
           <input
@@ -62,7 +61,5 @@ export default class FilterValueEditor extends Component {
 
 FilterValueEditor.propTypes = {
   onBack: PropTypes.func.isRequired,
-  filterName: PropTypes.string.isRequired,
-  filterLabel: PropTypes.string.isRequired,
-  filterType: PropTypes.string.isRequired,
+  filter: PropTypes.object.isRequired,
 };

@@ -25,6 +25,9 @@ import {
 
 import numeral from 'numeral';
 
+import gridExampleFilters from './gridExampleFilters.js';
+import FilterTypes from './FilterTypes.js';
+
 export default class GridExample extends Component {
 
   constructor(props) {
@@ -86,15 +89,9 @@ export default class GridExample extends Component {
     });
   }
 
-  onFilterAdd(id, name, label, type, value) {
+  onFilterAdd(filter) {
     const addedFilters = this.state.addedFilters.slice();
-    addedFilters.push({
-      id,
-      name,
-      label,
-      type,
-      value,
-    });
+    addedFilters.push(filter);
     this.setState({
       addedFilters,
     });
@@ -193,7 +190,7 @@ export default class GridExample extends Component {
           kpiRegistered: `-${this.getRandomInt(0, 100)}%`,
           // TODO: In the case of requesting data from server this
           // could be a more distinct step when state is mixed in
-          _isSelected: this.state.areAllRowsSelected,
+          isSelected: this.state.areAllRowsSelected,
         }
       );
     }
@@ -256,7 +253,7 @@ export default class GridExample extends Component {
 
   toggleAllRowsSelected(areAllRowsSelected) {
     const bodyRows = this.state.bodyRows.map(row => {
-      row._isSelected = areAllRowsSelected;
+      row.isSelected = areAllRowsSelected;
       return row;
     });
     this.setState({
@@ -269,9 +266,9 @@ export default class GridExample extends Component {
     let areAllRowsSelected = true;
     const bodyRows = this.state.bodyRows.map(row => {
       if (row.id === id) {
-        row._isSelected = isRowSelected;
+        row.isSelected = isRowSelected;
       }
-      if (!row._isSelected) {
+      if (!row.isSelected) {
         areAllRowsSelected = false;
       }
       return row;
@@ -321,7 +318,7 @@ export default class GridExample extends Component {
     const bodyRenderer = [
       item => <CheckBox
         id={item.id}
-        checked={item._isSelected}
+        checked={item.isSelected}
         onClick={event =>
           this.toggleRowSelected.bind(this)(item.id, event.target.checked)
         }
@@ -394,47 +391,18 @@ export default class GridExample extends Component {
       return value.toString().trim().toLowerCase();
     }
 
-    function camelToSpaceCase(value) {
-      const addedSpaces = value.replace( /([A-Z])/g, ' $1');
-      return addedSpaces.charAt(0).toUpperCase() + addedSpaces.slice(1);
-    }
-
-    const FILTER_TYPE_CONTAINS = 'contains';
-    const FILTER_TYPE_MIN = 'min';
-    const FILTER_TYPE_MAX = 'max';
-
-    const availableFilters = this.state.bodyRows.length ?
-      Object.keys(this.state.bodyRows[0]).filter(key => !key.startsWith('_')) : [];
-
-    const availableFilterLabels = availableFilters.map(
-      filter => camelToSpaceCase(filter)
-    );
-
-    const availableFilterTypes = availableFilters.map(
-      availableFilter => {
-        if (
-          availableFilter === 'id' ||
-          availableFilter === 'cylinders' ||
-          availableFilter === 'passengers'
-        ) {
-          return [FILTER_TYPE_CONTAINS, FILTER_TYPE_MIN, FILTER_TYPE_MAX];
-        }
-        return [FILTER_TYPE_CONTAINS];
-      }
-    );
-
     function filterRows(rows, filters) {
       return rows.filter(row =>
         filters.every(filter => {
-          const rowValue = row[filter.name];
           const filterValue = filter.value;
           const filterType = filter.type;
+          const rowValue = filter.getValue(row);
           let isMatch;
           switch (filterType) {
-            case FILTER_TYPE_MIN:
+            case FilterTypes.MIN:
               isMatch = parseInt(rowValue, 10) >= filterValue;
               break;
-            case FILTER_TYPE_MAX:
+            case FilterTypes.MAX:
               isMatch = parseInt(rowValue, 10) <= filterValue;
               break;
             default:
@@ -526,9 +494,7 @@ export default class GridExample extends Component {
           <GridControls>
             <Filters
               addedFilters={this.state.addedFilters}
-              availableFilters={availableFilters}
-              availableFilterLabels={availableFilterLabels}
-              availableFilterTypes={availableFilterTypes}
+              availableFilters={gridExampleFilters}
               onRemove={this.onFilterRemove.bind(this)}
               onAdd={this.onFilterAdd.bind(this)}
             />
