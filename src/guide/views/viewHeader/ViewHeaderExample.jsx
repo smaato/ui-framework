@@ -27,7 +27,7 @@ export default class ViewHeaderExample extends Component {
       href: '#',
       children: (
         <span>
-          <span className="icon glyphicons-car" />
+          <span className="icon glyphicons-car viewHeaderNav__link__icon" />
           Automobile
         </span>
       ),
@@ -35,7 +35,7 @@ export default class ViewHeaderExample extends Component {
       href: '#',
       children: (
         <span>
-          <span className="icon glyphicons-train" />
+          <span className="icon glyphicons-train viewHeaderNav__link__icon" />
           Train
         </span>
       ),
@@ -43,7 +43,7 @@ export default class ViewHeaderExample extends Component {
       href: '#',
       children: (
         <span>
-          <span className="icon glyphicons-airplane" />
+          <span className="icon glyphicons-airplane viewHeaderNav__link__icon" />
           Airplane
         </span>
       ),
@@ -51,7 +51,7 @@ export default class ViewHeaderExample extends Component {
       href: '#',
       children: (
         <span>
-          <span className="icon glyphicons-bicycle" />
+          <span className="icon glyphicons-bicycle viewHeaderNav__link__icon" />
           Bicycle
         </span>
       ),
@@ -59,7 +59,7 @@ export default class ViewHeaderExample extends Component {
       href: '#',
       children: (
         <span>
-          <span className="icon glyphicons-person-walking" />
+          <span className="icon glyphicons-person-walking viewHeaderNav__link__icon" />
           Walking
         </span>
       ),

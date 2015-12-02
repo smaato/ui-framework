@@ -6,7 +6,7 @@ import React, {
 const AccountPicture = props => {
   const picture = props.url ?
     <img src={props.url} /> :
-    <span className="icon glyphicons-user"/>;
+    <span className="icon glyphicons-user accountPicture__icon"/>;
 
   return (
     <span className="accountPicture">

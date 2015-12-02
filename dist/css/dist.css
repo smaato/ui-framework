@@ -2782,11 +2782,12 @@ body {
   overflow: hidden;
   background: #445e6a;
 }
-.accountPicture .icon {
+
+.accountPicture__icon {
   width: auto;
   height: auto;
 }
-.accountPicture .icon:before {
+.accountPicture__icon:before {
   position: static;
   font-size: 11px;
   color: #ffffff;
@@ -3759,7 +3760,8 @@ body {
       -ms-flex-align: center;
           align-items: center;
 }
-.viewHeaderNav__link .icon {
+
+.viewHeaderNav__link__icon {
   font-size: 12px;
   width: 12px;
   height: 12px;

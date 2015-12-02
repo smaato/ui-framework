@@ -126,7 +126,7 @@ export default class GridViewExample extends Component {
             </nav>
             <a className="accountNav">
               <span className="accountPicture">
-                <span className="icon glyphicons-user"></span>
+                <span className="icon glyphicons-user accountPicture__icon"></span>
               </span>
               <span className="accountNav__email">
                 han.solo@smaato.com
@@ -143,31 +143,31 @@ export default class GridViewExample extends Component {
             <nav className="viewHeaderNav">
               <a href="#" className="viewHeaderNav__link is-view-header-nav-link-selected">
                 <span>
-                  <span className="icon glyphicons-car" />
+                  <span className="icon glyphicons-car viewHeaderNav__link__icon" />
                   Automobile
                 </span>
               </a>
               <a href="#" className="viewHeaderNav__link">
                 <span>
-                  <span className="icon glyphicons-train" />
+                  <span className="icon glyphicons-train viewHeaderNav__link__icon" />
                   Train
                 </span>
               </a>
               <a href="#" className="viewHeaderNav__link">
                 <span>
-                  <span className="icon glyphicons-airplane" />
+                  <span className="icon glyphicons-airplane viewHeaderNav__link__icon" />
                   Airplane
                 </span>
               </a>
               <a href="#" className="viewHeaderNav__link">
                 <span>
-                  <span className="icon glyphicons-bicycle" />
+                  <span className="icon glyphicons-bicycle viewHeaderNav__link__icon" />
                   Bicycle
                 </span>
               </a>
               <a href="#" className="viewHeaderNav__link">
                 <span>
-                  <span className="icon glyphicons-person-walking" />
+                  <span className="icon glyphicons-person-walking viewHeaderNav__link__icon" />
                   Walking
                 </span>
               </a>

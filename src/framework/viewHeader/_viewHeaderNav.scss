@@ -37,15 +37,15 @@
     @media #{$viewport_normalScreen} {
       margin-right: 0;
     }
-
-      .icon {
-        $iconSize: 12px;
-        font-size: $iconSize;
-        width: $iconSize;
-        height: $iconSize;
-        margin-right: 4px;
-      }
   }
+
+    .viewHeaderNav__link__icon {
+      $iconSize: 12px;
+      font-size: $iconSize;
+      width: $iconSize;
+      height: $iconSize;
+      margin-right: 4px;
+    }
 
     .viewHeaderNav__ellipsis {
       opacity: 0.6;

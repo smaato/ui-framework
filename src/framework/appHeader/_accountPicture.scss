@@ -11,8 +11,9 @@
   line-height: $accountPicture_side;
   overflow: hidden;
   background: scale-lightness($appHeaderNav_backgroundColor, 10%);
+}
 
-  .icon {
+  .accountPicture__icon {
     // Cancels inherited dimensions from .icon
     width: auto;
     height: auto;
@@ -25,4 +26,3 @@
       opacity: 0.6;
     }
   }
-}
