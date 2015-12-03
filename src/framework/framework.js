@@ -7,6 +7,9 @@ export { default as AppHeader } from './appHeader/AppHeader.jsx';
 export * from './checkBox/CheckBox.jsx';
 export { default as CheckBox } from './checkBox/CheckBox.jsx';
 
+export * from './dateRange/DateRange.jsx';
+export { default as DateRange } from './dateRange/DateRange.jsx';
+
 export * from './grid/Grid.jsx';
 export { default as Grid } from './grid/Grid.jsx';
 
@@ -24,6 +27,9 @@ export { default as Spinner } from './spinner/Spinner.jsx';
 
 export * from './titleBar/TitleBar.jsx';
 export { default as TitleBar } from './titleBar/TitleBar.jsx';
+
+export * from './viewHeader/ViewHeader.jsx';
+export { default as ViewHeader } from './viewHeader/ViewHeader.jsx';
 
 // Export services
 

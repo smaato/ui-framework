@@ -4,12 +4,14 @@ import React, {
 } from 'react';
 
 const AccountPicture = props => {
-  const picture = props.url ? <img src={props.url} /> : null;
+  const picture = props.url ?
+    <img src={props.url} /> :
+    <span className="icon glyphicons-user accountPicture__icon"/>;
 
   return (
-    <span className="icon glyphicons-user accountPicture">
-        {picture}
-      </span>
+    <span className="accountPicture">
+      {picture}
+    </span>
   );
 };
 
