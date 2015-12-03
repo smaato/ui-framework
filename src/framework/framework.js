@@ -7,8 +7,8 @@ export { default as AppHeader } from './appHeader/AppHeader.jsx';
 export * from './checkBox/CheckBox.jsx';
 export { default as CheckBox } from './checkBox/CheckBox.jsx';
 
-export * from './filters/Filters.jsx';
-export { default as Filters } from './filters/Filters.jsx';
+export * from './filtersControl/FiltersControl.jsx';
+export { default as FiltersControl } from './filtersControl/FiltersControl.jsx';
 
 export * from './grid/Grid.jsx';
 export { default as Grid } from './grid/Grid.jsx';
@@ -32,3 +32,15 @@ export { default as TitleBar } from './titleBar/TitleBar.jsx';
 
 export * from './services/Entity';
 export { default as Entity } from './services/Entity';
+
+export * from './services/Filter';
+export { default as Filter } from './services/Filter';
+
+export * from './services/FilterableItems';
+export { default as FilterableItems } from './services/FilterableItems';
+
+export * from './services/FilterMatcher';
+export { default as FilterMatcher } from './services/FilterMatcher';
+
+export * from './services/FilterMethods';
+export { default as FilterMethods } from './services/FilterMethods';

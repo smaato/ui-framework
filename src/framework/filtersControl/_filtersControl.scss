@@ -1,0 +1,24 @@
+$addedFilter_backgroundColor: shade(scale-saturation($componentBackgroundColor, 60%), 3%);
+$addedFilter_borderColor: shade(scale-saturation($componentBackgroundColor, 100%), 14%);
+$addedFilter_borderRadius: 2px;
+$addedFilter_paddingHorizontal: 8px;
+$addedFilter_fontSize: 11px;
+
+@mixin filtersButton {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  padding-left: $addedFilter_paddingHorizontal;
+  padding-right: $addedFilter_paddingHorizontal;
+  margin-right: 2px;
+  border: 1px solid $addedFilter_borderColor;
+  font-size: 11px;
+  background: $addedFilter_backgroundColor;
+  border-radius: $addedFilter_borderRadius;
+  cursor: default;
+  color: $componentTextColor;
+}
+
+.filtersControl {
+  display: flex;
+}

@@ -37,10 +37,6 @@ export {
 } from './controls/GridControls.jsx';
 
 export {
-  default as Filters,
-} from '../filters/Filters.jsx';
-
-export {
   default as GridSearch,
 } from './controls/search/GridSearch.jsx';
 

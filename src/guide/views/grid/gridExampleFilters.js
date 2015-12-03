@@ -1,88 +1,91 @@
 
-import FilterTypes from './FilterTypes.js';
+import {
+  Filter,
+  FilterMethods,
+} from '../../../framework/framework.js';
 
 export default [
-  {
+  new Filter({
     name: 'ID',
     getValue: item => item.id,
-    types: [
-      FilterTypes.CONTAINS,
-      FilterTypes.MIN,
-      FilterTypes.MAX,
+    methods: [
+      FilterMethods.CONTAINS,
+      FilterMethods.MIN,
+      FilterMethods.MAX,
     ],
-  },
-  {
+  }),
+  new Filter({
     name: 'Name',
     getValue: item => item.name,
-    types: [
-      FilterTypes.CONTAINS,
+    methods: [
+      FilterMethods.CONTAINS,
     ],
-  },
-  {
+  }),
+  new Filter({
     name: 'Status',
     getValue: item => item.status,
-    types: [
-      FilterTypes.CONTAINS,
+    methods: [
+      FilterMethods.CONTAINS,
     ],
-  },
-  {
+  }),
+  new Filter({
     name: 'Fuel',
     getValue: item => item.fuel,
-    types: [
-      FilterTypes.CONTAINS,
+    methods: [
+      FilterMethods.CONTAINS,
     ],
-  },
-  {
+  }),
+  new Filter({
     name: 'Passengers',
     getValue: item => item.passengers,
-    types: [
-      FilterTypes.CONTAINS,
-      FilterTypes.MIN,
-      FilterTypes.MAX,
+    methods: [
+      FilterMethods.CONTAINS,
+      FilterMethods.MIN,
+      FilterMethods.MAX,
     ],
-  },
-  {
+  }),
+  new Filter({
     name: 'Cylinders',
     getValue: item => item.cylinders,
-    types: [
-      FilterTypes.CONTAINS,
-      FilterTypes.MIN,
-      FilterTypes.MAX,
+    methods: [
+      FilterMethods.CONTAINS,
+      FilterMethods.MIN,
+      FilterMethods.MAX,
     ],
-  },
-  {
+  }),
+  new Filter({
     name: 'Fuel Economy',
     getValue: item => item.fuelEconomy,
-    types: [
-      FilterTypes.CONTAINS,
+    methods: [
+      FilterMethods.CONTAINS,
     ],
-  },
-  {
+  }),
+  new Filter({
     name: 'Sold',
     getValue: item => item.sold,
-    types: [
-      FilterTypes.CONTAINS,
+    methods: [
+      FilterMethods.CONTAINS,
     ],
-  },
-  {
+  }),
+  new Filter({
     name: 'Registered',
     getValue: item => item.registered,
-    types: [
-      FilterTypes.CONTAINS,
+    methods: [
+      FilterMethods.CONTAINS,
     ],
-  },
-  {
+  }),
+  new Filter({
     name: 'Kpi Sold',
     getValue: item => item.kpiSold,
-    types: [
-      FilterTypes.CONTAINS,
+    methods: [
+      FilterMethods.CONTAINS,
     ],
-  },
-  {
+  }),
+  new Filter({
     name: 'Kpi Registered',
     getValue: item => item.kpiRegistered,
-    types: [
-      FilterTypes.CONTAINS,
+    methods: [
+      FilterMethods.CONTAINS,
     ],
-  },
+  }),
 ];

@@ -10,7 +10,8 @@ import Page, {
 import {
   CheckBox,
   Entity,
-  Filters,
+  FiltersControl,
+  FilterableItems,
   Grid,
   GridBodyEditableCell,
   GridControls,
@@ -26,7 +27,6 @@ import {
 import numeral from 'numeral';
 
 import gridExampleFilters from './gridExampleFilters.js';
-import FilterTypes from './FilterTypes.js';
 
 export default class GridExample extends Component {
 
@@ -80,20 +80,20 @@ export default class GridExample extends Component {
     */
   }
 
-  onFilterRemove(id) {
-    const addedFilters = this.state.addedFilters
-      .filter(filter => filter.id !== id);
+  onRemoveFilterMatcher(filterMatcherToRemove) {
+    const filterMatchers = this.state.filterMatchers
+      .filter(filterMatcher => filterMatcher !== filterMatcherToRemove);
 
     this.setState({
-      addedFilters,
+      filterMatchers,
     });
   }
 
-  onFilterAdd(filter) {
-    const addedFilters = this.state.addedFilters.slice();
-    addedFilters.push(filter);
+  onAddFilterMatcher(filterMatcher) {
+    const filterMatchers = this.state.filterMatchers.slice();
+    filterMatchers.push(filterMatcher);
     this.setState({
-      addedFilters,
+      filterMatchers,
     });
   }
 
@@ -131,7 +131,7 @@ export default class GridExample extends Component {
       // Select all
       areAllRowsSelected: false,
       // Filters
-      addedFilters: [],
+      filterMatchers: [],
     };
   }
 
@@ -392,29 +392,10 @@ export default class GridExample extends Component {
     }
 
     function filterRows(rows, filters) {
-      return rows.filter(row =>
-        filters.every(filter => {
-          const filterValue = filter.value;
-          const filterType = filter.type;
-          const rowValue = filter.getValue(row);
-          let isMatch;
-          switch (filterType) {
-            case FilterTypes.MIN:
-              isMatch = parseInt(rowValue, 10) >= filterValue;
-              break;
-            case FilterTypes.MAX:
-              isMatch = parseInt(rowValue, 10) <= filterValue;
-              break;
-            default:
-              isMatch = normalizeValue(rowValue)
-                .indexOf(normalizeValue(filterValue)) !== -1;
-          }
-          return isMatch;
-        })
-      );
+      return new FilterableItems(rows).applyFilters(filters);
     }
 
-    const filteredBodyRows = filterRows(this.state.bodyRows, this.state.addedFilters);
+    const filteredBodyRows = filterRows(this.state.bodyRows, this.state.filterMatchers);
 
     function search(rows, term) {
       const normalizedTerm = normalizeValue(term);
@@ -492,11 +473,11 @@ export default class GridExample extends Component {
           <br/>
 
           <GridControls>
-            <Filters
-              addedFilters={this.state.addedFilters}
-              availableFilters={gridExampleFilters}
-              onRemove={this.onFilterRemove.bind(this)}
-              onAdd={this.onFilterAdd.bind(this)}
+            <FiltersControl
+              filterMatchers={this.state.filterMatchers}
+              filters={gridExampleFilters}
+              onRemoveFilterMatcher={this.onRemoveFilterMatcher.bind(this)}
+              onAddFilterMatcher={this.onAddFilterMatcher.bind(this)}
             />
             <GridSearch
               onSearch={this.onSearch.bind(this)}

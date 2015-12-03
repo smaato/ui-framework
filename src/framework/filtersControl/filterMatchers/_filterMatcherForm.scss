@@ -1,0 +1,13 @@
+.filterMatcherForm__filterName {
+  font-weight: 400;
+}
+
+.filterMatcherForm__filterName,
+.filterMatcherForm__filterValueWrapper {
+  margin-bottom: $addedFilter_paddingHorizontal / 2;
+}
+
+.filterMatcherForm__buttons {
+  display: flex;
+  justify-content: space-between;
+}
