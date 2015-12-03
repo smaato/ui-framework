@@ -6,11 +6,9 @@ import React, {
 
 import FiltersDropdown from './filtersDropdown/FiltersDropdown.jsx';
 import FiltersDropdownButton from './filtersDropdown/FiltersDropdownButton.jsx';
-import FiltersList from './filters/FiltersList.jsx';
-import FilterMatcherForm from './filterMatchers/FilterMatcherForm.jsx';
-import FilterMatchersList from './filterMatchers/FilterMatchersList.jsx';
-
-import FilterMatcher from '../services/FilterMatcher';
+import FilterOptionList from './filterOptions/FilterOptionList.jsx';
+import ConditionCheckerForm from './conditionCheckers/ConditionCheckerForm.jsx';
+import ConditionCheckerList from './conditionCheckers/ConditionCheckerList.jsx';
 
 export default class FiltersControl extends Component {
 
@@ -18,41 +16,41 @@ export default class FiltersControl extends Component {
     super(props);
     this.state = {
       isDropdownOpen: false,
-      selectedFilter: null,
-      selectedMethod: null,
+      selectedFilterOption: null,
+      selectedComparisonType: null,
     };
   }
 
   onToggleClick() {
     this.setState({
       isDropdownOpen: !this.state.isDropdownOpen,
-      selectedFilter: null,
-      selectedMethod: null,
+      selectedFilterOption: null,
+      selectedComparisonType: null,
     });
   }
 
-  onSelectFilter(filter, method) {
+  onSelectFilterOption(filter, method) {
     this.setState({
       isDropdownOpen: true,
-      selectedFilter: filter,
-      selectedMethod: method,
+      selectedFilterOption: filter,
+      selectedComparisonType: method,
     });
   }
 
-  onAddFilterMatcher(filterMatcher) {
-    this.props.onAddFilterMatcher(filterMatcher);
+  onAddConditionChecker(conditionChecker) {
+    this.props.onAddConditionChecker(conditionChecker);
     this.setState({
       isDropdownOpen: false,
-      selectedFilter: null,
-      selectedMethod: null,
+      selectedFilterOption: null,
+      selectedComparisonType: null,
     });
   }
 
-  onCancelFilterMatcher() {
+  onCancelConditionChecker() {
     this.setState({
       isDropdownOpen: true,
-      selectedFilter: null,
-      selectedMethod: null,
+      selectedFilterOption: null,
+      selectedComparisonType: null,
     });
   }
 
@@ -62,24 +60,24 @@ export default class FiltersControl extends Component {
     if (this.state.isDropdownOpen) {
       let dropdownContent;
 
-      if (this.state.selectedFilter) {
+      if (this.state.selectedFilterOption) {
         // If we have a selected filter, then we can create a filter matcher
         // from it.
         dropdownContent = (
-          <FilterMatcherForm
-            filter={this.state.selectedFilter}
-            method={this.state.selectedMethod}
-            onAddFilterMatcher={this.onAddFilterMatcher.bind(this)}
-            onCancelFilterMatcher={this.onCancelFilterMatcher.bind(this)}
+          <ConditionCheckerForm
+            filterOption={this.state.selectedFilterOption}
+            comparisonType={this.state.selectedComparisonType}
+            onAddConditionChecker={this.onAddConditionChecker.bind(this)}
+            onCancelConditionChecker={this.onCancelConditionChecker.bind(this)}
           />
         );
       } else {
         // If we don't have a selected filter yet, then we're in the process
         // of selecting one.
         dropdownContent = (
-          <FiltersList
-            filters={this.props.filters}
-            onSelectFilter={this.onSelectFilter.bind(this)}
+          <FilterOptionList
+            filterOptions={this.props.filterOptions}
+            onSelectFilterOption={this.onSelectFilterOption.bind(this)}
           />
         );
       }
@@ -94,9 +92,9 @@ export default class FiltersControl extends Component {
     return (
       <div className="filtersControl">
 
-        <FilterMatchersList
-          filterMatchers={this.props.filterMatchers}
-          onRemoveFilterMatcher={this.props.onRemoveFilterMatcher}
+        <ConditionCheckerList
+          conditionCheckers={this.props.conditionCheckers}
+          onRemoveConditionChecker={this.props.onRemoveConditionChecker}
         />
 
         <div className="filtersDropdownContainer">
@@ -114,10 +112,10 @@ export default class FiltersControl extends Component {
 }
 
 FiltersControl.propTypes = {
-  filterMatchers: PropTypes.arrayOf(PropTypes.instanceOf(FilterMatcher)),
-  filters: FiltersList.propTypes.filters,
-  onAddFilterMatcher: PropTypes.func.isRequired,
-  onRemoveFilterMatcher: FilterMatchersList.propTypes.onRemoveFilterMatcher,
+  conditionCheckers: ConditionCheckerList.propTypes.conditionCheckers,
+  filterOptions: FilterOptionList.propTypes.filterOptions,
+  onAddConditionChecker: PropTypes.func.isRequired,
+  onRemoveConditionChecker: ConditionCheckerList.propTypes.onRemoveConditionChecker,
 };
 
 export default FiltersControl;

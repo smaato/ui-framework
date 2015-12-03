@@ -26,7 +26,7 @@ import {
 
 import numeral from 'numeral';
 
-import gridExampleFilters from './gridExampleFilters.js';
+import gridExampleFilterOptions from './gridExampleFilterOptions.js';
 
 export default class GridExample extends Component {
 
@@ -80,20 +80,20 @@ export default class GridExample extends Component {
     */
   }
 
-  onRemoveFilterMatcher(filterMatcherToRemove) {
-    const filterMatchers = this.state.filterMatchers
-      .filter(filterMatcher => filterMatcher !== filterMatcherToRemove);
+  onRemoveConditionChecker(conditionCheckerToRemove) {
+    const conditionCheckers = this.state.conditionCheckers
+      .filter(conditionChecker => conditionChecker !== conditionCheckerToRemove);
 
     this.setState({
-      filterMatchers,
+      conditionCheckers,
     });
   }
 
-  onAddFilterMatcher(filterMatcher) {
-    const filterMatchers = this.state.filterMatchers.slice();
-    filterMatchers.push(filterMatcher);
+  onAddConditionChecker(conditionChecker) {
+    const conditionCheckers = this.state.conditionCheckers.slice();
+    conditionCheckers.push(conditionChecker);
     this.setState({
-      filterMatchers,
+      conditionCheckers,
     });
   }
 
@@ -131,7 +131,7 @@ export default class GridExample extends Component {
       // Select all
       areAllRowsSelected: false,
       // Filters
-      filterMatchers: [],
+      conditionCheckers: [],
     };
   }
 
@@ -395,7 +395,7 @@ export default class GridExample extends Component {
       return new FilterableItems(rows).applyFilters(filters);
     }
 
-    const filteredBodyRows = filterRows(this.state.bodyRows, this.state.filterMatchers);
+    const filteredBodyRows = filterRows(this.state.bodyRows, this.state.conditionCheckers);
 
     function search(rows, term) {
       const normalizedTerm = normalizeValue(term);
@@ -474,10 +474,10 @@ export default class GridExample extends Component {
 
           <GridControls>
             <FiltersControl
-              filterMatchers={this.state.filterMatchers}
-              filters={gridExampleFilters}
-              onRemoveFilterMatcher={this.onRemoveFilterMatcher.bind(this)}
-              onAddFilterMatcher={this.onAddFilterMatcher.bind(this)}
+              conditionCheckers={this.state.conditionCheckers}
+              filterOptions={gridExampleFilterOptions}
+              onRemoveConditionChecker={this.onRemoveConditionChecker.bind(this)}
+              onAddConditionChecker={this.onAddConditionChecker.bind(this)}
             />
             <GridSearch
               onSearch={this.onSearch.bind(this)}
