@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import IconEllipsis from '../iconEllipsis/IconEllipsis.jsx';
+import IconEllipsis from '../../iconEllipsis/IconEllipsis.jsx';
 
 const FilterEllipsis = () => {
   return (

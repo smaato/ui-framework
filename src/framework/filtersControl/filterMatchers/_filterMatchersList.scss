@@ -1,0 +1,35 @@
+
+.filterMatchersList {
+  display: flex;
+}
+
+  .filterMatchersListItem {
+    @include filtersButton;
+
+    &:hover {
+      .filterMatchersListItem__removeButton {
+        opacity: 1;
+      }
+    }
+  }
+
+    .filterMatchersListItem__label {
+      max-width: 100px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+      .filterMatchersListItem__name {
+        font-weight: 400;
+      }
+
+  .filterMatchersListItem__removeButton {
+    opacity: 0;
+    display: flex;
+    margin-left: -$iconSide;
+    cursor: pointer;
+    background: shade(scale-saturation($componentBackgroundColor, 60%), 3%);
+    box-shadow: -10px 0 5px shade(scale-saturation($componentBackgroundColor, 60%), 3%);
+    color: $linkColor;
+  }

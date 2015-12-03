@@ -2969,14 +2969,91 @@ body {
   color: #26a3d2;
 }
 
-.filters {
+.filtersControl {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.addedFilter,
-.toggleFilterDropdownButton,
+.filterMatcherForm__filterName {
+  font-weight: 400;
+}
+
+.filterMatcherForm__filterName,
+.filterMatcherForm__filterValueWrapper {
+  margin-bottom: 4px;
+}
+
+.filterMatcherForm__buttons {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.filterMatchersList {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.filterMatchersListItem {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 26px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-right: 2px;
+  border: 1px solid #d1dadb;
+  font-size: 11px;
+  background: #eef4f5;
+  border-radius: 2px;
+  cursor: default;
+  color: #5e6162;
+}
+.filterMatchersListItem:hover .filterMatchersListItem__removeButton {
+  opacity: 1;
+}
+
+.filterMatchersListItem__label {
+  max-width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.filterMatchersListItem__name {
+  font-weight: 400;
+}
+
+.filterMatchersListItem__removeButton {
+  opacity: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: -14px;
+  cursor: pointer;
+  background: #eef4f5;
+  box-shadow: -10px 0 5px #eef4f5;
+  color: #2799c4;
+}
+
+.filtersListItem {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.filtersListItem:not(:last-child) {
+  border-bottom: 1px solid #d1dadb;
+}
+
 .filterEllipsis {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2995,80 +3072,6 @@ body {
   cursor: default;
   color: #5e6162;
 }
-
-.addedFilter__text {
-  max-width: 100px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.addedFilter__name {
-  font-weight: 400;
-}
-
-.availableFilter {
-  padding-top: 4px;
-  padding-bottom: 4px;
-  white-space: nowrap;
-  cursor: pointer;
-}
-.availableFilter:not(:last-child) {
-  border-bottom: 1px solid #d1dadb;
-}
-
-.filterDropdown {
-  position: absolute;
-  top: 100%;
-  left: -1px;
-  z-index: 1;
-  padding: 8px;
-  background: #eef4f5;
-  font-size: 11px;
-  border: 1px solid #d1dadb;
-  border-radius: 0 2px 2px;
-  cursor: default;
-}
-
-.filterValueEditor__filterName {
-  font-weight: 400;
-}
-
-.filterValueEditor__filterName,
-.filterValueEditor__filterValueWrapper {
-  margin-bottom: 4px;
-}
-
-.filterValueEditor__buttons {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.toggleFilterDropdownButton {
-  position: relative;
-  font-size: 16px;
-  cursor: pointer;
-}
-.toggleFilterDropdownButton.toggleFilterDropdownButton--dropdown-opened {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom: 0;
-}
-.toggleFilterDropdownButton.toggleFilterDropdownButton--dropdown-opened:after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 2;
-  width: 100%;
-  height: 1px;
-  background: #eef4f5;
-}
-
 .filterEllipsis .icon {
   font-size: 12px;
   width: auto;
@@ -3081,19 +3084,60 @@ body {
   opacity: 1;
 }
 
-.removeFilterButton {
+.filtersDropdownContainer {
+  position: relative;
+}
+
+/**
+ * 1. Place on top of filtersDropdown in z-space.
+ */
+.filtersDropdownButton {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-left: -14px;
-  cursor: pointer;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 26px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-right: 2px;
+  border: 1px solid #d1dadb;
+  font-size: 11px;
   background: #eef4f5;
-  box-shadow: -10px 0 5px #eef4f5;
-  color: #2799c4;
-  opacity: 0;
+  border-radius: 2px;
+  cursor: default;
+  color: #5e6162;
+  position: relative;
+  /* 1 */
+  font-size: 16px;
+  cursor: pointer;
 }
-.addedFilter:hover .removeFilterButton {
-  opacity: 1;
+.filtersDropdownButton.is-filters-dropdown-open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 0;
+}
+.filtersDropdownButton.is-filters-dropdown-open:after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 1px;
+  background: #eef4f5;
+}
+
+.filtersDropdown {
+  position: absolute;
+  top: 100%;
+  z-index: 1;
+  padding: 8px;
+  background: #eef4f5;
+  font-size: 11px;
+  border: 1px solid #d1dadb;
+  border-radius: 0 2px 2px;
 }
 
 .grid__controls {
