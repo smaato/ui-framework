@@ -33,6 +33,7 @@
     "babel-plugin-react-transform": "1.1.1",
     "babelify": "6.1.2",
     "browserify": "10.2.4",
+    "browserify-css": "0.8.1",
     "browserify-hmr": "0.3.1",
     "browserify-istanbul": "0.2.1",
     "del": "1.2.1",
