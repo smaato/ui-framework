@@ -12,7 +12,7 @@
 // 2. Gulp builds dist.css
 // 3. Browserify sees dist.css changed and rebuilds dist.js
 // 4. JS modules are updated on the client side
-// 4. Inline styles are updated
+// 5. Inline styles are updated
 import distCss from '../../dist/css/dist.css';
 
 const styleElelementId = 'dist-css';
