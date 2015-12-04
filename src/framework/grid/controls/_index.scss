@@ -3,16 +3,9 @@
   text-align: center;
   left: 0;
   right: 0;
-
-  .fixedThead & {
-    position: fixed;
-    top: 0;
-    z-index: 5;
-  }
 }
 
   .grid__controls__liner {
-    max-width: $maxWidth;
     margin: 0 auto;
     border: solid $componentStrokeColor;
     border-width: 1px 1px 0;
@@ -38,15 +31,6 @@
     .grid__search {
       padding-right: 15px;
     }
-
-.grid__controls__placeholder {
-  .fixedThead & {
-    height: 71px;
-    max-width: $maxWidth;
-    margin: 0 auto;
-    background: $componentBackgroundColor;
-  }
-}
 
   @import 'filters';
   @import 'batch';

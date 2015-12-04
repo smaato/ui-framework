@@ -1,12 +1,22 @@
 
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 
-const GridEmptyRow = () => {
+const GridEmptyRow = props => {
   return (
-    <div className="gridEmptyRow">
-      No data.
-    </div>
+    <tr>
+      <td colSpan={props.columnsCount}>
+        <div className="gridEmptyRow">
+           No data.
+        </div>
+      </td>
+    </tr>
   );
+};
+
+GridEmptyRow.propTypes = {
+  columnsCount: PropTypes.number.isRequired,
 };
 
 export default GridEmptyRow;

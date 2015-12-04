@@ -2,6 +2,8 @@
 import React, {
   Component,
 } from 'react';
+import ReactDOM from 'react-dom';
+import $ from 'jquery';
 
 import Page, {
   Example,
@@ -14,21 +16,77 @@ import {
   GridBodyEditableCell,
   GridControls,
   GridEmptyRow,
+  GridHeader,
+  GridHeaderSortableCell,
   GridKpiNegative,
   GridKpiPositive,
   GridLoadingRow,
+  GridRow,
+  GridRowRecycler,
   GridSearch,
+  Sorter,
+  GridStencil,
   IconCog,
   IconEllipsis,
+  StickyGrid,
+  ThrottledEventDispatcher,
 } from '../../../framework/framework.js';
 
 import numeral from 'numeral';
+
+const defaultState = {
+  bodyRows: [],
+  isEmptyStateDemonstration: false,
+  isInitialLoad: true,
+  isLoadingBodyRows: false,
+  isLastPage: false,
+  isEmpty: false,
+  // Reference to fake server request, provides ability to cancel it
+  lazyLoadingTimeoutId: null,
+  // Sorting
+  isSortDescending: false,
+  // Index of column to sort by
+  sortedColumnIndex: 1,
+  // Search
+  searchTerm: '',
+  // Select all
+  areAllRowsSelected: false,
+};
 
 export default class GridExample extends Component {
 
   constructor(props) {
     super(props);
-    this.initializeState();
+
+    this.hasColumnWidths = false;
+
+    this.onResizeHandler = this.onResize.bind(this);
+    this.onScrollHandler = this.onScroll.bind(this);
+
+    this.GRID_ID = 'gridExample';
+    this.STICKY_THRESHOLD = 176;
+    this.ROW_HEIGHT = 34;
+    this.BODY_HEIGHT = 500;
+    this.COLUMNS_COUNT = 11;
+    this.ROWS_PER_PAGE = 200;
+
+    // Prioritize the order in which our columns should disappear, ascending.
+    this.COLUMN_PRIORITIES = [
+      8,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3,
+      2,
+      1,
+      0,
+      8,
+    ];
+
+    // In the app that uses Grid this state should be inside reducer
+    this.state = defaultState;
 
     // Because we need custom abbreviations, we need to overwrite the entire
     // English language definition.
@@ -56,24 +114,350 @@ export default class GridExample extends Component {
         symbol: '$',
       },
     });
+
+    this.headerCellPropsProviders = [
+      () => ({
+        children: (
+          <CheckBox
+            id="select-all"
+            checked={this.state.areAllRowsSelected}
+            onClick={event =>
+              this.toggleAllRowsSelected.bind(this)(event.target.checked)
+            }
+          />
+        ),
+      }), index => ({
+        children: (
+          <GridHeaderSortableCell
+            onClick={this.onSort.bind(this, index)}
+            isSelected={this.state.sortedColumnIndex === index}
+            isSortDescending={this.state.isSortDescending}
+          >
+            Id
+          </GridHeaderSortableCell>
+        ),
+      }), index => ({
+        children: (
+          <GridHeaderSortableCell
+            onClick={this.onSort.bind(this, index)}
+            isSelected={this.state.sortedColumnIndex === index}
+            isSortDescending={this.state.isSortDescending}
+          >
+            Name
+          </GridHeaderSortableCell>
+        ),
+      }), index => ({
+        children: (
+          <GridHeaderSortableCell
+            onClick={this.onSort.bind(this, index)}
+            isSelected={this.state.sortedColumnIndex === index}
+            isSortDescending={this.state.isSortDescending}
+          >
+            Status
+          </GridHeaderSortableCell>
+        ),
+      }), index => ({
+        children: (
+          <GridHeaderSortableCell
+            onClick={this.onSort.bind(this, index)}
+            isSelected={this.state.sortedColumnIndex === index}
+            isSortDescending={this.state.isSortDescending}
+          >
+            Fuel
+          </GridHeaderSortableCell>
+        ),
+      }), index => ({
+        children: (
+          <GridHeaderSortableCell
+            onClick={this.onSort.bind(this, index)}
+            isSelected={this.state.sortedColumnIndex === index}
+            isSortDescending={this.state.isSortDescending}
+          >
+            Passengers
+          </GridHeaderSortableCell>
+        ),
+      }), index => ({
+        children: (
+          <GridHeaderSortableCell
+            onClick={this.onSort.bind(this, index)}
+            isSelected={this.state.sortedColumnIndex === index}
+            isSortDescending={this.state.isSortDescending}
+          >
+            Cylinders
+          </GridHeaderSortableCell>
+        ),
+      }), index => ({
+        children: (
+          <GridHeaderSortableCell
+            onClick={this.onSort.bind(this, index)}
+            isSelected={this.state.sortedColumnIndex === index}
+            isSortDescending={this.state.isSortDescending}
+          >
+            Fuel Economy
+          </GridHeaderSortableCell>
+        ),
+      }), index => ({
+        children: (
+          <GridHeaderSortableCell
+            onClick={this.onSort.bind(this, index)}
+            isSelected={this.state.sortedColumnIndex === index}
+            isSortDescending={this.state.isSortDescending}
+          >
+            # Sold
+          </GridHeaderSortableCell>
+        ),
+      }), () => ({
+        children: 'Registered',
+      }), () => null,
+    ];
+
+    this.footerCellPropsProviders = [
+      () => null,
+      () => null,
+      () => null,
+      () => null,
+      () => null,
+      () => null,
+      () => null,
+      () => null,
+      () => ({
+        children: '152.1m',
+      }), () => ({
+        children: 'Registered',
+      }), () => null,
+    ];
+
+    this.cellValueProviders = [
+      () => null,
+      item => item.id,
+      item => item.name,
+      item => item.status,
+      item => item.fuel,
+      item => item.passengers,
+      item => item.cylinders,
+      item => item.fuelEconomy,
+      item => item.sold,
+      item => item.registered,
+      () => null,
+    ];
+
+    // Provide the properties that should belong to each row cell, reflecting
+    // the state of the row's item.
+    this.rowCellPropsProviders = [
+      item => ({
+        // Let the user click on the contact ID to select it.
+        children: (
+          <CheckBox
+            id={item.id}
+            checked={item.isSelected}
+            onClick={event =>
+              this.toggleRowSelected.bind(this)(item.id, event.target.checked)
+            }
+          />
+        ),
+      }), item => ({
+        children: item.id,
+      }), item => ({
+        children: item.name,
+      }), item => ({
+        children: item.status,
+      }), item => ({
+        children: item.fuel,
+      }), item => ({
+        children: (
+          <GridBodyEditableCell
+            content={item.passengers}
+            onClick={event => {
+              event.stopPropagation();
+
+              // Temp replacement for the edit modal
+              let newValue = window.prompt( // eslint-disable-line no-alert
+                'Edit this:',
+                item.passengers
+              );
+              // Cancelled
+              if (newValue === null) {
+                return;
+              }
+              // If value deleted and empty string is rendered, there is nothing
+              // to click in view to change it back, so it fixes that
+              if (newValue === '') {
+                newValue = 'deleted';
+              }
+              const newBodyRows = this.state.bodyRows.map((row) => {
+                if (row.id === item.id) {
+                  row.passengers = newValue;
+                }
+                return row;
+              });
+              this.setState({
+                bodyRows: newBodyRows,
+              });
+            }}
+          />
+        ),
+      }), item => ({
+        children: item.cylinders,
+      }), item => ({
+        children: `${item.fuelEconomy}mpg`,
+      }), item => ({
+        children: (
+          <div>
+            {numeral(item.sold).format('0.[00]a')}
+            {Entity.nbsp}
+            <GridKpiPositive
+              title={`+${item.kpiSold}%`}
+            >
+              {`+${item.kpiSold}%`}
+            </GridKpiPositive>
+          </div>
+        ),
+      }), item => ({
+        children: (
+          <div>
+            {numeral(item.registered).format('0.[00]a')}
+            {Entity.nbsp}
+            <GridKpiNegative
+              title={`-${item.kpiRegistered}%`}
+            >
+              {`-${item.kpiRegistered}%`}
+            </GridKpiNegative>
+          </div>
+        ),
+      }), () => ({
+        children: (
+          <span>
+            <IconEllipsis />
+            <IconCog />
+          </span>
+        ),
+      }),
+    ];
   }
 
   componentDidMount() {
+    // Throttle resize event handling, in an attempt to improve performance.
+    this.resizeEventDispatcher = new ThrottledEventDispatcher(
+      'resize', 'optimizedResize', window, this.onResizeHandler
+    );
+
+    // Throttle scroll event handling, in an attempt to improve performance.
+    this.scrollEventDispatcher = new ThrottledEventDispatcher(
+      'scroll', 'optimizedScroll', window, this.onScrollHandler
+    );
+
+    // Cache references to DOM elements.
+    this.gridElement = $(`#${this.GRID_ID}`);
+    this.refreshHeaderColumnElementReferences();
+
+    // Update the sticky header with column widths.
+    this.updateStickyHeaderColumnWidths();
+
+    // Load initial data.
     this.lazyLoadBodyRows();
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    // If we already measured the columns, then we don't need to do
+    // anything in response to a change in the props/state.
+    if (!this.hasColumnWidths) {
+      // If the incoming props/state let us measure the columns, then do so.
+      if (nextState.bodyRows.length !== 0) {
+        this.hasColumnWidths = true;
+        this.measureColumnWidths(nextState.bodyRows);
+      }
+    }
+    return true;
+  }
+
+  componentDidUpdate() {
+    // New props may have caused the table to re-render, so we need to refresh
+    // our references to DOM elements.
+    this.refreshHeaderColumnElementReferences();
+    this.updateStickyHeaderColumnWidths();
+  }
+
+  componentWillUnmount() {
+    this.resizeEventDispatcher.teardown();
+    this.scrollEventDispatcher.teardown();
+
+    // Clean up the DOM element we've created.
+    if (this.$stylesContainer) {
+      this.$stylesContainer.remove();
+    }
+  }
+
+  onResize() {
+    this.updateStickyHeaderColumnWidths();
+  }
+
+  onScroll() {
+    this.updateStickyHeaderColumnWidths();
+
+    // Get our current scroll position. Compare between values useful in Chrome
+    // and Firefox, respectively.
+    const scrollPosition = Math.max(
+      document.body.scrollTop, document.documentElement.scrollTop);
+
+    // Set header's fixed state manually, for better performance.
+    const isHeaderFixed = scrollPosition >= this.STICKY_THRESHOLD;
+    if (isHeaderFixed !== this.isHeaderFixed) {
+      this.isHeaderFixed = isHeaderFixed;
+      if (isHeaderFixed) {
+        this.gridElement.addClass('is-grid-header-stuck');
+      } else {
+        this.gridElement.removeClass('is-grid-header-stuck');
+      }
+    }
   }
 
   onSearch(term) {
     this.setState({
       searchTerm: term,
     });
-    // In the case of existing API and enabled lazy loading
-    // purge bodyRows and request filtered data from the server.
-    // Would be something like the code below
-    /*
-    // Reset state, but not sorting and searchTerm state
-    this.initializeState();
-    this.lazyLoadBodyRows();
-    */
+    // In the case of existing API, when lazy loading is enabled, we need to
+    // purge bodyRows and request sorted data from the server.
+    //
+    // ```
+    // if (isLazyLoadEnabled) {
+    //  this.setState(defaultState);
+    //  this.lazyLoadBodyRows();
+    // }
+    // ```
+  }
+
+  onClickRow(item) {
+    console.log('Clicked row with ID:', item.id); // eslint-disable-line no-console
+  }
+
+  onSort(cellIndex) {
+    const isSortDescending = this.state.sortedColumnIndex === cellIndex ?
+      !this.state.isSortDescending : this.state.isSortDescending;
+
+    // In the case of existing API, when lazy loading is enabled, we need to
+    // purge bodyRows and request sorted data from the server.
+    //
+    // ```
+    // if (isLazyLoadEnabled) {
+    //  this.setState(defaultState);
+    //  this.lazyLoadBodyRows();
+    // }
+    // ```
+
+    this.setState({
+      sortedColumnIndex: cellIndex,
+      isSortDescending,
+    });
+  }
+
+  getBodyRows() {
+    const foundBodyRows = this.search(this.state.bodyRows, this.state.searchTerm);
+    return Sorter.sort(
+      foundBodyRows,
+      this.cellValueProviders,
+      this.state.sortedColumnIndex,
+      this.state.isSortDescending
+    );
   }
 
   // Returns a random integer between min (inclusive) and max (inclusive)
@@ -81,35 +465,69 @@ export default class GridExample extends Component {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  // It is extracted to a function to easily reset to initial state
-  initializeState() {
-    const bodyRowsMax = 80;
-    // In the app that uses Grid this state should be inside reducer
-    this.state = {
-      bodyRows: [],
-      bodyRowsMax,
-      // bodyRowsMax can be set to zero temporarily to demo empty state,
-      // so this is needed to revert that
-      bodyRowsMaxInitial: bodyRowsMax,
-      isInitialLoad: true,
-      isLoadingBodyRows: false,
-      isLastPage: false,
-      isEmpty: false,
-      // Reference to fake server request, provides ability to cancel it
-      lazyLoadingTimeoutId: null,
-      // Sorting
-      // Array of col indexes to enable sorting for.
-      // I disabled those whose render function output DOM elements, unlike
-      // those outputting string or number it is not clear how to sort them.
-      sortColumnIndexes: [1, 2, 3, 4, 6, 7],
-      isSortDescending: true,
-      // Index of column to sort by
-      sortedColumnIndex: 1,
-      // Search
-      searchTerm: '',
-      // Select all
-      areAllRowsSelected: false,
-    };
+  refreshHeaderColumnElementReferences() {
+    // Cache references to DOM elements.
+    this.headerColumnElements = $(`#${this.GRID_ID} thead th`);
+    this.stickyHeaderColumnElements = $(`#${this.GRID_ID} .stickyGridHeaderCell`);
+  }
+
+  updateStickyHeaderColumnWidths() {
+    // Set sticky header column widths to match whatever they currently are
+    // in the real table.
+    const columnWidths = this.headerColumnElements.map((index, column) => {
+      return $(column).innerWidth();
+    });
+
+    this.stickyHeaderColumnElements.each((index, element) => {
+      $(element).css('width', `${columnWidths[index]}px`);
+    });
+  }
+
+  measureColumnWidths(items) {
+    // This is the container we'll store the styles in.
+    this.$stylesContainer = $('<style />').appendTo($('body'));
+    // Create and store media queries and column widths.
+    const gridStencil = new GridStencil({
+      gridId: this.GRID_ID,
+      items: items,
+      rowCellPropsProviders: this.rowCellPropsProviders,
+      headerCellPropsProviders: this.headerCellPropsProviders,
+      rowHeight: this.ROW_HEIGHT,
+      columnPriorities: this.COLUMN_PRIORITIES,
+      totalSpaceAroundGridSides: 100,
+      totalCellSidePadding: 16,
+    });
+    const node = ReactDOM.findDOMNode(this);
+    const {
+      mediaQueries,
+      columnWidths,
+    } = gridStencil.createWithNode(node);
+    this.$stylesContainer.append(mediaQueries.join('\n'));
+    this.$stylesContainer.append(columnWidths.join('\n'));
+  }
+
+  generateRows(indexStart, newRowsCount) {
+    const newRows = [];
+    const indexEnd = indexStart + newRowsCount;
+    for (let i = indexStart; i < indexEnd; i++) {
+      newRows.push({
+        id: i,
+        name: `Ford F-${this.getRandomInt(0, 50000)}`,
+        status: 'In Production',
+        fuel: 'Diesel, Unleaded',
+        passengers: this.getRandomInt(0, 100),
+        cylinders: this.getRandomInt(0, 8),
+        fuelEconomy: this.getRandomInt(0, 200000),
+        sold: this.getRandomInt(0, 2000000000),
+        registered: this.getRandomInt(0, 2000000000),
+        kpiSold: this.getRandomInt(0, 100),
+        kpiRegistered: this.getRandomInt(0, 100),
+        // TODO: In the case of requesting data from server this
+        // could be a more distinct step when state is mixed in
+        isSelected: this.state.areAllRowsSelected,
+      });
+    }
+    return newRows;
   }
 
   lazyLoadBodyRows() {
@@ -121,8 +539,18 @@ export default class GridExample extends Component {
 
     // Fake request
     const lazyLoadingTimeoutId = window.setTimeout(() => {
+      if (this.state.isEmptyStateDemonstration) {
+        return this.setState({
+          bodyRows: [],
+          isInitialLoad: false,
+          isLoadingBodyRows: false,
+          isLastPage: true,
+          isEmpty: true,
+        });
+      }
+
       // Current state
-      const generatedRows = this.generateRows(this.state.bodyRows.length, 20);
+      const generatedRows = this.generateRows(this.state.bodyRows.length, this.ROWS_PER_PAGE);
       const isInitialLoad = this.state.isInitialLoad;
       const isResultEmpty = generatedRows.length === 0;
 
@@ -146,86 +574,39 @@ export default class GridExample extends Component {
     });
   }
 
-  generateRows(indexStart, numberOfItems) {
-    const newArray = [];
-    let indexEnd = indexStart + numberOfItems;
-    const indexMax = this.state.bodyRowsMax;
-    indexEnd = indexEnd >= indexMax ? indexMax : indexEnd;
-    for (let i = indexStart; i < indexEnd; i++) {
-      newArray.push(
-        {
-          id: i,
-          name: `Ford F${this.getRandomInt(0, 50000)}`,
-          status: 'In Production',
-          fuel: 'Diesel, Unleaded',
-          passengers: this.getRandomInt(0, 100),
-          cylinders: this.getRandomInt(0, 8),
-          fuelEconomy: `${this.getRandomInt(0, 200000)}mpg`,
-          sold: numeral(this.getRandomInt(0, 2000000000)).format('0.[00]a'),
-          registered: numeral(this.getRandomInt(0, 2000000000)).format('0.[00]a'),
-          kpiSold: `+${this.getRandomInt(0, 100)}%`,
-          kpiRegistered: `-${this.getRandomInt(0, 100)}%`,
-          // TODO: In the case of requesting data from server this
-          // could be a more distinct step when state is mixed in
-          isSelected: this.state.areAllRowsSelected,
-        }
-      );
+  search(rows, term) {
+    if (!term) {
+      return rows;
     }
-    return newArray;
+    const normalizedTerm = term.trim().toLowerCase();
+    return rows.filter(row => {
+      // It will return true when 1st match is found, otherwise false
+      return this.cellValueProviders.some(provider => {
+        const cellValue = provider(row);
+        if (cellValue === undefined || cellValue === null) {
+          return;
+        }
+        const normalizedCellValue = cellValue.toString().trim().toLowerCase();
+        return normalizedCellValue.indexOf(normalizedTerm) !== -1;  // eslint-disable-line consistent-return
+      });
+    });
   }
 
   toggleEmptyRows() {
     // Cancel fake ongoing request
     window.clearTimeout(this.state.lazyLoadingTimeoutId);
 
-    // Toggle bodyRowsMax initial and 0
-    const bodyRowsMax = this.state.bodyRowsMax === 0 ?
-      this.state.bodyRowsMaxInitial : 0;
-
-    // Reset to initial state to simulate initial load
-    // with a different value of bodyRowsMax
-    this.initializeState();
-
-    this.setState(
-      {
-        bodyRowsMax,
-      },
-      // When we have the desired state we request server to load the new
-      // data set.
-      // Since setting state is batched and not sequential this
-      // needs to be called as callback or else it won't work as expected.
-      this.lazyLoadBodyRows
-    );
-  }
-
-  sortFunc(bodyRows, bodyRenderer, cellIndex, isSortDesc) {
-    return bodyRows.sort((a, b) => {
-      // We have the data for the row as an object and
-      // renderer for the cell/column, which in theory can output
-      // anything.
-      const cellRenderA = bodyRenderer[cellIndex](a);
-      const cellRenderB = bodyRenderer[cellIndex](b);
-      const isNumber = typeof cellRenderA === 'number';
-      let cellContentA;
-      let cellContentB;
-      if (isNumber) {
-        cellContentA = cellRenderA;
-        cellContentB = cellRenderB;
-      } else {
-        cellContentA = cellRenderA.toString().toLowerCase();
-        cellContentB = cellRenderB.toString().toLowerCase();
-      }
-      // Ascending
-      if (cellContentA < cellContentB) {
-        return isSortDesc ? -1 : 1;
-      }
-      // Descending
-      if (cellContentA > cellContentB) {
-        return isSortDesc ? 1 : -1;
-      }
-      // No sorting
-      return 0;
-    });
+    // When we have the desired state we request server to load the new
+    // data set. Since setting state is batched and not sequential we
+    // need to call `lazyLoadBodyRows` or else it won't work as expected.
+    this.setState({
+      bodyRows: [],
+      isEmptyStateDemonstration: !this.state.isEmptyStateDemonstration,
+      isLoadingBodyRows: false,
+      isLastPage: false,
+      isEmpty: false,
+      isInitialLoad: true,
+    }, this.lazyLoadBodyRows);
   }
 
   toggleAllRowsSelected(areAllRowsSelected) {
@@ -257,231 +638,122 @@ export default class GridExample extends Component {
     });
   }
 
-  render() {
-    const headerCells = [
-      <CheckBox
-        id="select-all"
-        checked={this.state.areAllRowsSelected}
-        onClick={event =>
-          this.toggleAllRowsSelected.bind(this)(event.target.checked)
-        }
-      />,
-      'Id',
-      'Name',
-      'Status',
-      'Fuel',
-      'Passengers',
-      'Cylinders',
-      'Fuel Economy',
-      '# Sold',
-      'Registered',
-      null,
-    ];
+  renderExampleControls() {
+    return (
+      <p>
+        <button
+          type="button"
+          onClick={this.toggleEmptyRows.bind(this)}
+        >
+          {this.state.isEmptyStateDemonstration
+            ? 'Test loading rows'
+            : 'Test empty state'}
+        </button>
+      </p>
+    );
+  }
 
-    const footerCells = [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      '152.1m',
-      'Registered',
-      null,
-    ];
+  renderGridControls() {
+    return (
+      <GridControls>
+        <GridSearch
+          onSearch={this.onSearch.bind(this)}
+        />
+      </GridControls>
+    );
+  }
 
-    const bodyRenderer = [
-      item => <CheckBox
-        id={item.id}
-        checked={item.isSelected}
-        onClick={event =>
-          this.toggleRowSelected.bind(this)(item.id, event.target.checked)
-        }
-      />,
-      item => item.id,
-      item => item.name,
-      item => item.status,
-      item => item.fuel,
-      item => <GridBodyEditableCell
-        content={item.passengers}
-        onClick={() => {
-          // Temp replacement for the edit modal
-          let newValue = window.prompt(// eslint-disable-line no-alert
-            'Edit this:',
-            item.passengers
-          );
-          // Cancelled
-          if (newValue === null) {
-            return;
-          }
-          // If value deleted and empty string is rendered, there is nothing
-          // to click in view to change it back, so it fixes that
-          if (newValue === '') {
-            newValue = 'deleted';
-          }
-          const newBodyRows = this.state.bodyRows.map((row) => {
-            if (row.id === item.id) {
-              row.passengers = newValue;
-            }
-            return row;
-          });
-          this.setState({
-            bodyRows: newBodyRows,
-          });
-        }}
-      />,
-      item => item.cylinders,
-      item => item.fuelEconomy,
-      item => (
-        <div>
-          {item.sold}
-          {Entity.nbsp}
-          <GridKpiPositive
-            title={item.kpiSold}
-          >
-            {item.kpiSold}
-          </GridKpiPositive>
-        </div>
-      ),
-      item => (
-        <div>
-          {item.registered}
-          {Entity.nbsp}
-          <GridKpiNegative
-            title={item.kpiRegistered}
-          >
-            {item.kpiRegistered}
-          </GridKpiNegative>
-        </div>
-      ),
-      () => (
-        <span>
-          <IconEllipsis />
-          <IconCog />
-        </span>
-      ),
-    ];
+  renderInitialLoadingRow() {
+    if (this.state.isInitialLoad) {
+      return <GridLoadingRow columnsCount={this.COLUMNS_COUNT} isInitial />;
+    }
+  }
 
-    function search(rows, term) {
-      const normalizedTerm = term.trim().toLowerCase();
-      return rows.filter(row =>
-        // It will return true when 1st match is found, otherwise false
-        Object.keys(row).some(key => {
-          const cellValue = row[key].toString().trim().toLowerCase();
-          const isTermFound = cellValue.indexOf(normalizedTerm) !== -1;
-          return isTermFound;
-        })
+  renderEmptyRow() {
+    if (this.state.isEmpty) {
+      return <GridEmptyRow columnsCount={this.COLUMNS_COUNT} />;
+    }
+  }
+
+  renderLoadingRow() {
+    if (this.state.isLoadingBodyRows && !this.state.isInitialLoad && !this.state.isEmpty) {
+      return <GridLoadingRow columnsCount={this.COLUMNS_COUNT} />;
+    }
+  }
+
+  renderGridHeader() {
+    return (
+      <GridHeader
+        headerCellPropsProviders={this.headerCellPropsProviders}
+      />
+    );
+  }
+
+  renderGrid() {
+    const rows = [];
+    const items = this.getBodyRows();
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+
+      // Add items, in order.
+      const stripedClass = (i % 2 === 0) ? 'gridRow--even' : 'gridRow--odd';
+      rows.push(
+        <GridRow
+          key={item.id}
+          item={item}
+          rowCellPropsProviders={this.rowCellPropsProviders}
+          onClick={this.onClickRow.bind(this)}
+          height={this.ROW_HEIGHT}
+          classBodyRow={stripedClass}
+        />
       );
     }
 
-    const foundBodyRows = search(this.state.bodyRows, this.state.searchTerm);
+    const rowRecycler = new GridRowRecycler({
+      rows,
+      recycledRowsOverflowDistance: 1300,
+      recycledRowsCount: 120,
+      getItemHeight: item => {
+        return item.props.height;
+      },
+    });
 
-    function onSort(cellIndex) {
-      const isSortDesc = this.state.sortedColumnIndex === cellIndex ?
-        !this.state.isSortDescending : true;
-
-      // In the case of existing API, when lazy loading is enabled, we need to
-      // purge bodyRows and request sorted data from the server.
-      /*
-      if (isLazyLoadEnabled) {
-        this.initializeState();
-        this.lazyLoadBodyRows();
-      }
-      */
-
-      this.setState({
-        sortedColumnIndex: cellIndex,
-        isSortDescending: isSortDesc,
-      });
-    }
-
-    const sortedBodyRows = this.sortFunc(
-      foundBodyRows,
-      bodyRenderer,
-      this.state.sortedColumnIndex,
-      this.state.isSortDescending
+    return (
+      <StickyGrid
+        id={this.GRID_ID}
+        headerCellPropsProviders={this.headerCellPropsProviders}
+      >
+        <Grid
+          columnsCount={this.COLUMNS_COUNT}
+          header={this.renderGridHeader()}
+          rows={rows}
+          lazyLoadRows={this.lazyLoadBodyRows.bind(this)}
+          // Initial loading state
+          initialLoadingRow={this.renderInitialLoadingRow()}
+          // Empty state
+          emptyRow={this.renderEmptyRow()}
+          // Loading state
+          loadingRow={this.renderLoadingRow()}
+          onClickRow={this.onClickRow.bind(this)}
+          rowRecycler={rowRecycler}
+        />
+      </StickyGrid>
     );
+  }
 
-    const ROW_HEIGHT = 34;
-    const BODY_HEIGHT = 500;
-
-    const isEmptyStateEnabled = this.state.bodyRowsMax === 0;
-
-    let initialLoadingRow;
-    let emptyRow;
-    let loadingRow;
-    if (this.state.isInitialLoad) {
-      initialLoadingRow = <GridLoadingRow isInitial />;
-    }
-    if (this.state.isEmpty) {
-      emptyRow = <GridEmptyRow />;
-    }
-    if (this.state.isLoadingBodyRows && !this.state.isInitialLoad && !this.state.isEmpty) {
-      loadingRow = <GridLoadingRow />;
-    }
-
+  render() {
     return (
       <Page title={this.props.route.name}>
 
         <Example isClear>
 
-          <p>
-            <button
-              type="button"
-              onClick={this.toggleEmptyRows.bind(this)}
-            >
-              {isEmptyStateEnabled ? 'Disable ' : 'Enable '}
-              empty state
-            </button>
-          </p>
+          {this.renderExampleControls()}
 
           <br/>
 
-          <GridControls>
-            <GridSearch
-              onSearch={this.onSearch.bind(this)}
-            />
-          </GridControls>
+          {this.renderGridControls()}
 
-          <Grid
-            classContainer="gridExample__container"
-            classTable="gridExample__table"
-            classHeader="gridExample__header"
-            classHeaderRow="gridExample__headerRow"
-            classHeaderCell="gridExample__headerCell"
-            classBody="gridExample__body"
-            classBodyRow="gridExample__bodyRow"
-            classBodyCell="gridExample__bodyCell"
-            classFooter="gridExample__footer"
-            classFooterRow="gridExample__footerRow"
-            classFooterCell="gridExample__footerCell"
-            headerCells={headerCells}
-            bodyRows={sortedBodyRows}
-            bodyRenderer={bodyRenderer}
-            footerCells={footerCells}
-            // Initial loading indicator
-            initialLoadingRow={initialLoadingRow}
-            // Empty state indicator
-            emptyRow={emptyRow}
-            // Scroll
-            // TODO: change to have a single source of truth.
-            // Height should either be dynamically calculated or
-            // the supplied value should be set as inline CSS to the cell.
-            rowHeight={ROW_HEIGHT}
-            bodyHeight={BODY_HEIGHT}
-            overflowRecycledRowsCount={20}
-            reverseZebraStripeClass="grid--reverseStriped"
-            lazyLoadRows={this.lazyLoadBodyRows.bind(this)}
-            loadingRow={loadingRow}
-            loadDistanceFromBottom={1000}
-            // Sorting
-            sortColumnIndexes={this.state.sortColumnIndexes}
-            isSortDescending={this.state.isSortDescending}
-            sortedColumnIndex={this.state.sortedColumnIndex}
-            onSort={onSort.bind(this)}
-          />
+          {this.renderGrid()}
 
         </Example>
 

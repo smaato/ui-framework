@@ -1,46 +1,51 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
-import GridHeaderRow from './GridHeaderRow.jsx';
 
-export default class GridHeader extends Component {
+const GridHeader = props => {
+  const sectionClass = classNames('grid__header', props.classHeader);
+  const rowClass = classNames('grid__header__row', props.classHeaderRow);
 
-  constructor(props) {
-    super(props);
-  }
+   // Create cells.
+  const headerCells = props.headerCellPropsProviders.map((getPropsForIndex, index) => {
+    // Cell classes.
+    const classes = classNames('grid__header__cell', props.classHeaderCell);
 
-  render() {
-    const sectionClass = classNames('grid__header', this.props.classHeader);
+    // Get properties for the inner cell.
+    const innerCellProps = getPropsForIndex(index) || {};
 
+    // We want to add on our own classes to the inner cell, without destroying
+    // any classes that have been provided.
+    const decoratedInnerCellProps = Object.assign({}, innerCellProps, {
+      className: classNames('grid__header__cellLiner', innerCellProps.className),
+    });
     return (
-      <div className={sectionClass}>
-        <GridHeaderRow
-          classHeaderRow={this.props.classHeaderRow}
-          classHeaderCell={this.props.classHeaderCell}
-          cells={this.props.cells}
-          // Sorting
-          sortColumnIndexes={this.props.sortColumnIndexes}
-          isSortDescending={this.props.isSortDescending}
-          sortedColumnIndex={this.props.sortedColumnIndex}
-          onSort={this.props.onSort}
-        />
-      </div>
+      <th
+        key={index}
+        className={classes}
+      >
+        <div {...decoratedInnerCellProps} ></div>
+      </th>
     );
-  }
+  });
 
-}
+  return (
+    <thead className={sectionClass}>
+      <tr className={rowClass}>
+        {headerCells}
+      </tr>
+    </thead>
+  );
+};
 
 GridHeader.propTypes = {
+  headerCellPropsProviders: PropTypes.array.isRequired,
+  // Classes
   classHeader: PropTypes.string,
   classHeaderRow: PropTypes.string,
   classHeaderCell: PropTypes.string,
-  cells: PropTypes.array.isRequired,
-  // Sorting
-  sortColumnIndexes: GridHeaderRow.propTypes.sortColumnIndexes,
-  isSortDescending: GridHeaderRow.propTypes.isSortDescending,
-  sortedColumnIndex: GridHeaderRow.propTypes.sortedColumnIndex,
-  onSort: GridHeaderRow.propTypes.onSort,
 };
+
+export default GridHeader;

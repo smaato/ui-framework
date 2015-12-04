@@ -35,3 +35,15 @@ export { default as ViewHeader } from './viewHeader/ViewHeader.jsx';
 
 export * from './services/Entity';
 export { default as Entity } from './services/Entity';
+
+export * from './services/GridRowRecycler';
+export { default as GridRowRecycler } from './services/GridRowRecycler';
+
+export * from './services/GridStencil';
+export { default as GridStencil } from './services/GridStencil';
+
+export * from './services/Sorter';
+export { default as Sorter } from './services/Sorter';
+
+export * from './services/ThrottledEventDispatcher';
+export { default as ThrottledEventDispatcher } from './services/ThrottledEventDispatcher';

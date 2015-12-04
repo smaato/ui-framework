@@ -1,33 +1,65 @@
-.grid__headerBG {
+.grid__header__cell {
+  vertical-align: middle;
+
+  height: 31px;
   border-bottom: 1px solid $componentStrokeColor;
   background: $componentBackgroundColor;
-  height: 31px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
-.fixedThead {
-
-  .grid__header__placeholder {
-    left: 0;
-    right: 0;
-    top: 40px;
-    position: fixed;
-    z-index: 5;
-    text-align: center;
+  .grid__header__cellLiner {
   }
 
-    .grid__header__placeholder__liner {
-      @extend .grid__headerBG;
-      max-width: $maxWidth;
-      border-top: 1px solid $componentStrokeColor;
-      margin: 0 auto;
-      text-align: left;
-      border-left: 1px solid $componentStrokeColor;
-      border-right: 1px solid $componentStrokeColor;
-      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.05);
+  .grid__header__row--placeholder {
+    &.grid__header__cellLiner {
+      height: 0;
+      border: 0;
+      overflow: hidden;
+    }
+  }
+
+.gridHeaderSortableCell {
+  display: inline-block;
+  color: #2799c4;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    background: shade($componentBackgroundColor, 3%);
+  }
+
+  &.is-grid-header-sortable-cell-selected {
+    .gridHeaderSortableCell__arrow {
+      opacity: 1;
+    }
+  }
+
+  &.is-grid-header-sort-descending {
+    .gridHeaderSortableCell__arrowDown {
+      display: inline-block;
     }
 
-  .grid__header__row:not(.grid__header__row--placeholder) .grid__header__cellLiner {
-    position: fixed;
-    top: 41px;
+    .gridHeaderSortableCell__arrowUp {
+      display: none;
+    }
   }
 }
+
+  .gridHeaderSortableCell__label {
+    display: inline-block;
+    margin-right: 6px;
+  }
+
+  .gridHeaderSortableCell__arrow {
+    display: inline-block;
+    opacity: 0;
+
+  }
+    .gridHeaderSortableCell__arrowDown {
+      display: none;
+    }
+
+    .gridHeaderSortableCell__arrowUp {
+      display: inline-block;
+    }

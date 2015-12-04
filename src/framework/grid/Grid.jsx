@@ -4,9 +4,25 @@ import React, {
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
-import GridHeader from './header/GridHeader.jsx';
 import GridBody from './body/GridBody.jsx';
-import GridFooter from './footer/GridFooter.jsx';
+import GridRowRecycler from '../services/GridRowRecycler';
+import ThrottledEventDispatcher from '../services/ThrottledEventDispatcher';
+
+export {
+  default as GridHeader,
+} from './header/GridHeader.jsx';
+
+export {
+  default as GridFooter,
+} from './footer/GridFooter.jsx';
+
+export {
+  default as GridRow,
+} from './body/GridRow.jsx';
+
+export {
+  default as GridHeaderSortableCell,
+} from './header/GridHeaderSortableCell.jsx';
 
 export {
   default as GridBodyEditableCell,
@@ -40,63 +56,122 @@ export {
   default as GridSearch,
 } from './controls/search/GridSearch.jsx';
 
+export {
+  default as StickyGrid,
+} from './stickyGrid/StickyGrid.jsx';
+
 export default class Grid extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      scrollPosition: 0, // Used and set by rowRecycler
+      firstRecycledRowIndex: 0,
+      firstRecycledRowOffset: 0,
+    };
+
+    this.onScrollHandler = this.onScroll.bind(this);
+  }
+
+  componentDidMount() {
+    // Throttle scroll event handling, in an attempt to improve performance.
+    this.scrollEventDispatcher = new ThrottledEventDispatcher(
+      'scroll', 'optimizedScroll', window, this.onScrollHandler
+    );
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    // Returning false here seems to greatly improve performance a lot
+    // (based on how the view and table headers become fixed with less latency).
+
+    // So we'll only return true when this state property changes.
+    if (nextState.firstRecycledRowOffset !== this.state.firstRecycledRowOffset) {
+      return true;
+    }
+
+    // We will be provided a new props obeject whenever it changes, so we can
+    // compare by reference instead of doing a deep comparison.
+    if (nextProps !== this.props) {
+      return true;
+    }
+
+    return false;
+  }
+
+  componentWillUnmount() {
+    this.scrollEventDispatcher.teardown();
+  }
+
+  onScroll() {
+    // Get our current scroll position. Compare between values useful in Chrome
+    // and Firefox, respectively.
+    const scrollPosition = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+    // Update state of recycled rows when the user scrolls the table.
+    const rowRecycler = this.props.rowRecycler;
+    this.setState(rowRecycler.getFirstRecycledRowState(this.state, scrollPosition));
+
+    // Lazily load rows as the user scrolls.
+    if (this.props.lazyLoadRows) {
+      // If scroll position is a certain distance from the bottom, invoke callback.
+      const distanceFromBottom = (document.documentElement.scrollHeight - window.innerHeight) - scrollPosition;
+      if (distanceFromBottom <= 1000) {
+        this.props.lazyLoadRows();
+      }
+    }
   }
 
   render() {
+    const {
+      firstRecycledRowIndex,
+      firstRecycledRowOffset,
+    } = this.state;
+
+    const {
+      lastRecycledRowIndex,
+      lastRecycledRowOffset,
+    } = this.props.rowRecycler.getLastRecycledRowState(this.state);
+
+    // Create recycled rows.
+    const rowsCount = this.props.rows.length;
+    const rows = [];
+    for (let index = firstRecycledRowIndex; index <= lastRecycledRowIndex && index < rowsCount; index++) {
+      const row = this.props.rows[index];
+      rows.push(row);
+    }
+
     // Style classes
     const containerClass = classNames('grid__container', this.props.classContainer);
     const tableClass = classNames('grid__table', this.props.classTable);
 
-    // Body
-    const bodyRows = this.props.bodyRows.map((dataRow) => {
-      return this.props.bodyRenderer.map((cellRenderer) => {
-        return cellRenderer(dataRow);
-      });
-    });
-
     return (
       <div className={containerClass}>
-        <div className={tableClass}>
-          <GridHeader
-            classHeader={this.props.classHeader}
-            classHeaderRow={this.props.classHeaderRow}
-            classHeaderCell={this.props.classHeaderCell}
-            cells={this.props.headerCells}
-            // Sorting
-            sortColumnIndexes={this.props.sortColumnIndexes}
-            isSortDescending={this.props.isSortDescending}
-            sortedColumnIndex={this.props.sortedColumnIndex}
-            onSort={this.props.onSort}
-          />
+        <table className={tableClass}>
+
+          {this.props.header}
+
           <GridBody
+            columnsCount={this.props.columnsCount}
+            firstRecycledRowOffset={firstRecycledRowOffset}
+            lastRecycledRowOffset={lastRecycledRowOffset}
+
+            // Initial loading state
+            initialLoadingRow={this.props.initialLoadingRow}
+            // Loading state
+            loadingRow={this.props.loadingRow}
+            // Empty state
+            emptyRow={this.props.emptyRow}
+
             classBody={this.props.classBody}
             classBodyRow={this.props.classBodyRow}
             classBodyCell={this.props.classBodyCell}
-            rows={bodyRows}
-            rowHeight={this.props.rowHeight}
-            bodyHeight={this.props.bodyHeight}
-            // Initial loading state
-            initialLoadingRow={this.props.initialLoadingRow}
-            // Empty state
-            emptyRow={this.props.emptyRow}
-            // Scroll
-            lazyLoadRows={this.props.lazyLoadRows}
-            overflowRecycledRowsCount={this.props.overflowRecycledRowsCount}
-            reverseZebraStripeClass={this.props.reverseZebraStripeClass}
-            loadingRow={this.props.loadingRow}
-            loadDistanceFromBottom={this.props.loadDistanceFromBottom}
-          />
-          <GridFooter
-            classFooter={this.props.classFooter}
-            classFooterRow={this.props.classFooterRow}
-            classFooterCell={this.props.classFooterCell}
-            cells={this.props.footerCells}
-          />
-        </div>
+          >
+            {rows}
+          </GridBody>
+
+          {this.props.footer}
+
+        </table>
       </div>
     );
   }
@@ -104,40 +179,27 @@ export default class Grid extends Component {
 }
 
 Grid.propTypes = {
+  id: PropTypes.string,
+  columnsCount: GridBody.propTypes.columnsCount,
+  header: PropTypes.element,
+  footer: PropTypes.element,
+  rows: GridBody.propTypes.children,
+  lazyLoadRows: PropTypes.func,
+  // Initial loading state
+  initialLoadingRow: PropTypes.element,
+  // Empty state
+  emptyRow: PropTypes.element,
+  // Loading state
+  loadingRow: GridBody.propTypes.loadingRow,
+  onClickRow: PropTypes.func,
+  rowRecycler: PropTypes.instanceOf(GridRowRecycler),
+  // Classes
   classContainer: PropTypes.string,
   classTable: PropTypes.string,
-  classHeader: PropTypes.string,
-  classHeaderRow: PropTypes.string,
-  classHeaderCell: PropTypes.string,
   classBody: PropTypes.string,
   classBodyRow: PropTypes.string,
   classBodyCell: PropTypes.string,
   classFooter: PropTypes.string,
   classFooterRow: PropTypes.string,
   classFooterCell: PropTypes.string,
-  headerCells: PropTypes.array,
-  bodyRows: PropTypes.array.isRequired,
-  bodyRenderer: PropTypes.array.isRequired,
-  footerCells: PropTypes.array,
-  // Initial loading state
-  initialLoadingRow: PropTypes.element,
-  // Empty state
-  emptyRow: PropTypes.element,
-  // Scroll
-  rowHeight: PropTypes.number.isRequired,
-  bodyHeight: PropTypes.number.isRequired,
-  lazyLoadRows: PropTypes.func,
-  overflowRecycledRowsCount: PropTypes.number,
-  reverseZebraStripeClass: PropTypes.string,
-  loadingRow: PropTypes.element,
-  loadDistanceFromBottom: PropTypes.number,
-  // Sorting
-  sortColumnIndexes: GridHeader.propTypes.sortColumnIndexes,
-  isSortDescending: GridHeader.propTypes.isSortDescending,
-  sortedColumnIndex: GridHeader.propTypes.sortedColumnIndex,
-  onSort: GridHeader.propTypes.onSort,
-};
-
-Grid.defaultProps = {
-  overflowRecycledRowsCount: 10,
 };

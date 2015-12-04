@@ -3,9 +3,7 @@
   padding-right: 8px;
   border-bottom: 1px dashed $componentStrokeColor;
   font-weight: 300;
-  // Vertical align
-  display: flex;
-  align-items: center;
+  vertical-align: middle;
 }
 
   .grid__body__cell {
@@ -34,7 +32,6 @@
         padding: 4px 5px;
         display: inline-block;
         vertical-align: middle;
-        min-width: 40px;
         color: $componentTextColor;
         // 4 props to make ellipsis work
         max-width: 100%;

@@ -3032,14 +3032,8 @@ body {
   left: 0;
   right: 0;
 }
-.fixedThead .grid__controls {
-  position: fixed;
-  top: 0;
-  z-index: 5;
-}
 
 .grid__controls__liner {
-  max-width: 1200px;
   margin: 0 auto;
   border: solid #d4dadc;
   border-width: 1px 1px 0;
@@ -3063,13 +3057,6 @@ body {
 
 .grid__search {
   padding-right: 15px;
-}
-
-.fixedThead .grid__controls__placeholder {
-  height: 71px;
-  max-width: 1200px;
-  margin: 0 auto;
-  background: #f7fafb;
 }
 
 .grid__filtersWrapper {
@@ -3228,109 +3215,68 @@ body {
   font-size: 11px;
 }
 
-.grid__container {
-  border: 1px solid #d4dadc;
-  -webkit-font-smoothing: subpixel-antialiased;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.grid__table {
-  display: block;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  color: #474b4e;
-  font-weight: 400;
-  font-size: 13px;
-}
-
-.grid__headerBG, .fixedThead .grid__header__placeholder__liner, .grid__header__cellLiner {
-  border-bottom: 1px solid #d4dadc;
-  background: #f7fafb;
-  height: 31px;
-}
-
-.fixedThead .grid__header__placeholder {
-  left: 0;
-  right: 0;
-  top: 40px;
-  position: fixed;
-  z-index: 5;
-  text-align: center;
-}
-.fixedThead .grid__header__placeholder__liner {
-  max-width: 1200px;
-  border-top: 1px solid #d4dadc;
-  margin: 0 auto;
-  text-align: left;
-  border-left: 1px solid #d4dadc;
-  border-right: 1px solid #d4dadc;
-  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.05);
-}
-.fixedThead .grid__header__row:not(.grid__header__row--placeholder) .grid__header__cellLiner {
-  position: fixed;
-  top: 41px;
-}
-
 .grid__header__cell {
   vertical-align: middle;
-  line-height: 30px;
-}
-.grid__header__cell.sortable .arrowDown,
-.grid__header__cell.sortable .arrowUp {
-  display: none;
-}
-.grid__header__cell.sortable:hover a {
-  background: #f0f3f3;
-  cursor: pointer;
-}
-.grid__header__cell.sortable.selected a {
-  white-space: nowrap;
-}
-.grid__header__cell.sortable.selected a .arrowDown {
-  display: inline-block;
-}
-.grid__header__cell.sortable.selected.reverse .arrowDown {
-  display: none;
-}
-.grid__header__cell.sortable.selected.reverse .arrowUp {
-  display: inline-block;
+  height: 31px;
+  border-bottom: 1px solid #d4dadc;
+  background: #f7fafb;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
-.grid__header__cellLiner {
-  display: block;
-  z-index: 6;
-  padding: 0 8px;
-}
-
-.grid__header__cell:first-child .grid__header__cellLiner {
-  padding-left: 15px;
-}
-
-.grid__header__cell:last-child .grid__header__cellLiner {
-  padding-right: 15px;
-}
-
-.grid__header__row--placeholder .grid__header__cellLiner {
+.grid__header__row--placeholder.grid__header__cellLiner {
   height: 0;
   border: 0;
   overflow: hidden;
+}
+
+.gridHeaderSortableCell {
+  display: inline-block;
+  color: #2799c4;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.gridHeaderSortableCell:hover {
+  background: #f0f3f3;
+}
+.gridHeaderSortableCell.is-grid-header-sortable-cell-selected .gridHeaderSortableCell__arrow {
+  opacity: 1;
+}
+.gridHeaderSortableCell.is-grid-header-sort-descending .gridHeaderSortableCell__arrowDown {
+  display: inline-block;
+}
+.gridHeaderSortableCell.is-grid-header-sort-descending .gridHeaderSortableCell__arrowUp {
+  display: none;
+}
+
+.gridHeaderSortableCell__label {
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.gridHeaderSortableCell__arrow {
+  display: inline-block;
+  opacity: 0;
+}
+
+.gridHeaderSortableCell__arrowDown {
+  display: none;
+}
+
+.gridHeaderSortableCell__arrowUp {
+  display: inline-block;
 }
 
 .grid__body {
   background: #ffffff;
 }
 
-.grid__body__row:nth-of-type(odd) {
+.gridRow--odd {
   background-color: #f9f9f9;
 }
-.grid--reverseStriped .grid__body__row:nth-of-type(odd) {
+
+.gridRow--even {
   background-color: transparent;
-}
-.grid--reverseStriped .grid__body__row:nth-of-type(even) {
-  background-color: #f9f9f9;
 }
 
 .grid__body__cell {
@@ -3338,12 +3284,7 @@ body {
   padding-right: 8px;
   border-bottom: 1px dashed #d4dadc;
   font-weight: 300;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  vertical-align: middle;
 }
 
 .grid__body__cell:first-child {
@@ -3367,7 +3308,6 @@ body {
   padding: 4px 5px;
   display: inline-block;
   vertical-align: middle;
-  min-width: 40px;
   color: #5e6162;
   max-width: 100%;
   overflow: hidden;
@@ -3506,43 +3446,77 @@ body {
   color: #ff2400;
 }
 
-.grid__header {
-  display: block;
+.stickyGrid {
+  position: relative;
 }
 
-.grid__body {
-  display: block;
-  overflow-y: auto;
+/**
+ * This header is hidden until the user scrolls down far enough for the
+ * grid header to become stuck.
+ */
+.stickyGridHeader {
+  color: #474b4e;
+  font-weight: 400;
+  font-size: 13px;
+  -webkit-font-smoothing: subpixel-antialiased;
+  display: none;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  height: 31px;
+  border: 1px solid #d4dadc;
+  border-bottom: 1px solid #d4dadc;
+  background: #f7fafb;
+  /**
+   * We stick the header with display instead of position, to avoid incurring
+   * a reflow and repaint.
+   */
 }
-
-.grid__footer {
-  display: block;
-}
-
-.grid__header__row,
-.grid__body__row,
-.grid__footer__row {
+.is-grid-header-stuck > .stickyGridHeader {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.grid__header__cell,
-.grid__body__cell,
-.grid__footer__cell {
-  width: 100px;
+.stickyGridHeaderCell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 8px;
+  padding-right: 8px;
 }
+.stickyGridHeaderCell:first-child {
+  padding-left: 15px;
+}
+.stickyGridHeaderCell:last-child {
+  padding-right: 15px;
+}
+
+.grid__container {
+  border: 1px solid #d4dadc;
+  margin: 0 auto;
+}
+
+.grid__table {
+  color: #474b4e;
+  font-weight: 400;
+  font-size: 13px;
+  -webkit-font-smoothing: subpixel-antialiased;
+  width: 100%;
+  text-align: left;
+}
+
 .grid__header__cell:first-child,
 .grid__body__cell:first-child,
 .grid__footer__cell:first-child {
   width: 35px;
-}
-.grid__header__cell:last-child,
-.grid__body__cell:last-child,
-.grid__footer__cell:last-child {
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  padding-left: 15px;
 }
 
 .grid__body__cell:last-child .grid__body__cellLiner {
