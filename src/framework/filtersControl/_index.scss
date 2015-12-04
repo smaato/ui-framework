@@ -1,6 +1,6 @@
 @import 'filtersControl';
-@import 'filterMatchers/filterMatcherForm';
-@import 'filterMatchers/filterMatchersList';
-@import 'filters/filtersList';
-@import 'filters/filterEllipsis';
+@import 'conditionCheckers/conditionCheckerForm';
+@import 'conditionCheckers/conditionCheckerList';
+@import 'filterOptions/filterOptionList';
+@import 'filterOptions/filterEllipsis';
 @import 'filtersDropdown/filtersDropdown';

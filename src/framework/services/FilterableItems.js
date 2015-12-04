@@ -8,7 +8,7 @@ export default class FilterableItems {
   applyFilters(filters) {
     return this.items.filter(item =>
       filters.every(filter => {
-        return filter.filterItem(item);
+        return filter.doesItemPass(item);
       })
     );
   }

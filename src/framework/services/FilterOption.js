@@ -1,10 +1,10 @@
 
-export default class Filter {
+export default class FilterOption {
 
   constructor(config) {
     this.name = config.name;
     this.getValue = config.getValue;
-    this.methods = config.methods;
+    this.comparisonTypes = config.comparisonTypes;
   }
 
 }

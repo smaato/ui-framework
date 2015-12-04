@@ -30,17 +30,17 @@ export { default as TitleBar } from './titleBar/TitleBar.jsx';
 
 // Export services
 
+export * from './services/ComparisonTypes';
+export { default as ComparisonTypes } from './services/ComparisonTypes';
+
+export * from './services/ConditionChecker';
+export { default as ConditionChecker } from './services/ConditionChecker';
+
 export * from './services/Entity';
 export { default as Entity } from './services/Entity';
 
-export * from './services/Filter';
-export { default as Filter } from './services/Filter';
+export * from './services/FilterOption';
+export { default as FilterOption } from './services/FilterOption';
 
 export * from './services/FilterableItems';
 export { default as FilterableItems } from './services/FilterableItems';
-
-export * from './services/FilterMatcher';
-export { default as FilterMatcher } from './services/FilterMatcher';
-
-export * from './services/FilterMethods';
-export { default as FilterMethods } from './services/FilterMethods';
