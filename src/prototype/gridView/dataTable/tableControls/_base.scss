@@ -19,7 +19,7 @@
     width: 100%;
     text-align: left;
     box-shadow:
-      -1px 0 0 $componentStrokeColor,
+      -1px 0 0 $componentStrokeColor, 
       1px 0 0 $componentStrokeColor
     ;
   }
@@ -32,3 +32,7 @@
     background: $componentBackgroundColor;
   }
 }
+
+  @import 'filters';
+  @import 'batch';
+  @import 'search';

@@ -1,11 +1,11 @@
-.p-mainNavBar__links__container {
+.mainNavBar__links__container {
   display: inline-block;
 }
     
-  .p-mainNavBar__link {
+  .mainNavBar__link {
     float: left;
     a {
-      color: $appHeaderNav_textColor;
+      color: $mainNavTextColor;
       display: block;
       line-height: 45px;
       text-transform: uppercase;
@@ -21,9 +21,9 @@
         font-size: 12px;
       }
     }
-    &:hover { background: scale-lightness($appHeaderNav_backgroundColor, 5%); }
+    &:hover { background: scale-lightness($mainNavBackgroundColor, 5%); }
     &.selected {
-      background: $appHeaderNav_selectedColor;
+      background: $mainNavSelectedColor;
       a { cursor: default; }
     }
   }

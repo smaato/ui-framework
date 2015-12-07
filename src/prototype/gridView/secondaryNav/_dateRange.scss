@@ -1,28 +1,28 @@
-.p-dateRange {
+.dateRange {
   display: table-cell;
   white-space: nowrap;
   padding: 0;
   vertical-align: middle;
 }
   
-  .p-dateRange__option {
+  .dateRange__option {
     display: inline-block;
-    color: $viewHeaderNav_textColor;
+    color: $secondaryNavTextColor;
     font-size: 12px;
     font-weight: 400;
     line-height: 42px;
     padding: 0 0 0 8px;
     vertical-align: middle;
-    &:not(.p-dateRange__option--required) {
+    &:not(.dateRange__option--required) {
       @media #{$viewport_normalScreen} { display: none; }
     }
-    &.p-dateRange__option--required {
+    &.dateRange__option--required {
       display: inline-block;
     }
   }
   
-    .p-dateRange__trigger {
-      color: $viewHeaderNav_textColor;
+    .dateRange__trigger {
+      color: $secondaryNavTextColor;
       .icon {
         display: inline-block;
         width: 12px;
@@ -33,9 +33,9 @@
       }
     }
     
-    .p-dateRange__compareToggle input {
-      border: 1px solid scale-lightness($viewHeaderNav_backgroundColor, 65%);
-      background: scale-lightness($viewHeaderNav_backgroundColor, 32%);
+    .dateRange__compareToggle input {
+      border: 1px solid scale-lightness($secondaryNavBackgroundColor, 65%);
+      background: scale-lightness($secondaryNavBackgroundColor, 32%);
       -webkit-appearance: none;
       width: 11px;
       height: 11px;
@@ -43,25 +43,26 @@
       margin: 0 1px -1px 0;
     }
     
-    .p-dateRange__goTo {
+    .dateRange__goTo {
       display: inline-block;
       width: 42px;
       vertical-align: middle;
       overflow: hidden;
       &:hover a {
         background-image: linear-gradient(
-          scale-lightness($viewHeaderNav_backgroundColor, 41%),
-          scale-lightness($viewHeaderNav_backgroundColor, 35%)
+          scale-lightness($secondaryNavBackgroundColor, 41%), 
+          scale-lightness($secondaryNavBackgroundColor, 35%)
         );
-        box-shadow: 0 2px 0 scale-lightness($viewHeaderNav_backgroundColor, -5%);
+        box-shadow: 0 2px 0 scale-lightness($secondaryNavBackgroundColor, -5%);
       }
       a {
         transition: .1s all ease-in-out;
-        border: 1px solid scale-lightness($viewHeaderNav_backgroundColor, 65%);
+        border: 1px solid scale-lightness($secondaryNavBackgroundColor, 65%);
         background-image: linear-gradient(
-          scale-lightness($viewHeaderNav_backgroundColor, 38%),
-          scale-lightness($viewHeaderNav_backgroundColor, 32%)
+          scale-lightness($secondaryNavBackgroundColor, 38%), 
+          scale-lightness($secondaryNavBackgroundColor, 32%)
         );
+        line-height: 18px;
         display: inline-block;
         text-align: center;
         line-height: 50px;

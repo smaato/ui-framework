@@ -7,7 +7,7 @@
     border-bottom: 1px dashed $componentStrokeColor;
     font-weight: 300;
   }
-
+  
     .dataTable__tbody__cell {
       padding: 10px 6px 10px 2px;
       &:first-child {
@@ -19,21 +19,21 @@
         .dataTable__tbody__cellLiner { margin-right: 13px; }
       }
     }
-
+  
       .dataTable__tbody__cellLiner {
         white-space: nowrap;
         text-overflow: ellipsis;
         max-width: 120px;
         display: inline-block;
         vertical-align: middle;
-
-        .p-checkboxWrapper {
+        
+        .checkboxWrapper {
           display: block;
           height: 11px;
         }
-
+        
       }
-
+      
         .dataTable__tbody__cellValue--link,
         .dataTable__tbody__cellValue--readOnly,
         .dataTable__tbody__cellValue--editable {
@@ -43,18 +43,18 @@
           min-width: 40px;
           color: $componentTextColor;
         }
-
+        
         .dataTable__tbody__cellValue--readOnly {
           cursor: default;
         }
-
+        
         .dataTable__tbody__cellValue--link {
           cursor: pointer;
           color: $linkColor;
           font-weight: 400;
           &:hover { opacity: .8; }
         }
-
+      
         .dataTable__tbody__cellValue--editable {
           text-overflow: ellipsis;
           border: 1px dashed transparent;
@@ -82,7 +82,7 @@
             &:before { opacity: 1; }
           }
         }
-
+      
         .dataTable__tbody__cellChange {
           font-size: 12px;
           padding-left: 2px;
@@ -90,7 +90,7 @@
           &.up { color: $green; }
           &.down { color: $red; }
         }
-
+      
       .dataTable__tbody__cellLiner .icon {
         color: shade($lightGrey, 15%);
         padding: 0;
@@ -99,7 +99,7 @@
         height: 11px;
         vertical-align: top;
       }
-
+      
       .dataTable__tbody__cellLiner .glyphicons-more,
       .dataTable__tbody__cellLiner .glyphicons-cogwheel {
         font-size: 14px;
@@ -107,7 +107,7 @@
         margin: 0 0 0 15px;
         &:hover { color: shade($lightGrey, 40%); }
       }
-
+      
       .dataTable__tbody__cellLiner .glyphicons-leaf {
         margin-left: 2px;
         font-size: 9px;

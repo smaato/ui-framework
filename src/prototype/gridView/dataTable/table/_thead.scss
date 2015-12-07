@@ -14,7 +14,7 @@
       z-index: 5;
       text-align: center;
   }
-
+  
     .dataTable__thead__placeholder__liner {
       border-top: 1px solid $componentStrokeColor;
       @extend .dataTable__theadBG;
@@ -25,7 +25,7 @@
       border-right: 1px solid $componentStrokeColor;
       box-shadow: 0 3px 4px rgba(0, 0, 0, .05);
     }
-
+    
   .dataTable__thead__row:not(.dataTable__thead__row--placeholder) .dataTable__thead__cellLiner {
     position: fixed !important;
     top: 41px;
@@ -33,22 +33,22 @@
 }
 
 .dataTable__container {}
-
+  
   .dataTable__thead__row--placeholder .dataTable__thead__cellLiner {
     height: 0;
     border: 0;
     overflow: hidden;
   }
-
+    
     .dataTable__thead__cell {
       vertical-align: middle;
       &:nth-child(1) {
         width: 1%;
-        a, .p-checkboxWrapper { padding-left: 15px; }
+        a, .checkboxWrapper { padding-left: 15px; }
       }
       &:last-child {
         width: 1%;
-        a, .p-checkboxWrapper { padding-right: 15px; }
+        a, .checkboxWrapper { padding-right: 15px; }
       }
       &.sortable {
         span.arrowDown, span.arrowUp { display: none; }
@@ -68,12 +68,12 @@
         }
       }
     }
-
+  
       .dataTable__thead__cellLiner {
         display: block;
         z-index: 6;
         @extend .dataTable__theadBG;
-        a, .p-checkboxWrapper {
+        a, .checkboxWrapper { 
           font-size: 12px;
           font-weight: 300;
           color: tint($componentTextColor, 10%);
@@ -84,9 +84,9 @@
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          max-width: 90px;
+          max-width: 90px; 
           vertical-align: middle;
-          .p-checkbox__faux__input {
+          .checkbox__faux__input {
             display: inline-block;
             vertical-align: middle;
             margin: 9px 0 0;

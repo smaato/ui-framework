@@ -1,10 +1,10 @@
-.p-mainNavBar {
+.mainNavBar {
   box-shadow: 0 42px 0 $blue;
-  background: $appHeaderNav_backgroundColor;
+  background: $mainNavBackgroundColor;
   text-align: center;
 }
 
-  .p-mainNavBar__liner {
+  .mainNavBar__liner {
     max-width: $maxWidth;
     margin: 0 auto;
     @media #{$viewport_wideScreen} {
@@ -12,7 +12,7 @@
     }
   }
 
-    .p-mainNavBar__logo {
+    .mainNavBar__logo {
       text-indent: -999em;
       float: left;
       width: 76px;
@@ -22,10 +22,8 @@
       background-size: 76px 17px;
       background-position: right top;
       background-repeat: no-repeat;
-      @media #{$viewport_normalScreen} {
-        width: 17px;
-      }
+      @media #{$viewport_normalScreen} { width: 17px; }
     }
-
+    
     @import 'account';
     @import 'links';
