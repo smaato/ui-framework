@@ -11,16 +11,24 @@ describe('Sorter', () => {
         expect(Sorter.normalizeValue(null)).toBe(null);
       });
 
-      it('allows an empty string to pass through', () => {
+      it('allows falsy value empty string to pass through', () => {
         expect(Sorter.normalizeValue('')).toBe('');
       });
 
-      it('allows 0 to pass through', () => {
-        expect(Sorter.normalizeValue(0)).toBe(0);
+      it('converts falsy value 0 to a string', () => {
+        expect(Sorter.normalizeValue(0)).toBe('0');
       });
 
-      it('allows numbers to pass through', () => {
-        expect(Sorter.normalizeValue(214.5)).toBe(214.5);
+      it('converts numbers to strings', () => {
+        expect(Sorter.normalizeValue(214.5)).toBe('214.5');
+      });
+
+      it('converts objects to strings', () => {
+        expect(Sorter.normalizeValue({})).toBe('[object object]');
+      });
+
+      it('converts arrays to strings', () => {
+        expect(Sorter.normalizeValue([1, 2])).toBe('1,2');
       });
 
       it('converts strings to lowercase', () => {
@@ -73,20 +81,20 @@ describe('Sorter', () => {
           expect(sortedItems).toEqual(['item']);
         });
 
-        it('is sorted in order of strings, numbers, null, undefined', () => {
+        it('is sorted in order of numbers. strings, null, undefined', () => {
           const sortedItems = Sorter.sort(items, valueProvidersByIndex, 0);
           expect(sortedItems).toEqual([{
-            a: 'TestA1',
-            b: 'TestB2',
-          }, {
-            a: 'TestB1',
-            b: 'TestA2',
-          }, {
             a: 1,
             b: 2,
           }, {
             a: 2,
             b: 1,
+          }, {
+            a: 'TestA1',
+            b: 'TestB2',
+          }, {
+            a: 'TestB1',
+            b: 'TestA2',
           }, {
             a: null,
             b: null,
@@ -118,17 +126,17 @@ describe('Sorter', () => {
         it('defnes a provider via an element index', () => {
           const sortedItems = Sorter.sort(items, valueProvidersByIndex, 1);
           expect(sortedItems).toEqual([{
-            a: 'TestB1',
-            b: 'TestA2',
-          }, {
-            a: 'TestA1',
-            b: 'TestB2',
-          }, {
             a: 2,
             b: 1,
           }, {
             a: 1,
             b: 2,
+          }, {
+            a: 'TestB1',
+            b: 'TestA2',
+          }, {
+            a: 'TestA1',
+            b: 'TestB2',
           }, {
             a: null,
             b: null,
@@ -145,17 +153,17 @@ describe('Sorter', () => {
           };
           const sortedItems = Sorter.sort(items, valueProvidersByProperty, 'b');
           expect(sortedItems).toEqual([{
-            a: 'TestB1',
-            b: 'TestA2',
-          }, {
-            a: 'TestA1',
-            b: 'TestB2',
-          }, {
             a: 2,
             b: 1,
           }, {
             a: 1,
             b: 2,
+          }, {
+            a: 'TestB1',
+            b: 'TestA2',
+          }, {
+            a: 'TestA1',
+            b: 'TestB2',
           }, {
             a: null,
             b: null,
@@ -171,17 +179,17 @@ describe('Sorter', () => {
           it('sorts items ascending', () => {
             const sortedItems = Sorter.sort(items, valueProvidersByIndex, 0);
             expect(sortedItems).toEqual([{
-              a: 'TestA1',
-              b: 'TestB2',
-            }, {
-              a: 'TestB1',
-              b: 'TestA2',
-            }, {
               a: 1,
               b: 2,
             }, {
               a: 2,
               b: 1,
+            }, {
+              a: 'TestA1',
+              b: 'TestB2',
+            }, {
+              a: 'TestB1',
+              b: 'TestA2',
             }, {
               a: null,
               b: null,
@@ -194,10 +202,6 @@ describe('Sorter', () => {
 
         describe('when true', () => {
           it('sorts items in order of undefined, null, strings, numbers when true', () => {
-            // TODO: These results seem buggy, but it's not clear where the
-            // problem lies. Why are numbers taking precedence over strings
-            // when the sort is descending? The order should be: undefined, null,
-            // numbers, strings.
             const sortedItems = Sorter.sort(items, valueProvidersByIndex, 0, true);
             expect(sortedItems).toEqual([{
               a: undefined,
