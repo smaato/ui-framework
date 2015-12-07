@@ -3,15 +3,15 @@ import React, {
   PropTypes,
 } from 'react';
 
-export {
-  default as TitleBarButton,
-} from './TitleBarButton.jsx';
-
 const TitleBar = (props) => {
   let buttons;
   if (props.buttons) {
-    buttons = props.buttons.map((button) => {
-      return button;
+    buttons = props.buttons.map(button => {
+      return (
+        <div className="titleBar__button">
+          {button}
+        </div>
+      );
     });
   }
   return (

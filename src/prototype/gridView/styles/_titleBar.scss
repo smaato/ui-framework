@@ -1,18 +1,15 @@
-
-$titleBarPadding: 15px;
-
 /**
  * 1. Flexbox layout positions the title and buttonContainer children
  *    horizontally.
  */
-.titleBar {
-  max-width: $maxWidth;
+.p-titleBar {
+  max-width: 1200px;
   margin: 0 auto;
   display: flex; /* 1 */
-  background: $titleBarBackgroundColor;
+  background: #ffffff;
   width: 100%;
-  box-shadow: -1px 0 0 $componentStrokeColor,
-    1px 0 0 $componentStrokeColor;
+  box-shadow: -1px 0 0 scale-saturation(scale-lightness($lightGrey, -10%), -70%),
+    1px 0 0 scale-saturation(scale-lightness($lightGrey, -10%), -70%);
 }
 
   /**
@@ -20,10 +17,10 @@ $titleBarPadding: 15px;
    * 2. Because the parent container is positioning this element with flexbox,
    *    we can specify that it should grow to fill its container.
    */
-  .titleBar__title {
-    color: $titleBarTextColor;
+  .p-titleBar__title {
+    color: #354a53;
     font-size: 16px;
-    padding-left: $titleBarPadding;
+    padding-left: 15px;
     line-height: 54px;
     display: flex; /* 1 */
     align-items: center; /* 1 */
@@ -37,16 +34,42 @@ $titleBarPadding: 15px;
    * 3. Position the buttons at the end of the container, i.e. right-aligning
    *    them.
    */
-  .titleBar__buttonContainer {
+  .p-titleBar__buttonContainer {
     display: flex; /* 1 */
     align-items: center; /* 1 */
     flex-grow: 1; /* 2 */
     justify-content: flex-end; /* 3 */
-    padding-right: $titleBarPadding;
   }
 
-    .titleBar__button {
+    .p-titleBarButton {
+      display: inline-block;
+      border-radius: 3px;
+      font-weight: 400;
+      line-height: 30px;
+      font-size: 12px;
+      padding: 0 12px;
+      opacity: 1;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+      transition: 0.1s all ease-in-out;
+      background: #35d0a0;
+      color: tint(#35d0a0, 100%);
+      margin: 12px 15px 12px 0;
+
+      &:hover {
+        opacity: 0.95;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+      }
       & + & {
         margin-left: 15px;
       }
+    }
+
+    .p-titleBarButton__icon {
+      display: inline-block;
+      height: 12px;
+      width: 10px;
+      font-size: 10px;
+      margin: 0 2px 0 0;
+      opacity: 0.7;
+      line-height: 14px;
     }
