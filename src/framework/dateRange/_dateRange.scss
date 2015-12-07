@@ -1,0 +1,107 @@
+.dateRange {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+  .dateRange__option {
+    color: $viewHeaderNav_textColor;
+    font-size: 12px;
+    font-weight: 400;
+    padding-left: 8px;
+  }
+
+    .dateRange__trigger,
+    .dateRange__compareToggle {
+      display: flex;
+      align-items: center;
+    }
+
+    .dateRange__trigger {
+      color: $viewHeaderNav_textColor;
+    }
+
+      .dateRange__triggerIcon {
+        width: 12px;
+        font-size: 12px;
+        margin-right: 3px;
+      }
+
+      .dateRange__input {
+        border: 1px solid scale-lightness($viewHeaderNav_backgroundColor, 65%);
+        background: scale-lightness($viewHeaderNav_backgroundColor, 32%);
+        appearance: none;
+        width: 11px;
+        height: 11px;
+        border-radius: 2px;
+      }
+
+    .dateRange__goTo {
+      // Lays out items horizontally
+      display: flex;
+    }
+
+      .dateRange__prev,
+      .dateRange__next {
+        // Center-aligns items
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        transition: 0.1s all ease-in-out;
+        border: 1px solid scale-lightness($viewHeaderNav_backgroundColor, 65%);
+        background-image: linear-gradient(
+          scale-lightness($viewHeaderNav_backgroundColor, 38%),
+          scale-lightness($viewHeaderNav_backgroundColor, 32%)
+        );
+
+        &:hover {
+          background-image: linear-gradient(
+            scale-lightness($viewHeaderNav_backgroundColor, 41%),
+            scale-lightness($viewHeaderNav_backgroundColor, 35%)
+          );
+          box-shadow: 0 2px 0 scale-lightness($viewHeaderNav_backgroundColor, -5%);
+
+          .dateRange__prevArrow,
+          .dateRange__nextArrow {
+            opacity: 1;
+          }
+        }
+      }
+
+      $itemRadius: 4px;
+
+      .dateRange__prev {
+        border-radius: $itemRadius 0 0 $itemRadius;
+      }
+
+      .dateRange__next {
+        border-radius: 0 $itemRadius $itemRadius 0;
+        margin-left: -1px;
+      }
+
+        .dateRange__prevArrow,
+        .dateRange__nextArrow {
+          opacity: 0.7;
+          position: relative;
+          display: inline-block;
+          width: 6px;
+          height: 6px;
+          content: '';
+          border-bottom: 1px solid #ffffff;
+          border-right: 1px solid #ffffff;
+        }
+
+        // Since we're rotating square this correction value is required
+        $iconLeft: 1px;
+
+        .dateRange__prevArrow {
+          transform: rotate(135deg);
+          left: $iconLeft;
+        }
+
+        .dateRange__nextArrow {
+          transform: rotate(-45deg);
+          left: -$iconLeft;
+        }

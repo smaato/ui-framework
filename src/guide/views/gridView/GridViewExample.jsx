@@ -109,83 +109,104 @@ export default class GridViewExample extends Component {
     return (
       <Page isFullScreen>
 
-        <div className="mainNavBar">
-
-          <div className="mainNavBar__liner">
-
-            <a className="mainNavBar__logo" href="#">Smaato</a>
-
-            <ul className="mainNavBar__links__container">
-              <li className="mainNavBar__link selected"><a href="#">Transportation</a></li>
-              <li className="mainNavBar__link"><a href="#">Camping</a></li>
-              <li className="mainNavBar__link"><a href="#">Storage</a></li>
-              <li className="mainNavBar__link"><a href="#">Misc</a></li>
-            </ul>
-
-            <a className="mainNavBar__account">
-              <span className="icon glyphicons-user"></span>
-              <label>han.solo@smaato.com</label>
-              <span className="dropdownArrow"></span>
+        <div className="appHeader">
+          <div className="appHeader__liner">
+            <a className="appLogo" title="Smaato" href="#">
+              Smaato
             </a>
-
+            <nav className="appNav">
+              <a href="#" className="appNav__link is-app-nav-link-selected ">
+                Transportation
+              </a>
+              <a href="#" className="appNav__link">
+                Camping
+              </a>
+              <a href="#" className="appNav__link">
+                Storage
+              </a>
+              <a href="#" className="appNav__link">
+                Misc
+              </a>
+            </nav>
+            <a className="accountNav">
+              <span className="accountPicture">
+                <span className="icon glyphicons-user accountPicture__icon"></span>
+              </span>
+              <span className="accountNav__email">
+                han.solo@smaato.com
+              </span>
+              <span className="accountDropdownArrow"></span>
+            </a>
           </div>
-
         </div>
 
-        <div className="secondaryNavBar">
+        <div className="viewHeader">
 
-          <div className="secondaryNavBar__liner">
+          <div className="viewHeader__liner">
 
-            <div className="secondaryNavBar__linksWrapper">
+            <nav className="viewHeaderNav">
+              <a href="#" className="viewHeaderNav__link is-view-header-nav-link-selected">
+                <span>
+                  <span className="icon glyphicons-car viewHeaderNav__link__icon" />
+                  Automobile
+                </span>
+              </a>
+              <a href="#" className="viewHeaderNav__link">
+                <span>
+                  <span className="icon glyphicons-train viewHeaderNav__link__icon" />
+                  Train
+                </span>
+              </a>
+              <a href="#" className="viewHeaderNav__link">
+                <span>
+                  <span className="icon glyphicons-airplane viewHeaderNav__link__icon" />
+                  Airplane
+                </span>
+              </a>
+              <a href="#" className="viewHeaderNav__link">
+                <span>
+                  <span className="icon glyphicons-bicycle viewHeaderNav__link__icon" />
+                  Bicycle
+                </span>
+              </a>
+              <a href="#" className="viewHeaderNav__link">
+                <span>
+                  <span className="icon glyphicons-person-walking viewHeaderNav__link__icon" />
+                  Walking
+                </span>
+              </a>
+              <a href="#" className="viewHeaderNav__link">
+                <span className="viewHeaderNav__ellipsis">
+                  <span className="icon glyphicons-more"></span>
+                </span>
+              </a>
+            </nav>
 
-              <ul className="secondaryNavBar__linksContainer">
-
-                <li className="secondaryNavBar__link selected">
-                  <a href="#"><span className="icon glyphicons-car"></span>Automobile</a>
-                </li>
-                <li className="secondaryNavBar__link">
-                  <a href="#"><span className="icon glyphicons-train"></span>Train</a>
-                </li>
-                <li className="secondaryNavBar__link">
-                  <a href="#"><span className="icon glyphicons-airplane"></span>Airplane</a>
-                </li>
-                <li className="secondaryNavBar__link">
-                  <a href="#"><span className="icon glyphicons-bicycle"></span>Bicycle</a>
-                </li>
-                <li className="secondaryNavBar__link">
-                  <a href="#"><span className="icon glyphicons-person-walking"></span>Walking</a>
-                </li>
-
-                <li className="secondaryNavBar__ellipsis glyphicons-more"></li>
-
-                <li className="secondaryNavBar__mask">
-                  <div className="secondaryNavBar__maskInner"></div>
-                </li>
-
-              </ul>
-            </div>
-
-            <ul className="dateRange">
-              <li className="dateRange__option dateRange__option--required">
+            <div className="dateRange">
+              <div className="dateRange__option dateRange__option--required">
                 <a className="dateRange__trigger">
-                  <span className="icon glyphicons-calendar"></span>Jul 18-Jul 28
+                  <span className="icon glyphicons-calendar dateRange__triggerIcon"></span>
+                  Jul 18-Jul 28
                 </a>
-              </li>
-              <li className="dateRange__option">
-                <label className="dateRange__compareToggle"><input type="checkbox" /> Compare</label>
-              </li>
-              <li className="dateRange__option">
+              </div>
+              <div className="dateRange__option">
+                <label className="dateRange__compareToggle">
+                  <input className="dateRange__input" type="checkbox" />
+                  Compare
+                </label>
+              </div>
+              <div className="dateRange__option">
                 <span className="dateRange__goTo">
-                  <a className="prev" href="">
-                    <span className="prevArrow"></span>
+                  <a className="dateRange__prev" href="">
+                    <span className="dateRange__prevArrow"></span>
                   </a>
-                  <a className="next" href="">
-                    <span className="nextArrow"></span>
+                  <a className="dateRange__next" href="">
+                    <span className="dateRange__nextArrow"></span>
                   </a>
                   <span className="clear"></span>
                 </span>
-              </li>
-            </ul>
+              </div>
+            </div>
 
           </div>
 

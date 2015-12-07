@@ -36,10 +36,10 @@
         }
       }
       &.selected {
-        background: $secondaryNavSelectedColor; 
+        background: $viewHeaderNav_selectedColor;
         a { 
           color: scale-lightness(
-            scale-saturation($secondaryNavBackgroundColor, -70%), -13%
+            scale-saturation($viewHeaderNav_backgroundColor, -70%), -13%
           );
           cursor: default; 
         }
@@ -72,6 +72,6 @@
         width:30px;
         top: 0;
         bottom: 0;
-        background: $secondaryNavBackgroundColor;
+        background: $viewHeaderNav_backgroundColor;
       }
     }

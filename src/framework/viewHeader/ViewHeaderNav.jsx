@@ -5,22 +5,22 @@ import React, {
 
 import classNames from 'classnames';
 
-const AppNav = props => {
+const ViewHeaderNav = props => {
   const links = props.links.map((link, index) => {
     return React.createElement(props.linkType, Object.assign({}, link, {
-      className: classNames('appNav__link', link.className),
+      className: classNames('viewHeaderNav__link', link.className),
       key: index,
     }));
   });
 
   return (
-    <nav className="appNav">
+    <nav className="viewHeaderNav">
       {links}
     </nav>
   );
 };
 
-AppNav.propTypes = {
+ViewHeaderNav.propTypes = {
   linkType: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.func,
@@ -28,4 +28,4 @@ AppNav.propTypes = {
   links: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default AppNav;
+export default ViewHeaderNav;

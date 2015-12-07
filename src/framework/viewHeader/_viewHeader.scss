@@ -1,0 +1,20 @@
+.viewHeader {
+  background: $viewHeaderNav_backgroundColor;
+  display: flex;
+  justify-content: center;
+  height: 42px;
+}
+
+.viewHeader__liner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // This allows children to take height from component root element
+  height: inherit;
+  flex: 1;
+  max-width: $maxWidth;
+
+  @media #{$viewport_wideScreen} {
+    padding: 0 15px;
+  }
+}

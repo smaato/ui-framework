@@ -1,0 +1,70 @@
+.viewHeaderNav {
+  // Inherits the width of the parent
+  display: flex;
+  height: inherit;
+  align-items: flex-end;
+}
+
+  .viewHeaderNav__link {
+    height: 34px;
+    margin-right: 10px;
+    transition: 0.2s margin ease-in-out, 0.06s background ease-in-out;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 13px;
+    padding: 0 12px;
+
+    // Has to be before .is-view-header-nav-link-selected
+    &:hover {
+      background: rgba(white, 0.15);
+    }
+
+    &.is-view-header-nav-link-selected {
+      color: scale-lightness(
+        scale-saturation($viewHeaderNav_backgroundColor, -70%),
+        -13%
+      );
+      background: $viewHeaderNav_selectedColor;
+      cursor: default;
+    }
+
+    > span {
+      display: flex;
+      align-items: center;
+    }
+
+    @media #{$viewport_normalScreen} {
+      margin-right: 0;
+    }
+  }
+
+    .viewHeaderNav__link__icon {
+      $iconSize: 12px;
+      font-size: $iconSize;
+      width: $iconSize;
+      height: $iconSize;
+      margin-right: 4px;
+    }
+
+    .viewHeaderNav__ellipsis {
+      opacity: 0.6;
+      cursor: pointer;
+
+      .viewHeaderNav__link:hover & {
+        opacity: 1;
+      }
+
+      .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // Cancel inherited from .viewHeaderNav__link .icon
+        margin-right: 0;
+
+        &:before {
+          // Cancel inherited position: absolute from glyphicons
+          position: static;
+        }
+      }
+    }
