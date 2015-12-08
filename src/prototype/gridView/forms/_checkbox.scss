@@ -15,7 +15,7 @@ $checkedColor: tint(scale-saturation($blue, 30%), 5%);
       &:after { color: $checkedColor; }
     }
   }
-  
+
   .checkbox__faux__input {
     display: block;
     position: relative;

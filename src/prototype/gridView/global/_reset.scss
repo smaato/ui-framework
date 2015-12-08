@@ -4,40 +4,40 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline; 
+  vertical-align: baseline;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block; 
+  display: block;
 }
 
 body {
-  line-height: 1; 
+  line-height: 1;
 }
 
 table {
-  border-spacing: 0; 
+  border-spacing: 0;
   border-collapse: collapse;
 }
 
 blockquote, q {
-  quotes: none; 
+  quotes: none;
 }
 
 blockquote {
   &:before, &:after {
     content: '';
-    content: none; 
-  } 
+    content: none;
+  }
 }
 
 ol, ul {
-  list-style: none; 
+  list-style: none;
 }
 
-q { 
+q {
   &:before, &:after {
     content: '';
-    content: none; 
+    content: none;
   }
 }

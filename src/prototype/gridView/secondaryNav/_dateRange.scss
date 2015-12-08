@@ -4,7 +4,7 @@
   padding: 0;
   vertical-align: middle;
 }
-  
+
   .dateRange__option {
     display: inline-block;
     color: $secondaryNavTextColor;
@@ -20,7 +20,7 @@
       display: inline-block;
     }
   }
-  
+
     .dateRange__trigger {
       color: $secondaryNavTextColor;
       .icon {
@@ -32,7 +32,7 @@
         margin-right: 3px;
       }
     }
-    
+
     .dateRange__compareToggle input {
       border: 1px solid scale-lightness($secondaryNavBackgroundColor, 65%);
       background: scale-lightness($secondaryNavBackgroundColor, 32%);
@@ -42,7 +42,7 @@
       border-radius: 2px;
       margin: 0 1px -1px 0;
     }
-    
+
     .dateRange__goTo {
       display: inline-block;
       width: 42px;
@@ -50,7 +50,7 @@
       overflow: hidden;
       &:hover a {
         background-image: linear-gradient(
-          scale-lightness($secondaryNavBackgroundColor, 41%), 
+          scale-lightness($secondaryNavBackgroundColor, 41%),
           scale-lightness($secondaryNavBackgroundColor, 35%)
         );
         box-shadow: 0 2px 0 scale-lightness($secondaryNavBackgroundColor, -5%);
@@ -59,7 +59,7 @@
         transition: .1s all ease-in-out;
         border: 1px solid scale-lightness($secondaryNavBackgroundColor, 65%);
         background-image: linear-gradient(
-          scale-lightness($secondaryNavBackgroundColor, 38%), 
+          scale-lightness($secondaryNavBackgroundColor, 38%),
           scale-lightness($secondaryNavBackgroundColor, 32%)
         );
         line-height: 18px;

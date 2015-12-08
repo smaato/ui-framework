@@ -1,7 +1,7 @@
 .dataTable__container {
   border-top: 1px solid $componentStrokeColor;
   box-shadow:
-    -1px 0 0 $componentStrokeColor, 
+    -1px 0 0 $componentStrokeColor,
     1px 0 0 $componentStrokeColor
   ;
   -webkit-font-smoothing: subpixel-antialiased;
@@ -18,6 +18,6 @@
     font-weight: 400;
     font-size: 13px;
   }
-  
+
     @import 'thead';
     @import 'tbody';
