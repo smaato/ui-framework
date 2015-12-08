@@ -2,8 +2,10 @@
 $ctaButtonColor: #35d0a0;
 
 .button {
-  display: inline-block;
-  padding: 7px 11px 8px;
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 11px;
   font-size: 12px;
   font-weight: 400;
   opacity: 1;
@@ -56,7 +58,7 @@ $ctaButtonColor: #35d0a0;
   border-color: #2ca7e8;
 }
 
-.button--cta {
+.button--callOut {
   background: $ctaButtonColor;
   color: #ffffff;
   border-color: $ctaButtonColor;

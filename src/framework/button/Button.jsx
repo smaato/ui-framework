@@ -29,7 +29,7 @@ const Button = props => {
   if (props.iconClasses) {
     const iconClasses = classNames('button__icon', props.iconClasses);
     icon = (
-      <div className={iconClasses}></div>
+      <span className={iconClasses}></span>
     );
   }
 
@@ -37,9 +37,9 @@ const Button = props => {
 
   if (props.label) {
     label = (
-      <div className="button__label">
+      <span className="button__label">
         {props.label}
-      </div>
+      </span>
     );
   }
 

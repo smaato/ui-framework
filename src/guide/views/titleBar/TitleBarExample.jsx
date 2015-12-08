@@ -8,7 +8,7 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
-  CtaButton,
+  CallOutButton,
   TitleBar,
 } from '../../../framework/framework.js';
 
@@ -26,15 +26,13 @@ export default class TitleBarExample extends Component {
           <TitleBar
             label="Title bar example"
             buttons={[
-              <CtaButton
+              <CallOutButton
                 iconClasses="glyphicons-plus"
                 label="Add something"
-                key="button1"
               />,
-              <CtaButton
+              <CallOutButton
                 iconClasses="glyphicons-plus"
                 label="Add something else"
-                key="button2"
               />,
             ]}
           />

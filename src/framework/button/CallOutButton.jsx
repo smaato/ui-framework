@@ -3,10 +3,10 @@ import React from 'react';
 
 import Button from './Button.jsx';
 
-const CtaButton = props => {
+const CallOutButton = props => {
   return (
     <Button
-      classes="button--cta"
+      classes="button--callOut"
       iconClasses={props.iconClasses}
       label={props.label}
       onClick={props.onClick}
@@ -15,11 +15,11 @@ const CtaButton = props => {
   );
 };
 
-CtaButton.propTypes = {
+CallOutButton.propTypes = {
   label: Button.propTypes.label,
   iconClasses: Button.propTypes.iconClasses,
   onClick: Button.propTypes.onClick,
   disabled: Button.propTypes.disabled,
 };
 
-export default CtaButton;
+export default CallOutButton;

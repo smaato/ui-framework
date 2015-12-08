@@ -5,15 +5,17 @@ import React, {
 
 const TitleBar = (props) => {
   let buttons;
+
   if (props.buttons) {
-    buttons = props.buttons.map(button => {
+    buttons = props.buttons.map((button, index) => {
       return (
-        <div className="titleBar__button">
+        <div className="titleBar__button" key={index}>
           {button}
         </div>
       );
     });
   }
+
   return (
     <div className="titleBar">
       <label className="titleBar__title">

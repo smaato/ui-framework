@@ -10,7 +10,7 @@ import Page, {
 
 import {
   Button,
-  CtaButton,
+  CallOutButton,
   HollowButton,
   PrimaryButton,
 } from '../../../framework/framework.js';
@@ -56,12 +56,12 @@ export default class ButtonExample extends Component {
           <PrimaryButton label="Save" />
         </Example>
 
-        <Example title="CtaButton">
+        <Example title="CallOutButton">
           <Text>
             This button signifies a call to action. It ranks extremely highly
             in the UI hierarchy.
           </Text>
-          <CtaButton
+          <CallOutButton
             iconClasses="glyphicons-plus"
             label="New item"
           />

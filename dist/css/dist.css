@@ -2842,8 +2842,14 @@ body {
 }
 
 .button {
-  display: inline-block;
-  padding: 7px 11px 8px;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30px;
+  padding: 0 11px;
   font-size: 12px;
   font-weight: 400;
   opacity: 1;
@@ -2893,7 +2899,7 @@ body {
   border-color: #2ca7e8;
 }
 
-.button--cta {
+.button--callOut {
   background: #35d0a0;
   color: #ffffff;
   border-color: #35d0a0;

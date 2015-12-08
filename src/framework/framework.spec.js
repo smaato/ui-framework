@@ -3,7 +3,7 @@ import {
   AppHeader,
   Button,
   CheckBox,
-  CtaButton,
+  CallOutButton,
   DateRange,
   Entity,
   Grid,
@@ -45,9 +45,9 @@ describe('UI Framework', () => {
         });
       });
 
-      describe('CtaButton', () => {
+      describe('CallOutButton', () => {
         it('is exported', () => {
-          expect(CtaButton).toEqual(jasmine.any(Function));
+          expect(CallOutButton).toEqual(jasmine.any(Function));
         });
       });
     });

@@ -4,8 +4,8 @@ export {
 } from './Button.jsx';
 
 export {
-  default as CtaButton,
-} from './CtaButton.jsx';
+  default as CallOutButton,
+} from './CallOutButton.jsx';
 
 export {
   default as HollowButton,
