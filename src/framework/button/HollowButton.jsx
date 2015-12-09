@@ -1,25 +1,21 @@
 
 import React from 'react';
+import classNames from 'classnames';
 
 import Button from './Button.jsx';
 
 const HollowButton = props => {
+  const classes = classNames('button--hollow', props.classes);
+
+  const extendedProps = Object.assign({}, props, {
+    classes: classes,
+  });
+
   return (
-    <Button
-      classes="button--hollow"
-      iconClasses={props.iconClasses}
-      label={props.label}
-      onClick={props.onClick}
-      disabled={props.disabled}
-    />
+    <Button {...extendedProps} />
   );
 };
 
-HollowButton.propTypes = {
-  label: Button.propTypes.label,
-  iconClasses: Button.propTypes.iconClasses,
-  onClick: Button.propTypes.onClick,
-  disabled: Button.propTypes.disabled,
-};
+HollowButton.propTypes = Button.propTypes;
 
 export default HollowButton;

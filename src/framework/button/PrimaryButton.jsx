@@ -1,25 +1,21 @@
 
 import React from 'react';
+import classNames from 'classnames';
 
 import Button from './Button.jsx';
 
 const PrimaryButton = props => {
+  const classes = classNames('button--primary', props.classes);
+
+  const extendedProps = Object.assign({}, props, {
+    classes: classes,
+  });
+
   return (
-    <Button
-      classes="button--primary"
-      iconClasses={props.iconClasses}
-      label={props.label}
-      onClick={props.onClick}
-      disabled={props.disabled}
-    />
+    <Button {...extendedProps} />
   );
 };
 
-PrimaryButton.propTypes = {
-  label: Button.propTypes.label,
-  iconClasses: Button.propTypes.iconClasses,
-  onClick: Button.propTypes.onClick,
-  disabled: Button.propTypes.disabled,
-};
+PrimaryButton.propTypes = Button.propTypes;
 
 export default PrimaryButton;
