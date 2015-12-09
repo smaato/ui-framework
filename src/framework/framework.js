@@ -4,6 +4,9 @@
 export * from './appHeader/AppHeader.jsx';
 export { default as AppHeader } from './appHeader/AppHeader.jsx';
 
+export * from './chart/Chart.jsx';
+export { default as Chart } from './chart/Chart.jsx';
+
 export * from './checkBox/CheckBox.jsx';
 export { default as CheckBox } from './checkBox/CheckBox.jsx';
 
@@ -35,3 +38,6 @@ export { default as ViewHeader } from './viewHeader/ViewHeader.jsx';
 
 export * from './services/Entity';
 export { default as Entity } from './services/Entity';
+
+export * from './services/ThrottledEventDispatcher';
+export { default as ThrottledEventDispatcher } from './services/ThrottledEventDispatcher';
