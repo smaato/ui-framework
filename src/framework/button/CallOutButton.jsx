@@ -1,25 +1,21 @@
 
 import React from 'react';
+import classNames from 'classnames';
 
 import Button from './Button.jsx';
 
 const CallOutButton = props => {
+  const classes = classNames('button--callOut', props.classes);
+
+  const extendedProps = Object.assign({}, props, {
+    classes: classes,
+  });
+
   return (
-    <Button
-      classes="button--callOut"
-      iconClasses={props.iconClasses}
-      label={props.label}
-      onClick={props.onClick}
-      disabled={props.disabled}
-    />
+    <Button {...extendedProps} />
   );
 };
 
-CallOutButton.propTypes = {
-  label: Button.propTypes.label,
-  iconClasses: Button.propTypes.iconClasses,
-  onClick: Button.propTypes.onClick,
-  disabled: Button.propTypes.disabled,
-};
+CallOutButton.propTypes = Button.propTypes;
 
 export default CallOutButton;
