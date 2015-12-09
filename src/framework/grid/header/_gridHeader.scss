@@ -8,9 +8,6 @@
   padding-right: 8px;
 }
 
-  .grid__header__cellLiner {
-  }
-
   .grid__header__row--placeholder {
     &.grid__header__cellLiner {
       height: 0;
@@ -54,8 +51,8 @@
   .gridHeaderSortableCell__arrow {
     display: inline-block;
     opacity: 0;
-
   }
+
     .gridHeaderSortableCell__arrowDown {
       display: none;
     }
