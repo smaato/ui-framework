@@ -48,7 +48,7 @@ describe('GridHeaderCell', () => {
   });
 
   describe('sortEnabled', () => {
-    it('adds the class \'sortable\' when set to true', () => {
+    it('adds the class "sortable" when set to true', () => {
       const props = {
         sortEnabled: true,
       };
@@ -69,7 +69,7 @@ describe('GridHeaderCell', () => {
   });
 
   describe('isSortDescending', () => {
-    it('adds the class \'reverse\' when set to false', () => {
+    it('adds the class "reverse" when set to false', () => {
       const props = {
         sortEnabled: true,
         isSortDescending: false,
@@ -81,7 +81,7 @@ describe('GridHeaderCell', () => {
   });
 
   describe('sortedColumnIndex', () => {
-    it('adds the class \'selected\' when set equal to cellIndex', () => {
+    it('adds the class "selected" when set equal to cellIndex', () => {
       const props = {
         sortEnabled: true,
         cellIndex: 1,
