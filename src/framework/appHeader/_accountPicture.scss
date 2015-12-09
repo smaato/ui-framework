@@ -1,0 +1,28 @@
+.accountPicture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $accountPicture_side;
+  height: $accountPicture_side;
+  border-radius: $accountPicture_side / 2;
+  // Affects vertical-alignment.
+  // Icon is 1px off in .exampleContainer, when this is not set,
+  // but always fine inside .appHeader
+  line-height: $accountPicture_side;
+  overflow: hidden;
+  background: scale-lightness($appHeaderNav_backgroundColor, 10%);
+}
+
+  .accountPicture__icon {
+    // Cancels inherited dimensions from .icon
+    width: auto;
+    height: auto;
+
+    &:before {
+      // Cancels inherited from .icon position: absolute
+      position: static;
+      font-size: 11px;
+      color: $appHeaderNav_textColor;
+      opacity: 0.6;
+    }
+  }

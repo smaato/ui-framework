@@ -7,14 +7,14 @@
 .fixedThead {
 
   .dataTable__thead__placeholder {
-    left: 0;
-    right: 0;
-    top: 40px;
-    position: fixed;
-    z-index: 5;
-    text-align: center;
+      left: 0;
+      right: 0;
+      top: 40px;
+      position: fixed;
+      z-index: 5;
+      text-align: center;
   }
-  
+
     .dataTable__thead__placeholder__liner {
       border-top: 1px solid $componentStrokeColor;
       @extend .dataTable__theadBG;
@@ -25,7 +25,7 @@
       border-right: 1px solid $componentStrokeColor;
       box-shadow: 0 3px 4px rgba(0, 0, 0, .05);
     }
-    
+
   .dataTable__thead__row:not(.dataTable__thead__row--placeholder) .dataTable__thead__cellLiner {
     position: fixed !important;
     top: 41px;
@@ -33,60 +33,63 @@
 }
 
 .dataTable__container {}
-    
-  .dataTable__thead__cell {
-    vertical-align: middle;
-    line-height: 30px;
 
-    &.sortable {
-      span.arrowDown,
-      span.arrowUp {
-        display: none;
+  .dataTable__thead__row--placeholder .dataTable__thead__cellLiner {
+    height: 0;
+    border: 0;
+    overflow: hidden;
+  }
+
+    .dataTable__thead__cell {
+      vertical-align: middle;
+      &:nth-child(1) {
+        width: 1%;
+        a, .checkboxWrapper { padding-left: 15px; }
       }
-      &:hover a {
-        background: shade($componentBackgroundColor, 3%);
-        cursor: pointer;
+      &:last-child {
+        width: 1%;
+        a, .checkboxWrapper { padding-right: 15px; }
       }
-      &.selected {
-        a {
+      &.sortable {
+        span.arrowDown, span.arrowUp { display: none; }
+        &:hover a {
+          background: shade($componentBackgroundColor, 3%);
+          cursor: pointer;
+        }
+        &.selected {
+          a {
+            white-space: nowrap;
+            span.arrowDown { display: inline-block; }
+          }
+          &.reverse {
+            span.arrowDown {  display: none; }
+            span.arrowUp {  display: inline-block; }
+          }
+        }
+      }
+    }
+
+      .dataTable__thead__cellLiner {
+        display: block;
+        z-index: 6;
+        @extend .dataTable__theadBG;
+        a, .checkboxWrapper {
+          font-size: 12px;
+          font-weight: 300;
+          color: tint($componentTextColor, 10%);
+          padding: 0 8px;
+          display: block;
+          line-height: 30px;
+          height: 31px;
           white-space: nowrap;
-          span.arrowDown {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 90px;
+          vertical-align: middle;
+          .checkbox__faux__input {
             display: inline-block;
-          }
-        }
-        &.reverse {
-          span.arrowDown {
-            display: none;
-          }
-          span.arrowUp {
-            display: inline-block;
+            vertical-align: middle;
+            margin: 9px 0 0;
           }
         }
       }
-    }
-  }
-
-  .dataTable__thead__cell:first-child {
-  }
-
-    .dataTable__thead__cellLiner {
-      display: block;
-      z-index: 6;
-      padding: 0 8px;
-
-      @extend .dataTable__theadBG;
-    }
-
-    .dataTable__thead__cell:first-child .dataTable__thead__cellLiner {
-      padding-left: 15px;
-    }
-
-    .dataTable__thead__cell:last-child .dataTable__thead__cellLiner {
-      padding-right: 15px;
-    }
-
-    .dataTable__thead__row--placeholder .dataTable__thead__cellLiner {
-      height: 0;
-      border: 0;
-      overflow: hidden;
-    }

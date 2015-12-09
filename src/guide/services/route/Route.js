@@ -2,18 +2,23 @@
 import { slugifyEach } from '../string/Slug';
 
 // Components
+import AppHeaderExample from '../../views/appHeader/AppHeaderExample.jsx';
 import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
 import GridKpiExample from '../../views/gridKpi/GridKpiExample.jsx';
 import IconExample from '../../views/icon/IconExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
+import ViewHeaderExample from '../../views/viewHeader/ViewHeaderExample.jsx';
 
 // Integrations
 import GridViewExample from '../../views/gridView/GridViewExample.jsx';
 
 // Component route names should match the component name exacty.
 const components = [{
+  name: 'AppHeader',
+  component: AppHeaderExample,
+}, {
   name: 'CheckBox',
   component: CheckBoxExample,
 }, {
@@ -31,6 +36,9 @@ const components = [{
 }, {
   name: 'TitleBar',
   component: TitleBarExample,
+}, {
+  name: 'ViewHeader',
+  component: ViewHeaderExample,
 }];
 
 // Integration names should be descriptive and utilize spaces.
