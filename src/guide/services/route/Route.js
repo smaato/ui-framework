@@ -9,6 +9,7 @@ import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
 import GridKpiExample from '../../views/gridKpi/GridKpiExample.jsx';
 import IconExample from '../../views/icon/IconExample.jsx';
+import LabelExample from '../../views/label/LabelExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
 import ViewHeaderExample from '../../views/viewHeader/ViewHeaderExample.jsx';
@@ -38,6 +39,9 @@ const components = [{
 }, {
   name: 'Icon',
   component: IconExample,
+}, {
+  name: 'Label',
+  component: LabelExample,
 }, {
   name: 'Spinner',
   component: SpinnerExample,
