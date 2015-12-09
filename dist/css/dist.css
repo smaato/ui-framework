@@ -4219,6 +4219,23 @@ body {
             transform: rotate(360deg);
   }
 }
+.textInput {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  color: #444444;
+  border: 1px solid #CCCCCC;
+  font-size: 13px;
+  font-weight: 300;
+  height: 32px;
+  padding: 0 10px;
+}
+.textInput:focus {
+  outline: none;
+  border: 2px solid #2ba7e8;
+  box-shadow: inset 0 0 0 1px #2ba7e8;
+}
+
 /**
  * 1. Flexbox layout positions the title and buttonContainer children
  *    horizontally.

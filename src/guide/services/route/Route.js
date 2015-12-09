@@ -11,6 +11,7 @@ import GridKpiExample from '../../views/gridKpi/GridKpiExample.jsx';
 import IconExample from '../../views/icon/IconExample.jsx';
 import LabelExample from '../../views/label/LabelExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
+import TextInputExample from '../../views/textInput/TextInputExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
 import ViewHeaderExample from '../../views/viewHeader/ViewHeaderExample.jsx';
 
@@ -45,6 +46,9 @@ const components = [{
 }, {
   name: 'Spinner',
   component: SpinnerExample,
+}, {
+  name: 'TextInput',
+  component: TextInputExample,
 }, {
   name: 'TitleBar',
   component: TitleBarExample,
