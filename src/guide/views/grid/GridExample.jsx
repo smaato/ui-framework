@@ -494,8 +494,7 @@ export default class GridExample extends Component {
       headerCellPropsProviders: this.headerCellPropsProviders,
       rowHeight: this.ROW_HEIGHT,
       columnPriorities: this.COLUMN_PRIORITIES,
-      totalSpaceAroundGridSides: 100,
-      totalCellSidePadding: 16,
+      spaceToBothSidesOfGrid: 100,
     });
     const node = ReactDOM.findDOMNode(this);
     const {

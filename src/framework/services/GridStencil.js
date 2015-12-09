@@ -21,8 +21,7 @@ export default class GridStencil {
     this.headerCellPropsProviders = config.headerCellPropsProviders;
     this.rowHeight = config.rowHeight;
     this.columnPriorities = config.columnPriorities;
-    this.totalSpaceAroundGridSides = config.totalSpaceAroundGridSides;
-    this.totalCellSidePadding = config.totalCellSidePadding;
+    this.spaceToBothSidesOfGrid = config.spaceToBothSidesOfGrid;
     this.sampleCount = Math.min(config.sampleSize, config.items.length);
 
     // Derived properties.
@@ -32,15 +31,17 @@ export default class GridStencil {
   createWithNode(originalNode) {
     // We're going to jump outside of the React life cycle for a bit, do a bunch of
     // DOM manipulation on our own, and then jump back in. What we're doing is:
+    //
     // 1. Rendering a non-React version of the grid.
     // 2. Iteratively removing each column in order of priority.
     // 3. At each iteration we:
-    //   - Measure the grid width...
-    //   - ...and create a media query which will hide this column at the
-    //     measured width.
+    //    * Measure the grid width...
+    //    * ...and create a media query which will hide this column at the
+    //      measured width.
+    //
     // When we've created the media queries, we destroy this non-React grid,
-    // and replace the innerHTML with the original React grid, and React
-    // carries on as if nothing happened.
+    // and put back the original React grid, and React carries on as if nothing
+    // happened.
 
     // First we remove the original node and re-create it so we can
     // manipulate DOM without disturbing any external references to child nodes.
@@ -82,13 +83,14 @@ export default class GridStencil {
 
     // Before we get started, we should store the widths of the columns, because
     // we'll have to hide them when we build our media queries.
-    const headerCells = [].slice.call(workingNode.querySelectorAll(`thead th`));
+    const headerCells = [].slice.call(workingNode.querySelectorAll('thead th'));
     const columnWidths = headerCells.map((cell, index) => {
       // CSS children are 1-indexed.
       const childNumber = index + 1;
-      // We need to take the padding to the left and right of the cell into
-      // account.
-      const columnWidth = $(cell).width() + this.totalCellSidePadding;
+      // We set max-widths in case a row gets loaded with an extremely larger
+      // amount of content than that of our original sample. This max-width
+      // will truncate the content, allowing for text with ellipsis.
+      const columnWidth = $(cell).outerWidth();
       return (
         `#${this.gridId} td:nth-child(${childNumber}) {
           max-width: ${columnWidth}px;
@@ -137,7 +139,7 @@ export default class GridStencil {
     for (let i = 0; i < columnsByPriority.length; i++) {
       // We care about browser width, not grid width, so we need to take into
       // account the space between the grid and the browser's left and right sides.
-      const browserWidth = $grid.width() + this.totalSpaceAroundGridSides;
+      const browserWidth = $grid.width() + this.spaceToBothSidesOfGrid;
 
       // CSS children are 1-indexed.
       const childNumber = columnsByPriority[i].index + 1;
