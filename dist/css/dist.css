@@ -2714,21 +2714,6 @@ body {
   overflow-x: hidden;
 }
 
-.icon {
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  font-size: 14px;
-  width: 14px;
-  height: 14px;
-}
-
 .accountNav {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4101,6 +4086,31 @@ body {
 
 .grid__body__cell:last-child .grid__body__cellLiner {
   text-align: right;
+}
+
+.icon {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+.label {
+  color: #526770;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.label--clickable {
+  cursor: pointer;
 }
 
 /**

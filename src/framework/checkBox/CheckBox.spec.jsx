@@ -66,7 +66,7 @@ describe('CheckBox', () => {
 
         const input = testCase.first('input');
 
-        testCase.click(input);
+        testCase.trigger('click', input);
       });
 
       it('is called when checked state is changed', () => {

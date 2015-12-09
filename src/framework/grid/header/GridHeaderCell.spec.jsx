@@ -104,7 +104,7 @@ describe('GridHeaderCell', () => {
       const contentLink = testCase.first('a');
 
       expect(props.onSort).not.toHaveBeenCalled();
-      testCase.click(contentLink);
+      testCase.trigger('click', contentLink);
       expect(props.onSort).toHaveBeenCalledWith(1);
     });
   });
