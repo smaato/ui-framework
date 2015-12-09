@@ -1,14 +1,28 @@
+$accountPicture_side: 22px;
+$accountNav_padding: 2px;
+$accountNav_height: $accountPicture_side + $accountNav_padding * 2;
+$accountNav_borderRadius: $accountNav_height / 2;
+$accountDropdownArrowSide: 7px;
+// Could be an overkill, but at least it is clear where this value comes from.
+// By applying resulted value to 'top' prop we can perfectly center vertically.
+// First find hypotenuse of the right-angled triangle
+$accountDropdownArrowHypotenuse: sqrt(2) * $accountDropdownArrowSide;
+// Divide hypotenuse by 4 to get a half of a projection of cathetus to hypotenuse.
+$accountDropdownTop: $accountDropdownArrowHypotenuse / 4;
+// So it is in the center of circle
+$accountNav_paddingRight: $accountNav_borderRadius - $accountDropdownArrowHypotenuse / 2;
+
 .accountNav {
   display: flex;
   align-items: center;
-  color: $mainNavTextColor;
-  padding: 2px 8px 2px 2px;
-  border-radius: 20px;
+  color: $appHeaderNav_textColor;
+  padding: $accountNav_padding $accountNav_paddingRight $accountNav_padding $accountNav_padding;
+  border-radius: $accountNav_borderRadius;
   font-size: 12px;
   cursor: pointer;
 
   &:hover {
-    background: scale-lightness($mainNavBackgroundColor, -13%);
+    background: scale-lightness($appHeaderNav_backgroundColor, -13%);
     transition: 0.1s all ease-in-out;
   }
 }
@@ -17,18 +31,11 @@
     display: inline-block;
     margin: 0 3px;
     cursor: pointer;
+
     @media #{$viewport_normalScreen} {
       display: none;
     }
   }
-
-  $accountDropdownArrowSide: 7px;
-  // Could be an overkill, but at least it is clear where this value comes from.
-  // By applying resulted value to 'top' prop we can perfectly center vertically.
-  // First find hypotenuse of the right-angled triangle
-  // (formula is square root of 2 multiplied by cathetus),
-  // then divide by 4 to get a half of a projection of cathetus to hypotenuse.
-  $accountDropdownTop: sqrt(2) * $accountDropdownArrowSide / 4;
 
   .accountDropdownArrow {
     display: inline-block;

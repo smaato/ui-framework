@@ -10,6 +10,7 @@ import GridKpiExample from '../../views/gridKpi/GridKpiExample.jsx';
 import IconExample from '../../views/icon/IconExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
+import ViewHeaderExample from '../../views/viewHeader/ViewHeaderExample.jsx';
 
 // Integrations
 import GridViewExample from '../../views/gridView/GridViewExample.jsx';
@@ -39,6 +40,9 @@ const components = [{
 }, {
   name: 'TitleBar',
   component: TitleBarExample,
+}, {
+  name: 'ViewHeader',
+  component: ViewHeaderExample,
 }];
 
 // Integration names should be descriptive and utilize spaces.
