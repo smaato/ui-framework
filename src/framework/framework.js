@@ -4,6 +4,9 @@
 export * from './appHeader/AppHeader.jsx';
 export { default as AppHeader } from './appHeader/AppHeader.jsx';
 
+export * from './chart/Chart.jsx';
+export { default as Chart } from './chart/Chart.jsx';
+
 export * from './checkBox/CheckBox.jsx';
 export { default as CheckBox } from './checkBox/CheckBox.jsx';
 
@@ -50,3 +53,6 @@ export { default as FilterOption } from './services/FilterOption';
 
 export * from './services/FilterableItems';
 export { default as FilterableItems } from './services/FilterableItems';
+
+export * from './services/ThrottledEventDispatcher';
+export { default as ThrottledEventDispatcher } from './services/ThrottledEventDispatcher';
