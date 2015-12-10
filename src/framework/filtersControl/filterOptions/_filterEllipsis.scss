@@ -1,0 +1,17 @@
+.filterEllipsis {
+  @include filtersButton;
+
+  .icon {
+    font-size: 12px;
+    width: auto;
+    cursor: pointer;
+
+    &:before {
+      opacity: 0.6;
+    }
+
+    &:hover:before {
+      opacity: 1;
+    }
+  }
+}

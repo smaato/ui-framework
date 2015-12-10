@@ -10,6 +10,8 @@ import Page, {
 import {
   CheckBox,
   Entity,
+  FiltersControl,
+  FilterableItems,
   Grid,
   GridBodyEditableCell,
   GridControls,
@@ -23,6 +25,8 @@ import {
 } from '../../../framework/framework.js';
 
 import numeral from 'numeral';
+
+import gridExampleFilterOptions from './gridExampleFilterOptions.js';
 
 export default class GridExample extends Component {
 
@@ -76,6 +80,23 @@ export default class GridExample extends Component {
     */
   }
 
+  onRemoveConditionChecker(conditionCheckerToRemove) {
+    const conditionCheckers = this.state.conditionCheckers
+      .filter(conditionChecker => conditionChecker !== conditionCheckerToRemove);
+
+    this.setState({
+      conditionCheckers,
+    });
+  }
+
+  onAddConditionChecker(conditionChecker) {
+    const conditionCheckers = this.state.conditionCheckers.slice();
+    conditionCheckers.push(conditionChecker);
+    this.setState({
+      conditionCheckers,
+    });
+  }
+
   // Returns a random integer between min (inclusive) and max (inclusive)
   getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -109,6 +130,8 @@ export default class GridExample extends Component {
       searchTerm: '',
       // Select all
       areAllRowsSelected: false,
+      // Filters
+      conditionCheckers: [],
     };
   }
 
@@ -364,19 +387,29 @@ export default class GridExample extends Component {
       ),
     ];
 
+    function normalizeValue(value) {
+      return value.toString().trim().toLowerCase();
+    }
+
+    function filterRows(rows, filters) {
+      return new FilterableItems(rows).applyFilters(filters);
+    }
+
+    const filteredBodyRows = filterRows(this.state.bodyRows, this.state.conditionCheckers);
+
     function search(rows, term) {
-      const normalizedTerm = term.trim().toLowerCase();
+      const normalizedTerm = normalizeValue(term);
       return rows.filter(row =>
         // It will return true when 1st match is found, otherwise false
         Object.keys(row).some(key => {
-          const cellValue = row[key].toString().trim().toLowerCase();
+          const cellValue = normalizeValue(row[key]);
           const isTermFound = cellValue.indexOf(normalizedTerm) !== -1;
           return isTermFound;
         })
       );
     }
 
-    const foundBodyRows = search(this.state.bodyRows, this.state.searchTerm);
+    const foundBodyRows = search(filteredBodyRows, this.state.searchTerm);
 
     function onSort(cellIndex) {
       const isSortDesc = this.state.sortedColumnIndex === cellIndex ?
@@ -440,6 +473,12 @@ export default class GridExample extends Component {
           <br/>
 
           <GridControls>
+            <FiltersControl
+              conditionCheckers={this.state.conditionCheckers}
+              filterOptions={gridExampleFilterOptions}
+              onRemoveConditionChecker={this.onRemoveConditionChecker.bind(this)}
+              onAddConditionChecker={this.onAddConditionChecker.bind(this)}
+            />
             <GridSearch
               onSearch={this.onSearch.bind(this)}
             />

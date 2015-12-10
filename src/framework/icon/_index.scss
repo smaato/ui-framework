@@ -1,7 +1,10 @@
+$iconSide: 14px;
 
 .icon {
-  display: inline-block;
-  font-size: 14px;
-  width: 14px;
-  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $iconSide;
+  width: $iconSide;
+  height: $iconSide;
 }
