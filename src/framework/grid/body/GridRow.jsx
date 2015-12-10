@@ -4,28 +4,17 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
+import GridBodyCell from './GridBodyCell.jsx';
+
 const GridRow = props => {
   // Create cells.
-  const rowCells = props.rowCellPropsProviders.map((getPropsForItem, index) => {
-    // Cell classes.
-    const classes = classNames('grid__body__cell', props.classBodyCell);
-
-    // Get properties for the inner cell.
-    const innerCellProps = getPropsForItem(props.item);
-
-    // We want to add on our own classes to the inner cell, without destroying
-    // any classes that have been provided.
-    const decoratedInnerCellProps = Object.assign({}, innerCellProps, {
-      className: classNames('grid__body__cellLiner', innerCellProps.className),
-    });
-
+  const rowCells = props.rowCellPropsProviders.map((cellPropsProvider, index) => {
     return (
-      <td
+      <GridBodyCell
+        classBodyCell={props.classBodyCell}
+        innerCellProps={cellPropsProvider(props.item)}
         key={index}
-        className={classes}
-      >
-        <div {...decoratedInnerCellProps}></div>
-      </td>
+      />
     );
   });
 
@@ -59,7 +48,7 @@ GridRow.propTypes = {
   onClick: PropTypes.func,
   // Classes
   classBodyRow: PropTypes.string,
-  classBodyCell: PropTypes.string,
+  classBodyCell: GridBodyCell.propTypes.classBodyCell,
 };
 
 export default GridRow;

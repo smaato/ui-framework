@@ -16,18 +16,8 @@ const GridBody = props => {
     props.classBody
   );
 
-  let style;
-  if (props.bodyHeight) {
-    style = {
-      height: bodyHeight,
-    };
-  }
-
   return (
-    <tbody
-      className={sectionClass}
-      style={style}
-    >
+    <tbody className={sectionClass}>
       {/* A row to indicate initial loading progress */}
       {initialLoadingRow}
 
@@ -61,7 +51,10 @@ GridBody.propTypes = {
   columnsCount: PropTypes.number.isRequired,
   firstRecycledRowOffset: PropTypes.number.isRequired,
   lastRecycledRowOffset: PropTypes.number.isRequired,
-  children: PropTypes.array,
+  children: React.PropTypes.oneOfType([
+    React.PropTypes.object,
+    React.PropTypes.array,
+  ]),
   // Initial loading state
   initialLoadingRow: PropTypes.element,
   // Empty state
@@ -70,8 +63,6 @@ GridBody.propTypes = {
   loadingRow: PropTypes.element,
   // Classes
   classBody: PropTypes.string,
-  classBodyRow: PropTypes.string,
-  classBodyCell: PropTypes.string,
 };
 
 export default GridBody;

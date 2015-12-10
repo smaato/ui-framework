@@ -10,17 +10,13 @@ const GridBodyEditableCell = props => {
       href="#"
       onClick={props.onClick.bind(this)}
     >
-      {props.content}
+      {props.children}
     </a>
   );
 };
 
 GridBodyEditableCell.propTypes = {
-  content: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.element,
-  ]).isRequired,
+  children: PropTypes.any,
   onClick: PropTypes.func.isRequired,
 };
 

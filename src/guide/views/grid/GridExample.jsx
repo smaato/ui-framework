@@ -208,27 +208,27 @@ export default class GridExample extends Component {
         ),
       }), () => ({
         children: 'Registered',
-      }), () => null,
+      }), () => undefined,
     ];
 
     this.footerCellPropsProviders = [
-      () => null,
-      () => null,
-      () => null,
-      () => null,
-      () => null,
-      () => null,
-      () => null,
-      () => null,
+      () => undefined,
+      () => undefined,
+      () => undefined,
+      () => undefined,
+      () => undefined,
+      () => undefined,
+      () => undefined,
+      () => undefined,
       () => ({
         children: '152.1m',
       }), () => ({
         children: 'Registered',
-      }), () => null,
+      }), () => undefined,
     ];
 
     this.cellValueProviders = [
-      () => null,
+      () => undefined,
       item => item.id,
       item => item.name,
       item => item.status,
@@ -238,7 +238,7 @@ export default class GridExample extends Component {
       item => item.fuelEconomy,
       item => item.sold,
       item => item.registered,
-      () => null,
+      () => undefined,
     ];
 
     // Provide the properties that should belong to each row cell, reflecting
@@ -266,7 +266,6 @@ export default class GridExample extends Component {
       }), item => ({
         children: (
           <GridBodyEditableCell
-            content={item.passengers}
             onClick={event => {
               event.stopPropagation();
 
@@ -294,7 +293,9 @@ export default class GridExample extends Component {
                 bodyRows: newBodyRows,
               });
             }}
-          />
+          >
+            {item.passengers}
+          </GridBodyEditableCell>
         ),
       }), item => ({
         children: item.cylinders,
