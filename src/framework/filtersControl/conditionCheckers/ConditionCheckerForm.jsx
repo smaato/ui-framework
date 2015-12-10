@@ -13,6 +13,10 @@ export default class ConditionCheckerForm extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.refs.doesValuePass.focus();
+  }
+
   onClickAddButton() {
     const doesValuePass = this.refs.doesValuePass.value;
     if (!doesValuePass.trim()) {
@@ -31,8 +35,6 @@ export default class ConditionCheckerForm extends Component {
   }
 
   render() {
-    setTimeout(() => this.refs.doesValuePass.focus());
-
     return (
       <div className="conditionCheckerForm">
         <div className="conditionCheckerForm__filterName">
