@@ -33,6 +33,9 @@ export { default as IconEllipsis } from './iconEllipsis/IconEllipsis.jsx';
 export * from './label/Label.jsx';
 export { default as Label } from './label/Label.jsx';
 
+export * from './labeledControl/LabeledControl.jsx';
+export { default as LabeledControl } from './labeledControl/LabeledControl.jsx';
+
 export * from './spinner/Spinner.jsx';
 export { default as Spinner } from './spinner/Spinner.jsx';
 
