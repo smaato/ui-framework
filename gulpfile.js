@@ -33,9 +33,9 @@ gulp.task('assets', gulpTasks.copy({
 }).task);
 
 gulp.task('deploy', gulpTasks.deploy({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  bucketName: process.env.AWS_BUCKET_UI_FRAMEWORK,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID || 'No ENV',
+  bucketName: process.env.AWS_BUCKET_UI_FRAMEWORK || 'No ENV',
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || 'No ENV',
   src: `${DISTRIBUTION_DIR}/**/*.*`,
 }).task);
 
