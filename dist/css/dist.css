@@ -2884,7 +2884,7 @@ body {
   right: 0;
   height: 20px;
   background-color: #ffffff;
-  border-top: 1px solid #CBD0D3;
+  border-top: 1px solid #cbd0d3;
 }
 
 .chartLine {
@@ -2893,14 +2893,12 @@ body {
 }
 
 .chartXAxisTick__mark {
-  stroke: #A3A8AB;
+  stroke: #a3a8ab;
   shape-rendering: crispEdges;
 }
 
 .chartXAxisTick__text {
-  font-size: 12px;
-  font-weight: 400;
-  fill: #4A5459;
+  fill: #4a5459;
   font-size: 12px;
   font-weight: 400;
 }
@@ -2910,18 +2908,18 @@ body {
 }
 
 .chartYAxisTick__mark {
-  stroke: #E5E7E8;
+  stroke: #e5e7e8;
   shape-rendering: crispEdges;
 }
 
 .chartYAxisTick__text {
   font-size: 11px;
   font-weight: 700;
-  fill: #FFFFFF;
+  fill: #ffffff;
 }
 
 .chartYAxisTick__background {
-  fill: #636D70;
+  fill: #636d70;
   stroke: none;
 }
 
