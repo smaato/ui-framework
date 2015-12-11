@@ -109,7 +109,9 @@ export default class Grid extends Component {
 
     // Update state of recycled rows when the user scrolls the table.
     const rowRecycler = this.props.rowRecycler;
-    this.setState(rowRecycler.getFirstRecycledRowState(this.state, scrollPosition));
+    if (rowRecycler) {
+      this.setState(rowRecycler.getFirstRecycledRowState(this.state, scrollPosition));
+    }
 
     // Lazily load rows as the user scrolls.
     if (this.props.lazyLoadRows) {
@@ -127,17 +129,29 @@ export default class Grid extends Component {
       firstRecycledRowOffset,
     } = this.state;
 
-    const {
-      lastRecycledRowIndex,
-      lastRecycledRowOffset,
-    } = this.props.rowRecycler.getLastRecycledRowState(this.state);
+    const rowsCount = this.props.rows.length;
+    // Set this to the rowsCount - 1 so that we can populate the table when
+    // there is no row recycler.
+    let lastRecycledRowIndex = rowsCount - 1;
+    let lastRecycledRowOffset = 0;
+
+    if (this.props.rowRecycler) {
+      const lastRecycledRowState =
+        this.props.rowRecycler.getLastRecycledRowState(this.state);
+      lastRecycledRowIndex = lastRecycledRowState.lastRecycledRowIndex;
+      lastRecycledRowOffset = lastRecycledRowState.lastRecycledRowOffset;
+    }
 
     // Create recycled rows.
-    const rowsCount = this.props.rows.length;
     const rows = [];
-    for (let index = firstRecycledRowIndex; index <= lastRecycledRowIndex && index < rowsCount; index++) {
-      const row = this.props.rows[index];
-      rows.push(row);
+    if (typeof this.props.rows === 'object') {
+      // We have one row, for some reason.
+      rows.push(this.props.rows);
+    } else {
+      for (let index = firstRecycledRowIndex; index <= lastRecycledRowIndex && index < rowsCount; index++) {
+        const row = this.props.rows[index];
+        rows.push(row);
+      }
     }
 
     // Style classes
@@ -154,17 +168,14 @@ export default class Grid extends Component {
             columnsCount={this.props.columnsCount}
             firstRecycledRowOffset={firstRecycledRowOffset}
             lastRecycledRowOffset={lastRecycledRowOffset}
-
             // Initial loading state
             initialLoadingRow={this.props.initialLoadingRow}
             // Loading state
             loadingRow={this.props.loadingRow}
             // Empty state
             emptyRow={this.props.emptyRow}
-
+            // Classes
             classBody={this.props.classBody}
-            classBodyRow={this.props.classBodyRow}
-            classBodyCell={this.props.classBodyCell}
           >
             {rows}
           </GridBody>
@@ -179,7 +190,6 @@ export default class Grid extends Component {
 }
 
 Grid.propTypes = {
-  id: PropTypes.string,
   columnsCount: GridBody.propTypes.columnsCount,
   header: PropTypes.element,
   footer: PropTypes.element,
@@ -191,15 +201,13 @@ Grid.propTypes = {
   emptyRow: PropTypes.element,
   // Loading state
   loadingRow: GridBody.propTypes.loadingRow,
-  onClickRow: PropTypes.func,
   rowRecycler: PropTypes.instanceOf(GridRowRecycler),
   // Classes
   classContainer: PropTypes.string,
   classTable: PropTypes.string,
   classBody: PropTypes.string,
-  classBodyRow: PropTypes.string,
-  classBodyCell: PropTypes.string,
-  classFooter: PropTypes.string,
-  classFooterRow: PropTypes.string,
-  classFooterCell: PropTypes.string,
+};
+
+Grid.defaultProps = {
+  rows: [],
 };

@@ -13,7 +13,7 @@ describe('GridBody', () => {
     );
   }
 
-  fdescribe('Props', () => {
+  describe('Props', () => {
     describe('columnsCount', () => {
       it('is applied to colspan of first fake row', () => {
         const props = {
