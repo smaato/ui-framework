@@ -23,7 +23,8 @@ gulp.task('lintScss', () => {
       // Increase when task fails with an error "stdout maxBuffer exceeded"
       // Default is 300 * 1024
       maxBuffer: 1024 * 1024, // 1 Megabyte
-    }));
+    }))
+    .pipe(gulpScssLint.failReporter());
 });
 
 gulp.task('testUnit', gulpTasks.testUnit({
