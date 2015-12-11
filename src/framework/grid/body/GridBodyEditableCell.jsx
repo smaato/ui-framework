@@ -1,34 +1,23 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
-export default class GridBodyEditableCell extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <a
-        className="grid__body__cellValue--editable"
-        href="#"
-        onClick={this.props.onClick.bind(this)}
-      >
-        {this.props.content}
-      </a>
-    );
-  }
-
-}
+const GridBodyEditableCell = props => {
+  return (
+    <a
+      className="grid__body__cellValue--editable"
+      href="#"
+      onClick={props.onClick.bind(this)}
+    >
+      {props.children}
+    </a>
+  );
+};
 
 GridBodyEditableCell.propTypes = {
-  content: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.element,
-  ]).isRequired,
+  children: PropTypes.any,
   onClick: PropTypes.func.isRequired,
 };
+
+export default GridBodyEditableCell;

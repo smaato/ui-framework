@@ -8,10 +8,14 @@
     height: 31px;
   }
 
-  .grid__footer__cell:first-child .grid__footer__cellLiner {
-    padding-left: 15px;
+  .grid__footer__cell:first-child {
+    .grid__footer__cellLiner {
+      padding-left: $gridRowBookendPadding;
+    }
   }
 
-  .grid__footer__cell:last-child .grid__footer__cellLiner {
-    padding-right: 15px;
+  .grid__footer__cell:last-child {
+    .grid__footer__cellLiner {
+      padding-right: $gridRowBookendPadding;
+    }
   }

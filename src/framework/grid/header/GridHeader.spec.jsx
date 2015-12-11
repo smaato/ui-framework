@@ -2,151 +2,86 @@
 import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
 import GridHeader from './GridHeader.jsx';
-import GridHeaderRow from './GridHeaderRow.jsx';
 
 describe('GridHeader', () => {
-  describe('Props', () => {
-    describe('cells', () => {
-      it('is passed to row', () => {
-        const cells = [
-          1,
-          2,
-          3,
-        ];
-        const props = {
-          cells: cells,
-        };
-        const testCase = TestCaseFactory.createFromElement(<GridHeader {...props} />);
-        const row = testCase.firstComponent(GridHeaderRow);
+  // We have to wrap the thead in table markup or else React will complain.
+  function wrap(header) {
+    return (
+      <table>
+        {header}
+      </table>
+    );
+  }
 
-        expect(row.props.cells).toBe(cells);
+  describe('Props', () => {
+    describe('headerCellPropsProviders', () => {
+      it('are called and receive index as argument', () => {
+        const cellPropsProvider1 = jasmine.createSpy('cellPropsProvider1');
+        const cellPropsProvider2 = jasmine.createSpy('cellPropsProvider2');
+        const props = {
+          headerCellPropsProviders: [
+            cellPropsProvider1,
+            cellPropsProvider2,
+          ],
+        };
+
+        expect(cellPropsProvider1).not.toHaveBeenCalled();
+        expect(cellPropsProvider2).not.toHaveBeenCalled();
+
+        const testCase = TestCaseFactory.createFromElement( // eslint-disable-line no-unused-vars
+          wrap(<GridHeader {...props} />)
+        );
+
+        expect(cellPropsProvider1).toHaveBeenCalledWith(0);
+        expect(cellPropsProvider2).toHaveBeenCalledWith(1);
       });
     });
 
     describe('classHeader', () => {
-      it('adds a class when set', () => {
+      it('is applied as a class of the thead element', () => {
         const props = {
-          cells: [
-            1,
-            2,
-            3,
-          ],
+          headerCellPropsProviders: [],
           classHeader: 'test',
         };
-        const testCase = TestCaseFactory.createFromElement(<GridHeader {...props} />);
 
-        expect(testCase.dom.getAttribute('class')).toBe('grid__header test');
+        const testCase = TestCaseFactory.createFromElement(
+          wrap(<GridHeader {...props} />)
+        );
+
+        expect(testCase.first('thead').getAttribute('class')
+          .indexOf(props.classHeader) !== -1).toBe(true);
       });
     });
 
     describe('classHeaderRow', () => {
-      it('is passed to row', () => {
-        const classHeaderRow = 'test';
+      it('is applied as a class of the tr element', () => {
         const props = {
-          cells: [
-            1,
-            2,
-            3,
-          ],
-          classHeaderRow: classHeaderRow,
+          headerCellPropsProviders: [],
+          classHeaderRow: 'test',
         };
-        const testCase = TestCaseFactory.createFromElement(<GridHeader {...props} />);
-        const row = testCase.firstComponent(GridHeaderRow);
 
-        expect(row.props.classHeaderRow).toBe(classHeaderRow);
+        const testCase = TestCaseFactory.createFromElement(
+          wrap(<GridHeader {...props} />)
+        );
+
+        expect(testCase.first('tr').getAttribute('class')
+          .indexOf(props.classHeaderRow) !== -1).toBe(true);
       });
     });
 
     describe('classHeaderCell', () => {
-      it('is passed to row', () => {
-        const classHeaderCell = 'test';
+      it('is applied as a class of the th element', () => {
         const props = {
-          cells: [
-            1,
-            2,
-            3,
-          ],
-          classHeaderCell: classHeaderCell,
+          headerCellPropsProviders: [() => {}],
+          classHeaderCell: 'test',
         };
-        const testCase = TestCaseFactory.createFromElement(<GridHeader {...props} />);
-        const row = testCase.firstComponent(GridHeaderRow);
 
-        expect(row.props.classHeaderCell).toBe(classHeaderCell);
-      });
-    });
+        const testCase = TestCaseFactory.createFromElement(
+          wrap(<GridHeader {...props} />)
+        );
 
-    describe('sortColumnIndexes', () => {
-      it('is passed to row', () => {
-        const sortColumnIndexes = [
-          0,
-          2,
-        ];
-        const props = {
-          cells: [
-            1,
-            2,
-            3,
-          ],
-          sortColumnIndexes: sortColumnIndexes,
-        };
-        const testCase = TestCaseFactory.createFromElement(<GridHeader {...props} />);
-        const row = testCase.firstComponent(GridHeaderRow);
-
-        expect(row.props.sortColumnIndexes).toBe(sortColumnIndexes);
-      });
-    });
-
-    describe('isSortDescending', () => {
-      it('is passed to row', () => {
-        const isSortDescending = false;
-        const props = {
-          cells: [
-            1,
-            2,
-            3,
-          ],
-          isSortDescending: isSortDescending,
-        };
-        const testCase = TestCaseFactory.createFromElement(<GridHeader {...props} />);
-        const row = testCase.firstComponent(GridHeaderRow);
-
-        expect(row.props.isSortDescending).toBe(isSortDescending);
-      });
-    });
-
-    describe('sortedColumnIndex', () => {
-      it('is passed to row', () => {
-        const sortedColumnIndex = 1;
-        const props = {
-          cells: [
-            1,
-            2,
-            3,
-          ],
-          sortedColumnIndex: sortedColumnIndex,
-        };
-        const testCase = TestCaseFactory.createFromElement(<GridHeader {...props} />);
-        const row = testCase.firstComponent(GridHeaderRow);
-
-        expect(row.props.sortedColumnIndex).toBe(sortedColumnIndex);
-      });
-    });
-
-    describe('onSort', () => {
-      it('is passed to row', () => {
-        const onSort = () => {};
-        const props = {
-          cells: [
-            1,
-            2,
-            3,
-          ],
-          onSort: onSort,
-        };
-        const testCase = TestCaseFactory.createFromElement(<GridHeader {...props} />);
-        const row = testCase.firstComponent(GridHeaderRow);
-
-        expect(row.props.onSort).toBe(onSort);
+        expect(testCase.first('th').getAttribute('class')
+          .indexOf(props.classHeaderCell) !== -1).toBe(true);
       });
     });
   });

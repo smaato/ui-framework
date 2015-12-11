@@ -1,82 +1,34 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
-import Entity from '../../services/Entity';
 
-export default class GridHeaderCell extends Component {
+const GridHeaderCell = props => {
+  // Cell classes.
+  const classes = classNames('grid__header__cell', props.classHeaderCell);
 
-  constructor(props) {
-    super(props);
-  }
+  // We want to add on our own classes to the inner cell, without destroying
+  // any classes that have been provided.
+  const decoratedInnerCellProps = Object.assign({}, props.innerCellProps, {
+    className: classNames('grid__header__cellLiner', props.innerCellProps.className),
+  });
 
-  renderCellClass() {
-    if (this.props.sortEnabled) {
-      return classNames(
-        'grid__header__cell',
-        'sortable',
-        this.props.sortedColumnIndex === this.props.cellIndex ? 'selected' : null,
-        this.props.isSortDescending ? null : 'reverse'
-      );
-    }
-
-    return classNames(
-      'grid__header__cell',
-      this.props.classHeaderCell
-    );
-  }
-
-  renderContent() {
-    if (this.props.sortEnabled) {
-      const onSort = () => this.props.onSort(this.props.cellIndex);
-
-      return (
-        <a
-          onClick={onSort}
-        >
-          {this.props.content}
-          {Entity.nbsp}
-          <span className="arrowUp">
-            <span className="arrowUp__centerLine"></span>
-          </span>
-          <span className="arrowDown">
-            <span className="arrowDown__centerLine"></span>
-          </span>
-        </a>
-      );
-    }
-
-    return this.props.content;
-  }
-
-  render() {
-    const cellClass = this.renderCellClass();
-    const content = this.renderContent();
-
-    return (
-      <div className={cellClass}>
-        <div className="grid__header__cellLiner">
-          {content}
-        </div>
-      </div>
-    );
-  }
-
-}
+  return (
+    <th className={classes}>
+      <div {...decoratedInnerCellProps} ></div>
+    </th>
+  );
+};
 
 GridHeaderCell.propTypes = {
+  innerCellProps: PropTypes.object,
+  // Classes
   classHeaderCell: PropTypes.string,
-  content: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.element,
-  ]),
-  // Sorting
-  cellIndex: PropTypes.number,
-  sortEnabled: PropTypes.bool,
-  isSortDescending: PropTypes.bool,
-  sortedColumnIndex: PropTypes.number,
-  onSort: PropTypes.func,
 };
+
+GridHeaderCell.defaultProps = {
+  innerCellProps: {},
+};
+
+export default GridHeaderCell;

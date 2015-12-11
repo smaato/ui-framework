@@ -4,45 +4,63 @@ import { TestCaseFactory } from 'react-test-kit';
 import GridBodyCell from './GridBodyCell.jsx';
 
 describe('GridBodyCell', () => {
+  // We have to wrap the td in table markup or else React will complain.
+  function wrap(cell) {
+    return (
+      <table>
+        <tbody>
+          <tr>{cell}</tr>
+        </tbody>
+      </table>
+    );
+  }
+
   describe('Props', () => {
     describe('classBodyCell', () => {
-      it('adds a class when set', () => {
+      it('is applied as a class of the td element', () => {
         const props = {
-          classBodyCell: 'test',
+          classBodyCell: 'testClass',
         };
-        const testCase = TestCaseFactory.createFromElement(<GridBodyCell {...props} />);
 
-        expect(testCase.dom.getAttribute('class')).toBe('grid__body__cell test');
+        const testCase = TestCaseFactory.createFromElement(
+          wrap(<GridBodyCell {...props} />)
+        );
+
+        expect(testCase.first('td').getAttribute('class')
+          .indexOf(props.classBodyCell) !== -1).toBe(true);
       });
     });
 
-    describe('content', () => {
-      it('is rendered as textContent when it\'s a string', () => {
+    describe('innerCellProps', () => {
+      it('renders children to the inner div', () => {
         const props = {
-          content: 'Test',
+          innerCellProps: {
+            children: 'Test',
+          },
         };
-        const testCase = TestCaseFactory.createFromElement(<GridBodyCell {...props} />);
 
-        expect(testCase.dom.textContent).toBe('Test');
+        const testCase = TestCaseFactory.createFromElement(
+          wrap(<GridBodyCell {...props} />)
+        );
+
+        expect(testCase.first('td > div').textContent).toBe(
+          props.innerCellProps.children
+        );
       });
 
-      it('is rendered textContent when it\'s a number', () => {
+      it('applies className property as class of the inner div', () => {
         const props = {
-          content: 1,
+          innerCellProps: {
+            className: 'testClass',
+          },
         };
-        const testCase = TestCaseFactory.createFromElement(<GridBodyCell {...props} />);
 
-        expect(testCase.dom.textContent).toBe('1');
-      });
+        const testCase = TestCaseFactory.createFromElement(
+          wrap(<GridBodyCell {...props} />)
+        );
 
-      it('is rendered as a child when it\'s an element', () => {
-        const props = {
-          content: <span />,
-        };
-        const testCase = TestCaseFactory.createFromElement(<GridBodyCell {...props} />);
-        const contentElement = testCase.first('span');
-
-        expect(contentElement.tagName).toBe('SPAN');
+        expect(testCase.first('td > div').getAttribute('class')
+          .indexOf(props.innerCellProps.className) !== -1).toBe(true);
       });
     });
   });

@@ -1,46 +1,41 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
-import GridHeaderRow from './GridHeaderRow.jsx';
 
-export default class GridHeader extends Component {
+import GridHeaderCell from './GridHeaderCell.jsx';
 
-  constructor(props) {
-    super(props);
-  }
+const GridHeader = props => {
+  const sectionClass = classNames('grid__header', props.classHeader);
+  const rowClass = classNames('grid__header__row', props.classHeaderRow);
 
-  render() {
-    const sectionClass = classNames('grid__header', this.props.classHeader);
-
+   // Create cells.
+  const headerCells = props.headerCellPropsProviders.map((cellPropsProvider, index) => {
     return (
-      <div className={sectionClass}>
-        <GridHeaderRow
-          classHeaderRow={this.props.classHeaderRow}
-          classHeaderCell={this.props.classHeaderCell}
-          cells={this.props.cells}
-          // Sorting
-          sortColumnIndexes={this.props.sortColumnIndexes}
-          isSortDescending={this.props.isSortDescending}
-          sortedColumnIndex={this.props.sortedColumnIndex}
-          onSort={this.props.onSort}
-        />
-      </div>
+      <GridHeaderCell
+        classHeaderCell={props.classHeaderCell}
+        innerCellProps={cellPropsProvider(index)}
+        key={index}
+      />
     );
-  }
+  });
 
-}
+  return (
+    <thead className={sectionClass}>
+      <tr className={rowClass}>
+        {headerCells}
+      </tr>
+    </thead>
+  );
+};
 
 GridHeader.propTypes = {
+  headerCellPropsProviders: PropTypes.array.isRequired,
+  // Classes
   classHeader: PropTypes.string,
   classHeaderRow: PropTypes.string,
-  classHeaderCell: PropTypes.string,
-  cells: PropTypes.array.isRequired,
-  // Sorting
-  sortColumnIndexes: GridHeaderRow.propTypes.sortColumnIndexes,
-  isSortDescending: GridHeaderRow.propTypes.isSortDescending,
-  sortedColumnIndex: GridHeaderRow.propTypes.sortedColumnIndex,
-  onSort: GridHeaderRow.propTypes.onSort,
+  classHeaderCell: GridHeaderCell.propTypes.classHeaderCell,
 };
+
+export default GridHeader;

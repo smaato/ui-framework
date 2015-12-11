@@ -62,5 +62,14 @@ export { default as FilterOption } from './services/FilterOption';
 export * from './services/FilterableItems';
 export { default as FilterableItems } from './services/FilterableItems';
 
+export * from './services/GridRowRecycler';
+export { default as GridRowRecycler } from './services/GridRowRecycler';
+
+export * from './services/GridStencil';
+export { default as GridStencil } from './services/GridStencil';
+
+export * from './services/Sorter';
+export { default as Sorter } from './services/Sorter';
+
 export * from './services/ThrottledEventDispatcher';
 export { default as ThrottledEventDispatcher } from './services/ThrottledEventDispatcher';

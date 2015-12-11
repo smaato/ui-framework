@@ -1,63 +1,46 @@
+
+$gridContainerBorder: 1px solid $componentStrokeColor;
+$gridRowBookendPadding: 15px;
+
+@mixin gridBaseStyles {
+  color: #474b4e;
+  font-weight: 400;
+  font-size: 13px;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
 @import 'controls/index';
+@import 'header/index';
+@import 'body/index';
+@import 'footer/index';
+@import 'empty/index';
+@import 'loading/index';
+@import 'kpi/index';
+@import 'stickyGrid/index';
 
 .grid__container {
-  border: 1px solid $componentStrokeColor;
-  -webkit-font-smoothing: subpixel-antialiased;
-  max-width: $maxWidth;
+  border: $gridContainerBorder;
   margin: 0 auto;
 }
 
   .grid__table {
-    display: block;
+    @include gridBaseStyles;
     width: 100%;
-    margin: 0;
-    padding: 0;
     text-align: left;
-    color: #474b4e;
-    font-weight: 400;
-    font-size: 13px;
   }
 
-    @import 'header/index';
-    @import 'body/index';
-    @import 'footer/index';
-    @import 'empty/index';
-    @import 'loading/index';
-    @import 'kpi/index';
+    .grid__header__cell,
+    .grid__body__cell,
+    .grid__footer__cell {
 
-    .grid__header {
-      display: block;
-    }
-
-    .grid__body {
-      display: block;
-      overflow-y: auto;
-    }
-
-    .grid__footer {
-      display: block;
-    }
-
-      .grid__header__row,
-      .grid__body__row,
-      .grid__footer__row {
-        display: flex;
+      &:first-child {
+        width: 35px;
+        padding-left: 15px;
       }
+    }
 
-        .grid__header__cell,
-        .grid__body__cell,
-        .grid__footer__cell {
-          width: 100px;
-
-          &:first-child {
-            width: 35px;
-          }
-
-          &:last-child {
-            flex: 1;// Occupies the remainder of the space
-          }
+      .grid__body__cell:last-child {
+        .grid__body__cellLiner {
+          text-align: right;
         }
-
-          .grid__body__cell:last-child .grid__body__cellLiner {
-            text-align: right;
-          }
+      }

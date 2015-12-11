@@ -1,35 +1,34 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
 
-export default class GridBodyCell extends Component {
+const GridBodyCell = props => {
+  // Cell classes.
+  const classes = classNames('grid__body__cell', props.classBodyCell);
 
-  constructor(props) {
-    super(props);
-  }
+  // We want to add on our own classes to the inner cell, without destroying
+  // any classes that have been provided.
+  const decoratedInnerCellProps = Object.assign({}, props.innerCellProps, {
+    className: classNames('grid__body__cellLiner', props.innerCellProps.className),
+  });
 
-  render() {
-    const cellClass = classNames('grid__body__cell', this.props.classBodyCell);
-
-    return (
-      <div className={cellClass}>
-        <div className="grid__body__cellLiner">
-          {this.props.content}
-        </div>
-      </div>
-    );
-  }
-
-}
+  return (
+    <td className={classes}>
+      <div {...decoratedInnerCellProps}></div>
+    </td>
+  );
+};
 
 GridBodyCell.propTypes = {
+  innerCellProps: PropTypes.object,
+  // Classes
   classBodyCell: PropTypes.string,
-  content: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.element,
-  ]),
 };
+
+GridBodyCell.defaultProps = {
+  innerCellProps: {},
+};
+
+export default GridBodyCell;
