@@ -1,39 +1,28 @@
-.grid__search {
-  vertical-align: middle;
-  text-align: right;
-}
+.gridSearch {
+  display: flex;
 
-  .grid__search__input {
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 0;
-    position: relative;
-    overflow: hidden;
+  $gridSearch_height: 23px;
 
-    input {
-      border-radius: 20px;
-      border: 1px solid shade($componentStrokeColor, 5%);
-      background: white;
-      line-height: 11px;
+  .gridSearch__input {
+    width: 140px;
+    height: $gridSearch_height;
+    margin: 0;
+    padding: 5px 27px 5px 11px;
+    border: 1px solid shade($componentStrokeColor, 5%);
+    border-radius: 20px;
+    background: white;
+    font-size: 11px;
+    color: shade($componentTextColor, 80%);
+  }
+
+  .gridSearch__icon {
+    color: shade($componentStrokeColor, 16%);
+    width: $gridSearch_height;
+    height: $gridSearch_height;
+    margin-left: -$gridSearch_height;
+
+    &:before {
       font-size: 11px;
-      margin: 0;
-      height: 23px;
-      padding: 5px 27px 5px 11px;
-      color: shade($componentTextColor, 80%);
-      width: 140px;
-    }
-
-    .icon {
-      color: shade($componentStrokeColor, 16%);
-      width: 20px;
-      height: 20px;
-      display: inline-block;
-      position: absolute;
-      top: 11px;
-      right: 0;
-
-      &:before {
-        font-size: 11px;
-      }
     }
   }
+}

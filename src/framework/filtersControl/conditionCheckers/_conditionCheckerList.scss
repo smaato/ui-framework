@@ -1,0 +1,35 @@
+
+.conditionCheckerList {
+  display: flex;
+}
+
+  .conditionCheckerListItem {
+    @include filtersButton;
+
+    &:hover {
+      .conditionCheckerListItem__removeButton {
+        opacity: 1;
+      }
+    }
+  }
+
+    .conditionCheckerListItem__label {
+      max-width: 100px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+      .conditionCheckerListItem__name {
+        font-weight: 400;
+      }
+
+  .conditionCheckerListItem__removeButton {
+    opacity: 0;
+    display: flex;
+    margin-left: -$iconSide;
+    cursor: pointer;
+    background: shade(scale-saturation($componentBackgroundColor, 60%), 3%);
+    box-shadow: -10px 0 5px shade(scale-saturation($componentBackgroundColor, 60%), 3%);
+    color: $linkColor;
+  }

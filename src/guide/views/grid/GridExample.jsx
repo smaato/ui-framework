@@ -12,6 +12,8 @@ import Page, {
 import {
   CheckBox,
   Entity,
+  FiltersControl,
+  FilterableItems,
   Grid,
   GridBodyEditableCell,
   GridControls,
@@ -34,6 +36,8 @@ import {
 
 import numeral from 'numeral';
 
+import gridExampleFilterOptions from './gridExampleFilterOptions.js';
+
 const defaultState = {
   bodyRows: [],
   isEmptyStateDemonstration: false,
@@ -51,6 +55,8 @@ const defaultState = {
   searchTerm: '',
   // Select all
   areAllRowsSelected: false,
+  // Filters
+  conditionCheckers: [],
 };
 
 export default class GridExample extends Component {
@@ -451,8 +457,31 @@ export default class GridExample extends Component {
     });
   }
 
+  onRemoveConditionChecker(conditionCheckerToRemove) {
+    const conditionCheckers = this.state.conditionCheckers
+      .filter(conditionChecker => conditionChecker !== conditionCheckerToRemove);
+
+    this.setState({
+      conditionCheckers,
+    });
+  }
+
+  onAddConditionChecker(conditionChecker) {
+    const conditionCheckers = this.state.conditionCheckers.slice();
+    conditionCheckers.push(conditionChecker);
+    this.setState({
+      conditionCheckers,
+    });
+  }
+
   getBodyRows() {
-    const foundBodyRows = this.search(this.state.bodyRows, this.state.searchTerm);
+    function filterRows(rows, filters) {
+      return new FilterableItems(rows).applyFilters(filters);
+    }
+
+    const filteredBodyRows = filterRows(this.state.bodyRows, this.state.conditionCheckers);
+
+    const foundBodyRows = this.search(filteredBodyRows, this.state.searchTerm);
     return Sorter.sort(
       foundBodyRows,
       this.cellValueProviders,
@@ -656,6 +685,12 @@ export default class GridExample extends Component {
   renderGridControls() {
     return (
       <GridControls>
+        <FiltersControl
+          conditionCheckers={this.state.conditionCheckers}
+          filterOptions={gridExampleFilterOptions}
+          onRemoveConditionChecker={this.onRemoveConditionChecker.bind(this)}
+          onAddConditionChecker={this.onAddConditionChecker.bind(this)}
+        />
         <GridSearch
           onSearch={this.onSearch.bind(this)}
         />

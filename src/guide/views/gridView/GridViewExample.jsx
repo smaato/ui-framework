@@ -6,6 +6,10 @@ import $ from 'jquery';
 
 import Page from '../../components/page/Page.jsx';
 
+import {
+  Entity,
+} from '../../../framework/framework.js';
+
 export default class GridViewExample extends Component {
 
   constructor(props) {
@@ -224,82 +228,63 @@ export default class GridViewExample extends Component {
         </div>
 
         <div className="grid__controls">
-
           <div className="grid__controls__liner">
-
-            <div className="grid__filtersWrapper">
-
-              <ul className="grid__filtersContainer">
-                <li className="grid__filter">
-                  <span className="filterTitle">
-                    <strong>Status:</strong> In Production
-                  </span>
-                  <a className="remove" href=""><span className="icon glyphicons-remove-2"></span></a>
-                </li>
-                <li className="grid__filter">
-                  <span className="filterTitle">
-                    <strong>Cylinders:</strong> 8+
-                  </span>
-                  <a className="remove" href=""><span className="icon glyphicons-remove-2"></span></a>
-                </li>
-                <li className="grid__filter">
-                  <span className="filterTitle">
-                    <strong>Passengers:</strong> 2+
-                  </span>
-                  <a className="remove" href="">
-                    <span className="icon glyphicons-remove-2"></span>
-                  </a>
-                </li>
-                <li className="grid__filter">
-                  <span className="filterTitle">
-                    <strong>Fuel Economy:</strong> 10mpg+
-                  </span>
-                  <a className="remove" href="">
-                    <span className="icon glyphicons-remove-2"></span>
-                  </a>
-                </li>
-                <li className="grid__filter">
-                  <span className="filterTitle">
-                    <strong>Fuel:</strong> Not Electric
-                  </span>
-                  <a className="remove" href="">
-                    <span className="icon glyphicons-remove-2"></span>
-                  </a>
-                </li>
-
-                <li className="grid__mask">
-                  <span className="mask-inner"></span>
-                </li>
-
-                <li className="grid__ellipsis">
-                  <span className="icon glyphicons-more"></span>
-                  <a className="add" href="#">+</a>
-                </li>
-
-                <li className="grid__addFilter">
-                  <a href="#">+</a>
-                </li>
-
-              </ul>
+            <div className="filters">
+              <div className="addedFilter">
+                <span className="addedFilter__text">
+                  <strong className="addedFilter__name">Status:</strong>
+                  {Entity.nbsp}
+                  In Production
+                </span>
+                <span className="icon glyphicons-remove-2 removeFilterButton"/>
+              </div>
+              <div className="addedFilter">
+                <span className="addedFilter__text">
+                  <strong className="addedFilter__name">Cylinders:</strong>
+                  {Entity.nbsp}
+                  8+
+                </span>
+                <span className="icon glyphicons-remove-2 removeFilterButton"/>
+              </div>
+              <div className="addedFilter">
+                <span className="addedFilter__text">
+                  <strong className="addedFilter__name">Passengers:</strong>
+                  {Entity.nbsp}
+                  2+
+                </span>
+                <span className="icon glyphicons-remove-2 removeFilterButton"/>
+              </div>
+              <div className="addedFilter">
+                <span className="addedFilter__text">
+                  <strong className="addedFilter__name">Fuel Economy:</strong>
+                  {Entity.nbsp}
+                  10mpg+
+                </span>
+                <span className="icon glyphicons-remove-2 removeFilterButton"/>
+              </div>
+              <div className="addedFilter">
+                <span className="addedFilter__text">
+                  <strong className="addedFilter__name">Fuel:</strong>
+                  {Entity.nbsp}
+                  Not Electric
+                </span>
+                <span className="icon glyphicons-remove-2 removeFilterButton"/>
+              </div>
+              <div className="toggleFilterDropdownButton">+</div>
+              <div className="filterEllipsis">
+                <div className="icon glyphicons-more"></div>
+              </div>
             </div>
-
             <div className="grid__batch">
-
               <a href="" className="grid__batch__button disabled">
-                <span className="icon glyphicons-new-window"></span>Actions
+                <span className="icon glyphicons-new-window"/>
+                Actions
               </a>
-
             </div>
-
-            <div className="grid__search">
-
-              <label className="grid__search__input">
-                <input type="text" />
-                <span className="icon glyphicons-search"></span>
-              </label>
-
-            </div>
-
+            <label className="gridSearch">
+              <input type="text" className="gridSearch__input"/>
+              <span className="icon glyphicons-search gridSearch__icon"/>
+            </label>
           </div>
 
         </div>
