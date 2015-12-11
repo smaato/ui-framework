@@ -27,7 +27,7 @@ export default class LabelExample extends Component {
 
         <Example title="Clickable Label">
           <div>
-            <Label for="checkboxExample">Label</Label>
+            <Label htmlFor="checkboxExample">Label</Label>
           </div>
           <CheckBox id="checkboxExample" />
         </Example>

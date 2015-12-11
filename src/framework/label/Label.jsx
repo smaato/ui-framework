@@ -5,23 +5,22 @@ import React, {
 import classNames from 'classnames';
 
 const Label = props => {
-  const classes = classNames('label', {
-    'label--clickable': props.for,
+  const classes = classNames('label', props.className, {
+    'label--clickable': props.htmlFor,
+  });
+
+  const extendedProps = Object.assign({}, props, {
+    className: classes,
   });
 
   return (
-    <label
-      className={classes}
-      htmlFor={props.for}
-    >
-      {props.children}
-    </label>
+    <label {...extendedProps} />
   );
 };
 
 Label.propTypes = {
   children: PropTypes.string.isRequired,
-  for: PropTypes.string,
+  htmlFor: PropTypes.string,
 };
 
 export default Label;

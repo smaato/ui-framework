@@ -13,15 +13,5 @@ describe('Label', () => {
         expect(testCase.dom.textContent).toBe(props.children);
       });
     });
-
-    describe('for', () => {
-      it('is set as the label\'s "for" attribute', () => {
-        const props = {
-          for: 'targetId',
-        };
-        const testCase = TestCaseFactory.createFromFunction(Label, props);
-        expect(testCase.dom.getAttribute('for')).toBe(props.for);
-      });
-    });
   });
 });
