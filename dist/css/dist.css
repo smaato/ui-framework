@@ -138,7 +138,6 @@ q:before, q:after {
 /* Color Menu */
 /* Global Colors */
 /* Generic Components Colors */
-/* Button Colors */
 /* Title Bar Colors */
 /* ViewHeaderNav Colors */
 /* AppHeaderNav Colors */
@@ -154,26 +153,6 @@ body,
 input,
 textarea {
   color: #5e6162;
-}
-
-.button {
-  display: inline-block;
-  border-radius: 3px;
-  font-weight: 400;
-  line-height: 30px;
-  font-size: 12px;
-  padding: 0 12px;
-  opacity: 1;
-  box-shadow: 0 0 0 transparent;
-  transition: 0.1s all ease-in-out;
-}
-.button:hover {
-  opacity: 0.95;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-}
-.button.button--primary {
-  background: #35d0a0;
-  color: white;
 }
 
 .arrowDown {
@@ -2714,21 +2693,6 @@ body {
   overflow-x: hidden;
 }
 
-.icon {
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  font-size: 14px;
-  width: 14px;
-  height: 14px;
-}
-
 .accountNav {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2864,6 +2828,70 @@ body {
 .appNav__link.is-app-nav-link-selected {
   cursor: default;
   background: #2799c4;
+}
+
+.button {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30px;
+  padding: 0 11px;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 1;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  box-shadow: 0 0 0 transparent;
+  transition: 0.1s all ease-in-out;
+  cursor: pointer;
+}
+.button:hover {
+  opacity: 0.95;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.button.is-button-disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.button__icon {
+  display: inline-block;
+  vertical-align: middle;
+  height: 12px;
+  width: 10px;
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.button__label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.button__icon + .button__label {
+  margin-left: 2px;
+}
+
+.button--hollow {
+  color: #517582;
+}
+.button--hollow:hover {
+  box-shadow: none;
+}
+
+.button--primary {
+  background-image: linear-gradient(#54baef, #43b4ef);
+  color: #ffffff;
+  border-color: #2ca7e8;
+}
+
+.button--callOut {
+  background: #35d0a0;
+  color: #ffffff;
+  border-color: #35d0a0;
 }
 
 .chart {
@@ -4101,6 +4129,31 @@ body {
   text-align: right;
 }
 
+.icon {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+.label {
+  color: #526770;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.label--clickable {
+  cursor: pointer;
+}
+
 /**
  * Courtesy http://projects.lukehaas.me/css-loaders/
  */
@@ -4164,6 +4217,23 @@ body {
             transform: rotate(360deg);
   }
 }
+.textInput {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  color: #444444;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  font-weight: 300;
+  height: 32px;
+  padding: 0 10px;
+}
+.textInput:focus {
+  outline: none;
+  border: 2px solid #2ba7e8;
+  box-shadow: inset 0 0 0 1px #2ba7e8;
+}
+
 /**
  * 1. Flexbox layout positions the title and buttonContainer children
  *    horizontally.
@@ -4228,20 +4298,11 @@ body {
       -ms-flex-pack: end;
           justify-content: flex-end;
   /* 3 */
+  padding-right: 15px;
 }
 
-.titleBarButton {
-  margin: 12px 15px 12px 0;
-}
-
-.titleBarButton__icon {
-  display: inline-block;
-  height: 12px;
-  width: 10px;
-  font-size: 10px;
-  margin: 0 2px 0 0;
-  opacity: 0.7;
-  line-height: 14px;
+.titleBar__button + .titleBar__button {
+  margin-left: 15px;
 }
 
 .viewHeader {

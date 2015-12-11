@@ -16,10 +16,6 @@ $componentBackgroundColor: scale-lightness($lightGrey, 60%);
 $componentStrokeColor: scale-saturation(scale-lightness($lightGrey, -10%), -70%);
 $componentTextColor: shade($lightGrey, 60%);
 
-/* Button Colors */
-$primaryButtonColor: $green;
-$secondaryButtonColor: $green;
-
 /* Title Bar Colors */
 $titleBarTextColor: $darkGrey;
 $titleBarBackgroundColor: $white;
