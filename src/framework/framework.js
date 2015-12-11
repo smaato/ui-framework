@@ -30,8 +30,14 @@ export { default as IconCog } from './iconCog/IconCog.jsx';
 export * from './iconEllipsis/IconEllipsis.jsx';
 export { default as IconEllipsis } from './iconEllipsis/IconEllipsis.jsx';
 
+export * from './label/Label.jsx';
+export { default as Label } from './label/Label.jsx';
+
 export * from './spinner/Spinner.jsx';
 export { default as Spinner } from './spinner/Spinner.jsx';
+
+export * from './textInput/TextInput.jsx';
+export { default as TextInput } from './textInput/TextInput.jsx';
 
 export * from './titleBar/TitleBar.jsx';
 export { default as TitleBar } from './titleBar/TitleBar.jsx';

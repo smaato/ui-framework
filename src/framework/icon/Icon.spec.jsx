@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
-import Icon from './../icon/Icon.jsx';
+import Icon from './Icon.jsx';
 
 describe('Icon', () => {
   describe('DOM structure', () => {
