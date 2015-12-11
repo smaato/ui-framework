@@ -8,8 +8,8 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
+  CallOutButton,
   TitleBar,
-  TitleBarButton,
 } from '../../../framework/framework.js';
 
 export default class TitleBarExample extends Component {
@@ -26,21 +26,15 @@ export default class TitleBarExample extends Component {
           <TitleBar
             label="Title bar example"
             buttons={[
-              <TitleBarButton
+              <CallOutButton
+                iconClasses="glyphicons-plus"
                 label="Add something"
-                key="button1"
               />,
-              <TitleBarButton
+              <CallOutButton
+                iconClasses="glyphicons-plus"
                 label="Add something else"
-                key="button2"
               />,
             ]}
-          />
-        </Example>
-
-        <Example title="TitleBarButton">
-          <TitleBarButton
-            label="Title bar button"
           />
         </Example>
 

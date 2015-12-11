@@ -1,4 +1,6 @@
 
+$titleBarPadding: 15px;
+
 /**
  * 1. Flexbox layout positions the title and buttonContainer children
  *    horizontally.
@@ -21,7 +23,7 @@
   .titleBar__title {
     color: $titleBarTextColor;
     font-size: 16px;
-    padding-left: 15px;
+    padding-left: $titleBarPadding;
     line-height: 54px;
     display: flex; /* 1 */
     align-items: center; /* 1 */
@@ -40,4 +42,11 @@
     align-items: center; /* 1 */
     flex-grow: 1; /* 2 */
     justify-content: flex-end; /* 3 */
+    padding-right: $titleBarPadding;
   }
+
+    .titleBar__button {
+      & + & {
+        margin-left: 15px;
+      }
+    }
