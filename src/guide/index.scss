@@ -36,12 +36,12 @@ $contentWidth: 1200px;
   font-weight: 700;
   background: white;
   color: #626262;
-  border: 1px solid #D8D8D8;
+  border: 1px solid #d8d8d8;
   cursor: pointer;
   user-select: none;
 
   &:hover {
-    color: #1CC4EC;
+    color: #1cc4ec;
   }
 }
 
@@ -55,7 +55,7 @@ $contentWidth: 1200px;
   padding: 40px;
   background: white;
   color: #626262;
-  border: 1px solid #D8D8D8;
+  border: 1px solid #d8d8d8;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -87,9 +87,10 @@ $contentWidth: 1200px;
   .examplesNavButton {
     font-size: 14px;
     cursor: pointer;
+
     &:hover {
-      color: #1CC4EC;
-      border-color: #D8D8D8;
+      color: #1cc4ec;
+      border-color: #d8d8d8;
     }
   }
 
@@ -97,7 +98,7 @@ $contentWidth: 1200px;
   margin-bottom: 16px;
   padding: 20px;
   background: white;
-  border: 1px solid #D8D8D8;
+  border: 1px solid #d8d8d8;
 
   .examplePageTitle,
   .examplePageSubTitle,

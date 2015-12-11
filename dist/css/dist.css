@@ -4411,7 +4411,7 @@ body {
   font-weight: 700;
   background: white;
   color: #626262;
-  border: 1px solid #D8D8D8;
+  border: 1px solid #d8d8d8;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -4419,7 +4419,7 @@ body {
           user-select: none;
 }
 .examplesNavMenuButton:hover {
-  color: #1CC4EC;
+  color: #1cc4ec;
 }
 
 .examplesNavMenu {
@@ -4432,7 +4432,7 @@ body {
   padding: 40px;
   background: white;
   color: #626262;
-  border: 1px solid #D8D8D8;
+  border: 1px solid #d8d8d8;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -4474,15 +4474,15 @@ body {
   cursor: pointer;
 }
 .examplesNavButton:hover {
-  color: #1CC4EC;
-  border-color: #D8D8D8;
+  color: #1cc4ec;
+  border-color: #d8d8d8;
 }
 
 .exampleContainer {
   margin-bottom: 16px;
   padding: 20px;
   background: white;
-  border: 1px solid #D8D8D8;
+  border: 1px solid #d8d8d8;
 }
 .exampleContainer .examplePageTitle,
 .exampleContainer .examplePageSubTitle,
