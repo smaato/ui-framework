@@ -47,7 +47,7 @@ describe('GridBodyEditableCell', () => {
         const testCase = TestCaseFactory.createFromElement(<GridBodyEditableCell {...props} />);
 
         expect(props.onClick).not.toHaveBeenCalled();
-        testCase.click();
+        testCase.trigger('click');
         expect(props.onClick).toHaveBeenCalled();
       });
     });

@@ -3,12 +3,15 @@ import { slugifyEach } from '../string/Slug';
 
 // Components
 import AppHeaderExample from '../../views/appHeader/AppHeaderExample.jsx';
+import ButtonExample from '../../views/button/ButtonExample.jsx';
 import ChartExample from '../../views/chart/ChartExample.jsx';
 import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
 import GridKpiExample from '../../views/gridKpi/GridKpiExample.jsx';
 import IconExample from '../../views/icon/IconExample.jsx';
+import LabelExample from '../../views/label/LabelExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
+import TextInputExample from '../../views/textInput/TextInputExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
 import ViewHeaderExample from '../../views/viewHeader/ViewHeaderExample.jsx';
 
@@ -19,6 +22,9 @@ import GridViewExample from '../../views/gridView/GridViewExample.jsx';
 const components = [{
   name: 'AppHeader',
   component: AppHeaderExample,
+}, {
+  name: 'Button',
+  component: ButtonExample,
 }, {
   name: 'Chart',
   component: ChartExample,
@@ -35,8 +41,14 @@ const components = [{
   name: 'Icon',
   component: IconExample,
 }, {
+  name: 'Label',
+  component: LabelExample,
+}, {
   name: 'Spinner',
   component: SpinnerExample,
+}, {
+  name: 'TextInput',
+  component: TextInputExample,
 }, {
   name: 'TitleBar',
   component: TitleBarExample,
