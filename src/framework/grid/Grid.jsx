@@ -144,14 +144,14 @@ export default class Grid extends Component {
 
     // Create recycled rows.
     const rows = [];
-    if (typeof this.props.rows === 'object') {
-      // We have one row, for some reason.
-      rows.push(this.props.rows);
-    } else {
+    if (Array.isArray(this.props.rows)) {
       for (let index = firstRecycledRowIndex; index <= lastRecycledRowIndex && index < rowsCount; index++) {
         const row = this.props.rows[index];
         rows.push(row);
       }
+    } else {
+      // We have one row, for some reason.
+      rows.push(this.props.rows);
     }
 
     // Style classes
