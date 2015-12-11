@@ -4,6 +4,7 @@ import { slugifyEach } from '../string/Slug';
 // Components
 import AppHeaderExample from '../../views/appHeader/AppHeaderExample.jsx';
 import ButtonExample from '../../views/button/ButtonExample.jsx';
+import ChartExample from '../../views/chart/ChartExample.jsx';
 import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
 import GridKpiExample from '../../views/gridKpi/GridKpiExample.jsx';
@@ -22,6 +23,9 @@ const components = [{
 }, {
   name: 'Button',
   component: ButtonExample,
+}, {
+  name: 'Chart',
+  component: ChartExample,
 }, {
   name: 'CheckBox',
   component: CheckBoxExample,

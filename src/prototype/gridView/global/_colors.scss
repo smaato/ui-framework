@@ -1,0 +1,35 @@
+
+/* Color Menu */
+$lightGrey: #ebf3f5;
+$darkGrey: #354a53;
+$blue: #2799c4;
+$green: #35d0a0;
+$red: #ff2400;
+$white: #ffffff;
+
+/* Global Colors */
+$pageBackgroundColor: $lightGrey;
+$linkColor: $blue;
+
+/* Generic Components Colors */
+$componentBackgroundColor: scale-lightness($lightGrey, 60%);
+$componentStrokeColor: scale-saturation(scale-lightness($lightGrey, -10%), -70%);
+$componentTextColor: shade($lightGrey, 60%);
+
+/* Button Colors */
+$primaryButtonColor: $green;
+$secondaryButtonColor: $green;
+
+/* Title Bar Colors */
+$titleBarTextColor: $darkGrey;
+$titleBarBackgroundColor: $white;
+
+/* Secondary Nav Colors */
+$secondaryNavTextColor: $white;
+$secondaryNavBackgroundColor: $blue;
+$secondaryNavSelectedColor: $titleBarBackgroundColor;
+
+/* Main Nav Colors */
+$mainNavTextColor: $white;
+$mainNavBackgroundColor: $darkGrey;
+$mainNavSelectedColor: $secondaryNavBackgroundColor;

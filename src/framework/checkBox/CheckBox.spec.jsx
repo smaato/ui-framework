@@ -15,17 +15,8 @@ describe('CheckBox', () => {
 
   describe('Props', () => {
     describe('id', () => {
-      describe('when not set', () => {
-        it('input "id" and "name" as well as label "for" attributes are non-existent', () => {
-          const testCase = TestCaseFactory.createFromElement(<CheckBox />);
-          expect(testCase.first('input').getAttribute('id')).toBe(null);
-          expect(testCase.first('input').getAttribute('name')).toBe(null);
-          expect(testCase.first('label').getAttribute('for')).toBe(null);
-        });
-      });
-
       describe('when set', () => {
-        it('input "id" and "name" as well as label "for" attributes are set', () => {
+        it('is applied to the input\'s id and name attributes, and label\'s for attribute', () => {
           const testCase = TestCaseFactory.createFromElement(<CheckBox id="good-id" />);
           expect(testCase.first('input').getAttribute('id')).toBe('good-id');
           expect(testCase.first('input').getAttribute('name')).toBe('good-id');
@@ -75,7 +66,7 @@ describe('CheckBox', () => {
 
         const input = testCase.first('input');
 
-        testCase.click(input);
+        testCase.trigger('click', input);
       });
 
       it('is called when checked state is changed', () => {

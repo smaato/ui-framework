@@ -1,3 +1,4 @@
+$checkboxSize: 12px;
 $checkedColor: tint(scale-saturation($blue, 30%), 5%);
 
 .checkboxWrapper {
@@ -7,53 +8,55 @@ $checkedColor: tint(scale-saturation($blue, 30%), 5%);
 
   .checkbox__input {
     display: none;
+  }
 
-    &:checked + .checkbox__faux__input {
+  .checkbox__faux__input {
+    display: block;
+    position: relative;
+    width: $checkboxSize;
+    height: $checkboxSize;
+    line-height: $checkboxSize;
+    border: 1px solid shade($componentStrokeColor, 7%);
+    border-radius: 2px;
+    cursor: pointer;
+    background: tint($componentBackgroundColor, 90%);
+    box-shadow: inset 0 1px 0 tint($componentStrokeColor, 50%);
+
+    &:hover {
+      box-shadow: 0 1px 1px rgba(black, 0.2);
+    }
+
+    .checkbox__input:checked + & {
       background: $checkedColor;
       border-color: $checkedColor;
       box-shadow: 0 0 0 transparent;
 
+      &:before,
+      &:after {
+        @extend .glyphicons:before;
+        @extend .glyphicons-ok-2:before;
+        font-size: 8px;
+        color: transparent;
+        // Two icons take size of parent. :after is on top of :before
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        // Icon is a text content, so this will centers it perfectly
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       &:before {
+        top: 0;
         color: tint($checkedColor, 99%);
       }
 
       &:after {
+        // Makes checkbox slimmer by covering light icon with 2nd icon having bg color
+        top: -2px;
         color: $checkedColor;
       }
-    }
-  }
-
-  .checkbox__faux__input {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    margin: 0;
-    background: tint($componentBackgroundColor, 90%);
-    border: 1px solid shade($componentStrokeColor, 7%);
-    border-radius: 2px;
-    box-shadow: inset 0 1px 0 tint($componentStrokeColor, 50%);
-    width: 12px;
-    height: 12px;
-
-    &:before,
-    &:after {
-      @extend .glyphicons:before;
-      @extend .glyphicons-ok-2:before;
-      line-height: 10px;
-      font-size: 8px;
-      margin: 0 0 0 1px;
-    }
-
-    &:before {
-      color: transparent;
-    }
-
-    &:after {
-      color: transparent;
-      margin-top: -2px;
-    }
-
-    &:hover {
-      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     }
   }
