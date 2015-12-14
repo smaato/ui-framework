@@ -1,6 +1,11 @@
 
 .modalFooter {
-  padding-top: 5px;
-  border-top: 1px solid rgba(black, 0.1);
+  margin-top: 10px;
+  border-top: 1px dashed #cbd3d7;
+  padding-top: 15px;
   text-align: right;
+
+  .button {
+    margin-left: 10px;
+  }
 }

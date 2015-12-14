@@ -4189,7 +4189,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.15);
   z-index: 1;
   display: none;
 }
@@ -4209,9 +4209,11 @@ body {
   z-index: 2;
   width: 450px;
   padding: 20px;
-  border: 1px solid black;
-  background: white;
-  border-radius: 5px;
+  border: 4px solid white;
+  background: #f7fbfc;
+  border-radius: 1px;
+  box-shadow: 0 3px rgba(0, 0, 0, 0.05);
+  color: #526770;
 }
 
 /**
@@ -4220,15 +4222,17 @@ body {
 .modalBody {
   min-height: 80px;
   max-height: calc(100vh - 300px);
-  /* 1 */
   overflow-y: auto;
-  padding: 10px 0;
 }
 
 .modalFooter {
-  padding-top: 5px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  border-top: 1px dashed #cbd3d7;
+  padding-top: 15px;
   text-align: right;
+}
+.modalFooter .button {
+  margin-left: 10px;
 }
 
 .modalHeader {
@@ -4241,20 +4245,23 @@ body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-bottom: 5px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #cbd3d7;
+  margin-bottom: 10px;
 }
 
 .modalHeader__title {
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .modalHeader__closeButton {
-  color: black;
-  opacity: 0.5;
-  padding: 5px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #bbced6;
+  background-image: linear-gradient(#e9f0f2, #e2ebee);
+  border-radius: 2px;
+  color: #517582;
   cursor: pointer;
-  text-transform: uppercase;
 }
 .modalHeader__closeButton:hover {
   opacity: 1;
