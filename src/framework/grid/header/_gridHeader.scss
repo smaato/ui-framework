@@ -1,0 +1,62 @@
+.grid__header__cell {
+  vertical-align: middle;
+
+  height: 31px;
+  border-bottom: 1px solid $componentStrokeColor;
+  background: $componentBackgroundColor;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+  .grid__header__row--placeholder {
+    &.grid__header__cellLiner {
+      height: 0;
+      border: 0;
+      overflow: hidden;
+    }
+  }
+
+.gridHeaderSortableCell {
+  display: inline-block;
+  color: #2799c4;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    background: shade($componentBackgroundColor, 3%);
+  }
+
+  &.is-grid-header-sortable-cell-selected {
+    .gridHeaderSortableCell__arrow {
+      opacity: 1;
+    }
+  }
+
+  &.is-grid-header-sort-descending {
+    .gridHeaderSortableCell__arrowDown {
+      display: inline-block;
+    }
+
+    .gridHeaderSortableCell__arrowUp {
+      display: none;
+    }
+  }
+}
+
+  .gridHeaderSortableCell__label {
+    display: inline-block;
+    margin-right: 6px;
+  }
+
+  .gridHeaderSortableCell__arrow {
+    display: inline-block;
+    opacity: 0;
+  }
+
+    .gridHeaderSortableCell__arrowDown {
+      display: none;
+    }
+
+    .gridHeaderSortableCell__arrowUp {
+      display: inline-block;
+    }

@@ -1,0 +1,118 @@
+.dataTable__tbody {
+  background: #ffffff;
+}
+
+  .dataTable__tbody__cell {
+    white-space: nowrap;
+    border-bottom: 1px dashed $componentStrokeColor;
+    font-weight: 300;
+  }
+
+    .dataTable__tbody__cell {
+      padding: 10px 6px 10px 2px;
+      &:first-child {
+        width: 1%;
+        .dataTable__tbody__cellLiner { margin-left: 13px; }
+      }
+      &:last-child {
+        width: 1%;
+        .dataTable__tbody__cellLiner { margin-right: 13px; }
+      }
+    }
+
+      .dataTable__tbody__cellLiner {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 120px;
+        display: inline-block;
+        vertical-align: middle;
+
+        .checkboxWrapper {
+          display: block;
+          height: 11px;
+        }
+
+      }
+
+        .dataTable__tbody__cellValue--link,
+        .dataTable__tbody__cellValue--readOnly,
+        .dataTable__tbody__cellValue--editable {
+          padding: 4px 5px;
+          display: inline-block;
+          overflow: hidden;
+          min-width: 40px;
+          color: $componentTextColor;
+        }
+
+        .dataTable__tbody__cellValue--readOnly {
+          cursor: default;
+        }
+
+        .dataTable__tbody__cellValue--link {
+          cursor: pointer;
+          color: $linkColor;
+          font-weight: 400;
+          &:hover { opacity: .8; }
+        }
+
+        .dataTable__tbody__cellValue--editable {
+          text-overflow: ellipsis;
+          border: 1px dashed transparent;
+          border-radius: 4px;
+          transition: .1s all ease-in-out;
+          position: relative;
+          &:before {
+            @extend .glyphicons-cogwheel:before, .glyphicons:before;
+            display: block;
+            position: absolute;
+            left: auto;
+            font-size: 10px;
+            bottom: 0;
+            right: 0;
+            padding: 5px 4px 0;
+            z-index: 3;
+            color: tint($componentTextColor, 50%);
+            background: $componentBackgroundColor;
+            box-shadow: -4px 0 10px 2px $componentBackgroundColor;
+            opacity: 0;
+          }
+          &:hover {
+            border-color: $componentStrokeColor;
+            background: $componentBackgroundColor;
+            &:before { opacity: 1; }
+          }
+        }
+
+        .dataTable__tbody__cellChange {
+          font-size: 12px;
+          padding-left: 2px;
+          font-weight: 400;
+          &.up { color: $green; }
+          &.down { color: $red; }
+        }
+
+      .dataTable__tbody__cellLiner .icon {
+        color: shade($lightGrey, 15%);
+        padding: 0;
+        display: inline-block;
+        width: 14px;
+        height: 11px;
+        vertical-align: top;
+      }
+
+      .dataTable__tbody__cellLiner .glyphicons-more,
+      .dataTable__tbody__cellLiner .glyphicons-cogwheel {
+        font-size: 14px;
+        color: shade($lightGrey, 20%);
+        margin: 0 0 0 15px;
+        &:hover { color: shade($lightGrey, 40%); }
+      }
+
+      .dataTable__tbody__cellLiner .glyphicons-leaf {
+        margin-left: 2px;
+        font-size: 9px;
+        color: $green;
+        &:before {
+          top: 1px;
+        }
+      }

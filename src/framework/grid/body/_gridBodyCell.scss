@@ -1,0 +1,115 @@
+.grid__body__cell {
+  padding-left: 8px;
+  padding-right: 8px;
+  border-bottom: 1px dashed $componentStrokeColor;
+  font-weight: 300;
+  vertical-align: middle;
+}
+
+  .grid__body__cell {
+    &:first-child {
+      padding-left: 15px;
+    }
+
+    &:last-child {
+      padding-right: 15px;
+    }
+  }
+
+    .grid__body__cellLiner {
+      // 4 props to make ellipsis work
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      // Or else 'g' is cut off at the bottom
+      line-height: 1.2;
+    }
+
+      .grid__body__cellValue--link,
+      .grid__body__cellValue--readOnly,
+      .grid__body__cellValue--editable {
+        padding: 4px 5px;
+        display: inline-block;
+        vertical-align: middle;
+        color: $componentTextColor;
+        // 4 props to make ellipsis work
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .grid__body__cellValue--readOnly {
+        cursor: default;
+      }
+
+      .grid__body__cellValue--link {
+        cursor: pointer;
+        color: $linkColor;
+        font-weight: 400;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+      .grid__body__cellValue--editable {
+        border: 1px dashed transparent;
+        border-radius: 4px;
+        transition: 0.1s all ease-in-out;
+        position: relative;
+
+        &:before {
+          @extend .glyphicons-cogwheel:before, .glyphicons:before;
+          display: block;
+          position: absolute;
+          top: 0;
+          left: auto;
+          bottom: 0;
+          right: 0;
+          font-size: 10px;
+          padding: 5px 4px 0;
+          z-index: 3;
+          color: tint($componentTextColor, 50%);
+          background: $componentBackgroundColor;
+          box-shadow: -4px 0 10px 2px $componentBackgroundColor;
+          opacity: 0;
+        }
+
+        &:hover {
+          border-color: $componentStrokeColor;
+          background: $componentBackgroundColor;
+
+          &:before {
+            opacity: 1;
+          }
+        }
+      }
+
+    .grid__body__cellLiner .icon {
+      color: shade($lightGrey, 15%);
+      padding: 0;
+      vertical-align: top;
+    }
+
+    .grid__body__cellLiner .glyphicons-more,
+    .grid__body__cellLiner .glyphicons-cogwheel {
+      font-size: 14px;
+      color: shade($lightGrey, 20%);
+      margin: 0 0 0 15px;
+
+      &:hover {
+        color: shade($lightGrey, 40%);
+      }
+    }
+
+    .grid__body__cellLiner .glyphicons-leaf {
+      margin-left: 2px;
+      font-size: 9px;
+      color: $green;
+
+      &:before {
+        top: 1px;
+      }
+    }

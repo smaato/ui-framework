@@ -1,0 +1,34 @@
+.grid__controls {
+  display: flex;
+  justify-content: center;
+  height: 40px;
+}
+
+  .grid__controls__liner {
+    flex: 1;
+    max-width: $maxWidth;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    border: solid $componentStrokeColor;
+    border-width: 1px 1px 0;
+    background: $componentBackgroundColor;
+  }
+
+.fixedThead {
+  .grid__controls {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+  }
+
+  .grid__controls__placeholder {
+    height: 71px;
+    max-width: $maxWidth;
+    margin: 0 auto;
+    background: $componentBackgroundColor;
+  }
+}

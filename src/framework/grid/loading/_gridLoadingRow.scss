@@ -1,0 +1,11 @@
+.gridLoadingRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  border: 4px dashed rgba(#ffad00, 0.5);
+}
+
+.gridLoadingRow--initial {
+  height: 100%;
+}

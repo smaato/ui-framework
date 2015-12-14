@@ -2,3 +2,6 @@
 .DS_Store
 coverage
 node_modules
+dist/*
+!dist/css
+reports

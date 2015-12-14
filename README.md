@@ -3,11 +3,87 @@
 
 > Smaato UI Framework (React, SCSS)
 
+## Usage
+
+Install this repo as an NPM dependency to gain access to its UI components.
+
+#### As a React library
+
+In your JS:
+
+```javascript
+import {
+  AccountNav,
+  AccountPicture,
+  AppHeader,
+  AppLogo,
+  AppNav,
+  Button,
+  CallOutButton,
+  Chart,
+  CheckBox,
+  ComparisonTypes, // service
+  ConditionChecker, // service
+  DateRange,
+  Entity, // service
+  FilterableItems, // service
+  FilterOption, // service
+  FiltersControl,
+  Grid,
+  GridBodyEditableCell,
+  GridControls,
+  GridEmptyRow,
+  GridHeader,
+  GridHeaderSortableCell,
+  GridKpi,
+  GridKpiNegative,
+  GridKpiPositive,
+  GridLoadingRow,
+  GridRow,
+  GridRowRecycler, // service
+  GridSearch,
+  GridStencil, // service
+  HollowButton,
+  Icon,
+  IconCog,
+  IconEllipsis,
+  Label,
+  LabeledControl,
+  PrimaryButton,
+  Sorter, // service
+  Spinner,
+  StickyGrid,
+  TextInput,
+  ThrottledEventDispatcher, // service
+  TitleBar,
+  VerticalLayout,
+  ViewHeader,
+  ViewHeaderNav,
+} from 'ui-framework';
+```
+
+#### As a SCSS library
+
+In your SCSS:
+
+```javascript
+@import 'path/to/node_modules/ui-framework/src/framework/index';
+// Now you can use the SCSS styles, mixins, functions, and variables.
+```
+
+Keep in mind that you will be expected to use PostCSS and Autoprefixer to
+add vendor-prefixed properties to your compiled CSS.
+
+#### As a CSS library
+
+This is not yet supported but we can add the compiled CSS file to the repo, so
+that simpler projects will have access to the CSS, if such a use case arises.
+
+## Getting Started
+
 Work on examples in the `src/examples` directory.
 
 Work on framework components in the `src/framework` directory.
-
-## Getting Started
 
 #### Setup & Run
 
@@ -31,7 +107,28 @@ gulp production
 
 _Generates minified distribution with sourcemaps in ./dist/_
 
-## Contributing to the framework
+#### Deployment
+
+To manually deploy the working copy the following command can be used:
+```bash
+gulp deploy --accessKeyId=XXX --bucket=XXX --secretAccessKey=XXX
+```
+
+The arguments can be provided via the command line as in this example where
+- accessKeyId is the AWS access key id,
+- bucket is the AWS S3 bucket and
+- secretAccessKey is the AWS secret access key.
+
+If the arguments are not provided via the command line they will be read from the environment variables
+- AWS_ACCESS_KEY_ID
+- AWS_BUCKET_UI_FRAMEWORK
+- AWS_SECRET_ACCESS_KEY
+
+## Maintenance
+
+#### Getting started
+
+* `gem install scss_lint` Install the Ruby gem for SCSS linting.
 
 #### Folder structure
 
@@ -95,35 +192,3 @@ should be documented in a file in the `examples/components` directory.
 
 Composing components together into common UI patterns should be documented in
 the `examples/integrations` directory.
-
-## Usage
-
-Install this repo as an NPM dependency to gain access to its UI components.
-
-#### As a React library
-
-In your JS:
-
-```javascript
-import Framework from 'ui-framework';
-
-var TitleBar = Framework.TitleBar;
-// Now you can use the TitleBar React component.
-```
-
-#### As a SCSS library
-
-In your SCSS:
-
-```javascript
-@import 'path/to/node_modules/ui-framework/src/framework/index';
-// Now you can use the SCSS styles, mixins, functions, and variables.
-```
-
-Keep in mind that you will be expected to use PostCSS and Autoprefixer to
-add vendor-prefixed properties to your compiled CSS.
-
-#### As a CSS library
-
-This is not yet supported but we can add the compiled CSS file to the repo, so
-that simpler projects will have access to the CSS, if such a use case arises.

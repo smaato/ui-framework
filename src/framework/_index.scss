@@ -2,10 +2,23 @@
 // Libraries
 @import 'compass';
 
+// Global
+@import 'global/index';
+
 // Components
-@import 'global/base';
-@import 'forms/base';
-@import 'mainNav/base';
-@import 'secondaryNav/base';
+@import 'appHeader/index';
+@import 'button/index';
+@import 'chart/index';
+@import 'checkBox/index';
+@import 'dateRange/index';
+@import 'filtersControl/index';
+@import 'grid/index';
+@import 'grid/index';
+@import 'icon/index';
+@import 'label/index';
+@import 'labeledControl/index';
+@import 'spinner/index';
+@import 'textInput/index';
 @import 'titleBar/index';
-@import 'dataTable/base';
+@import 'verticalLayout/index';
+@import 'viewHeader/index';

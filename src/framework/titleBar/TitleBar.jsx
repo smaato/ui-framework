@@ -1,34 +1,36 @@
 
 import React, {
-  Component,
-  PropTypes
+  PropTypes,
 } from 'react';
 
-export default class TitleBar extends Component {
+const TitleBar = (props) => {
+  let buttons;
 
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    let buttons = this.props.buttons.map((button) => {
-      return button;
-    });
-    return (
-      <div className='titleBar'>
-        <label className='titleBar__title'>
-          {this.props.label}
-        </label>
-        <div className='titleBar__buttonContainer'>
-          {buttons}
+  if (props.buttons) {
+    buttons = props.buttons.map((button, index) => {
+      return (
+        <div className="titleBar__button" key={index}>
+          {button}
         </div>
-      </div>
-    );
+      );
+    });
   }
 
-}
+  return (
+    <div className="titleBar">
+      <label className="titleBar__title">
+        {props.label}
+      </label>
+      <div className="titleBar__buttonContainer">
+        {buttons}
+      </div>
+    </div>
+  );
+};
 
 TitleBar.propTypes = {
   label: PropTypes.string,
-  buttons: PropTypes.array
+  buttons: PropTypes.array,
 };
+
+export default TitleBar;
