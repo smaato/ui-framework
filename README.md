@@ -13,12 +13,52 @@ In your JS:
 
 ```javascript
 import {
+  AccountNav,
+  AccountPicture,
+  AppHeader,
+  AppLogo,
+  AppNav,
+  Button,
+  CallOutButton,
+  Chart,
   CheckBox,
+  ComparisonTypes, // service
+  ConditionChecker, // service
+  DateRange,
+  Entity, // service
+  FilterableItems, // service
+  FilterOption, // service
+  FiltersControl,
   Grid,
+  GridBodyEditableCell,
+  GridControls,
+  GridEmptyRow,
+  GridHeader,
+  GridHeaderSortableCell,
+  GridKpi,
+  GridKpiNegative,
+  GridKpiPositive,
   GridLoadingRow,
+  GridRow,
+  GridRowRecycler, // service
+  GridSearch,
+  GridStencil, // service
+  HollowButton,
+  Icon,
+  IconCog,
+  IconEllipsis,
+  Label,
+  LabeledControl,
+  PrimaryButton,
+  Sorter, // service
   Spinner,
+  StickyGrid,
+  TextInput,
+  ThrottledEventDispatcher, // service
   TitleBar,
-  TitleBarButton,
+  VerticalLayout,
+  ViewHeader,
+  ViewHeaderNav,
 } from 'ui-framework';
 ```
 
