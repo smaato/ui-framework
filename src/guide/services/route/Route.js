@@ -14,6 +14,7 @@ import LabeledControlExample from '../../views/labeledControl/LabeledControlExam
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
 import TextInputExample from '../../views/textInput/TextInputExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
+import VerticalLayoutExample from '../../views/verticalLayout/VerticalLayoutExample.jsx';
 import ViewHeaderExample from '../../views/viewHeader/ViewHeaderExample.jsx';
 
 // Integrations
@@ -56,6 +57,9 @@ const components = [{
 }, {
   name: 'TitleBar',
   component: TitleBarExample,
+}, {
+  name: 'VerticalLayout',
+  component: VerticalLayoutExample,
 }, {
   name: 'ViewHeader',
   component: ViewHeaderExample,

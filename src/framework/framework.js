@@ -45,6 +45,9 @@ export { default as TextInput } from './textInput/TextInput.jsx';
 export * from './titleBar/TitleBar.jsx';
 export { default as TitleBar } from './titleBar/TitleBar.jsx';
 
+export * from './verticalLayout/VerticalLayout.jsx';
+export { default as VerticalLayout } from './verticalLayout/VerticalLayout.jsx';
+
 export * from './viewHeader/ViewHeader.jsx';
 export { default as ViewHeader } from './viewHeader/ViewHeader.jsx';
 

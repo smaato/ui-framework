@@ -1,11 +1,11 @@
 
 import React from 'react';
 
-const LabeledControlContainer = props => {
+const VerticalLayout = props => {
   function wrap(item, index) {
     return (
       <div
-        className="labeledControlContainer__item"
+        className="verticalLayoutItem"
         key={index}
       >
         {item}
@@ -30,4 +30,4 @@ const LabeledControlContainer = props => {
   );
 };
 
-export default LabeledControlContainer;
+export default VerticalLayout;

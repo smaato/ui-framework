@@ -4208,13 +4208,6 @@ body {
           flex: 5 1 0;
 }
 
-.labeledControlContainer__item {
-  margin-bottom: 20px;
-}
-.labeledControlContainer__item:last-child {
-  margin-bottom: 0;
-}
-
 /**
  * Courtesy http://projects.lukehaas.me/css-loaders/
  */
@@ -4368,6 +4361,13 @@ body {
 
 .titleBar__button + .titleBar__button {
   margin-left: 15px;
+}
+
+.verticalLayoutItem {
+  margin-bottom: 20px;
+}
+.verticalLayoutItem:last-child {
+  margin-bottom: 0;
 }
 
 .viewHeader {
@@ -4617,6 +4617,8 @@ body {
 .examplePageText {
   margin-bottom: 16px;
   font-size: 14px;
+  max-width: 500px;
+  line-height: 1.2;
 }
 
 @media (max-width: 800px){

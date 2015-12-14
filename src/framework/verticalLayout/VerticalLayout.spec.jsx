@@ -1,8 +1,8 @@
 
 import { TestCaseFactory } from 'react-test-kit';
-import LabeledControlContainer from './LabeledControlContainer.jsx';
+import VerticalLayout from './VerticalLayout.jsx';
 
-describe('LabeledControlContainer', () => {
+describe('VerticalLayout', () => {
   describe('Props', () => {
     describe('children', () => {
       it('are wrapped in item elements when an array', () => {
@@ -11,9 +11,9 @@ describe('LabeledControlContainer', () => {
         };
 
         const testCase = TestCaseFactory.createFromFunction(
-          LabeledControlContainer, props);
+          VerticalLayout, props);
 
-        const items = testCase.find('.labeledControlContainer__item');
+        const items = testCase.find('.verticalLayoutItem');
         expect(items.length).toBe(2);
 
         for (let i = 0; i < items.length; i++) {
@@ -28,9 +28,9 @@ describe('LabeledControlContainer', () => {
         };
 
         const testCase = TestCaseFactory.createFromFunction(
-          LabeledControlContainer, props);
+          VerticalLayout, props);
 
-        const items = testCase.find('.labeledControlContainer__item');
+        const items = testCase.find('.verticalLayoutItem');
         expect(items.length).toBe(1);
         expect(items[0].textContent).toBe(props.children);
       });

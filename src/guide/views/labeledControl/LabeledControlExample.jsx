@@ -9,8 +9,8 @@ import Page, {
 
 import {
   LabeledControl,
-  LabeledControlContainer,
   TextInput,
+  VerticalLayout,
 } from '../../../framework/framework.js';
 
 export default class LabelExample extends Component {
@@ -28,8 +28,8 @@ export default class LabelExample extends Component {
           </LabeledControl>
         </Example>
 
-        <Example title="LabeledControlContainer with 2/5 layout">
-          <LabeledControlContainer>
+        <Example title="LabeledControl with 2/5 layout">
+          <VerticalLayout>
             <LabeledControl
               label="Name"
               layout={LabeledControl.LAYOUT.TWO_FIFTHS}
@@ -43,11 +43,11 @@ export default class LabelExample extends Component {
             >
               <TextInput isFullWidth />
             </LabeledControl>
-          </LabeledControlContainer>
+          </VerticalLayout>
         </Example>
 
-        <Example title="LabeledControlContainer with 1/3 layout">
-          <LabeledControlContainer>
+        <Example title="LabeledControl with 1/3 layout">
+          <VerticalLayout>
             <LabeledControl
               label="Name"
               layout={LabeledControl.LAYOUT.ONE_THIRD}
@@ -61,11 +61,11 @@ export default class LabelExample extends Component {
             >
               <TextInput isFullWidth />
             </LabeledControl>
-          </LabeledControlContainer>
+          </VerticalLayout>
         </Example>
 
-        <Example title="LabeledControlContainer with 1/4 layout">
-          <LabeledControlContainer>
+        <Example title="LabeledControl with 1/4 layout">
+          <VerticalLayout>
             <LabeledControl
               label="Name"
               layout={LabeledControl.LAYOUT.ONE_FOURTH}
@@ -79,11 +79,11 @@ export default class LabelExample extends Component {
             >
               <TextInput isFullWidth />
             </LabeledControl>
-          </LabeledControlContainer>
+          </VerticalLayout>
         </Example>
 
-        <Example title="LabeledControlContainer with 1/5 layout">
-          <LabeledControlContainer>
+        <Example title="LabeledControl with 1/5 layout">
+          <VerticalLayout>
             <LabeledControl
               label="Name"
               layout={LabeledControl.LAYOUT.ONE_FIFTH}
@@ -97,11 +97,11 @@ export default class LabelExample extends Component {
             >
               <TextInput isFullWidth />
             </LabeledControl>
-          </LabeledControlContainer>
+          </VerticalLayout>
         </Example>
 
-        <Example title="LabeledControlContainer with 1/6 layout">
-          <LabeledControlContainer>
+        <Example title="LabeledControl with 1/6 layout">
+          <VerticalLayout>
             <LabeledControl
               label="Name"
               layout={LabeledControl.LAYOUT.ONE_SIXTH}
@@ -115,7 +115,7 @@ export default class LabelExample extends Component {
             >
               <TextInput isFullWidth />
             </LabeledControl>
-          </LabeledControlContainer>
+          </VerticalLayout>
         </Example>
       </Page>
     );

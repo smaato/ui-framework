@@ -6,17 +6,14 @@ import classNames from 'classnames';
 
 import Label from '../label/Label.jsx';
 
-export {
-  default as LabeledControlContainer,
-} from './LabeledControlContainer.jsx';
-
 const LabeledControl = props => {
-  const layoutClassMap = {};
-  layoutClassMap[LabeledControl.LAYOUT.TWO_FIFTHS] = 'labeledControl--twoFifths';
-  layoutClassMap[LabeledControl.LAYOUT.ONE_THIRD] = 'labeledControl--oneThird';
-  layoutClassMap[LabeledControl.LAYOUT.ONE_FOURTH] = 'labeledControl--oneFourth';
-  layoutClassMap[LabeledControl.LAYOUT.ONE_FIFTH] = 'labeledControl--oneFifth';
-  layoutClassMap[LabeledControl.LAYOUT.ONE_SIXTH] = 'labeledControl--oneSixth';
+  const layoutClassMap = {
+    [LabeledControl.LAYOUT.TWO_FIFTHS]: 'labeledControl--twoFifths',
+    [LabeledControl.LAYOUT.ONE_THIRD]: 'labeledControl--oneThird',
+    [LabeledControl.LAYOUT.ONE_FOURTH]: 'labeledControl--oneFourth',
+    [LabeledControl.LAYOUT.ONE_FIFTH]: 'labeledControl--oneFifth',
+    [LabeledControl.LAYOUT.ONE_SIXTH]: 'labeledControl--oneSixth',
+  };
 
   const classes = classNames('labeledControl', layoutClassMap[props.layout]);
 
