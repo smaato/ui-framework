@@ -36,6 +36,9 @@ export { default as Label } from './label/Label.jsx';
 export * from './spinner/Spinner.jsx';
 export { default as Spinner } from './spinner/Spinner.jsx';
 
+export * from './modal/Modal.jsx';
+export { default as Modal } from './modal/Modal.jsx';
+
 export * from './textInput/TextInput.jsx';
 export { default as TextInput } from './textInput/TextInput.jsx';
 

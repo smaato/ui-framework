@@ -1,0 +1,24 @@
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(black, 0.1);
+}
+
+  .modalHeader__title {
+    font-weight: 700;
+  }
+
+  .modalHeader__closeButton {
+    color: black;
+    opacity: 0.5;
+    padding: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    &:hover {
+      opacity: 1;
+    }
+  }

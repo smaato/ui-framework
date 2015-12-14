@@ -1,0 +1,10 @@
+
+/**
+ * 1. Make modal fluid and respect window height.
+ */
+.modalBody {
+  min-height: 80px;
+  max-height: calc(100vh - 300px); /* 1 */
+  overflow-y: auto;
+  padding: 10px 0;
+}
