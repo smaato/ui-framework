@@ -37,6 +37,8 @@ export default class LineChart extends Component {
 
     this.container = svg.append('g')
       .attr('transform', 'translate(' + marginLeft + ',' + this.margin.top + ')');
+
+    this.renderChart(this.props, true);
   }
 
   shouldComponentUpdate(nextProps) {
@@ -106,6 +108,9 @@ export default class LineChart extends Component {
 
     // Style and position X axis elements.
     function styleXAxis(selection) {
+      // Add classes for tests.
+      selection.attr('class', 'chartXAxis');
+
       selection.selectAll('line')
         .attr('class', 'chartXAxisTick__mark');
 
@@ -143,8 +148,12 @@ export default class LineChart extends Component {
 
     // Style and position Y axis elements.
     function styleYAxis(selection) {
+      // Add classes for tests.
+      selection.attr('class', 'chartYAxis');
+
+      // These paths are added by d3.axis, but we don't need them.
       selection.selectAll('path')
-        .attr('class', 'chartYAxis');
+        .remove();
 
       selection.selectAll('line')
         .attr('class', 'chartYAxisTick__mark');

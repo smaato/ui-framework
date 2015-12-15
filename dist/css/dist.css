@@ -2951,10 +2951,6 @@ body {
   fill: #4a5459;
 }
 
-.chartYAxis {
-  fill: none;
-}
-
 .chartYAxisTick__mark {
   stroke: #e5e7e8;
   shape-rendering: crispEdges;

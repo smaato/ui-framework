@@ -107,8 +107,8 @@ export default class ChartExample extends Component {
   }
 
   render() {
-    function formatTemperature(d) {
-      return `${d}${String.fromCharCode(176)} F`;
+    function formatTemperature(value) {
+      return `${value}${String.fromCharCode(176)} F`;
     }
 
     return (

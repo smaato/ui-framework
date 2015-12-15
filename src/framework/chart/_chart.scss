@@ -25,35 +25,33 @@
     stroke-width: 1px;
   }
 
-  // .chartXAxis class isn't applied to any elements.
+  // X Axis
 
-    .chartXAxisTick__mark {
-      stroke: #a3a8ab;
-      shape-rendering: crispEdges;
-    }
-
-    .chartXAxisTick__text {
-      font-size: 12px;
-      font-weight: 400;
-      fill: #4a5459;
-    }
-
-  .chartYAxis {
-    fill: none;
+  .chartXAxisTick__mark {
+    stroke: #a3a8ab;
+    shape-rendering: crispEdges;
   }
 
-    .chartYAxisTick__mark {
-      stroke: #e5e7e8;
-      shape-rendering: crispEdges;
-    }
+  .chartXAxisTick__text {
+    font-size: 12px;
+    font-weight: 400;
+    fill: #4a5459;
+  }
 
-    .chartYAxisTick__text {
-      font-size: 11px;
-      font-weight: 700;
-      fill: #ffffff;
-    }
+  // Y Axis
 
-    .chartYAxisTick__background {
-      fill: #636d70;
-      stroke: none;
-    }
+  .chartYAxisTick__mark {
+    stroke: #e5e7e8;
+    shape-rendering: crispEdges;
+  }
+
+  .chartYAxisTick__text {
+    font-size: 11px;
+    font-weight: 700;
+    fill: #ffffff;
+  }
+
+  .chartYAxisTick__background {
+    fill: #636d70;
+    stroke: none;
+  }
