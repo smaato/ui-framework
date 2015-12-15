@@ -23,8 +23,6 @@ export {
   default as ModalOverlay,
 } from './ModalOverlay.jsx';
 
-import classNames from 'classnames';
-
 const Modal = props => {
   return (
     <div className="modal">
