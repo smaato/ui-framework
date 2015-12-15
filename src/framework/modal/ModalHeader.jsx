@@ -3,7 +3,6 @@ import React, {
   PropTypes,
 } from 'react';
 
-// Define stateless functional component.
 const ModalHeader = (props) => {
   let closeButton;
   let title;

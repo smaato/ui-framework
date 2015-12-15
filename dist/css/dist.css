@@ -4183,28 +4183,6 @@ body {
             transform: rotate(360deg);
   }
 }
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.15);
-  z-index: 1;
-  display: none;
-}
-.modalOverlay.is-modal-overlay-open {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
 .modal {
   z-index: 2;
   width: 450px;
@@ -4216,13 +4194,14 @@ body {
   color: #526770;
 }
 
-/**
- * 1. Make modal fluid and respect window height.
- */
 .modalBody {
-  min-height: 80px;
+  font-size: 14px;
+  min-height: 42px;
   max-height: calc(100vh - 300px);
   overflow-y: auto;
+}
+.modalBody p + p {
+  margin-top: 1em;
 }
 
 .modalFooter {
@@ -4231,7 +4210,7 @@ body {
   padding-top: 15px;
   text-align: right;
 }
-.modalFooter .button {
+.modalFooter .button + .button {
   margin-left: 10px;
 }
 
@@ -4285,6 +4264,28 @@ body {
 }
 .modalHeader__closeButton:hover {
   opacity: 1;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: none;
+}
+.modalOverlay.is-modal-overlay-open {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .textInput {

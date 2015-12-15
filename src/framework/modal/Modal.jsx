@@ -1,5 +1,4 @@
 
-// Import exports from various modules.
 import React, {
   PropTypes,
 } from 'react';
@@ -20,27 +19,23 @@ export {
   default as ModalHeader,
 } from './ModalHeader.jsx';
 
+export {
+  default as ModalOverlay,
+} from './ModalOverlay.jsx';
+
 import classNames from 'classnames';
 
-// Define stateless functional component.
 const Modal = props => {
-  const overlayClasses = classNames('modalOverlay', {
-    'is-modal-overlay-open': props.isOpen,
-  });
-
   return (
-    <div className={overlayClasses}>
-      <div className="modal">
-        {props.header}
-        {props.body}
-        {props.footer}
-      </div>
+    <div className="modal">
+      {props.header}
+      {props.body}
+      {props.footer}
     </div>
   );
 };
 
 Modal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
   header: PropTypes.element,
   body: PropTypes.element.isRequired,
   footer: PropTypes.element,
