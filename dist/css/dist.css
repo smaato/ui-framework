@@ -2830,6 +2830,26 @@ body {
   background: #2799c4;
 }
 
+.appTitle {
+  color: #ffffff;
+}
+
+.appHeaderDivider {
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.appHeaderDivider__divider {
+  background-color: #26373e;
+  height: 20px;
+  width: 2px;
+  margin: 0 15px;
+}
+
 .button {
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;

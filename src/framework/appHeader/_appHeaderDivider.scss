@@ -1,0 +1,14 @@
+
+$appHeaderDivider_color: #26373e;
+
+.appHeaderDivider {
+  align-items: center;
+  display: flex;
+}
+
+  .appHeaderDivider__divider {
+    background-color: $appHeaderDivider_color;
+    height: 20px;
+    width: 2px;
+    margin: 0 15px;
+  }

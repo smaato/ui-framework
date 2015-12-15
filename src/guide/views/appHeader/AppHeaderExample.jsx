@@ -14,6 +14,8 @@ import {
   AppHeader,
   AppLogo,
   AppNav,
+  AppTitle,
+  AppHeaderDivider,
 } from '../../../framework/framework.js';
 
 export default class AppHeaderExample extends Component {
@@ -55,7 +57,12 @@ export default class AppHeaderExample extends Component {
 
         <Example>
           <AppHeader
-            left={<AppLogo text="Smaato" />}
+            left={
+              <AppHeaderDivider
+                left={<AppLogo text="Smaato" />}
+                right={<AppTitle text="Smaato" />}
+              />
+            }
             center={
               <AppNav
                 linkType={linkType}
@@ -75,6 +82,22 @@ export default class AppHeaderExample extends Component {
         <Example title="AppLogo" isDark>
           <Text>Allows the user to add a logo to the AppHeader.</Text>
           <AppLogo text="Smaato" />
+        </Example>
+
+        <Example title="AppTitle" isDark>
+          <Text>Allows the user to add a title to the AppHeader.</Text>
+          <AppTitle text="Smaato" />
+        </Example>
+
+        <Example title="AppHeaderDivider" isDark>
+          <Text>
+            Allows the user to add two components like AppLogo and AppTitle
+            separated by a vertical line to the AppHeader.
+          </Text>
+          <AppHeaderDivider
+            left={<AppLogo text="Smaato" />}
+            right={<AppTitle text="Smaato" />}
+          />
         </Example>
 
         <Example title="AppNav" isDark>
