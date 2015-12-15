@@ -4255,6 +4255,7 @@ body {
 }
 
 .modalHeader__closeButton {
+  position: relative;
   width: 20px;
   height: 20px;
   border: 1px solid #bbced6;
@@ -4262,6 +4263,25 @@ body {
   border-radius: 2px;
   color: #517582;
   cursor: pointer;
+}
+.modalHeader__closeButton:before, .modalHeader__closeButton:after {
+  content: '';
+  width: 1px;
+  height: 10px;
+  background-color: #517582;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -5px;
+  margin-left: -0.5px;
+}
+.modalHeader__closeButton:before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.modalHeader__closeButton:after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 .modalHeader__closeButton:hover {
   opacity: 1;

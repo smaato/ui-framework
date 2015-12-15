@@ -17,7 +17,7 @@ const ModalHeader = (props) => {
   if (props.onClose) {
     closeButton = (
       <div
-        className="icon glyphicons-remove-2 modalHeader__closeButton"
+        className="icon modalHeader__closeButton"
         onClick={props.onClose}
       >
       </div>
