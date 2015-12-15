@@ -10,4 +10,18 @@ describe('TextInput', () => {
       expect(testCase.dom.getAttribute('class')).toBe('textInput');
     });
   });
+
+  describe('Props', () => {
+    describe('isFullWidth', () => {
+      it('adds the appropriate class to the input element', () => {
+        const props = {
+          isFullWidth: true,
+        };
+
+        const testCase = TestCaseFactory.createFromFunction(TextInput, props);
+        expect(testCase.dom.getAttribute('class')
+          .indexOf('textInput--fullWidth') !== -1).toBe(true);
+      });
+    });
+  });
 });

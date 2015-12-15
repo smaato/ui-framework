@@ -10,10 +10,12 @@ import GridExample from '../../views/grid/GridExample.jsx';
 import GridKpiExample from '../../views/gridKpi/GridKpiExample.jsx';
 import IconExample from '../../views/icon/IconExample.jsx';
 import LabelExample from '../../views/label/LabelExample.jsx';
+import LabeledControlExample from '../../views/labeledControl/LabeledControlExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
 import ModalExample from '../../views/modal/ModalExample.jsx';
 import TextInputExample from '../../views/textInput/TextInputExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
+import VerticalLayoutExample from '../../views/verticalLayout/VerticalLayoutExample.jsx';
 import ViewHeaderExample from '../../views/viewHeader/ViewHeaderExample.jsx';
 
 // Integrations
@@ -45,6 +47,9 @@ const components = [{
   name: 'Label',
   component: LabelExample,
 }, {
+  name: 'LabeledControl',
+  component: LabeledControlExample,
+}, {
   name: 'Spinner',
   component: SpinnerExample,
 }, {
@@ -56,6 +61,9 @@ const components = [{
 }, {
   name: 'TitleBar',
   component: TitleBarExample,
+}, {
+  name: 'VerticalLayout',
+  component: VerticalLayoutExample,
 }, {
   name: 'ViewHeader',
   component: ViewHeaderExample,

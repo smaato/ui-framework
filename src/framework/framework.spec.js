@@ -12,9 +12,11 @@ import {
   Icon,
   IconCog,
   IconEllipsis,
+  LabeledControl,
   PrimaryButton,
   Spinner,
   TitleBar,
+  VerticalLayout,
   ViewHeader,
 } from './framework';
 
@@ -102,9 +104,21 @@ describe('UI Framework', () => {
       });
     });
 
+    describe('LabeledControl', () => {
+      it('is exported', () => {
+        expect(LabeledControl).toEqual(jasmine.any(Function));
+      });
+    });
+
     describe('TitleBar', () => {
       it('is exported', () => {
         expect(TitleBar).toEqual(jasmine.any(Function));
+      });
+    });
+
+    describe('VerticalLayout', () => {
+      it('is exported', () => {
+        expect(VerticalLayout).toEqual(jasmine.any(Function));
       });
     });
 

@@ -37,6 +37,10 @@ export default class TextInputExample extends Component {
           <TextInput type="password" defaultValue="Default value"/>
         </Example>
 
+        <Example title="Full width">
+          <TextInput isFullWidth />
+        </Example>
+
       </Page>
     );
   }
