@@ -19,6 +19,14 @@ export {
   default as AppNav,
 } from './AppNav.jsx';
 
+export {
+  default as AppTitle,
+} from './AppTitle.jsx';
+
+export {
+  default as AppHeaderDivider,
+} from './AppHeaderDivider.jsx';
+
 const AppHeader = props => {
   return (
     <div className="appHeader">
