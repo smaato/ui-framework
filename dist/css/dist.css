@@ -4287,6 +4287,22 @@ body {
             transform: rotate(360deg);
   }
 }
+.text {
+  font-size: 13px;
+  font-weight: 400;
+  color: #5e707b;
+}
+
+.text--smallSpacing {
+  margin-bottom: 2px;
+}
+
+.descriptionText {
+  font-size: 12px;
+  font-weight: 400;
+  color: #8e9aa2;
+}
+
 .textInput {
   -webkit-appearance: none;
      -moz-appearance: none;

@@ -13,6 +13,7 @@ import LabelExample from '../../views/label/LabelExample.jsx';
 import LabeledControlExample from '../../views/labeledControl/LabeledControlExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
 import TextInputExample from '../../views/textInput/TextInputExample.jsx';
+import TextExample from '../../views/text/TextExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
 import VerticalLayoutExample from '../../views/verticalLayout/VerticalLayoutExample.jsx';
 import ViewHeaderExample from '../../views/viewHeader/ViewHeaderExample.jsx';
@@ -51,6 +52,9 @@ const components = [{
 }, {
   name: 'Spinner',
   component: SpinnerExample,
+}, {
+  name: 'Text',
+  component: TextExample,
 }, {
   name: 'TextInput',
   component: TextInputExample,
