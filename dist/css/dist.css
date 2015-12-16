@@ -4282,16 +4282,6 @@ body {
   color: #526770;
 }
 
-.modalBody {
-  font-size: 14px;
-  min-height: 42px;
-  max-height: calc(100vh - 300px);
-  overflow-y: auto;
-}
-.modalBody p + p {
-  margin-top: 1em;
-}
-
 .modalFooter {
   margin-top: 10px;
   border-top: 1px dashed #cbd3d7;
@@ -4362,18 +4352,24 @@ body {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.15);
   z-index: 1;
+  overflow-y: auto;
   display: none;
-}
-.modalOverlay.is-modal-overlay-open {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+.modalOverlay.is-modal-overlay-open {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.modalOverlay.is-window-smaller-than-modal {
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .textInput {

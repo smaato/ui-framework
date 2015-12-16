@@ -7,11 +7,16 @@
   bottom: 0;
   background-color: rgba(black, 0.15);
   z-index: 1;
+  overflow-y: auto;
   display: none;
+  align-items: center;
+  justify-content: center;
 
   &.is-modal-overlay-open {
     display: flex;
-    align-items: center;
-    justify-content: center;
+  }
+
+  &.is-window-smaller-than-modal {
+    align-items: flex-start;
   }
 }
