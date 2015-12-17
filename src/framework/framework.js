@@ -77,6 +77,9 @@ export { default as GridRowRecycler } from './services/GridRowRecycler';
 export * from './services/GridStencil';
 export { default as GridStencil } from './services/GridStencil';
 
+export * from './services/polyfillCustomEvent';
+export { default as polyfillCustomEvent } from './services/polyfillCustomEvent';
+
 export * from './services/Sorter';
 export { default as Sorter } from './services/Sorter';
 
