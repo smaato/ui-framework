@@ -15,6 +15,7 @@ In your JS:
 import {
   AccountNav,
   AccountPicture,
+  AddOnControl,
   AppHeader,
   AppLogo,
   AppNav,
