@@ -6,6 +6,5 @@ $viewport_wideScreen: '(max-width: ' + $maxWidth * 1.1 + ')';
 
 body {
   min-width: $minWidth;
-  background: $pageBackgroundColor;
   overflow-x: hidden;
 }

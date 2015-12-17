@@ -4,6 +4,9 @@
 export * from './appHeader/AppHeader.jsx';
 export { default as AppHeader } from './appHeader/AppHeader.jsx';
 
+export * from './body/Body.jsx';
+export { default as Body } from './body/Body.jsx';
+
 export * from './button/index.jsx';
 
 export * from './chart/Chart.jsx';
