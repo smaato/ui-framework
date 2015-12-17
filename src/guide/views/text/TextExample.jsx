@@ -23,7 +23,7 @@ export default class TextExample extends Component {
       <Page title={this.props.route.name}>
 
         <Example>
-          <Text spacing={Text.SPACING.XSMALL}>A title</Text>
+          <Text rhythm={Text.RHYTHM.XSMALL}>A title</Text>
           <DescriptionText>Descriptive information goes below</DescriptionText>
         </Example>
 

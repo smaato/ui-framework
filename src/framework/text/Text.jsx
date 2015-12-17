@@ -9,11 +9,11 @@ export {
 } from './DescriptionText.jsx';
 
 const Text = props => {
-  const spacingClassMap = {
-    [Text.SPACING.XSMALL]: 'text--smallSpacing',
+  const rhythmClassMap = {
+    [Text.RHYTHM.XSMALL]: 'text--xSmallRhythm',
   };
 
-  const classes = classNames('text', spacingClassMap[props.spacing]);
+  const classes = classNames('text', rhythmClassMap[props.rhythm]);
 
   return (
     <div className={classes}>
@@ -22,13 +22,13 @@ const Text = props => {
   );
 };
 
-Text.SPACING = {
+Text.RHYTHM = {
   XSMALL: 'XSMALL',
 };
 
 Text.propTypes = {
   children: PropTypes.string,
-  spacing: PropTypes.string,
+  rhythm: PropTypes.string,
 };
 
 export default Text;

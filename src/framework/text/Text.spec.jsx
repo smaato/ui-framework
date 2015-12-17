@@ -15,16 +15,16 @@ describe('Text', () => {
       });
     });
 
-    describe('spacing', () => {
+    describe('rhythm', () => {
       describe('XSMALL', () => {
         it('adds the appropriate class', () => {
           const props = {
-            spacing: Text.SPACING.XSMALL,
+            rhythm: Text.RHYTHM.XSMALL,
           };
 
           const testCase = TestCaseFactory.createFromFunction(Text, props);
           expect(testCase.dom.getAttribute('class')
-            .indexOf('text--smallSpacing') !== -1).toBe(true);
+            .indexOf('text--xSmallRhythm') !== -1).toBe(true);
         });
       });
     });
