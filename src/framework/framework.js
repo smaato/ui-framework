@@ -39,6 +39,9 @@ export { default as LabeledControl } from './labeledControl/LabeledControl.jsx';
 export * from './spinner/Spinner.jsx';
 export { default as Spinner } from './spinner/Spinner.jsx';
 
+export * from './text/Text.jsx';
+export { default as Text } from './text/Text.jsx';
+
 export * from './textInput/TextInput.jsx';
 export { default as TextInput } from './textInput/TextInput.jsx';
 
