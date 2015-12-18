@@ -1,6 +1,9 @@
 
 // Export components
 
+export * from './addOnControl/AddOnControl.jsx';
+export { default as AddOnControl } from './addOnControl/AddOnControl.jsx';
+
 export * from './appHeader/AppHeader.jsx';
 export { default as AppHeader } from './appHeader/AppHeader.jsx';
 
@@ -79,6 +82,9 @@ export { default as GridRowRecycler } from './services/GridRowRecycler';
 
 export * from './services/GridStencil';
 export { default as GridStencil } from './services/GridStencil';
+
+export * from './services/polyfillCustomEvent';
+export { default as polyfillCustomEvent } from './services/polyfillCustomEvent';
 
 export * from './services/Sorter';
 export { default as Sorter } from './services/Sorter';

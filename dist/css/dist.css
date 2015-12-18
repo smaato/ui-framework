@@ -2693,6 +2693,36 @@ body {
   overflow-x: hidden;
 }
 
+.addOnControl {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.addOnControl__left,
+.addOnControl__right {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 9px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #52676f;
+  border: 1px solid #c8cfd5;
+  background-color: #f2f5f7;
+}
+
+.addOnControl__left {
+  border-right: 0;
+}
+
+.addOnControl__right {
+  border-left: 0;
+}
+
 .accountNav {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2860,6 +2890,7 @@ body {
   height: 30px;
   padding: 0 11px;
   font-size: 12px;
+  line-height: 12px;
   font-weight: 400;
   opacity: 1;
   border-radius: 3px;
@@ -2902,8 +2933,13 @@ body {
   box-shadow: none;
 }
 
+/**
+ * 1. Fill in the background with the top gradient color to fix an IE11 bug
+ *    where the transparent background color was showing through at the top.
+ */
 .button--primary {
-  background-image: linear-gradient(#54baef, #43b4ef);
+  background: linear-gradient(#54baef, #43b4ef) #54baef;
+  /* 1 */
   color: #ffffff;
   border-color: #2ca7e8;
 }
@@ -3142,6 +3178,7 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  line-height: 12px;
 }
 
 .conditionCheckerForm__filterName {
@@ -4392,6 +4429,7 @@ body {
   font-size: 13px;
   font-weight: 400;
   color: #5e707b;
+  line-height: 12px;
 }
 
 .text--xSmallRhythm {
@@ -4402,6 +4440,7 @@ body {
   font-size: 12px;
   font-weight: 400;
   color: #8e9aa2;
+  line-height: 12px;
 }
 
 .textInput {
@@ -4438,7 +4477,6 @@ body {
   /* 1 */
   background: #ffffff;
   width: 100%;
-  box-shadow: -1px 0 0 #d4dadc, 1px 0 0 #d4dadc;
 }
 
 /**
@@ -4498,6 +4536,7 @@ body {
 
 .verticalLayoutItem {
   margin-bottom: 20px;
+  line-height: 12px;
 }
 .verticalLayoutItem:last-child {
   margin-bottom: 0;
@@ -4602,6 +4641,15 @@ body {
   position: static;
 }
 
+/**
+ * 1. Insane line-height makes it easier to notice when components are relying
+ *    on styles inherited from body.
+ */
+body {
+  line-height: 40px;
+  /* 1 */
+}
+
 .examplesHome {
   font-size: 24px;
   line-height: 36px;
@@ -4640,6 +4688,7 @@ body {
   left: 5px;
   padding: 8px 10px;
   font-size: 11px;
+  line-height: 12px;
   font-weight: 700;
   background: white;
   color: #626262;
@@ -4662,6 +4711,7 @@ body {
   right: 10px;
   bottom: 10px;
   padding: 40px;
+  line-height: 12px;
   background: white;
   color: #626262;
   border: 1px solid #d8d8d8;
@@ -4675,8 +4725,8 @@ body {
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
   overflow-x: auto;
-  -webkit-transform: translateY(calc(-100% - 20px));
-          transform: translateY(calc(-100% - 20px));
+  -webkit-transform: translateY(-110%);
+          transform: translateY(-110%);
   transition: -webkit-transform 0.2s ease-out;
   transition: transform 0.2s ease-out;
 }
@@ -4733,6 +4783,12 @@ body {
 .exampleContainer--dark .examplePageSubTitle,
 .exampleContainer--dark .examplePageText {
   color: white;
+}
+
+.examplePageTitle,
+.examplePageSubTitle,
+.examplePageText {
+  line-height: 12px;
 }
 
 .examplePageTitle {

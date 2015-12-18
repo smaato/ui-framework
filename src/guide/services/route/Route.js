@@ -2,6 +2,7 @@
 import { slugifyEach } from '../string/Slug';
 
 // Components
+import AddOnControlExample from '../../views/addOnControl/AddOnControlExample.jsx';
 import AppHeaderExample from '../../views/appHeader/AppHeaderExample.jsx';
 import ButtonExample from '../../views/button/ButtonExample.jsx';
 import ChartExample from '../../views/chart/ChartExample.jsx';
@@ -24,6 +25,9 @@ import GridViewExample from '../../views/gridView/GridViewExample.jsx';
 
 // Component route names should match the component name exacty.
 const components = [{
+  name: 'AddOnControl',
+  component: AddOnControlExample,
+}, {
   name: 'AppHeader',
   component: AppHeaderExample,
 }, {

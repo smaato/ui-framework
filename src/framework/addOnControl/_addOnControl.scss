@@ -1,0 +1,23 @@
+.addOnControl {
+  display: flex;
+}
+
+  .addOnControl__left,
+  .addOnControl__right {
+    display: flex;
+    align-items: center;
+    padding: 9px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #52676f;
+    border: 1px solid #c8cfd5;
+    background-color: #f2f5f7;
+  }
+
+  .addOnControl__left {
+    border-right: 0;
+  }
+
+  .addOnControl__right {
+    border-left: 0;
+  }

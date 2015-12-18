@@ -15,6 +15,7 @@ In your JS:
 import {
   AccountNav,
   AccountPicture,
+  AddOnControl,
   AppHeader,
   AppLogo,
   AppNav,
@@ -51,6 +52,7 @@ import {
   IconEllipsis,
   Label,
   LabeledControl,
+  polyfillCustomEvent, // service
   PrimaryButton,
   Sorter, // service
   Spinner,
