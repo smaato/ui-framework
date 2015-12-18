@@ -2951,10 +2951,6 @@ body {
   fill: #4a5459;
 }
 
-.chartYAxis {
-  fill: none;
-}
-
 .chartYAxisTick__mark {
   stroke: #e5e7e8;
   shape-rendering: crispEdges;
@@ -4390,6 +4386,22 @@ body {
   -webkit-align-items: flex-start;
       -ms-flex-align: start;
           align-items: flex-start;
+}
+
+.text {
+  font-size: 13px;
+  font-weight: 400;
+  color: #5e707b;
+}
+
+.text--xSmallRhythm {
+  margin-bottom: 2px;
+}
+
+.descriptionText {
+  font-size: 12px;
+  font-weight: 400;
+  color: #8e9aa2;
 }
 
 .textInput {

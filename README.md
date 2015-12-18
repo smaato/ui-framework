@@ -18,6 +18,8 @@ import {
   AppHeader,
   AppLogo,
   AppNav,
+  AppTitle,
+  AppHeaderDivider,
   Button,
   CallOutButton,
   Chart,

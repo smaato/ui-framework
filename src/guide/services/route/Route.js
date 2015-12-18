@@ -9,10 +9,11 @@ import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
 import GridKpiExample from '../../views/gridKpi/GridKpiExample.jsx';
 import IconExample from '../../views/icon/IconExample.jsx';
-import LabelExample from '../../views/label/LabelExample.jsx';
 import LabeledControlExample from '../../views/labeledControl/LabeledControlExample.jsx';
-import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
+import LabelExample from '../../views/label/LabelExample.jsx';
 import ModalExample from '../../views/modal/ModalExample.jsx';
+import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
+import TextExample from '../../views/text/TextExample.jsx';
 import TextInputExample from '../../views/textInput/TextInputExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
 import VerticalLayoutExample from '../../views/verticalLayout/VerticalLayoutExample.jsx';
@@ -55,6 +56,9 @@ const components = [{
 }, {
   name: 'Modal',
   component: ModalExample,
+}, {
+  name: 'Text',
+  component: TextExample,
 }, {
   name: 'TextInput',
   component: TextInputExample,
