@@ -1,6 +1,15 @@
 
 @import '../framework/index';
 
+/**
+ * 1. Insane line-height makes it easier to notice when components are relying
+ *    on styles inherited from body.
+ */
+body {
+  background: #e7e7ed;
+  line-height: 40px; /* 1 */
+}
+
 .examplesHome {
   font-size: 24px;
   line-height: 36px;
@@ -33,6 +42,7 @@ $contentWidth: 1200px;
   left: 5px;
   padding: 8px 10px;
   font-size: 11px;
+  line-height: 12px;
   font-weight: 700;
   background: white;
   color: #626262;
@@ -53,6 +63,7 @@ $contentWidth: 1200px;
   right: 10px;
   bottom: 10px;
   padding: 40px;
+  line-height: 12px;
   background: white;
   color: #626262;
   border: 1px solid #d8d8d8;
@@ -60,7 +71,7 @@ $contentWidth: 1200px;
   flex-direction: column;
   flex-wrap: wrap;
   overflow-x: auto;
-  transform: translateY(calc(-100% - 20px));
+  transform: translateY(-110%);
   transition: transform 0.2s ease-out;
 
   &.is-examples-nav-menu-visible {
@@ -119,6 +130,12 @@ $contentWidth: 1200px;
   .examplePageText {
     color: white;
   }
+}
+
+.examplePageTitle,
+.examplePageSubTitle,
+.examplePageText {
+  line-height: 12px;
 }
 
 .examplePageTitle {

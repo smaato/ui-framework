@@ -35,8 +35,11 @@ export default class LineChart extends Component {
     const svg = d3.select($node.find('svg')[0]);
     const marginLeft = this.props.yAxisLabelWidth;
 
+    // Add a 'group' element to the SVG, which will contain our chart.
     this.container = svg.append('g')
       .attr('transform', 'translate(' + marginLeft + ',' + this.margin.top + ')');
+
+    this.renderChart(this.props, true);
   }
 
   shouldComponentUpdate(nextProps) {
@@ -71,61 +74,71 @@ export default class LineChart extends Component {
     const marginRight = this.margin.right;
     const marginTop = this.margin.top;
     const marginBottom = this.margin.bottom;
-
-    const $node = $(ReactDOM.findDOMNode(this));
-    const width = $node.width();
-    const svg = d3.select($node.find('svg')[0]);
-
     const transitionDuration = updateImmediately ? 0 : this.props.transitionDuration;
 
     // Set the correct dimensions.
+    const $node = $(ReactDOM.findDOMNode(this));
     $node.css('height', height);
 
-    // Set dimensions of svg to fill container.
+    // Set dimensions of the SVG to fill containing element.
+    const svg = d3.select($node.find('svg')[0]);
+    const width = $node.width();
     svg.attr('width', width).attr('height', height);
 
-    // Create time scale for X axis.
+    // SCALES //////////////////////////////////////////////////////////////////
+
+    // Create time scale for X axis, mapping date range to chart width.
     const xAxisScale = d3.time.scale()
-      .range([0, width - marginLeft - marginRight])
-      .domain(dateRange);
+      .domain(dateRange)
+      .range([0, width - marginLeft - marginRight]);
+
+    // Create linear scale for Y axis, mapping data range to chart height.
+    const yAxisScale = d3.scale.linear()
+      .domain(yAxisRange)
+      .range([height - marginTop - marginBottom, 0]);
+
+    // X AXIS //////////////////////////////////////////////////////////////////
 
     // Create X axis.
     const xAxis = d3.svg.axis()
       .scale(xAxisScale)
       .ticks(dateFormat)
-      .tickSize(6, 0)
-      .orient('bottom');
+      .tickSize(6, 0);
 
     // Style and position X axis elements.
-    function styleXAxis(g) {
-      g.selectAll('line')
+    function styleXAxis(selection) {
+      // Add classes for tests.
+      selection.attr('class', 'chartXAxis');
+
+      selection.selectAll('line')
         .attr('class', 'chartXAxisTick__mark');
 
-      g.selectAll('text')
+      selection.selectAll('text')
         .attr('class', 'chartXAxisTick__text');
     }
 
-    // If no X axis shape exists, create one. Otherwise, update it.
     const xAxisTransform = height - marginBottom - marginTop;
-    if (!this.xAxis) {
-      this.xAxis = this.container
-        .append('g')
-        .attr('transform', `translate(0, ${xAxisTransform})`)
-        .call(xAxis)
-        .call(styleXAxis);
-    } else {
-      this.xAxis
-        .transition()
-        .duration(transitionDuration)
-        .attr('transform', `translate(0, ${xAxisTransform})`)
+
+    function updateXAxis(selection) {
+      selection.attr('transform', `translate(0, ${xAxisTransform})`)
         .call(xAxis)
         .call(styleXAxis);
     }
 
-    // Create linear scale for Y axis.
-    const yAxisScale = d3.scale.linear()
-      .range([height - marginTop - marginBottom, 0])
-      .domain(yAxisRange);
+    // This transform value positions the x axis at the bottom of the SVG.
+    if (!this.xAxis) {
+      // Create the x axis if it doesn't exist.
+      this.xAxis = this.container.append('g');
+      updateXAxis(this.xAxis);
+    } else {
+      // Update it and animate the change.
+      this.xAxis
+        .transition()
+        .duration(transitionDuration);
+      updateXAxis(this.xAxis);
+    }
+
+    // Y AXIS //////////////////////////////////////////////////////////////////
 
     // Create Y axis.
     const yAxis = d3.svg.axis()
@@ -135,27 +148,35 @@ export default class LineChart extends Component {
       .orient('right');
 
     // Style and position Y axis elements.
-    function styleYAxis(g) {
-      g.selectAll('path')
-        .attr('class', 'chartYAxis');
+    function styleYAxis(selection) {
+      // Add classes for tests.
+      selection.attr('class', 'chartYAxis');
 
-      g.selectAll('line')
+      // These paths are added by d3.axis, but we don't need them.
+      selection.selectAll('path')
+        .remove();
+
+      selection.selectAll('line')
         .attr('class', 'chartYAxisTick__mark');
 
-      g.selectAll('text')
+      // Move the text to the left side of the SVG.
+      selection.selectAll('text')
         .attr('class', 'chartYAxisTick__text')
         .attr('dx', -(width - marginRight));
 
-      const borderRadius = 2;
-      g.selectAll('.tick')
+      // Add small background boxes behind each tick's text.
+      // Remove existing boxes first, to avoid duplicates.
+      selection.selectAll('rect')
+        .remove();
+      selection.selectAll('.tick')
         .insert('rect', ':last-child')
         .attr('class', 'chartYAxisTick__background')
         .attr('x', -marginLeft)
         .attr('y', -8)
         .attr('width', marginLeft)
         .attr('height', 15)
-        .attr('rx', borderRadius)
-        .attr('ry', borderRadius);
+        .attr('rx', 2) // Border-radius
+        .attr('ry', 2); // Border-radius
     }
 
     // If no Y axis shape exists, create one. Otherwise, update it.
@@ -166,14 +187,16 @@ export default class LineChart extends Component {
         .call(styleYAxis);
     } else {
       if (updateImmediately) {
+        // Update the axis without an animation.
         this.yAxis
           .call(yAxis);
       } else {
+        // Animate the axis, but not the tick mark text.
         this.yAxis
           .transition()
           .duration(transitionDuration)
           .call(yAxis)
-           // Cancel transition on customized attributes
+           // Cancel transition on customized attributes, e.g. tick mark text.
           .selectAll('text')
           .tween('attr.dx', null);
       }
@@ -181,31 +204,31 @@ export default class LineChart extends Component {
       this.yAxis.call(styleYAxis);
     }
 
-    // Create a line generator for mapping date to Y axis value.
+    // LINES ///////////////////////////////////////////////////////////////////
+
+    // Create a line generator for mapping date to x position, and input
+    // data to y position.
     const lineGenerator = d3.svg.line()
       .interpolate('basis')
       .x(item => xAxisScale(item.date))
       .y(item => yAxisScale(item.yValue));
 
-    // Bind data to lines.
+    // Bind lines to their data sources.
     const lines = this.container.selectAll('.chartLine')
-      .data(data)
-      .attr('class', 'chartLine');
+      .data(data);
 
-    // Transition from previous lines to new lines.
+    // Transition each line from the previous shape to the new shape.
     lines.transition()
       .duration(transitionDuration)
-      .attr('d', item => lineGenerator(item.values))
-      .style('stroke', (d, i) => data[i].color);
+      .attr('d', item => lineGenerator(item.values));
 
-    // Add elements that map to added data.
+    // Add new paths for new data sources, and set styling.
     lines.enter()
       .append('path')
       .attr('class', 'chartLine')
-      .attr('d', item => lineGenerator(item.values))
-      .style('stroke', (d, i) => data[i].color);
+      .style('stroke', item => item.color);
 
-    // Remove elements that map to removed data.
+    // Remove obsolete paths that map to removed data sources.
     lines.exit()
       .remove();
   }

@@ -11,8 +11,6 @@ $titleBarPadding: 15px;
   display: flex; /* 1 */
   background: $titleBarBackgroundColor;
   width: 100%;
-  box-shadow: -1px 0 0 $componentStrokeColor,
-    1px 0 0 $componentStrokeColor;
 }
 
   /**

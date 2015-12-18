@@ -6,7 +6,7 @@ import CheckBox from './CheckBox.jsx';
 describe('CheckBox', () => {
   describe('DOM structure', () => {
     it('span contains input and label', () => {
-      const testCase = TestCaseFactory.createFromElement(<CheckBox />);
+      const testCase = TestCaseFactory.createFromElement(<CheckBox id="id" />);
       expect(testCase.dom.tagName).toBe('SPAN');
       expect(testCase.dom.children[0].tagName).toBe('INPUT');
       expect(testCase.dom.children[1].tagName).toBe('LABEL');
@@ -28,7 +28,7 @@ describe('CheckBox', () => {
     describe('checked', () => {
       describe('when not set', () => {
         it('input is not checked', () => {
-          const testCase = TestCaseFactory.createFromElement(<CheckBox />);
+          const testCase = TestCaseFactory.createFromElement(<CheckBox id="id" />);
           expect(testCase.first('input').checked).toBe(false);
         });
       });
@@ -36,7 +36,7 @@ describe('CheckBox', () => {
       describe('when set', () => {
         it('to true input is checked', () => {
           const testCase = TestCaseFactory.createFromElement(
-            <CheckBox checked />
+            <CheckBox id="id" checked />
           );
           expect(testCase.first('input').checked).toBe(true);
         });
@@ -45,7 +45,7 @@ describe('CheckBox', () => {
       describe('when set', () => {
         it('to false input is unchecked', () => {
           const testCase = TestCaseFactory.createFromElement(
-            <CheckBox checked={false} />
+            <CheckBox id="id" checked={false} />
           );
           expect(testCase.first('input').checked).toBe(false);
         });
@@ -60,6 +60,7 @@ describe('CheckBox', () => {
 
         const testCase = TestCaseFactory.createFromElement(
           <CheckBox
+            id="id"
             onClick={onClick}
           />
         );

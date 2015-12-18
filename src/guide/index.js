@@ -15,6 +15,10 @@ import NotFoundView from './views/notFound/NotFoundView.jsx';
 
 import Route from './services/route/Route';
 
+// Polyfills
+import { polyfillCustomEvent } from '../framework/framework';
+polyfillCustomEvent();
+
 const store = configureStore();
 
 const childRoutes = Route.getAppRoutes();

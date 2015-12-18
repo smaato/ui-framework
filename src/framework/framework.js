@@ -1,8 +1,14 @@
 
 // Export components
 
+export * from './addOnControl/AddOnControl.jsx';
+export { default as AddOnControl } from './addOnControl/AddOnControl.jsx';
+
 export * from './appHeader/AppHeader.jsx';
 export { default as AppHeader } from './appHeader/AppHeader.jsx';
+
+export * from './body/Body.jsx';
+export { default as Body } from './body/Body.jsx';
 
 export * from './button/index.jsx';
 
@@ -39,6 +45,9 @@ export { default as LabeledControl } from './labeledControl/LabeledControl.jsx';
 export * from './spinner/Spinner.jsx';
 export { default as Spinner } from './spinner/Spinner.jsx';
 
+export * from './text/Text.jsx';
+export { default as Text } from './text/Text.jsx';
+
 export * from './textInput/TextInput.jsx';
 export { default as TextInput } from './textInput/TextInput.jsx';
 
@@ -73,6 +82,9 @@ export { default as GridRowRecycler } from './services/GridRowRecycler';
 
 export * from './services/GridStencil';
 export { default as GridStencil } from './services/GridStencil';
+
+export * from './services/polyfillCustomEvent';
+export { default as polyfillCustomEvent } from './services/polyfillCustomEvent';
 
 export * from './services/Sorter';
 export { default as Sorter } from './services/Sorter';
