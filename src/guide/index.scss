@@ -1,12 +1,17 @@
 
 @import '../framework/index';
 
+<<<<<<< 872d46176f5f6af686a65c843eec0915cb4c10a3
 /**
  * 1. Insane line-height makes it easier to notice when components are relying
  *    on styles inherited from body.
  */
 body {
   line-height: 40px; /* 1 */
+=======
+body {
+  background: #e7e7ed;
+>>>>>>> [BT-213]: Create Body and BodyPanel Components.
 }
 
 .examplesHome {

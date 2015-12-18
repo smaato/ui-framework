@@ -4,6 +4,7 @@ import { slugifyEach } from '../string/Slug';
 // Components
 import AddOnControlExample from '../../views/addOnControl/AddOnControlExample.jsx';
 import AppHeaderExample from '../../views/appHeader/AppHeaderExample.jsx';
+import BodyExample from '../../views/body/BodyExample.jsx';
 import ButtonExample from '../../views/button/ButtonExample.jsx';
 import ChartExample from '../../views/chart/ChartExample.jsx';
 import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
@@ -16,6 +17,7 @@ import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
 import TextExample from '../../views/text/TextExample.jsx';
 import TextInputExample from '../../views/textInput/TextInputExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
+import TitledViewExample from '../../views/titledView/TitledViewExample.jsx';
 import VerticalLayoutExample from '../../views/verticalLayout/VerticalLayoutExample.jsx';
 import ViewHeaderExample from '../../views/viewHeader/ViewHeaderExample.jsx';
 
@@ -29,6 +31,9 @@ const components = [{
 }, {
   name: 'AppHeader',
   component: AppHeaderExample,
+}, {
+  name: 'Body',
+  component: BodyExample,
 }, {
   name: 'Button',
   component: ButtonExample,
@@ -77,6 +82,9 @@ const components = [{
 const integrations = [{
   name: 'Grid View',
   component: GridViewExample,
+}, {
+  name: 'Titled View',
+  component: TitledViewExample,
 }];
 
 // Protoypes should point to HTML files and can be named whatever you want.
