@@ -55,11 +55,11 @@ const components = [{
   name: 'LabeledControl',
   component: LabeledControlExample,
 }, {
-  name: 'Spinner',
-  component: SpinnerExample,
-}, {
   name: 'Modal',
   component: ModalExample,
+}, {
+  name: 'Spinner',
+  component: SpinnerExample,
 }, {
   name: 'Text',
   component: TextExample,
