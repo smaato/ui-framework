@@ -60,7 +60,7 @@ $contentWidth: 1200px;
   flex-direction: column;
   flex-wrap: wrap;
   overflow-x: auto;
-  transform: translateY(calc(-100% - 20px));
+  transform: translateY(-110%);
   transition: transform 0.2s ease-out;
 
   &.is-examples-nav-menu-visible {

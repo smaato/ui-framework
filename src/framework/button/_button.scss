@@ -52,8 +52,12 @@ $ctaButtonColor: #35d0a0;
   }
 }
 
+/**
+ * 1. Fill in the background with the top gradient color to fix an IE11 bug
+ *    where the transparent background color was showing through at the top.
+ */
 .button--primary {
-  background-image: linear-gradient(#54baef, #43b4ef);
+  background: linear-gradient(#54baef, #43b4ef) #54baef; /* 1 */
   color: #ffffff;
   border-color: #2ca7e8;
 }

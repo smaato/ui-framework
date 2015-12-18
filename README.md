@@ -51,6 +51,7 @@ import {
   IconEllipsis,
   Label,
   LabeledControl,
+  polyfillCustomEvent, // service
   PrimaryButton,
   Sorter, // service
   Spinner,
