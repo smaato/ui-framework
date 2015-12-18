@@ -1,6 +1,4 @@
 
-// Export components
-
 export * from './addOnControl/AddOnControl.jsx';
 export { default as AddOnControl } from './addOnControl/AddOnControl.jsx';
 
@@ -62,35 +60,3 @@ export { default as VerticalLayout } from './verticalLayout/VerticalLayout.jsx';
 
 export * from './viewHeader/ViewHeader.jsx';
 export { default as ViewHeader } from './viewHeader/ViewHeader.jsx';
-
-// Export services
-
-export * from './services/ComparisonTypes';
-export { default as ComparisonTypes } from './services/ComparisonTypes';
-
-export * from './services/ConditionChecker';
-export { default as ConditionChecker } from './services/ConditionChecker';
-
-export * from './services/Entity';
-export { default as Entity } from './services/Entity';
-
-export * from './services/FilterOption';
-export { default as FilterOption } from './services/FilterOption';
-
-export * from './services/FilterableItems';
-export { default as FilterableItems } from './services/FilterableItems';
-
-export * from './services/GridRowRecycler';
-export { default as GridRowRecycler } from './services/GridRowRecycler';
-
-export * from './services/GridStencil';
-export { default as GridStencil } from './services/GridStencil';
-
-export * from './services/polyfillCustomEvent';
-export { default as polyfillCustomEvent } from './services/polyfillCustomEvent';
-
-export * from './services/Sorter';
-export { default as Sorter } from './services/Sorter';
-
-export * from './services/ThrottledEventDispatcher';
-export { default as ThrottledEventDispatcher } from './services/ThrottledEventDispatcher';

@@ -17,20 +17,15 @@ import {
   AccountPicture,
   AddOnControl,
   AppHeader,
+  AppHeaderDivider,
   AppLogo,
   AppNav,
   AppTitle,
-  AppHeaderDivider,
   Button,
   CallOutButton,
   Chart,
   CheckBox,
-  ComparisonTypes, // service
-  ConditionChecker, // service
   DateRange,
-  Entity, // service
-  FilterableItems, // service
-  FilterOption, // service
   FiltersControl,
   Grid,
   GridBodyEditableCell,
@@ -43,9 +38,7 @@ import {
   GridKpiPositive,
   GridLoadingRow,
   GridRow,
-  GridRowRecycler, // service
   GridSearch,
-  GridStencil, // service
   HollowButton,
   Icon,
   IconCog,
@@ -57,18 +50,28 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  polyfillCustomEvent, // service
   PrimaryButton,
-  Sorter, // service
   Spinner,
   StickyGrid,
   TextInput,
-  ThrottledEventDispatcher, // service
   TitleBar,
   VerticalLayout,
   ViewHeader,
   ViewHeaderNav,
 } from 'ui-framework';
+
+import {
+  ComparisonTypes,
+  ConditionChecker,
+  Entity,
+  FilterableItems,
+  FilterOption,
+  GridRowRecycler,
+  GridStencil,
+  polyfillCustomEvent,
+  Sorter,
+  ThrottledEventDispatcher,
+} from 'ui-framework/services';
 ```
 
 #### As a SCSS library

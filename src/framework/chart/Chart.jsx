@@ -9,7 +9,7 @@ import React, {
 import $ from 'jquery';
 import ReactDOM from 'react-dom';
 
-import ThrottledEventDispatcher from '../services/ThrottledEventDispatcher';
+import ThrottledEventDispatcher from '../services/event/ThrottledEventDispatcher';
 
 export default class LineChart extends Component {
 
