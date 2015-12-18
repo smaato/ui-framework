@@ -3,6 +3,8 @@ import React, {
   PropTypes,
 } from 'react';
 
+import ModalCloseButton from './ModalCloseButton.jsx';
+
 const ModalHeader = (props) => {
   let closeButton;
   let title;
@@ -15,11 +17,7 @@ const ModalHeader = (props) => {
   }
   if (props.onClose) {
     closeButton = (
-      <div
-        className="icon modalHeader__closeButton"
-        onClick={props.onClose}
-      >
-      </div>
+      <ModalCloseButton onClick={props.onClose} />
     );
   }
   return (

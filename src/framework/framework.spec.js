@@ -13,6 +13,11 @@ import {
   IconCog,
   IconEllipsis,
   LabeledControl,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   PrimaryButton,
   Spinner,
   TitleBar,
@@ -76,6 +81,38 @@ describe('UI Framework', () => {
       describe('GridLoadingRow', () => {
         it('is exported', () => {
           expect(GridLoadingRow).toEqual(jasmine.any(Function));
+        });
+      });
+    });
+
+    describe('(modal module)', () => {
+      describe('Modal', () => {
+        it('is exported', () => {
+          expect(Modal).toEqual(jasmine.any(Function));
+        });
+      });
+
+      describe('ModalBody', () => {
+        it('is exported', () => {
+          expect(ModalBody).toEqual(jasmine.any(Function));
+        });
+      });
+
+      describe('ModalFooter', () => {
+        it('is exported', () => {
+          expect(ModalFooter).toEqual(jasmine.any(Function));
+        });
+      });
+
+      describe('ModalHeader', () => {
+        it('is exported', () => {
+          expect(ModalHeader).toEqual(jasmine.any(Function));
+        });
+      });
+
+      describe('ModalOverlay', () => {
+        it('is exported', () => {
+          expect(ModalOverlay).toEqual(jasmine.any(Function));
         });
       });
     });

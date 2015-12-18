@@ -3,24 +3,18 @@ import React, {
   PropTypes,
 } from 'react';
 
-import HollowButton from '../button/HollowButton.jsx';
-
 const ModalCloseButton = props => {
   return (
-    <HollowButton
-      label={props.label}
+    <div
+      className="icon modalHeader__closeButton"
       onClick={props.onClick}
-    />
+    >
+    </div>
   );
 };
 
 ModalCloseButton.propTypes = {
   onClick: PropTypes.func,
-  label: PropTypes.string,
-};
-
-ModalCloseButton.defaultProps = {
-  label: 'Cancel',
 };
 
 export default ModalCloseButton;

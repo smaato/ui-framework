@@ -18,7 +18,7 @@ export default class ModalOverlay extends Component {
     });
 
     return (
-      <div className={overlayClasses} ref="overlayEl">
+      <div className={overlayClasses}>
         {this.props.children}
       </div>
     );
