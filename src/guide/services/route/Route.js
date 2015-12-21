@@ -11,8 +11,9 @@ import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
 import GridKpiExample from '../../views/gridKpi/GridKpiExample.jsx';
 import IconExample from '../../views/icon/IconExample.jsx';
-import LabelExample from '../../views/label/LabelExample.jsx';
 import LabeledControlExample from '../../views/labeledControl/LabeledControlExample.jsx';
+import LabelExample from '../../views/label/LabelExample.jsx';
+import ModalExample from '../../views/modal/ModalExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
 import TextExample from '../../views/text/TextExample.jsx';
 import TextInputExample from '../../views/textInput/TextInputExample.jsx';
@@ -53,11 +54,14 @@ const components = [{
   name: 'Icon',
   component: IconExample,
 }, {
+  name: 'LabeledControl',
+  component: LabeledControlExample,
+}, {
   name: 'Label',
   component: LabelExample,
 }, {
-  name: 'LabeledControl',
-  component: LabeledControlExample,
+  name: 'Modal',
+  component: ModalExample,
 }, {
   name: 'Spinner',
   component: SpinnerExample,

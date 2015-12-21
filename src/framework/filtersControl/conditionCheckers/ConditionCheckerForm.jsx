@@ -4,8 +4,8 @@ import React, {
   PropTypes,
 } from 'react';
 
-import FilterOption from '../../services/FilterOption';
-import ConditionChecker from '../../services/ConditionChecker';
+import FilterOption from '../../services/filter/FilterOption';
+import ConditionChecker from '../../services/filter/ConditionChecker';
 
 export default class ConditionCheckerForm extends Component {
 

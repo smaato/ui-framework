@@ -27,6 +27,7 @@ $gridRowBookendPadding: 15px;
     @include gridBaseStyles;
     width: 100%;
     text-align: left;
+    line-height: $lineHeight;
   }
 
     .grid__header__cell,

@@ -2,7 +2,7 @@
 import React, {
   PropTypes,
 } from 'react';
-import FilterOption from '../../services/FilterOption';
+import FilterOption from '../../services/filter/FilterOption';
 
 const FilterOptionsList = props => {
   const filterOptionListItems = props.filterOptions.map((filterOption, index) => {

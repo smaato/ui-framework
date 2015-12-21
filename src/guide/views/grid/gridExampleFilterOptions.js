@@ -2,7 +2,7 @@
 import {
   FilterOption,
   ComparisonTypes,
-} from '../../../framework/framework.js';
+} from '../../../framework/services.js';
 
 export default [
   new FilterOption({

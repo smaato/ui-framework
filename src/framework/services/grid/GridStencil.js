@@ -3,9 +3,9 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import $ from 'jquery';
 
-import GridBody from '../grid/body/GridBody.jsx';
-import GridRow from '../grid/body/GridRow.jsx';
-import GridHeader from '../grid/header/GridHeader.jsx';
+import GridBody from '../../grid/body/GridBody.jsx';
+import GridRow from '../../grid/body/GridRow.jsx';
+import GridHeader from '../../grid/header/GridHeader.jsx';
 
 export default class GridStencil {
 

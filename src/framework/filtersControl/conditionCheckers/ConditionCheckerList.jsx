@@ -3,8 +3,8 @@ import React, {
   PropTypes,
 } from 'react';
 
-import Entity from '../../services/Entity.js';
-import ConditionChecker from '../../services/ConditionChecker';
+import Entity from '../../services/string/Entity.js';
+import ConditionChecker from '../../services/filter/ConditionChecker';
 
 const ConditionCheckerList = props => {
   const conditionCheckerItems = props.conditionCheckers.map((conditionChecker, index) => {

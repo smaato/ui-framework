@@ -5,8 +5,8 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 import GridBody from './body/GridBody.jsx';
-import GridRowRecycler from '../services/GridRowRecycler';
-import ThrottledEventDispatcher from '../services/ThrottledEventDispatcher';
+import GridRowRecycler from '../services/grid/GridRowRecycler';
+import ThrottledEventDispatcher from '../services/event/ThrottledEventDispatcher';
 
 export {
   default as GridHeader,

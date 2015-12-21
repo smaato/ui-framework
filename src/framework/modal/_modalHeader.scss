@@ -1,0 +1,52 @@
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #cbd3d7;
+  margin-bottom: 10px;
+}
+
+  .modalHeader__title {
+    font-weight: 400;
+  }
+
+  .modalHeader__closeButton {
+    $closeButtonSide: 20px;
+    position: relative;
+    width: $closeButtonSide;
+    height: $closeButtonSide;
+    border: 1px solid #bbced6;
+    background-image: linear-gradient(#e9f0f2, #e2ebee);
+    border-radius: 2px;
+    color: #517582;
+    cursor: pointer;
+
+    &:before,
+    &:after {
+      $closeButtonLine_width: 1px;
+      $closeButtonLine_height: 10px;
+      content: '';
+      width: $closeButtonLine_width;
+      height: $closeButtonLine_height;
+      background-color: #517582;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -$closeButtonLine_height / 2;
+      margin-left: -$closeButtonLine_width / 2;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
