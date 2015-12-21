@@ -1,15 +1,17 @@
 .appHeader {
   width: 100%;
   background: $appHeaderNav_backgroundColor;
-  display: flex;
-  justify-content: center;
   height: 45px;
 }
 
+  /**
+   * 1. Centers the appHeader, specifically in IE11.
+   */
   .appHeader__liner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 0 auto; /* 1 */
     // This allows children to take height from component root element
     height: inherit;
     flex: 1;
