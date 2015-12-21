@@ -52,6 +52,11 @@ import {
   IconEllipsis,
   Label,
   LabeledControl,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   polyfillCustomEvent, // service
   PrimaryButton,
   Sorter, // service
