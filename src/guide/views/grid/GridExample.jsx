@@ -11,9 +11,7 @@ import Page, {
 
 import {
   CheckBox,
-  Entity,
   FiltersControl,
-  FilterableItems,
   Grid,
   GridBodyEditableCell,
   GridControls,
@@ -24,15 +22,20 @@ import {
   GridKpiPositive,
   GridLoadingRow,
   GridRow,
-  GridRowRecycler,
   GridSearch,
-  Sorter,
-  GridStencil,
   IconCog,
   IconEllipsis,
   StickyGrid,
-  ThrottledEventDispatcher,
 } from '../../../framework/framework.js';
+
+import {
+  Entity,
+  FilterableItems,
+  GridRowRecycler,
+  Sorter,
+  GridStencil,
+  ThrottledEventDispatcher,
+} from '../../../framework/services.js';
 
 import numeral from 'numeral';
 

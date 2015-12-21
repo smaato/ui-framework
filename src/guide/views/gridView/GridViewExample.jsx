@@ -8,7 +8,7 @@ import Page from '../../components/page/Page.jsx';
 
 import {
   Entity,
-} from '../../../framework/framework.js';
+} from '../../../framework/services.js';
 
 export default class GridViewExample extends Component {
 
