@@ -1,5 +1,6 @@
 
 .modalOverlay {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -8,11 +9,15 @@
   background-color: rgba(black, 0.15);
   z-index: 1;
   overflow-y: auto;
-  display: none;
-  align-items: center;
-  justify-content: center;
+  padding: 10px;
 
+  /**
+   * 1. Center modal vertically and horizontally in IE11, and allow the container
+   *    to scroll if the modal is clipped.
+   */
   &.is-modal-overlay-open {
-    display: flex;
+    display: flex; /* 1 */
+    flex-direction: column; /* 1 */
+    align-items: center; /* 1 */
   }
 }

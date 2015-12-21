@@ -1,12 +1,18 @@
 
+/**
+ * 1. Center modal vertically and horizontally in IE11, and allow the container
+ *    to scroll if the modal is clipped.
+ * 2. Center modal vertically.
+ */
 .modal {
-  z-index: 2;
+  flex: 0 0 auto; /* 1 */
+  margin: auto; /* 2 */
   width: 450px;
   padding: 20px;
-  margin: auto;
   border: 4px solid white;
   background: #f7fbfc;
   border-radius: 1px;
   box-shadow: 0 3px rgba(black, 0.05);
   color: #526770;
+  line-height: $lineHeight;
 }

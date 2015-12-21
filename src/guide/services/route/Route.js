@@ -49,11 +49,11 @@ const components = [{
   name: 'Icon',
   component: IconExample,
 }, {
-  name: 'Label',
-  component: LabelExample,
-}, {
   name: 'LabeledControl',
   component: LabeledControlExample,
+}, {
+  name: 'Label',
+  component: LabelExample,
 }, {
   name: 'Modal',
   component: ModalExample,

@@ -8,10 +8,6 @@ export {
 } from './ModalBody.jsx';
 
 export {
-  default as ModalCloseButton,
-} from './ModalCloseButton.jsx';
-
-export {
   default as ModalFooter,
 } from './ModalFooter.jsx';
 
