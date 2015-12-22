@@ -6,6 +6,11 @@
   background: $componentBackgroundColor;
   padding-left: 8px;
   padding-right: 8px;
+
+  /**
+   * 1. Applies inherited text-align property instead of "center" in IE
+   */
+  text-align: inherit; /* 1 */
 }
 
   .grid__header__row--placeholder {
