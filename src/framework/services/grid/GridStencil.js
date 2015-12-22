@@ -46,9 +46,14 @@ export default class GridStencil {
     // First we remove the original node and re-create it so we can
     // manipulate DOM without disturbing any external references to child nodes.
     const parentNode = originalNode.parentNode;
+    const nodeIndex =
+      Array.prototype.indexOf.call(parentNode.childNodes, originalNode);
     const workingNode = originalNode.cloneNode();
     parentNode.removeChild(originalNode);
-    parentNode.appendChild(workingNode);
+    // We insert at an index instead of simply appending, in order to preserve
+    // the original structure of the DOM. Otherwise React will throw an
+    // invariant violation error.
+    parentNode.insertBefore(workingNode, parentNode.childNodes[nodeIndex]);
 
     // Now let's build our temporary non-React grid.
     const rows = [];
@@ -166,7 +171,7 @@ export default class GridStencil {
 
     // All done! Remove our working node and put back the original.
     parentNode.removeChild(workingNode);
-    parentNode.appendChild(originalNode);
+    parentNode.insertBefore(originalNode, parentNode.childNodes[nodeIndex]);
 
     return {
       mediaQueries,
