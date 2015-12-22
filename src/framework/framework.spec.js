@@ -8,6 +8,9 @@ import {
   AppLogo,
   AppNav,
   AppTitle,
+  Body,
+  BodyPanel,
+  BodyPanelItem,
   Button,
   CallOutButton,
   Chart,
@@ -71,6 +74,15 @@ const components = [{
 }, {
   name: 'AppTitle',
   component: AppTitle,
+}, {
+  name: 'Body',
+  component: Body,
+}, {
+  name: 'BodyPanel',
+  component: BodyPanel,
+}, {
+  name: 'BodyPanelItem',
+  component: BodyPanelItem,
 }, {
   name: 'Button',
   component: Button,
