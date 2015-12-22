@@ -5,6 +5,7 @@ import React, {
 } from 'react';
 import $ from 'jquery';
 import classNames from 'classnames';
+import hljs from 'highlight.js';
 
 export default class SourceCodeViewer extends Component {
 
