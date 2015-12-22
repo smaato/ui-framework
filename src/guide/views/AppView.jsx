@@ -26,13 +26,18 @@ export default class AppView extends Component {
   }
 
   componentDidMount() {
+    const self = this;
     $(document).keypress(event => {
-      // Toggle source code viewer with the tilde key (~).
-      if (event.charCode === 96) {
-        this.setState({
-          isSourceCodeViewerOpen: !this.state.isSourceCodeViewerOpen,
-        });
+      // Toggle source code viewer with ~, or ALT/OPTION + 1.
+      if ((event.charCode === 96) || (event.altKey && event.charCode === 161)) {
+        self.onToggleSourceCodeViewer();
       }
+    });
+  }
+
+  onToggleSourceCodeViewer() {
+    this.setState({
+      isSourceCodeViewerOpen: !this.state.isSourceCodeViewerOpen,
     });
   }
 
@@ -59,6 +64,13 @@ export default class AppView extends Component {
           source={source}
           isOpen={this.state.isSourceCodeViewerOpen}
         />
+
+        <div
+          className="examplesSourceCodeViewerButton"
+          onClick={this.onToggleSourceCodeViewer.bind(this)}
+        >
+          Source
+        </div>
       </div>
     );
   }
