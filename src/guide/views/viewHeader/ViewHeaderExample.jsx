@@ -13,7 +13,7 @@ import {
   IconEllipsis,
   ViewHeader,
   ViewHeaderNav,
-} from '../../../framework/framework.js';
+} from '../../../framework/framework';
 
 export default class ViewHeaderExample extends Component {
 

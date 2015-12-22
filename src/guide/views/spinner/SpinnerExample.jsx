@@ -7,7 +7,7 @@ import Page, {
   Example,
 } from '../../components/page/Page.jsx';
 
-import { Spinner } from '../../../framework/framework.js';
+import { Spinner } from '../../../framework/framework';
 
 export default class SpinnerExample extends Component {
 

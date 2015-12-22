@@ -10,7 +10,7 @@ import Page, {
 import {
   DescriptionText,
   Text,
-} from '../../../framework/framework.js';
+} from '../../../framework/framework';
 
 export default class TextExample extends Component {
 

@@ -10,9 +10,9 @@ import Page, {
 import {
   AddOnControl,
   TextInput,
-} from '../../../framework/framework.js';
+} from '../../../framework/framework';
 
-export default class ButtonExample extends Component {
+export default class AddOnControlExample extends Component {
 
   constructor(props) {
     super(props);

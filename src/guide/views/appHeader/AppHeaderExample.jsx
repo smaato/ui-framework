@@ -16,7 +16,7 @@ import {
   AppNav,
   AppTitle,
   AppHeaderDivider,
-} from '../../../framework/framework.js';
+} from '../../../framework/framework';
 
 export default class AppHeaderExample extends Component {
 

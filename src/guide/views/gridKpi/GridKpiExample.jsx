@@ -12,7 +12,7 @@ import {
   GridKpi,
   GridKpiPositive,
   GridKpiNegative,
-} from '../../../framework/framework.js';
+} from '../../../framework/framework';
 
 export default class GridKpiExample extends Component {
 

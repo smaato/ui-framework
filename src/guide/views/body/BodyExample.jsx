@@ -10,7 +10,7 @@ import Page, {
 import {
   Body,
   BodyPanel,
-} from '../../../framework/framework.js';
+} from '../../../framework/framework';
 
 export default class BodyExample extends Component {
 
