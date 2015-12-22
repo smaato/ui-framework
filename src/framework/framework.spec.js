@@ -1,16 +1,36 @@
 
 import {
+  AccountNav,
+  AccountPicture,
+  AddOnControl,
   AppHeader,
+  AppHeaderDivider,
+  AppLogo,
+  AppNav,
+  AppTitle,
   Button,
-  CheckBox,
   CallOutButton,
+  Chart,
+  CheckBox,
   DateRange,
+  FiltersControl,
   Grid,
+  GridBodyEditableCell,
+  GridControls,
+  GridEmptyRow,
+  GridHeader,
+  GridHeaderSortableCell,
+  GridKpi,
+  GridKpiNegative,
+  GridKpiPositive,
   GridLoadingRow,
+  GridRow,
+  GridSearch,
   HollowButton,
   Icon,
   IconCog,
   IconEllipsis,
+  Label,
   LabeledControl,
   Modal,
   ModalBody,
@@ -19,147 +39,158 @@ import {
   ModalOverlay,
   PrimaryButton,
   Spinner,
+  StickyGrid,
+  TextInput,
   TitleBar,
   VerticalLayout,
   ViewHeader,
+  ViewHeaderNav,
 } from './framework';
 
+const components = [{
+  name: 'AccountNav',
+  component: AccountNav,
+}, {
+  name: 'AccountPicture',
+  component: AccountPicture,
+}, {
+  name: 'AddOnControl',
+  component: AddOnControl,
+}, {
+  name: 'AppHeader',
+  component: AppHeader,
+}, {
+  name: 'AppHeaderDivider',
+  component: AppHeaderDivider,
+}, {
+  name: 'AppLogo',
+  component: AppLogo,
+}, {
+  name: 'AppNav',
+  component: AppNav,
+}, {
+  name: 'AppTitle',
+  component: AppTitle,
+}, {
+  name: 'Button',
+  component: Button,
+}, {
+  name: 'CallOutButton',
+  component: CallOutButton,
+}, {
+  name: 'Chart',
+  component: Chart,
+}, {
+  name: 'CheckBox',
+  component: CheckBox,
+}, {
+  name: 'DateRange',
+  component: DateRange,
+}, {
+  name: 'FiltersControl',
+  component: FiltersControl,
+}, {
+  name: 'Grid',
+  component: Grid,
+}, {
+  name: 'GridBodyEditableCell',
+  component: GridBodyEditableCell,
+}, {
+  name: 'GridControls',
+  component: GridControls,
+}, {
+  name: 'GridEmptyRow',
+  component: GridEmptyRow,
+}, {
+  name: 'GridHeader',
+  component: GridHeader,
+}, {
+  name: 'GridHeaderSortableCell',
+  component: GridHeaderSortableCell,
+}, {
+  name: 'GridKpi',
+  component: GridKpi,
+}, {
+  name: 'GridKpiNegative',
+  component: GridKpiNegative,
+}, {
+  name: 'GridKpiPositive',
+  component: GridKpiPositive,
+}, {
+  name: 'GridLoadingRow',
+  component: GridLoadingRow,
+}, {
+  name: 'GridRow',
+  component: GridRow,
+}, {
+  name: 'GridSearch',
+  component: GridSearch,
+}, {
+  name: 'HollowButton',
+  component: HollowButton,
+}, {
+  name: 'Icon',
+  component: Icon,
+}, {
+  name: 'IconCog',
+  component: IconCog,
+}, {
+  name: 'IconEllipsis',
+  component: IconEllipsis,
+}, {
+  name: 'Label',
+  component: Label,
+}, {
+  name: 'LabeledControl',
+  component: LabeledControl,
+}, {
+  name: 'Modal',
+  component: Modal,
+}, {
+  name: 'ModalBody',
+  component: ModalBody,
+}, {
+  name: 'ModalFooter',
+  component: ModalFooter,
+}, {
+  name: 'ModalHeader',
+  component: ModalHeader,
+}, {
+  name: 'ModalOverlay',
+  component: ModalOverlay,
+}, {
+  name: 'PrimaryButton',
+  component: PrimaryButton,
+}, {
+  name: 'Spinner',
+  component: Spinner,
+}, {
+  name: 'StickyGrid',
+  component: StickyGrid,
+}, {
+  name: 'TextInput',
+  component: TextInput,
+}, {
+  name: 'TitleBar',
+  component: TitleBar,
+}, {
+  name: 'VerticalLayout',
+  component: VerticalLayout,
+}, {
+  name: 'ViewHeader',
+  component: ViewHeader,
+}, {
+  name: 'ViewHeaderNav',
+  component: ViewHeaderNav,
+}];
+
 describe('UI Framework components', () => {
-  describe('AppHeader', () => {
-    it('is exported', () => {
-      expect(AppHeader).toEqual(jasmine.any(Function));
-    });
-  });
-
-  describe('(buttons module)', () => {
-    describe('Button', () => {
+  for (let i = 0, length = components.length; i < length; i++) {
+    const component = components[i];
+    describe(component.name, () => { // eslint-disable-line no-loop-func
       it('is exported', () => {
-        expect(Button).toEqual(jasmine.any(Function));
+        expect(component.component).toEqual(jasmine.any(Function));
       });
     });
-
-    describe('HollowButton', () => {
-      it('is exported', () => {
-        expect(HollowButton).toEqual(jasmine.any(Function));
-      });
-    });
-
-    describe('PrimaryButton', () => {
-      it('is exported', () => {
-        expect(PrimaryButton).toEqual(jasmine.any(Function));
-      });
-    });
-
-    describe('CallOutButton', () => {
-      it('is exported', () => {
-        expect(CallOutButton).toEqual(jasmine.any(Function));
-      });
-    });
-  });
-
-  describe('CheckBox', () => {
-    it('is exported', () => {
-      expect(CheckBox).toEqual(jasmine.any(Function));
-    });
-  });
-
-  describe('DateRange', () => {
-    it('is exported', () => {
-      expect(DateRange).toEqual(jasmine.any(Function));
-    });
-  });
-
-  describe('(modal module)', () => {
-    describe('Modal', () => {
-      it('is exported', () => {
-        expect(Modal).toEqual(jasmine.any(Function));
-      });
-    });
-
-    describe('ModalBody', () => {
-      it('is exported', () => {
-        expect(ModalBody).toEqual(jasmine.any(Function));
-      });
-    });
-
-    describe('ModalFooter', () => {
-      it('is exported', () => {
-        expect(ModalFooter).toEqual(jasmine.any(Function));
-      });
-    });
-
-    describe('ModalHeader', () => {
-      it('is exported', () => {
-        expect(ModalHeader).toEqual(jasmine.any(Function));
-      });
-    });
-
-    describe('ModalOverlay', () => {
-      it('is exported', () => {
-        expect(ModalOverlay).toEqual(jasmine.any(Function));
-      });
-    });
-  });
-
-  describe('(grid module)', () => {
-    describe('Grid', () => {
-      it('is exported', () => {
-        expect(Grid).toEqual(jasmine.any(Function));
-      });
-    });
-
-    describe('GridLoadingRow', () => {
-      it('is exported', () => {
-        expect(GridLoadingRow).toEqual(jasmine.any(Function));
-      });
-    });
-  });
-
-  describe('Spinner', () => {
-    it('is exported', () => {
-      expect(Spinner).toEqual(jasmine.any(Function));
-    });
-  });
-
-  describe('Icon', () => {
-    it('is exported', () => {
-      expect(Icon).toEqual(jasmine.any(Function));
-    });
-  });
-
-  describe('IconCog', () => {
-    it('is exported', () => {
-      expect(IconCog).toEqual(jasmine.any(Function));
-    });
-  });
-
-  describe('IconEllipsis', () => {
-    it('is exported', () => {
-      expect(IconEllipsis).toEqual(jasmine.any(Function));
-    });
-  });
-
-  describe('LabeledControl', () => {
-    it('is exported', () => {
-      expect(LabeledControl).toEqual(jasmine.any(Function));
-    });
-  });
-
-  describe('TitleBar', () => {
-    it('is exported', () => {
-      expect(TitleBar).toEqual(jasmine.any(Function));
-    });
-  });
-
-  describe('VerticalLayout', () => {
-    it('is exported', () => {
-      expect(VerticalLayout).toEqual(jasmine.any(Function));
-    });
-  });
-
-  describe('ViewHeader', () => {
-    it('is exported', () => {
-      expect(ViewHeader).toEqual(jasmine.any(Function));
-    });
-  });
+  }
 });
