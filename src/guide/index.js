@@ -9,7 +9,7 @@ import { ReduxRouter } from 'redux-router';
 import configureStore from './store/configureStore';
 
 // Guide views.
-import App from './views/App.jsx';
+import AppContainer from './views/AppContainer';
 import HomeView from './views/home/HomeView.jsx';
 import NotFoundView from './views/notFound/NotFoundView.jsx';
 
@@ -30,7 +30,7 @@ childRoutes.push({
 
 const routes = [{
   path: '/',
-  component: App,
+  component: AppContainer,
   indexRoute: {
     component: HomeView,
   },

@@ -7,7 +7,7 @@ import Page, {
   Example,
 } from '../../components/page/Page.jsx';
 
-import { CheckBox } from '../../../framework/framework.js';
+import { CheckBox } from '../../../framework/framework';
 
 export default class CheckBoxExample extends Component {
 

@@ -9,7 +9,7 @@ import Page, {
 
 import {
   TextInput,
-} from '../../../framework/framework.js';
+} from '../../../framework/framework';
 
 export default class TextInputExample extends Component {
 

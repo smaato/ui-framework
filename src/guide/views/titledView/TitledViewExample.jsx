@@ -16,7 +16,7 @@ import {
   BodyPanel,
   CallOutButton,
   TitleBar,
-} from '../../../framework/framework.js';
+} from '../../../framework/framework';
 
 export default class TitledViewExample extends Component {
 

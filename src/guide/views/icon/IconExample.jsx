@@ -12,7 +12,7 @@ import {
   Icon,
   IconCog,
   IconEllipsis,
-} from '../../../framework/framework.js';
+} from '../../../framework/framework';
 
 export default class IconExample extends Component {
 

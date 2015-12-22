@@ -26,7 +26,7 @@ import {
   IconCog,
   IconEllipsis,
   StickyGrid,
-} from '../../../framework/framework.js';
+} from '../../../framework/framework';
 
 import {
   Entity,

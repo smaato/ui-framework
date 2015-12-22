@@ -1,5 +1,9 @@
+$contentWidth: 1200px;
+$sourceCodeViewerWidth: 600px;
 
 @import '../framework/index';
+@import './components/sourceCodeViewer/sourceCodeViewer';
+@import './views/app';
 
 /**
  * 1. Insane line-height makes it easier to notice when components are relying
@@ -21,8 +25,6 @@ body {
   text-align: center;
   height: 100%;
 }
-
-$contentWidth: 1200px;
 
 .examplePage {
   padding: 40px 30px;

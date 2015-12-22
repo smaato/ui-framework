@@ -13,7 +13,7 @@ import {
   CallOutButton,
   HollowButton,
   PrimaryButton,
-} from '../../../framework/framework.js';
+} from '../../../framework/framework';
 
 export default class ButtonExample extends Component {
 
