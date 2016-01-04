@@ -9,7 +9,7 @@ import Page, {
   Example,
 } from '../../components/page/Page.jsx';
 
-import { Chart } from '../../../framework/framework.js';
+import { Chart } from '../../../framework/framework';
 
 import chartExampleData from './chartExampleData.js';
 

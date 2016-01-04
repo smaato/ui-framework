@@ -10,7 +10,7 @@ import Page, {
 
 import {
   VerticalLayout,
-} from '../../../framework/framework.js';
+} from '../../../framework/framework';
 
 export default class LabelExample extends Component {
 

@@ -1,3 +1,8 @@
+/**
+ * 1. Use 0% instead of 0 because IE10-11 incorrectly interpret this as an error
+ *    and discard the entire rule. For more info, see:
+ *    https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
+ */
 .labeledControl {
   display: flex;
   align-items: center;
@@ -13,11 +18,11 @@
  */
 .labeledControl--twoFifths {
   .labeledControl__label {
-    flex: 2 1 0;
+    flex: 2 1 0%; /* 1 */
   }
 
   .labeledControl__control {
-    flex: 3 1 0;
+    flex: 3 1 0%; /* 1 */
   }
 }
 
@@ -27,11 +32,11 @@
  */
 .labeledControl--oneThird {
   .labeledControl__label {
-    flex: 1 1 0;
+    flex: 1 1 0%; /* 1 */
   }
 
   .labeledControl__control {
-    flex: 2 1 0;
+    flex: 2 1 0%; /* 1 */
   }
 }
 
@@ -41,11 +46,11 @@
  */
 .labeledControl--oneFourth {
   .labeledControl__label {
-    flex: 1 1 0;
+    flex: 1 1 0%; /* 1 */
   }
 
   .labeledControl__control {
-    flex: 3 1 0;
+    flex: 3 1 0%; /* 1 */
   }
 }
 
@@ -55,11 +60,11 @@
  */
 .labeledControl--oneFifth {
   .labeledControl__label {
-    flex: 1 1 0;
+    flex: 1 1 0%; /* 1 */
   }
 
   .labeledControl__control {
-    flex: 4 1 0;
+    flex: 4 1 0%; /* 1 */
   }
 }
 
@@ -69,10 +74,10 @@
  */
 .labeledControl--oneSixth {
   .labeledControl__label {
-    flex: 1 1 0;
+    flex: 1 1 0%; /* 1 */
   }
 
   .labeledControl__control {
-    flex: 5 1 0;
+    flex: 5 1 0%; /* 1 */
   }
 }

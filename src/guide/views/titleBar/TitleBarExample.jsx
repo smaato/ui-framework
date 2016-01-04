@@ -10,7 +10,7 @@ import Page, {
 import {
   CallOutButton,
   TitleBar,
-} from '../../../framework/framework.js';
+} from '../../../framework/framework';
 
 export default class TitleBarExample extends Component {
 

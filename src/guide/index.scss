@@ -1,5 +1,25 @@
+$contentWidth: 1200px;
+$sourceCodeViewerWidth: 600px;
+
+@mixin chromeButton {
+  padding: 8px 10px;
+  font-size: 11px;
+  line-height: 12px;
+  font-weight: 700;
+  background: white;
+  color: #626262;
+  border: 1px solid #d8d8d8;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    color: #1cc4ec;
+  }
+}
 
 @import '../framework/index';
+@import './components/sourceCodeViewer/sourceCodeViewer';
+@import './views/app';
 
 /**
  * 1. Insane line-height makes it easier to notice when components are relying
@@ -22,8 +42,6 @@ body {
   height: 100%;
 }
 
-$contentWidth: 1200px;
-
 .examplePage {
   padding: 40px 30px;
   max-width: $contentWidth;
@@ -32,27 +50,23 @@ $contentWidth: 1200px;
 
 .examplePage--fullScreen {
   padding: 0;
-  max-width: initial;
+  max-width: none;
 }
 
 .examplesNavMenuButton {
+  @include chromeButton;
   position: fixed;
   z-index: 1000;
   top: 5px;
   left: 5px;
-  padding: 8px 10px;
-  font-size: 11px;
-  line-height: 12px;
-  font-weight: 700;
-  background: white;
-  color: #626262;
-  border: 1px solid #d8d8d8;
-  cursor: pointer;
-  user-select: none;
+}
 
-  &:hover {
-    color: #1cc4ec;
-  }
+.examplesSourceCodeViewerButton {
+  @include chromeButton;
+  position: fixed;
+  z-index: 600;
+  top: 5px;
+  right: 5px;
 }
 
 .examplesNavMenu {

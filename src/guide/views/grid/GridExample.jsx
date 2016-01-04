@@ -26,7 +26,7 @@ import {
   IconCog,
   IconEllipsis,
   StickyGrid,
-} from '../../../framework/framework.js';
+} from '../../../framework/framework';
 
 import {
   Entity,
@@ -35,11 +35,12 @@ import {
   Sorter,
   GridStencil,
   ThrottledEventDispatcher,
-} from '../../../framework/services.js';
+} from '../../../framework/services';
 
 import numeral from 'numeral';
 
-import gridExampleFilterOptions from './gridExampleFilterOptions.js';
+import gridExampleFilterOptions from './gridExampleFilterOptions';
+import createRows from './createRows';
 
 const defaultState = {
   bodyRows: [],
@@ -395,6 +396,8 @@ export default class GridExample extends Component {
     if (this.$stylesContainer) {
       this.$stylesContainer.remove();
     }
+
+    window.clearTimeout(this.state.lazyLoadingTimeoutId);
   }
 
   onResize() {
@@ -493,11 +496,6 @@ export default class GridExample extends Component {
     );
   }
 
-  // Returns a random integer between min (inclusive) and max (inclusive)
-  getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
   refreshHeaderColumnElementReferences() {
     // Cache references to DOM elements.
     this.headerColumnElements = $(`#${this.GRID_ID} thead th`);
@@ -538,30 +536,6 @@ export default class GridExample extends Component {
     this.$stylesContainer.append(columnWidths.join('\n'));
   }
 
-  generateRows(indexStart, newRowsCount) {
-    const newRows = [];
-    const indexEnd = indexStart + newRowsCount;
-    for (let i = indexStart; i < indexEnd; i++) {
-      newRows.push({
-        id: i,
-        name: `Ford F-${this.getRandomInt(0, 50000)}`,
-        status: 'In Production',
-        fuel: 'Diesel, Unleaded',
-        passengers: this.getRandomInt(0, 100),
-        cylinders: this.getRandomInt(0, 8),
-        fuelEconomy: this.getRandomInt(0, 200000),
-        sold: this.getRandomInt(0, 2000000000),
-        registered: this.getRandomInt(0, 2000000000),
-        kpiSold: this.getRandomInt(0, 100),
-        kpiRegistered: this.getRandomInt(0, 100),
-        // TODO: In the case of requesting data from server this
-        // could be a more distinct step when state is mixed in
-        isSelected: this.state.areAllRowsSelected,
-      });
-    }
-    return newRows;
-  }
-
   lazyLoadBodyRows() {
     if (this.state.isLoadingBodyRows || this.state.isLastPage) return;
 
@@ -582,13 +556,17 @@ export default class GridExample extends Component {
       }
 
       // Current state
-      const generatedRows = this.generateRows(this.state.bodyRows.length, this.ROWS_PER_PAGE);
+      const newRows = createRows(
+        this.state.bodyRows.length,
+        this.ROWS_PER_PAGE,
+        this.state.areAllRowsSelected
+      );
       const isInitialLoad = this.state.isInitialLoad;
-      const isResultEmpty = generatedRows.length === 0;
+      const isResultEmpty = newRows.length === 0;
 
       // Next state
       const bodyRows = isResultEmpty ?
-        this.state.bodyRows : [...this.state.bodyRows, ...generatedRows];
+        this.state.bodyRows : [...this.state.bodyRows, ...newRows];
       const isLastPage = isResultEmpty;
       const isEmpty = isResultEmpty && isInitialLoad;
 

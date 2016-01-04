@@ -10,7 +10,8 @@ import Page, {
 import {
   Body,
   BodyPanel,
-} from '../../../framework/framework.js';
+  BodyPanelItem,
+} from '../../../framework/framework';
 
 export default class BodyExample extends Component {
 
@@ -24,7 +25,13 @@ export default class BodyExample extends Component {
         <Example>
           <Body>
             <BodyPanel>
-              This Body component has a minimum height equal to that of the viewport.
+              <BodyPanelItem rhythm={BodyPanelItem.RHYTHM.LARGE}>
+                This Body component has a minimum height equal to that of the viewport.
+              </BodyPanelItem>
+
+              <BodyPanelItem rhythm={BodyPanelItem.RHYTHM.LARGE}>
+                These paragraphs are spaced apart by BodyPanelItem components.
+              </BodyPanelItem>
             </BodyPanel>
           </Body>
         </Example>

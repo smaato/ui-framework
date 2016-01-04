@@ -10,7 +10,7 @@ import Page, {
 import {
   Label,
   CheckBox,
-} from '../../../framework/framework.js';
+} from '../../../framework/framework';
 
 export default class LabelExample extends Component {
 
