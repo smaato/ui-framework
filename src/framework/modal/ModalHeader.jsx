@@ -11,6 +11,7 @@ const ModalHeader = (props) => {
   if (props.title) {
     title = (
       <div className="modalHeader__title">
+        {props.icon}
         {props.title}
       </div>
     );
@@ -31,6 +32,7 @@ const ModalHeader = (props) => {
 ModalHeader.propTypes = {
   title: PropTypes.string,
   onClose: PropTypes.func,
+  icon: PropTypes.element,
 };
 
 export default ModalHeader;
