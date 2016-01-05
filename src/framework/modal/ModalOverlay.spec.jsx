@@ -5,7 +5,7 @@ import ModalOverlay from './ModalOverlay.jsx';
 
 describe('ModalOverlay', () => {
   describe('Props', () => {
-    fdescribe('children', () => {
+    describe('children', () => {
       it('is rendered', () => {
         const props = {
           children: <div id="item">item</div>,
