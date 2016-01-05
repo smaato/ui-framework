@@ -18,7 +18,9 @@ const GridRow = props => {
     );
   });
 
-  const classes = classNames(props.classBodyRow);
+  const classes = classNames(props.classBodyRow, {
+    'gridRow--last': props.isLast,
+  });
 
   const style = {
     height: props.height,
@@ -46,6 +48,7 @@ GridRow.propTypes = {
   rowCellPropsProviders: PropTypes.array.isRequired,
   height: PropTypes.number.isRequired,
   onClick: PropTypes.func,
+  isLast: PropTypes.bool,
   // Classes
   classBodyRow: PropTypes.string,
   classBodyCell: GridBodyCell.propTypes.classBodyCell,

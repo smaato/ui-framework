@@ -710,6 +710,7 @@ export default class GridExample extends Component {
     const items = this.getBodyRows();
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
+      const isLast = i === items.length - 1;
 
       // Add items, in order.
       const stripedClass = (i % 2 === 0) ? 'gridRow--even' : 'gridRow--odd';
@@ -721,6 +722,7 @@ export default class GridExample extends Component {
           onClick={this.onClickRow.bind(this)}
           height={this.ROW_HEIGHT}
           classBodyRow={stripedClass}
+          isLast={isLast}
         />
       );
     }
