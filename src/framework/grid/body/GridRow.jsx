@@ -18,7 +18,7 @@ const GridRow = props => {
     );
   });
 
-  const classes = classNames(props.classBodyRow);
+  const classes = classNames('gridRow', props.classBodyRow);
 
   const style = {
     height: props.height,

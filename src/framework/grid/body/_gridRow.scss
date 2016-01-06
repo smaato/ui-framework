@@ -5,3 +5,11 @@
 .gridRow--even {
   background-color: transparent;
 }
+
+.gridRow {
+  &:last-child {
+    .grid__body__cell {
+      border-bottom: 0;
+    }
+  }
+}
