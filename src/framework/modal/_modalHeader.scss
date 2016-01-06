@@ -10,10 +10,16 @@
 
   .modalHeader__title {
     font-weight: 400;
+  }
 
-    .icon {
-      margin-right: 5px;
-    }
+  /**
+  * 1. Align icon with title text.
+  */
+  .modalHeader__icon {
+    display: inline-flex;
+    vertical-align: bottom; /* 1 */
+    opacity: 0.75;
+    margin-right: 5px;
   }
 
   .modalHeader__closeButton {
