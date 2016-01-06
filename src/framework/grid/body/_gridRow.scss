@@ -6,6 +6,10 @@
   background-color: transparent;
 }
 
-.gridRow--last .grid__body__cell {
-  border-bottom: 0;
+.gridRow {
+  &:last-child {
+    .grid__body__cell {
+      border-bottom: 0;
+    }
+  }
 }
