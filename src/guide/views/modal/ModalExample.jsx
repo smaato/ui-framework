@@ -11,6 +11,7 @@ import {
   CallOutButton,
   HollowButton,
   PrimaryButton,
+  IconCog,
   Modal,
   ModalBody,
   ModalFooter,
@@ -24,7 +25,6 @@ export default class ModalExample extends Component {
     super(props);
     this.state = {
       isOpen1: false,
-      isOpen2: false,
     };
   }
 
@@ -54,6 +54,7 @@ export default class ModalExample extends Component {
             header={(
               <ModalHeader
                 title="Modal Title"
+                icon={<IconCog/>}
               />
             )}
             body={(
