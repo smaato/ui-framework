@@ -15,6 +15,7 @@ export default class ModalOverlay extends Component {
   render() {
     const overlayClasses = classNames('modalOverlay', {
       'is-modal-overlay-open': this.props.isOpen,
+      'is-modal-without-bg': this.props.noBackground,
     });
 
     return (
@@ -27,5 +28,9 @@ export default class ModalOverlay extends Component {
 
 ModalOverlay.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  children: PropTypes.element.isRequired,
+  noBackground: PropTypes.bool,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array,
+  ]).isRequired,
 };

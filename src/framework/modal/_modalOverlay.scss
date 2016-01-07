@@ -20,4 +20,8 @@
     flex-direction: column; /* 1 */
     align-items: center; /* 1 */
   }
+
+  &.is-modal-without-bg {
+    background-color: transparent;
+  }
 }
