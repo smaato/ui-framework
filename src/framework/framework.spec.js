@@ -28,7 +28,6 @@ import {
   GridKpiPositive,
   GridLoadingRow,
   GridRow,
-  GridSearch,
   HollowButton,
   Icon,
   IconCog,
@@ -41,6 +40,7 @@ import {
   ModalHeader,
   ModalOverlay,
   PrimaryButton,
+  SearchBox,
   Spinner,
   StickyGrid,
   TextInput,
@@ -135,9 +135,6 @@ const components = [{
   name: 'GridRow',
   component: GridRow,
 }, {
-  name: 'GridSearch',
-  component: GridSearch,
-}, {
   name: 'HollowButton',
   component: HollowButton,
 }, {
@@ -173,6 +170,9 @@ const components = [{
 }, {
   name: 'PrimaryButton',
   component: PrimaryButton,
+}, {
+  name: 'SearchBox',
+  component: SearchBox,
 }, {
   name: 'Spinner',
   component: Spinner,

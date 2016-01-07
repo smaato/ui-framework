@@ -4,7 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-export default class GridSearch extends Component {
+export default class SearchBox extends Component {
 
   constructor(props) {
     super(props);
@@ -18,19 +18,19 @@ export default class GridSearch extends Component {
 
   render() {
     return (
-      <label className="gridSearch">
+      <label className="searchBox">
         <input
-          className="gridSearch__input"
+          className="searchBox__input"
           type="text"
           ref="searchField"
           onKeyUp={this.onSearch.bind(this)}
         />
-        <span className="icon glyphicons-search gridSearch__icon"/>
+        <span className="icon glyphicons-search searchBox__icon"/>
       </label>
     );
   }
 }
 
-GridSearch.propTypes = {
+SearchBox.propTypes = {
   onSearch: PropTypes.func.isRequired,
 };

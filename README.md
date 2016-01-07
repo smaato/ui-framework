@@ -54,6 +54,7 @@ import {
   ModalHeader,
   ModalOverlay,
   PrimaryButton,
+  SearchBox,
   Spinner,
   StickyGrid,
   TextInput,

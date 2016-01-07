@@ -14,6 +14,7 @@ import IconExample from '../../views/icon/IconExample.jsx';
 import LabeledControlExample from '../../views/labeledControl/LabeledControlExample.jsx';
 import LabelExample from '../../views/label/LabelExample.jsx';
 import ModalExample from '../../views/modal/ModalExample.jsx';
+import SearchBoxExample from '../../views/searchBox/SearchBoxExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
 import TextExample from '../../views/text/TextExample.jsx';
 import TextInputExample from '../../views/textInput/TextInputExample.jsx';
@@ -74,6 +75,10 @@ const components = [{
   name: 'Modal',
   source: 'views/modal/ModalExample.jsx',
   component: ModalExample,
+}, {
+  name: 'SearchBox',
+  source: 'views/searchBox/SearchBoxExample.jsx',
+  component: SearchBoxExample,
 }, {
   name: 'Spinner',
   source: 'views/spinner/SpinnerExample.jsx',
