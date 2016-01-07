@@ -7,8 +7,8 @@ import classNames from 'classnames';
 import AccountPicture from './AccountPicture.jsx';
 
 const AccountNav  = props => {
-  const dropdownClass = classNames('accountDropdownArrow', {
-    'is-account-dropdown-arrow-open': props.isOpen,
+  const dropdownClass = classNames('appHeaderDropdownArrow', {
+    'is-app-header-dropdown-arrow-open': props.isOpen,
   });
 
   return (

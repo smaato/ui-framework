@@ -10,7 +10,7 @@ import {
   AppHeader,
   AppLogo,
   AppNav,
-  AppTitle,
+  AppTitleContainer,
   AppHeaderDivider,
   Body,
   BodyPanel,
@@ -21,6 +21,8 @@ import {
   GridHeader,
   GridRow,
   IconCog,
+  OrganizationSwitcher,
+  OrganizationSwitcherItem,
   Text,
   TitleBar,
 } from '../../../framework/framework';
@@ -29,6 +31,10 @@ export default class TitledViewExample extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      isOrganizationSwitcherOpen: false,
+    };
 
     this.COLUMNS_COUNT = 3;
     this.ROW_HEIGHT = 55;
@@ -55,6 +61,22 @@ export default class TitledViewExample extends Component {
         children: <IconCog />,
       }),
     ];
+  }
+
+  onCloseOrganizationSwitcher() {
+    this.setState({
+      isOrganizationSwitcherOpen: false,
+    });
+  }
+
+  onOpenOrganizationSwitcher() {
+    this.setState({
+      isOrganizationSwitcherOpen: true,
+    });
+  }
+
+  onSearch(term) {
+    console.log(term); // eslint-disable-line no-console
   }
 
   getRows() {
@@ -88,6 +110,67 @@ export default class TitledViewExample extends Component {
     return rows;
   }
 
+  selectOrganization(organization) {
+    console.log(organization); // eslint-disable-line no-console
+  }
+
+  renderOrganizationSwitcher() {
+    if (!this.state.isOrganizationSwitcherOpen) {
+      return;
+    }
+
+    const orgs = [{
+      id: 0,
+      name: 'Algebra',
+    }, {
+      id: 1,
+      name: 'Data',
+    }, {
+      id: 2434895743333,
+      name: 'Elaborate very long example name',
+    }, {
+      id: 3,
+      name: 'Inert',
+    }, {
+      id: 4,
+      name: 'Magenta',
+    }, {
+      id: 5,
+      name: 'Data',
+    }, {
+      id: 6,
+      name: 'Manual',
+    }, {
+      id: 7,
+      name: 'Sphere',
+    }, {
+      id: 8,
+      name: 'Vitality',
+    }];
+
+    const organizationList = orgs.map((item, index) => {
+      return (
+        <OrganizationSwitcherItem
+          key={index}
+          name={item.name}
+          id={item.id.toString()}
+          onSelect={this.selectOrganization.bind(this, item)}
+        />
+      );
+    });
+
+    return ( // eslint-disable-line consistent-return
+      <OrganizationSwitcher
+        title="Switch buyer"
+        searchPrompt="Search by Buyer Name or ID"
+        onSearch={this.onSearch.bind(this)}
+        onClose={this.onCloseOrganizationSwitcher.bind(this)}
+      >
+        {organizationList}
+      </OrganizationSwitcher>
+    );
+  }
+
   renderAppHeader() {
     const links = [{
       className: 'is-app-nav-link-selected ',
@@ -112,7 +195,14 @@ export default class TitledViewExample extends Component {
         left={
           <AppHeaderDivider
             left={<AppLogo text="Smaato" />}
-            right={<AppTitle text="Smaato" />}
+            right={
+              <AppTitleContainer
+                title="Smaato"
+                onClick={this.onOpenOrganizationSwitcher.bind(this)}
+              >
+                {this.renderOrganizationSwitcher()}
+              </AppTitleContainer>
+            }
           />
         }
         center={

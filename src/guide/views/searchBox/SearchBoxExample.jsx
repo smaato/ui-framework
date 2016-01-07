@@ -72,6 +72,24 @@ export default class SearchBoxExample extends Component {
 
         </Example>
 
+        <Example title="Search as you type">
+
+          <SearchBox
+            onSearch={this.onSearch.bind(this)}
+            isImmediate
+          />
+
+        </Example>
+
+        <Example title="Full width">
+
+          <SearchBox
+            onSearch={this.onSearch.bind(this)}
+            isFullWidth
+          />
+
+        </Example>
+
       </Page>
     );
   }

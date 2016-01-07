@@ -4,26 +4,44 @@ import React, {
   PropTypes,
 } from 'react';
 
+import classNames from 'classnames';
+
 export default class SearchBox extends Component {
 
   constructor(props) {
     super(props);
   }
 
-  onSearch(event) {
-    if (event.key !== 'Enter') return;
+  onKeyUp(event) {
+    // Always search when the user hits Enter.
+    if (event.key === 'Enter') {
+      return this.search();
+    }
+
+    // Otherwise, allow searching if isImmediate.
+    if (this.props.isImmediate) {
+      this.search();
+    }
+  }
+
+  search() {
     const searchField = this.refs.searchField;
     this.props.onSearch(searchField.value);
   }
 
   render() {
+    const classes = classNames('searchBox__input', {
+      'searchBox__input--fullWidth': this.props.isFullWidth,
+    });
+
     return (
       <label className="searchBox">
         <input
-          className="searchBox__input"
+          className={classes}
           type="text"
+          placeholder={this.props.placeholder}
           ref="searchField"
-          onKeyUp={this.onSearch.bind(this)}
+          onKeyUp={this.onKeyUp.bind(this)}
         />
         <span className="icon glyphicons-search searchBox__icon"/>
       </label>
@@ -33,4 +51,7 @@ export default class SearchBox extends Component {
 
 SearchBox.propTypes = {
   onSearch: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  isFullWidth: PropTypes.bool,
+  isImmediate: PropTypes.bool,
 };

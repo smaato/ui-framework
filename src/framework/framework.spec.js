@@ -8,6 +8,7 @@ import {
   AppLogo,
   AppNav,
   AppTitle,
+  AppTitleContainer,
   Body,
   BodyPanel,
   BodyPanelItem,
@@ -39,6 +40,8 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  OrganizationSwitcher,
+  OrganizationSwitcherItem,
   PrimaryButton,
   SearchBox,
   Spinner,
@@ -74,6 +77,9 @@ const components = [{
 }, {
   name: 'AppTitle',
   component: AppTitle,
+}, {
+  name: 'AppTitleContainer',
+  component: AppTitleContainer,
 }, {
   name: 'Body',
   component: Body,
@@ -167,6 +173,12 @@ const components = [{
 }, {
   name: 'ModalOverlay',
   component: ModalOverlay,
+}, {
+  name: 'OrganizationSwitcher',
+  component: OrganizationSwitcher,
+}, {
+  name: 'OrganizationSwitcherItem',
+  component: OrganizationSwitcherItem,
 }, {
   name: 'PrimaryButton',
   component: PrimaryButton,

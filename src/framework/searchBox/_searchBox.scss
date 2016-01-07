@@ -1,28 +1,32 @@
 .searchBox {
   display: flex;
+}
 
-  $searchBox_height: 23px;
+$searchBox_height: 23px;
 
-  .searchBox__input {
-    width: 140px;
-    height: $searchBox_height;
-    margin: 0;
-    padding: 5px 27px 5px 11px;
-    border: 1px solid shade($componentStrokeColor, 5%);
-    border-radius: 20px;
-    background: white;
+.searchBox__input {
+  width: 140px;
+  height: $searchBox_height;
+  margin: 0;
+  padding: 5px 27px 5px 11px;
+  border: 1px solid shade($componentStrokeColor, 5%);
+  border-radius: 20px;
+  background: white;
+  font-size: 11px;
+  color: shade($componentTextColor, 80%);
+}
+
+.searchBox__input--fullWidth {
+  width: 100%;
+}
+
+.searchBox__icon {
+  color: shade($componentStrokeColor, 16%);
+  width: $searchBox_height;
+  height: $searchBox_height;
+  margin-left: -$searchBox_height;
+
+  &:before {
     font-size: 11px;
-    color: shade($componentTextColor, 80%);
-  }
-
-  .searchBox__icon {
-    color: shade($componentStrokeColor, 16%);
-    width: $searchBox_height;
-    height: $searchBox_height;
-    margin-left: -$searchBox_height;
-
-    &:before {
-      font-size: 11px;
-    }
   }
 }
