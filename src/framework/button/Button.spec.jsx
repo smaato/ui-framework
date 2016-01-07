@@ -16,12 +16,20 @@ describe('Button', () => {
     });
 
     describe('disabled', () => {
-      it('is rendered', () => {
+      it('adds the appropriate class when true', () => {
         const props = {
           disabled: true,
         };
         const testCase = TestCaseFactory.createFromFunction(Button, props);
         expect(testCase.dom.getAttribute('class')).toContain('is-button-disabled');
+      });
+
+      it('does not add class when false', () => {
+        const props = {
+          disabled: false,
+        };
+        const testCase = TestCaseFactory.createFromFunction(Button, props);
+        expect(testCase.dom.getAttribute('class')).not.toContain('is-button-disabled');
       });
     });
 
@@ -49,7 +57,7 @@ describe('Button', () => {
     });
 
     describe('classes', () => {
-      it('is rendered', () => {
+      it('are added to the element', () => {
         const classes = 'test-class';
         const props = {
           classes,
@@ -60,7 +68,7 @@ describe('Button', () => {
     });
 
     describe('iconClasses', () => {
-      it('is rendered', () => {
+      it('are added to the element', () => {
         const iconClasses = 'test-class';
         const props = {
           iconClasses,
