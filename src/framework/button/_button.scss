@@ -1,5 +1,6 @@
 
 $ctaButtonColor: #35d0a0;
+$appHeaderButtonColor: #445e6a;
 
 .button {
   display: inline-flex;
@@ -67,4 +68,11 @@ $ctaButtonColor: #35d0a0;
   background: $ctaButtonColor;
   color: #ffffff;
   border-color: $ctaButtonColor;
+}
+
+.button--appHeader {
+  margin-left: 5px;
+  background: $appHeaderButtonColor;
+  color: #ffffff;
+  border-color: $appHeaderButtonColor;
 }

@@ -15,40 +15,46 @@ $accountNav_paddingRight: $accountNav_borderRadius - $accountDropdownArrowHypote
 .accountNav {
   display: flex;
   align-items: center;
-  color: $appHeaderNav_textColor;
-  padding: $accountNav_padding $accountNav_paddingRight $accountNav_padding $accountNav_padding;
-  border-radius: $accountNav_borderRadius;
-  font-size: 12px;
-  cursor: pointer;
-
-  &:hover {
-    background: scale-lightness($appHeaderNav_backgroundColor, -13%);
-    transition: 0.1s all ease-in-out;
-  }
 }
 
-  .accountNav__email {
-    display: inline-block;
-    margin: 0 3px;
+  .accountNav__user {
+    display: inline-flex;
+    align-items: center;
+    color: $appHeaderNav_textColor;
+    padding: $accountNav_padding $accountNav_paddingRight $accountNav_padding $accountNav_padding;
+    border-radius: $accountNav_borderRadius;
+    font-size: 12px;
+    line-height: 1;
     cursor: pointer;
 
-    @media #{$viewport_normalScreen} {
-      display: none;
+    &:hover {
+      background: scale-lightness($appHeaderNav_backgroundColor, -13%);
+      transition: 0.1s all ease-in-out;
     }
   }
 
-  .accountDropdownArrow {
-    display: inline-block;
-    position: relative;
-    height: $accountDropdownArrowSide;
-    width: $accountDropdownArrowSide;
-    border: solid #ffffff;
-    transform: rotate(45deg);
-    border-width: 0 1px 1px 0;
-    top: -$accountDropdownTop;
+    .accountNav__email {
+      display: inline-block;
+      margin: 0 3px;
+      cursor: pointer;
 
-    &.is-account-dropdown-arrow-open {
-      border-width: 1px 0 0 1px;
-      top: $accountDropdownTop;
+      @media #{$viewport_normalScreen} {
+        display: none;
+      }
     }
-  }
+
+    .accountDropdownArrow {
+      display: inline-block;
+      position: relative;
+      height: $accountDropdownArrowSide;
+      width: $accountDropdownArrowSide;
+      border: solid #ffffff;
+      transform: rotate(45deg);
+      border-width: 0 1px 1px 0;
+      top: -$accountDropdownTop;
+
+      &.is-account-dropdown-arrow-open {
+        border-width: 1px 0 0 1px;
+        top: $accountDropdownTop;
+      }
+    }

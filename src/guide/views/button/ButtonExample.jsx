@@ -10,6 +10,7 @@ import Page, {
 
 import {
   Button,
+  AppHeaderButton,
   CallOutButton,
   HollowButton,
   PrimaryButton,
@@ -65,6 +66,13 @@ export default class ButtonExample extends Component {
             iconClasses="glyphicons-plus"
             label="New item"
           />
+        </Example>
+
+        <Example title="AppHeaderButton">
+          <Text>
+            This button is designed for AppHeader.
+          </Text>
+          <AppHeaderButton label="Logout" />
         </Example>
       </Page>
     );
