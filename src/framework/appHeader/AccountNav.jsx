@@ -7,24 +7,32 @@ import classNames from 'classnames';
 import AccountPicture from './AccountPicture.jsx';
 
 const AccountNav  = props => {
-  const dropdownClass = classNames('appHeaderDropdownArrow', {
-    'is-app-header-dropdown-arrow-open': props.isOpen,
-  });
+  let dropdownArrow;
+  if (!props.disableDropdown) {
+    const dropdownClass = classNames('appHeaderDropdownArrow', {
+      'is-app-header-dropdown-arrow-open': props.isOpen,
+    });
+
+    dropdownArrow = <span className={dropdownClass} />;
+  }
 
   return (
-    <a
-      className="accountNav"
-      onClick={props.onClick}
-    >
-      <AccountPicture
-        url={props.pictureUrl}
-        title={props.email}
-      />
-      <span className="accountNav__email">
-        {props.email}
-      </span>
-      <span className={dropdownClass} />
-    </a>
+    <div className="accountNav">
+      <a
+        className="accountNav__user"
+        onClick={props.onClick}
+      >
+        <AccountPicture
+          url={props.pictureUrl}
+          title={props.email}
+        />
+        <span className="accountNav__email">
+          {props.email}
+        </span>
+        {dropdownArrow}
+      </a>
+      {props.right}
+    </div>
   );
 };
 
@@ -33,10 +41,13 @@ AccountNav.propTypes = {
   pictureUrl: AccountPicture.propTypes.url,
   isOpen: PropTypes.bool,
   onClick: PropTypes.func,
+  disableDropdown: PropTypes.bool,
+  right: PropTypes.element,
 };
 
 AccountNav.defaultProps = {
   isOpen: false,
+  disableDropdown: false,
 };
 
 export default AccountNav;

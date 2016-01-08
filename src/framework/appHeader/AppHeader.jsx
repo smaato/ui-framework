@@ -20,16 +20,20 @@ export {
 } from './AppNav.jsx';
 
 export {
+  default as AppHeaderButton,
+} from './AppHeaderButton.jsx';
+
+export {
+  default as AppHeaderDivider,
+} from './AppHeaderDivider.jsx';
+
+export {
   default as AppTitle,
 } from './AppTitle.jsx';
 
 export {
   default as AppTitleContainer,
 } from './AppTitleContainer.jsx';
-
-export {
-  default as AppHeaderDivider,
-} from './AppHeaderDivider.jsx';
 
 const AppHeader = props => {
   return (
