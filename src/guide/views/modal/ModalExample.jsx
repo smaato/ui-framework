@@ -28,44 +28,45 @@ export default class ModalExample extends Component {
       // Map of modal ids to boolean
       isOpen: {
         1: false,
-        2: false,
-        3: false,
-        4: false,
+        11: false,
+        12: false,
+        13: false,
+        21: false,
+        22: false,
+        23: false,
       },
-      stackIds: [2, 3, 4],
-      depth: 1,
+      stack1: [11, 12, 13],
+      stack2: [21, 22, 23],
+      stack1depth: 1,
+      stack2depth: 1,
     };
   }
 
   onOpen(modalId) {
-    const state = {
-      isOpen: Object.assign({}, this.state.isOpen),
-    };
+    const isOpen = Object.assign({}, this.state.isOpen);
+    const state = { isOpen };
     state.isOpen[modalId] = true;
-    state.depth = this.findActiveDepth(modalId);
+    state.stack1depth = this.findStackDepth(this.state.stack1, modalId);
+    state.stack2depth = this.findStackDepth(this.state.stack2, modalId);
     this.setState(state);
   }
 
   onClose(modalId) {
-    const state = {
-      isOpen: Object.assign({}, this.state.isOpen),
-    };
+    const isOpen = Object.assign({}, this.state.isOpen);
+    const state = { isOpen };
     state.isOpen[modalId] = false;
-    state.depth = this.findActiveDepth(modalId, true);
+    state.stack1depth = this.findStackDepth(this.state.stack1, modalId, true);
+    state.stack2depth = this.findStackDepth(this.state.stack2, modalId, true);
     this.setState(state);
   }
 
   onSubmit(modalId) {
-    const state = {
-      isOpen: Object.assign({}, this.state.isOpen),
-    };
-    state.isOpen[modalId] = true;
-    this.setState(state);
+    this.onClose(modalId);
   }
 
-  findActiveDepth(modalId, isClose) {
+  findStackDepth(stack, modalId, isClose) {
     let newDepth = 1;
-    this.state.stackIds.some((stackedModalId, index)=>{
+    stack.some((stackedModalId, index)=>{
       const depth = index + 1;
       const isMatch = modalId === stackedModalId;
       if (isMatch) newDepth = isClose ? depth - 1 : depth;
@@ -87,7 +88,7 @@ export default class ModalExample extends Component {
             )}
             body={(
               <ModalBody>
-                <div style={{height: 100}}></div>
+                <div style={{height: 110}}></div>
               </ModalBody>
             )}
             footer={(
@@ -105,7 +106,7 @@ export default class ModalExample extends Component {
           <Modal
             body={(
               <ModalBody>
-                <div style={{height: 100}}></div>
+                <div style={{height: 110}}></div>
               </ModalBody>
             )}
           />
@@ -147,27 +148,76 @@ export default class ModalExample extends Component {
           </ModalOverlay>
         </Example>
 
-        <Example title="Stacked">
+        <Example title="ModalStack" isClear>
+          <ModalStack depth={this.state.stack1depth}>
+            <Modal
+              header={(
+                <ModalHeader
+                  title="1st Level Modal"
+                />
+              )}
+              body={(
+                <ModalBody>
+                  <CallOutButton
+                    label="Open 2nd Level Modal"
+                    onClick={() => this.onOpen.bind(this)(12)}
+                  />
+                </ModalBody>
+              )}
+            />
+            <Modal
+              header={(
+                <ModalHeader
+                  title="2nd Level Modal"
+                  onClose={() => this.onClose.bind(this)(12)}
+                />
+              )}
+              body={(
+                <ModalBody>
+                  <CallOutButton
+                    label="Open 3rd Level Modal"
+                    onClick={() => this.onOpen.bind(this)(13)}
+                  />
+                </ModalBody>
+              )}
+            />
+            <Modal
+              header={(
+                <ModalHeader
+                  title="3rd Level Modal"
+                  onClose={() => this.onClose.bind(this)(13)}
+                />
+              )}
+              body={(
+                <ModalBody>
+                  <p>I am the 3rd level modal.</p>
+                </ModalBody>
+              )}
+            />
+          </ModalStack>
+        </Example>
+
+        <Example title="ModalStack in ModalOverlay">
           <CallOutButton
             label="Open 1st Level Modal"
-            onClick={() => this.onOpen.bind(this)(2)}
+            onClick={() => this.onOpen.bind(this)(21)}
           />
           <ModalOverlay
-            isOpen={this.state.isOpen['2']}
+            isOpen={this.state.isOpen['21']}
           >
-            <ModalStack depth={this.state.depth}>
+            <ModalStack depth={this.state.stack2depth}>
               <Modal
                 header={(
                   <ModalHeader
                     title="1st Level Modal"
-                    onClose={() => this.onClose.bind(this)(2)}
+                    onClose={() => this.onClose.bind(this)(21)}
                   />
                 )}
                 body={(
                   <ModalBody>
                     <CallOutButton
                       label="Open 2nd Level Modal"
-                      onClick={() => this.onOpen.bind(this)(3)}
+                      onClick={() => this.onOpen.bind(this)(22)}
                     />
                   </ModalBody>
                 )}
@@ -176,14 +226,14 @@ export default class ModalExample extends Component {
                 header={(
                   <ModalHeader
                     title="2nd Level Modal"
-                    onClose={() => this.onClose.bind(this)(3)}
+                    onClose={() => this.onClose.bind(this)(22)}
                   />
                 )}
                 body={(
                   <ModalBody>
                     <CallOutButton
                       label="Open 3rd Level Modal"
-                      onClick={() => this.onOpen.bind(this)(4)}
+                      onClick={() => this.onOpen.bind(this)(23)}
                     />
                   </ModalBody>
                 )}
@@ -192,7 +242,7 @@ export default class ModalExample extends Component {
                 header={(
                   <ModalHeader
                     title="3rd Level Modal"
-                    onClose={() => this.onClose.bind(this)(4)}
+                    onClose={() => this.onClose.bind(this)(23)}
                   />
                 )}
                 body={(

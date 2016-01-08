@@ -3,8 +3,6 @@ import React, {
   PropTypes,
 } from 'react';
 
-import classNames from 'classnames';
-
 export {
   default as ModalBody,
 } from './ModalBody.jsx';
@@ -26,10 +24,8 @@ export {
 } from './ModalStack.jsx';
 
 const Modal = props => {
-  const modalClasses = classNames('modal');
-
   return (
-    <div className={modalClasses}>
+    <div className="modal">
       {props.header}
       {props.body}
       {props.footer}

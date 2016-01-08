@@ -27,8 +27,5 @@ export default class ModalOverlay extends Component {
 
 ModalOverlay.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.array,
-  ]).isRequired,
+  children: PropTypes.element.isRequired,
 };
