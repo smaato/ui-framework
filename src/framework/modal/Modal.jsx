@@ -21,10 +21,16 @@ export {
   default as ModalOverlay,
 } from './ModalOverlay.jsx';
 
+export {
+  default as ModalStack,
+} from './ModalStack.jsx';
+
+export {
+  default as StackedModal,
+} from './StackedModal.jsx';
+
 const Modal = props => {
-  const modalClasses = classNames('modal', {
-    'is-modal-stacked': props.isStacked,
-  });
+  const modalClasses = classNames('modal');
 
   return (
     <div className={modalClasses}>
@@ -39,7 +45,6 @@ Modal.propTypes = {
   header: PropTypes.element,
   body: PropTypes.element.isRequired,
   footer: PropTypes.element,
-  isStacked: PropTypes.bool,
 };
 
 export default Modal;

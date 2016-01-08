@@ -17,6 +17,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  ModalStack,
 } from '../../../framework/framework';
 
 export default class ModalExample extends Component {
@@ -26,26 +27,47 @@ export default class ModalExample extends Component {
     this.state = {
       isOpen1: false,
       isOpen2: false,
-      isOpen3: false,
-      isOpen4: false,
+      stackIds: [2, 3, 4],
+      activeDepth: 1,
     };
   }
 
-  onOpen(exampleNumber) {
+  onOpen(modalId) {
     const state = {};
-    state[`isOpen${exampleNumber}`] = true;
+    state[`isOpen${modalId}`] = true;
+
+    state.activeDepth = 1;
+    this.state.stackIds.some((item, index)=>{
+      const depth = index + 1;
+      if (modalId === item) {
+        state.activeDepth = depth;
+        return true;
+      }
+      return false;
+    });
+
     this.setState(state);
   }
 
-  onClose(exampleNumber) {
+  onClose(modalId) {
     const state = {};
-    state[`isOpen${exampleNumber}`] = false;
+    state[`isOpen${modalId}`] = false;
+
+    state.activeDepth = 1;
+    for (let index = this.state.stackIds.length; index > 0; --index) {
+      const stackedModalId = this.state.stackIds[index];
+      const depth = index + 1;
+      if (modalId === stackedModalId) {
+        state.activeDepth = depth - 1;
+      }
+    }
+
     this.setState(state);
   }
 
-  onSubmit(exampleNumber) {
+  onSubmit(modalId) {
     const state = {};
-    state[`isOpen${exampleNumber}`] = false;
+    state[`isOpen${modalId}`] = false;
     this.setState(state);
   }
 
@@ -130,30 +152,24 @@ export default class ModalExample extends Component {
           <ModalOverlay
             isOpen={this.state.isOpen2}
           >
-            <Modal
-              header={(
-                <ModalHeader
-                  title="1st Level Modal"
-                  onClose={() => this.onClose.bind(this)(2)}
-                />
-              )}
-              body={(
-                <ModalBody>
-                  <div style={{height: 100}}>
+            <ModalStack activeDepth={this.state.activeDepth}>
+              <Modal
+                header={(
+                  <ModalHeader
+                    title="1st Level Modal"
+                    onClose={() => this.onClose.bind(this)(2)}
+                  />
+                )}
+                body={(
+                  <ModalBody>
                     <CallOutButton
                       label="Open 2nd Level Modal"
                       onClick={() => this.onOpen.bind(this)(3)}
                     />
-                  </div>
-                </ModalBody>
-              )}
-            />
-            <ModalOverlay
-              isOpen={this.state.isOpen3}
-              noBackground
-            >
+                  </ModalBody>
+                )}
+              />
               <Modal
-                isStacked
                 header={(
                   <ModalHeader
                     title="2nd Level Modal"
@@ -169,26 +185,20 @@ export default class ModalExample extends Component {
                   </ModalBody>
                 )}
               />
-              <ModalOverlay
-                isOpen={this.state.isOpen4}
-                noBackground
-              >
-                <Modal
-                  isStacked
-                  header={(
-                    <ModalHeader
-                      title="3rd Level Modal"
-                      onClose={() => this.onClose.bind(this)(4)}
-                    />
-                  )}
-                  body={(
-                    <ModalBody>
-                      <p>I am 3rd level modal.</p>
-                    </ModalBody>
-                  )}
-                />
-              </ModalOverlay>
-            </ModalOverlay>
+              <Modal
+                header={(
+                  <ModalHeader
+                    title="3rd Level Modal"
+                    onClose={() => this.onClose.bind(this)(4)}
+                  />
+                )}
+                body={(
+                  <ModalBody>
+                    <p>I am the 3rd level modal.</p>
+                  </ModalBody>
+                )}
+              />
+            </ModalStack>
           </ModalOverlay>
         </Example>
       </Page>
