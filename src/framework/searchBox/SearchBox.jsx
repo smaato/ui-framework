@@ -20,7 +20,7 @@ export default class SearchBox extends Component {
 
     // Otherwise, allow searching if isImmediate.
     if (this.props.isImmediate) {
-      this.search();
+      return this.search();
     }
   }
 

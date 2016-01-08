@@ -78,7 +78,7 @@ const components = [{
   component: ModalExample,
 }, {
   name: 'OrganizationSwitcher',
-  source: 'views/modal/OrganizationSwitcherExample.jsx',
+  source: 'views/organizationSwitcher/OrganizationSwitcherExample.jsx',
   component: OrganizationSwitcherExample,
 }, {
   name: 'SearchBox',

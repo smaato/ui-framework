@@ -1,5 +1,6 @@
 .appTitleContainer {
   position: relative;
+  line-height: $lineHeight;
 }
 
   .appTitleContainer__title {
@@ -10,7 +11,7 @@
 
   .appTitleContainer__target {
     position: absolute;
-    top: 7px;
+    top: -6px;
     left: 0;
     z-index: 10;
   }

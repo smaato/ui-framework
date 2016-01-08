@@ -3,7 +3,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-import  SearchBox from '../searchBox/SearchBox.jsx';
+import SearchBox from '../searchBox/SearchBox.jsx';
 
 export {
   default as OrganizationSwitcherItem,
