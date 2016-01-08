@@ -8,6 +8,7 @@ import {
   AppLogo,
   AppNav,
   AppTitle,
+  AppTitleContainer,
   Body,
   BodyPanel,
   BodyPanelItem,
@@ -28,7 +29,6 @@ import {
   GridKpiPositive,
   GridLoadingRow,
   GridRow,
-  GridSearch,
   HollowButton,
   Icon,
   IconCog,
@@ -40,7 +40,10 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  OrganizationSwitcher,
+  OrganizationSwitcherItem,
   PrimaryButton,
+  SearchBox,
   Spinner,
   StickyGrid,
   TextInput,
@@ -74,6 +77,9 @@ const components = [{
 }, {
   name: 'AppTitle',
   component: AppTitle,
+}, {
+  name: 'AppTitleContainer',
+  component: AppTitleContainer,
 }, {
   name: 'Body',
   component: Body,
@@ -135,9 +141,6 @@ const components = [{
   name: 'GridRow',
   component: GridRow,
 }, {
-  name: 'GridSearch',
-  component: GridSearch,
-}, {
   name: 'HollowButton',
   component: HollowButton,
 }, {
@@ -171,8 +174,17 @@ const components = [{
   name: 'ModalOverlay',
   component: ModalOverlay,
 }, {
+  name: 'OrganizationSwitcher',
+  component: OrganizationSwitcher,
+}, {
+  name: 'OrganizationSwitcherItem',
+  component: OrganizationSwitcherItem,
+}, {
   name: 'PrimaryButton',
   component: PrimaryButton,
+}, {
+  name: 'SearchBox',
+  component: SearchBox,
 }, {
   name: 'Spinner',
   component: Spinner,

@@ -22,9 +22,9 @@ import {
   GridKpiPositive,
   GridLoadingRow,
   GridRow,
-  GridSearch,
   IconCog,
   IconEllipsis,
+  SearchBox,
   StickyGrid,
 } from '../../../framework/framework';
 
@@ -672,7 +672,7 @@ export default class GridExample extends Component {
           onRemoveConditionChecker={this.onRemoveConditionChecker.bind(this)}
           onAddConditionChecker={this.onAddConditionChecker.bind(this)}
         />
-        <GridSearch
+        <SearchBox
           onSearch={this.onSearch.bind(this)}
         />
       </GridControls>

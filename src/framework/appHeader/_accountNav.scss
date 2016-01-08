@@ -2,15 +2,6 @@ $accountPicture_side: 22px;
 $accountNav_padding: 2px;
 $accountNav_height: $accountPicture_side + $accountNav_padding * 2;
 $accountNav_borderRadius: $accountNav_height / 2;
-$accountDropdownArrowSide: 7px;
-// Could be an overkill, but at least it is clear where this value comes from.
-// By applying resulted value to 'top' prop we can perfectly center vertically.
-// First find hypotenuse of the right-angled triangle
-$accountDropdownArrowHypotenuse: sqrt(2) * $accountDropdownArrowSide;
-// Divide hypotenuse by 4 to get a half of a projection of cathetus to hypotenuse.
-$accountDropdownTop: $accountDropdownArrowHypotenuse / 4;
-// So it is in the center of circle
-$accountNav_paddingRight: $accountNav_borderRadius - $accountDropdownArrowHypotenuse / 2;
 
 .accountNav {
   display: flex;
@@ -21,10 +12,10 @@ $accountNav_paddingRight: $accountNav_borderRadius - $accountDropdownArrowHypote
     display: inline-flex;
     align-items: center;
     color: $appHeaderNav_textColor;
-    padding: $accountNav_padding $accountNav_paddingRight $accountNav_padding $accountNav_padding;
+    padding: $accountNav_padding 8px $accountNav_padding $accountNav_padding;
     border-radius: $accountNav_borderRadius;
     font-size: 12px;
-    line-height: 1;
+    line-height: $lineHeight;
     cursor: pointer;
 
     &:hover {
@@ -35,7 +26,7 @@ $accountNav_paddingRight: $accountNav_borderRadius - $accountDropdownArrowHypote
 
     .accountNav__email {
       display: inline-block;
-      margin: 0 3px;
+      margin-left: 4px;
       cursor: pointer;
 
       @media #{$viewport_normalScreen} {
@@ -43,18 +34,18 @@ $accountNav_paddingRight: $accountNav_borderRadius - $accountDropdownArrowHypote
       }
     }
 
-    .accountDropdownArrow {
-      display: inline-block;
-      position: relative;
-      height: $accountDropdownArrowSide;
-      width: $accountDropdownArrowSide;
-      border: solid #ffffff;
-      transform: rotate(45deg);
-      border-width: 0 1px 1px 0;
-      top: -$accountDropdownTop;
+    // .accountDropdownArrow {
+    //   display: inline-block;
+    //   position: relative;
+    //   height: $accountDropdownArrowSide;
+    //   width: $accountDropdownArrowSide;
+    //   border: solid #ffffff;
+    //   transform: rotate(45deg);
+    //   border-width: 0 1px 1px 0;
+    //   top: -$accountDropdownTop;
 
-      &.is-account-dropdown-arrow-open {
-        border-width: 1px 0 0 1px;
-        top: $accountDropdownTop;
-      }
-    }
+    //   &.is-account-dropdown-arrow-open {
+    //     border-width: 1px 0 0 1px;
+    //     top: $accountDropdownTop;
+    //   }
+    // }
