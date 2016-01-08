@@ -14,17 +14,18 @@ export default class ModalStack extends Component {
 
   render() {
     const stackedModals = [];
+    const stackDepth = this.props.depth;
 
-    for (let depth = this.props.activeDepth; depth > 0; --depth) {
+    for (let modalDepth = stackDepth; modalDepth > 0; --modalDepth) {
       const modal = this.props.children.shift();
 
       const stackedModalClasses = classNames(
         'stackedModal',
-        `stackedModal--depth${depth}`
+        `stackedModal--depth${modalDepth}`
       );
 
       stackedModals.push(
-        <div className={stackedModalClasses} key={depth}>
+        <div className={stackedModalClasses} key={modalDepth}>
           {modal}
         </div>
       );
@@ -39,7 +40,7 @@ export default class ModalStack extends Component {
 }
 
 ModalStack.propTypes = {
-  activeDepth: PropTypes.number,
+  depth: PropTypes.number,
   children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.array,
@@ -47,5 +48,5 @@ ModalStack.propTypes = {
 };
 
 ModalStack.defaultProps = {
-  activeDepth: 1,
+  depth: 1,
 };

@@ -25,50 +25,53 @@ export default class ModalExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen1: false,
-      isOpen2: false,
+      // Map of modal ids to boolean
+      isOpen: {
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+      },
       stackIds: [2, 3, 4],
-      activeDepth: 1,
+      depth: 1,
     };
   }
 
   onOpen(modalId) {
-    const state = {};
-    state[`isOpen${modalId}`] = true;
-
-    state.activeDepth = 1;
-    this.state.stackIds.some((item, index)=>{
-      const depth = index + 1;
-      if (modalId === item) {
-        state.activeDepth = depth;
-        return true;
-      }
-      return false;
-    });
-
+    const state = {
+      isOpen: Object.assign({}, this.state.isOpen),
+    };
+    state.isOpen[modalId] = true;
+    state.depth = this.findActiveDepth(modalId);
     this.setState(state);
   }
 
   onClose(modalId) {
-    const state = {};
-    state[`isOpen${modalId}`] = false;
-
-    state.activeDepth = 1;
-    for (let index = this.state.stackIds.length; index > 0; --index) {
-      const stackedModalId = this.state.stackIds[index];
-      const depth = index + 1;
-      if (modalId === stackedModalId) {
-        state.activeDepth = depth - 1;
-      }
-    }
-
+    const state = {
+      isOpen: Object.assign({}, this.state.isOpen),
+    };
+    state.isOpen[modalId] = false;
+    state.depth = this.findActiveDepth(modalId, true);
     this.setState(state);
   }
 
   onSubmit(modalId) {
-    const state = {};
-    state[`isOpen${modalId}`] = false;
+    const state = {
+      isOpen: Object.assign({}, this.state.isOpen),
+    };
+    state.isOpen[modalId] = true;
     this.setState(state);
+  }
+
+  findActiveDepth(modalId, isClose) {
+    let newDepth = 1;
+    this.state.stackIds.some((stackedModalId, index)=>{
+      const depth = index + 1;
+      const isMatch = modalId === stackedModalId;
+      if (isMatch) newDepth = isClose ? depth - 1 : depth;
+      return isMatch;
+    });
+    return newDepth;
   }
 
   render() {
@@ -114,7 +117,7 @@ export default class ModalExample extends Component {
             onClick={() => this.onOpen.bind(this)(1)}
           />
           <ModalOverlay
-            isOpen={this.state.isOpen1}
+            isOpen={this.state.isOpen['1']}
           >
             <Modal
               header={(
@@ -150,9 +153,9 @@ export default class ModalExample extends Component {
             onClick={() => this.onOpen.bind(this)(2)}
           />
           <ModalOverlay
-            isOpen={this.state.isOpen2}
+            isOpen={this.state.isOpen['2']}
           >
-            <ModalStack activeDepth={this.state.activeDepth}>
+            <ModalStack depth={this.state.depth}>
               <Modal
                 header={(
                   <ModalHeader

@@ -1,19 +1,18 @@
 
+.modalStack {
+  position: relative;
+  width: 450px;
+  $modalStack_height: 450px;
+  height: $modalStack_height;
+  margin: auto;
+
+  .modal {
+    height: $modalStack_height;
+  }
+}
+
 .stackedModal {
-  /**
-   * 1. Center modal vertically and horizontally in IE11, and allow the container
-   *    to scroll if the modal is clipped.
-   */
-  display: flex; /* 1 */
-  flex-direction: column; /* 1 */
-  align-items: center; /* 1 */
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow-y: auto;
-  padding: 10px;
+  position: absolute;
 }
 
 .stackedModal--depth2 {
@@ -26,14 +25,4 @@
   margin-top: -80px;
   transform: scale(0.8, 0.8);
   opacity: 0.6;
-}
-
-.stackedModal--depth4 {
-  margin-top: -120px;
-  transform: scale(0.7, 0.7);
-  opacity: 0.4;
-}
-
-.stackedModal--depthMax {
-  display: none; // This way we can only see a max of 3 modals.
 }
