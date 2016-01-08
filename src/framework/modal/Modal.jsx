@@ -25,10 +25,6 @@ export {
   default as ModalStack,
 } from './ModalStack.jsx';
 
-export {
-  default as StackedModal,
-} from './StackedModal.jsx';
-
 const Modal = props => {
   const modalClasses = classNames('modal');
 

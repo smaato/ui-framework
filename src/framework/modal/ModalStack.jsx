@@ -4,7 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-import StackedModal from './StackedModal.jsx';
+import classNames from 'classnames';
 
 export default class ModalStack extends Component {
 
@@ -14,17 +14,19 @@ export default class ModalStack extends Component {
 
   render() {
     const stackedModals = [];
-    const children = this.props.children.slice();
 
     for (let depth = this.props.activeDepth; depth > 0; --depth) {
-      const modal = children.shift();
+      const modal = this.props.children.shift();
+
+      const stackedModalClasses = classNames(
+        'stackedModal',
+        `stackedModal--depth${depth}`
+      );
+
       stackedModals.push(
-        <StackedModal
-          depth={depth}
-          key={depth}
-        >
+        <div className={stackedModalClasses} key={depth}>
           {modal}
-        </StackedModal>
+        </div>
       );
     }
 
