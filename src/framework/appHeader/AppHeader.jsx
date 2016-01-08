@@ -24,6 +24,10 @@ export {
 } from './AppTitle.jsx';
 
 export {
+  default as AppHeaderButton,
+} from './AppHeaderButton.jsx';
+
+export {
   default as AppHeaderDivider,
 } from './AppHeaderDivider.jsx';
 
