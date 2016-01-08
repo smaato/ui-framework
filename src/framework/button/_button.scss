@@ -1,31 +1,8 @@
 
 $ctaButtonColor: #35d0a0;
-$appHeaderButtonColor: #445e6a;
 
 .button {
-  display: inline-flex;
-  align-items: center;
-  height: 30px;
-  padding: 0 11px;
-  font-size: 12px;
-  line-height: $lineHeight;
-  font-weight: 400;
-  opacity: 1;
-  border-radius: 3px;
-  border: 1px solid transparent;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  transition: 0.1s all ease-in-out;
-  cursor: pointer;
-
-  &:hover {
-    opacity: 0.95;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  }
-
-  &.is-button-disabled {
-    pointer-events: none;
-    opacity: 0.5;
-  }
+  @include button;
 }
 
   .button__icon {
@@ -68,11 +45,4 @@ $appHeaderButtonColor: #445e6a;
   background: $ctaButtonColor;
   color: #ffffff;
   border-color: $ctaButtonColor;
-}
-
-.button--appHeader {
-  margin-left: 5px;
-  background: $appHeaderButtonColor;
-  color: #ffffff;
-  border-color: $appHeaderButtonColor;
 }

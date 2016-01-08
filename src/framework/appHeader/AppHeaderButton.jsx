@@ -2,10 +2,10 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import Button from './Button.jsx';
+import Button from '../button/Button.jsx';
 
 const AppHeaderButton = props => {
-  const classes = classNames('button--appHeader', props.classes);
+  const classes = classNames('appHeaderButton', props.classes);
 
   const extendedProps = Object.assign({}, props, {
     classes: classes,

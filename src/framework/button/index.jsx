@@ -4,10 +4,6 @@ export {
 } from './Button.jsx';
 
 export {
-  default as AppHeaderButton,
-} from './AppHeaderButton.jsx';
-
-export {
   default as CallOutButton,
 } from './CallOutButton.jsx';
 
