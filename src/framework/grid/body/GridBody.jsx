@@ -16,6 +16,28 @@ const GridBody = props => {
     props.classBody
   );
 
+  let fakePrecedingRows;
+  if (props.firstRecycledRowOffset) {
+    fakePrecedingRows = (
+      <tr>
+        <td colSpan={props.columnsCount}>
+          <div style={{minHeight: props.firstRecycledRowOffset}}></div>
+        </td>
+      </tr>
+    );
+  }
+
+  let fakeFollowingRows;
+  if (props.lastRecycledRowOffset) {
+    fakeFollowingRows = (
+      <tr>
+        <td colSpan={props.columnsCount}>
+          <div style={{minHeight: props.lastRecycledRowOffset}}></div>
+        </td>
+      </tr>
+    );
+  }
+
   return (
     <tbody className={sectionClass}>
       {/* A row to indicate initial loading progress */}
@@ -25,21 +47,13 @@ const GridBody = props => {
       {emptyRow}
 
       {/* Fake the preceding rows */}
-      <tr>
-        <td colSpan={props.columnsCount}>
-          <div style={{minHeight: props.firstRecycledRowOffset}}></div>
-        </td>
-      </tr>
+      {fakePrecedingRows}
 
       {/* Recycled rows */}
       {props.children}
 
       {/* Fake the following rows */}
-      <tr>
-        <td colSpan={props.columnsCount}>
-          <div style={{minHeight: props.lastRecycledRowOffset}}></div>
-        </td>
-      </tr>
+      {fakeFollowingRows}
 
       {/* A row to indicate loading progress */}
       {loadingRow}

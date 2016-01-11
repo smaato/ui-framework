@@ -53,10 +53,6 @@ export {
 } from './controls/GridControls.jsx';
 
 export {
-  default as GridSearch,
-} from './controls/search/GridSearch.jsx';
-
-export {
   default as StickyGrid,
 } from './stickyGrid/StickyGrid.jsx';
 

@@ -12,6 +12,7 @@ import {
   AccountNav,
   AccountPicture,
   AppHeader,
+  AppHeaderButton,
   AppLogo,
   AppNav,
   AppTitle,
@@ -74,6 +75,8 @@ export default class AppHeaderExample extends Component {
                 email="han.solo@smaato.com"
                 onClick={this.onAccountNavClick.bind(this)}
                 isOpen={this.state.isAccountNavOpen}
+                disableDropdown
+                right={<AppHeaderButton label="Logout"/>}
               />
             }
           />

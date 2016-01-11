@@ -12,6 +12,16 @@
     font-weight: 400;
   }
 
+  /**
+  * 1. Align icon with title text.
+  */
+  .modalHeader__icon {
+    display: inline-flex;
+    vertical-align: bottom; /* 1 */
+    opacity: 0.75;
+    margin-right: 5px;
+  }
+
   .modalHeader__closeButton {
     $closeButtonSide: 20px;
     position: relative;

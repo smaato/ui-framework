@@ -1,0 +1,73 @@
+$organizationSwitcher_padding: 12px;
+
+.organizationSwitcher {
+  border: 1px solid #d4dadc;
+  background-color: #fafdfe;
+  width: 350px;
+  font-size: 12px;
+  box-shadow: 0 4px 22px rgba(black, 0.1);
+}
+
+  .organizationSwitcher__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+    padding: 0 $organizationSwitcher_padding;
+    line-height: $lineHeight;
+    text-transform: uppercase;
+    background-color: #ecf1f3;
+    border-bottom: 1px solid #d7dddf;
+    color: #344952;
+    font-size: 11px;
+  }
+
+    .organizationSwitcher__closeButton {
+      $closeButtonSide: 20px;
+      position: relative;
+      width: $closeButtonSide;
+      height: $closeButtonSide;
+      color: #517582;
+      cursor: pointer;
+
+      &:before,
+      &:after {
+        $closeButtonLine_width: 1px;
+        $closeButtonLine_height: 10px;
+        content: '';
+        width: $closeButtonLine_width;
+        height: $closeButtonLine_height;
+        background-color: #517582;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -$closeButtonLine_height / 2;
+        margin-left: -$closeButtonLine_width / 2;
+      }
+
+      &:before {
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        transform: rotate(-45deg);
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+  .organizationSwitcher__body {
+    padding: 8px $organizationSwitcher_padding $organizationSwitcher_padding;
+  }
+
+    .organizationSwitcher__search {
+      margin-bottom: 8px;
+    }
+
+    .organizationSwitcher__list {
+      max-height: calc(100vh - 115px);
+      overflow-y: auto;
+      border: 1px solid #d1d8da;
+    }

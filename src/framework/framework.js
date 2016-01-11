@@ -46,6 +46,14 @@ export { default as Spinner } from './spinner/Spinner.jsx';
 export * from './modal/Modal.jsx';
 export { default as Modal } from './modal/Modal.jsx';
 
+export * from './organizationSwitcher/OrganizationSwitcher.jsx';
+export {
+  default as OrganizationSwitcher,
+} from './organizationSwitcher/OrganizationSwitcher.jsx';
+
+export * from './searchBox/SearchBox.jsx';
+export { default as SearchBox } from './searchBox/SearchBox.jsx';
+
 export * from './text/Text.jsx';
 export { default as Text } from './text/Text.jsx';
 

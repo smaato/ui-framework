@@ -1,0 +1,53 @@
+
+.organizationSwitcherItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 32px;
+  padding: 0 10px;
+  line-height: $lineHeight;
+  background-color: #fafdfe;
+  border: solid #d1d8da;
+  border-width: 1px 0;
+
+  &:first-child {
+    border-top: 0;
+  }
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  & + & {
+    border-top: 0;
+  }
+}
+
+  .organizationSwitcherItem__name {
+    flex: 2 1 0%;
+    font-weight: 700;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .organizationSwitcherItem__id {
+    flex: 1 1 0%;
+    padding: 0 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .organizationSwitcherItem__switch {
+    flex: 1 1 0%;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: right;
+    color: #2799c4;
+  }
+
+    .organizationSwitcherItem__switchButton {
+      cursor: pointer;
+    }

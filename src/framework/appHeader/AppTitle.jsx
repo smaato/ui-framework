@@ -6,7 +6,8 @@ import React, {
 const AppTitle = props => {
   return (
     <div
-      className="appTitle">
+      className="appTitle"
+    >
       {props.text}
     </div>
   );

@@ -34,20 +34,11 @@ describe('CheckBox', () => {
       });
 
       describe('when set', () => {
-        it('to true input is checked', () => {
+        it('input is checked', () => {
           const testCase = TestCaseFactory.createFromElement(
             <CheckBox id="id" checked />
           );
           expect(testCase.first('input').checked).toBe(true);
-        });
-      });
-
-      describe('when set', () => {
-        it('to false input is unchecked', () => {
-          const testCase = TestCaseFactory.createFromElement(
-            <CheckBox id="id" checked={false} />
-          );
-          expect(testCase.first('input').checked).toBe(false);
         });
       });
     });
