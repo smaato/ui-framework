@@ -57,6 +57,7 @@ export default class ModalExample extends Component {
           </ModalBody>
         )}
         key={11}
+        onClick={() => this.onPrevModalClick.bind(this)(12)}
       />,
       <Modal
         header={(
@@ -74,6 +75,7 @@ export default class ModalExample extends Component {
           </ModalBody>
         )}
         key={12}
+        onClick={() => this.onPrevModalClick.bind(this)(13)}
       />,
       <Modal
         header={(
@@ -108,6 +110,7 @@ export default class ModalExample extends Component {
           </ModalBody>
         )}
         key={21}
+        onClick={() => this.onPrevModalClick.bind(this)(22)}
       />,
       <Modal
         header={(
@@ -125,6 +128,7 @@ export default class ModalExample extends Component {
           </ModalBody>
         )}
         key={22}
+        onClick={() => this.onPrevModalClick.bind(this)(23)}
       />,
       <Modal
         header={(
@@ -159,6 +163,10 @@ export default class ModalExample extends Component {
     state.stackDepth1 = this.findStackDepth(this.state.stackIds1, modalId, true);
     state.stackDepth2 = this.findStackDepth(this.state.stackIds2, modalId, true);
     this.setState(state);
+  }
+
+  onPrevModalClick(currentModalId) {
+    this.state.isOpen[currentModalId] ? this.onClose(currentModalId) : null;
   }
 
   onSubmit(modalId) {
