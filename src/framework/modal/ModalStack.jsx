@@ -4,6 +4,8 @@ import React, {
   PropTypes,
 } from 'react';
 
+import $ from 'jquery';
+
 import classNames from 'classnames';
 
 export default class ModalStack extends Component {
@@ -12,24 +14,50 @@ export default class ModalStack extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.calcDimentions();
+  }
+
+  componentDidUpdate() {
+    this.calcDimentions();
+  }
+
+  calcDimentions() {
+    const $topModal = $(this.refs.stackedModalDepth1).find('.modal');
+    const $stack = $(this.refs.modalStack);
+    // Measure
+    $topModal.height('auto');
+    const modalHeight = $topModal.outerHeight();
+    const modalWidth = $topModal.outerWidth();
+    $topModal.height('');
+    // Set
+    $stack
+      .outerHeight(modalHeight)
+      .outerWidth(modalWidth);
+  }
+
   render() {
-    const numberModals = this.props.children.length;
+    const modalCount = this.props.children.length;
     const stackedModals = this.props.children.map((modal, index) => {
-      const depth = numberModals - index;
+      const depth = modalCount - index;
       const stackedModalClasses = classNames(
         'stackedModal',
         `stackedModal--depth${depth}`
       );
 
       return (
-        <div className={stackedModalClasses} key={index}>
+        <div
+          className={stackedModalClasses}
+          key={index}
+          ref={`stackedModalDepth${depth}`}
+        >
           {modal}
         </div>
       );
     });
 
     return (
-      <div className="modalStack">
+      <div className="modalStack" ref="modalStack">
         {stackedModals}
       </div>
     );
