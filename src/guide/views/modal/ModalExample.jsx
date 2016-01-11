@@ -88,7 +88,7 @@ export default class ModalExample extends Component {
           </ModalBody>
         )}
         key={14}
-      />
+      />,
     ];
 
     this.stackModals2 = [
@@ -139,7 +139,7 @@ export default class ModalExample extends Component {
           </ModalBody>
         )}
         key={23}
-      />
+      />,
     ];
   }
 
@@ -165,6 +165,11 @@ export default class ModalExample extends Component {
     this.onClose(modalId);
   }
 
+  getOpenStackedModals(stackModals, depth) {
+    const openModals = stackModals.slice(0, depth);
+    return openModals;
+  }
+
   findStackDepth(stack, modalId, isClose) {
     let newDepth = 1;
     stack.some((stackedModalId, index)=>{
@@ -174,11 +179,6 @@ export default class ModalExample extends Component {
       return isMatch;
     });
     return newDepth;
-  }
-
-  getOpenStackedModals(stackModals, depth) {
-    const openModals = stackModals.slice(0, depth);
-    return openModals;
   }
 
   render() {
