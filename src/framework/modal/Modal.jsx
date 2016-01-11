@@ -25,7 +25,7 @@ export {
 
 const Modal = props => {
   return (
-    <div className="modal" onClick={props.onClick}>
+    <div className="modal">
       {props.header}
       {props.body}
       {props.footer}
@@ -37,7 +37,6 @@ Modal.propTypes = {
   header: PropTypes.element,
   body: PropTypes.element.isRequired,
   footer: PropTypes.element,
-  onClick: PropTypes.func,
 };
 
 export default Modal;

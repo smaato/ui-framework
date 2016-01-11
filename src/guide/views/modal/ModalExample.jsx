@@ -7,8 +7,6 @@ import Page, {
   Example,
 } from '../../components/page/Page.jsx';
 
-import $ from 'jquery';
-
 import {
   CallOutButton,
   HollowButton,
@@ -27,227 +25,100 @@ export default class ModalExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // Map of modal ids to modal isOpen state
-      isOpen: {
-        1: false,
-        11: true,
-        12: false,
-        13: false,
-        14: false,
-        21: false,
-        22: false,
-        23: false,
-      },
-      // Map of stack index to stack depth
-      stackDepth: [
-        1,
-        0,
-      ],
+      isModalOpen: false,
+      isModalStackOpen: false,
+      stackedModalCount: 0,
     };
-    this.stacks = [
-      {
-        ids: [11, 12, 13, 14],
-        modals: [
-          <Modal
-            header={(
-              <ModalHeader
-                title="1st Level Modal"
-              />
-            )}
-            body={(
-              <ModalBody>
-                <CallOutButton
-                  label="Open 2nd Level Modal"
-                  onClick={() => this.onOpen.bind(this)(12)}
-                />
-              </ModalBody>
-            )}
-            key={11}
-            onClick={() => this.onPrevModalClick.bind(this)(12)}
-          />,
-          <Modal
-            header={(
-              <ModalHeader
-                title="2nd Level Modal"
-                onClose={() => this.onClose.bind(this)(12)}
-              />
-            )}
-            body={(
-              <ModalBody>
-                <CallOutButton
-                  label="Open 3rd Level Modal"
-                  onClick={() => this.onOpen.bind(this)(13)}
-                />
-              </ModalBody>
-            )}
-            key={12}
-            onClick={() => this.onPrevModalClick.bind(this)(13)}
-          />,
-          <Modal
-            header={(
-              <ModalHeader
-                title="3rd Level Modal"
-                onClose={() => this.onClose.bind(this)(13)}
-              />
-            )}
-            body={(
-              <ModalBody>
-                <CallOutButton
-                  label="Open 3rd Level Modal"
-                  onClick={() => this.onOpen.bind(this)(14)}
-                />
-              </ModalBody>
-            )}
-            key={14}
-          />,
-          <Modal
-            header={(
-              <ModalHeader
-                title="4th Level Modal"
-                onClose={() => this.onClose.bind(this)(14)}
-              />
-            )}
-            body={(
-              <ModalBody>
-                <p>I am the 4rd level modal.</p>
-              </ModalBody>
-            )}
-            key={15}
-          />,
-        ],
-      },
-      {
-        ids: [21, 22, 23],
-        modals: [
-          <Modal
-            header={(
-              <ModalHeader
-                title="1st Level Modal"
-                onClose={() => this.onClose.bind(this)(21)}
-              />
-            )}
-            body={(
-              <ModalBody>
-                <CallOutButton
-                  label="Open 2nd Level Modal"
-                  onClick={() => this.onOpen.bind(this)(22)}
-                />
-              </ModalBody>
-            )}
-            key={21}
-            onClick={() => this.onPrevModalClick.bind(this)(22)}
-          />,
-          <Modal
-            header={(
-              <ModalHeader
-                title="2nd Level Modal"
-                onClose={() => this.onClose.bind(this)(22)}
-              />
-            )}
-            body={(
-              <ModalBody>
-                <CallOutButton
-                  label="Open 3rd Level Modal"
-                  onClick={() => this.onOpen.bind(this)(23)}
-                />
-              </ModalBody>
-            )}
-            key={22}
-            onClick={() => this.onPrevModalClick.bind(this)(23)}
-          />,
-          <Modal
-            header={(
-              <ModalHeader
-                title="3rd Level Modal"
-                onClose={() => this.onClose.bind(this)(23)}
-              />
-            )}
-            body={(
-              <ModalBody>
-                <p>I am the 3rd level modal.</p>
-              </ModalBody>
-            )}
-            key={23}
-          />,
-        ],
-      },
+  }
+
+  onOpenModal() {
+    this.setState({
+      isModalOpen: true,
+    });
+  }
+
+  onCloseModal() {
+    this.setState({
+      isModalOpen: false,
+    });
+  }
+
+  addModalToStack() {
+    this.setState({
+      isModalStackOpen: true,
+      stackedModalCount: this.state.stackedModalCount + 1,
+    });
+  }
+
+  removeModalFromStack() {
+    const modalCount = this.state.stackedModalCount - 1;
+    this.setState({
+      isModalStackOpen: modalCount !== 0,
+      stackedModalCount: modalCount,
+    });
+  }
+
+  renderModalStack() {
+    const modalStackSequence = [
+      <Modal
+        header={(
+          <ModalHeader
+            title="1st Level Modal"
+            onClose={this.removeModalFromStack.bind(this)}
+          />
+        )}
+        body={(
+          <ModalBody>
+            <CallOutButton
+              label="Open 2nd Level Modal"
+              onClick={this.addModalToStack.bind(this)}
+            />
+          </ModalBody>
+        )}
+        key={0}
+      />,
+
+      <Modal
+        header={(
+          <ModalHeader
+            title="2nd Level Modal"
+            onClose={this.removeModalFromStack.bind(this)}
+          />
+        )}
+        body={(
+          <ModalBody>
+            <CallOutButton
+              label="Open 3rd Level Modal"
+              onClick={this.addModalToStack.bind(this)}
+            />
+          </ModalBody>
+        )}
+        key={1}
+      />,
+
+      <Modal
+        header={(
+          <ModalHeader
+            title="3rd Level Modal"
+            onClose={this.removeModalFromStack.bind(this)}
+          />
+        )}
+        body={(
+          <ModalBody>
+            <p>I am the 3rd level modal.</p>
+          </ModalBody>
+        )}
+        key={2}
+      />,
     ];
-  }
 
-  onOpen(modalId) {
-    this.calcOpenStates(modalId);
-  }
+    const stackedModals = [];
 
-  onClose(modalId) {
-    this.calcOpenStates(modalId, true);
-  }
+    for (let i = 0; i < this.state.stackedModalCount; i++) {
+      stackedModals.push(modalStackSequence[i]);
+    }
 
-  onPrevModalClick(currentModalId) {
-    this.state.isOpen[currentModalId] ? this.onClose(currentModalId) : null;
-  }
-
-  onSubmit(modalId) {
-    this.calcOpenStates(modalId, true);
-  }
-
-  getOpenStackedModals(stackIndex) {
-    const stackModals = this.stacks[stackIndex].modals;
-    const depth = this.state.stackDepth[stackIndex];
-    const openModals = stackModals.slice(0, depth);
-    return openModals;
-  }
-
-  calcOpenStates(modalId, isClose = false) {
-    const state = $.extend(true, {}, this.state);
-    state.isOpen[modalId] = false;
-    this.updateStackState(state, modalId, isClose);
-    this.setState(state);
-  }
-
-  findStackDepth(stackModalIds, modalId, isClose) {
-    let newDepth = 1;
-    stackModalIds.some((stackModalId, index)=>{
-      const depth = index + 1;
-      const isMatch = modalId === stackModalId;
-      if (isMatch) newDepth = isClose ? depth - 1 : depth;
-      return isMatch;
-    });
-    return newDepth;
-  }
-
-  findStackIndexById(stacks, modalId) {
-    let currentStackIndex;
-    stacks.some((stack, stackIndex) => {
-      const isIdInStack = stack.ids
-        .some(stackModalId => stackModalId === modalId);
-      if (isIdInStack) {
-        currentStackIndex = stackIndex;
-      }
-      return isIdInStack;
-    });
-    return currentStackIndex;
-  }
-
-  updateStackOpenState(stackModalIds, stackDepth, isOpenObj) {
-    stackModalIds.forEach((stackModalId, index) => {
-      const depth = index + 1;
-      const isOpen = depth <= stackDepth;
-      isOpenObj[stackModalId] = isOpen;
-    });
-  }
-
-  updateStackState(state, modalId, isClose) {
-    const currentStack = this.findStackIndexById(this.stacks, modalId);
-    state.stackDepth[currentStack] = this.findStackDepth(
-      this.stacks[currentStack].ids,
-      modalId,
-      isClose
-    );
-    this.updateStackOpenState(
-      this.stacks[currentStack].ids,
-      state.stackDepth[currentStack],
-      state.isOpen
-    );
+    return stackedModals;
   }
 
   render() {
@@ -290,16 +161,16 @@ export default class ModalExample extends Component {
         <Example title="In ModalOverlay">
           <CallOutButton
             label="Open Modal"
-            onClick={() => this.onOpen.bind(this)(1)}
+            onClick={this.onOpenModal.bind(this)}
           />
           <ModalOverlay
-            isOpen={this.state.isOpen[1]}
+            isOpen={this.state.isModalOpen}
           >
             <Modal
               header={(
                 <ModalHeader
                   title="Modal Title"
-                  onClose={() => this.onClose.bind(this)(1)}
+                  onClose={this.onCloseModal.bind(this)}
                 />
               )}
               body={(
@@ -311,11 +182,10 @@ export default class ModalExample extends Component {
                 <ModalFooter>
                   <HollowButton
                     label="Cancel"
-                    onClick={() => this.onClose.bind(this)(1)}
+                    onClick={this.onCloseModal.bind(this)}
                   />
                   <PrimaryButton
                     label="Submit"
-                    onClick={() => this.onSubmit.bind(this)(1)}
                   />
                 </ModalFooter>
               )}
@@ -323,22 +193,16 @@ export default class ModalExample extends Component {
           </ModalOverlay>
         </Example>
 
-        <Example title="ModalStack" isClear>
-          <ModalStack>
-            {this.getOpenStackedModals(0)}
-          </ModalStack>
-        </Example>
-
-        <Example title="ModalStack in ModalOverlay">
+        <Example title="ModalStack">
           <CallOutButton
-            label="Open 1st Level Modal"
-            onClick={() => this.onOpen.bind(this)(21)}
+            label="Open ModalStack"
+            onClick={this.addModalToStack.bind(this)}
           />
           <ModalOverlay
-            isOpen={this.state.isOpen[21]}
+            isOpen={this.state.isModalStackOpen}
           >
             <ModalStack>
-              {this.getOpenStackedModals(1)}
+              {this.renderModalStack()}
             </ModalStack>
           </ModalOverlay>
         </Example>
