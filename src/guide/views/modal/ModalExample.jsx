@@ -33,6 +33,7 @@ export default class ModalExample extends Component {
         11: true,
         12: false,
         13: false,
+        14: false,
         21: false,
         22: false,
         23: false,
@@ -45,7 +46,7 @@ export default class ModalExample extends Component {
     };
     this.stacks = [
       {
-        ids: [11, 12, 13],
+        ids: [11, 12, 13, 14],
         modals: [
           <Modal
             header={(
@@ -91,10 +92,27 @@ export default class ModalExample extends Component {
             )}
             body={(
               <ModalBody>
-                <p>I am the 3rd level modal.</p>
+                <CallOutButton
+                  label="Open 3rd Level Modal"
+                  onClick={() => this.onOpen.bind(this)(14)}
+                />
               </ModalBody>
             )}
             key={14}
+          />,
+          <Modal
+            header={(
+              <ModalHeader
+                title="4th Level Modal"
+                onClose={() => this.onClose.bind(this)(14)}
+              />
+            )}
+            body={(
+              <ModalBody>
+                <p>I am the 4rd level modal.</p>
+              </ModalBody>
+            )}
+            key={15}
           />,
         ],
       },

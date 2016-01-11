@@ -40,9 +40,10 @@ export default class ModalStack extends Component {
     const modalCount = this.props.children.length;
     const stackedModals = this.props.children.map((modal, index) => {
       const depth = modalCount - index;
+      const isDepthMax = depth > 3;
       const stackedModalClasses = classNames(
         'stackedModal',
-        `stackedModal--depth${depth}`
+        isDepthMax ? 'stackedModal--depthMax' : `stackedModal--depth${depth}`
       );
 
       return (
