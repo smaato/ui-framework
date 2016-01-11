@@ -105,10 +105,28 @@ export default class ModalExample extends Component {
         )}
         body={(
           <ModalBody>
-            <p>I am the 3rd level modal.</p>
+            <CallOutButton
+              label="Open 4th Level Modal"
+              onClick={this.addModalToStack.bind(this)}
+            />
           </ModalBody>
         )}
         key={2}
+      />,
+
+      <Modal
+        header={(
+          <ModalHeader
+            title="4th Level Modal"
+            onClose={this.removeModalFromStack.bind(this)}
+          />
+        )}
+        body={(
+          <ModalBody>
+            <p>Notice that the first level modal is no longer visible.</p>
+          </ModalBody>
+        )}
+        key={3}
       />,
     ];
 
