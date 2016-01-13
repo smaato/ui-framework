@@ -22,6 +22,9 @@ export default class ModalStack extends Component {
     this.calcDimentions();
   }
 
+  /* CSS styles position the stackedModal wrapper components absolutely,
+  so we need to use the top-most modal's dimensions as the source of truth
+  for the ModalStack's dimensions */
   calcDimentions() {
     const $topModal = $(this.refs.stackedModalDepth1).find('.modal');
     const $stack = $(this.refs.modalStack);
