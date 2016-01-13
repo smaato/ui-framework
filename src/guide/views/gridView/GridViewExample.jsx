@@ -281,9 +281,9 @@ export default class GridViewExample extends Component {
                 Actions
               </a>
             </div>
-            <label className="gridSearch">
-              <input type="text" className="gridSearch__input"/>
-              <span className="icon glyphicons-search gridSearch__icon"/>
+            <label className="searchBox">
+              <input type="text" className="searchBox__input"/>
+              <span className="icon glyphicons-search searchBox__icon"/>
             </label>
           </div>
 

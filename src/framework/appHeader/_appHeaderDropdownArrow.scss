@@ -1,0 +1,24 @@
+$appHeaderDropdownArrowSide: 7px;
+// Could be an overkill, but at least it is clear where this value comes from.
+// By applying resulted value to 'top' prop we can perfectly center vertically.
+// First find hypotenuse of the right-angled triangle
+$appHeaderDropdownArrowHypotenuse: sqrt(2) * $appHeaderDropdownArrowSide;
+// Divide hypotenuse by 4 to get a half of a projection of cathetus to hypotenuse.
+$appHeaderDropdownArrowTop: $appHeaderDropdownArrowHypotenuse / 4;
+
+.appHeaderDropdownArrow {
+  display: inline-block;
+  position: relative;
+  height: $appHeaderDropdownArrowSide;
+  width: $appHeaderDropdownArrowSide;
+  border: solid #ffffff;
+  transform: rotate(45deg);
+  border-width: 0 1px 1px 0;
+  top: -$appHeaderDropdownArrowTop;
+  margin-left: 4px;
+
+  &.is-app-header-dropdown-arrow-open {
+    border-width: 1px 0 0 1px;
+    top: $appHeaderDropdownArrowTop;
+  }
+}

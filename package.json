@@ -1,7 +1,7 @@
 {
   "name": "ui-framework",
   "private": true,
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Smaato UI Framework",
   "main": "src/framework/framework.js",
   "browserify": {
@@ -24,7 +24,7 @@
     "react-dom": "0.14.0",
     "react-redux": "2.1.2",
     "react-router": "1.0.0-rc3",
-    "react-test-kit": "git@github.com:SmaatoUI/react-test-kit.git#v0.0.3",
+    "react-test-kit": "git@github.com:SmaatoUI/react-test-kit.git#v0.0.4",
     "redux": "3.0.0",
     "redux-form": "2.1.0",
     "redux-router": "1.0.0-beta3",
