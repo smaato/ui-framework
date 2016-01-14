@@ -1,5 +1,6 @@
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { TestCaseFactory } from 'react-test-kit';
 import ModalOverlay from './ModalOverlay.jsx';
 
@@ -15,25 +16,19 @@ describe('ModalOverlay', () => {
         expect(testCase.first('#item').textContent).toBe('item');
       });
     });
+  });
 
-    describe('isOpen', () => {
-      it('when true, adds the appropriate class to the element', () => {
-        const props = {
-          isOpen: true,
-        };
-        const testCase = TestCaseFactory.createFromClass(ModalOverlay, props);
-        expect(testCase.dom.getAttribute('class')
-          .indexOf('is-modal-overlay-open') !== -1).toBe(true);
-      });
+  describe('\'s is-modal-overlay-open class', () => {
+    it('is added on body when mounted', () => {
+      expect(document.body.getAttribute('class'))
+        .toContain('is-modal-overlay-open');
+    });
 
-      it('when false, doesn\'t add the appropriate class to the element', () => {
-        const props = {
-          isOpen: false,
-        };
-        const testCase = TestCaseFactory.createFromClass(ModalOverlay, props);
-        expect(testCase.dom.getAttribute('class')
-          .indexOf('is-modal-overlay-open') === -1).toBe(true);
-      });
+    it('is removed from body when unmounted', () => {
+      ReactDOM.render(<ModalOverlay/>, document.body);
+      ReactDOM.unmountComponentAtNode(document.body);
+      expect(document.body.getAttribute('class'))
+        .not.toContain('is-modal-overlay-open');
     });
   });
 });

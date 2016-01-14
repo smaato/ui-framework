@@ -4,7 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-import classNames from 'classnames';
+import $ from 'jquery';
 
 export default class ModalOverlay extends Component {
 
@@ -12,13 +12,17 @@ export default class ModalOverlay extends Component {
     super(props);
   }
 
-  render() {
-    const overlayClasses = classNames('modalOverlay', {
-      'is-modal-overlay-open': this.props.isOpen,
-    });
+  componentWillMount() {
+    $('body').addClass('is-modal-overlay-open');
+  }
 
+  componentWillUnmount() {
+    $('body').removeClass('is-modal-overlay-open');
+  }
+
+  render() {
     return (
-      <div className={overlayClasses}>
+      <div className="modalOverlay">
         {this.props.children}
       </div>
     );
@@ -26,6 +30,5 @@ export default class ModalOverlay extends Component {
 }
 
 ModalOverlay.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
   children: PropTypes.element.isRequired,
 };

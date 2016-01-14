@@ -7,6 +7,8 @@ import Page, {
   Example,
 } from '../../components/page/Page.jsx';
 
+import Portal from 'react-portal';
+
 import {
   CallOutButton,
   HollowButton,
@@ -88,35 +90,35 @@ export default class ModalExample extends Component {
             label="Open Modal"
             onClick={() => this.onOpen.bind(this)(1)}
           />
-          <ModalOverlay
-            isOpen={this.state.isOpen1}
-          >
-            <Modal
-              header={(
-                <ModalHeader
-                  title="Modal Title"
-                  onClose={() => this.onClose.bind(this)(1)}
-                />
-              )}
-              body={(
-                <ModalBody>
-                  <div style={{height: 400}}></div>
-                </ModalBody>
-              )}
-              footer={(
-                <ModalFooter>
-                  <HollowButton
-                    label="Cancel"
-                    onClick={() => this.onClose.bind(this)(1)}
+          <Portal isOpened={this.state.isOpen1}>
+            <ModalOverlay>
+              <Modal
+                header={(
+                  <ModalHeader
+                    title="Modal Title"
+                    onClose={() => this.onClose.bind(this)(1)}
                   />
-                  <PrimaryButton
-                    label="Submit"
-                    onClick={() => this.onSubmit.bind(this)(1)}
-                  />
-                </ModalFooter>
-              )}
-            />
-          </ModalOverlay>
+                )}
+                body={(
+                  <ModalBody>
+                    <div style={{height: 400}}></div>
+                  </ModalBody>
+                )}
+                footer={(
+                  <ModalFooter>
+                    <HollowButton
+                      label="Cancel"
+                      onClick={() => this.onClose.bind(this)(1)}
+                    />
+                    <PrimaryButton
+                      label="Submit"
+                      onClick={() => this.onSubmit.bind(this)(1)}
+                    />
+                  </ModalFooter>
+                )}
+              />
+            </ModalOverlay>
+          </Portal>
         </Example>
       </Page>
     );
