@@ -11,7 +11,7 @@ describe('OrganizationSwitcher', () => {
           title: 'Title text',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(OrganizationSwitcher, props);
+        const testCase = TestCaseFactory.createFromClass(OrganizationSwitcher, props);
         const titleEl = testCase.first('.organizationSwitcher__title');
         expect(titleEl.textContent).toContain(props.title);
       });
@@ -24,7 +24,7 @@ describe('OrganizationSwitcher', () => {
           searchPrompt: 'Search placeholder',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(OrganizationSwitcher, props);
+        const testCase = TestCaseFactory.createFromClass(OrganizationSwitcher, props);
         const inputEl = testCase.first('input');
         expect(inputEl.getAttribute('placeholder')).toBe(props.searchPrompt);
       });
@@ -36,7 +36,7 @@ describe('OrganizationSwitcher', () => {
           onClose: jasmine.createSpy('onClose'),
         };
 
-        const testCase = TestCaseFactory.createFromFunction(OrganizationSwitcher, props);
+        const testCase = TestCaseFactory.createFromClass(OrganizationSwitcher, props);
         expect(props.onClose).not.toHaveBeenCalled();
         const closeButtonEl = testCase.first('.organizationSwitcher__closeButton');
         testCase.trigger('click', closeButtonEl);
@@ -50,13 +50,13 @@ describe('OrganizationSwitcher', () => {
           onSearch: () => {},
         };
 
-        const testCase = TestCaseFactory.createFromFunction(OrganizationSwitcher, props);
+        const testCase = TestCaseFactory.createFromClass(OrganizationSwitcher, props);
         const searchBox = testCase.findComponents(SearchBox);
         expect(searchBox.length).toBe(1);
       });
 
       it('doesn\'t create a SearchBox component when not present', () => {
-        const testCase = TestCaseFactory.createFromFunction(OrganizationSwitcher);
+        const testCase = TestCaseFactory.createFromClass(OrganizationSwitcher);
         const searchBox = testCase.findComponents(SearchBox);
         expect(searchBox.length).toBe(0);
       });
