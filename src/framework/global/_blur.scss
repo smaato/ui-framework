@@ -1,0 +1,16 @@
+$blurFilterValue: 2px;
+
+body {
+  &.is-modal-overlay-open {
+    /* For this to work as intended modal overlay element must be outside .app */
+    .app {
+      filter: blur($blurFilterValue);
+    }
+  }
+
+  &.is-organization-switcher-open {
+    .bodyPanel {
+      filter: blur($blurFilterValue);
+    }
+  }
+}
