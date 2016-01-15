@@ -3,22 +3,20 @@ import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
 import ModalStack from './ModalStack.jsx';
 
-const children = (
-  <div>
-    <div className="modal1"></div>
-    <div className="modal2"></div>
-    <div className="modal3"></div>
-    <div className="modal4"></div>
-    <div className="modal5"></div>
-  </div>
-);
+const children = [
+  <div className="modal1" key="0"></div>,
+  <div className="modal2" key="1"></div>,
+  <div className="modal3" key="2"></div>,
+  <div className="modal4" key="3"></div>,
+  <div className="modal5" key="4"></div>,
+];
 
 describe('ModalStack', () => {
   describe('Props', () => {
     describe('children', () => {
       it('are rendered', () => {
         const props = {
-          children: children.props.children,
+          children,
         };
         const testCase = TestCaseFactory.createFromElement(<ModalStack {...props} />);
         expect(testCase.first('.modal1')).toBeDefined();
@@ -30,10 +28,10 @@ describe('ModalStack', () => {
     });
   });
 
-  describe('renders', () => {
-    it('last child with depth 1', () => {
+  describe('stacking logic', () => {
+    it('places the last elements on top of the first elements', () => {
       const props = {
-        children: children.props.children,
+        children,
       };
       const testCase = TestCaseFactory.createFromElement(<ModalStack {...props} />);
       expect(testCase.first('.stackedModal--depth1 .modal5')).toBeDefined();
@@ -41,9 +39,9 @@ describe('ModalStack', () => {
       expect(testCase.first('.stackedModal--depth3 .modal3')).toBeDefined();
     });
 
-    it('depth class for 3 modals only', () => {
+    it('assigns depth-specific classes for up to 3 levels of depth', () => {
       const props = {
-        children: children.props.children,
+        children,
       };
       const testCase = TestCaseFactory.createFromElement(<ModalStack {...props} />);
       const stackedModals = testCase.find('.stackedModal');
@@ -54,9 +52,9 @@ describe('ModalStack', () => {
       expect(stackedModals[4].className).toContain('stackedModal--depth1');
     });
 
-    it('depthMax after 3rd modal', () => {
+    it('assigns a depthMax class to levels of depth after 3', () => {
       const props = {
-        children: children.props.children,
+        children,
       };
       const testCase = TestCaseFactory.createFromElement(<ModalStack {...props} />);
       const stackedModals = testCase.find('.stackedModal');
