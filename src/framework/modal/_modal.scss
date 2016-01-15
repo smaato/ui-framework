@@ -1,4 +1,13 @@
 
+body {
+  &.is-modal-overlay-open {
+    /* For this to work as intended modal overlay element must be outside .app */
+    .app {
+      @include backgroundBlur;
+    }
+  }
+}
+
 /**
  * 1. Center modal vertically and horizontally in IE11, and allow the container
  *    to scroll if the modal is clipped.

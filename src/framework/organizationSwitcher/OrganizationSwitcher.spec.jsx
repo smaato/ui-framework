@@ -7,6 +7,14 @@ import SearchBox from '../searchBox/SearchBox.jsx';
 describe('OrganizationSwitcher', () => {
   let testCase;
 
+  afterEach(() => {
+    // Forces component unmounting or else component from previous tests is
+    // still is mounted in detached node
+    if (testCase.dom.parentNode) {
+      ReactDOM.unmountComponentAtNode(testCase.dom.parentNode);
+    }
+  });
+
   describe('Props', () => {
     describe('title', () => {
       it('is rendered into the title component', () => {
@@ -66,11 +74,8 @@ describe('OrganizationSwitcher', () => {
     });
   });
 
-  describe('\'s is-organization-switcher-open class', () => {
+  describe('is-organization-switcher-open class', () => {
     it('is added on body when mounted', () => {
-      // Forces component unmounting or else component from previous tests is
-      // still is mounted in detached node by this point
-      ReactDOM.unmountComponentAtNode(testCase.dom.parentNode);
       testCase = TestCaseFactory.createFromClass(OrganizationSwitcher);
       expect(document.body.getAttribute('class'))
         .toContain('is-organization-switcher-open');

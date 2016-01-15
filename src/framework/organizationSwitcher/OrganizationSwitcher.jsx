@@ -8,6 +8,10 @@ import $ from 'jquery';
 
 import SearchBox from '../searchBox/SearchBox.jsx';
 
+export {
+  default as OrganizationSwitcherItem,
+} from './OrganizationSwitcherItem.jsx';
+
 class OrganizationSwitcher extends Component {
 
   constructor(props) {
@@ -59,10 +63,6 @@ class OrganizationSwitcher extends Component {
     );
   }
 }
-
-export {
-  default as OrganizationSwitcherItem,
-} from './OrganizationSwitcherItem.jsx';
 
 OrganizationSwitcher.propTypes = {
   title: PropTypes.string,

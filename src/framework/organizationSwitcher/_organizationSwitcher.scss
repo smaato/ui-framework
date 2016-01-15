@@ -1,5 +1,13 @@
 $organizationSwitcher_padding: 12px;
 
+body {
+  &.is-organization-switcher-open {
+    .bodyPanel {
+      @include backgroundBlur;
+    }
+  }
+}
+
 .organizationSwitcher {
   border: 1px solid #d4dadc;
   background-color: #fafdfe;

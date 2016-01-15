@@ -7,6 +7,14 @@ import ModalOverlay from './ModalOverlay.jsx';
 describe('ModalOverlay', () => {
   let testCase;
 
+  afterEach(() => {
+    // Forces component unmounting or else component from previous tests is
+    // still is mounted in detached node
+    if (testCase.dom.parentNode) {
+      ReactDOM.unmountComponentAtNode(testCase.dom.parentNode);
+    }
+  });
+
   describe('Props', () => {
     describe('children', () => {
       it('is rendered', () => {
@@ -19,11 +27,8 @@ describe('ModalOverlay', () => {
     });
   });
 
-  describe('\'s is-modal-overlay-open class', () => {
+  describe('is-modal-overlay-open class', () => {
     it('is added on body when mounted', () => {
-      // Forces component unmounting or else component from previous tests is
-      // still is mounted in detached node by this point
-      ReactDOM.unmountComponentAtNode(testCase.dom.parentNode);
       testCase = TestCaseFactory.createFromElement(<ModalOverlay/>);
       expect(document.body.getAttribute('class'))
         .toContain('is-modal-overlay-open');
