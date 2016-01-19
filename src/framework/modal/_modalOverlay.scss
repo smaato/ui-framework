@@ -1,4 +1,16 @@
 
+body {
+  &.is-modal-overlay-open {
+    /* For this to work as intended modal overlay element must be outside .app */
+    // ui-framework' guide
+    .app,
+    // buyer-tools
+    .body {
+      @include backgroundBlur;
+    }
+  }
+}
+
 .modalOverlay {
   /**
    * 1. Center modal vertically and horizontally in IE11, and allow the container
