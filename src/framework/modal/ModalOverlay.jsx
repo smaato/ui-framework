@@ -14,20 +14,22 @@ export default class ModalOverlay extends Component {
   }
 
   componentWillMount() {
-    this.manageBodyClassName();
+    this.manageBodyClassName(this.props.isOpen);
   }
 
   componentWillUpdate(nextProps) {
-    this.manageBodyClassName(nextProps);
+    const isUpdateRequired = this.props.isOpen !== nextProps.isOpen;
+    if (isUpdateRequired) {
+      this.manageBodyClassName(nextProps.isOpen);
+    }
   }
 
   componentWillUnmount() {
     $('body').removeClass('is-modal-overlay-open');
   }
 
-  manageBodyClassName(props) {
-    const _props = props || this.props;
-    $('body')[_props.isOpen ? 'addClass' : 'removeClass']('is-modal-overlay-open');
+  manageBodyClassName(isOpen) {
+    $('body')[isOpen ? 'addClass' : 'removeClass']('is-modal-overlay-open');
   }
 
   render() {

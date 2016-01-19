@@ -17,6 +17,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  ModalStack,
 } from '../../../framework/framework';
 
 export default class ModalExample extends Component {
@@ -24,26 +25,118 @@ export default class ModalExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen1: false,
+      isModalOpen: false,
+      isModalStackOpen: false,
+      stackedModalCount: 0,
     };
   }
 
-  onOpen(exampleNumber) {
-    const state = {};
-    state[`isOpen${exampleNumber}`] = true;
-    this.setState(state);
+  onOpenModal() {
+    this.setState({
+      isModalOpen: true,
+    });
   }
 
-  onClose(exampleNumber) {
-    const state = {};
-    state[`isOpen${exampleNumber}`] = false;
-    this.setState(state);
+  onCloseModal() {
+    this.setState({
+      isModalOpen: false,
+    });
   }
 
-  onSubmit(exampleNumber) {
-    const state = {};
-    state[`isOpen${exampleNumber}`] = false;
-    this.setState(state);
+  addModalToStack() {
+    this.setState({
+      isModalStackOpen: true,
+      stackedModalCount: this.state.stackedModalCount + 1,
+    });
+  }
+
+  removeModalFromStack() {
+    const modalCount = this.state.stackedModalCount - 1;
+    this.setState({
+      isModalStackOpen: modalCount !== 0,
+      stackedModalCount: modalCount,
+    });
+  }
+
+  renderModalStack() {
+    const modalStackSequence = [
+      <Modal
+        header={(
+          <ModalHeader
+            title="1st Level Modal"
+            onClose={this.removeModalFromStack.bind(this)}
+          />
+        )}
+        body={(
+          <ModalBody>
+            <CallOutButton
+              label="Open 2nd Level Modal"
+              onClick={this.addModalToStack.bind(this)}
+            />
+          </ModalBody>
+        )}
+        key={0}
+      />,
+
+      <Modal
+        header={(
+          <ModalHeader
+            title="2nd Level Modal"
+            onClose={this.removeModalFromStack.bind(this)}
+          />
+        )}
+        body={(
+          <ModalBody>
+            <CallOutButton
+              label="Open 3rd Level Modal"
+              onClick={this.addModalToStack.bind(this)}
+            />
+          </ModalBody>
+        )}
+        key={1}
+      />,
+
+      <Modal
+        header={(
+          <ModalHeader
+            title="3rd Level Modal"
+            onClose={this.removeModalFromStack.bind(this)}
+          />
+        )}
+        body={(
+          <ModalBody>
+            <CallOutButton
+              label="Open 4th Level Modal"
+              onClick={this.addModalToStack.bind(this)}
+            />
+          </ModalBody>
+        )}
+        key={2}
+      />,
+
+      <Modal
+        header={(
+          <ModalHeader
+            title="4th Level Modal"
+            onClose={this.removeModalFromStack.bind(this)}
+          />
+        )}
+        body={(
+          <ModalBody>
+            <p>Notice that the first level modal is no longer visible.</p>
+          </ModalBody>
+        )}
+        key={3}
+      />,
+    ];
+
+    const stackedModals = [];
+
+    for (let i = 0; i < this.state.stackedModalCount; i++) {
+      stackedModals.push(modalStackSequence[i]);
+    }
+
+    return stackedModals;
   }
 
   render() {
@@ -59,7 +152,7 @@ export default class ModalExample extends Component {
             )}
             body={(
               <ModalBody>
-                <div style={{height: 100}}></div>
+                <div style={{height: 110}}></div>
               </ModalBody>
             )}
             footer={(
@@ -77,7 +170,7 @@ export default class ModalExample extends Component {
           <Modal
             body={(
               <ModalBody>
-                <div style={{height: 100}}></div>
+                <div style={{height: 110}}></div>
               </ModalBody>
             )}
           />
@@ -86,14 +179,16 @@ export default class ModalExample extends Component {
         <Example title="In ModalOverlay">
           <CallOutButton
             label="Open Modal"
-            onClick={() => this.onOpen.bind(this)(1)}
+            onClick={this.onOpenModal.bind(this)}
           />
-          <ModalOverlay isOpen={this.state.isOpen1}>
+          <ModalOverlay
+            isOpen={this.state.isModalOpen}
+          >
             <Modal
               header={(
                 <ModalHeader
                   title="Modal Title"
-                  onClose={() => this.onClose.bind(this)(1)}
+                  onClose={this.onCloseModal.bind(this)}
                 />
               )}
               body={(
@@ -105,15 +200,28 @@ export default class ModalExample extends Component {
                 <ModalFooter>
                   <HollowButton
                     label="Cancel"
-                    onClick={() => this.onClose.bind(this)(1)}
+                    onClick={this.onCloseModal.bind(this)}
                   />
                   <PrimaryButton
                     label="Submit"
-                    onClick={() => this.onSubmit.bind(this)(1)}
                   />
                 </ModalFooter>
               )}
             />
+          </ModalOverlay>
+        </Example>
+
+        <Example title="ModalStack">
+          <CallOutButton
+            label="Open ModalStack"
+            onClick={this.addModalToStack.bind(this)}
+          />
+          <ModalOverlay
+            isOpen={this.state.isModalStackOpen}
+          >
+            <ModalStack>
+              {this.renderModalStack()}
+            </ModalStack>
           </ModalOverlay>
         </Example>
       </Page>

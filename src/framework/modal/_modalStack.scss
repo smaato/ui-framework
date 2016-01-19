@@ -1,0 +1,38 @@
+
+/**
+ * 1. Center modal vertically and horizontally in IE11, and allow the container
+ *    to scroll if the modal is clipped.
+ * 2. Center modal vertically.
+ */
+.modalStack {
+  flex: 0 0 auto; /* 1 */
+  margin: auto; /* 2 */
+  position: relative;
+
+  .modal {
+    height: inherit;
+    overflow: hidden;
+  }
+}
+
+  .stackedModal {
+    position: absolute;
+    height: inherit;
+    transform-origin: top center;
+  }
+
+  .stackedModal--depth2 {
+    margin-top: -15px;
+    transform: scale(0.9, 0.9);
+    opacity: 0.8;
+  }
+
+  .stackedModal--depth3 {
+    margin-top: -30px;
+    transform: scale(0.8, 0.8);
+    opacity: 0.6;
+  }
+
+  .stackedModal--depthMax {
+    display: none;
+  }
