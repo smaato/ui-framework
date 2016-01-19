@@ -2,7 +2,8 @@
 body {
   &.is-modal-overlay-open {
     /* For this to work as intended modal overlay element must be outside .app */
-    .app {
+    .app,
+    .body {
       @include backgroundBlur;
     }
   }
