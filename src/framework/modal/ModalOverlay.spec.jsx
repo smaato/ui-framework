@@ -5,14 +5,38 @@ import { TestCaseFactory } from 'react-test-kit';
 import ModalOverlay from './ModalOverlay.jsx';
 
 describe('ModalOverlay', () => {
-  let testCase;
+  function createWrappedTestCase(props) {
+    const testCase = TestCaseFactory.createFromElement(
+      <div>
+        <ModalOverlay {...props} />
+      </div>
+    );
+
+    return {
+      testCase,
+      setProps: function setProps(newProps) {
+        // Re-rendering the same component with different props into the
+        // same node will perform an update.
+        // http://facebook.github.io/react/docs/top-level-api.html#reactdom.render
+        // The problem is Portal component inside ModalOverlay deletes the
+        // testCase.dom, which makes testCase.dom.parentNode unaccessible,
+        // so we need to wrap it in a div.
+        ReactDOM.render(
+          <div>
+            <ModalOverlay {...newProps} />
+          </div>,
+          testCase.dom.parentNode
+        );
+      },
+      unmount: function unmount() {
+        ReactDOM.unmountComponentAtNode(testCase.dom.parentNode);
+      },
+    };
+  }
 
   afterEach(() => {
-    // Forces component unmounting or else component from previous tests is
-    // still is mounted in detached node
-    if (testCase.dom.parentNode) {
-      ReactDOM.unmountComponentAtNode(testCase.dom.parentNode);
-    }
+    // Clean up by manually resetting the body classes.
+    document.body.className = '';
   });
 
   describe('Props', () => {
@@ -22,79 +46,74 @@ describe('ModalOverlay', () => {
           isOpen: true,
           children: <div id="item">item</div>,
         };
-        // ModalOverlay needs to be wrapped in a div to able to unmount it.
-        // The problem is Portal component inside ModalOverlay deletes the
-        // testCase.dom, which makes testCase.dom.parentNode unaccessible,
-        // which in turn makes unmounting impossible.
-        testCase = TestCaseFactory.createFromElement(<div><ModalOverlay {...props} /></div>);
-        expect(document.getElementById('item').textContent).toBe('item');
+        const testCase =
+          TestCaseFactory.createFromElement(<ModalOverlay {...props} />);
+        expect(testCase.first('#item').textContent).toBe('item');
       });
     });
 
-    describe('"is-modal-overlay-open" class', () => {
-      it('is added when mounted with isOpen true', () => {
+    describe('isOpen', () => {
+      it('adds is-modal-overlay-open class to body when true', () => {
         const props = {
           isOpen: true,
+          children: <div />,
         };
-        testCase = TestCaseFactory.createFromElement(<div><ModalOverlay {...props} /></div>);
+        const testCase = // eslint-disable-line no-unused-vars
+          TestCaseFactory.createFromElement(<ModalOverlay {...props} />);
         expect(document.body.getAttribute('class'))
           .toContain('is-modal-overlay-open');
       });
 
-      it('is not added when mounted with isOpen false', () => {
+      it('doesn\'t add class to body when false', () => {
         const props = {
           isOpen: false,
+          children: <div />,
         };
-        testCase = TestCaseFactory.createFromElement(<div><ModalOverlay {...props} /></div>);
+        const testCase = // eslint-disable-line no-unused-vars
+          TestCaseFactory.createFromElement(<ModalOverlay {...props} />);
         expect(document.body.getAttribute('class'))
           .not.toContain('is-modal-overlay-open');
       });
 
-      it('is added after mounted with isOpen false and updated to true', () => {
-        testCase = TestCaseFactory.createFromElement(
-          <div>
-            <ModalOverlay isOpen={false} />
-          </div>
-        );
-        expect(document.body.getAttribute('class'))
-          .not.toContain('is-modal-overlay-open');
-        // Re-rendering the same component with different props into the
-        // same node will perform an update.
-        // http://facebook.github.io/react/docs/top-level-api.html#reactdom.render
-        ReactDOM.render(
-          <div>
-            <ModalOverlay isOpen />
-          </div>,
-          testCase.dom.parentNode
-        );
+      it('adds class to body when changed to true', () => {
+        const props = {
+          isOpen: false,
+          children: <div />,
+        };
+        const wrappedTestCase = createWrappedTestCase(props);
+
+        // Open the modalOverlay.
+        props.isOpen = true;
+        wrappedTestCase.setProps(props);
+
         expect(document.body.getAttribute('class'))
           .toContain('is-modal-overlay-open');
       });
 
-      it('is removed after mounted with isOpen true and updated to false', () => {
-        testCase = TestCaseFactory.createFromElement(
-          <div>
-            <ModalOverlay isOpen />
-          </div>
-        );
-        expect(document.body.getAttribute('class'))
-          .toContain('is-modal-overlay-open');
-        ReactDOM.render(
-          <div>
-            <ModalOverlay isOpen={false} />
-          </div>,
-          testCase.dom.parentNode
-        );
-        expect(document.body.getAttribute('class'))
-          .not.toContain('is-modal-overlay-open');
-      });
-
-      it('is removed when unmounted', () => {
+      it('removes class from body when changed to false', () => {
         const props = {
           isOpen: true,
+          children: <div />,
         };
-        testCase = TestCaseFactory.createFromElement(<div><ModalOverlay {...props} /></div>);
-        ReactDOM.unmountComponentAtNode(testCase.dom.parentNode);
+        const wrappedTestCase = createWrappedTestCase(props);
+
+        // Close the modalOverlay.
+        props.isOpen = false;
+        wrappedTestCase.setProps(props);
+
+        expect(document.body.getAttribute('class'))
+          .not.toContain('is-modal-overlay-open');
+      });
+    });
+
+    describe('Behavior', () => {
+      it('is-modal-overlay-open class is removed from body when unmounted', () => {
+        const props = {
+          isOpen: true,
+          children: <div />,
+        };
+        const wrappedTestCase = createWrappedTestCase(props);
+        wrappedTestCase.unmount();
         expect(document.body.getAttribute('class'))
           .not.toContain('is-modal-overlay-open');
       });

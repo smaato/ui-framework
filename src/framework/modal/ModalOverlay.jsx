@@ -14,22 +14,29 @@ export default class ModalOverlay extends Component {
   }
 
   componentWillMount() {
-    this.manageBodyClassName(this.props.isOpen);
+    this.updateBackgroundBlur();
   }
 
   componentWillUpdate(nextProps) {
-    const isUpdateRequired = this.props.isOpen !== nextProps.isOpen;
-    if (isUpdateRequired) {
-      this.manageBodyClassName(nextProps.isOpen);
+    // Only a modalOverlay instance that is being interacted with (i.e. the user
+    // is changing its isOpen state) should be able to update the background.
+    if (nextProps.isOpen !== this.props.isOpen) {
+      this.updateBackgroundBlur(nextProps);
     }
   }
 
   componentWillUnmount() {
+    // Perform cleanup in case this overlay is removed by unmounting it,
+    // instead of using the isOpen prop.
     $('body').removeClass('is-modal-overlay-open');
   }
 
-  manageBodyClassName(isOpen) {
-    $('body')[isOpen ? 'addClass' : 'removeClass']('is-modal-overlay-open');
+  updateBackgroundBlur(props = this.props) {
+    if (props.isOpen) {
+      $('body').addClass('is-modal-overlay-open');
+    } else {
+      $('body').removeClass('is-modal-overlay-open');
+    }
   }
 
   render() {
