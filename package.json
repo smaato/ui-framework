@@ -22,6 +22,7 @@
     "react": "0.14.0",
     "react-addons-test-utils": "0.14.0",
     "react-dom": "0.14.0",
+    "react-portal": "1.5.5",
     "react-redux": "2.1.2",
     "react-router": "1.0.0-rc3",
     "react-test-kit": "git@github.com:SmaatoUI/react-test-kit.git#v0.0.4",
