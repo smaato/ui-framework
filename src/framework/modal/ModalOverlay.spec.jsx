@@ -5,6 +5,35 @@ import { TestCaseFactory } from 'react-test-kit';
 import ModalOverlay from './ModalOverlay.jsx';
 
 describe('ModalOverlay', () => {
+  function createWrappedTestCase(props) {
+    const testCase = TestCaseFactory.createFromElement(
+      <div>
+        <ModalOverlay {...props} />
+      </div>
+    );
+
+    return {
+      testCase,
+      setProps: function setProps(newProps) {
+        // Re-rendering the same component with different props into the
+        // same node will perform an update.
+        // http://facebook.github.io/react/docs/top-level-api.html#reactdom.render
+        // The problem is Portal component inside ModalOverlay deletes the
+        // testCase.dom, which makes testCase.dom.parentNode unaccessible,
+        // so we need to wrap it in a div.
+        ReactDOM.render(
+          <div>
+            <ModalOverlay {...newProps} />
+          </div>,
+          testCase.dom.parentNode
+        );
+      },
+      unmount: function unmount() {
+        ReactDOM.unmountComponentAtNode(testCase.dom.parentNode);
+      },
+    };
+  }
+
   afterEach(() => {
     // Clean up by manually resetting the body classes.
     document.body.className = '';
@@ -17,7 +46,8 @@ describe('ModalOverlay', () => {
           isOpen: true,
           children: <div id="item">item</div>,
         };
-        const testCase = TestCaseFactory.createFromElement(<ModalOverlay {...props} />);
+        const testCase =
+          TestCaseFactory.createFromElement(<ModalOverlay {...props} />);
         expect(testCase.first('#item').textContent).toBe('item');
       });
     });
@@ -28,7 +58,8 @@ describe('ModalOverlay', () => {
           isOpen: true,
           children: <div />,
         };
-        const testCase = TestCaseFactory.createFromElement(<ModalOverlay {...props} />); // eslint-disable-line no-unused-vars
+        const testCase = // eslint-disable-line no-unused-vars
+          TestCaseFactory.createFromElement(<ModalOverlay {...props} />);
         expect(document.body.getAttribute('class'))
           .toContain('is-modal-overlay-open');
       });
@@ -38,7 +69,8 @@ describe('ModalOverlay', () => {
           isOpen: false,
           children: <div />,
         };
-        const testCase = TestCaseFactory.createFromElement(<ModalOverlay {...props} />); // eslint-disable-line no-unused-vars
+        const testCase = // eslint-disable-line no-unused-vars
+          TestCaseFactory.createFromElement(<ModalOverlay {...props} />);
         expect(document.body.getAttribute('class'))
           .not.toContain('is-modal-overlay-open');
       });
@@ -48,22 +80,11 @@ describe('ModalOverlay', () => {
           isOpen: false,
           children: <div />,
         };
-
-        const testCase = TestCaseFactory.createFromElement(
-          <div>
-            <ModalOverlay {...props} />
-          </div>
-        );
+        const wrappedTestCase = createWrappedTestCase(props);
 
         // Open the modalOverlay.
         props.isOpen = true;
-
-        ReactDOM.render(
-          <div>
-            <ModalOverlay {...props} />
-          </div>,
-          testCase.dom.parentNode
-        );
+        wrappedTestCase.setProps(props);
 
         expect(document.body.getAttribute('class'))
           .toContain('is-modal-overlay-open');
@@ -74,28 +95,11 @@ describe('ModalOverlay', () => {
           isOpen: true,
           children: <div />,
         };
-
-        const testCase = TestCaseFactory.createFromElement(
-          <div>
-            <ModalOverlay {...props} />
-          </div>
-        );
+        const wrappedTestCase = createWrappedTestCase(props);
 
         // Close the modalOverlay.
         props.isOpen = false;
-
-        // Re-rendering the same component with different props into the
-        // same node will perform an update.
-        // http://facebook.github.io/react/docs/top-level-api.html#reactdom.render
-        // The problem is Portal component inside ModalOverlay deletes the
-        // testCase.dom, which makes testCase.dom.parentNode unaccessible,
-        // so we need to wrap it in a div.
-        ReactDOM.render(
-          <div>
-            <ModalOverlay {...props} />
-          </div>,
-          testCase.dom.parentNode
-        );
+        wrappedTestCase.setProps(props);
 
         expect(document.body.getAttribute('class'))
           .not.toContain('is-modal-overlay-open');
@@ -108,14 +112,8 @@ describe('ModalOverlay', () => {
           isOpen: true,
           children: <div />,
         };
-
-        const testCase = TestCaseFactory.createFromElement(
-          <div>
-            <ModalOverlay {...props} />
-          </div>
-        );
-
-        ReactDOM.unmountComponentAtNode(testCase.dom.parentNode);
+        const wrappedTestCase = createWrappedTestCase(props);
+        wrappedTestCase.unmount();
         expect(document.body.getAttribute('class'))
           .not.toContain('is-modal-overlay-open');
       });
