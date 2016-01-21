@@ -5,6 +5,14 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
+export {
+  default as IconCog,
+} from './IconCog.jsx';
+
+export {
+  default as IconEllipsis,
+} from './IconEllipsis.jsx';
+
 export default class Icon extends Component {
 
   constructor(props) {

@@ -3,7 +3,9 @@ import React, {
   PropTypes,
 } from 'react';
 
-import IconCog from '../iconCog/IconCog.jsx';
+import {
+  IconCog,
+} from '../icon/Icon.jsx';
 
 const SummaryControl = props => {
   let icon;

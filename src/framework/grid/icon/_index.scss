@@ -1,0 +1,18 @@
+
+.gridIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  font-size: 14px;
+  color: shade($lightGrey, 20%);
+  cursor: pointer;
+
+  &:hover {
+    color: shade($lightGrey, 40%);
+  }
+
+  & + & {
+    margin-left: 15px;
+  }
+}

@@ -1,5 +1,7 @@
 .searchBox {
   display: flex;
+  position: relative;
+  line-height: $lineHeight;
 }
 
 $searchBox_height: 23px;
@@ -21,12 +23,9 @@ $searchBox_height: 23px;
 }
 
 .searchBox__icon {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 11px;
   color: shade($componentStrokeColor, 16%);
-  width: $searchBox_height;
-  height: $searchBox_height;
-  margin-left: -$searchBox_height;
-
-  &:before {
-    font-size: 11px;
-  }
 }

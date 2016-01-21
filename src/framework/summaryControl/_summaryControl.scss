@@ -35,9 +35,5 @@
 
   .summaryControl__cogIcon {
     color: #95a4ac;
-
-    // TODO: Figure out a way to set size on icon without violating BEM
-    .icon {
-      font-size: 13px;
-    }
+    font-size: 13px;
   }
