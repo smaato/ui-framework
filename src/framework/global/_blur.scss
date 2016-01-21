@@ -1,0 +1,4 @@
+// Make content blurred, so that another UI element captures the user's attention.
+@mixin backgroundBlur {
+  filter: blur(2px);
+}
