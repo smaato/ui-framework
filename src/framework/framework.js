@@ -43,6 +43,9 @@ export { default as LabeledControl } from './labeledControl/LabeledControl.jsx';
 export * from './spinner/Spinner.jsx';
 export { default as Spinner } from './spinner/Spinner.jsx';
 
+export * from './summaryControl/SummaryControl.jsx';
+export { default as SummaryControl } from './summaryControl/SummaryControl.jsx';
+
 export * from './modal/Modal.jsx';
 export { default as Modal } from './modal/Modal.jsx';
 
