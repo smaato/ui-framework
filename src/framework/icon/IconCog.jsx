@@ -1,19 +1,21 @@
 
-import React, {
-  Component,
-} from 'react';
+import React from 'react';
+import classNames from 'classnames';
+
 import Icon from '../icon/Icon.jsx';
 
-export default class IconCog extends Component {
+const IconCog = props => {
+  const classes = classNames('glyphicons-cogwheel', props.classes);
 
-  constructor(props) {
-    super(props);
-  }
+  const extendedProps = Object.assign({}, props, {
+    classes,
+  });
 
-  render() {
-    return (
-      <Icon className="glyphicons-cogwheel" />
-    );
-  }
+  return (
+    <Icon {...extendedProps} />
+  );
+};
 
-}
+IconCog.propTypes = Icon.propTypes;
+
+export default IconCog;

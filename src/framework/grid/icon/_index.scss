@@ -1,12 +1,11 @@
 
+/**
+ * 1. Minor vertical alignment adjustment within grid rows.
+ */
 .gridIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: top;
+  vertical-align: top; /* 1 */
   font-size: 14px;
   color: shade($lightGrey, 20%);
-  cursor: pointer;
 
   &:hover {
     color: shade($lightGrey, 40%);

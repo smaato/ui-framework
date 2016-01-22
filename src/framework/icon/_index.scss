@@ -1,7 +1,16 @@
+
 /**
- * 1. Use inherited font-size to adjust the size of this component.
+ * 1. Align icon content within bounds of element.
+ * 2. Use inherited font-size to adjust the size of this component.
  */
 .icon {
-  width: 1em; /* 1 */
-  height: 1em; /* 1 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em; /* 2 */
+  height: 1em; /* 2 */
+}
+
+.icon--clickable {
+  cursor: pointer;
 }

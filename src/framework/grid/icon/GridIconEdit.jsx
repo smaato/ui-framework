@@ -3,15 +3,14 @@ import React from 'react';
 
 import GridIcon from './GridIcon.jsx';
 
-import {
-  IconCog,
-} from '../../icon/Icon.jsx';
+import IconCog from '../../icon/IconCog.jsx';
 
 const GridIconEdit = props => {
   return (
-    <GridIcon onClick={props.onClick}>
-      <IconCog />
-    </GridIcon>
+    <GridIcon
+      iconType={IconCog}
+      onClick={props.onClick}
+    />
   );
 };
 

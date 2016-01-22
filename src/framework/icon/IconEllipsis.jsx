@@ -1,19 +1,21 @@
 
-import React, {
-  Component,
-} from 'react';
+import React from 'react';
+import classNames from 'classnames';
+
 import Icon from '../icon/Icon.jsx';
 
-export default class IconEllipsis extends Component {
+const IconEllipsis = props => {
+  const classes = classNames('glyphicons-more', props.classes);
 
-  constructor(props) {
-    super(props);
-  }
+  const extendedProps = Object.assign({}, props, {
+    classes,
+  });
 
-  render() {
-    return (
-      <Icon className="glyphicons-more" />
-    );
-  }
+  return (
+    <Icon {...extendedProps} />
+  );
+};
 
-}
+IconEllipsis.propTypes = Icon.propTypes;
+
+export default IconEllipsis;

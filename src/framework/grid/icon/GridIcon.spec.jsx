@@ -1,18 +1,18 @@
 
-import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
 import GridIcon from './GridIcon.jsx';
+import Icon from '../../icon/Icon.jsx';
 
 describe('GridIcon', () => {
   describe('Props', () => {
-    describe('children', () => {
-      it('are rendered', () => {
+    describe('iconType', () => {
+      it('is used to render the root element', () => {
         const props = {
-          children: <div id="child" />,
+          iconType: Icon,
         };
         const testCase =
           TestCaseFactory.createFromFunction(GridIcon, props);
-        expect(testCase.first('#child')).toBeDefined();
+        expect(testCase.dom.className).toContain('icon');
       });
     });
 
@@ -22,8 +22,13 @@ describe('GridIcon', () => {
       beforeEach(() => {
         onClick = jasmine.createSpy('onClick');
 
+        const props = {
+          iconType: Icon,
+          onClick,
+        };
+
         const testCase =
-          TestCaseFactory.createFromFunction(GridIcon, {onClick});
+          TestCaseFactory.createFromFunction(GridIcon, props);
 
         testCase.trigger('click');
       });

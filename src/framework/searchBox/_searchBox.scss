@@ -1,6 +1,5 @@
 .searchBox {
   display: flex;
-  position: relative;
   line-height: $lineHeight;
 }
 
@@ -22,10 +21,14 @@ $searchBox_height: 23px;
   width: 100%;
 }
 
+/**
+ * 1. Position icon inside of the searchBox, on the right side, vertically
+ *    centered. Dynamically based on the height of the searchBox.
+ */
 .searchBox__icon {
-  position: absolute;
-  top: 6px;
-  right: 6px;
+  width: $searchBox_height; /* 1 */
+  height: $searchBox_height; /* 1 */
+  margin-left: -$searchBox_height; /* 1 */
   font-size: 11px;
   color: shade($componentStrokeColor, 16%);
 }

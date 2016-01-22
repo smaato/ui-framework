@@ -3,19 +3,21 @@ import React, {
   PropTypes,
 } from 'react';
 
+import Icon from '../../icon/Icon.jsx';
+
 const GridIcon = props => {
-  return (
-    <div
-      className="gridIcon"
-      onClick={props.onClick}
-    >
-      {props.children}
-    </div>
-  );
+  // Create an instance of the provided Icon component, with the gridIcon class.
+  const icon = React.createElement(props.iconType, {
+    classes: 'gridIcon',
+    onClick: props.onClick,
+  });
+
+  return icon;
 };
 
 GridIcon.propTypes = {
-  onClick: PropTypes.func,
+  iconType: PropTypes.func,
+  onClick: Icon.propTypes.onClick,
 };
 
 export default GridIcon;

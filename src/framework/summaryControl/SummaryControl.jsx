@@ -3,9 +3,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-import {
-  IconCog,
-} from '../icon/Icon.jsx';
+import IconCog from '../icon/IconCog.jsx';
 
 const SummaryControl = props => {
   let icon;
@@ -28,7 +26,7 @@ const SummaryControl = props => {
         {props.children}
       </span>
       <span className="summaryControl__cogIcon">
-        <IconCog/>
+        <IconCog />
       </span>
     </div>
   );

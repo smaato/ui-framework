@@ -3,15 +3,14 @@ import React from 'react';
 
 import GridIcon from './GridIcon.jsx';
 
-import {
-  IconEllipsis,
-} from '../../icon/Icon.jsx';
+import IconEllipsis from '../../icon/IconEllipsis.jsx';
 
 const GridIconOptions = props => {
   return (
-    <GridIcon onClick={props.onClick}>
-      <IconEllipsis />
-    </GridIcon>
+    <GridIcon
+      iconType={IconEllipsis}
+      onClick={props.onClick}
+    />
   );
 };
 

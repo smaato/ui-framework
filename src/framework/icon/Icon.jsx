@@ -1,34 +1,25 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
 
-export {
-  default as IconCog,
-} from './IconCog.jsx';
+const Icon = props => {
+  const classes = classNames('icon', props.classes, {
+    'icon--clickable': props.onClick,
+  });
 
-export {
-  default as IconEllipsis,
-} from './IconEllipsis.jsx';
-
-export default class Icon extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const className = classNames('icon', this.props.className);
-
-    return (
-      <span className={className}></span>
-    );
-  }
-
-}
+  return (
+    <span
+      className={classes}
+      onClick={props.onClick}
+    />
+  );
+};
 
 Icon.propTypes = {
-  className: PropTypes.string.isRequired,
+  classes: PropTypes.string,
+  onClick: PropTypes.func,
 };
+
+export default Icon;
