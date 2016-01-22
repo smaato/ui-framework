@@ -5,6 +5,14 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
+export {
+  default as GridKpiPositive,
+} from './GridKpiPositive.jsx';
+
+export {
+  default as GridKpiNegative,
+} from './GridKpiNegative.jsx';
+
 export default class GridKpi extends Component {
 
   constructor(props) {

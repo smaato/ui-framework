@@ -25,6 +25,9 @@ export { default as FiltersControl } from './filtersControl/FiltersControl.jsx';
 export * from './grid/Grid.jsx';
 export { default as Grid } from './grid/Grid.jsx';
 
+export * from './gridKpi/GridKpi.jsx';
+export { default as GridKpi } from './gridKpi/GridKpi.jsx';
+
 export * from './icon/Icon.jsx';
 export { default as Icon } from './icon/Icon.jsx';
 
