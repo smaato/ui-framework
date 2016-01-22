@@ -9,8 +9,8 @@ import ButtonExample from '../../views/button/ButtonExample.jsx';
 import ChartExample from '../../views/chart/ChartExample.jsx';
 import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
-import GridKpiExample from '../../views/gridKpi/GridKpiExample.jsx';
 import IconExample from '../../views/icon/IconExample.jsx';
+import KpiExample from '../../views/kpi/KpiExample.jsx';
 import LabeledControlExample from '../../views/labeledControl/LabeledControlExample.jsx';
 import LabelExample from '../../views/label/LabelExample.jsx';
 import ModalExample from '../../views/modal/ModalExample.jsx';
@@ -57,13 +57,13 @@ const components = [{
   source: 'views/grid/GridExample.jsx',
   component: GridExample,
 }, {
-  name: 'GridKpi',
-  source: 'views/gridKpi/GridKpiExample.jsx',
-  component: GridKpiExample,
-}, {
   name: 'Icon',
   source: 'views/icon/IconExample.jsx',
   component: IconExample,
+}, {
+  name: 'Kpi',
+  source: 'views/kpi/KpiExample.jsx',
+  component: KpiExample,
 }, {
   name: 'LabeledControl',
   source: 'views/labeledControl/LabeledControlExample.jsx',

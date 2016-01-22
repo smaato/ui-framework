@@ -24,15 +24,15 @@ import {
   GridEmptyRow,
   GridHeader,
   GridHeaderSortableCell,
-  GridKpi,
-  GridKpiNegative,
-  GridKpiPositive,
   GridLoadingRow,
   GridRow,
   HollowButton,
   Icon,
   IconCog,
   IconEllipsis,
+  Kpi,
+  KpiNegative,
+  KpiPositive,
   Label,
   LabeledControl,
   Modal,
@@ -126,15 +126,6 @@ const components = [{
   name: 'GridHeaderSortableCell',
   component: GridHeaderSortableCell,
 }, {
-  name: 'GridKpi',
-  component: GridKpi,
-}, {
-  name: 'GridKpiNegative',
-  component: GridKpiNegative,
-}, {
-  name: 'GridKpiPositive',
-  component: GridKpiPositive,
-}, {
   name: 'GridLoadingRow',
   component: GridLoadingRow,
 }, {
@@ -152,6 +143,15 @@ const components = [{
 }, {
   name: 'IconEllipsis',
   component: IconEllipsis,
+}, {
+  name: 'Kpi',
+  component: Kpi,
+}, {
+  name: 'KpiNegative',
+  component: KpiNegative,
+}, {
+  name: 'KpiPositive',
+  component: KpiPositive,
 }, {
   name: 'Label',
   component: Label,

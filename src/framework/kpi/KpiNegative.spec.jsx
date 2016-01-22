@@ -1,9 +1,9 @@
 
 import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
-import GridKpiPositive from './GridKpiPositive.jsx';
+import KpiNegative from './KpiNegative.jsx';
 
-describe('GridKpiPositive', () => {
+describe('KpiNegative', () => {
   describe('Props', () => {
     describe('title', () => {
       it('is applied to element as an attribute', () => {
@@ -11,7 +11,7 @@ describe('GridKpiPositive', () => {
           title: 'test',
         };
         const testCase = TestCaseFactory.createFromElement(
-          <GridKpiPositive {...props} />
+          <KpiNegative {...props} />
         );
         expect(testCase.dom.getAttribute('title')).toContain(props.title);
       });
@@ -23,7 +23,7 @@ describe('GridKpiPositive', () => {
           children: <div id="test" />,
         };
         const testCase = TestCaseFactory.createFromElement(
-          <GridKpiPositive {...props} />
+          <KpiNegative {...props} />
         );
         expect(testCase.first('#test')).toBeDefined();
       });

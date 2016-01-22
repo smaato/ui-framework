@@ -1,29 +1,17 @@
 
 import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
-import GridKpi from './GridKpi.jsx';
+import KpiPositive from './KpiPositive.jsx';
 
-describe('GridKpi', () => {
+describe('KpiPositive', () => {
   describe('Props', () => {
-    describe('className', () => {
-      it('is applied to element', () => {
-        const props = {
-          className: 'test',
-        };
-        const testCase = TestCaseFactory.createFromElement(
-          <GridKpi {...props} />
-        );
-        expect(testCase.dom.getAttribute('class')).toContain(props.className);
-      });
-    });
-
     describe('title', () => {
       it('is applied to element as an attribute', () => {
         const props = {
           title: 'test',
         };
         const testCase = TestCaseFactory.createFromElement(
-          <GridKpi {...props} />
+          <KpiPositive {...props} />
         );
         expect(testCase.dom.getAttribute('title')).toContain(props.title);
       });
@@ -35,7 +23,7 @@ describe('GridKpi', () => {
           children: <div id="test" />,
         };
         const testCase = TestCaseFactory.createFromElement(
-          <GridKpi {...props} />
+          <KpiPositive {...props} />
         );
         expect(testCase.first('#test')).toBeDefined();
       });
