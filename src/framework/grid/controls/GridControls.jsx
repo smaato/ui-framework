@@ -18,4 +18,5 @@ export default class GridControls extends Component {
       </div>
     );
   }
+
 }
