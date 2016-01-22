@@ -9,8 +9,8 @@ describe('ModalBody', () => {
       it('is rendered when an array', () => {
         const props = {
           children: [
-            <div>item1</div>,
-            <div>item2</div>,
+            <div key="1">item1</div>,
+            <div key="2">item2</div>,
           ],
         };
         const testCase = TestCaseFactory.createFromFunction(ModalBody, props);
