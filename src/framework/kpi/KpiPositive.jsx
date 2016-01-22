@@ -3,9 +3,9 @@ import React, {
   Component,
   PropTypes,
 } from 'react';
-import GridKpi from './GridKpi.jsx';
+import Kpi from './Kpi.jsx';
 
-export default class GridKpiNegative extends Component {
+export default class KpiPositive extends Component {
 
   constructor(props) {
     super(props);
@@ -13,16 +13,16 @@ export default class GridKpiNegative extends Component {
 
   render() {
     return (
-      <GridKpi
-        className="gridKpi--negative"
+      <Kpi
+        className="kpi--positive"
         title={this.props.title}
       >
         {this.props.children}
-      </GridKpi>
+      </Kpi>
     );
   }
 }
 
-GridKpiNegative.propTypes = {
+KpiPositive.propTypes = {
   title: PropTypes.string,
 };
