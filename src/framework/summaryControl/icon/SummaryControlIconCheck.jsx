@@ -3,7 +3,7 @@ import React from 'react';
 
 import SummaryControlIcon from './SummaryControlIcon.jsx';
 
-import IconCheck from '../icon/IconCheck.jsx';
+import IconCheck from '../../icon/IconCheck.jsx';
 
 const SummaryControlIconCog = () => {
   return (

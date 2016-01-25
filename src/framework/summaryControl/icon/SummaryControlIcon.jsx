@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
-import Icon from '../icon/Icon.jsx';
+import Icon from '../../icon/Icon.jsx';
 
 const SummaryControlIcon = props => {
   const classes = classNames('summaryControlIcon', props.classes);
