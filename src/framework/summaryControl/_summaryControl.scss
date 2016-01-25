@@ -14,26 +14,12 @@
   cursor: pointer;
 }
 
-  .summaryControl__icon {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 5px;
-
-    // TODO: Figure out a better way to configure colors or icon styles
-    .glyphicons-ok-2 {
-      color: #86d680;
-    }
-
-    .glyphicons-paperclip {
-      color: #95a4ac;
-    }
-  }
-
   .summaryControl__label {
     flex: 1;
   }
 
-  .summaryControl__cogIcon {
+  .summaryControl_iconCog {
     color: #95a4ac;
     font-size: 13px;
   }
+

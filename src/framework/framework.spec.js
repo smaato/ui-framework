@@ -49,6 +49,10 @@ import {
   SearchBox,
   Spinner,
   StickyGrid,
+  SummaryControl,
+  SummaryControlIcon,
+  SummaryControlIconCheck,
+  SummaryControlIconPaperclip,
   TextInput,
   TitleBar,
   VerticalLayout,
@@ -203,6 +207,18 @@ const components = [{
 }, {
   name: 'StickyGrid',
   component: StickyGrid,
+}, {
+  name: 'SummaryControl',
+  component: SummaryControl,
+}, {
+  name: 'SummaryControlIcon',
+  component: SummaryControlIcon,
+}, {
+  name: 'SummaryControlIconCheck',
+  component: SummaryControlIconCheck,
+}, {
+  name: 'SummaryControlIconPaperclip',
+  component: SummaryControlIconPaperclip,
 }, {
   name: 'TextInput',
   component: TextInput,

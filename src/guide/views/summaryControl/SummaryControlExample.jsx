@@ -9,7 +9,8 @@ import Page, {
 
 import {
   SummaryControl,
-  Icon,
+  SummaryControlIconCheck,
+  SummaryControlIconPaperclip,
 } from '../../../framework/framework';
 
 export default class SummaryControlExample extends Component {
@@ -23,7 +24,7 @@ export default class SummaryControlExample extends Component {
       <Page title={this.props.route.name}>
         <Example>
           <SummaryControl
-            icon={<Icon className="glyphicons-ok-2"/>}
+            icon={<SummaryControlIconCheck />}
           >
             Include All Adspaces
           </SummaryControl>
@@ -31,7 +32,7 @@ export default class SummaryControlExample extends Component {
 
         <Example title="Paperclip icon">
           <SummaryControl
-            icon={<Icon className="glyphicons-paperclip"/>}
+            icon={<SummaryControlIconPaperclip />}
           >
             None Attached
           </SummaryControl>
