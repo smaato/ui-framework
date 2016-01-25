@@ -20,8 +20,8 @@ import {
   GridHeaderSortableCell,
   GridIconEdit,
   GridIconOptions,
-  GridKpiNegative,
-  GridKpiPositive,
+  KpiNegative,
+  KpiPositive,
   GridLoadingRow,
   GridRow,
   SearchBox,
@@ -316,11 +316,11 @@ export default class GridExample extends Component {
           <div>
             {numeral(item.sold).format('0.[00]a')}
             {Entity.nbsp}
-            <GridKpiPositive
+            <KpiPositive
               title={`+${item.kpiSold}%`}
             >
               {`+${item.kpiSold}%`}
-            </GridKpiPositive>
+            </KpiPositive>
           </div>
         ),
       }), item => ({
@@ -328,11 +328,11 @@ export default class GridExample extends Component {
           <div>
             {numeral(item.registered).format('0.[00]a')}
             {Entity.nbsp}
-            <GridKpiNegative
+            <KpiNegative
               title={`-${item.kpiRegistered}%`}
             >
               {`-${item.kpiRegistered}%`}
-            </GridKpiNegative>
+            </KpiNegative>
           </div>
         ),
       }), item => ({

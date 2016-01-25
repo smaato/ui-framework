@@ -29,6 +29,9 @@ export { default as Icon } from './icon/Icon.jsx';
 export { default as IconCog } from './icon/IconCog.jsx';
 export { default as IconEllipsis } from './icon/IconEllipsis.jsx';
 
+export * from './kpi/Kpi.jsx';
+export { default as Kpi } from './kpi/Kpi.jsx';
+
 export * from './label/Label.jsx';
 export { default as Label } from './label/Label.jsx';
 
