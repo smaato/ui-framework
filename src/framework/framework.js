@@ -25,14 +25,9 @@ export { default as FiltersControl } from './filtersControl/FiltersControl.jsx';
 export * from './grid/Grid.jsx';
 export { default as Grid } from './grid/Grid.jsx';
 
-export * from './icon/Icon.jsx';
 export { default as Icon } from './icon/Icon.jsx';
-
-export * from './iconCog/IconCog.jsx';
-export { default as IconCog } from './iconCog/IconCog.jsx';
-
-export * from './iconEllipsis/IconEllipsis.jsx';
-export { default as IconEllipsis } from './iconEllipsis/IconEllipsis.jsx';
+export { default as IconCog } from './icon/IconCog.jsx';
+export { default as IconEllipsis } from './icon/IconEllipsis.jsx';
 
 export * from './label/Label.jsx';
 export { default as Label } from './label/Label.jsx';

@@ -24,6 +24,9 @@ import {
   GridEmptyRow,
   GridHeader,
   GridHeaderSortableCell,
+  GridIcon,
+  GridIconEdit,
+  GridIconOptions,
   GridKpi,
   GridKpiNegative,
   GridKpiPositive,
@@ -125,6 +128,15 @@ const components = [{
 }, {
   name: 'GridHeaderSortableCell',
   component: GridHeaderSortableCell,
+}, {
+  name: 'GridIcon',
+  component: GridIcon,
+}, {
+  name: 'GridIconEdit',
+  component: GridIconEdit,
+}, {
+  name: 'GridIconOptions',
+  component: GridIconOptions,
 }, {
   name: 'GridKpi',
   component: GridKpi,

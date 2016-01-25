@@ -21,11 +21,19 @@ export default class IconExample extends Component {
   }
 
   render() {
+    function onClick() {
+      console.log('Clicked icon.'); // eslint-disable-line no-console
+    }
+
     return (
       <Page title={this.props.route.name}>
 
         <Example>
-          <Icon className="glyphicons-cogwheel" />
+          <Text>Icons can be clickable.</Text>
+          <Icon
+            classes="glyphicons-cogwheel"
+            onClick={onClick}
+          />
         </Example>
 
         <Example title="IconEllipsis">

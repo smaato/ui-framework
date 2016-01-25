@@ -27,7 +27,8 @@
   .conditionCheckerListItem__removeButton {
     opacity: 0;
     display: flex;
-    margin-left: -$iconSide;
+    margin-left: -14px;
+    font-size: 14px;
     cursor: pointer;
     background: shade(scale-saturation($componentBackgroundColor, 60%), 3%);
     box-shadow: -10px 0 5px shade(scale-saturation($componentBackgroundColor, 60%), 3%);

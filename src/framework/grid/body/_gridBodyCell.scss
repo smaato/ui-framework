@@ -86,30 +86,3 @@
           }
         }
       }
-
-    .grid__body__cellLiner .icon {
-      color: shade($lightGrey, 15%);
-      padding: 0;
-      vertical-align: top;
-    }
-
-    .grid__body__cellLiner .glyphicons-more,
-    .grid__body__cellLiner .glyphicons-cogwheel {
-      font-size: 14px;
-      color: shade($lightGrey, 20%);
-      margin: 0 0 0 15px;
-
-      &:hover {
-        color: shade($lightGrey, 40%);
-      }
-    }
-
-    .grid__body__cellLiner .glyphicons-leaf {
-      margin-left: 2px;
-      font-size: 9px;
-      color: $green;
-
-      &:before {
-        top: 1px;
-      }
-    }
