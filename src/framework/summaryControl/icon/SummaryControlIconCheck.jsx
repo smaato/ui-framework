@@ -5,7 +5,7 @@ import SummaryControlIcon from './SummaryControlIcon.jsx';
 
 import IconCheck from '../../icon/IconCheck.jsx';
 
-const SummaryControlIconCog = () => {
+const SummaryControlIconCheck = () => {
   return (
     <SummaryControlIcon
       classes="summaryControlIconCheck"
@@ -14,4 +14,4 @@ const SummaryControlIconCog = () => {
   );
 };
 
-export default SummaryControlIconCog;
+export default SummaryControlIconCheck;

@@ -5,7 +5,7 @@ import SummaryControlIcon from './SummaryControlIcon.jsx';
 
 import IconPaperclip from '../../icon/IconPaperclip.jsx';
 
-const SummaryControlIconCog = () => {
+const SummaryControlIconPaperclip = () => {
   return (
     <SummaryControlIcon
       classes="summaryControlIconPaperclip"
@@ -14,4 +14,4 @@ const SummaryControlIconCog = () => {
   );
 };
 
-export default SummaryControlIconCog;
+export default SummaryControlIconPaperclip;

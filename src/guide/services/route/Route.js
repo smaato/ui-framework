@@ -91,7 +91,7 @@ const components = [{
   component: SpinnerExample,
 }, {
   name: 'SummaryControl',
-  source: 'views/summary/SummaryControlExample.jsx',
+  source: 'views/summaryControl/SummaryControlExample.jsx',
   component: SummaryControlExample,
 }, {
   name: 'Text',
