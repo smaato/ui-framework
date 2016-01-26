@@ -49,18 +49,6 @@ export {
 } from './icon/GridIconOptions.jsx';
 
 export {
-  default as Kpi,
-} from '../kpi/Kpi.jsx';
-
-export {
-  default as KpiPositive,
-} from '../kpi/KpiPositive.jsx';
-
-export {
-  default as KpiNegative,
-} from '../kpi/KpiNegative.jsx';
-
-export {
   default as GridControls,
 } from './controls/GridControls.jsx';
 
