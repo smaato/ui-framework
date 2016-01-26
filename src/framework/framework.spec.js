@@ -24,6 +24,9 @@ import {
   GridEmptyRow,
   GridHeader,
   GridHeaderSortableCell,
+  GridIcon,
+  GridIconEdit,
+  GridIconOptions,
   GridLoadingRow,
   GridRow,
   HollowButton,
@@ -46,6 +49,10 @@ import {
   SearchBox,
   Spinner,
   StickyGrid,
+  SummaryControl,
+  SummaryControlIcon,
+  SummaryControlIconCheck,
+  SummaryControlIconPaperclip,
   TextInput,
   TitleBar,
   VerticalLayout,
@@ -126,6 +133,15 @@ const components = [{
   name: 'GridHeaderSortableCell',
   component: GridHeaderSortableCell,
 }, {
+  name: 'GridIcon',
+  component: GridIcon,
+}, {
+  name: 'GridIconEdit',
+  component: GridIconEdit,
+}, {
+  name: 'GridIconOptions',
+  component: GridIconOptions,
+}, {
   name: 'GridLoadingRow',
   component: GridLoadingRow,
 }, {
@@ -191,6 +207,18 @@ const components = [{
 }, {
   name: 'StickyGrid',
   component: StickyGrid,
+}, {
+  name: 'SummaryControl',
+  component: SummaryControl,
+}, {
+  name: 'SummaryControlIcon',
+  component: SummaryControlIcon,
+}, {
+  name: 'SummaryControlIconCheck',
+  component: SummaryControlIconCheck,
+}, {
+  name: 'SummaryControlIconPaperclip',
+  component: SummaryControlIconPaperclip,
 }, {
   name: 'TextInput',
   component: TextInput,

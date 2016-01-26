@@ -1,15 +1,12 @@
 
 import { TestCaseFactory } from 'react-test-kit';
-import Icon from './Icon.jsx';
+import IconPaperclip from './IconPaperclip.jsx';
 
-describe('Icon', () => {
-  describe('DOM structure', () => {
-    it('is one span element', () => {
-      const testCase =
-        TestCaseFactory.createFromFunction(Icon);
-      expect(testCase.dom.tagName).toBe('SPAN');
-      expect(testCase.dom.className).toBe('icon');
-    });
+describe('IconPaperclip', () => {
+  it('is an Icon', () => {
+    const testCase =
+      TestCaseFactory.createFromFunction(IconPaperclip);
+    expect(testCase.dom.className).toContain('icon');
   });
 
   describe('Props', () => {
@@ -19,7 +16,7 @@ describe('Icon', () => {
           classes: 'test',
         };
         const testCase =
-          TestCaseFactory.createFromFunction(Icon, props);
+          TestCaseFactory.createFromFunction(IconPaperclip, props);
         expect(testCase.dom.className).toContain(props.classes);
       });
     });
@@ -32,7 +29,7 @@ describe('Icon', () => {
         onClick = jasmine.createSpy('onClick');
 
         testCase =
-          TestCaseFactory.createFromFunction(Icon, {onClick});
+          TestCaseFactory.createFromFunction(IconPaperclip, {onClick});
 
         testCase.trigger('click');
       });

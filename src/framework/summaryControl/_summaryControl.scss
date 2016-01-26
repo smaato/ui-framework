@@ -1,0 +1,25 @@
+
+.summaryControl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 34px;
+  padding: 0 8px;
+  line-height: 1.2;
+  color: #444444;
+  border: 1px solid #c3cfd6;
+  font-size: 12px;
+  border-radius: 3px;
+  box-shadow: 0 1px rgba(#c3cfd6, 0.25);
+  cursor: pointer;
+}
+
+  .summaryControl__label {
+    flex: 1;
+  }
+
+  .summaryControl_iconCog {
+    color: #95a4ac;
+    font-size: 13px;
+  }
+

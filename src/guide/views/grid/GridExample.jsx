@@ -18,12 +18,12 @@ import {
   GridEmptyRow,
   GridHeader,
   GridHeaderSortableCell,
+  GridIconEdit,
+  GridIconOptions,
   KpiNegative,
   KpiPositive,
   GridLoadingRow,
   GridRow,
-  IconCog,
-  IconEllipsis,
   SearchBox,
   StickyGrid,
 } from '../../../framework/framework';
@@ -335,12 +335,12 @@ export default class GridExample extends Component {
             </KpiNegative>
           </div>
         ),
-      }), () => ({
+      }), item => ({
         children: (
-          <span>
-            <IconEllipsis />
-            <IconCog />
-          </span>
+          <div>
+            <GridIconOptions onClick={this.onClickRowOptions.bind(this, item)} />
+            <GridIconEdit onClick={this.onClickRowEdit.bind(this, item)} />
+          </div>
         ),
       }),
     ];
@@ -441,6 +441,16 @@ export default class GridExample extends Component {
 
   onClickRow(item) {
     console.log('Clicked row with ID:', item.id); // eslint-disable-line no-console
+  }
+
+  onClickRowEdit(item, event) {
+    event.stopPropagation();
+    console.log('Clicked edit for row with ID:', item.id); // eslint-disable-line no-console
+  }
+
+  onClickRowOptions(item, event) {
+    event.stopPropagation();
+    console.log('Clicked options for row with ID:', item.id); // eslint-disable-line no-console
   }
 
   onSort(cellIndex) {
