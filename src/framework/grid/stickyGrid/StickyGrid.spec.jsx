@@ -33,8 +33,7 @@ describe('StickyGrid', () => {
         expect(cellPropsProvider1).not.toHaveBeenCalled();
         expect(cellPropsProvider2).not.toHaveBeenCalled();
 
-        const testCase = // eslint-disable-line no-unused-vars
-          TestCaseFactory.createFromFunction(StickyGrid, props);
+        TestCaseFactory.createFromFunction(StickyGrid, props);
 
         expect(cellPropsProvider1).toHaveBeenCalledWith(0);
         expect(cellPropsProvider2).toHaveBeenCalledWith(1);

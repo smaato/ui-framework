@@ -58,8 +58,7 @@ describe('ModalOverlay', () => {
           isOpen: true,
           children: <div />,
         };
-        const testCase = // eslint-disable-line no-unused-vars
-          TestCaseFactory.createFromElement(<ModalOverlay {...props} />);
+        TestCaseFactory.createFromElement(<ModalOverlay {...props} />);
         expect(document.body.getAttribute('class'))
           .toContain('is-modal-overlay-open');
       });
@@ -69,8 +68,7 @@ describe('ModalOverlay', () => {
           isOpen: false,
           children: <div />,
         };
-        const testCase = // eslint-disable-line no-unused-vars
-          TestCaseFactory.createFromElement(<ModalOverlay {...props} />);
+        TestCaseFactory.createFromElement(<ModalOverlay {...props} />);
         expect(document.body.getAttribute('class'))
           .not.toContain('is-modal-overlay-open');
       });

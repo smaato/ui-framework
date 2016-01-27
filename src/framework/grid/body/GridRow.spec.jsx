@@ -32,9 +32,7 @@ describe('GridRow', () => {
         expect(cellPropsProvider1).not.toHaveBeenCalled();
         expect(cellPropsProvider2).not.toHaveBeenCalled();
 
-        const testCase = TestCaseFactory.createFromElement( // eslint-disable-line no-unused-vars
-          wrap(<GridRow {...props} />)
-        );
+        TestCaseFactory.createFromElement(wrap(<GridRow {...props} />));
 
         expect(cellPropsProvider1).toHaveBeenCalledWith(props.item);
         expect(cellPropsProvider2).toHaveBeenCalledWith(props.item);
