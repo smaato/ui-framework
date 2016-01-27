@@ -28,9 +28,7 @@ describe('GridHeader', () => {
         expect(cellPropsProvider1).not.toHaveBeenCalled();
         expect(cellPropsProvider2).not.toHaveBeenCalled();
 
-        const testCase = TestCaseFactory.createFromElement( // eslint-disable-line no-unused-vars
-          wrap(<GridHeader {...props} />)
-        );
+        TestCaseFactory.createFromElement(wrap(<GridHeader {...props} />));
 
         expect(cellPropsProvider1).toHaveBeenCalledWith(0);
         expect(cellPropsProvider2).toHaveBeenCalledWith(1);
