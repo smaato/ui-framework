@@ -1,56 +1,85 @@
 
 import { TestCaseFactory } from 'react-test-kit';
 import Icon from './Icon.jsx';
+import IconCheck from './IconCheck.jsx';
+import IconCog from './IconCog.jsx';
+import IconEllipsis from './IconEllipsis.jsx';
+import IconPaperclip from './IconPaperclip.jsx';
 
-describe('Icon', () => {
-  describe('DOM structure', () => {
-    it('is one span element', () => {
-      const testCase =
-        TestCaseFactory.createFromFunction(Icon);
-      expect(testCase.dom.tagName).toBe('SPAN');
-      expect(testCase.dom.className).toBe('icon');
-    });
-  });
+const icons = [{
+  name: 'Icon',
+  component: Icon,
+}, {
+  name: 'IconCheck',
+  component: IconCheck,
+}, {
+  name: 'IconCog',
+  component: IconCog,
+}, {
+  name: 'IconEllipsis',
+  component: IconEllipsis,
+}, {
+  name: 'IconPaperclip',
+  component: IconPaperclip,
+}];
 
-  describe('Props', () => {
-    describe('classes', () => {
-      it('is applied to the element', () => {
-        const props = {
-          classes: 'test',
-        };
+for (let i = 0, length = icons.length; i < length; i++) {
+  const icon = icons[i];
+  describe(icon.name, () => { // eslint-disable-line no-loop-func
+    describe('DOM structure', () => {
+      it('is one span element', () => {
         const testCase =
-          TestCaseFactory.createFromFunction(Icon, props);
-        expect(testCase.dom.className).toContain(props.classes);
+          TestCaseFactory.createFromFunction(icon.component);
+        expect(testCase.dom.tagName).toBe('SPAN');
+      });
+
+      it('is an Icon', () => {
+        const testCase =
+          TestCaseFactory.createFromFunction(icon.component);
+        expect(testCase.dom.className).toContain('icon');
       });
     });
 
-    describe('onClick', () => {
-      let testCase;
-      let onClick;
-
-      beforeEach(() => {
-        onClick = jasmine.createSpy('onClick');
-
-        testCase =
-          TestCaseFactory.createFromFunction(Icon, {onClick});
-
-        testCase.trigger('click');
+    describe('Props', () => {
+      describe('classes', () => {
+        it('is applied to the element', () => {
+          const props = {
+            classes: 'test',
+          };
+          const testCase =
+            TestCaseFactory.createFromFunction(icon.component, props);
+          expect(testCase.dom.className).toContain(props.classes);
+        });
       });
 
-      it('is called once', () => {
-        expect(onClick.calls.count()).toEqual(1);
-      });
+      describe('onClick', () => {
+        let testCase;
+        let onClick;
 
-      it('is called with event object as an argument', () => {
-        expect(onClick).toHaveBeenCalledWith(
-          jasmine.any(Object), // SyntheticEvent
-          jasmine.any(String) // React ID
-        );
-      });
+        beforeEach(() => {
+          onClick = jasmine.createSpy('onClick');
 
-      it('adds a clickable modifier class', () => {
-        expect(testCase.dom.className).toContain('icon--clickable');
+          testCase =
+            TestCaseFactory.createFromFunction(icon.component, {onClick});
+
+          testCase.trigger('click');
+        });
+
+        it('is called once', () => {
+          expect(onClick.calls.count()).toEqual(1);
+        });
+
+        it('is called with event object as an argument', () => {
+          expect(onClick).toHaveBeenCalledWith(
+            jasmine.any(Object), // SyntheticEvent
+            jasmine.any(String) // React ID
+          );
+        });
+
+        it('adds a clickable modifier class', () => {
+          expect(testCase.dom.className).toContain('icon--clickable');
+        });
       });
     });
   });
-});
+}
