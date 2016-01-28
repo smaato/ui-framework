@@ -10,8 +10,19 @@ module.exports = function(config) {
       'jasmine'
     ],
     basePath: '',
+    // Prevent 404s showing up when assets are requested by tests.
+    proxies: {
+      '/img/': 'http://localhost:9876/base/test/assets/img/'
+    },
     // Specify the JS to compile to create a functioning test environment.
     files: [
+      {
+        pattern: 'test/assets/img/*.*',
+        watched: false,
+        included: false,
+        served: true,
+        nocache: false
+      },
       'node_modules/react/dist/react-with-addons.js',
       'node_modules/babel-core/browser-polyfill.js',
       'src/framework/**/*.jsx',
