@@ -1,0 +1,51 @@
+
+import { TestCaseFactory } from 'react-test-kit';
+import ConditionCheckerList from './ConditionCheckerList.jsx';
+import {
+  ConditionChecker,
+} from '../../services';
+
+describe('ConditionCheckerList', () => {
+  describe('Props', () => {
+    describe('conditionCheckers', () => {
+      it('are iterated over', () => {
+        const props = {
+          conditionCheckers: [
+            new ConditionChecker({}),
+          ],
+          onRemoveConditionChecker: () => {},
+        };
+
+        const iterationSpy = spyOn(props.conditionCheckers, 'map');
+        expect(iterationSpy).not.toHaveBeenCalled();
+        TestCaseFactory.createFromFunction(ConditionCheckerList, props);
+        expect(iterationSpy).toHaveBeenCalled();
+      });
+    });
+
+    describe('onRemoveConditionChecker', () => {
+      it('is called and receives conditionChecker when a remove button is clicked', () => {
+        const props = {
+          conditionCheckers: [
+            new ConditionChecker({}),
+          ],
+          onRemoveConditionChecker: jasmine.createSpy('onRemoveConditionChecker'),
+        };
+
+        const testCase =
+          TestCaseFactory.createFromFunction(ConditionCheckerList, props);
+
+        const removeButton =
+          testCase.first('.conditionCheckerListItem__removeButton');
+
+        expect(props.onRemoveConditionChecker).not.toHaveBeenCalled();
+        testCase.trigger('click', removeButton);
+        expect(props.onRemoveConditionChecker).toHaveBeenCalledWith(
+          props.conditionCheckers[0],
+          jasmine.any(Object), // SyntheticEvent
+          jasmine.any(String) // React ID
+        );
+      });
+    });
+  });
+});
