@@ -1,15 +1,12 @@
 
 import React from 'react';
 
-import {
-  IconEllipsis,
-} from '../../icon/Icon.jsx';
+import IconEllipsis from '../../icon/IconEllipsis.jsx';
 
+// TODO: This component isn't active in the example yet.
 const FilterEllipsis = () => {
   return (
-    <div className="filterEllipsis">
-      <IconEllipsis/>
-    </div>
+    <IconEllipsis classes="filterEllipsis" />
   );
 };
 
