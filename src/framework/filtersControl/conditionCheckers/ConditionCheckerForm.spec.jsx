@@ -5,6 +5,7 @@ import {
   ConditionChecker,
   FilterOption,
 } from '../../services';
+import TestUtils from '../../../services/TestUtils';
 
 describe('ConditionCheckerForm', () => {
   describe('Props', () => {
@@ -75,14 +76,32 @@ describe('ConditionCheckerForm', () => {
           TestCaseFactory.createFromClass(ConditionCheckerForm, props);
 
         expect(props.onAddConditionChecker).not.toHaveBeenCalled();
+        testCase.trigger('keyUp', testCase.first('input'), {key: 'Enter'});
+        expect(props.onAddConditionChecker).not.toHaveBeenCalled();
+      });
+
+      it('isn\'t called when a non-Enter key is hit and the input isn\'t empty', () => {
+        const props = {
+          filterOption: new FilterOption({}),
+          comparisonType: 'testComparisonType',
+          onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
+          onCancelConditionChecker: () => {},
+        };
+
+        const testCase =
+          TestCaseFactory.createFromClass(ConditionCheckerForm, props);
+
+        testCase.first('input').value = 'inputValue';
+
+        expect(props.onAddConditionChecker).not.toHaveBeenCalled();
         testCase.trigger('keyUp', testCase.first('input'), {key: ''});
         expect(props.onAddConditionChecker).not.toHaveBeenCalled();
       });
 
-      it(
+      it(TestUtils.cleanString(
         `is called when the add button is clicked and the input isn\'t empty,
-        and receives a conditionChecker`,
-      () => {
+        and receives a conditionChecker`
+      ), () => {
         const props = {
           filterOption: new FilterOption({}),
           comparisonType: 'testComparisonType',
@@ -111,9 +130,11 @@ describe('ConditionCheckerForm', () => {
         const testCase =
           TestCaseFactory.createFromClass(ConditionCheckerForm, props);
 
+        testCase.first('input').value = 'inputValue';
+
         expect(props.onAddConditionChecker).not.toHaveBeenCalled();
         testCase.trigger('keyUp', testCase.first('input'), {key: 'Enter'});
-        expect(props.onAddConditionChecker).not.toHaveBeenCalled();
+        expect(props.onAddConditionChecker).toHaveBeenCalled();
       });
 
       it('receives a conditionChecker when it\'s called', () => {

@@ -4,6 +4,7 @@ import FiltersControl from './FiltersControl.jsx';
 import {
   ConditionChecker,
 } from '../services';
+import TestUtils from '../../services/TestUtils';
 
 describe('FiltersControl', () => {
   describe('Props', () => {
@@ -27,7 +28,10 @@ describe('FiltersControl', () => {
     });
 
     describe('onRemoveConditionChecker', () => {
-      it('is passed to ConditionCheckerList and called with a conditionChecker when a remove button is clicked', () => {
+      it(TestUtils.cleanString(
+        `is passed to ConditionCheckerList and called with a conditionChecker
+        when a remove button is clicked`
+      ), () => {
         const props = {
           conditionCheckers: [
             new ConditionChecker({}),
