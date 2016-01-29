@@ -13,7 +13,7 @@ export {
 
 export {
   default as AppLogo,
-} from './AppLogo.jsx';
+} from './logo/AppLogo.jsx';
 
 export {
   default as AppNav,
