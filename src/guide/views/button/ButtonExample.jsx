@@ -9,6 +9,7 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
+  BasicButton,
   Button,
   CallOutButton,
   HollowButton,
@@ -48,10 +49,21 @@ export default class ButtonExample extends Component {
           <HollowButton label="Cancel" />
         </Example>
 
+        <Example title="BasicButton">
+          <Text>
+            This button lets the user perform a special, but potentially
+            regrettable dangerous, like "Delete". It's higher in the UI
+            hierarchy than the HollowButton.
+          </Text>
+          <BasicButton
+            label="Delete"
+          />
+        </Example>
+
         <Example title="PrimaryButton">
           <Text>
             This button lets the user perform a special action, like "Save".
-            It's higher in the UI hierarchy than the HollowButton.
+            It's higher in the UI hierarchy than the BasicButton.
           </Text>
           <PrimaryButton label="Save" />
         </Example>
