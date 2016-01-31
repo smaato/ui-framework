@@ -9,21 +9,49 @@ describe('ModalFooter', () => {
       it('is rendered when an array', () => {
         const props = {
           children: [
-            <div key="1">item1</div>,
-            <div key="2">item2</div>,
+            <div className="children" key="1">item1</div>,
+            <div className="children" key="2">item2</div>,
           ],
         };
         const testCase = TestCaseFactory.createFromFunction(ModalFooter, props);
-        expect(testCase.dom.childNodes[0].textContent).toBe('item1');
-        expect(testCase.dom.childNodes[1].textContent).toBe('item2');
+        const children = testCase.find('.children');
+        expect(children[0].textContent).toBe('item1');
+        expect(children[1].textContent).toBe('item2');
       });
 
       it('is rendered when a single element', () => {
         const props = {
-          children: <div>item1</div>,
+          children: <div className="children">item1</div>,
         };
         const testCase = TestCaseFactory.createFromFunction(ModalFooter, props);
-        expect(testCase.dom.childNodes[0].textContent).toBe('item1');
+        const children = testCase.find('.children');
+        expect(children[0].textContent).toBe('item1');
+      });
+    });
+
+    describe('left', () => {
+      it('is rendered when an array', () => {
+        const props = {
+          left: [
+            <div className="left" key="1">item1</div>,
+            <div className="left" key="2">item2</div>,
+          ],
+          children: <div></div>,
+        };
+        const testCase = TestCaseFactory.createFromFunction(ModalFooter, props);
+        const left = testCase.find('.left');
+        expect(left[0].textContent).toBe('item1');
+        expect(left[1].textContent).toBe('item2');
+      });
+
+      it('is rendered when a single element', () => {
+        const props = {
+          left: <div className="left">item1</div>,
+          children: <div></div>,
+        };
+        const testCase = TestCaseFactory.createFromFunction(ModalFooter, props);
+        const left = testCase.find('.left');
+        expect(left[0].textContent).toBe('item1');
       });
     });
   });

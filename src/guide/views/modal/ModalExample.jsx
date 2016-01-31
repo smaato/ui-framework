@@ -8,6 +8,7 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
+  BasicButton,
   CallOutButton,
   HollowButton,
   PrimaryButton,
@@ -156,7 +157,14 @@ export default class ModalExample extends Component {
               </ModalBody>
             )}
             footer={(
-              <ModalFooter>
+              <ModalFooter
+                left={(
+                  <BasicButton
+                    iconClasses="glyphicons-bin"
+                    label="Delete"
+                  />
+                )}
+              >
                 <HollowButton label="Cancel" />
                 <PrimaryButton
                   label="Save"
