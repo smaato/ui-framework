@@ -9,6 +9,7 @@ import {
   AppNav,
   AppTitle,
   AppTitleContainer,
+  BasicButton,
   Body,
   BodyPanel,
   BodyPanelItem,
@@ -87,6 +88,9 @@ const components = [{
 }, {
   name: 'AppTitleContainer',
   component: AppTitleContainer,
+}, {
+  name: 'BasicButton',
+  component: BasicButton,
 }, {
   name: 'Body',
   component: Body,
