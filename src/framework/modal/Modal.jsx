@@ -8,6 +8,14 @@ export {
 } from './ModalBody.jsx';
 
 export {
+  default as ModalConfirmationBody,
+} from './confirmation/ModalConfirmationBody.jsx';
+
+export {
+  default as ModalConfirmationFooter,
+} from './confirmation/ModalConfirmationFooter.jsx';
+
+export {
   default as ModalFooter,
 } from './footer/ModalFooter.jsx';
 

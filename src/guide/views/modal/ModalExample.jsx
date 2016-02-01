@@ -15,6 +15,8 @@ import {
   IconCog,
   Modal,
   ModalBody,
+  ModalConfirmationBody,
+  ModalConfirmationFooter,
   ModalFooter,
   ModalHeader,
   ModalOverlay,
@@ -174,12 +176,18 @@ export default class ModalExample extends Component {
           />
         </Example>
 
-        <Example title="Modal without header or footer" isClear>
+        <Example title="ModalConfirmation" isClear>
           <Modal
             body={(
-              <ModalBody>
-                <div style={{height: 110}}></div>
-              </ModalBody>
+              <ModalConfirmationBody>
+                Are you sure you want to do that?
+              </ModalConfirmationBody>
+            )}
+            footer={(
+              <ModalConfirmationFooter>
+                <HollowButton label="No, Cancel" />
+                <PrimaryButton label="Yes, Continue" />
+              </ModalConfirmationFooter>
             )}
           />
         </Example>

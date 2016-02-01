@@ -41,6 +41,8 @@ import {
   LabeledControl,
   Modal,
   ModalBody,
+  ModalConfirmationBody,
+  ModalConfirmationFooter,
   ModalFooter,
   ModalHeader,
   ModalOverlay,
@@ -184,6 +186,12 @@ const components = [{
 }, {
   name: 'ModalBody',
   component: ModalBody,
+}, {
+  name: 'ModalConfirmationBody',
+  component: ModalConfirmationBody,
+}, {
+  name: 'ModalConfirmationFooter',
+  component: ModalConfirmationFooter,
 }, {
   name: 'ModalFooter',
   component: ModalFooter,

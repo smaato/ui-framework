@@ -55,6 +55,8 @@ import {
   LabeledControl,
   Modal,
   ModalBody,
+  ModalConfirmationBody,
+  ModalConfirmationFooter,
   ModalFooter,
   ModalHeader,
   ModalOverlay,
