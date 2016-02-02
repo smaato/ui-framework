@@ -15,8 +15,8 @@ describe('ModalConfirmationFooter', () => {
         };
         const testCase =
           TestCaseFactory.createFromFunction(ModalConfirmationFooter, props);
-        expect(testCase.dom.childNodes[0].textContent).toBe('item1');
-        expect(testCase.dom.childNodes[1].textContent).toBe('item2');
+        expect(testCase.dom.children[0].textContent).toBe('item1');
+        expect(testCase.dom.children[1].textContent).toBe('item2');
       });
 
       it('is rendered when a single element', () => {
@@ -25,7 +25,7 @@ describe('ModalConfirmationFooter', () => {
         };
         const testCase =
           TestCaseFactory.createFromFunction(ModalConfirmationFooter, props);
-        expect(testCase.dom.childNodes[0].textContent).toBe('item1');
+        expect(testCase.dom.children[0].textContent).toBe('item1');
       });
     });
   });
