@@ -8,12 +8,15 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
+  BasicButton,
   CallOutButton,
   HollowButton,
   PrimaryButton,
   IconCog,
   Modal,
   ModalBody,
+  ModalConfirmationBody,
+  ModalConfirmationFooter,
   ModalFooter,
   ModalHeader,
   ModalOverlay,
@@ -156,7 +159,14 @@ export default class ModalExample extends Component {
               </ModalBody>
             )}
             footer={(
-              <ModalFooter>
+              <ModalFooter
+                left={(
+                  <BasicButton
+                    iconClasses="glyphicons-bin"
+                    label="Delete"
+                  />
+                )}
+              >
                 <HollowButton label="Cancel" />
                 <PrimaryButton
                   label="Save"
@@ -166,12 +176,18 @@ export default class ModalExample extends Component {
           />
         </Example>
 
-        <Example title="Modal without header or footer" isClear>
+        <Example title="ModalConfirmation" isClear>
           <Modal
             body={(
-              <ModalBody>
-                <div style={{height: 110}}></div>
-              </ModalBody>
+              <ModalConfirmationBody>
+                Are you sure you want to do that?
+              </ModalConfirmationBody>
+            )}
+            footer={(
+              <ModalConfirmationFooter>
+                <HollowButton label="No, Cancel" />
+                <PrimaryButton label="Yes, Continue" />
+              </ModalConfirmationFooter>
             )}
           />
         </Example>
