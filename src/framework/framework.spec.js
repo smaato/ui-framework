@@ -9,6 +9,7 @@ import {
   AppNav,
   AppTitle,
   AppTitleContainer,
+  BasicButton,
   Body,
   BodyPanel,
   BodyPanelItem,
@@ -40,6 +41,8 @@ import {
   LabeledControl,
   Modal,
   ModalBody,
+  ModalConfirmationBody,
+  ModalConfirmationFooter,
   ModalFooter,
   ModalHeader,
   ModalOverlay,
@@ -87,6 +90,9 @@ const components = [{
 }, {
   name: 'AppTitleContainer',
   component: AppTitleContainer,
+}, {
+  name: 'BasicButton',
+  component: BasicButton,
 }, {
   name: 'Body',
   component: Body,
@@ -180,6 +186,12 @@ const components = [{
 }, {
   name: 'ModalBody',
   component: ModalBody,
+}, {
+  name: 'ModalConfirmationBody',
+  component: ModalConfirmationBody,
+}, {
+  name: 'ModalConfirmationFooter',
+  component: ModalConfirmationFooter,
 }, {
   name: 'ModalFooter',
   component: ModalFooter,

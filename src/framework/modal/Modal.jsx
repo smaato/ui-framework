@@ -8,20 +8,28 @@ export {
 } from './ModalBody.jsx';
 
 export {
+  default as ModalConfirmationBody,
+} from './confirmation/ModalConfirmationBody.jsx';
+
+export {
+  default as ModalConfirmationFooter,
+} from './confirmation/ModalConfirmationFooter.jsx';
+
+export {
   default as ModalFooter,
-} from './ModalFooter.jsx';
+} from './footer/ModalFooter.jsx';
 
 export {
   default as ModalHeader,
-} from './ModalHeader.jsx';
+} from './header/ModalHeader.jsx';
 
 export {
   default as ModalOverlay,
-} from './ModalOverlay.jsx';
+} from './overlay/ModalOverlay.jsx';
 
 export {
   default as ModalStack,
-} from './ModalStack.jsx';
+} from './stack/ModalStack.jsx';
 
 const Modal = props => {
   return (
