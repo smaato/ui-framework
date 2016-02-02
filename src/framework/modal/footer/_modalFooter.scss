@@ -28,9 +28,9 @@
    *    left side.
    */
   .modalFooterSection--right {
-    justify-content: flex-end;
+    justify-content: flex-end; /* 1 */
 
     > * {
-      margin-left: 10px; /* 1 */
+      margin-left: 10px; /* 2 */
     }
   }
