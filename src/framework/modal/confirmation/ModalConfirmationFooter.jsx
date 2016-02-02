@@ -3,19 +3,19 @@ import React, {
   PropTypes,
 } from 'react';
 
-const ModalFooter = props => {
+const ModalConfirmationFooter = props => {
   return (
-    <div className="modalFooter">
+    <div className="modalConfirmationFooter">
       {props.children}
     </div>
   );
 };
 
-ModalFooter.propTypes = {
+ModalConfirmationFooter.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.array,
   ]).isRequired,
 };
 
-export default ModalFooter;
+export default ModalConfirmationFooter;
