@@ -1,10 +1,10 @@
-@import 'accountNav';
-@import 'accountPicture';
+
 @import 'appHeader';
+@import 'account/accountNav';
+@import 'account/accountPicture';
 @import 'logo/appLogo';
-@import 'appNav';
-@import 'appTitle';
-@import 'appTitleContainer';
-@import 'appHeaderButton';
-@import 'appHeaderDivider';
-@import 'appHeaderDropdownArrow';
+@import 'nav/appNav';
+@import 'title/appTitle';
+@import 'title/appTitleContainer';
+@import 'button/appHeaderButton';
+@import 'divider/appHeaderDivider';

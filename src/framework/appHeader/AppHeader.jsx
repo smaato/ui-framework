@@ -5,11 +5,11 @@ import React, {
 
 export {
   default as AccountNav,
-} from './AccountNav.jsx';
+} from './account/AccountNav.jsx';
 
 export {
   default as AccountPicture,
-} from './AccountPicture.jsx';
+} from './account/AccountPicture.jsx';
 
 export {
   default as AppLogo,
@@ -17,23 +17,23 @@ export {
 
 export {
   default as AppNav,
-} from './AppNav.jsx';
+} from './nav/AppNav.jsx';
 
 export {
   default as AppHeaderButton,
-} from './AppHeaderButton.jsx';
+} from './button/AppHeaderButton.jsx';
 
 export {
   default as AppHeaderDivider,
-} from './AppHeaderDivider.jsx';
+} from './divider/AppHeaderDivider.jsx';
 
 export {
   default as AppTitle,
-} from './AppTitle.jsx';
+} from './title/AppTitle.jsx';
 
 export {
   default as AppTitleContainer,
-} from './AppTitleContainer.jsx';
+} from './title/AppTitleContainer.jsx';
 
 const AppHeader = props => {
   return (

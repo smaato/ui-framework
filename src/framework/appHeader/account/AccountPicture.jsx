@@ -5,8 +5,14 @@ import React, {
 
 const AccountPicture = props => {
   const picture = props.url ?
-    <img src={props.url} /> :
-    <span className="icon glyphicons-user accountPicture__icon"/>;
+    <img
+      src={props.url}
+      title={props.title}
+    /> :
+    <span
+      className="icon glyphicons-user accountPicture__icon"
+      title={props.title}
+    />;
 
   return (
     <span className="accountPicture">
