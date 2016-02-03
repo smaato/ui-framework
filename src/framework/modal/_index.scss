@@ -1,6 +1,7 @@
 
 @import 'modal';
-@import 'modalFooter';
-@import 'modalHeader';
-@import 'modalOverlay';
-@import 'modalStack';
+@import 'confirmation/modalConfirmation';
+@import 'footer/modalFooter';
+@import 'header/modalHeader';
+@import 'overlay/modalOverlay';
+@import 'stack/modalStack';

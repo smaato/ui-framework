@@ -84,7 +84,14 @@ export default class AppHeaderExample extends Component {
 
         <Example title="AppLogo" isDark>
           <Text>Allows the user to add a logo to the AppHeader.</Text>
-          <AppLogo text="Smaato" />
+          <Text>
+            Either with a hyperlink:
+            <AppLogo href="http://www.smaato.com" text="Smaato" />
+          </Text>
+          <Text>
+            Or without:
+            <AppLogo text="Smaato" />
+          </Text>
         </Example>
 
         <Example title="AppTitle" isDark>

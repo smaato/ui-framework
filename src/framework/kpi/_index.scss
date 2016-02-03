@@ -1,0 +1,13 @@
+.kpi {
+  font-size: 12px;
+  padding-left: 2px;
+  font-weight: 400;
+}
+
+.kpi--positive {
+  color: $green;
+}
+
+.kpi--negative {
+  color: $red;
+}

@@ -1,0 +1,17 @@
+.modalConfirmationBody {
+  padding: 10px 0 15px;
+  text-align: center;
+}
+
+/**
+ * 1. Space children apart.
+ */
+.modalConfirmationFooter {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+
+  > * {
+    margin: 0 5px; /* 1 */
+  }
+}

@@ -9,6 +9,7 @@ import {
   AppNav,
   AppTitle,
   AppTitleContainer,
+  BasicButton,
   Body,
   BodyPanel,
   BodyPanelItem,
@@ -24,19 +25,24 @@ import {
   GridEmptyRow,
   GridHeader,
   GridHeaderSortableCell,
-  GridKpi,
-  GridKpiNegative,
-  GridKpiPositive,
+  GridIcon,
+  GridIconEdit,
+  GridIconOptions,
   GridLoadingRow,
   GridRow,
   HollowButton,
   Icon,
   IconCog,
   IconEllipsis,
+  Kpi,
+  KpiNegative,
+  KpiPositive,
   Label,
   LabeledControl,
   Modal,
   ModalBody,
+  ModalConfirmationBody,
+  ModalConfirmationFooter,
   ModalFooter,
   ModalHeader,
   ModalOverlay,
@@ -46,6 +52,10 @@ import {
   SearchBox,
   Spinner,
   StickyGrid,
+  SummaryControl,
+  SummaryControlIcon,
+  SummaryControlIconCheck,
+  SummaryControlIconPaperclip,
   TextInput,
   TitleBar,
   VerticalLayout,
@@ -80,6 +90,9 @@ const components = [{
 }, {
   name: 'AppTitleContainer',
   component: AppTitleContainer,
+}, {
+  name: 'BasicButton',
+  component: BasicButton,
 }, {
   name: 'Body',
   component: Body,
@@ -126,14 +139,14 @@ const components = [{
   name: 'GridHeaderSortableCell',
   component: GridHeaderSortableCell,
 }, {
-  name: 'GridKpi',
-  component: GridKpi,
+  name: 'GridIcon',
+  component: GridIcon,
 }, {
-  name: 'GridKpiNegative',
-  component: GridKpiNegative,
+  name: 'GridIconEdit',
+  component: GridIconEdit,
 }, {
-  name: 'GridKpiPositive',
-  component: GridKpiPositive,
+  name: 'GridIconOptions',
+  component: GridIconOptions,
 }, {
   name: 'GridLoadingRow',
   component: GridLoadingRow,
@@ -153,6 +166,15 @@ const components = [{
   name: 'IconEllipsis',
   component: IconEllipsis,
 }, {
+  name: 'Kpi',
+  component: Kpi,
+}, {
+  name: 'KpiNegative',
+  component: KpiNegative,
+}, {
+  name: 'KpiPositive',
+  component: KpiPositive,
+}, {
   name: 'Label',
   component: Label,
 }, {
@@ -164,6 +186,12 @@ const components = [{
 }, {
   name: 'ModalBody',
   component: ModalBody,
+}, {
+  name: 'ModalConfirmationBody',
+  component: ModalConfirmationBody,
+}, {
+  name: 'ModalConfirmationFooter',
+  component: ModalConfirmationFooter,
 }, {
   name: 'ModalFooter',
   component: ModalFooter,
@@ -191,6 +219,18 @@ const components = [{
 }, {
   name: 'StickyGrid',
   component: StickyGrid,
+}, {
+  name: 'SummaryControl',
+  component: SummaryControl,
+}, {
+  name: 'SummaryControlIcon',
+  component: SummaryControlIcon,
+}, {
+  name: 'SummaryControlIconCheck',
+  component: SummaryControlIconCheck,
+}, {
+  name: 'SummaryControlIconPaperclip',
+  component: SummaryControlIconPaperclip,
 }, {
   name: 'TextInput',
   component: TextInput,

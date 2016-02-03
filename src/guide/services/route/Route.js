@@ -9,14 +9,15 @@ import ButtonExample from '../../views/button/ButtonExample.jsx';
 import ChartExample from '../../views/chart/ChartExample.jsx';
 import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
-import GridKpiExample from '../../views/gridKpi/GridKpiExample.jsx';
 import IconExample from '../../views/icon/IconExample.jsx';
+import KpiExample from '../../views/kpi/KpiExample.jsx';
 import LabeledControlExample from '../../views/labeledControl/LabeledControlExample.jsx';
 import LabelExample from '../../views/label/LabelExample.jsx';
 import ModalExample from '../../views/modal/ModalExample.jsx';
 import OrganizationSwitcherExample from '../../views/organizationSwitcher/OrganizationSwitcherExample.jsx';
 import SearchBoxExample from '../../views/searchBox/SearchBoxExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
+import SummaryControlExample from '../../views/summaryControl/SummaryControlExample.jsx';
 import TextExample from '../../views/text/TextExample.jsx';
 import TextInputExample from '../../views/textInput/TextInputExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
@@ -57,13 +58,13 @@ const components = [{
   source: 'views/grid/GridExample.jsx',
   component: GridExample,
 }, {
-  name: 'GridKpi',
-  source: 'views/gridKpi/GridKpiExample.jsx',
-  component: GridKpiExample,
-}, {
   name: 'Icon',
   source: 'views/icon/IconExample.jsx',
   component: IconExample,
+}, {
+  name: 'Kpi',
+  source: 'views/kpi/KpiExample.jsx',
+  component: KpiExample,
 }, {
   name: 'LabeledControl',
   source: 'views/labeledControl/LabeledControlExample.jsx',
@@ -88,6 +89,10 @@ const components = [{
   name: 'Spinner',
   source: 'views/spinner/SpinnerExample.jsx',
   component: SpinnerExample,
+}, {
+  name: 'SummaryControl',
+  source: 'views/summaryControl/SummaryControlExample.jsx',
+  component: SummaryControlExample,
 }, {
   name: 'Text',
   source: 'views/text/TextExample.jsx',

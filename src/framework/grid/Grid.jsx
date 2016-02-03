@@ -37,16 +37,16 @@ export {
 } from './empty/GridEmptyRow.jsx';
 
 export {
-  default as GridKpi,
-} from './kpi/GridKpi.jsx';
+  default as GridIcon,
+} from './icon/GridIcon.jsx';
 
 export {
-  default as GridKpiPositive,
-} from './kpi/GridKpiPositive.jsx';
+  default as GridIconEdit,
+} from './icon/GridIconEdit.jsx';
 
 export {
-  default as GridKpiNegative,
-} from './kpi/GridKpiNegative.jsx';
+  default as GridIconOptions,
+} from './icon/GridIconOptions.jsx';
 
 export {
   default as GridControls,

@@ -88,12 +88,12 @@ export default class GridViewExample extends Component {
           </div>
           <div className="grid__body__cell">
             <span className="grid__body__cellLiner">
-              <span className="grid__body__cellValue--readOnly">202.1k<span className="gridKpi gridKpi--positive">+2%</span></span>
+              <span className="grid__body__cellValue--readOnly">202.1k<span className="kpi kpi--positive">+2%</span></span>
             </span>
           </div>
           <div className="grid__body__cell">
             <span className="grid__body__cellLiner">
-              <span className="grid__body__cellValue--readOnly">200.5k<span className="gridKpi gridKpi--negative">-2%</span></span>
+              <span className="grid__body__cellValue--readOnly">200.5k<span className="kpi kpi--negative">-2%</span></span>
             </span>
           </div>
           <div className="grid__body__cell">

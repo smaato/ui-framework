@@ -1,0 +1,17 @@
+
+/**
+ * 1. Minor vertical alignment adjustment within grid rows.
+ */
+.gridIcon {
+  vertical-align: top; /* 1 */
+  font-size: 14px;
+  color: shade($lightGrey, 20%);
+
+  &:hover {
+    color: shade($lightGrey, 40%);
+  }
+
+  & + & {
+    margin-left: 15px;
+  }
+}

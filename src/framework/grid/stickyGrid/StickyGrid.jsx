@@ -8,9 +8,9 @@ import classNames from 'classnames';
 // Define stateless functional component.
 const StickyGrid = props => {
   // Create cells.
-  const headerCells = props.headerCellPropsProviders.map((getPropsForIndex, index) => {
+  const headerCells = props.headerCellPropsProviders.map((cellPropsProvider, index) => {
     // Get properties for the inner cell.
-    const innerCellProps = getPropsForIndex(index) || {};
+    const innerCellProps = cellPropsProvider(index) || {};
 
     const decoratedInnerCellProps = Object.assign({}, innerCellProps, {
       className: classNames('stickyGridHeaderCell', innerCellProps.className),
