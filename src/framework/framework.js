@@ -28,6 +28,8 @@ export { default as Grid } from './grid/Grid.jsx';
 export { default as Icon } from './icon/Icon.jsx';
 export { default as IconCog } from './icon/IconCog.jsx';
 export { default as IconEllipsis } from './icon/IconEllipsis.jsx';
+export { default as IconLink } from './icon/IconLink.jsx';
+export { default as IconPaperclip } from './icon/IconPaperclip.jsx';
 
 export * from './kpi/Kpi.jsx';
 export { default as Kpi } from './kpi/Kpi.jsx';
