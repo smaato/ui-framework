@@ -48,7 +48,7 @@ export default class IconExample extends Component {
         </Example>
 
         <Example title="Glyphicons">
-          <Text>CSS has a set of icon classes from the Glyphicons Regular font.</Text>
+          <Text>CSS has a set of icon classes from the <a href="http://glyphicons.com/" target="_blank">Glyphicons</a> Regular font.</Text>
           <div className="glyphiconsExample">
             <Icon classes="glyphicons-glass" />
             <Icon classes="glyphicons-leaf" />
