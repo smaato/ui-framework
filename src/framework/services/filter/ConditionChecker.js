@@ -18,28 +18,26 @@ export default class ConditionChecker {
       return parseInt(value, 10);
     }
 
-    let normalizedComparisonValue;
-    let normalizedItemValue;
-
     switch (this.comparisonType) {
-      case ComparisonTypes.MIN:
-        normalizedComparisonValue = normalizeInt(this.comparisonValue);
-        normalizedItemValue = normalizeInt(itemValue);
+      case ComparisonTypes.MIN: {
+        const normalizedComparisonValue = normalizeInt(this.comparisonValue);
+        const normalizedItemValue = normalizeInt(itemValue);
         return normalizedItemValue >= normalizedComparisonValue;
-
-      case ComparisonTypes.MAX:
-        normalizedComparisonValue = normalizeInt(this.comparisonValue);
-        normalizedItemValue = normalizeInt(itemValue);
+      }
+      case ComparisonTypes.MAX: {
+        const normalizedComparisonValue = normalizeInt(this.comparisonValue);
+        const normalizedItemValue = normalizeInt(itemValue);
         return normalizedItemValue <= normalizedComparisonValue;
-
-      case ComparisonTypes.CONTAINS:
-        normalizedComparisonValue = normalizeString(this.comparisonValue);
-        normalizedItemValue = normalizeString(itemValue);
+      }
+      case ComparisonTypes.CONTAINS: {
+        const normalizedComparisonValue = normalizeString(this.comparisonValue);
+        const normalizedItemValue = normalizeString(itemValue);
         const index = normalizedItemValue.indexOf(normalizedComparisonValue);
         return index !== -1;
-
-      default:
+      }
+      default: {
         throw new Error(`Matching method doesn\'t exist: ${this.comparisonType}`);
+      }
     }
   }
 
