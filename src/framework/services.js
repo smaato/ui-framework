@@ -48,3 +48,9 @@ export {
 export {
   default as Entity,
 } from './services/string/Entity';
+
+// Test
+
+export {
+  default as CommonAssertions,
+} from './services/test/CommonAssertions';

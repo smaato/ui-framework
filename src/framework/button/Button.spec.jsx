@@ -1,9 +1,12 @@
 
 import { TestCaseFactory } from 'react-test-kit';
+import { CommonAssertions } from '../services';
 import Button from './Button.jsx';
 
 describe('Button', () => {
   describe('Props', () => {
+    CommonAssertions.assertDataId(Button);
+
     describe('label', () => {
       it('is rendered', () => {
         const label = 'test text';

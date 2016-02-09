@@ -1,10 +1,13 @@
 
 import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
+import { CommonAssertions } from '../services';
 import Modal from './Modal.jsx';
 
 describe('Modal', () => {
   describe('Props', () => {
+    CommonAssertions.assertDataId(Modal);
+
     describe('header', () => {
       it('is rendered', () => {
         const props = {

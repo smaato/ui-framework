@@ -1,5 +1,6 @@
 
 import { TestCaseFactory } from 'react-test-kit';
+import { CommonAssertions } from '../services';
 import TextInput from './TextInput.jsx';
 
 describe('TextInput', () => {
@@ -12,6 +13,8 @@ describe('TextInput', () => {
   });
 
   describe('Props', () => {
+    CommonAssertions.assertDataId(TextInput);
+
     describe('isFullWidth', () => {
       it('when true, adds the appropriate class to the input element', () => {
         const props = {

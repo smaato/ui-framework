@@ -5,7 +5,7 @@ import React, {
 
 import ModalCloseButton from './ModalCloseButton.jsx';
 
-const ModalHeader = (props) => {
+const ModalHeader = props => {
   let closeButton;
   let title;
   if (props.title) {
@@ -19,7 +19,10 @@ const ModalHeader = (props) => {
     }
 
     title = (
-      <div className="modalHeader__title">
+      <div
+        data-id={props.dataId}
+        className="modalHeader__title"
+      >
         {icon}
         {props.title}
       </div>
@@ -40,6 +43,7 @@ const ModalHeader = (props) => {
 };
 
 ModalHeader.propTypes = {
+  dataId: PropTypes.string,
   title: PropTypes.string,
   onClose: PropTypes.func,
   icon: PropTypes.element,
