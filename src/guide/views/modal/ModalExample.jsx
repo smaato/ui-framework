@@ -12,7 +12,7 @@ import {
   CallOutButton,
   HollowButton,
   PrimaryButton,
-  IconCog,
+  IconLink,
   Modal,
   ModalBody,
   ModalConfirmationBody,
@@ -150,7 +150,7 @@ export default class ModalExample extends Component {
             header={(
               <ModalHeader
                 title="Modal Title"
-                icon={<IconCog/>}
+                icon={<IconLink/>}
               />
             )}
             body={(
