@@ -5,11 +5,12 @@
  */
 .labeledControl {
   display: flex;
-  align-items: center;
+  line-height: 1;
 }
 
   .labeledControl__label {
     padding-right: 18px;
+    line-height: $textInput_height;
   }
 
 /**

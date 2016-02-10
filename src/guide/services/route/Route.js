@@ -8,6 +8,7 @@ import BodyExample from '../../views/body/BodyExample.jsx';
 import ButtonExample from '../../views/button/ButtonExample.jsx';
 import ChartExample from '../../views/chart/ChartExample.jsx';
 import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
+import FieldErrorExample from '../../views/fieldError/FieldErrorExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
 import IconExample from '../../views/icon/IconExample.jsx';
 import KpiExample from '../../views/kpi/KpiExample.jsx';
@@ -53,6 +54,10 @@ const components = [{
   name: 'CheckBox',
   source: 'views/checkBox/CheckBoxExample.jsx',
   component: CheckBoxExample,
+}, {
+  name: 'FieldError',
+  source: 'views/fieldError/FieldErrorExample.jsx',
+  component: FieldErrorExample,
 }, {
   name: 'Grid',
   source: 'views/grid/GridExample.jsx',

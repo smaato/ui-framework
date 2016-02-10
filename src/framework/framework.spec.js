@@ -18,6 +18,7 @@ import {
   Chart,
   CheckBox,
   DateRange,
+  FieldError,
   FiltersControl,
   Grid,
   GridBodyEditableCell,
@@ -117,6 +118,9 @@ const components = [{
 }, {
   name: 'DateRange',
   component: DateRange,
+}, {
+  name: 'FieldError',
+  component: FieldError,
 }, {
   name: 'FiltersControl',
   component: FiltersControl,
