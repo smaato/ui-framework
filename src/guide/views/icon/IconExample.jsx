@@ -12,6 +12,8 @@ import {
   Icon,
   IconCog,
   IconEllipsis,
+  IconLink,
+  IconPaperclip,
 } from '../../../framework/framework';
 
 export default class IconExample extends Component {
@@ -41,10 +43,19 @@ export default class IconExample extends Component {
           <IconEllipsis />
         </Example>
 
-
         <Example title="IconCog">
           <Text>Allows the user to edit settings when clicked.</Text>
           <IconCog />
+        </Example>
+
+        <Example title="IconLink">
+          <Text>Created to be used in endpoint modal header.</Text>
+          <IconLink />
+        </Example>
+
+        <Example title="IconPaperclip">
+          <Text>Indicate file attachment.</Text>
+          <IconPaperclip />
         </Example>
 
       </Page>
