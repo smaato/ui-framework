@@ -34,6 +34,8 @@ import {
   Icon,
   IconCog,
   IconEllipsis,
+  IconLink,
+  IconPaperclip,
   Kpi,
   KpiNegative,
   KpiPositive,
@@ -165,6 +167,12 @@ const components = [{
 }, {
   name: 'IconEllipsis',
   component: IconEllipsis,
+}, {
+  name: 'IconLink',
+  component: IconLink,
+}, {
+  name: 'IconPaperclip',
+  component: IconPaperclip,
 }, {
   name: 'Kpi',
   component: Kpi,
