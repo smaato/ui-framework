@@ -36,7 +36,7 @@ export default class AppHeaderExample extends Component {
 
   render() {
     const links = [{
-      className: 'is-app-nav-link-selected ',
+      className: AppNav.ACTIVE_LINK_CLASS_NAME,
       href: '#',
       children: 'Transportation',
     }, {
