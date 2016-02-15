@@ -180,7 +180,8 @@ export default class ModalExample extends Component {
           <Modal
             body={(
               <ModalConfirmationBody>
-                Are you sure you want to do that?
+                This is a confirmation modal with a message that wraps to
+                multiple lines. Are you sure you want to do that?
               </ModalConfirmationBody>
             )}
             footer={(
