@@ -4,8 +4,8 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
-const FieldError = props => {
-  const classes = classNames('fieldError', props.className);
+const FieldMessage = props => {
+  const classes = classNames('fieldMessage', props.className);
 
   const extendedProps = Object.assign({}, props, {
     className: classes,
@@ -18,8 +18,8 @@ const FieldError = props => {
   );
 };
 
-FieldError.propTypes = {
+FieldMessage.propTypes = {
   children: PropTypes.string.isRequired,
 };
 
-export default FieldError;
+export default FieldMessage;

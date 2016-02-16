@@ -31,7 +31,7 @@ import {
   Chart,
   CheckBox,
   DateRange,
-  FieldError,
+  FieldMessage,
   FiltersControl,
   Grid,
   GridBodyEditableCell,

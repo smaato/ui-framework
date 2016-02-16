@@ -8,12 +8,12 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
-  FieldError,
+  FieldMessage,
   LabeledControl,
   TextInput,
 } from '../../../framework/framework';
 
-export default class FieldErrorExample extends Component {
+export default class FieldMessageExample extends Component {
 
   constructor(props) {
     super(props);
@@ -32,9 +32,9 @@ export default class FieldErrorExample extends Component {
               isError
               isFullWidth
             />
-            <FieldError>
+            <FieldMessage>
               Please enter a name for this endpoint.
-            </FieldError>
+            </FieldMessage>
           </LabeledControl>
         </Example>
 
