@@ -1,34 +1,39 @@
 
-$fieldMessage_borderColor: #e6e6ae;
-$fieldMessage_bgColor: #ffffc5;
-$fieldMessage_arrowSide: 6px;
+$fieldMessageBalloon_borderColor: #e6e6ae;
+$fieldMessageBalloon_bgColor: #ffffc5;
+$fieldMessageBalloon_arrowSide: 6px;
 
-.fieldMessage {
-  position: relative;
-  font-size: 13px;
-  line-height: 1.2;
-  text-align: center;
-  color: #676747;
-  padding: 8px;
-  margin-top: 7px;
-  border: 1px solid $fieldMessage_borderColor;
-  border-radius: 3px;
-  background-color: $fieldMessage_bgColor;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-
-  &:before {
-    content: '';
-    display: block;
-    width: $fieldMessage_arrowSide;
-    height: $fieldMessage_arrowSide;
-    border: solid $fieldMessage_borderColor;
-    background-color: $fieldMessage_bgColor;
-    border-width: 1px 0 0 1px;
-    position: absolute;
-    left: 50%;
-    top: 0;
-    margin-left: -$fieldMessage_arrowSide;
-    margin-top: -4px;
-    transform: rotate(45deg);
-  }
+.does-field-message-have-childs-width {
+  display: inline-flex;
+  flex-direction: column;
 }
+
+  .fieldMessageBalloon {
+    position: relative;
+    font-size: 13px;
+    line-height: 1.2;
+    text-align: center;
+    color: #676747;
+    padding: 8px;
+    margin-top: 7px;
+    border: 1px solid $fieldMessageBalloon_borderColor;
+    border-radius: 3px;
+    background-color: $fieldMessageBalloon_bgColor;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+
+    &:before {
+      content: '';
+      display: block;
+      width: $fieldMessageBalloon_arrowSide;
+      height: $fieldMessageBalloon_arrowSide;
+      border: solid $fieldMessageBalloon_borderColor;
+      background-color: $fieldMessageBalloon_bgColor;
+      border-width: 1px 0 0 1px;
+      position: absolute;
+      left: 50%;
+      top: 0;
+      margin-left: -$fieldMessageBalloon_arrowSide;
+      margin-top: -4px;
+      transform: rotate(45deg);
+    }
+  }
