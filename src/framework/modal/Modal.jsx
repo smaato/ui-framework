@@ -33,7 +33,10 @@ export {
 
 const Modal = props => {
   return (
-    <div className="modal">
+    <div
+      data-id={props.dataId}
+      className="modal"
+    >
       {props.header}
       {props.body}
       {props.footer}
@@ -42,6 +45,7 @@ const Modal = props => {
 };
 
 Modal.propTypes = {
+  dataId: PropTypes.string,
   header: PropTypes.element,
   body: PropTypes.element.isRequired,
   footer: PropTypes.element,
