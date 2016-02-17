@@ -16,6 +16,25 @@ describe('GridRow', () => {
   }
 
   describe('Props', () => {
+    describe('dataId', () => {
+      it('is added to root element', () => {
+        const props = {
+          dataId: 'dataId',
+          item: {},
+          rowCellPropsProviders: [
+            () => {},
+          ],
+          height: 10,
+        };
+
+        const testCase = TestCaseFactory.createFromElement(
+          wrap(<GridRow {...props} />)
+        );
+
+        expect(testCase.first('tr').getAttribute('data-id')).toBe(props.dataId);
+      });
+    });
+
     describe('rowCellsPropsProviders', () => {
       it('are called and receive item as argument', () => {
         const cellPropsProvider1 = jasmine.createSpy('cellPropsProvider1');

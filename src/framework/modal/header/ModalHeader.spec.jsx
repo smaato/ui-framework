@@ -1,9 +1,14 @@
 
 import { TestCaseFactory } from 'react-test-kit';
+import { CommonAssertions } from '../../services';
 import ModalHeader from './ModalHeader.jsx';
 
 describe('ModalHeader', () => {
   describe('Props', () => {
+    CommonAssertions.assertDataId(ModalHeader, {
+      title: 'title',
+    }, '.modalHeader__title');
+
     describe('title', () => {
       it('is rendered when an array', () => {
         const props = {

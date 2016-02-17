@@ -45,6 +45,7 @@ const Button = props => {
 
   return (
     <a
+      data-id={props.dataId}
       className={classes}
       onClick={onClick}
     >
@@ -55,6 +56,7 @@ const Button = props => {
 };
 
 Button.propTypes = {
+  dataId: PropTypes.string,
   label: PropTypes.string,
   iconClasses: PropTypes.oneOfType([
     PropTypes.string,

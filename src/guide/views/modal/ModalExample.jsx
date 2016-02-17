@@ -12,7 +12,7 @@ import {
   CallOutButton,
   HollowButton,
   PrimaryButton,
-  IconCog,
+  IconLink,
   Modal,
   ModalBody,
   ModalConfirmationBody,
@@ -150,7 +150,7 @@ export default class ModalExample extends Component {
             header={(
               <ModalHeader
                 title="Modal Title"
-                icon={<IconCog/>}
+                icon={<IconLink/>}
               />
             )}
             body={(
@@ -180,7 +180,8 @@ export default class ModalExample extends Component {
           <Modal
             body={(
               <ModalConfirmationBody>
-                Are you sure you want to do that?
+                This is a confirmation modal with a message that wraps to
+                multiple lines. Are you sure you want to do that?
               </ModalConfirmationBody>
             )}
             footer={(
