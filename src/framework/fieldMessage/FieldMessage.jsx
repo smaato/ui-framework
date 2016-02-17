@@ -1,45 +1,83 @@
 
 import React, {
+  Component,
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
 
-const FieldMessage = props => {
-  const classes = classNames('fieldMessage', props.className, {
-    'does-field-message-have-childs-width': props.hasChildsWidth,
-  });
+class FieldMessage extends Component {
 
-  const extendedProps = Object.assign({}, props, {
-    className: classes,
-  });
+  constructor(props) {
+    super(props);
+    this.state = {
+      isErrorDisplayed: true,
+    };
+    this.setBalloonWidthBound = this.setBalloonWidth.bind(this);
+  }
 
-  let balloon;
+  componentDidMount() {
+    this.setBalloonWidth();
+    window.addEventListener('resize', this.setBalloonWidthBound);
+  }
 
-  if (props.isDisplayed) {
-    balloon = (
-      <div className="fieldMessageBalloon">
-        {props.message}
+  componentDidUpdate() {
+    this.setBalloonWidth();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.setBalloonWidthBound);
+  }
+
+  setBalloonWidth() {
+    if (Object.keys(this.refs).length === 0) return;
+    this.refs.balloon.style.width = '';
+    const fieldEl = this.refs.componentRoot.children[0];
+    this.refs.balloon.style.width = `${fieldEl.offsetWidth}px`;
+  }
+
+  render() {
+    const classes = classNames('fieldMessage', this.props.className);
+
+    const extendedProps = Object.assign({}, this.props, {
+      className: classes,
+    });
+
+    let output;
+
+    if (this.props.isDisplayed) {
+      output = (
+        <div ref="componentRoot" {...extendedProps}>
+          {this.props.children}
+
+          <div
+            ref="balloon"
+            className="fieldMessageBalloon"
+          >
+            {this.props.message}
+          </div>
+        </div>
+      );
+    } else {
+      output = this.props.children;
+    }
+
+    return (
+      <div>
+        {output}
       </div>
     );
   }
 
-  return (
-    <div {...extendedProps}>
-      {props.children}
-      {balloon}
-    </div>
-  );
-};
+}
 
 FieldMessage.propTypes = {
-  children: PropTypes.element.isRequired,
   message: PropTypes.string.isRequired,
-  hasChildsWidth: PropTypes.bool,
+  children: PropTypes.element.isRequired,
   isDisplayed: PropTypes.bool,
+  isFieldNotFullWidth: PropTypes.bool,
 };
 
 FieldMessage.defaultProps = {
-  hasChildsWidth: false,
   isDisplayed: false,
 };
 

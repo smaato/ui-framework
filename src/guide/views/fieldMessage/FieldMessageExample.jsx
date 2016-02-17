@@ -34,7 +34,7 @@ export default class FieldMessageExample extends Component {
     return (
       <Page title={this.props.route.name}>
 
-        <Example title="TextInput">
+        <Example>
           <LabeledControl
             label="Name"
             layout={LabeledControl.LAYOUT.ONE_SIXTH}
@@ -52,13 +52,13 @@ export default class FieldMessageExample extends Component {
 
           <CallOutButton
             label={
-              `${this.state.isErrorDisplayed ? 'Hide' : 'Show'} field message.`
+              `${this.state.isErrorDisplayed ? 'Hide' : 'Show'} field message`
             }
             onClick={this.onButtonClick.bind(this)}
           />
         </Example>
 
-        <Example title="AddOnControl">
+        <Example title="Message balloon as wide as field">
           <LabeledControl
             label="QPS Limit"
             layout={LabeledControl.LAYOUT.ONE_SIXTH}
@@ -66,12 +66,12 @@ export default class FieldMessageExample extends Component {
             <FieldMessage
               message="Please enter a valid number."
               isDisplayed={this.state.isErrorDisplayed}
-              hasChildsWidth
             >
               <AddOnControl
                 right="queries per second"
               >
                 <TextInput
+                  style={{width: 100}}
                   isError={this.state.isErrorDisplayed}
                 />
               </AddOnControl>
@@ -80,7 +80,7 @@ export default class FieldMessageExample extends Component {
 
           <CallOutButton
             label={
-              `${this.state.isErrorDisplayed ? 'Hide' : 'Show'} field message.`
+              `${this.state.isErrorDisplayed ? 'Hide' : 'Show'} field message`
             }
             onClick={this.onButtonClick.bind(this)}
           />
