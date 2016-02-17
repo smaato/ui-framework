@@ -14,6 +14,7 @@ import {
   BodyPanel,
   BodyPanelItem,
   Button,
+  ButtonGroup,
   CallOutButton,
   Chart,
   CheckBox,
@@ -107,6 +108,9 @@ const components = [{
 }, {
   name: 'Button',
   component: Button,
+}, {
+  name: 'ButtonGroup',
+  component: ButtonGroup,
 }, {
   name: 'CallOutButton',
   component: CallOutButton,

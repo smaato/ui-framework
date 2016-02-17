@@ -4,6 +4,10 @@ export {
 } from './Button.jsx';
 
 export {
+  default as ButtonGroup,
+} from './ButtonGroup.jsx';
+
+export {
   default as BasicButton,
 } from './BasicButton.jsx';
 

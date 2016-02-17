@@ -11,6 +11,7 @@ import Page, {
 import {
   BasicButton,
   Button,
+  ButtonGroup,
   CallOutButton,
   HollowButton,
   PrimaryButton,
@@ -77,6 +78,23 @@ export default class ButtonExample extends Component {
             iconClasses="glyphicons-plus"
             label="New item"
           />
+        </Example>
+
+        <Example title="ButtonGroup">
+          <ButtonGroup>
+            <BasicButton
+              iconClasses="glyphicons-transfer"
+              label="RTB Open Auction"
+            />
+            <BasicButton
+              iconClasses="glyphicons-handshake"
+              label="Preferred Deal"
+            />
+            <BasicButton
+              iconClasses="glyphicons-folder-lock"
+              label="Private Exchange"
+            />
+          </ButtonGroup>
         </Example>
       </Page>
     );
