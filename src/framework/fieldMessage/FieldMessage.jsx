@@ -9,9 +9,6 @@ class FieldMessage extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      isErrorDisplayed: true,
-    };
     this.setBalloonWidthBound = this.setBalloonWidth.bind(this);
   }
 
@@ -29,7 +26,7 @@ class FieldMessage extends Component {
   }
 
   setBalloonWidth() {
-    if (Object.keys(this.refs).length === 0) return;
+    if (!this.props.isDisplayed) return;
     this.refs.balloon.style.width = '';
     const fieldEl = this.refs.componentRoot.children[0];
     this.refs.balloon.style.width = `${fieldEl.offsetWidth}px`;
@@ -42,28 +39,23 @@ class FieldMessage extends Component {
       className: classes,
     });
 
-    let output;
+    let balloon;
 
     if (this.props.isDisplayed) {
-      output = (
-        <div ref="componentRoot" {...extendedProps}>
-          {this.props.children}
-
-          <div
-            ref="balloon"
-            className="fieldMessageBalloon"
-          >
-            {this.props.message}
-          </div>
+      balloon = (
+        <div
+          ref="balloon"
+          className="fieldMessageBalloon"
+        >
+          {this.props.message}
         </div>
       );
-    } else {
-      output = this.props.children;
     }
 
     return (
-      <div>
-        {output}
+      <div ref="componentRoot" {...extendedProps}>
+        {this.props.children}
+        {balloon}
       </div>
     );
   }
