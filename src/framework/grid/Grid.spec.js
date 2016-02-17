@@ -1,10 +1,15 @@
 
 import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
+import { CommonAssertions } from '../services';
 import Grid from './Grid.jsx';
 
 describe('Grid', () => {
   describe('Props', () => {
+    CommonAssertions.assertDataId(Grid, {
+      columnsCount: 1,
+    });
+
     describe('header', () => {
       it('is rendered inside the table element', () => {
         const props = {

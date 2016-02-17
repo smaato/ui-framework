@@ -32,6 +32,7 @@ const GridRow = props => {
 
   return (
     <tr
+      data-id={props.dataId}
       className={classes}
       style= {style}
       onClick={onClick}
@@ -42,6 +43,7 @@ const GridRow = props => {
 };
 
 GridRow.propTypes = {
+  dataId: PropTypes.string,
   item: PropTypes.object.isRequired,
   rowCellPropsProviders: PropTypes.array.isRequired,
   height: PropTypes.number.isRequired,

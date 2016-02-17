@@ -155,7 +155,10 @@ export default class Grid extends Component {
     const tableClass = classNames('grid__table', this.props.classTable);
 
     return (
-      <div className={containerClass}>
+      <div
+        data-id={this.props.dataId}
+        className={containerClass}
+      >
         <table className={tableClass}>
 
           {this.props.header}
@@ -186,6 +189,7 @@ export default class Grid extends Component {
 }
 
 Grid.propTypes = {
+  dataId: PropTypes.string,
   columnsCount: GridBody.propTypes.columnsCount,
   header: PropTypes.element,
   footer: PropTypes.element,

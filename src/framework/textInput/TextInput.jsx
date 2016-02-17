@@ -15,12 +15,16 @@ const TextInput = props => {
   });
 
   return (
-    <input {...extendedProps} />
+    <input
+      data-id={props.dataId}
+      {...extendedProps}
+    />
   );
 };
 
 TextInput.propTypes = {
   isError: PropTypes.bool,
+  dataId: PropTypes.string,
   isFullWidth: PropTypes.bool,
 };
 
