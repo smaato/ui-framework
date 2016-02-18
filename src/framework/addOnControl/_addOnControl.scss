@@ -1,5 +1,5 @@
 .addOnControl {
-  display: inline-flex;
+  display: flex;
   line-height: $lineHeight;
 }
 
@@ -13,6 +13,7 @@
     color: #52676f;
     border: 1px solid #c8cfd5;
     background-color: #f2f5f7;
+    white-space: nowrap;
   }
 
   .addOnControl__left {

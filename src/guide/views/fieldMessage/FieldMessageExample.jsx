@@ -30,6 +30,28 @@ export default class FieldMessageExample extends Component {
     });
   }
 
+  renderError1() {
+    if (!this.state.isErrorDisplayed) {
+      return undefined;
+    }
+    return (
+      <FieldMessage
+        message="Please enter a name for this endpoint."
+      />
+    );
+  }
+
+  renderError2() {
+    if (!this.state.isErrorDisplayed) {
+      return undefined;
+    }
+    return (
+      <FieldMessage
+        message="Please enter a valid number."
+      />
+    );
+  }
+
   render() {
     return (
       <Page title={this.props.route.name}>
@@ -39,15 +61,11 @@ export default class FieldMessageExample extends Component {
             label="Name"
             layout={LabeledControl.LAYOUT.ONE_SIXTH}
           >
-            <FieldMessage
-              message="Please enter a name for this endpoint."
-              isDisplayed={this.state.isErrorDisplayed}
-            >
-              <TextInput
-                isError={this.state.isErrorDisplayed}
-                isFullWidth
-              />
-            </FieldMessage>
+            <TextInput
+              isError={this.state.isErrorDisplayed}
+              isFullWidth
+            />
+            {this.renderError1()}
           </LabeledControl>
 
           <CallOutButton
@@ -63,19 +81,17 @@ export default class FieldMessageExample extends Component {
             label="QPS Limit"
             layout={LabeledControl.LAYOUT.ONE_SIXTH}
           >
-            <FieldMessage
-              message="Please enter a valid number."
-              isDisplayed={this.state.isErrorDisplayed}
-            >
+            <div style={{width: 200}}>
               <AddOnControl
                 right="queries per second"
               >
                 <TextInput
-                  style={{width: 100}}
+                  isFullWidth
                   isError={this.state.isErrorDisplayed}
                 />
               </AddOnControl>
-            </FieldMessage>
+              {this.renderError2()}
+            </div>
           </LabeledControl>
 
           <CallOutButton

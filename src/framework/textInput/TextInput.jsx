@@ -7,7 +7,7 @@ import classNames from 'classnames';
 const TextInput = props => {
   const classes = classNames('textInput', props.className, {
     'textInput--fullWidth': props.isFullWidth,
-    'textInput--error': props.isError,
+    'is-text-input-error': props.isError,
   });
 
   const extendedProps = Object.assign({}, props, {
