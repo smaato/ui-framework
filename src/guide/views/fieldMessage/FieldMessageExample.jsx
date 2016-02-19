@@ -68,12 +68,12 @@ export default class FieldMessageExample extends Component {
             {this.renderError1()}
           </LabeledControl>
 
-          <CallOutButton
-            label={
-              `${this.state.isErrorDisplayed ? 'Hide' : 'Show'} field message`
-            }
+          <button
+            type="button"
             onClick={this.onButtonClick.bind(this)}
-          />
+          >
+            {this.state.isErrorDisplayed ? 'Hide' : 'Show'} field message
+          </button>
         </Example>
 
         <Example title="Message balloon as wide as field">
@@ -94,12 +94,12 @@ export default class FieldMessageExample extends Component {
             </div>
           </LabeledControl>
 
-          <CallOutButton
-            label={
-              `${this.state.isErrorDisplayed ? 'Hide' : 'Show'} field message`
-            }
+          <button
+            type="button"
             onClick={this.onButtonClick.bind(this)}
-          />
+          >
+            {this.state.isErrorDisplayed ? 'Hide' : 'Show'} field message
+          </button>
         </Example>
 
       </Page>
