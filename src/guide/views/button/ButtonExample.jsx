@@ -21,6 +21,21 @@ export default class ButtonExample extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      selectedIndex: 0,
+    };
+  }
+
+  setButtonSelected(buttonIndex) {
+    this.setState({
+      selectedIndex: buttonIndex,
+    });
+  }
+
+  renderButtonSelected(buttonIndex) {
+    return this.state.selectedIndex === buttonIndex ?
+      'is-button-selected' :
+      undefined;
   }
 
   render() {
@@ -81,18 +96,27 @@ export default class ButtonExample extends Component {
         </Example>
 
         <Example title="ButtonGroup">
+          <Text>
+            Group buttons together. Can be used like a radio button group.
+          </Text>
           <ButtonGroup>
-            <BasicButton
+            <Button
+              classes={this.renderButtonSelected(0)}
               iconClasses="glyphicons-transfer"
               label="RTB Open Auction"
+              onClick={() => this.setButtonSelected(0)}
             />
-            <BasicButton
+            <Button
+              classes={this.renderButtonSelected(1)}
               iconClasses="glyphicons-handshake"
               label="Preferred Deal"
+              onClick={() => this.setButtonSelected(1)}
             />
-            <BasicButton
+            <Button
+              classes={this.renderButtonSelected(2)}
               iconClasses="glyphicons-folder-lock"
               label="Private Exchange"
+              onClick={() => this.setButtonSelected(2)}
             />
           </ButtonGroup>
         </Example>

@@ -1,5 +1,15 @@
 
 .buttonGroup {
+  .button {
+    background: #fafcfd;
+    color: #434749;
+    border-color: #cad4da;
+  }
+
+  .button:not(:last-child) {
+    border-right-width: 0;
+  }
+
   .button:not(:first-child):not(:last-child) {
     border-radius: 0;
   }
@@ -13,4 +23,13 @@
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
+
+  .is-button-selected {
+    background: #e9f0f4;
+    color: #8d9aa6;
+  }
+
+    .button__icon + .button__label {
+      margin-left: 5px;
+    }
 }
