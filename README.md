@@ -201,6 +201,23 @@ interfaces as React components.
 
 Contains the SCSS and JSX files that form the core of the framework.
 
+### Adding new components
+
+#### Checklist
+
+Make sure each component has the following:
+
+- [ ] A component .jsx file (obviously)
+- [ ] A corresponding .spec.jsx test file and adequate tests
+- [ ] An example .jsx file that demonstrates component use cases and states
+- [ ] The component is exported in framework.js
+- [ ] The component export is tested in framework.spec.js
+- [ ] The README is updated to demonstrate how the component can be imported
+- [ ] Test the component in Chrome, Firefox, Safari, and IE
+
+Use the [Yeoman UI Generator](https://github.com/SmaatoUI/generator-ui) to
+automatically create the component and test files.
+
 #### Concepts
 
 ##### A component should have, at minimum, a JSX file, a SCSS file, and a test.
