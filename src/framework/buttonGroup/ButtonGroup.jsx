@@ -21,11 +21,6 @@ const ButtonGroup = props => {
 
 ButtonGroup.propTypes = {
   children: PropTypes.arrayOf(Button),
-  classes: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.array,
-    PropTypes.object,
-  ]),
 };
 
 export default ButtonGroup;

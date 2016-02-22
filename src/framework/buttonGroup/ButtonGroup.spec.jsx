@@ -6,19 +6,6 @@ import ButtonGroup from './ButtonGroup.jsx';
 
 describe('ButtonGroup', () => {
   describe('Props', () => {
-    describe('className', () => {
-      it('is applied to element', () => {
-        const props = {
-          classes: 'test',
-        };
-        const testCase = TestCaseFactory.create(
-          ButtonGroup,
-          props
-        );
-        expect(testCase.dom.getAttribute('class')).toContain(props.classes);
-      });
-    });
-
     describe('children', () => {
       it('are rendered', () => {
         const props = {

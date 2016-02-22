@@ -28,10 +28,8 @@ export default class ButtonGroupExample extends Component {
     });
   }
 
-  renderButtonSelected(buttonIndex) {
-    return this.state.selectedIndex === buttonIndex ?
-      'is-button-selected' :
-      undefined;
+  isButtonSelected(buttonIndex) {
+    return this.state.selectedIndex === buttonIndex;
   }
 
   render() {
@@ -43,19 +41,19 @@ export default class ButtonGroupExample extends Component {
           </Text>
           <ButtonGroup>
             <Button
-              classes={this.renderButtonSelected(0)}
+              selected={this.isButtonSelected(0)}
               iconClasses="glyphicons-transfer"
               label="RTB Open Auction"
               onClick={() => this.setButtonSelected(0)}
             />
             <Button
-              classes={this.renderButtonSelected(1)}
+              selected={this.isButtonSelected(1)}
               iconClasses="glyphicons-handshake"
               label="Preferred Deal"
               onClick={() => this.setButtonSelected(1)}
             />
             <Button
-              classes={this.renderButtonSelected(2)}
+              selected={this.isButtonSelected(2)}
               iconClasses="glyphicons-folder-lock"
               label="Private Exchange"
               onClick={() => this.setButtonSelected(2)}
