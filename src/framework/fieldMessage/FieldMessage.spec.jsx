@@ -18,7 +18,7 @@ describe('FieldMessage', () => {
     });
 
     describe('message', () => {
-      it('is applied to element as an attribute', () => {
+      it('is rendered as text', () => {
         const props = {
           message: 'test',
         };
