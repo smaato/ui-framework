@@ -64,8 +64,8 @@
     "run-sequence": "1.1.2",
     "sizzle": "2.2.0",
     "vinyl-source-stream": "1.1.0",
-    "watchify": "3.6.0",
-    "ws": "1.0.1"
+    "watchify": "3.5.0",
+    "ws": "0.8.1"
   },
   "pre-commit": [
     "test"
