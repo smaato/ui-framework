@@ -26,7 +26,7 @@ export default class AddOnControlExample extends Component {
             left="$"
             right="USD"
           >
-            <TextInput />
+            <TextInput isFullWidth />
           </AddOnControl>
         </Example>
 
@@ -34,7 +34,7 @@ export default class AddOnControlExample extends Component {
           <AddOnControl
             left="$"
           >
-            <TextInput />
+            <TextInput isFullWidth />
           </AddOnControl>
         </Example>
 
@@ -42,7 +42,7 @@ export default class AddOnControlExample extends Component {
           <AddOnControl
             right="USD"
           >
-            <TextInput />
+            <TextInput isFullWidth />
           </AddOnControl>
         </Example>
       </Page>
