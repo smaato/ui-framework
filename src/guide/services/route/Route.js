@@ -6,6 +6,7 @@ import AddOnControlExample from '../../views/addOnControl/AddOnControlExample.js
 import AppHeaderExample from '../../views/appHeader/AppHeaderExample.jsx';
 import BodyExample from '../../views/body/BodyExample.jsx';
 import ButtonExample from '../../views/button/ButtonExample.jsx';
+import ButtonGroupExample from '../../views/buttonGroup/ButtonGroupExample.jsx';
 import ChartExample from '../../views/chart/ChartExample.jsx';
 import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
@@ -45,6 +46,10 @@ const components = [{
   name: 'Button',
   source: 'views/button/ButtonExample.jsx',
   component: ButtonExample,
+}, {
+  name: 'ButtonGroup',
+  source: 'views/buttonGroup/ButtonGroupExample.jsx',
+  component: ButtonGroupExample,
 }, {
   name: 'Chart',
   source: 'views/chart/ChartExample.jsx',

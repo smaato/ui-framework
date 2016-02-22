@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
-import Button from './Button.jsx';
+import Button from '../button/Button.jsx';
 import ButtonGroup from './ButtonGroup.jsx';
 
 describe('ButtonGroup', () => {

@@ -5,7 +5,7 @@ import React, {
 
 import classNames from 'classnames';
 
-import Button from './Button.jsx';
+import Button from '../button/Button.jsx';
 
 const ButtonGroup = props => {
   const classes = classNames('buttonGroup', props.classes);

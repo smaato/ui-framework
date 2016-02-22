@@ -5,7 +5,7 @@ export {
 
 export {
   default as ButtonGroup,
-} from './ButtonGroup.jsx';
+} from './../buttonGroup/ButtonGroup.jsx';
 
 export {
   default as BasicButton,
