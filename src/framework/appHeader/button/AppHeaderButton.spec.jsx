@@ -20,10 +20,10 @@ describe('AppHeaderButton', () => {
     describe('classes', () => {
       it('are added to the element', () => {
         const props = {
-          classes: 'test-class',
+          className: 'test-class',
         };
         const testCase = TestCaseFactory.createFromFunction(AppHeaderButton, props);
-        expect(testCase.dom.getAttribute('class')).toContain(props.classes);
+        expect(testCase.dom.getAttribute('class')).toContain(props.className);
       });
     });
   });

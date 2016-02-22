@@ -14,10 +14,10 @@ describe('BasicButton', () => {
     describe('classes', () => {
       it('are added to the element', () => {
         const props = {
-          classes: 'testClass',
+          className: 'testClass',
         };
         const testCase = TestCaseFactory.createFromFunction(BasicButton, props);
-        expect(testCase.dom.className).toContain(props.classes);
+        expect(testCase.dom.className).toContain(props.className);
       });
     });
   });

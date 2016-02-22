@@ -5,10 +5,10 @@ import classNames from 'classnames';
 import Button from './Button.jsx';
 
 const BasicButton = props => {
-  const classes = classNames('button--basic', props.classes);
+  const classes = classNames('button--basic', props.className);
 
   const extendedProps = Object.assign({}, props, {
-    classes: classes,
+    className: classes,
   });
 
   return (

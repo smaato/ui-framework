@@ -5,10 +5,10 @@ import classNames from 'classnames';
 import Icon from '../icon/Icon.jsx';
 
 const IconCog = props => {
-  const classes = classNames('glyphicons-cogwheel', props.classes);
+  const classes = classNames('glyphicons-cogwheel', props.className);
 
   const extendedProps = Object.assign({}, props, {
-    classes,
+    className: classes,
   });
 
   return (

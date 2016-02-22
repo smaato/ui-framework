@@ -20,7 +20,7 @@ const Button = props => {
     props.onClick(event);
   }
 
-  const classes = classNames('button', props.classes, {
+  const classes = classNames('button', props.className, {
     'is-button-disabled': props.disabled,
   });
 
@@ -65,11 +65,6 @@ Button.propTypes = {
   ]),
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
-  classes: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.array,
-    PropTypes.object,
-  ]),
 };
 
 Button.defaultProps = {
@@ -77,3 +72,19 @@ Button.defaultProps = {
 };
 
 export default Button;
+
+export {
+  default as BasicButton,
+} from './BasicButton.jsx';
+
+export {
+  default as CallOutButton,
+} from './CallOutButton.jsx';
+
+export {
+  default as HollowButton,
+} from './HollowButton.jsx';
+
+export {
+  default as PrimaryButton,
+} from './PrimaryButton.jsx';

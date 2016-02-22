@@ -8,7 +8,7 @@ import IconCheck from '../../icon/IconCheck.jsx';
 const SummaryControlIconCheck = () => {
   return (
     <SummaryControlIcon
-      classes="summaryControlIconCheck"
+      className="summaryControlIconCheck"
       iconType={IconCheck}
     />
   );

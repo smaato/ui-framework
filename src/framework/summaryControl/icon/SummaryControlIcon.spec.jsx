@@ -17,17 +17,6 @@ describe('SummaryControlIcon', () => {
         expect(testCase.dom.className).toContain('icon');
       });
     });
-
-    describe('classes', () => {
-      it('is applied to the element', () => {
-        const props = {
-          classes: 'test',
-        };
-        const testCase =
-          TestCaseFactory.createFromFunction(Icon, props);
-        expect(testCase.dom.className).toContain(props.classes);
-      });
-    });
   });
 });
 

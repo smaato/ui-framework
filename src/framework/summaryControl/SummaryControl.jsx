@@ -15,7 +15,7 @@ const SummaryControl = props => {
         {props.icon}
         {props.children}
       </span>
-      <IconCog classes="summaryControl_iconCog" />
+      <IconCog className="summaryControl_iconCog" />
     </div>
   );
 };
