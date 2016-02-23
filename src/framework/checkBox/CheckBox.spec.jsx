@@ -2,6 +2,7 @@
 import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
 import CheckBox from './CheckBox.jsx';
+import TestUtils from '../../services/TestUtils';
 
 describe('CheckBox', () => {
   describe('DOM structure', () => {
