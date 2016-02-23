@@ -11,6 +11,7 @@ const ConditionCheckerList = props => {
     const filterName = conditionChecker.filter.name;
     const title =
       `${filterName} (${conditionChecker.comparisonType}): ${conditionChecker.comparisonValue}`;
+    const onRemoveConditionChecker = props.onRemoveConditionChecker.bind(null, conditionChecker);
 
     return (
       <div className="conditionCheckerListItem" key={index}>
@@ -27,7 +28,7 @@ const ConditionCheckerList = props => {
 
         <span
           className="icon glyphicons-remove-2 conditionCheckerListItem__removeButton"
-          onClick={props.onRemoveConditionChecker.bind(null, conditionChecker)}
+          onClick={onRemoveConditionChecker}
         />
       </div>
     );

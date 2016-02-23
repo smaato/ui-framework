@@ -26,6 +26,8 @@ export default class AppHeaderExample extends Component {
     this.state = {
       isAccountNavOpen: false,
     };
+
+    this.onAccountNavClick = this.onAccountNavClick.bind(this);
   }
 
   onAccountNavClick() {
@@ -73,7 +75,7 @@ export default class AppHeaderExample extends Component {
             right={
               <AccountNav
                 email="han.solo@smaato.com"
-                onClick={this.onAccountNavClick.bind(this)}
+                onClick={this.onAccountNavClick}
                 isOpen={this.state.isAccountNavOpen}
                 disableDropdown
                 right={<AppHeaderButton label="Logout"/>}
@@ -124,7 +126,7 @@ export default class AppHeaderExample extends Component {
           <AccountNav
             email="han.solo@smaato.com"
             pictureUrl="http://pipsum.com/22x22.jpg"
-            onClick={this.onAccountNavClick.bind(this)}
+            onClick={this.onAccountNavClick}
             isOpen={this.state.isAccountNavOpen}
           />
         </Example>

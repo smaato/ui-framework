@@ -20,6 +20,9 @@ export default class OrganizationSwitcherExample extends Component {
     this.state = {
       searchTerm: '',
     };
+
+    this.onSearch = this.onSearch.bind(this);
+    this.onClose = this.onClose.bind(this);
   }
 
   onClose() {
@@ -91,7 +94,7 @@ export default class OrganizationSwitcherExample extends Component {
             key={index}
             name={item.name}
             id={item.id.toString()}
-            onSelect={this.selectOrganization.bind(this, item)}
+            onSelect={this.selectOrganization.bind(this, item)} // eslint-disable-line react/jsx-no-bind
           />
         );
       });
@@ -111,8 +114,8 @@ export default class OrganizationSwitcherExample extends Component {
           <OrganizationSwitcher
             title="Switch buyer"
             searchPrompt="Search by Buyer Name or ID"
-            onSearch={this.onSearch.bind(this)}
-            onClose={this.onClose.bind(this)}
+            onSearch={this.onSearch}
+            onClose={this.onClose}
           >
             {organizationList}
           </OrganizationSwitcher>

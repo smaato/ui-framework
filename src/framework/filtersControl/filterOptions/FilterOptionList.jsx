@@ -7,11 +7,13 @@ import FilterOption from '../../services/filter/FilterOption';
 const FilterOptionsList = props => {
   const filterOptionListItems = props.filterOptions.map((filterOption, index) => {
     return filterOption.comparisonTypes.map((comparisonType, comparisonTypeIndex) => {
+      const onSelectFilterOption = () => props.onSelectFilterOption(filterOption, comparisonType);
+
       return (
         <div
           className="filterOptionListItem"
           key={`${index}:${comparisonTypeIndex}`}
-          onClick={() => props.onSelectFilterOption(filterOption, comparisonType)}
+          onClick={onSelectFilterOption}
         >
           {filterOption.comparisonTypes.length === 1
             ? filterOption.name
