@@ -26,15 +26,18 @@ describe('TextInput', () => {
           .indexOf('textInput--fullWidth') !== -1).toBe(true);
       });
 
-      it('when false, doesn\'t add the appropriate class to the input element', () => {
-        const props = {
-          isFullWidth: false,
-        };
+      it(
+        'when false, doesn\'t add the appropriate class to the input element',
+        () => {
+          const props = {
+            isFullWidth: false,
+          };
 
-        const testCase = TestCaseFactory.createFromFunction(TextInput, props);
-        expect(testCase.dom.getAttribute('class')
-          .indexOf('textInput--fullWidth') === -1).toBe(true);
-      });
+          const testCase = TestCaseFactory.createFromFunction(TextInput, props);
+          expect(testCase.dom.getAttribute('class')
+            .indexOf('textInput--fullWidth') === -1).toBe(true);
+        }
+      );
     });
   });
 });

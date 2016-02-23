@@ -18,11 +18,15 @@ export default class ThrottledEventDispatcher {
     throttledEventHandler = undefined
   ) {
     if (!originalEventName) {
-      throw new Error('ThrottledEventDispatcher ctor missing originalEventName.');
+      throw new Error(
+        'ThrottledEventDispatcher ctor missing originalEventName.'
+      );
     }
 
     if (!throttledEventName) {
-      throw new Error('ThrottledEventDispatcher ctor missing throttledEventName.');
+      throw new Error(
+        'ThrottledEventDispatcher ctor missing throttledEventName.'
+      );
     }
 
     this.originalEventName = originalEventName;

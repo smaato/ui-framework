@@ -17,7 +17,10 @@ describe('CallOutButton', () => {
         const props = {
           classes,
         };
-        const testCase = TestCaseFactory.createFromFunction(CallOutButton, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          CallOutButton,
+          props
+        );
         expect(testCase.dom.getAttribute('class')).toContain(classes);
       });
     });

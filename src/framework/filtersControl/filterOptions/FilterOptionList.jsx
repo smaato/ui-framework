@@ -5,9 +5,12 @@ import React, {
 import FilterOption from '../../services/filter/FilterOption';
 
 const FilterOptionsList = props => {
-  const filterOptionListItems = props.filterOptions.map((filterOption, index) => {
-    return filterOption.comparisonTypes.map((comparisonType, comparisonTypeIndex) => {
-      const onSelectFilterOption = () => props.onSelectFilterOption(filterOption, comparisonType);
+  const filterOptionListItems = props.filterOptions
+  .map((filterOption, index) => {
+    return filterOption.comparisonTypes
+    .map((comparisonType, comparisonTypeIndex) => {
+      const onSelectFilterOption = () => props
+        .onSelectFilterOption(filterOption, comparisonType);
 
       return (
         <div
@@ -31,7 +34,9 @@ const FilterOptionsList = props => {
 };
 
 FilterOptionsList.propTypes = {
-  filterOptions: PropTypes.arrayOf(PropTypes.instanceOf(FilterOption)).isRequired,
+  filterOptions: PropTypes.arrayOf(
+    PropTypes.instanceOf(FilterOption)
+  ).isRequired,
   onSelectFilterOption: PropTypes.func.isRequired,
 };
 

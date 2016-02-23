@@ -26,7 +26,8 @@ export default class BodyExample extends Component {
           <Body>
             <BodyPanel>
               <BodyPanelItem rhythm={BodyPanelItem.RHYTHM.LARGE}>
-                This Body component has a minimum height equal to that of the viewport.
+                This Body component has a minimum height equal to that of
+                the viewport.
               </BodyPanelItem>
 
               <BodyPanelItem rhythm={BodyPanelItem.RHYTHM.LARGE}>

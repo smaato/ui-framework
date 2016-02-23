@@ -10,7 +10,10 @@ describe('SummaryControl', () => {
         const props = {
           children: <div id="test">test</div>,
         };
-        const testCase = TestCaseFactory.createFromFunction(SummaryControl, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          SummaryControl,
+          props
+        );
         expect(testCase.first('#test').textContent).toBe('test');
       });
     });
@@ -20,7 +23,10 @@ describe('SummaryControl', () => {
         const props = {
           icon: <div id="icon">icon</div>,
         };
-        const testCase = TestCaseFactory.createFromFunction(SummaryControl, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          SummaryControl,
+          props
+        );
         expect(testCase.first('#icon').textContent).toBe('icon');
       });
     });
@@ -35,8 +41,10 @@ describe('SummaryControl', () => {
           onClick,
         };
 
-        const testCase =
-          TestCaseFactory.createFromFunction(SummaryControl, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          SummaryControl,
+          props
+        );
 
         testCase.trigger('click');
       });

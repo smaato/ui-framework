@@ -9,7 +9,8 @@ const GridFooter = props => {
   const rowClass = classNames('grid__footer__row', props.classFooterRow);
 
    // Create cells.
-  const footerCells = props.footerCellPropsProviders.map((getPropsForIndex, index) => {
+  const footerCells = props.footerCellPropsProviders
+  .map((getPropsForIndex, index) => {
     // Cell classes.
     const classes = classNames('grid__footer__cell', props.classFooterCell);
 
@@ -19,7 +20,10 @@ const GridFooter = props => {
     // We want to add on our own classes to the inner cell, without destroying
     // any classes that have been provided.
     const decoratedInnerCellProps = Object.assign({}, innerCellProps, {
-      className: classNames('grid__footer__cellLiner', innerCellProps.className),
+      className: classNames(
+        'grid__footer__cellLiner',
+        innerCellProps.className
+      ),
     });
     return (
       <th

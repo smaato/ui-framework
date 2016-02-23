@@ -17,7 +17,10 @@ describe('HollowButton', () => {
         const props = {
           classes,
         };
-        const testCase = TestCaseFactory.createFromFunction(HollowButton, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          HollowButton,
+          props
+        );
         expect(testCase.dom.getAttribute('class')).toContain(classes);
       });
     });

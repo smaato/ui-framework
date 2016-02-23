@@ -7,7 +7,12 @@ function normalizeValue(value) {
   return value.toString().toLowerCase().trim();
 }
 
-function sort(originalItems, valueProviders, providerPropertyOrIndex, isDescending) {
+function sort(
+  originalItems,
+  valueProviders,
+  providerPropertyOrIndex,
+  isDescending
+) {
   const typeOfProviderPropertyOrIndex = typeof providerPropertyOrIndex;
   if (typeOfProviderPropertyOrIndex !== 'string' &&
     typeOfProviderPropertyOrIndex !== 'number') {
@@ -27,7 +32,10 @@ function sort(originalItems, valueProviders, providerPropertyOrIndex, isDescendi
 
     // Coerce values to the same type, so that they are comparable,
     // and therefore sortable.
-    if (typeof providedValueA === 'number' && typeof providedValueB === 'number') {
+    if (
+      typeof providedValueA === 'number' &&
+      typeof providedValueB === 'number'
+    ) {
       // Compare values as numbers.
       valueA = providedValueA;
       valueB = providedValueB;
