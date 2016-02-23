@@ -42,6 +42,8 @@ export { default as Label } from './label/Label.jsx';
 export * from './labeledControl/LabeledControl.jsx';
 export { default as LabeledControl } from './labeledControl/LabeledControl.jsx';
 
+export { default as LabeledField } from './labeledField/LabeledField.jsx';
+
 export * from './spinner/Spinner.jsx';
 export { default as Spinner } from './spinner/Spinner.jsx';
 
