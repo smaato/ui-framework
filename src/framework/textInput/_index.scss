@@ -5,7 +5,7 @@
   border: 1px solid #cccccc;
   font-size: 13px;
   font-weight: 300;
-  height: 32px;
+  height: $textInput_height;
   padding: 0 10px;
 
   &:focus {
@@ -17,4 +17,9 @@
 
 .textInput--fullWidth {
   width: 100%;
+}
+
+.is-text-input-error {
+  background-color: #fffff1;
+  border-color: #dedeb9;
 }
