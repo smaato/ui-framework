@@ -8,8 +8,9 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
-  Label,
   CheckBox,
+  Label,
+  SubLabel,
 } from '../../../framework/framework';
 
 export default class LabelExample extends Component {
@@ -30,6 +31,11 @@ export default class LabelExample extends Component {
             <Label htmlFor="checkboxExample">Label</Label>
           </div>
           <CheckBox id="checkboxExample" />
+        </Example>
+
+        <Example title="SubLabel">
+          <Label>Label</Label>
+          <SubLabel>Sub-label</SubLabel>
         </Example>
       </Page>
     );

@@ -55,6 +55,7 @@ import {
   SearchBox,
   Spinner,
   StickyGrid,
+  SubLabel,
   SummaryControl,
   SummaryControlIcon,
   SummaryControlIconCheck,
@@ -231,6 +232,9 @@ const components = [{
 }, {
   name: 'StickyGrid',
   component: StickyGrid,
+}, {
+  name: 'SubLabel',
+  component: SubLabel,
 }, {
   name: 'SummaryControl',
   component: SummaryControl,
