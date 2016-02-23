@@ -18,6 +18,7 @@ import {
   Chart,
   CheckBox,
   DateRange,
+  DescriptionText,
   FieldMessage,
   FiltersControl,
   Form,
@@ -64,6 +65,8 @@ import {
   SummaryControlIcon,
   SummaryControlIconCheck,
   SummaryControlIconPaperclip,
+  Text,
+  TextArea,
   TextInput,
   TitleBar,
   VerticalLayout,
@@ -125,6 +128,9 @@ const components = [{
 }, {
   name: 'DateRange',
   component: DateRange,
+}, {
+  name: 'DescriptionText',
+  component: DescriptionText,
 }, {
   name: 'FieldMessage',
   component: FieldMessage,
@@ -263,6 +269,12 @@ const components = [{
 }, {
   name: 'SummaryControlIconPaperclip',
   component: SummaryControlIconPaperclip,
+}, {
+  name: 'Text',
+  component: Text,
+}, {
+  name: 'TextArea',
+  component: TextArea,
 }, {
   name: 'TextInput',
   component: TextInput,

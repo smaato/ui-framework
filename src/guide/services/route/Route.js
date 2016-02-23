@@ -29,6 +29,7 @@ import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
 import SummaryControlExample
   from '../../views/summaryControl/SummaryControlExample.jsx';
 import TextExample from '../../views/text/TextExample.jsx';
+import TextAreaExample from '../../views/textArea/TextAreaExample.jsx';
 import TextInputExample from '../../views/textInput/TextInputExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
 import VerticalLayoutExample
@@ -120,6 +121,10 @@ const components = [{
   name: 'Text',
   source: 'views/text/TextExample.jsx',
   component: TextExample,
+}, {
+  name: 'TextArea',
+  source: 'views/textArea/TextAreaExample.jsx',
+  component: TextAreaExample,
 }, {
   name: 'TextInput',
   source: 'views/textInput/TextInputExample.jsx',

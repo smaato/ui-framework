@@ -8,10 +8,10 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
-  TextInput,
+  TextArea,
 } from '../../../framework/framework';
 
-export default class TextInputExample extends Component {
+export default class TextAreaExample extends Component {
 
   constructor(props) {
     super(props);
@@ -22,27 +22,27 @@ export default class TextInputExample extends Component {
       <Page title={this.props.route.name}>
 
         <Example>
-          <TextInput defaultValue="Default value" />
+          <TextArea defaultValue="Default value" />
         </Example>
 
         <Example title="With placeholder text">
-          <TextInput placeholder="Placeholder copy" />
+          <TextArea placeholder="Placeholder copy" />
         </Example>
 
         <Example title="With autoFocus">
-          <TextInput autoFocus />
+          <TextArea autoFocus />
         </Example>
 
         <Example title="Error state">
-          <TextInput isError />
-        </Example>
-
-        <Example title="As password">
-          <TextInput type="password" defaultValue="Default value"/>
+          <TextArea isError />
         </Example>
 
         <Example title="Full width">
-          <TextInput isFullWidth />
+          <TextArea isFullWidth />
+        </Example>
+
+        <Example title="Resizable">
+          <TextArea isResizable />
         </Example>
 
       </Page>

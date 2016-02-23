@@ -4,10 +4,11 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
-const TextInput = props => {
-  const classes = classNames('textInput', props.className, {
-    'textInput--fullWidth': props.isFullWidth,
-    'is-text-input-error': props.isError,
+const TextArea = props => {
+  const classes = classNames('textArea', props.className, {
+    'textArea--fullWidth': props.isFullWidth,
+    'textArea--resizable': props.isResizable,
+    'is-text-box-error': props.isError,
   });
 
   const extendedProps = Object.assign({}, props, {
@@ -15,17 +16,18 @@ const TextInput = props => {
   });
 
   return (
-    <input
+    <textarea
       data-id={props.dataId}
       {...extendedProps}
     />
   );
 };
 
-TextInput.propTypes = {
+TextArea.propTypes = {
   dataId: PropTypes.string,
   isError: PropTypes.bool,
   isFullWidth: PropTypes.bool,
+  isResizable: PropTypes.bool,
 };
 
-export default TextInput;
+export default TextArea;

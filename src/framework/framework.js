@@ -74,6 +74,9 @@ export { default as SearchBox } from './searchBox/SearchBox.jsx';
 export * from './text/Text.jsx';
 export { default as Text } from './text/Text.jsx';
 
+export * from './textArea/TextArea.jsx';
+export { default as TextArea } from './textArea/TextArea.jsx';
+
 export * from './textInput/TextInput.jsx';
 export { default as TextInput } from './textInput/TextInput.jsx';
 
