@@ -20,21 +20,6 @@ export default class ButtonExample extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      selectedIndex: 0,
-    };
-  }
-
-  setButtonSelected(buttonIndex) {
-    this.setState({
-      selectedIndex: buttonIndex,
-    });
-  }
-
-  renderButtonSelected(buttonIndex) {
-    return this.state.selectedIndex === buttonIndex ?
-      'is-button-selected' :
-      undefined;
   }
 
   render() {

@@ -3,17 +3,11 @@ import React, {
   PropTypes,
 } from 'react';
 
-import classNames from 'classnames';
-
 import Button from '../button/Button.jsx';
 
 const ButtonGroup = props => {
-  const classes = classNames('buttonGroup', props.classes);
-
   return (
-    <div
-      className={classes}
-    >
+    <div className="buttonGroup">
       {props.children}
     </div>
   );
