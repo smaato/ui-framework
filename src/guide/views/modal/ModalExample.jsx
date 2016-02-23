@@ -155,7 +155,7 @@ export default class ModalExample extends Component {
             )}
             body={(
               <ModalBody>
-                <div style={{height: 110}}></div>
+                <div style={{ height: 110 }}></div>
               </ModalBody>
             )}
             footer={(
@@ -210,7 +210,7 @@ export default class ModalExample extends Component {
               )}
               body={(
                 <ModalBody>
-                  <div style={{height: 400}}></div>
+                  <div style={{ height: 400 }}></div>
                 </ModalBody>
               )}
               footer={(

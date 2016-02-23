@@ -295,7 +295,7 @@ export default class GridExample extends Component {
               }
               const newBodyRows = this.state.bodyRows.map((row) => {
                 if (row.id === item.id) {
-                  row.passengers = newValue;
+                  row.passengers = newValue; // eslint-disable-line no-param-reassign
                 }
                 return row;
               });
@@ -530,7 +530,7 @@ export default class GridExample extends Component {
     // Create and store media queries and column widths.
     const gridStencil = new GridStencil({
       gridId: this.GRID_ID,
-      items: items,
+      items,
       rowCellPropsProviders: this.rowCellPropsProviders,
       headerCellPropsProviders: this.headerCellPropsProviders,
       rowHeight: this.ROW_HEIGHT,
@@ -631,7 +631,7 @@ export default class GridExample extends Component {
 
   toggleAllRowsSelected(areAllRowsSelected) {
     const bodyRows = this.state.bodyRows.map(row => {
-      row.isSelected = areAllRowsSelected;
+      row.isSelected = areAllRowsSelected; // eslint-disable-line no-param-reassign
       return row;
     });
     this.setState({
@@ -644,7 +644,7 @@ export default class GridExample extends Component {
     let areAllRowsSelected = true;
     const bodyRows = this.state.bodyRows.map(row => {
       if (row.id === id) {
-        row.isSelected = isRowSelected;
+        row.isSelected = isRowSelected; // eslint-disable-line no-param-reassign
       }
       if (!row.isSelected) {
         areAllRowsSelected = false;

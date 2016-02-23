@@ -12,7 +12,7 @@ describe('ConditionCheckerForm', () => {
     describe('filterOption', () => {
       it('name is rendered', () => {
         const props = {
-          filterOption: new FilterOption({name: 'testFilterOption'}),
+          filterOption: new FilterOption({ name: 'testFilterOption' }),
           comparisonType: '',
           onAddConditionChecker: () => {},
           onCancelConditionChecker: () => {},
@@ -76,7 +76,7 @@ describe('ConditionCheckerForm', () => {
           TestCaseFactory.createFromClass(ConditionCheckerForm, props);
 
         expect(props.onAddConditionChecker).not.toHaveBeenCalled();
-        testCase.trigger('keyUp', testCase.first('input'), {key: 'Enter'});
+        testCase.trigger('keyUp', testCase.first('input'), { key: 'Enter' });
         expect(props.onAddConditionChecker).not.toHaveBeenCalled();
       });
 
@@ -94,7 +94,7 @@ describe('ConditionCheckerForm', () => {
         testCase.first('input').value = 'inputValue';
 
         expect(props.onAddConditionChecker).not.toHaveBeenCalled();
-        testCase.trigger('keyUp', testCase.first('input'), {key: ''});
+        testCase.trigger('keyUp', testCase.first('input'), { key: '' });
         expect(props.onAddConditionChecker).not.toHaveBeenCalled();
       });
 
@@ -133,7 +133,7 @@ describe('ConditionCheckerForm', () => {
         testCase.first('input').value = 'inputValue';
 
         expect(props.onAddConditionChecker).not.toHaveBeenCalled();
-        testCase.trigger('keyUp', testCase.first('input'), {key: 'Enter'});
+        testCase.trigger('keyUp', testCase.first('input'), { key: 'Enter' });
         expect(props.onAddConditionChecker).toHaveBeenCalled();
       });
 

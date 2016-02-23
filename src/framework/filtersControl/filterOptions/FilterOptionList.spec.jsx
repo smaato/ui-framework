@@ -11,7 +11,7 @@ describe('FilterOptionList', () => {
       it('are iterated over', () => {
         const props = {
           filterOptions: [
-            new FilterOption({comparisonTypes: []}),
+            new FilterOption({ comparisonTypes: [] }),
           ],
           onSelectFilterOption: () => {},
         };

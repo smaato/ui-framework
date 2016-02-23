@@ -14,7 +14,7 @@ export function slugify(str) {
 
 export function slugifyEach(items, src, dest) {
   return items.map(item => {
-    item[dest] = slugify(item[src]);
+    item[dest] = slugify(item[src]); // eslint-disable-line no-param-reassign
     return item;
   });
 }

@@ -18,7 +18,7 @@ export default function configureStore(initialState) {
   function rootReducer(state = {}, action) {
     const router = routerStateReducer(state.router, action);
     return {
-      router: router,
+      router,
     };
   }
 

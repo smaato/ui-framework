@@ -46,4 +46,3 @@ ConditionCheckerList.propTypes = {
 };
 
 export default ConditionCheckerList;
-

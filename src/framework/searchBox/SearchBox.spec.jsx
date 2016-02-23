@@ -14,7 +14,7 @@ describe('SearchBox', () => {
         expect(props.onSearch).not.toHaveBeenCalled();
 
         const input = testCase.first('input');
-        testCase.trigger('keyUp', input, {key: 'Enter'});
+        testCase.trigger('keyUp', input, { key: 'Enter' });
         expect(props.onSearch).toHaveBeenCalled();
       });
 
@@ -27,7 +27,7 @@ describe('SearchBox', () => {
         expect(props.onSearch).not.toHaveBeenCalled();
 
         const input = testCase.first('input');
-        testCase.trigger('keyUp', input, {key: ''});
+        testCase.trigger('keyUp', input, { key: '' });
         expect(props.onSearch).not.toHaveBeenCalled();
       });
 
@@ -41,7 +41,7 @@ describe('SearchBox', () => {
         expect(props.onSearch).not.toHaveBeenCalled();
 
         const input = testCase.first('input');
-        testCase.trigger('keyUp', input, {key: ''});
+        testCase.trigger('keyUp', input, { key: '' });
         expect(props.onSearch).toHaveBeenCalled();
       });
     });

@@ -50,7 +50,7 @@ describe('GridHeaderSortableCell', () => {
         );
 
         expect(testCase.dom.getAttribute('class')
-          .indexOf( 'is-grid-header-sortable-cell-selected') !== -1).toBe(true);
+          .indexOf('is-grid-header-sortable-cell-selected') !== -1).toBe(true);
       });
     });
 

@@ -64,7 +64,7 @@ for (let i = 0, length = icons.length; i < length; i++) {
           onClick = jasmine.createSpy('onClick');
 
           testCase =
-            TestCaseFactory.createFromFunction(icon.component, {onClick});
+            TestCaseFactory.createFromFunction(icon.component, { onClick });
 
           testCase.trigger('click');
         });

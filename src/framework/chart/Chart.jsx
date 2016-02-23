@@ -37,7 +37,7 @@ export default class LineChart extends Component {
 
     // Add a 'group' element to the SVG, which will contain our chart.
     this.container = svg.append('g')
-      .attr('transform', 'translate(' + marginLeft + ',' + this.margin.top + ')');
+      .attr('transform', `translate(${marginLeft},${this.margin.top})`);
 
     this.renderChart(this.props, true);
   }

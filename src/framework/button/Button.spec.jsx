@@ -43,7 +43,9 @@ describe('Button', () => {
         onClick = jasmine.createSpy('onClick');
 
         const testCase =
-          TestCaseFactory.createFromFunction(Button, {onClick});
+          TestCaseFactory.createFromFunction(Button, {
+            onClick,
+          });
 
         testCase.trigger('click');
       });

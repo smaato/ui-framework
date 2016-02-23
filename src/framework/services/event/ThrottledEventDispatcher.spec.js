@@ -5,7 +5,7 @@ describe('ThrottledEventDispatcher', () => {
   describe('interface', () => {
     // Constructor
     describe('constructor method', () => {
-      describe('internals', ()=> {
+      describe('internals', () => {
         it('calls addEventListener on dispatcher', () => {
           const dispatcher = {
             addEventListener: jasmine.createSpy('addEventListener'),
