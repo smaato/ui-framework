@@ -24,7 +24,11 @@ export default class ConditionCheckerForm extends Component {
     }
 
     const conditionChecker =
-      new ConditionChecker(this.props.filterOption, this.props.comparisonType, doesValuePass);
+      new ConditionChecker(
+        this.props.filterOption,
+        this.props.comparisonType,
+        doesValuePass
+      );
 
     this.props.onAddConditionChecker(conditionChecker);
   }

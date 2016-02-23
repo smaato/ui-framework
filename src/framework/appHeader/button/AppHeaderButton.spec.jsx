@@ -22,7 +22,10 @@ describe('AppHeaderButton', () => {
         const props = {
           classes: 'test-class',
         };
-        const testCase = TestCaseFactory.createFromFunction(AppHeaderButton, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          AppHeaderButton,
+          props
+        );
         expect(testCase.dom.getAttribute('class')).toContain(props.classes);
       });
     });

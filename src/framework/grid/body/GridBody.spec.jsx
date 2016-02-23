@@ -61,7 +61,8 @@ describe('GridBody', () => {
           wrap(<GridBody {...props} />)
         );
 
-        expect(testCase.first('tr:first-child > td > div').getAttribute('style'))
+        expect(testCase.first('tr:first-child > td > div')
+          .getAttribute('style'))
           .toEqual(`min-height:${props.firstRecycledRowOffset}px;`);
       });
     });
@@ -78,7 +79,8 @@ describe('GridBody', () => {
           wrap(<GridBody {...props} />)
         );
 
-        expect(testCase.first('tr:last-child > td > div').getAttribute('style'))
+        expect(testCase.first('tr:last-child > td > div')
+          .getAttribute('style'))
           .toEqual(`min-height:${props.lastRecycledRowOffset}px;`);
       });
     });

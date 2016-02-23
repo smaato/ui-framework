@@ -19,7 +19,7 @@
     "no-undef": 0,
     "quote-props": 0,
 
-    "max-len": [2, 180, 2, { // Change 180 to 80
+    "max-len": [2, 80, 2, {
       "ignoreUrls": true,
       "ignoreComments": true
     }],

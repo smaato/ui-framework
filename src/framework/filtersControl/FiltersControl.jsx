@@ -115,7 +115,8 @@ FiltersControl.propTypes = {
   conditionCheckers: ConditionCheckerList.propTypes.conditionCheckers,
   filterOptions: FilterOptionList.propTypes.filterOptions,
   onAddConditionChecker: PropTypes.func.isRequired,
-  onRemoveConditionChecker: ConditionCheckerList.propTypes.onRemoveConditionChecker,
+  onRemoveConditionChecker:
+    ConditionCheckerList.propTypes.onRemoveConditionChecker,
 };
 
 export default FiltersControl;

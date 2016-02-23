@@ -39,7 +39,8 @@ describe('FiltersDropdownButton', () => {
         const testCase =
           TestCaseFactory.createFromFunction(FiltersDropdownButton, props);
 
-        expect(testCase.dom.className).not.toContain('is-filters-dropdown-open');
+        expect(testCase.dom.className)
+          .not.toContain('is-filters-dropdown-open');
       });
     });
   });

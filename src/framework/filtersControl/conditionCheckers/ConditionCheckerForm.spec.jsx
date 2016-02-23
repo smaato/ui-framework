@@ -48,39 +48,47 @@ describe('ConditionCheckerForm', () => {
         testCase.trigger('click', testCase.find('button')[1]);
       }
 
-      it('isn\'t called when the add button is clicked and the input is empty', () => {
-        const props = {
-          filterOption: new FilterOption({}),
-          comparisonType: 'testComparisonType',
-          onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
-          onCancelConditionChecker: () => {},
-        };
+      it(
+        'isn\'t called when the add button is clicked and the input is empty',
+        () => {
+          const props = {
+            filterOption: new FilterOption({}),
+            comparisonType: 'testComparisonType',
+            onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
+            onCancelConditionChecker: () => {},
+          };
 
-        const testCase =
-          TestCaseFactory.createFromClass(ConditionCheckerForm, props);
+          const testCase =
+            TestCaseFactory.createFromClass(ConditionCheckerForm, props);
 
-        expect(props.onAddConditionChecker).not.toHaveBeenCalled();
-        clickAddButton(testCase);
-        expect(props.onAddConditionChecker).not.toHaveBeenCalled();
-      });
+          expect(props.onAddConditionChecker).not.toHaveBeenCalled();
+          clickAddButton(testCase);
+          expect(props.onAddConditionChecker).not.toHaveBeenCalled();
+        }
+      );
 
-      it('isn\'t called when the Enter key is hit and the input is empty', () => {
-        const props = {
-          filterOption: new FilterOption({}),
-          comparisonType: 'testComparisonType',
-          onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
-          onCancelConditionChecker: () => {},
-        };
+      it(
+        'isn\'t called when the Enter key is hit and the input is empty',
+        () => {
+          const props = {
+            filterOption: new FilterOption({}),
+            comparisonType: 'testComparisonType',
+            onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
+            onCancelConditionChecker: () => {},
+          };
 
-        const testCase =
-          TestCaseFactory.createFromClass(ConditionCheckerForm, props);
+          const testCase =
+            TestCaseFactory.createFromClass(ConditionCheckerForm, props);
 
-        expect(props.onAddConditionChecker).not.toHaveBeenCalled();
-        testCase.trigger('keyUp', testCase.first('input'), { key: 'Enter' });
-        expect(props.onAddConditionChecker).not.toHaveBeenCalled();
-      });
+          expect(props.onAddConditionChecker).not.toHaveBeenCalled();
+          testCase.trigger('keyUp', testCase.first('input'), { key: 'Enter' });
+          expect(props.onAddConditionChecker).not.toHaveBeenCalled();
+        }
+      );
 
-      it('isn\'t called when a non-Enter key is hit and the input isn\'t empty', () => {
+      it(TestUtils.cleanString(
+        `isn\'t called when a non-Enter key is hit and the input isn\'t empty`
+      ), () => {
         const props = {
           filterOption: new FilterOption({}),
           comparisonType: 'testComparisonType',
@@ -119,23 +127,26 @@ describe('ConditionCheckerForm', () => {
         expect(props.onAddConditionChecker).toHaveBeenCalled();
       });
 
-      it('is called when the Enter key is hit and the input isn\'t empty', () => {
-        const props = {
-          filterOption: new FilterOption({}),
-          comparisonType: 'testComparisonType',
-          onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
-          onCancelConditionChecker: () => {},
-        };
+      it(
+        'is called when the Enter key is hit and the input isn\'t empty',
+        () => {
+          const props = {
+            filterOption: new FilterOption({}),
+            comparisonType: 'testComparisonType',
+            onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
+            onCancelConditionChecker: () => {},
+          };
 
-        const testCase =
-          TestCaseFactory.createFromClass(ConditionCheckerForm, props);
+          const testCase =
+            TestCaseFactory.createFromClass(ConditionCheckerForm, props);
 
-        testCase.first('input').value = 'inputValue';
+          testCase.first('input').value = 'inputValue';
 
-        expect(props.onAddConditionChecker).not.toHaveBeenCalled();
-        testCase.trigger('keyUp', testCase.first('input'), { key: 'Enter' });
-        expect(props.onAddConditionChecker).toHaveBeenCalled();
-      });
+          expect(props.onAddConditionChecker).not.toHaveBeenCalled();
+          testCase.trigger('keyUp', testCase.first('input'), { key: 'Enter' });
+          expect(props.onAddConditionChecker).toHaveBeenCalled();
+        }
+      );
 
       it('receives a conditionChecker when it\'s called', () => {
         const props = {
@@ -158,7 +169,9 @@ describe('ConditionCheckerForm', () => {
         // Assert that conditionChecker is built with info from the props.
         expect(conditionChecker.filter).toBe(props.filterOption);
         expect(conditionChecker.comparisonType).toBe(props.comparisonType);
-        expect(conditionChecker.comparisonValue).toBe(testCase.first('input').value);
+        expect(conditionChecker.comparisonValue).toBe(
+          testCase.first('input').value
+        );
       });
     });
 
@@ -172,7 +185,9 @@ describe('ConditionCheckerForm', () => {
           filterOption: new FilterOption({}),
           comparisonType: '',
           onAddConditionChecker: () => {},
-          onCancelConditionChecker: jasmine.createSpy('onCancelConditionChecker'),
+          onCancelConditionChecker: jasmine.createSpy(
+            'onCancelConditionChecker'
+          ),
         };
 
         const testCase =

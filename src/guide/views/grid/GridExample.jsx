@@ -338,7 +338,9 @@ export default class GridExample extends Component {
       }), item => ({
         children: (
           <div>
-            <GridIconOptions onClick={this.onClickRowOptions.bind(this, item)} />
+            <GridIconOptions
+              onClick={this.onClickRowOptions.bind(this, item)}
+            />
             <GridIconEdit onClick={this.onClickRowEdit.bind(this, item)} />
           </div>
         ),
@@ -475,7 +477,9 @@ export default class GridExample extends Component {
 
   onRemoveConditionChecker(conditionCheckerToRemove) {
     const conditionCheckers = this.state.conditionCheckers
-      .filter(conditionChecker => conditionChecker !== conditionCheckerToRemove);
+      .filter(conditionChecker => (
+        conditionChecker !== conditionCheckerToRemove
+      ));
 
     this.setState({
       conditionCheckers,
@@ -495,7 +499,8 @@ export default class GridExample extends Component {
       return new FilterableItems(rows).applyFilters(filters);
     }
 
-    const filteredBodyRows = filterRows(this.state.bodyRows, this.state.conditionCheckers);
+    const filteredBodyRows =
+      filterRows(this.state.bodyRows, this.state.conditionCheckers);
 
     const foundBodyRows = this.search(filteredBodyRows, this.state.searchTerm);
     return Sorter.sort(
@@ -509,7 +514,8 @@ export default class GridExample extends Component {
   refreshHeaderColumnElementReferences() {
     // Cache references to DOM elements.
     this.headerColumnElements = $(`#${this.GRID_ID} thead th`);
-    this.stickyHeaderColumnElements = $(`#${this.GRID_ID} .stickyGridHeaderCell`);
+    this.stickyHeaderColumnElements =
+      $(`#${this.GRID_ID} .stickyGridHeaderCell`);
   }
 
   updateStickyHeaderColumnWidths() {
@@ -702,7 +708,11 @@ export default class GridExample extends Component {
   }
 
   renderLoadingRow() {
-    if (this.state.isLoadingBodyRows && !this.state.isInitialLoad && !this.state.isEmpty) {
+    if (
+      this.state.isLoadingBodyRows &&
+      !this.state.isInitialLoad &&
+      !this.state.isEmpty
+    ) {
       return <GridLoadingRow columnsCount={this.COLUMNS_COUNT} />;
     }
   }

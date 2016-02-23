@@ -24,7 +24,9 @@ describe('Button', () => {
           disabled: true,
         };
         const testCase = TestCaseFactory.createFromFunction(Button, props);
-        expect(testCase.dom.getAttribute('class')).toContain('is-button-disabled');
+        expect(
+          testCase.dom.getAttribute('class')
+        ).toContain('is-button-disabled');
       });
 
       it('does not add class when false', () => {
@@ -32,7 +34,9 @@ describe('Button', () => {
           disabled: false,
         };
         const testCase = TestCaseFactory.createFromFunction(Button, props);
-        expect(testCase.dom.getAttribute('class')).not.toContain('is-button-disabled');
+        expect(
+          testCase.dom.getAttribute('class')
+        ).not.toContain('is-button-disabled');
       });
     });
 
@@ -79,7 +83,9 @@ describe('Button', () => {
           iconClasses,
         };
         const testCase = TestCaseFactory.createFromFunction(Button, props);
-        expect(testCase.first('.button__icon').getAttribute('class')).toContain(iconClasses);
+        expect(
+          testCase.first('.button__icon').getAttribute('class')
+        ).toContain(iconClasses);
       });
     });
   });

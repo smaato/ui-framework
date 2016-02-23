@@ -36,7 +36,9 @@ export default class ConditionChecker {
         return index !== -1;
       }
       default: {
-        throw new Error(`Matching method doesn\'t exist: ${this.comparisonType}`);
+        throw new Error(
+          `Matching method doesn't exist: ${this.comparisonType}`
+        );
       }
     }
   }

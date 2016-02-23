@@ -17,7 +17,10 @@ describe('PrimaryButton', () => {
         const props = {
           classes,
         };
-        const testCase = TestCaseFactory.createFromFunction(PrimaryButton, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          PrimaryButton,
+          props
+        );
         expect(testCase.dom.getAttribute('class')).toContain(classes);
       });
     });

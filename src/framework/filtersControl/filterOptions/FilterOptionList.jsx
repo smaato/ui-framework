@@ -5,13 +5,17 @@ import React, {
 import FilterOption from '../../services/filter/FilterOption';
 
 const FilterOptionsList = props => {
-  const filterOptionListItems = props.filterOptions.map((filterOption, index) => {
-    return filterOption.comparisonTypes.map((comparisonType, comparisonTypeIndex) => {
+  const filterOptionListItems = props.filterOptions
+  .map((filterOption, index) => {
+    return filterOption.comparisonTypes
+    .map((comparisonType, comparisonTypeIndex) => {
       return (
         <div
           className="filterOptionListItem"
           key={`${index}:${comparisonTypeIndex}`}
-          onClick={() => props.onSelectFilterOption(filterOption, comparisonType)}
+          onClick={() => (
+            props.onSelectFilterOption(filterOption, comparisonType)
+          )}
         >
           {filterOption.comparisonTypes.length === 1
             ? filterOption.name
@@ -29,7 +33,9 @@ const FilterOptionsList = props => {
 };
 
 FilterOptionsList.propTypes = {
-  filterOptions: PropTypes.arrayOf(PropTypes.instanceOf(FilterOption)).isRequired,
+  filterOptions: PropTypes.arrayOf(
+    PropTypes.instanceOf(FilterOption)
+  ).isRequired,
   onSelectFilterOption: PropTypes.func.isRequired,
 };
 

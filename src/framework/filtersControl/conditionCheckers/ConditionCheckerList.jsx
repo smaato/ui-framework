@@ -2,15 +2,20 @@
 import React, {
   PropTypes,
 } from 'react';
+import TestUtils from '../../../services/TestUtils';
 
 import Entity from '../../services/string/Entity.js';
 import ConditionChecker from '../../services/filter/ConditionChecker';
 
 const ConditionCheckerList = props => {
-  const conditionCheckerItems = props.conditionCheckers.map((conditionChecker, index) => {
+  const conditionCheckerItems = props.conditionCheckers
+  .map((conditionChecker, index) => {
     const filterName = conditionChecker.filter.name;
-    const title =
-      `${filterName} (${conditionChecker.comparisonType}): ${conditionChecker.comparisonValue}`;
+    const title = TestUtils.cleanString(
+      `${filterName}
+      (${conditionChecker.comparisonType}):
+      ${conditionChecker.comparisonValue}`
+    );
 
     return (
       <div className="conditionCheckerListItem" key={index}>
@@ -26,7 +31,11 @@ const ConditionCheckerList = props => {
         </span>
 
         <span
-          className="icon glyphicons-remove-2 conditionCheckerListItem__removeButton"
+          className="
+            icon
+            glyphicons-remove-2
+            conditionCheckerListItem__removeButton
+          "
           onClick={props.onRemoveConditionChecker.bind(null, conditionChecker)}
         />
       </div>
@@ -41,7 +50,9 @@ const ConditionCheckerList = props => {
 };
 
 ConditionCheckerList.propTypes = {
-  conditionCheckers: PropTypes.arrayOf(PropTypes.instanceOf(ConditionChecker)).isRequired,
+  conditionCheckers: PropTypes.arrayOf(
+    PropTypes.instanceOf(ConditionChecker)
+  ).isRequired,
   onRemoveConditionChecker: PropTypes.func.isRequired,
 };
 

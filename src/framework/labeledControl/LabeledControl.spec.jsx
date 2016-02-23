@@ -10,7 +10,10 @@ describe('LabeledControl', () => {
           label: 'Test',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(LabeledControl, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          LabeledControl,
+          props
+        );
         expect(testCase.first('label').textContent).toBe(props.label);
       });
     });
@@ -30,7 +33,10 @@ describe('LabeledControl', () => {
           layout: LabeledControl.LAYOUT.TWO_FIFTHS,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(LabeledControl, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          LabeledControl,
+          props
+        );
         expect(testCase.dom.getAttribute('class')
           .indexOf('labeledControl--twoFifths') !== -1).toBe(true);
       });
@@ -40,7 +46,10 @@ describe('LabeledControl', () => {
           layout: LabeledControl.LAYOUT.ONE_THIRD,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(LabeledControl, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          LabeledControl,
+          props
+        );
         expect(testCase.dom.getAttribute('class')
           .indexOf('labeledControl--oneThird') !== -1).toBe(true);
       });
@@ -50,7 +59,10 @@ describe('LabeledControl', () => {
           layout: LabeledControl.LAYOUT.ONE_FOURTH,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(LabeledControl, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          LabeledControl,
+          props
+        );
         expect(testCase.dom.getAttribute('class')
           .indexOf('labeledControl--oneFourth') !== -1).toBe(true);
       });
@@ -60,7 +72,10 @@ describe('LabeledControl', () => {
           layout: LabeledControl.LAYOUT.ONE_FIFTH,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(LabeledControl, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          LabeledControl,
+          props
+        );
         expect(testCase.dom.getAttribute('class')
           .indexOf('labeledControl--oneFifth') !== -1).toBe(true);
       });
@@ -70,7 +85,10 @@ describe('LabeledControl', () => {
           layout: LabeledControl.LAYOUT.ONE_SIXTH,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(LabeledControl, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          LabeledControl,
+          props
+        );
         expect(testCase.dom.getAttribute('class')
           .indexOf('labeledControl--oneSixth') !== -1).toBe(true);
       });

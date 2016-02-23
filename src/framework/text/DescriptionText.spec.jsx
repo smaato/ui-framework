@@ -10,7 +10,10 @@ describe('DescriptionText', () => {
           children: 'Test',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(DescriptionText, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          DescriptionText,
+          props
+        );
         expect(testCase.dom.textContent).toBe(props.children);
       });
     });

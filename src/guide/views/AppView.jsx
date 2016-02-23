@@ -10,7 +10,8 @@ import $ from 'jquery';
 import classNames from 'classnames';
 
 import Navigation from '../components/navigation/Navigation.jsx';
-import SourceCodeViewer from '../components/sourceCodeViewer/SourceCodeViewer.jsx';
+import SourceCodeViewer
+  from '../components/sourceCodeViewer/SourceCodeViewer.jsx';
 
 import Route from '../services/route/Route';
 

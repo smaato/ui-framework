@@ -18,7 +18,8 @@ export default class HomeView extends Component {
       <Page>
         <div className="examplesHome">
           <h1>Welcome to the Smaato UI Framework.</h1>
-          <p>Click the "Nav" button in the top left corner to view the examples.</p>
+          <p>Click the "Nav" button in the top left corner to view the
+            examples.</p>
         </div>
       </Page>
     );

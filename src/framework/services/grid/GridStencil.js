@@ -151,7 +151,9 @@ export default class GridStencil {
 
       // Hide the column's header cells.
       const hiddenHeaderCells =
-        [].slice.call(workingNode.querySelectorAll(`thead th:nth-child(${childNumber})`));
+        [].slice.call(
+          workingNode.querySelectorAll(`thead th:nth-child(${childNumber})`)
+        );
 
       hiddenHeaderCells.forEach(headerCell => { // eslint-disable-line no-loop-func
         $(headerCell).hide();
@@ -159,14 +161,18 @@ export default class GridStencil {
 
       // Hide the column's body row cells.
       const hiddenRowCells =
-        [].slice.call(workingNode.querySelectorAll(`tr td:nth-child(${childNumber})`));
+        [].slice.call(
+          workingNode.querySelectorAll(`tr td:nth-child(${childNumber})`)
+        );
 
       hiddenRowCells.forEach(rowCell => { // eslint-disable-line no-loop-func
         $(rowCell).hide();
       });
 
       // Store media query.
-      mediaQueries.push(createMediaQuery(browserWidth, this.gridId, childNumber));
+      mediaQueries.push(
+        createMediaQuery(browserWidth, this.gridId, childNumber)
+      );
     }
 
     // All done! Remove our working node and put back the original.

@@ -9,7 +9,8 @@ import React, {
 import $ from 'jquery';
 import ReactDOM from 'react-dom';
 
-import ThrottledEventDispatcher from '../services/event/ThrottledEventDispatcher';
+import ThrottledEventDispatcher
+  from '../services/event/ThrottledEventDispatcher';
 
 export default class LineChart extends Component {
 
@@ -74,7 +75,8 @@ export default class LineChart extends Component {
     const marginRight = this.margin.right;
     const marginTop = this.margin.top;
     const marginBottom = this.margin.bottom;
-    const transitionDuration = updateImmediately ? 0 : this.props.transitionDuration;
+    const transitionDuration =
+      updateImmediately ? 0 : this.props.transitionDuration;
 
     // Set the correct dimensions.
     const $node = $(ReactDOM.findDOMNode(this));

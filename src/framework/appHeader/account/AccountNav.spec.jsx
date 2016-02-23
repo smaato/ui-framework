@@ -11,7 +11,9 @@ describe('AccountNav', () => {
           email: 'testEmail',
         };
         const testCase = TestCaseFactory.createFromFunction(AccountNav, props);
-        expect(testCase.first('.accountNav__email').textContent).toBe(props.email);
+        expect(
+          testCase.first('.accountNav__email').textContent
+        ).toBe(props.email);
       });
     });
 
@@ -22,7 +24,9 @@ describe('AccountNav', () => {
           pictureUrl: '/img/testImage.png',
         };
         const testCase = TestCaseFactory.createFromFunction(AccountNav, props);
-        expect(testCase.first('img').getAttribute('src')).toBe(props.pictureUrl);
+        expect(
+          testCase.first('img').getAttribute('src')
+        ).toBe(props.pictureUrl);
       });
     });
 
