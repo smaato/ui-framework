@@ -20,23 +20,5 @@ describe('GroupedButton', () => {
         expect(testCase.dom.className).toContain(props.classes);
       });
     });
-
-    describe('selected', () => {
-      it('adds the appropriate class when true', () => {
-        const props = {
-          selected: true,
-        };
-        const testCase = TestCaseFactory.createFromFunction(GroupedButton, props);
-        expect(testCase.dom.getAttribute('class')).toContain('is-button-selected');
-      });
-
-      it('does not add class when false', () => {
-        const props = {
-          selected: false,
-        };
-        const testCase = TestCaseFactory.createFromFunction(GroupedButton, props);
-        expect(testCase.dom.getAttribute('class')).not.toContain('is-button-selected');
-      });
-    });
   });
 });

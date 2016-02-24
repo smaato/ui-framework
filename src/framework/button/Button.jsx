@@ -22,6 +22,7 @@ const Button = props => {
 
   const classes = classNames('button', props.classes, {
     'is-button-disabled': props.disabled,
+    'is-button-selected': props.selected,
   });
 
   let icon;
@@ -65,6 +66,7 @@ Button.propTypes = {
   ]),
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
+  selected: PropTypes.bool,
   classes: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.array,

@@ -12,6 +12,10 @@ export {
 } from './CallOutButton.jsx';
 
 export {
+  default as GroupedButton,
+} from './GroupedButton.jsx';
+
+export {
   default as HollowButton,
 } from './HollowButton.jsx';
 
