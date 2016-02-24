@@ -10,6 +10,8 @@ import Page, {
 
 import {
   Icon,
+  IconAsterisk,
+  IconCheck,
   IconCog,
   IconEllipsis,
   IconLink,
@@ -56,6 +58,16 @@ export default class IconExample extends Component {
         <Example title="IconPaperclip">
           <Text>Indicate file attachment.</Text>
           <IconPaperclip />
+        </Example>
+
+        <Example title="IconCheck">
+          <Text>Created to be used in SummaryControlIconCheck component.</Text>
+          <IconCheck />
+        </Example>
+
+        <Example title="IconAsterisk">
+          <Text>Created to be used in SMX line item modal header.</Text>
+          <IconAsterisk />
         </Example>
 
         <Example title="Glyphicons">

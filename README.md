@@ -47,6 +47,8 @@ import {
   GridSearch,
   HollowButton,
   Icon,
+  IconAsterisk,
+  IconCheck,
   IconCog,
   IconEllipsis,
   Kpi,
