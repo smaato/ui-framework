@@ -22,7 +22,6 @@ const Button = props => {
 
   const classes = classNames('button', props.classes, {
     'is-button-disabled': props.disabled,
-    'is-button-selected': props.selected,
   });
 
   let icon;
