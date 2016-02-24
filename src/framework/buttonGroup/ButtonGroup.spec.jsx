@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
-import Button from '../button/Button.jsx';
+import GroupedButton from './GroupedButton.jsx';
 import ButtonGroup from './ButtonGroup.jsx';
 
 describe('ButtonGroup', () => {
@@ -10,8 +10,8 @@ describe('ButtonGroup', () => {
       it('are rendered', () => {
         const props = {
           children: [
-            <Button dataId="test" />,
-            <Button />,
+            <GroupedButton dataId="test" />,
+            <GroupedButton />,
           ],
         };
         const testCase = TestCaseFactory.create(

@@ -66,7 +66,6 @@ Button.propTypes = {
   ]),
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
-  selected: PropTypes.bool,
   classes: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.array,

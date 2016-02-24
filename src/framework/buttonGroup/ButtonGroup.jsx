@@ -3,18 +3,25 @@ import React, {
   PropTypes,
 } from 'react';
 
-import Button from '../button/Button.jsx';
+import classNames from 'classnames';
+
+import GroupedButton from './GroupedButton.jsx';
 
 const ButtonGroup = props => {
+  const classes = classNames('buttonGroup', {
+    'is-button-selected': props.selected,
+  });
+
   return (
-    <div className="buttonGroup">
+    <div className={classes}>
       {props.children}
     </div>
   );
 };
 
 ButtonGroup.propTypes = {
-  children: PropTypes.arrayOf(Button),
+  selected: PropTypes.bool,
+  children: PropTypes.arrayOf(GroupedButton),
 };
 
 export default ButtonGroup;
