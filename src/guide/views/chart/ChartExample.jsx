@@ -29,6 +29,7 @@ export default class ChartExample extends Component {
     };
 
     this.onClickChangeData = this.onClickChangeData.bind(this);
+    this.onClickChangeHeight = this.onClickChangeHeight.bind(this);
   }
 
   componentDidMount() {
