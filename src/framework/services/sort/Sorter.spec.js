@@ -118,11 +118,11 @@ describe('Sorter', () => {
 
       describe('providerPropertyOrIndex parameter', () => {
         it('throws an error if undefined', () => {
-          expect(() => Sorter.sort(fakeItems, providers, undefined)).toThrow();
+          expect(() => Sorter.sort(undefined, undefined, undefined)).toThrow();
         });
 
         it('throws an error if null', () => {
-          expect(() => Sorter.sort(fakeItems, providers, null)).toThrow();
+          expect(() => Sorter.sort(undefined, undefined, null)).toThrow();
         });
 
         it('defnes a provider via an element index', () => {

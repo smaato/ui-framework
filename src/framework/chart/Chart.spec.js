@@ -1,5 +1,6 @@
 
 import React from 'react';
+/* global d3 */
 import 'd3';
 import { TestCaseFactory } from 'react-test-kit';
 import Chart from './Chart.jsx';
