@@ -32,6 +32,7 @@ import {
   GridIconOptions,
   GridLoadingRow,
   GridRow,
+  GroupedButton,
   HollowButton,
   Icon,
   IconCog,
@@ -163,6 +164,9 @@ const components = [{
 }, {
   name: 'GridRow',
   component: GridRow,
+}, {
+  name: 'GroupedButton',
+  component: GroupedButton,
 }, {
   name: 'HollowButton',
   component: HollowButton,

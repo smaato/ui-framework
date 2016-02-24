@@ -9,8 +9,8 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
-  Button,
   ButtonGroup,
+  GroupedButton,
 } from '../../../framework/framework';
 
 export default class ButtonGroupExample extends Component {
@@ -40,19 +40,19 @@ export default class ButtonGroupExample extends Component {
             Group buttons together. Can be used like a radio button group.
           </Text>
           <ButtonGroup>
-            <Button
+            <GroupedButton
               selected={this.isButtonSelected(0)}
               iconClasses="glyphicons-transfer"
               label="RTB Open Auction"
               onClick={() => this.setButtonSelected(0)}
             />
-            <Button
+            <GroupedButton
               selected={this.isButtonSelected(1)}
               iconClasses="glyphicons-handshake"
               label="Preferred Deal"
               onClick={() => this.setButtonSelected(1)}
             />
-            <Button
+            <GroupedButton
               selected={this.isButtonSelected(2)}
               iconClasses="glyphicons-folder-lock"
               label="Private Exchange"

@@ -11,6 +11,7 @@ export { default as Body } from './body/Body.jsx';
 export * from './button/index.jsx';
 
 export { default as ButtonGroup } from './buttonGroup/ButtonGroup.jsx';
+export { default as GroupedButton } from './buttonGroup/GroupedButton.jsx';
 
 export * from './chart/Chart.jsx';
 export { default as Chart } from './chart/Chart.jsx';
