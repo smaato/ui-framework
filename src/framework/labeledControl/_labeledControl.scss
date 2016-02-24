@@ -5,11 +5,17 @@
  */
 .labeledControl {
   display: flex;
-  align-items: center;
+  line-height: $lineHeight;
 }
 
+  /**
+   * 1. Vertically aligns label with control (top).
+   * Especially useful for the case when field validation error is added
+   * to control, so control height gets much bigger.
+   */
   .labeledControl__label {
     padding-right: 18px;
+    line-height: $textInput_height; /* 1 */
   }
 
 /**

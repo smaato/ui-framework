@@ -19,6 +19,7 @@ import {
   Chart,
   CheckBox,
   DateRange,
+  FieldMessage,
   FiltersControl,
   Grid,
   GridBodyEditableCell,
@@ -123,6 +124,9 @@ const components = [{
 }, {
   name: 'DateRange',
   component: DateRange,
+}, {
+  name: 'FieldMessage',
+  component: FieldMessage,
 }, {
   name: 'FiltersControl',
   component: FiltersControl,
