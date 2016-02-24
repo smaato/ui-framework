@@ -22,7 +22,7 @@
   .addOnControl__right {
     display: flex;
     align-items: center;
-    padding: 9px;
+    padding: $addOnSidePadding;
     font-size: 12px;
     font-weight: 400;
     color: #52676f;
@@ -38,4 +38,8 @@
 
   .addOnControl__right {
     border-left: 0;
+  }
+
+  .addOnControlSide--component {
+    padding: 0;
   }
