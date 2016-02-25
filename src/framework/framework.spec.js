@@ -20,6 +20,7 @@ import {
   DateRange,
   FieldMessage,
   FiltersControl,
+  Form,
   Grid,
   GridBodyEditableCell,
   GridControls,
@@ -126,6 +127,9 @@ const components = [{
 }, {
   name: 'FiltersControl',
   component: FiltersControl,
+}, {
+  name: 'Form',
+  component: Form,
 }, {
   name: 'Grid',
   component: Grid,
