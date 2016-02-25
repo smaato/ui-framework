@@ -1,9 +1,22 @@
 
+import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
 import LabeledControl from './LabeledControl.jsx';
 
 describe('LabeledControl', () => {
   describe('Props', () => {
+    describe('children', () => {
+      it('are rendered', () => {
+        const props = {
+          children: <div id="test" />,
+        };
+
+        const testCase =
+          TestCaseFactory.createFromFunction(LabeledControl, props);
+        expect(testCase.first('#test')).toBeDefined();
+      });
+    });
+
     describe('label', () => {
       it('becomes the textContent of the label element', () => {
         const props = {

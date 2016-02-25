@@ -56,6 +56,7 @@ import {
   KpiPositive,
   Label,
   LabeledControl,
+  LabeledField,
   Modal,
   ModalBody,
   ModalConfirmationBody,

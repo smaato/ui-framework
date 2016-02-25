@@ -44,6 +44,7 @@ import {
   KpiPositive,
   Label,
   LabeledControl,
+  LabeledField,
   Modal,
   ModalBody,
   ModalConfirmationBody,
@@ -200,6 +201,9 @@ const components = [{
 }, {
   name: 'LabeledControl',
   component: LabeledControl,
+}, {
+  name: 'LabeledField',
+  component: LabeledField,
 }, {
   name: 'Modal',
   component: Modal,
