@@ -16,6 +16,7 @@ import {
   AccountNav,
   AccountPicture,
   AddOnControl,
+  AddOnSelect,
   AppHeader,
   AppHeaderDivider,
   AppLogo,

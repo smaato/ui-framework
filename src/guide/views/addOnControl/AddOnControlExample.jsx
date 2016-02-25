@@ -9,6 +9,7 @@ import Page, {
 
 import {
   AddOnControl,
+  AddOnSelect,
   TextInput,
 } from '../../../framework/framework';
 
@@ -41,6 +42,20 @@ export default class AddOnControlExample extends Component {
         <Example title="Right side">
           <AddOnControl
             right="USD"
+          >
+            <TextInput isFullWidth />
+          </AddOnControl>
+        </Example>
+
+        <Example title="AddOnSelect">
+          <AddOnControl
+            right={
+              <AddOnSelect>
+                <option value="A">Apple</option>
+                <option value="B">Banana</option>
+                <option value="C">Cranberry</option>
+              </AddOnSelect>
+            }
           >
             <TextInput isFullWidth />
           </AddOnControl>
