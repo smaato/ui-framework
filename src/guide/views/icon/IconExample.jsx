@@ -51,7 +51,7 @@ export default class IconExample extends Component {
         </Example>
 
         <Example title="IconLink">
-          <Text>Created to be used in endpoint modal header.</Text>
+          <Text>Suitable for modal header.</Text>
           <IconLink />
         </Example>
 
@@ -66,7 +66,7 @@ export default class IconExample extends Component {
         </Example>
 
         <Example title="IconAsterisk">
-          <Text>Created to be used in SMX line item modal header.</Text>
+          <Text>Suitable for modal header.</Text>
           <IconAsterisk />
         </Example>
 
