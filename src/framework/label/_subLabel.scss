@@ -4,11 +4,3 @@
   font-weight: 300;
   line-height: $lineHeight;
 }
-
-/**
- * 1. If the subLabel is directly below the label, move it up so that they're
- *    right up against each other.
- */
-.label + .subLabel {
-  margin-top: -12px; /* 1 */
-}
