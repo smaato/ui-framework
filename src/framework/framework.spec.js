@@ -33,6 +33,8 @@ import {
   GridRow,
   HollowButton,
   Icon,
+  IconAsterisk,
+  IconCheck,
   IconCog,
   IconEllipsis,
   IconLink,
@@ -165,6 +167,12 @@ const components = [{
 }, {
   name: 'Icon',
   component: Icon,
+}, {
+  name: 'IconAsterisk',
+  component: IconAsterisk,
+}, {
+  name: 'IconCheck',
+  component: IconCheck,
 }, {
   name: 'IconCog',
   component: IconCog,
