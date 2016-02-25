@@ -17,10 +17,7 @@ const Form = props => {
 
 Form.propTypes = {
   dataId: PropTypes.string,
-  body: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.array,
-  ]),
+  body: PropTypes.element.isRequired,
   footer: PropTypes.element,
 };
 

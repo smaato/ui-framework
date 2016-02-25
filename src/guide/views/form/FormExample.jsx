@@ -42,7 +42,6 @@ export default class FormExample extends Component {
                 </LabeledControl>
               </VerticalLayout>
             }
-            footer={<p>footer</p>}
           />
         </Example>
       </Page>
