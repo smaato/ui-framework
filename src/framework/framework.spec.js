@@ -18,6 +18,7 @@ import {
   Chart,
   CheckBox,
   DateRange,
+  FieldMessage,
   FiltersControl,
   Grid,
   GridBodyEditableCell,
@@ -32,6 +33,8 @@ import {
   GridRow,
   HollowButton,
   Icon,
+  IconAsterisk,
+  IconCheck,
   IconCog,
   IconEllipsis,
   IconLink,
@@ -120,6 +123,9 @@ const components = [{
   name: 'DateRange',
   component: DateRange,
 }, {
+  name: 'FieldMessage',
+  component: FieldMessage,
+}, {
   name: 'FiltersControl',
   component: FiltersControl,
 }, {
@@ -161,6 +167,12 @@ const components = [{
 }, {
   name: 'Icon',
   component: Icon,
+}, {
+  name: 'IconAsterisk',
+  component: IconAsterisk,
+}, {
+  name: 'IconCheck',
+  component: IconCheck,
 }, {
   name: 'IconCog',
   component: IconCog,
