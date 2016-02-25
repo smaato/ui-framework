@@ -12,9 +12,8 @@ const ConditionCheckerList = props => {
   .map((conditionChecker, index) => {
     const filterName = conditionChecker.filter.name;
     const title = TestUtils.cleanString(
-      `${filterName}
-      (${conditionChecker.comparisonType}):
-      ${conditionChecker.comparisonValue}`
+      `${filterName} (${conditionChecker.comparisonType}):
+       ${conditionChecker.comparisonValue}`
     );
     const onRemoveConditionChecker = props.onRemoveConditionChecker
       .bind(null, conditionChecker);
