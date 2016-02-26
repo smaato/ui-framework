@@ -9,6 +9,8 @@ import Page, {
 
 import {
   LabeledControl,
+  LabeledField,
+  TextArea,
   TextInput,
   VerticalLayout,
 } from '../../../framework/framework';
@@ -114,6 +116,32 @@ export default class LabelExample extends Component {
               layout={LabeledControl.LAYOUT.ONE_SIXTH}
             >
               <TextInput isFullWidth />
+            </LabeledControl>
+          </VerticalLayout>
+        </Example>
+
+        <Example title="With TextArea">
+          <VerticalLayout>
+            <LabeledControl
+              label="Name"
+              layout={LabeledControl.LAYOUT.ONE_SIXTH}
+            >
+              <TextArea isFullWidth />
+            </LabeledControl>
+          </VerticalLayout>
+        </Example>
+
+        <Example title="With LabeledField">
+          <VerticalLayout>
+            <LabeledControl
+              label="Name"
+              layout={LabeledControl.LAYOUT.ONE_SIXTH}
+            >
+              <LabeledField
+                label="First"
+              >
+                <TextInput />
+              </LabeledField>
             </LabeledControl>
           </VerticalLayout>
         </Example>

@@ -1,26 +1,2 @@
 
-.textInput {
-  display: block;
-  appearance: none;
-  color: #444444;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  font-weight: 300;
-  height: $textInput_height;
-  padding: 0 10px;
-
-  &:focus {
-    outline: none;
-    border-color: #2ba7e8;
-    box-shadow: inset 0 0 0 2px #2ba7e8;
-  }
-}
-
-.textInput--fullWidth {
-  width: 100%;
-}
-
-.is-text-input-error {
-  background-color: #fffff1;
-  border-color: #dedeb9;
-}
+@import 'textInput';
