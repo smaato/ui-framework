@@ -20,6 +20,7 @@ import {
   DateRange,
   FieldMessage,
   FiltersControl,
+  Form,
   Grid,
   GridBodyEditableCell,
   GridControls,
@@ -33,6 +34,8 @@ import {
   GridRow,
   HollowButton,
   Icon,
+  IconAsterisk,
+  IconCheck,
   IconCog,
   IconEllipsis,
   IconLink,
@@ -42,6 +45,7 @@ import {
   KpiPositive,
   Label,
   LabeledControl,
+  LabeledField,
   Modal,
   ModalBody,
   ModalConfirmationBody,
@@ -55,6 +59,7 @@ import {
   SearchBox,
   Spinner,
   StickyGrid,
+  SubLabel,
   SummaryControl,
   SummaryControlIcon,
   SummaryControlIconCheck,
@@ -127,6 +132,9 @@ const components = [{
   name: 'FiltersControl',
   component: FiltersControl,
 }, {
+  name: 'Form',
+  component: Form,
+}, {
   name: 'Grid',
   component: Grid,
 }, {
@@ -166,6 +174,12 @@ const components = [{
   name: 'Icon',
   component: Icon,
 }, {
+  name: 'IconAsterisk',
+  component: IconAsterisk,
+}, {
+  name: 'IconCheck',
+  component: IconCheck,
+}, {
   name: 'IconCog',
   component: IconCog,
 }, {
@@ -192,6 +206,9 @@ const components = [{
 }, {
   name: 'LabeledControl',
   component: LabeledControl,
+}, {
+  name: 'LabeledField',
+  component: LabeledField,
 }, {
   name: 'Modal',
   component: Modal,
@@ -231,6 +248,9 @@ const components = [{
 }, {
   name: 'StickyGrid',
   component: StickyGrid,
+}, {
+  name: 'SubLabel',
+  component: SubLabel,
 }, {
   name: 'SummaryControl',
   component: SummaryControl,

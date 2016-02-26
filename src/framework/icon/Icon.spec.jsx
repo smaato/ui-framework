@@ -1,6 +1,7 @@
 
 import { TestCaseFactory } from 'react-test-kit';
 import Icon from './Icon.jsx';
+import IconAsterisk from './IconAsterisk.jsx';
 import IconCheck from './IconCheck.jsx';
 import IconCog from './IconCog.jsx';
 import IconEllipsis from './IconEllipsis.jsx';
@@ -10,6 +11,9 @@ import IconPaperclip from './IconPaperclip.jsx';
 const icons = [{
   name: 'Icon',
   component: Icon,
+}, {
+  name: 'IconAsterisk',
+  component: IconAsterisk,
 }, {
   name: 'IconCheck',
   component: IconCheck,

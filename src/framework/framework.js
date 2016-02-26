@@ -24,10 +24,14 @@ export { default as FieldMessage } from './fieldMessage/FieldMessage.jsx';
 export * from './filtersControl/FiltersControl.jsx';
 export { default as FiltersControl } from './filtersControl/FiltersControl.jsx';
 
+export { default as Form } from './form/Form.jsx';
+
 export * from './grid/Grid.jsx';
 export { default as Grid } from './grid/Grid.jsx';
 
 export { default as Icon } from './icon/Icon.jsx';
+export { default as IconAsterisk } from './icon/IconAsterisk.jsx';
+export { default as IconCheck } from './icon/IconCheck.jsx';
 export { default as IconCog } from './icon/IconCog.jsx';
 export { default as IconEllipsis } from './icon/IconEllipsis.jsx';
 export { default as IconLink } from './icon/IconLink.jsx';
@@ -41,6 +45,8 @@ export { default as Label } from './label/Label.jsx';
 
 export * from './labeledControl/LabeledControl.jsx';
 export { default as LabeledControl } from './labeledControl/LabeledControl.jsx';
+
+export { default as LabeledField } from './labeledField/LabeledField.jsx';
 
 export * from './spinner/Spinner.jsx';
 export { default as Spinner } from './spinner/Spinner.jsx';

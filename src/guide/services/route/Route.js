@@ -11,11 +11,14 @@ import ChartExample from '../../views/chart/ChartExample.jsx';
 import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
 import FieldMessageExample
   from '../../views/fieldMessage/FieldMessageExample.jsx';
+import FormExample from '../../views/form/FormExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
 import IconExample from '../../views/icon/IconExample.jsx';
 import KpiExample from '../../views/kpi/KpiExample.jsx';
 import LabeledControlExample
   from '../../views/labeledControl/LabeledControlExample.jsx';
+import LabeledFieldExample
+  from '../../views/labeledField/LabeledFieldExample.jsx';
 import LabelExample from '../../views/label/LabelExample.jsx';
 import ModalExample from '../../views/modal/ModalExample.jsx';
 import OrganizationSwitcherExample
@@ -66,6 +69,10 @@ const components = [{
   source: 'views/fieldMessage/FieldMessageExample.jsx',
   component: FieldMessageExample,
 }, {
+  name: 'Form',
+  source: 'views/form/FormExample.jsx',
+  component: FormExample,
+}, {
   name: 'Grid',
   source: 'views/grid/GridExample.jsx',
   component: GridExample,
@@ -81,6 +88,10 @@ const components = [{
   name: 'LabeledControl',
   source: 'views/labeledControl/LabeledControlExample.jsx',
   component: LabeledControlExample,
+}, {
+  name: 'LabeledField',
+  source: 'views/labeledField/LabeledFieldExample.jsx',
+  component: LabeledFieldExample,
 }, {
   name: 'Label',
   source: 'views/label/LabelExample.jsx',
