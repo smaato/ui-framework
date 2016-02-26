@@ -52,3 +52,14 @@ $ctaButtonColor: #35d0a0;
   color: #ffffff;
   border-color: $ctaButtonColor;
 }
+
+.button--grouped {
+  background: #fafcfd;
+  color: #434749;
+  border-color: #cad4da;
+
+  &.is-button-selected {
+    background: #e9f0f4;
+    color: #8d9aa6;
+  }
+}
