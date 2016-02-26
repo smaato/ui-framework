@@ -5,7 +5,7 @@ import React, {
 
 export {
   default as FormFooter,
-} from './FormFooter.jsx';
+} from './footer/FormFooter.jsx';
 
 const Form = props => {
   return (
