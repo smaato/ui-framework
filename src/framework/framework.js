@@ -24,6 +24,7 @@ export { default as FieldMessage } from './fieldMessage/FieldMessage.jsx';
 export * from './filtersControl/FiltersControl.jsx';
 export { default as FiltersControl } from './filtersControl/FiltersControl.jsx';
 
+export * from './form/Form.jsx';
 export { default as Form } from './form/Form.jsx';
 
 export * from './grid/Grid.jsx';

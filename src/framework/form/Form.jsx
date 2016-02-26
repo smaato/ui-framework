@@ -3,6 +3,10 @@ import React, {
   PropTypes,
 } from 'react';
 
+export {
+  default as FormFooter,
+} from './FormFooter.jsx';
+
 const Form = props => {
   return (
     <div

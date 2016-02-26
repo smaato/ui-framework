@@ -21,6 +21,7 @@ import {
   FieldMessage,
   FiltersControl,
   Form,
+  FormFooter,
   Grid,
   GridBodyEditableCell,
   GridControls,
@@ -130,6 +131,9 @@ const components = [{
 }, {
   name: 'Form',
   component: Form,
+}, {
+  name: 'FormFooter',
+  component: FormFooter,
 }, {
   name: 'Grid',
   component: Grid,
