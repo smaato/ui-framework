@@ -5,10 +5,10 @@ import classNames from 'classnames';
 import Icon from '../icon/Icon.jsx';
 
 const IconLink = props => {
-  const classes = classNames('glyphicons-link', props.classes);
+  const classes = classNames('glyphicons-link', props.className);
 
   const extendedProps = Object.assign({}, props, {
-    classes,
+    className: classes,
   });
 
   return (

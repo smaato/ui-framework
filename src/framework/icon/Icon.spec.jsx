@@ -52,11 +52,11 @@ for (let i = 0, length = icons.length; i < length; i++) {
       describe('classes', () => {
         it('is applied to the element', () => {
           const props = {
-            classes: 'test',
+            className: 'test',
           };
           const testCase =
             TestCaseFactory.createFromFunction(icon.component, props);
-          expect(testCase.dom.className).toContain(props.classes);
+          expect(testCase.dom.className).toContain(props.className);
         });
       });
 

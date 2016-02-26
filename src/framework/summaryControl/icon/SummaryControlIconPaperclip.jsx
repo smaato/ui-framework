@@ -8,7 +8,7 @@ import IconPaperclip from '../../icon/IconPaperclip.jsx';
 const SummaryControlIconPaperclip = () => {
   return (
     <SummaryControlIcon
-      classes="summaryControlIconPaperclip"
+      className="summaryControlIconPaperclip"
       iconType={IconPaperclip}
     />
   );

@@ -5,7 +5,7 @@ import React, {
 import classNames from 'classnames';
 
 const Icon = props => {
-  const classes = classNames('icon', props.classes, {
+  const classes = classNames('icon', props.className, {
     'icon--clickable': props.onClick,
   });
 
@@ -18,7 +18,6 @@ const Icon = props => {
 };
 
 Icon.propTypes = {
-  classes: PropTypes.string,
   onClick: PropTypes.func,
 };
 

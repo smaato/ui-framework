@@ -4,20 +4,17 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
-import Icon from '../../icon/Icon.jsx';
-
 const SummaryControlIcon = props => {
-  const classes = classNames('summaryControlIcon', props.classes);
+  const classes = classNames('summaryControlIcon', props.className);
 
   const icon = React.createElement(props.iconType, {
-    classes: classes,
+    className: classes,
   });
 
   return icon;
 };
 
 SummaryControlIcon.propTypes = {
-  classes: Icon.propTypes.classes,
   iconType: PropTypes.func,
 };
 

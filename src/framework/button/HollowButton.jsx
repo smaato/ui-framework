@@ -5,10 +5,10 @@ import classNames from 'classnames';
 import Button from './Button.jsx';
 
 const HollowButton = props => {
-  const classes = classNames('button--hollow', props.classes);
+  const classes = classNames('button--hollow', props.className);
 
   const extendedProps = Object.assign({}, props, {
-    classes: classes,
+    className: classes,
   });
 
   return (
