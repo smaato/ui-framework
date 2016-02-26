@@ -10,7 +10,7 @@ const SummaryControlIcon = props => {
   const classes = classNames('summaryControlIcon', props.classes);
 
   const icon = React.createElement(props.iconType, {
-    classes: classes,
+    classes,
   });
 
   return icon;

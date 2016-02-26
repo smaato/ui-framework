@@ -11,7 +11,10 @@ describe('AppTitleContainer', () => {
           title: 'Title text',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(AppTitleContainer, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          AppTitleContainer,
+          props
+        );
         expect(props.onClick).not.toHaveBeenCalled();
         const titleEl = testCase.first('.appTitleContainer__title');
         testCase.trigger('click', titleEl);

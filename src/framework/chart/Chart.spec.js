@@ -1,5 +1,6 @@
 
 import React from 'react';
+/* global d3 */
 import 'd3';
 import { TestCaseFactory } from 'react-test-kit';
 import Chart from './Chart.jsx';
@@ -8,61 +9,61 @@ describe('Chart', () => {
   let testCase;
 
   const data = [{
-    'name': 'newYork',
-    'color': '#1192ca',
-    'values': [{
-      'date': '2012-03-30T07:00:00.000Z',
-      'yValue': 46.5,
+    name: 'newYork',
+    color: '#1192ca',
+    values: [{
+      date: '2012-03-30T07:00:00.000Z',
+      yValue: 46.5,
     }, {
-      'date': '2012-03-31T07:00:00.000Z',
-      'yValue': 42.2,
+      date: '2012-03-31T07:00:00.000Z',
+      yValue: 42.2,
     }, {
-      'date': '2012-04-01T07:00:00.000Z',
-      'yValue': 45.3,
+      date: '2012-04-01T07:00:00.000Z',
+      yValue: 45.3,
     }, {
-      'date': '2012-04-02T07:00:00.000Z',
-      'yValue': 48.1,
+      date: '2012-04-02T07:00:00.000Z',
+      yValue: 48.1,
     }, {
-      'date': '2012-04-03T07:00:00.000Z',
-      'yValue': 51.2,
+      date: '2012-04-03T07:00:00.000Z',
+      yValue: 51.2,
     }],
   }, {
-    'name': 'sanFrancisco',
-    'color': '#F07171',
-    'values': [{
-      'date': '2012-03-30T07:00:00.000Z',
-      'yValue': 54.5,
+    name: 'sanFrancisco',
+    color: '#F07171',
+    values: [{
+      date: '2012-03-30T07:00:00.000Z',
+      yValue: 54.5,
     }, {
-      'date': '2012-03-31T07:00:00.000Z',
-      'yValue': 56.2,
+      date: '2012-03-31T07:00:00.000Z',
+      yValue: 56.2,
     }, {
-      'date': '2012-04-01T07:00:00.000Z',
-      'yValue': 51.1,
+      date: '2012-04-01T07:00:00.000Z',
+      yValue: 51.1,
     }, {
-      'date': '2012-04-02T07:00:00.000Z',
-      'yValue': 50.5,
+      date: '2012-04-02T07:00:00.000Z',
+      yValue: 50.5,
     }, {
-      'date': '2012-04-03T07:00:00.000Z',
-      'yValue': 52.2,
+      date: '2012-04-03T07:00:00.000Z',
+      yValue: 52.2,
     }],
   }, {
-    'name': 'austin',
-    'color': '#60C04F',
-    'values': [{
-      'date': '2012-03-30T07:00:00.000Z',
-      'yValue': 73.5,
+    name: 'austin',
+    color: '#60C04F',
+    values: [{
+      date: '2012-03-30T07:00:00.000Z',
+      yValue: 73.5,
     }, {
-      'date': '2012-03-31T07:00:00.000Z',
-      'yValue': 73.9,
+      date: '2012-03-31T07:00:00.000Z',
+      yValue: 73.9,
     }, {
-      'date': '2012-04-01T07:00:00.000Z',
-      'yValue': 75.3,
+      date: '2012-04-01T07:00:00.000Z',
+      yValue: 75.3,
     }, {
-      'date': '2012-04-02T07:00:00.000Z',
-      'yValue': 75.4,
+      date: '2012-04-02T07:00:00.000Z',
+      yValue: 75.4,
     }, {
-      'date': '2012-04-03T07:00:00.000Z',
-      'yValue': 77.3,
+      date: '2012-04-03T07:00:00.000Z',
+      yValue: 77.3,
     }],
   }];
 

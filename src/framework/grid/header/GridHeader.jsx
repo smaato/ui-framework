@@ -11,7 +11,8 @@ const GridHeader = props => {
   const rowClass = classNames('grid__header__row', props.classHeaderRow);
 
    // Create cells.
-  const headerCells = props.headerCellPropsProviders.map((cellPropsProvider, index) => {
+  const headerCells = props.headerCellPropsProviders
+  .map((cellPropsProvider, index) => {
     return (
       <GridHeaderCell
         classHeaderCell={props.classHeaderCell}

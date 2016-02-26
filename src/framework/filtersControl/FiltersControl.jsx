@@ -14,11 +14,17 @@ export default class FiltersControl extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       isDropdownOpen: false,
       selectedFilterOption: null,
       selectedComparisonType: null,
     };
+
+    this.onAddConditionChecker = this.onAddConditionChecker.bind(this);
+    this.onCancelConditionChecker = this.onCancelConditionChecker.bind(this);
+    this.onSelectFilterOption = this.onSelectFilterOption.bind(this);
+    this.onToggleClick = this.onToggleClick.bind(this);
   }
 
   onToggleClick() {
@@ -67,8 +73,8 @@ export default class FiltersControl extends Component {
           <ConditionCheckerForm
             filterOption={this.state.selectedFilterOption}
             comparisonType={this.state.selectedComparisonType}
-            onAddConditionChecker={this.onAddConditionChecker.bind(this)}
-            onCancelConditionChecker={this.onCancelConditionChecker.bind(this)}
+            onAddConditionChecker={this.onAddConditionChecker}
+            onCancelConditionChecker={this.onCancelConditionChecker}
           />
         );
       } else {
@@ -77,7 +83,7 @@ export default class FiltersControl extends Component {
         dropdownContent = (
           <FilterOptionList
             filterOptions={this.props.filterOptions}
-            onSelectFilterOption={this.onSelectFilterOption.bind(this)}
+            onSelectFilterOption={this.onSelectFilterOption}
           />
         );
       }
@@ -99,7 +105,7 @@ export default class FiltersControl extends Component {
 
         <div className="filtersDropdownContainer">
           <FiltersDropdownButton
-            onClick={this.onToggleClick.bind(this)}
+            onClick={this.onToggleClick}
             isOpen={this.state.isDropdownOpen}
           />
           {dropdown}
@@ -115,7 +121,8 @@ FiltersControl.propTypes = {
   conditionCheckers: ConditionCheckerList.propTypes.conditionCheckers,
   filterOptions: FilterOptionList.propTypes.filterOptions,
   onAddConditionChecker: PropTypes.func.isRequired,
-  onRemoveConditionChecker: ConditionCheckerList.propTypes.onRemoveConditionChecker,
+  onRemoveConditionChecker:
+    ConditionCheckerList.propTypes.onRemoveConditionChecker,
 };
 
 export default FiltersControl;

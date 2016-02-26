@@ -8,7 +8,7 @@ const AppHeaderButton = props => {
   const classes = classNames('appHeaderButton', props.classes);
 
   const extendedProps = Object.assign({}, props, {
-    classes: classes,
+    classes,
   });
 
   return (

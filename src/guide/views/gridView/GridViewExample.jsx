@@ -50,24 +50,45 @@ export default class GridViewExample extends Component {
           <div className="grid__body__cell">
             <span className="grid__body__cellLiner">
               <span className="checkboxWrapper">
-                <input type="checkbox" name="item_1" id="item_1" className="checkbox__input" />
-                <label htmlFor="item_1" className="checkbox__faux__input"></label>
+                <input
+                  type="checkbox"
+                  name="item_1"
+                  id="item_1"
+                  className="checkbox__input"
+                />
+                <label
+                  htmlFor="item_1"
+                  className="checkbox__faux__input"
+                ></label>
               </span>
             </span>
           </div>
           <div className="grid__body__cell">
             <span className="grid__body__cellLiner">
-              <a href="#" className="grid__body__cellValue--link blueLink">Ford F150</a>
+              <a
+                href="#"
+                className="grid__body__cellValue--link blueLink"
+              >
+                Ford F150
+              </a>
             </span>
           </div>
           <div className="grid__body__cell">
             <span className="grid__body__cellLiner">
-              <a href="#" className="grid__body__cellValue--editable">In Production</a>
+              <a
+                href="#"
+                className="grid__body__cellValue--editable"
+              >
+                In Production
+              </a>
             </span>
           </div>
           <div className="grid__body__cell">
             <span className="grid__body__cellLiner">
-              <a href="#" className="grid__body__cellValue--editable">Diesel, Unleaded</a>
+              <a
+                href="#"
+                className="grid__body__cellValue--editable"
+              >Diesel, Unleaded</a>
             </span>
           </div>
           <div className="grid__body__cell">
@@ -83,17 +104,26 @@ export default class GridViewExample extends Component {
           </div>
           <div className="grid__body__cell">
             <span className="grid__body__cellLiner">
-              <a href="#" className="grid__body__cellValue--editable">25mpg<span className="icon glyphicons-leaf"></span></a>
+              <a href="#" className="grid__body__cellValue--editable">
+                25mpg
+                <span className="icon glyphicons-leaf"></span>
+              </a>
             </span>
           </div>
           <div className="grid__body__cell">
             <span className="grid__body__cellLiner">
-              <span className="grid__body__cellValue--readOnly">202.1k<span className="kpi kpi--positive">+2%</span></span>
+              <span className="grid__body__cellValue--readOnly">
+                202.1k
+                <span className="kpi kpi--positive">+2%</span>
+              </span>
             </span>
           </div>
           <div className="grid__body__cell">
             <span className="grid__body__cellLiner">
-              <span className="grid__body__cellValue--readOnly">200.5k<span className="kpi kpi--negative">-2%</span></span>
+              <span className="grid__body__cellValue--readOnly">
+                200.5k
+                <span className="kpi kpi--negative">-2%</span>
+              </span>
             </span>
           </div>
           <div className="grid__body__cell">
@@ -130,7 +160,13 @@ export default class GridViewExample extends Component {
             </nav>
             <a className="accountNav">
               <span className="accountPicture">
-                <span className="icon glyphicons-user accountPicture__icon"></span>
+                <span
+                  className="
+                    icon
+                    glyphicons-user
+                    accountPicture__icon
+                  "
+                ></span>
               </span>
               <span className="accountNav__email">
                 han.solo@smaato.com
@@ -145,33 +181,61 @@ export default class GridViewExample extends Component {
           <div className="viewHeader__liner">
 
             <nav className="viewHeaderNav">
-              <a href="#" className="viewHeaderNav__link is-view-header-nav-link-selected">
+              <a
+                href="#"
+                className="
+                  viewHeaderNav__link
+                  is-view-header-nav-link-selected
+                "
+              >
                 <span>
-                  <span className="icon glyphicons-car viewHeaderNav__link__icon" />
+                  <span
+                    className="icon glyphicons-car viewHeaderNav__link__icon"
+                  />
                   Automobile
                 </span>
               </a>
               <a href="#" className="viewHeaderNav__link">
                 <span>
-                  <span className="icon glyphicons-train viewHeaderNav__link__icon" />
+                  <span
+                    className="icon glyphicons-train viewHeaderNav__link__icon"
+                  />
                   Train
                 </span>
               </a>
               <a href="#" className="viewHeaderNav__link">
                 <span>
-                  <span className="icon glyphicons-airplane viewHeaderNav__link__icon" />
+                  <span
+                    className="
+                      icon
+                      glyphicons-airplane
+                      viewHeaderNav__link__icon
+                    "
+                  />
                   Airplane
                 </span>
               </a>
               <a href="#" className="viewHeaderNav__link">
                 <span>
-                  <span className="icon glyphicons-bicycle viewHeaderNav__link__icon" />
+                  <span
+                    className="
+                      icon
+                      glyphicons-bicycle
+                      viewHeaderNav__link__icon
+                    "
+                  />
                   Bicycle
                 </span>
               </a>
               <a href="#" className="viewHeaderNav__link">
                 <span>
-                  <span className="icon glyphicons-person-walking viewHeaderNav__link__icon" />
+                  <span
+                    className="
+                      icon
+                      glyphicons-person-walking
+                      viewHeaderNav__link__icon
+                    "
+                  />
                   Walking
                 </span>
               </a>
@@ -185,7 +249,9 @@ export default class GridViewExample extends Component {
             <div className="dateRange">
               <div className="dateRange__option dateRange__option--required">
                 <a className="dateRange__trigger">
-                  <span className="icon glyphicons-calendar dateRange__triggerIcon"></span>
+                  <span
+                    className="icon glyphicons-calendar dateRange__triggerIcon"
+                  ></span>
                   Jul 18-Jul 28
                 </a>
               </div>
@@ -303,8 +369,16 @@ export default class GridViewExample extends Component {
                 <div className="grid__header__cell">
                   <span className="grid__header__cellLiner">
                     <span className="checkboxWrapper">
-                      <input type="checkbox" name="table_batch" id="table_batch" className="checkbox__input" />
-                      <label htmlFor="table_batch" className="checkbox__faux__input"></label>
+                      <input
+                        type="checkbox"
+                        name="table_batch"
+                        id="table_batch"
+                        className="checkbox__input"
+                      />
+                      <label
+                        htmlFor="table_batch"
+                        className="checkbox__faux__input"
+                      ></label>
                     </span>
                   </span>
                 </div>
@@ -420,8 +494,16 @@ export default class GridViewExample extends Component {
                 <div className="grid__header__cell">
                   <span className="grid__header__cellLiner">
                     <span className="checkboxWrapper">
-                      <input type="checkbox" name="table_batch" id="table_batch" className="checkbox__input" />
-                      <label htmlFor="table_batch" className="checkbox__faux__input"></label>
+                      <input
+                        type="checkbox"
+                        name="table_batch"
+                        id="table_batch"
+                        className="checkbox__input"
+                      />
+                      <label
+                        htmlFor="table_batch"
+                        className="checkbox__faux__input"
+                      ></label>
                     </span>
                   </span>
                 </div>
@@ -539,16 +621,36 @@ export default class GridViewExample extends Component {
             </div>
             <div className="grid__footer">
               <div className="grid__footer__row">
-                <div className="grid__footer__cell"><div className="grid__footer__cellLiner"></div></div>
-                <div className="grid__footer__cell"><div className="grid__footer__cellLiner"></div></div>
-                <div className="grid__footer__cell"><div className="grid__footer__cellLiner"></div></div>
-                <div className="grid__footer__cell"><div className="grid__footer__cellLiner"></div></div>
-                <div className="grid__footer__cell"><div className="grid__footer__cellLiner"></div></div>
-                <div className="grid__footer__cell"><div className="grid__footer__cellLiner"></div></div>
-                <div className="grid__footer__cell"><div className="grid__footer__cellLiner"></div></div>
-                <div className="grid__footer__cell"><div className="grid__footer__cellLiner">152.1m</div></div>
-                <div className="grid__footer__cell"><div className="grid__footer__cellLiner">Registered</div></div>
-                <div className="grid__footer__cell"><div className="grid__footer__cellLiner"></div></div>
+                <div className="grid__footer__cell">
+                  <div className="grid__footer__cellLiner"></div>
+                </div>
+                <div className="grid__footer__cell">
+                  <div className="grid__footer__cellLiner"></div>
+                </div>
+                <div className="grid__footer__cell">
+                  <div className="grid__footer__cellLiner"></div>
+                </div>
+                <div className="grid__footer__cell">
+                  <div className="grid__footer__cellLiner"></div>
+                </div>
+                <div className="grid__footer__cell">
+                  <div className="grid__footer__cellLiner"></div>
+                </div>
+                <div className="grid__footer__cell">
+                  <div className="grid__footer__cellLiner"></div>
+                </div>
+                <div className="grid__footer__cell">
+                  <div className="grid__footer__cellLiner"></div>
+                </div>
+                <div className="grid__footer__cell">
+                  <div className="grid__footer__cellLiner">152.1m</div>
+                </div>
+                <div className="grid__footer__cell">
+                  <div className="grid__footer__cellLiner">Registered</div>
+                </div>
+                <div className="grid__footer__cell">
+                  <div className="grid__footer__cellLiner"></div>
+                </div>
               </div>
             </div>
 

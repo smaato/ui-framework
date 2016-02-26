@@ -4,11 +4,13 @@ import React, {
 } from 'react';
 
 const GridBodyEditableCell = props => {
+  const onClick = props.onClick.bind(this);
+
   return (
     <a
       className="grid__body__cellValue--editable"
       href="#"
-      onClick={props.onClick.bind(this)}
+      onClick={onClick}
     >
       {props.children}
     </a>

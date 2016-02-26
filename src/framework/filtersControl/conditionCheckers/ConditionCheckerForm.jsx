@@ -11,6 +11,9 @@ export default class ConditionCheckerForm extends Component {
 
   constructor(props) {
     super(props);
+
+    this.onKeyUp = this.onKeyUp.bind(this);
+    this.onClickAddButton = this.onClickAddButton.bind(this);
   }
 
   componentDidMount() {
@@ -24,7 +27,11 @@ export default class ConditionCheckerForm extends Component {
     }
 
     const conditionChecker =
-      new ConditionChecker(this.props.filterOption, this.props.comparisonType, doesValuePass);
+      new ConditionChecker(
+        this.props.filterOption,
+        this.props.comparisonType,
+        doesValuePass
+      );
 
     this.props.onAddConditionChecker(conditionChecker);
   }
@@ -45,14 +52,14 @@ export default class ConditionCheckerForm extends Component {
             ref="doesValuePass"
             type="text"
             className="conditionCheckerForm__doesValuePass"
-            onKeyUp={this.onKeyUp.bind(this)}
+            onKeyUp={this.onKeyUp}
           />
         </div>
         <div className="conditionCheckerForm__buttons">
           <button onClick={this.props.onCancelConditionChecker}>
             &lt; Back
           </button>
-          <button onClick={this.onClickAddButton.bind(this)}>
+          <button onClick={this.onClickAddButton}>
             + Add
           </button>
         </div>

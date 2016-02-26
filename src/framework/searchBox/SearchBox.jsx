@@ -10,6 +10,8 @@ export default class SearchBox extends Component {
 
   constructor(props) {
     super(props);
+
+    this.onKeyUp = this.onKeyUp.bind(this);
   }
 
   onKeyUp(event) {
@@ -41,7 +43,7 @@ export default class SearchBox extends Component {
           type="text"
           placeholder={this.props.placeholder}
           ref="searchField"
-          onKeyUp={this.onKeyUp.bind(this)}
+          onKeyUp={this.onKeyUp}
         />
         <span className="icon glyphicons-search searchBox__icon"/>
       </label>

@@ -2,6 +2,7 @@
 import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
 import CheckBox from './CheckBox.jsx';
+import TestUtils from '../../services/TestUtils';
 
 describe('CheckBox', () => {
   describe('DOM structure', () => {
@@ -16,8 +17,13 @@ describe('CheckBox', () => {
   describe('Props', () => {
     describe('id', () => {
       describe('when set', () => {
-        it('is applied to the input\'s id and name attributes, and label\'s for attribute', () => {
-          const testCase = TestCaseFactory.createFromElement(<CheckBox id="good-id" />);
+        it(TestUtils.cleanString(
+          `is applied to the input\'s id and name attributes,
+          and label\'s for attribute`
+        ), () => {
+          const testCase = TestCaseFactory.createFromElement(
+            <CheckBox id="good-id" />
+          );
           expect(testCase.first('input').getAttribute('id')).toBe('good-id');
           expect(testCase.first('input').getAttribute('name')).toBe('good-id');
           expect(testCase.first('label').getAttribute('for')).toBe('good-id');
@@ -28,7 +34,9 @@ describe('CheckBox', () => {
     describe('checked', () => {
       describe('when not set', () => {
         it('input is not checked', () => {
-          const testCase = TestCaseFactory.createFromElement(<CheckBox id="id" />);
+          const testCase = TestCaseFactory.createFromElement(
+            <CheckBox id="id" />
+          );
           expect(testCase.first('input').checked).toBe(false);
         });
       });

@@ -15,9 +15,12 @@ describe('PrimaryButton', () => {
       it('are added to the element', () => {
         const classes = 'test-class';
         const props = {
-          classes: classes,
+          classes,
         };
-        const testCase = TestCaseFactory.createFromFunction(PrimaryButton, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          PrimaryButton,
+          props
+        );
         expect(testCase.dom.getAttribute('class')).toContain(classes);
       });
     });
