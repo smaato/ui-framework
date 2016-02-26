@@ -646,8 +646,9 @@ export default class GridExample extends Component {
 
   toggleAllRowsSelected(areAllRowsSelected) {
     const bodyRows = this.state.bodyRows.map(row => {
-      row.isSelected = areAllRowsSelected; // eslint-disable-line no-param-reassign
-      return row;
+      const bodyRow = row;
+      bodyRow.isSelected = areAllRowsSelected;
+      return bodyRow;
     });
     this.setState({
       bodyRows,
@@ -658,13 +659,14 @@ export default class GridExample extends Component {
   toggleRowSelected(id, isRowSelected) {
     let areAllRowsSelected = true;
     const bodyRows = this.state.bodyRows.map(row => {
-      if (row.id === id) {
-        row.isSelected = isRowSelected; // eslint-disable-line no-param-reassign
+      const bodyRow = row;
+      if (bodyRow.id === id) {
+        bodyRow.isSelected = isRowSelected;
       }
-      if (!row.isSelected) {
+      if (!bodyRow.isSelected) {
         areAllRowsSelected = false;
       }
-      return row;
+      return bodyRow;
     });
 
     this.setState({
