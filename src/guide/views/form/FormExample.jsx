@@ -70,15 +70,22 @@ export default class FormExample extends Component {
             )}
             footer={
               <FormFooter
-                left={(
+                left={[
                   <BasicButton
+                    key="footer_left_1"
                     iconClasses="glyphicons-bin"
                     label="Delete"
-                  />
-                )}
+                  />,
+                ]}
                 right={[
-                  <HollowButton label="Cancel" />,
-                  <PrimaryButton label="Save" />,
+                  <HollowButton
+                    key="footer_right_1"
+                    label="Cancel"
+                  />,
+                  <PrimaryButton
+                    key="footer_right_2"
+                    label="Save"
+                  />,
                 ]}
               />
             }
