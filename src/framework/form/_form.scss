@@ -4,39 +4,3 @@
   border: 1px solid #d4d8db;
   padding: 30px;
 }
-
-.formFooter {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 32px;
-  border-top: 1px dashed #cbd3d7;
-  padding-top: 15px;
-}
-
-.formFooterSection {
-  display: flex;
-  flex: 1 1 auto;
-}
-
-/**
- * 1. All direct children of the left section will have space on the
- *    right side.
- */
-.formFooterSection--left {
-  > * {
-    margin-right: 10px; /* 1 */
-  }
-}
-
-/**
- * 1. Align items horizontally to the right.
- * 2. All direct children of the right section will have space on the
- *    left side.
- */
-.formFooterSection--right {
-  justify-content: flex-end; /* 1 */
-
-  > * {
-    margin-left: 10px; /* 2 */
-  }
-}
