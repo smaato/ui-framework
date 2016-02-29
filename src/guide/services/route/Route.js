@@ -7,6 +7,7 @@ import AddOnControlExample
 import AppHeaderExample from '../../views/appHeader/AppHeaderExample.jsx';
 import BodyExample from '../../views/body/BodyExample.jsx';
 import ButtonExample from '../../views/button/ButtonExample.jsx';
+import ButtonGroupExample from '../../views/buttonGroup/ButtonGroupExample.jsx';
 import ChartExample from '../../views/chart/ChartExample.jsx';
 import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
 import FieldMessageExample
@@ -57,6 +58,10 @@ const components = [{
   name: 'Button',
   source: 'views/button/ButtonExample.jsx',
   component: ButtonExample,
+}, {
+  name: 'ButtonGroup',
+  source: 'views/buttonGroup/ButtonGroupExample.jsx',
+  component: ButtonGroupExample,
 }, {
   name: 'Chart',
   source: 'views/chart/ChartExample.jsx',
