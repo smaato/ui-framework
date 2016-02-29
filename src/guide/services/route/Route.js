@@ -9,6 +9,8 @@ import BodyExample from '../../views/body/BodyExample.jsx';
 import ButtonExample from '../../views/button/ButtonExample.jsx';
 import ChartExample from '../../views/chart/ChartExample.jsx';
 import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
+import ColumnLayoutExample
+  from '../../views/columnLayout/ColumnLayoutExample.jsx';
 import FieldMessageExample
   from '../../views/fieldMessage/FieldMessageExample.jsx';
 import FormExample from '../../views/form/FormExample.jsx';
@@ -65,6 +67,10 @@ const components = [{
   name: 'CheckBox',
   source: 'views/checkBox/CheckBoxExample.jsx',
   component: CheckBoxExample,
+}, {
+  name: 'ColumnLayout',
+  source: 'views/columnLayout/ColumnLayoutExample.jsx',
+  component: ColumnLayoutExample,
 }, {
   name: 'FieldMessage',
   source: 'views/fieldMessage/FieldMessageExample.jsx',
