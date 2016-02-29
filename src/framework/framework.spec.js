@@ -14,6 +14,7 @@ import {
   BodyPanel,
   BodyPanelItem,
   Button,
+  ButtonGroup,
   CallOutButton,
   Chart,
   CheckBox,
@@ -33,6 +34,7 @@ import {
   GridIconOptions,
   GridLoadingRow,
   GridRow,
+  GroupedButton,
   HollowButton,
   Icon,
   IconAsterisk,
@@ -117,6 +119,9 @@ const components = [{
   name: 'Button',
   component: Button,
 }, {
+  name: 'ButtonGroup',
+  component: ButtonGroup,
+}, {
   name: 'CallOutButton',
   component: CallOutButton,
 }, {
@@ -173,6 +178,9 @@ const components = [{
 }, {
   name: 'GridRow',
   component: GridRow,
+}, {
+  name: 'GroupedButton',
+  component: GroupedButton,
 }, {
   name: 'HollowButton',
   component: HollowButton,
