@@ -16,7 +16,8 @@ describe('GroupedButton', () => {
         const props = {
           classes: 'testClass',
         };
-        const testCase = TestCaseFactory.createFromFunction(GroupedButton, props);
+        const testCase =
+          TestCaseFactory.createFromFunction(GroupedButton, props);
         expect(testCase.dom.className).toContain(props.classes);
       });
     });
