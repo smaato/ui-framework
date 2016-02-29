@@ -3,6 +3,9 @@ import {
   AccountNav,
   AccountPicture,
   AddOnControl,
+  AddOnDropdown,
+  AddOnDropdownOption,
+  AddOnLabel,
   AppHeader,
   AppHeaderDivider,
   AppLogo,
@@ -83,6 +86,15 @@ const components = [{
 }, {
   name: 'AddOnControl',
   component: AddOnControl,
+}, {
+  name: 'AddOnDropdown',
+  component: AddOnDropdown,
+}, {
+  name: 'AddOnDropdownOption',
+  component: AddOnDropdownOption,
+}, {
+  name: 'AddOnLabel',
+  component: AddOnLabel,
 }, {
   name: 'AppHeader',
   component: AppHeader,

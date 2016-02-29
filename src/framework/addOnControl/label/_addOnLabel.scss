@@ -1,0 +1,15 @@
+
+.addOnLabel {
+  @include addOnLabelStyle;
+  @include addOnLabelDimension;
+  padding: $addOnLabelPadding;
+  white-space: nowrap;
+}
+
+.addOnLabel--left {
+  border-right: 0;
+}
+
+.addOnLabel--right {
+  border-left: 0;
+}

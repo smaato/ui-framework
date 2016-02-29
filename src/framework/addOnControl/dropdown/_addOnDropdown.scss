@@ -1,0 +1,74 @@
+
+.addOnDropdown {
+  @include addOnLabelDimension;
+  position: relative;
+}
+
+  .addOnDropdown__input {
+    position: absolute;
+    z-index: 0;
+    width: 0;
+    height: 0;
+  }
+
+.addOnDropdownLabel {
+  @include addOnLabelStyle;
+  position: relative;
+  z-index: 1;
+  padding: $addOnLabelPadding 25px $addOnLabelPadding $addOnLabelPadding;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:before,
+  &:after {
+    $dropdownArrow_width: 1px;
+    $dropdownArrow_height: 5px;
+    content: '';
+    width: $dropdownArrow_width;
+    height: $dropdownArrow_height;
+    background-color: #517582;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-top: -$dropdownArrow_height / 2;
+    margin-left: -$dropdownArrow_width / 2;
+  }
+
+  &:before {
+    transform: rotate(-45deg) translate(-2.5px, -2.5px);
+  }
+
+  &:after {
+    transform: rotate(45deg);
+  }
+
+  &.is-add-on-dropdown-label-focus {
+    @include fieldFocus;
+  }
+}
+
+.addOnDropdownLabel--left {
+  border-right: 0;
+}
+
+.addOnDropdownLabel--right {
+  border-left: 0;
+}
+
+/**
+ * 1. Move up 1px to share border with the label.
+ */
+.addOnDropdownOptionList {
+  position: absolute;
+  z-index: 2;
+  list-style: none;
+  box-sizing: content-box;
+  margin-left: -1px;
+  min-width: 100%;
+  white-space: nowrap;
+  left: 0;
+  top: calc(100% - 1px); /* 1 */
+  border: 1px solid #bfbfbf;
+  background-color: white;
+  color: black;
+}
