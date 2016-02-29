@@ -79,3 +79,24 @@ Button.defaultProps = {
 };
 
 export default Button;
+
+// We need to export these classes after Button because they depend on Button
+export {
+  default as BasicButton,
+} from './BasicButton.jsx';
+
+export {
+  default as CallOutButton,
+} from './CallOutButton.jsx';
+
+export {
+  default as GroupedButton,
+} from './GroupedButton.jsx';
+
+export {
+  default as HollowButton,
+} from './HollowButton.jsx';
+
+export {
+  default as PrimaryButton,
+} from './PrimaryButton.jsx';
