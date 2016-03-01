@@ -13,6 +13,20 @@
 }
 
 /**
+ * 1/2
+ * 50%
+ */
+.columnLayout--oneHalf > {
+  .columnLayout__left {
+    flex: 1 1 0%; /* 1 */
+  }
+
+  .columnLayout__right {
+    flex: 1 1 0%; /* 1 */
+  }
+}
+
+/**
  * 1/3
  * 33%
  */

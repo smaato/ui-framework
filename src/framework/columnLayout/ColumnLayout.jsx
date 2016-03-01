@@ -6,6 +6,7 @@ import classNames from 'classnames';
 
 const ColumnLayout = props => {
   const layoutClassMap = {
+    [ColumnLayout.LAYOUT.ONE_HALF]: 'columnLayout--oneHalf',
     [ColumnLayout.LAYOUT.ONE_THIRD]: 'columnLayout--oneThird',
     [ColumnLayout.LAYOUT.TWO_THIRDS]: 'columnLayout--twoThirds',
     [ColumnLayout.LAYOUT.ONE_FOURTH]: 'columnLayout--oneFourth',
@@ -31,6 +32,7 @@ const ColumnLayout = props => {
 };
 
 ColumnLayout.LAYOUT = {
+  ONE_HALF: 'ONE_HALF',
   ONE_THIRD: 'ONE_THIRD',
   TWO_THIRDS: 'TWO_THIRDS',
   ONE_FOURTH: 'ONE_FOURTH',
