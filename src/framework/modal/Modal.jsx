@@ -16,10 +16,6 @@ export {
 } from './confirmation/ModalConfirmationFooter.jsx';
 
 export {
-  default as ModalFooter,
-} from './footer/ModalFooter.jsx';
-
-export {
   default as ModalHeader,
 } from './header/ModalHeader.jsx';
 
@@ -32,6 +28,16 @@ export {
 } from './stack/ModalStack.jsx';
 
 const Modal = props => {
+  let footer;
+
+  if (props.footer) {
+    footer = (
+      <div className="modalSection modalSection--footer">
+        {props.footer}
+      </div>
+    );
+  }
+
   return (
     <div
       data-id={props.dataId}
@@ -39,7 +45,7 @@ const Modal = props => {
     >
       {props.header}
       {props.body}
-      {props.footer}
+      {footer}
     </div>
   );
 };

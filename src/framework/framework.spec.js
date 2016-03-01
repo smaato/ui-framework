@@ -48,7 +48,6 @@ import {
   ModalBody,
   ModalConfirmationBody,
   ModalConfirmationFooter,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
   OrganizationSwitcher,
@@ -212,9 +211,6 @@ const components = [{
 }, {
   name: 'ModalConfirmationFooter',
   component: ModalConfirmationFooter,
-}, {
-  name: 'ModalFooter',
-  component: ModalFooter,
 }, {
   name: 'ModalHeader',
   component: ModalHeader,
