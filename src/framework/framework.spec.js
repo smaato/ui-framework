@@ -14,10 +14,12 @@ import {
   BodyPanel,
   BodyPanelItem,
   Button,
+  ButtonGroup,
   CallOutButton,
   Chart,
   CheckBox,
   DateRange,
+  DescriptionText,
   FieldMessage,
   FiltersControl,
   Form,
@@ -33,8 +35,11 @@ import {
   GridIconOptions,
   GridLoadingRow,
   GridRow,
+  GroupedButton,
   HollowButton,
   Icon,
+  IconAsterisk,
+  IconCheck,
   IconCog,
   IconEllipsis,
   IconLink,
@@ -44,6 +49,7 @@ import {
   KpiPositive,
   Label,
   LabeledControl,
+  LabeledField,
   Modal,
   ModalBody,
   ModalConfirmationBody,
@@ -56,10 +62,13 @@ import {
   SearchBox,
   Spinner,
   StickyGrid,
+  SubLabel,
   SummaryControl,
   SummaryControlIcon,
   SummaryControlIconCheck,
   SummaryControlIconPaperclip,
+  Text,
+  TextArea,
   TextInput,
   TitleBar,
   VerticalLayout,
@@ -110,6 +119,9 @@ const components = [{
   name: 'Button',
   component: Button,
 }, {
+  name: 'ButtonGroup',
+  component: ButtonGroup,
+}, {
   name: 'CallOutButton',
   component: CallOutButton,
 }, {
@@ -121,6 +133,9 @@ const components = [{
 }, {
   name: 'DateRange',
   component: DateRange,
+}, {
+  name: 'DescriptionText',
+  component: DescriptionText,
 }, {
   name: 'FieldMessage',
   component: FieldMessage,
@@ -167,11 +182,20 @@ const components = [{
   name: 'GridRow',
   component: GridRow,
 }, {
+  name: 'GroupedButton',
+  component: GroupedButton,
+}, {
   name: 'HollowButton',
   component: HollowButton,
 }, {
   name: 'Icon',
   component: Icon,
+}, {
+  name: 'IconAsterisk',
+  component: IconAsterisk,
+}, {
+  name: 'IconCheck',
+  component: IconCheck,
 }, {
   name: 'IconCog',
   component: IconCog,
@@ -199,6 +223,9 @@ const components = [{
 }, {
   name: 'LabeledControl',
   component: LabeledControl,
+}, {
+  name: 'LabeledField',
+  component: LabeledField,
 }, {
   name: 'Modal',
   component: Modal,
@@ -236,6 +263,9 @@ const components = [{
   name: 'StickyGrid',
   component: StickyGrid,
 }, {
+  name: 'SubLabel',
+  component: SubLabel,
+}, {
   name: 'SummaryControl',
   component: SummaryControl,
 }, {
@@ -247,6 +277,12 @@ const components = [{
 }, {
   name: 'SummaryControlIconPaperclip',
   component: SummaryControlIconPaperclip,
+}, {
+  name: 'Text',
+  component: Text,
+}, {
+  name: 'TextArea',
+  component: TextArea,
 }, {
   name: 'TextInput',
   component: TextInput,

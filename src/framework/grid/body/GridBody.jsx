@@ -21,7 +21,7 @@ const GridBody = props => {
     fakePrecedingRows = (
       <tr>
         <td colSpan={props.columnsCount}>
-          <div style={{minHeight: props.firstRecycledRowOffset}}></div>
+          <div style={{ minHeight: props.firstRecycledRowOffset }}></div>
         </td>
       </tr>
     );
@@ -32,7 +32,7 @@ const GridBody = props => {
     fakeFollowingRows = (
       <tr>
         <td colSpan={props.columnsCount}>
-          <div style={{minHeight: props.lastRecycledRowOffset}}></div>
+          <div style={{ minHeight: props.lastRecycledRowOffset }}></div>
         </td>
       </tr>
     );

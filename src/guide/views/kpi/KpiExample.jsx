@@ -39,7 +39,6 @@ export default class KpiExample extends Component {
           >+2.4k%</KpiPositive>
         </Example>
 
-
         <Example title="KpiNegative">
           <Text>Component to show negative change (wrapper around Kpi).</Text>
           <KpiNegative

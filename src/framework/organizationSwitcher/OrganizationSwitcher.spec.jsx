@@ -49,7 +49,8 @@ describe('OrganizationSwitcher', () => {
 
         testCase = TestCaseFactory.createFromClass(OrganizationSwitcher, props);
         expect(props.onClose).not.toHaveBeenCalled();
-        const closeButtonEl = testCase.first('.organizationSwitcher__closeButton');
+        const closeButtonEl = testCase
+          .first('.organizationSwitcher__closeButton');
         testCase.trigger('click', closeButtonEl);
         expect(props.onClose).toHaveBeenCalled();
       });

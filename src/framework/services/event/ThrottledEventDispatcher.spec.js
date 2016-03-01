@@ -5,7 +5,7 @@ describe('ThrottledEventDispatcher', () => {
   describe('interface', () => {
     // Constructor
     describe('constructor method', () => {
-      describe('internals', ()=> {
+      describe('internals', () => {
         it('calls addEventListener on dispatcher', () => {
           const dispatcher = {
             addEventListener: jasmine.createSpy('addEventListener'),
@@ -64,7 +64,8 @@ describe('ThrottledEventDispatcher', () => {
             eventHandler
           );
           expect(
-            throttledDispatcher.throttledEventHandlers.indexOf(eventHandler) !== -1
+            throttledDispatcher.throttledEventHandlers
+              .indexOf(eventHandler) !== -1
           ).toBe(true);
         });
       });
@@ -102,7 +103,8 @@ describe('ThrottledEventDispatcher', () => {
         );
         throttledDispatcher.teardown();
         expect(
-          throttledDispatcher.throttledEventHandlers.indexOf(eventHandler) === -1
+          throttledDispatcher.throttledEventHandlers
+            .indexOf(eventHandler) === -1
         ).toBe(true);
       });
     });
@@ -134,7 +136,9 @@ describe('ThrottledEventDispatcher', () => {
         expect(throttledDispatcher.throttledEventHandlers.length).toBe(0);
         const eventHandler = jasmine.createSpy('eventHandler');
         throttledDispatcher.addEventListener(eventHandler);
-        expect(throttledDispatcher.throttledEventHandlers[0]).toBe(eventHandler);
+        expect(
+          throttledDispatcher.throttledEventHandlers[0]
+        ).toBe(eventHandler);
       });
     });
 

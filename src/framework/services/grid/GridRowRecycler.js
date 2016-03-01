@@ -22,7 +22,8 @@ export default class GridRowRecycler {
     const isScrollingDown = distanceScrolled > 0;
 
     // Set scroll threshhold at which our recycled rows need to be updated.
-    const offsetScrollPosition = newScrollPosition - this.recycledRowsOverflowDistance;
+    const offsetScrollPosition =
+      newScrollPosition - this.recycledRowsOverflowDistance;
 
     // We'll mutate these values while deriving our new first recycled row.
     let firstRecycledRowIndex = oldFirstRecycledRowIndex;
@@ -33,12 +34,16 @@ export default class GridRowRecycler {
       // This is relevant if we are scrolling down and items are disappearing at
       // the top egde of the grid.
       const firstRecycledRow = this.rows[oldFirstRecycledRowIndex];
-      const firstRecycledRowBottomEdgePosition = oldFirstRecycledRowOffset + this.getRowHeight(firstRecycledRow);
+      const firstRecycledRowBottomEdgePosition =
+        oldFirstRecycledRowOffset + this.getRowHeight(firstRecycledRow);
       if (offsetScrollPosition > firstRecycledRowBottomEdgePosition) {
         // If we've scrolled the first visible row entirely out of the grid
         // then we need to increment the index.
         let rowDistanceScrolled = 0;
-        while (rowDistanceScrolled < distanceScrolled && firstRecycledRowIndex < rowsCount) {
+        while (
+          rowDistanceScrolled < distanceScrolled &&
+          firstRecycledRowIndex < rowsCount
+        ) {
           const row = this.rows[firstRecycledRowIndex];
           rowDistanceScrolled += this.getRowHeight(row);
           firstRecycledRowIndex ++;
@@ -54,7 +59,10 @@ export default class GridRowRecycler {
         // If we've scrolled the frist visible row just a tiny bit below the
         // top edge of the grid, then we need to decrement the index.
         let rowDistanceScrolled = 0;
-        while (rowDistanceScrolled > distanceScrolled && firstRecycledRowIndex > 0) {
+        while (
+          rowDistanceScrolled > distanceScrolled &&
+          firstRecycledRowIndex > 0
+        ) {
           const row = this.rows[firstRecycledRowIndex - 1];
           rowDistanceScrolled -= this.getRowHeight(row);
           firstRecycledRowIndex --;
@@ -75,7 +83,8 @@ export default class GridRowRecycler {
 
     // Calculate the index and offset of the last recycled row.
     const recycledRowsCount = this.recycledRowsCount;
-    const lastRecycledRowIndex = Math.min(state.firstRecycledRowIndex + recycledRowsCount, rowsCount);
+    const lastRecycledRowIndex =
+      Math.min(state.firstRecycledRowIndex + recycledRowsCount, rowsCount);
 
     let lastRecycledRowOffset = 0;
     for (let i = lastRecycledRowIndex; i < rowsCount; i++) {
@@ -90,4 +99,3 @@ export default class GridRowRecycler {
   }
 
 }
-

@@ -2,28 +2,39 @@
 import { slugifyEach } from '../string/Slug';
 
 // Components
-import AddOnControlExample from '../../views/addOnControl/AddOnControlExample.jsx';
+import AddOnControlExample
+  from '../../views/addOnControl/AddOnControlExample.jsx';
 import AppHeaderExample from '../../views/appHeader/AppHeaderExample.jsx';
 import BodyExample from '../../views/body/BodyExample.jsx';
 import ButtonExample from '../../views/button/ButtonExample.jsx';
+import ButtonGroupExample from '../../views/buttonGroup/ButtonGroupExample.jsx';
 import ChartExample from '../../views/chart/ChartExample.jsx';
 import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
-import FieldMessageExample from '../../views/fieldMessage/FieldMessageExample.jsx';
+import FieldMessageExample
+  from '../../views/fieldMessage/FieldMessageExample.jsx';
 import FormExample from '../../views/form/FormExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
 import IconExample from '../../views/icon/IconExample.jsx';
 import KpiExample from '../../views/kpi/KpiExample.jsx';
-import LabeledControlExample from '../../views/labeledControl/LabeledControlExample.jsx';
+import LabeledControlExample
+  from '../../views/labeledControl/LabeledControlExample.jsx';
+import LabeledFieldExample
+  from '../../views/labeledField/LabeledFieldExample.jsx';
 import LabelExample from '../../views/label/LabelExample.jsx';
 import ModalExample from '../../views/modal/ModalExample.jsx';
-import OrganizationSwitcherExample from '../../views/organizationSwitcher/OrganizationSwitcherExample.jsx';
-import SearchBoxExample from '../../views/searchBox/SearchBoxExample.jsx';
+import OrganizationSwitcherExample
+  from '../../views/organizationSwitcher/OrganizationSwitcherExample.jsx';
+import SearchBoxExample
+  from '../../views/searchBox/SearchBoxExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
-import SummaryControlExample from '../../views/summaryControl/SummaryControlExample.jsx';
+import SummaryControlExample
+  from '../../views/summaryControl/SummaryControlExample.jsx';
 import TextExample from '../../views/text/TextExample.jsx';
+import TextAreaExample from '../../views/textArea/TextAreaExample.jsx';
 import TextInputExample from '../../views/textInput/TextInputExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
-import VerticalLayoutExample from '../../views/verticalLayout/VerticalLayoutExample.jsx';
+import VerticalLayoutExample
+  from '../../views/verticalLayout/VerticalLayoutExample.jsx';
 import ViewHeaderExample from '../../views/viewHeader/ViewHeaderExample.jsx';
 
 // Integrations
@@ -47,6 +58,10 @@ const components = [{
   name: 'Button',
   source: 'views/button/ButtonExample.jsx',
   component: ButtonExample,
+}, {
+  name: 'ButtonGroup',
+  source: 'views/buttonGroup/ButtonGroupExample.jsx',
+  component: ButtonGroupExample,
 }, {
   name: 'Chart',
   source: 'views/chart/ChartExample.jsx',
@@ -80,6 +95,10 @@ const components = [{
   source: 'views/labeledControl/LabeledControlExample.jsx',
   component: LabeledControlExample,
 }, {
+  name: 'LabeledField',
+  source: 'views/labeledField/LabeledFieldExample.jsx',
+  component: LabeledFieldExample,
+}, {
   name: 'Label',
   source: 'views/label/LabelExample.jsx',
   component: LabelExample,
@@ -107,6 +126,10 @@ const components = [{
   name: 'Text',
   source: 'views/text/TextExample.jsx',
   component: TextExample,
+}, {
+  name: 'TextArea',
+  source: 'views/textArea/TextAreaExample.jsx',
+  component: TextAreaExample,
 }, {
   name: 'TextInput',
   source: 'views/textInput/TextInputExample.jsx',

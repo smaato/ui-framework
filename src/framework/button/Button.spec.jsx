@@ -24,7 +24,9 @@ describe('Button', () => {
           disabled: true,
         };
         const testCase = TestCaseFactory.createFromFunction(Button, props);
-        expect(testCase.dom.getAttribute('class')).toContain('is-button-disabled');
+        expect(
+          testCase.dom.getAttribute('class')
+        ).toContain('is-button-disabled');
       });
 
       it('does not add class when false', () => {
@@ -32,7 +34,31 @@ describe('Button', () => {
           disabled: false,
         };
         const testCase = TestCaseFactory.createFromFunction(Button, props);
-        expect(testCase.dom.getAttribute('class')).not.toContain('is-button-disabled');
+        expect(
+          testCase.dom.getAttribute('class')
+        ).not.toContain('is-button-disabled');
+      });
+    });
+
+    describe('selected', () => {
+      it('adds the appropriate class when true', () => {
+        const props = {
+          selected: true,
+        };
+        const testCase = TestCaseFactory.createFromFunction(Button, props);
+        expect(
+          testCase.dom.getAttribute('class')
+        ).toContain('is-button-selected');
+      });
+
+      it('does not add class when false', () => {
+        const props = {
+          selected: false,
+        };
+        const testCase = TestCaseFactory.createFromFunction(Button, props);
+        expect(
+          testCase.dom.getAttribute('class')
+        ).not.toContain('is-button-selected');
       });
     });
 
@@ -43,7 +69,9 @@ describe('Button', () => {
         onClick = jasmine.createSpy('onClick');
 
         const testCase =
-          TestCaseFactory.createFromFunction(Button, {onClick});
+          TestCaseFactory.createFromFunction(Button, {
+            onClick,
+          });
 
         testCase.trigger('click');
       });
@@ -77,7 +105,9 @@ describe('Button', () => {
           iconClasses,
         };
         const testCase = TestCaseFactory.createFromFunction(Button, props);
-        expect(testCase.first('.button__icon').getAttribute('class')).toContain(iconClasses);
+        expect(
+          testCase.first('.button__icon').getAttribute('class')
+        ).toContain(iconClasses);
       });
     });
   });

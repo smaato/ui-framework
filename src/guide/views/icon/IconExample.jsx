@@ -10,6 +10,8 @@ import Page, {
 
 import {
   Icon,
+  IconAsterisk,
+  IconCheck,
   IconCog,
   IconEllipsis,
   IconLink,
@@ -49,13 +51,23 @@ export default class IconExample extends Component {
         </Example>
 
         <Example title="IconLink">
-          <Text>Created to be used in endpoint modal header.</Text>
+          <Text>Suitable for modal header.</Text>
           <IconLink />
         </Example>
 
         <Example title="IconPaperclip">
           <Text>Indicate file attachment.</Text>
           <IconPaperclip />
+        </Example>
+
+        <Example title="IconCheck">
+          <Text>Created to be used in SummaryControlIconCheck component.</Text>
+          <IconCheck />
+        </Example>
+
+        <Example title="IconAsterisk">
+          <Text>Suitable for modal header.</Text>
+          <IconAsterisk />
         </Example>
 
         <Example title="Glyphicons">

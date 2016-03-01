@@ -45,7 +45,10 @@ describe('AddOnControl', () => {
         const props = {
           children: <div id="test">test</div>,
         };
-        const testCase = TestCaseFactory.createFromFunction(AddOnControl, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          AddOnControl,
+          props
+        );
         expect(testCase.first('#test').textContent).toBe('test');
       });
     });
@@ -55,7 +58,10 @@ describe('AddOnControl', () => {
         const props = {
           left: <div id="left">left</div>,
         };
-        const testCase = TestCaseFactory.createFromFunction(AddOnControl, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          AddOnControl,
+          props
+        );
         expect(testCase.first('#left').textContent).toBe('left');
       });
     });
@@ -65,7 +71,10 @@ describe('AddOnControl', () => {
         const props = {
           right: <div id="right">right</div>,
         };
-        const testCase = TestCaseFactory.createFromFunction(AddOnControl, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          AddOnControl,
+          props
+        );
         expect(testCase.first('#right').textContent).toBe('right');
       });
     });

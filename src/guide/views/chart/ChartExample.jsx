@@ -1,4 +1,5 @@
 
+/* global d3 */
 import 'd3';
 
 import React, {
@@ -27,6 +28,9 @@ export default class ChartExample extends Component {
       chartHeight: 400,
       useBatch1: false,
     };
+
+    this.onClickChangeData = this.onClickChangeData.bind(this);
+    this.onClickChangeHeight = this.onClickChangeHeight.bind(this);
   }
 
   componentDidMount() {
@@ -115,12 +119,12 @@ export default class ChartExample extends Component {
       <Page title={this.props.route.name}>
         <Example>
           <button
-            onClick={this.onClickChangeData.bind(this)}
+            onClick={this.onClickChangeData}
           >
             Change data
           </button>
           <button
-            onClick={this.onClickChangeHeight.bind(this)}
+            onClick={this.onClickChangeHeight}
           >
             Change height
           </button>

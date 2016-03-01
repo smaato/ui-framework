@@ -9,13 +9,18 @@ describe('AccountPicture', () => {
         const props = {
           url: '/img/testImage.png',
         };
-        const testCase = TestCaseFactory.createFromFunction(AccountPicture, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          AccountPicture,
+          props
+        );
         expect(testCase.first('img')).toBeDefined();
         expect(testCase.first('.icon')).not.toBeDefined();
       });
 
       it('renders an icon when not set', () => {
-        const testCase = TestCaseFactory.createFromFunction(AccountPicture);
+        const testCase = TestCaseFactory.createFromFunction(
+          AccountPicture
+        );
         expect(testCase.first('img')).not.toBeDefined();
         expect(testCase.first('.icon')).toBeDefined();
       });
@@ -24,7 +29,10 @@ describe('AccountPicture', () => {
         const props = {
           url: '/img/testImage.png',
         };
-        const testCase = TestCaseFactory.createFromFunction(AccountPicture, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          AccountPicture,
+          props
+        );
         expect(testCase.first('img').getAttribute('src')).toBe(props.url);
       });
     });
@@ -35,7 +43,10 @@ describe('AccountPicture', () => {
           url: '/img/testImage.png',
           title: 'testTitle',
         };
-        const testCase = TestCaseFactory.createFromFunction(AccountPicture, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          AccountPicture,
+          props
+        );
         expect(testCase.first('img').getAttribute('title')).toBe(props.title);
       });
 
@@ -43,7 +54,10 @@ describe('AccountPicture', () => {
         const props = {
           title: 'testTitle',
         };
-        const testCase = TestCaseFactory.createFromFunction(AccountPicture, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          AccountPicture,
+          props
+        );
         expect(testCase.first('.icon').getAttribute('title')).toBe(props.title);
       });
     });

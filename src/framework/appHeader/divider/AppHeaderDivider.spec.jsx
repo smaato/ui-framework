@@ -12,7 +12,10 @@ describe('AppHeaderDivider', () => {
           right: <div className="right"></div>,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(AppHeaderDivider, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          AppHeaderDivider,
+          props
+        );
 
         expect(testCase.first('div').getAttribute('class')).toBe('left');
       });
@@ -25,7 +28,10 @@ describe('AppHeaderDivider', () => {
           right: <div className="right"></div>,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(AppHeaderDivider, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          AppHeaderDivider,
+          props
+        );
 
         expect(testCase.find('div')[2].getAttribute('class')).toBe('right');
       });

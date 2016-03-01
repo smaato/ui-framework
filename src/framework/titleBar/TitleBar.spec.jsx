@@ -12,8 +12,7 @@ function renderShallowComponent(component) {
 describe('TextInput', () => {
   function makeShallow() {
     return renderShallowComponent(
-      <TitleBar
-      />
+      <TitleBar />
     );
   }
 

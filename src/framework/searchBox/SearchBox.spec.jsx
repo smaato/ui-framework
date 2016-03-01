@@ -14,36 +14,42 @@ describe('SearchBox', () => {
         expect(props.onSearch).not.toHaveBeenCalled();
 
         const input = testCase.first('input');
-        testCase.trigger('keyUp', input, {key: 'Enter'});
+        testCase.trigger('keyUp', input, { key: 'Enter' });
         expect(props.onSearch).toHaveBeenCalled();
       });
 
-      it('is not called when the user hits non-Enter and isImmediate is false', () => {
-        const props = {
-          onSearch: jasmine.createSpy('onSearch'),
-        };
+      it(
+        'is not called when the user hits non-Enter and isImmediate is false',
+        () => {
+          const props = {
+            onSearch: jasmine.createSpy('onSearch'),
+          };
 
-        const testCase = TestCaseFactory.createFromClass(SearchBox, props);
-        expect(props.onSearch).not.toHaveBeenCalled();
+          const testCase = TestCaseFactory.createFromClass(SearchBox, props);
+          expect(props.onSearch).not.toHaveBeenCalled();
 
-        const input = testCase.first('input');
-        testCase.trigger('keyUp', input, {key: ''});
-        expect(props.onSearch).not.toHaveBeenCalled();
-      });
+          const input = testCase.first('input');
+          testCase.trigger('keyUp', input, { key: '' });
+          expect(props.onSearch).not.toHaveBeenCalled();
+        }
+      );
 
-      it('is called when the user hits non-Enter and isImmediate is true', () => {
-        const props = {
-          onSearch: jasmine.createSpy('onSearch'),
-          isImmediate: true,
-        };
+      it(
+        'is called when the user hits non-Enter and isImmediate is true',
+        () => {
+          const props = {
+            onSearch: jasmine.createSpy('onSearch'),
+            isImmediate: true,
+          };
 
-        const testCase = TestCaseFactory.createFromClass(SearchBox, props);
-        expect(props.onSearch).not.toHaveBeenCalled();
+          const testCase = TestCaseFactory.createFromClass(SearchBox, props);
+          expect(props.onSearch).not.toHaveBeenCalled();
 
-        const input = testCase.first('input');
-        testCase.trigger('keyUp', input, {key: ''});
-        expect(props.onSearch).toHaveBeenCalled();
-      });
+          const input = testCase.first('input');
+          testCase.trigger('keyUp', input, { key: '' });
+          expect(props.onSearch).toHaveBeenCalled();
+        }
+      );
     });
 
     describe('placeholder', () => {
@@ -68,7 +74,9 @@ describe('SearchBox', () => {
 
         const testCase = TestCaseFactory.createFromClass(SearchBox, props);
         const input = testCase.first('input');
-        expect(input.getAttribute('class')).toContain('searchBox__input--fullWidth');
+        expect(
+          input.getAttribute('class')
+        ).toContain('searchBox__input--fullWidth');
       });
     });
   });

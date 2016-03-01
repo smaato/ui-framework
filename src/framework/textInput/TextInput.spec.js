@@ -15,6 +15,31 @@ describe('TextInput', () => {
   describe('Props', () => {
     CommonAssertions.assertDataId(TextInput);
 
+    describe('isError', () => {
+      it('when true, adds the appropriate class to the input element', () => {
+        const props = {
+          isError: true,
+        };
+
+        const testCase = TestCaseFactory.createFromFunction(TextInput, props);
+        expect(testCase.dom.getAttribute('class'))
+          .toContain('is-text-input-error');
+      });
+
+      it(
+        'when false, doesn\'t add the appropriate class to the input element',
+        () => {
+          const props = {
+            isError: false,
+          };
+
+          const testCase = TestCaseFactory.createFromFunction(TextInput, props);
+          expect(testCase.dom.getAttribute('class'))
+            .not.toContain('is-text-input-error');
+        }
+      );
+    });
+
     describe('isFullWidth', () => {
       it('when true, adds the appropriate class to the input element', () => {
         const props = {
@@ -22,19 +47,22 @@ describe('TextInput', () => {
         };
 
         const testCase = TestCaseFactory.createFromFunction(TextInput, props);
-        expect(testCase.dom.getAttribute('class')
-          .indexOf('textInput--fullWidth') !== -1).toBe(true);
+        expect(testCase.dom.getAttribute('class'))
+          .toContain('textInput--fullWidth');
       });
 
-      it('when false, doesn\'t add the appropriate class to the input element', () => {
-        const props = {
-          isFullWidth: false,
-        };
+      it(
+        'when false, doesn\'t add the appropriate class to the input element',
+        () => {
+          const props = {
+            isFullWidth: false,
+          };
 
-        const testCase = TestCaseFactory.createFromFunction(TextInput, props);
-        expect(testCase.dom.getAttribute('class')
-          .indexOf('textInput--fullWidth') === -1).toBe(true);
-      });
+          const testCase = TestCaseFactory.createFromFunction(TextInput, props);
+          expect(testCase.dom.getAttribute('class'))
+            .not.toContain('textInput--fullWidth');
+        }
+      );
     });
   });
 });

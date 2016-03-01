@@ -8,7 +8,7 @@ const BasicButton = props => {
   const classes = classNames('button--basic', props.classes);
 
   const extendedProps = Object.assign({}, props, {
-    classes: classes,
+    classes,
   });
 
   return (

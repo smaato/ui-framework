@@ -23,8 +23,8 @@ const TextInput = props => {
 };
 
 TextInput.propTypes = {
-  isError: PropTypes.bool,
   dataId: PropTypes.string,
+  isError: PropTypes.bool,
   isFullWidth: PropTypes.bool,
 };
 

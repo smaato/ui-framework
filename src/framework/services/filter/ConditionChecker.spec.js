@@ -1,15 +1,23 @@
 
 import ConditionChecker from './ConditionChecker';
 import ComparisonTypes from './ComparisonTypes';
+import TestUtils from '../../../services/TestUtils';
 
 describe('ConditionChecker', () => {
   describe('interface', () => {
     describe('constructor method', () => {
-      it('accepts filter, comparisonType, and comparisonValue params, and surfaces them', () => {
+      it(TestUtils.cleanString(
+        `accepts filter, comparisonType, and comparisonValue params,
+        and surfaces them`
+      ), () => {
         const filter = {};
         const comparisonType = 'comparisonType';
         const comparisonValue = 'comparisonValue';
-        const conditionChecker = new ConditionChecker(filter, comparisonType, comparisonValue);
+        const conditionChecker = new ConditionChecker(
+          filter,
+          comparisonType,
+          comparisonValue
+        );
         expect(conditionChecker.filter).toBe(filter);
         expect(conditionChecker.comparisonType).toBe(comparisonType);
         expect(conditionChecker.comparisonValue).toBe(comparisonValue);
@@ -23,17 +31,31 @@ describe('ConditionChecker', () => {
         const itemValue = 6;
 
         it('matches numbers', () => {
-          const conditionChecker = new ConditionChecker({}, comparisonType, comparisonValue);
+          const conditionChecker = new ConditionChecker(
+            {},
+            comparisonType,
+            comparisonValue
+          );
           expect(conditionChecker.doesValuePass(itemValue)).toBe(true);
         });
 
         it('matches a number and a string', () => {
-          const conditionChecker = new ConditionChecker({}, comparisonType, comparisonValue);
-          expect(conditionChecker.doesValuePass(itemValue.toString())).toBe(true);
+          const conditionChecker = new ConditionChecker(
+            {},
+            comparisonType,
+            comparisonValue
+          );
+          expect(
+            conditionChecker.doesValuePass(itemValue.toString())
+          ).toBe(true);
         });
 
         it('matches a string and a number', () => {
-          const conditionChecker = new ConditionChecker({}, comparisonType, comparisonValue.toString());
+          const conditionChecker = new ConditionChecker(
+            {},
+            comparisonType,
+            comparisonValue.toString()
+          );
           expect(conditionChecker.doesValuePass(itemValue)).toBe(true);
         });
       });
@@ -44,17 +66,31 @@ describe('ConditionChecker', () => {
         const itemValue = 4;
 
         it('matches numbers', () => {
-          const conditionChecker = new ConditionChecker({}, comparisonType, comparisonValue);
+          const conditionChecker = new ConditionChecker(
+            {},
+            comparisonType,
+            comparisonValue
+          );
           expect(conditionChecker.doesValuePass(itemValue)).toBe(true);
         });
 
         it('matches a number and a string', () => {
-          const conditionChecker = new ConditionChecker({}, comparisonType, comparisonValue);
-          expect(conditionChecker.doesValuePass(itemValue.toString())).toBe(true);
+          const conditionChecker = new ConditionChecker(
+            {},
+            comparisonType,
+            comparisonValue
+          );
+          expect(
+            conditionChecker.doesValuePass(itemValue.toString())
+          ).toBe(true);
         });
 
         it('matches a string and a number', () => {
-          const conditionChecker = new ConditionChecker({}, comparisonType, comparisonValue.toString());
+          const conditionChecker = new ConditionChecker(
+            {},
+            comparisonType,
+            comparisonValue.toString()
+          );
           expect(conditionChecker.doesValuePass(itemValue)).toBe(true);
         });
       });
@@ -65,29 +101,57 @@ describe('ConditionChecker', () => {
         const itemValue = 5;
 
         it('matches numbers', () => {
-          const conditionChecker = new ConditionChecker({}, comparisonType, comparisonValue);
+          const conditionChecker = new ConditionChecker(
+            {},
+            comparisonType,
+            comparisonValue
+          );
           expect(conditionChecker.doesValuePass(itemValue)).toBe(true);
         });
 
         it('matches a number and a string', () => {
-          const conditionChecker = new ConditionChecker({}, comparisonType, comparisonValue);
-          expect(conditionChecker.doesValuePass(itemValue.toString())).toBe(true);
+          const conditionChecker = new ConditionChecker(
+            {},
+            comparisonType,
+            comparisonValue
+          );
+          expect(
+            conditionChecker.doesValuePass(itemValue.toString())
+          ).toBe(true);
         });
 
         it('matches a string and a number', () => {
-          const conditionChecker = new ConditionChecker({}, comparisonType, comparisonValue.toString());
+          const conditionChecker = new ConditionChecker(
+            {},
+            comparisonType,
+            comparisonValue.toString()
+          );
           expect(conditionChecker.doesValuePass(itemValue)).toBe(true);
         });
 
-        it('matches when comparisonValue is a substring of itemValue', () => {
-          const conditionChecker = new ConditionChecker({}, comparisonType, 3);
-          expect(conditionChecker.doesValuePass(12345)).toBe(true);
-        });
+        it(
+          'matches when comparisonValue is a substring of itemValue',
+          () => {
+            const conditionChecker = new ConditionChecker(
+              {},
+              comparisonType,
+              3
+            );
+            expect(conditionChecker.doesValuePass(12345)).toBe(true);
+          }
+        );
 
-        it('doesn\'t match when itemValue is a substring of comparisonValue', () => {
-          const conditionChecker = new ConditionChecker({}, comparisonType, 12345);
-          expect(conditionChecker.doesValuePass('abc')).toBe(false);
-        });
+        it(
+          'doesn\'t match when itemValue is a substring of comparisonValue',
+          () => {
+            const conditionChecker = new ConditionChecker(
+              {},
+              comparisonType,
+              12345
+            );
+            expect(conditionChecker.doesValuePass('abc')).toBe(false);
+          }
+        );
       });
 
       describe('with no comparisonType', () => {
@@ -96,7 +160,11 @@ describe('ConditionChecker', () => {
         const itemValue = 5;
 
         it('throws an error', () => {
-          const conditionChecker = new ConditionChecker({}, comparisonType, comparisonValue);
+          const conditionChecker = new ConditionChecker(
+            {},
+            comparisonType,
+            comparisonValue
+          );
           expect(() => conditionChecker.doesValuePass(itemValue)).toThrow();
         });
       });

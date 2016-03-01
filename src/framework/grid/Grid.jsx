@@ -4,9 +4,12 @@ import React, {
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
-import GridBody from './body/GridBody.jsx';
-import GridRowRecycler from '../services/grid/GridRowRecycler';
-import ThrottledEventDispatcher from '../services/event/ThrottledEventDispatcher';
+import GridBody
+  from './body/GridBody.jsx';
+import GridRowRecycler
+  from '../services/grid/GridRowRecycler';
+import ThrottledEventDispatcher
+  from '../services/event/ThrottledEventDispatcher';
 
 export {
   default as GridHeader,
@@ -81,7 +84,9 @@ export default class Grid extends Component {
     // (based on how the view and table headers become fixed with less latency).
 
     // So we'll only return true when this state property changes.
-    if (nextState.firstRecycledRowOffset !== this.state.firstRecycledRowOffset) {
+    if (
+      nextState.firstRecycledRowOffset !== this.state.firstRecycledRowOffset
+    ) {
       return true;
     }
 
@@ -101,18 +106,25 @@ export default class Grid extends Component {
   onScroll() {
     // Get our current scroll position. Compare between values useful in Chrome
     // and Firefox, respectively.
-    const scrollPosition = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+    const scrollPosition = Math.max(
+      document.body.scrollTop,
+      document.documentElement.scrollTop
+    );
 
     // Update state of recycled rows when the user scrolls the table.
     const rowRecycler = this.props.rowRecycler;
     if (rowRecycler) {
-      this.setState(rowRecycler.getFirstRecycledRowState(this.state, scrollPosition));
+      this.setState(
+        rowRecycler.getFirstRecycledRowState(this.state, scrollPosition)
+      );
     }
 
     // Lazily load rows as the user scrolls.
     if (this.props.lazyLoadRows) {
       // If scroll position is a certain distance from the bottom, invoke callback.
-      const distanceFromBottom = (document.documentElement.scrollHeight - window.innerHeight) - scrollPosition;
+      const distanceFromBottom = (
+        document.documentElement.scrollHeight - window.innerHeight
+      ) - scrollPosition;
       if (distanceFromBottom <= 1000) {
         this.props.lazyLoadRows();
       }
@@ -141,7 +153,11 @@ export default class Grid extends Component {
     // Create recycled rows.
     const rows = [];
     if (Array.isArray(this.props.rows)) {
-      for (let index = firstRecycledRowIndex; index <= lastRecycledRowIndex && index < rowsCount; index++) {
+      for (
+        let index = firstRecycledRowIndex;
+        index <= lastRecycledRowIndex && index < rowsCount;
+        index++
+      ) {
         const row = this.props.rows[index];
         rows.push(row);
       }
@@ -151,7 +167,10 @@ export default class Grid extends Component {
     }
 
     // Style classes
-    const containerClass = classNames('grid__container', this.props.classContainer);
+    const containerClass = classNames(
+      'grid__container',
+      this.props.classContainer
+    );
     const tableClass = classNames('grid__table', this.props.classTable);
 
     return (

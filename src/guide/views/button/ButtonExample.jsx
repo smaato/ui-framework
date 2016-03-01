@@ -22,13 +22,18 @@ export default class ButtonExample extends Component {
     super(props);
   }
 
+  onClick() {
+    window.alert('Button clicked.'); // eslint-disable-line no-alert
+  }
+
   render() {
     return (
       <Page title={this.props.route.name}>
         <Example>
-          <Button label="Button" onClick={
-            () => window.alert('Button clicked.') // eslint-disable-line no-alert
-          } />
+          <Button
+            label="Button"
+            onClick={this.onClick}
+          />
         </Example>
 
         <Example title="Disabled Button">

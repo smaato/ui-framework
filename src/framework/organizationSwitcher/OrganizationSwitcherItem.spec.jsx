@@ -10,7 +10,10 @@ describe('OrganizationSwitcherItem', () => {
           id: 'An unlikely ID value',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(OrganizationSwitcherItem, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          OrganizationSwitcherItem,
+          props
+        );
         expect(testCase.dom.textContent).toContain(props.id);
       });
     });
@@ -21,7 +24,10 @@ describe('OrganizationSwitcherItem', () => {
           name: 'An unlikely name value',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(OrganizationSwitcherItem, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          OrganizationSwitcherItem,
+          props
+        );
         expect(testCase.dom.textContent).toContain(props.name);
       });
     });
@@ -32,9 +38,13 @@ describe('OrganizationSwitcherItem', () => {
           onSelect: jasmine.createSpy('onSelect'),
         };
 
-        const testCase = TestCaseFactory.createFromFunction(OrganizationSwitcherItem, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          OrganizationSwitcherItem,
+          props
+        );
         expect(props.onSelect).not.toHaveBeenCalled();
-        const switchEl = testCase.first('.organizationSwitcherItem__switchButton');
+        const switchEl = testCase
+          .first('.organizationSwitcherItem__switchButton');
         testCase.trigger('click', switchEl);
         expect(props.onSelect).toHaveBeenCalled();
       });
@@ -46,7 +56,10 @@ describe('OrganizationSwitcherItem', () => {
           message: 'Test message',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(OrganizationSwitcherItem, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          OrganizationSwitcherItem,
+          props
+        );
         expect(testCase.dom.textContent).toContain(props.message);
       });
 
@@ -55,7 +68,10 @@ describe('OrganizationSwitcherItem', () => {
           message: 'Test message',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(OrganizationSwitcherItem, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          OrganizationSwitcherItem,
+          props
+        );
         expect(testCase.dom.childNodes.length).toBe(1);
       });
     });

@@ -11,7 +11,10 @@ describe('ViewHeaderNav', () => {
           linkType: 'a',
           links: [{}],
         };
-        const testCase = TestCaseFactory.createFromFunction(ViewHeaderNav, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          ViewHeaderNav,
+          props
+        );
         const children = testCase.find('a');
         expect(children.length).toBe(1);
       });
@@ -23,7 +26,10 @@ describe('ViewHeaderNav', () => {
             to: '',
           }],
         };
-        const testCase = TestCaseFactory.createFromFunction(ViewHeaderNav, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          ViewHeaderNav,
+          props
+        );
         const children = testCase.findComponents(Link);
         expect(children.length).toBe(1);
       });
@@ -39,7 +45,10 @@ describe('ViewHeaderNav', () => {
             className: 'child child2',
           }],
         };
-        const testCase = TestCaseFactory.createFromFunction(ViewHeaderNav, props);
+        const testCase = TestCaseFactory.createFromFunction(
+          ViewHeaderNav,
+          props
+        );
         const children = testCase.find('.child');
         expect(children.length).toBe(2);
         expect(children[0].getAttribute('class')).toContain('child1');

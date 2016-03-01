@@ -61,6 +61,16 @@ export default class TitledViewExample extends Component {
         children: <IconCog />,
       }),
     ];
+
+    this.onCloseOrganizationSwitcher =
+      this.onCloseOrganizationSwitcher.bind(this);
+
+    this.onOpenOrganizationSwitcher =
+      this.onOpenOrganizationSwitcher.bind(this);
+
+    this.onSearch = this.onSearch.bind(this);
+
+    this.selectOrganization = this.selectOrganization.bind(this);
   }
 
   onCloseOrganizationSwitcher() {
@@ -154,7 +164,7 @@ export default class TitledViewExample extends Component {
           key={index}
           name={item.name}
           id={item.id.toString()}
-          onSelect={this.selectOrganization.bind(this, item)}
+          onSelect={this.selectOrganization.bind(this, item)} // eslint-disable-line react/jsx-no-bind
         />
       );
     });
@@ -163,8 +173,8 @@ export default class TitledViewExample extends Component {
       <OrganizationSwitcher
         title="Switch buyer"
         searchPrompt="Search by Buyer Name or ID"
-        onSearch={this.onSearch.bind(this)}
-        onClose={this.onCloseOrganizationSwitcher.bind(this)}
+        onSearch={this.onSearch}
+        onClose={this.onCloseOrganizationSwitcher}
       >
         {organizationList}
       </OrganizationSwitcher>
@@ -198,7 +208,7 @@ export default class TitledViewExample extends Component {
             right={
               <AppTitleContainer
                 title="Smaato"
-                onClick={this.onOpenOrganizationSwitcher.bind(this)}
+                onClick={this.onOpenOrganizationSwitcher}
               >
                 {this.renderOrganizationSwitcher()}
               </AppTitleContainer>

@@ -4,6 +4,7 @@ import FilterOptionList from './FilterOptionList.jsx';
 import {
   FilterOption,
 } from '../../services';
+import TestUtils from '../../../services/TestUtils';
 
 describe('FilterOptionList', () => {
   describe('Props', () => {
@@ -11,7 +12,7 @@ describe('FilterOptionList', () => {
       it('are iterated over', () => {
         const props = {
           filterOptions: [
-            new FilterOption({comparisonTypes: []}),
+            new FilterOption({ comparisonTypes: [] }),
           ],
           onSelectFilterOption: () => {},
         };
@@ -45,14 +46,18 @@ describe('FilterOptionList', () => {
           const items = testCase.find('.filterOptionListItem');
           items.forEach((item, index) => {
             expect(item.textContent).toContain(filterOption.name);
-            expect(item.textContent).toContain(filterOption.comparisonTypes[index]);
+            expect(item.textContent)
+              .toContain(filterOption.comparisonTypes[index]);
           });
         });
       });
     });
 
     describe('onSelectFilterOption', () => {
-      it('is called and receives filterOption and comparisonType when an item is clicked', () => {
+      it(TestUtils.cleanString(
+        `is called and receives filterOption and comparisonType when an item
+        is clicked`
+      ), () => {
         const filterOption = new FilterOption({
           name: 'testFilterOption',
           comparisonTypes: [

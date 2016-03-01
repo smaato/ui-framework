@@ -21,6 +21,7 @@ export default class FieldMessageExample extends Component {
     this.state = {
       isErrorDisplayed: true,
     };
+    this.onButtonClick = this.onButtonClick.bind(this);
   }
 
   onButtonClick() {
@@ -69,7 +70,7 @@ export default class FieldMessageExample extends Component {
 
           <button
             type="button"
-            onClick={this.onButtonClick.bind(this)}
+            onClick={this.onButtonClick}
           >
             {this.state.isErrorDisplayed ? 'Hide' : 'Show'} field message
           </button>
@@ -80,7 +81,7 @@ export default class FieldMessageExample extends Component {
             label="QPS Limit"
             layout={LabeledControl.LAYOUT.ONE_SIXTH}
           >
-            <div style={{width: 200}}>
+            <div style={{ width: 200 }}>
               <AddOnControl
                 right="queries per second"
               >
@@ -95,7 +96,7 @@ export default class FieldMessageExample extends Component {
 
           <button
             type="button"
-            onClick={this.onButtonClick.bind(this)}
+            onClick={this.onButtonClick}
           >
             {this.state.isErrorDisplayed ? 'Hide' : 'Show'} field message
           </button>

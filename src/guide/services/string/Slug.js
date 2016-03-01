@@ -14,7 +14,8 @@ export function slugify(str) {
 
 export function slugifyEach(items, src, dest) {
   return items.map(item => {
-    item[dest] = slugify(item[src]);
-    return item;
+    const _item = item;
+    _item[dest] = slugify(_item[src]);
+    return _item;
   });
 }

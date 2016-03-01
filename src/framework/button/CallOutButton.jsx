@@ -8,7 +8,7 @@ const CallOutButton = props => {
   const classes = classNames('button--callOut', props.classes);
 
   const extendedProps = Object.assign({}, props, {
-    classes: classes,
+    classes,
   });
 
   return (
