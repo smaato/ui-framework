@@ -8,7 +8,11 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
+  AddOnControl,
   ColumnLayout,
+  Label,
+  LabeledField,
+  TextInput,
 } from '../../../framework/framework';
 
 export default class ColumnLayoutExample extends Component {
@@ -24,6 +28,32 @@ export default class ColumnLayoutExample extends Component {
 
     return (
       <Page title={this.props.route.name}>
+
+        <Example title="Example of usage for Endpoint Settings">
+          <ColumnLayout
+            layout={[
+              ColumnLayout.LAYOUT.ONE_FIFTH,
+              ColumnLayout.LAYOUT.HALF,
+            ]}
+          >
+            <Label>EMEA Data Center</Label>
+            <div>
+              <LabeledField label="Endpoint URL">
+                <TextInput isFullWidth />
+              </LabeledField>
+            </div>
+            <div>
+              <LabeledField label="QPS Limit">
+                <AddOnControl right="queries per second">
+                  <TextInput
+                    placeholder="Unlimited"
+                    isFullWidth
+                  />
+                </AddOnControl>
+              </LabeledField>
+            </div>
+          </ColumnLayout>
+        </Example>
 
         <Example title="1/3 - auto">
           <ColumnLayout
