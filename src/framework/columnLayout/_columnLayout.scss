@@ -2,3 +2,35 @@
 .columnLayout {
   display: flex;
 }
+
+.columnLayout > *:not(:last-child) {
+  padding-right: 10px;
+}
+
+.columnLayout--auto {
+  flex: auto;
+}
+
+.columnLayout--half {
+  flex: 0 0  50%;
+}
+
+.columnLayout--oneThird {
+  flex: 0 0 33.33%;
+}
+
+.columnLayout--oneFourth {
+  flex: 0 0  25%;
+}
+
+.columnLayout--oneFifth {
+  flex: 0 0  20%;
+}
+
+.columnLayout--twoFifths {
+  flex: 0 0  40%;
+}
+
+.columnLayout--oneSixth {
+  flex: 0 0  16.67%;
+}
