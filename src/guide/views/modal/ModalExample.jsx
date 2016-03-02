@@ -17,10 +17,10 @@ import {
   ModalBody,
   ModalConfirmationBody,
   ModalConfirmationFooter,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
   ModalStack,
+  FormFooter,
 } from '../../../framework/framework';
 
 export default class ModalExample extends Component {
@@ -163,21 +163,27 @@ export default class ModalExample extends Component {
                 <div style={{ height: 110 }}></div>
               </ModalBody>
             )}
-            footer={(
-              <ModalFooter
-                left={(
+            footer={
+              <FormFooter
+                left={[
                   <BasicButton
+                    key="footer_left_1"
                     iconClasses="glyphicons-bin"
                     label="Delete"
-                  />
-                )}
-              >
-                <HollowButton label="Cancel" />
-                <PrimaryButton
-                  label="Save"
-                />
-              </ModalFooter>
-            )}
+                  />,
+                ]}
+                right={[
+                  <HollowButton
+                    key="footer_right_1"
+                    label="Cancel"
+                  />,
+                  <PrimaryButton
+                    key="footer_right_2"
+                    label="Save"
+                  />,
+                ]}
+              />
+            }
           />
         </Example>
 
@@ -219,15 +225,17 @@ export default class ModalExample extends Component {
                 </ModalBody>
               )}
               footer={(
-                <ModalFooter>
-                  <HollowButton
-                    label="Cancel"
-                    onClick={this.onCloseModal}
-                  />
-                  <PrimaryButton
-                    label="Submit"
-                  />
-                </ModalFooter>
+                <FormFooter
+                  right={[
+                    <HollowButton
+                      label="Cancel"
+                      onClick={this.onCloseModal}
+                    />,
+                    <PrimaryButton
+                      label="Submit"
+                    />,
+                  ]}
+                />
               )}
             />
           </ModalOverlay>
