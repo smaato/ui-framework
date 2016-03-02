@@ -66,7 +66,6 @@ import {
   ModalBody,
   ModalConfirmationBody,
   ModalConfirmationFooter,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
   OrganizationSwitcher,
