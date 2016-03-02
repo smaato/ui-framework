@@ -1,10 +1,21 @@
 
 .form {
   background-color: #f6fafc;
+}
+
+.form--page {
   border: 1px solid #d4d8db;
   padding: 30px;
 }
 
-.formSection--footer {
+.form--page > .formSection--footer {
   margin-top: 32px;
+}
+
+.form--modal {
+  padding: 0;
+}
+
+.form--modal > .formSection--footer {
+  margin-top: 10px;
 }

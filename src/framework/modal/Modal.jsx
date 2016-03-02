@@ -28,33 +28,19 @@ export {
 } from './stack/ModalStack.jsx';
 
 const Modal = props => {
-  let footer;
-
-  if (props.footer) {
-    footer = (
-      <div className="modalSection modalSection--footer">
-        {props.footer}
-      </div>
-    );
-  }
-
   return (
     <div
       data-id={props.dataId}
       className="modal"
     >
-      {props.header}
-      {props.body}
-      {footer}
+      {props.children}
     </div>
   );
 };
 
 Modal.propTypes = {
   dataId: PropTypes.string,
-  header: PropTypes.element,
-  body: PropTypes.element.isRequired,
-  footer: PropTypes.element,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 
 export default Modal;
