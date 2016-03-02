@@ -14,12 +14,16 @@ import {
   BodyPanel,
   BodyPanelItem,
   Button,
+  ButtonGroup,
   CallOutButton,
   Chart,
   CheckBox,
   DateRange,
+  DescriptionText,
   FieldMessage,
   FiltersControl,
+  Form,
+  FormFooter,
   Grid,
   GridBodyEditableCell,
   GridControls,
@@ -31,6 +35,7 @@ import {
   GridIconOptions,
   GridLoadingRow,
   GridRow,
+  GroupedButton,
   HollowButton,
   Icon,
   IconAsterisk,
@@ -44,11 +49,11 @@ import {
   KpiPositive,
   Label,
   LabeledControl,
+  LabeledField,
   Modal,
   ModalBody,
   ModalConfirmationBody,
   ModalConfirmationFooter,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
   OrganizationSwitcher,
@@ -57,10 +62,13 @@ import {
   SearchBox,
   Spinner,
   StickyGrid,
+  SubLabel,
   SummaryControl,
   SummaryControlIcon,
   SummaryControlIconCheck,
   SummaryControlIconPaperclip,
+  Text,
+  TextArea,
   TextInput,
   TitleBar,
   VerticalLayout,
@@ -111,6 +119,9 @@ const components = [{
   name: 'Button',
   component: Button,
 }, {
+  name: 'ButtonGroup',
+  component: ButtonGroup,
+}, {
   name: 'CallOutButton',
   component: CallOutButton,
 }, {
@@ -123,11 +134,20 @@ const components = [{
   name: 'DateRange',
   component: DateRange,
 }, {
+  name: 'DescriptionText',
+  component: DescriptionText,
+}, {
   name: 'FieldMessage',
   component: FieldMessage,
 }, {
   name: 'FiltersControl',
   component: FiltersControl,
+}, {
+  name: 'Form',
+  component: Form,
+}, {
+  name: 'FormFooter',
+  component: FormFooter,
 }, {
   name: 'Grid',
   component: Grid,
@@ -161,6 +181,9 @@ const components = [{
 }, {
   name: 'GridRow',
   component: GridRow,
+}, {
+  name: 'GroupedButton',
+  component: GroupedButton,
 }, {
   name: 'HollowButton',
   component: HollowButton,
@@ -201,6 +224,9 @@ const components = [{
   name: 'LabeledControl',
   component: LabeledControl,
 }, {
+  name: 'LabeledField',
+  component: LabeledField,
+}, {
   name: 'Modal',
   component: Modal,
 }, {
@@ -212,9 +238,6 @@ const components = [{
 }, {
   name: 'ModalConfirmationFooter',
   component: ModalConfirmationFooter,
-}, {
-  name: 'ModalFooter',
-  component: ModalFooter,
 }, {
   name: 'ModalHeader',
   component: ModalHeader,
@@ -240,6 +263,9 @@ const components = [{
   name: 'StickyGrid',
   component: StickyGrid,
 }, {
+  name: 'SubLabel',
+  component: SubLabel,
+}, {
   name: 'SummaryControl',
   component: SummaryControl,
 }, {
@@ -251,6 +277,12 @@ const components = [{
 }, {
   name: 'SummaryControlIconPaperclip',
   component: SummaryControlIconPaperclip,
+}, {
+  name: 'Text',
+  component: Text,
+}, {
+  name: 'TextArea',
+  component: TextArea,
 }, {
   name: 'TextInput',
   component: TextInput,

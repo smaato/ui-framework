@@ -38,7 +38,9 @@ describe('FiltersControl', () => {
           ],
           filterOptions: [],
           onAddConditionChecker: () => {},
-          onRemoveConditionChecker: jasmine.createSpy('onRemoveConditionChecker'),
+          onRemoveConditionChecker: jasmine.createSpy(
+            'onRemoveConditionChecker'
+          ),
         };
 
         const testCase =

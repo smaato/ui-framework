@@ -4,6 +4,10 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
+export {
+  default as SubLabel,
+} from './SubLabel.jsx';
+
 const Label = props => {
   const classes = classNames('label', props.className, {
     'label--clickable': props.htmlFor,

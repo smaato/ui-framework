@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 import AccountPicture from './AccountPicture.jsx';
 
-const AccountNav  = props => {
+const AccountNav = props => {
   let dropdownArrow;
   if (!props.disableDropdown) {
     const dropdownClass = classNames('appHeaderDropdownArrow', {

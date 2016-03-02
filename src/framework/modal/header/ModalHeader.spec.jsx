@@ -15,7 +15,9 @@ describe('ModalHeader', () => {
           title: 'Modal test title',
         };
         const testCase = TestCaseFactory.createFromFunction(ModalHeader, props);
-        expect(testCase.first('.modalHeader__title').textContent).toBe(props.title);
+        expect(
+          testCase.first('.modalHeader__title').textContent
+        ).toBe(props.title);
       });
     });
 

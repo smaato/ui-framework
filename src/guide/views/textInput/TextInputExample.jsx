@@ -25,15 +25,19 @@ export default class TextInputExample extends Component {
           <TextInput defaultValue="Default value" />
         </Example>
 
-        <Example title="TextInput with placeholder text">
+        <Example title="With placeholder text">
           <TextInput placeholder="Placeholder copy" />
         </Example>
 
-        <Example title="TextInput with autoFocus">
+        <Example title="With autoFocus">
           <TextInput autoFocus />
         </Example>
 
-        <Example title="TextInput as password">
+        <Example title="Error state">
+          <TextInput isError />
+        </Example>
+
+        <Example title="As password">
           <TextInput type="password" defaultValue="Default value"/>
         </Example>
 

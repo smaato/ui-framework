@@ -1,4 +1,5 @@
 import Sorter from './Sorter';
+import TestUtils from '../../../services/TestUtils';
 
 describe('Sorter', () => {
   describe('interface', () => {
@@ -67,7 +68,8 @@ describe('Sorter', () => {
       ];
 
       it('returns a new array', () => {
-        expect(items === Sorter.sort(items, valueProvidersByIndex, 0)).toBe(false);
+        const test = items === Sorter.sort(items, valueProvidersByIndex, 0);
+        expect(test).toBe(false);
       });
 
       describe('items parameter', () => {
@@ -116,11 +118,15 @@ describe('Sorter', () => {
 
       describe('providerPropertyOrIndex parameter', () => {
         it('throws an error if undefined', () => {
-          expect(() => Sorter.sort(fakeItems, providers, undefined)).toThrow();
+          expect(
+            () => Sorter.sort(items, valueProvidersByIndex, undefined)
+          ).toThrow();
         });
 
         it('throws an error if null', () => {
-          expect(() => Sorter.sort(fakeItems, providers, null)).toThrow();
+          expect(
+            () => Sorter.sort(items, valueProvidersByIndex, null)
+          ).toThrow();
         });
 
         it('defnes a provider via an element index', () => {
@@ -201,8 +207,12 @@ describe('Sorter', () => {
         });
 
         describe('when true', () => {
-          it('sorts items in order of undefined, null, strings, numbers when true', () => {
-            const sortedItems = Sorter.sort(items, valueProvidersByIndex, 0, true);
+          it(TestUtils.cleanString(
+            `sorts items in order of undefined, null,
+            strings, numbers when true`
+          ), () => {
+            const sortedItems =
+              Sorter.sort(items, valueProvidersByIndex, 0, true);
             expect(sortedItems).toEqual([{
               a: undefined,
               b: undefined,

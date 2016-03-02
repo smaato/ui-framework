@@ -8,7 +8,7 @@ const HollowButton = props => {
   const classes = classNames('button--hollow', props.classes);
 
   const extendedProps = Object.assign({}, props, {
-    classes: classes,
+    classes,
   });
 
   return (

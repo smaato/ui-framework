@@ -42,7 +42,8 @@ describe('GridLoadingRow', () => {
           wrap(<GridLoadingRow {...props} />)
         );
 
-        expect(testCase.first('tr:first-child > td > div').getAttribute('class'))
+        expect(testCase.first('tr:first-child > td > div')
+          .getAttribute('class'))
           .toContain('gridLoadingRow--initial');
       });
     });

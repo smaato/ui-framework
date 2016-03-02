@@ -26,5 +26,4 @@ BodyPanelItem.propTypes = {
   rhythm: PropTypes.string,
 };
 
-
 export default BodyPanelItem;

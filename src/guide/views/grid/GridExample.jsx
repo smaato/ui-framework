@@ -131,7 +131,7 @@ export default class GridExample extends Component {
           <CheckBox
             id="select-all"
             checked={this.state.areAllRowsSelected}
-            onClick={event =>
+            onClick={event => // eslint-disable-line react/jsx-no-bind
               this.toggleAllRowsSelected.bind(this)(event.target.checked)
             }
           />
@@ -139,7 +139,7 @@ export default class GridExample extends Component {
       }), index => ({
         children: (
           <GridHeaderSortableCell
-            onClick={this.onSort.bind(this, index)}
+            onClick={this.onSort.bind(this, index)} // eslint-disable-line react/jsx-no-bind
             isSelected={this.state.sortedColumnIndex === index}
             isSortDescending={this.state.isSortDescending}
           >
@@ -149,7 +149,7 @@ export default class GridExample extends Component {
       }), index => ({
         children: (
           <GridHeaderSortableCell
-            onClick={this.onSort.bind(this, index)}
+            onClick={this.onSort.bind(this, index)} // eslint-disable-line react/jsx-no-bind
             isSelected={this.state.sortedColumnIndex === index}
             isSortDescending={this.state.isSortDescending}
           >
@@ -159,7 +159,7 @@ export default class GridExample extends Component {
       }), index => ({
         children: (
           <GridHeaderSortableCell
-            onClick={this.onSort.bind(this, index)}
+            onClick={this.onSort.bind(this, index)} // eslint-disable-line react/jsx-no-bind
             isSelected={this.state.sortedColumnIndex === index}
             isSortDescending={this.state.isSortDescending}
           >
@@ -169,7 +169,7 @@ export default class GridExample extends Component {
       }), index => ({
         children: (
           <GridHeaderSortableCell
-            onClick={this.onSort.bind(this, index)}
+            onClick={this.onSort.bind(this, index)} // eslint-disable-line react/jsx-no-bind
             isSelected={this.state.sortedColumnIndex === index}
             isSortDescending={this.state.isSortDescending}
           >
@@ -179,7 +179,7 @@ export default class GridExample extends Component {
       }), index => ({
         children: (
           <GridHeaderSortableCell
-            onClick={this.onSort.bind(this, index)}
+            onClick={this.onSort.bind(this, index)} // eslint-disable-line react/jsx-no-bind
             isSelected={this.state.sortedColumnIndex === index}
             isSortDescending={this.state.isSortDescending}
           >
@@ -189,7 +189,7 @@ export default class GridExample extends Component {
       }), index => ({
         children: (
           <GridHeaderSortableCell
-            onClick={this.onSort.bind(this, index)}
+            onClick={this.onSort.bind(this, index)} // eslint-disable-line react/jsx-no-bind
             isSelected={this.state.sortedColumnIndex === index}
             isSortDescending={this.state.isSortDescending}
           >
@@ -199,7 +199,7 @@ export default class GridExample extends Component {
       }), index => ({
         children: (
           <GridHeaderSortableCell
-            onClick={this.onSort.bind(this, index)}
+            onClick={this.onSort.bind(this, index)} // eslint-disable-line react/jsx-no-bind
             isSelected={this.state.sortedColumnIndex === index}
             isSortDescending={this.state.isSortDescending}
           >
@@ -209,7 +209,7 @@ export default class GridExample extends Component {
       }), index => ({
         children: (
           <GridHeaderSortableCell
-            onClick={this.onSort.bind(this, index)}
+            onClick={this.onSort.bind(this, index)} // eslint-disable-line react/jsx-no-bind
             isSelected={this.state.sortedColumnIndex === index}
             isSortDescending={this.state.isSortDescending}
           >
@@ -260,7 +260,7 @@ export default class GridExample extends Component {
           <CheckBox
             id={item.id}
             checked={item.isSelected}
-            onClick={event =>
+            onClick={event => // eslint-disable-line react/jsx-no-bind
               this.toggleRowSelected.bind(this)(item.id, event.target.checked)
             }
           />
@@ -276,7 +276,7 @@ export default class GridExample extends Component {
       }), item => ({
         children: (
           <GridBodyEditableCell
-            onClick={event => {
+            onClick={event => { // eslint-disable-line react/jsx-no-bind
               event.stopPropagation();
 
               // Temp replacement for the edit modal
@@ -295,7 +295,7 @@ export default class GridExample extends Component {
               }
               const newBodyRows = this.state.bodyRows.map((row) => {
                 if (row.id === item.id) {
-                  row.passengers = newValue;
+                  row.passengers = newValue; // eslint-disable-line no-param-reassign
                 }
                 return row;
               });
@@ -336,14 +336,25 @@ export default class GridExample extends Component {
           </div>
         ),
       }), item => ({
+        /* eslint-disable react/jsx-no-bind */
         children: (
           <div>
-            <GridIconOptions onClick={this.onClickRowOptions.bind(this, item)} />
+            <GridIconOptions
+              onClick={this.onClickRowOptions.bind(this, item)}
+            />
             <GridIconEdit onClick={this.onClickRowEdit.bind(this, item)} />
           </div>
         ),
+        /* eslint-ensable react/jsx-no-bind */
       }),
     ];
+
+    this.toggleEmptyRows = this.toggleEmptyRows.bind(this);
+    this.onRemoveConditionChecker = this.onRemoveConditionChecker.bind(this);
+    this.onAddConditionChecker = this.onAddConditionChecker.bind(this);
+    this.onSearch = this.onSearch.bind(this);
+    this.lazyLoadBodyRows = this.lazyLoadBodyRows.bind(this);
+    this.onClickRow = this.onClickRow.bind(this);
   }
 
   componentDidMount() {
@@ -475,7 +486,9 @@ export default class GridExample extends Component {
 
   onRemoveConditionChecker(conditionCheckerToRemove) {
     const conditionCheckers = this.state.conditionCheckers
-      .filter(conditionChecker => conditionChecker !== conditionCheckerToRemove);
+      .filter(conditionChecker => (
+        conditionChecker !== conditionCheckerToRemove
+      ));
 
     this.setState({
       conditionCheckers,
@@ -495,7 +508,8 @@ export default class GridExample extends Component {
       return new FilterableItems(rows).applyFilters(filters);
     }
 
-    const filteredBodyRows = filterRows(this.state.bodyRows, this.state.conditionCheckers);
+    const filteredBodyRows =
+      filterRows(this.state.bodyRows, this.state.conditionCheckers);
 
     const foundBodyRows = this.search(filteredBodyRows, this.state.searchTerm);
     return Sorter.sort(
@@ -509,7 +523,8 @@ export default class GridExample extends Component {
   refreshHeaderColumnElementReferences() {
     // Cache references to DOM elements.
     this.headerColumnElements = $(`#${this.GRID_ID} thead th`);
-    this.stickyHeaderColumnElements = $(`#${this.GRID_ID} .stickyGridHeaderCell`);
+    this.stickyHeaderColumnElements =
+      $(`#${this.GRID_ID} .stickyGridHeaderCell`);
   }
 
   updateStickyHeaderColumnWidths() {
@@ -530,7 +545,7 @@ export default class GridExample extends Component {
     // Create and store media queries and column widths.
     const gridStencil = new GridStencil({
       gridId: this.GRID_ID,
-      items: items,
+      items,
       rowCellPropsProviders: this.rowCellPropsProviders,
       headerCellPropsProviders: this.headerCellPropsProviders,
       rowHeight: this.ROW_HEIGHT,
@@ -631,8 +646,9 @@ export default class GridExample extends Component {
 
   toggleAllRowsSelected(areAllRowsSelected) {
     const bodyRows = this.state.bodyRows.map(row => {
-      row.isSelected = areAllRowsSelected;
-      return row;
+      const bodyRow = row;
+      bodyRow.isSelected = areAllRowsSelected;
+      return bodyRow;
     });
     this.setState({
       bodyRows,
@@ -643,13 +659,14 @@ export default class GridExample extends Component {
   toggleRowSelected(id, isRowSelected) {
     let areAllRowsSelected = true;
     const bodyRows = this.state.bodyRows.map(row => {
-      if (row.id === id) {
-        row.isSelected = isRowSelected;
+      const bodyRow = row;
+      if (bodyRow.id === id) {
+        bodyRow.isSelected = isRowSelected;
       }
-      if (!row.isSelected) {
+      if (!bodyRow.isSelected) {
         areAllRowsSelected = false;
       }
-      return row;
+      return bodyRow;
     });
 
     this.setState({
@@ -663,7 +680,7 @@ export default class GridExample extends Component {
       <p>
         <button
           type="button"
-          onClick={this.toggleEmptyRows.bind(this)}
+          onClick={this.toggleEmptyRows}
         >
           {this.state.isEmptyStateDemonstration
             ? 'Test loading rows'
@@ -679,11 +696,11 @@ export default class GridExample extends Component {
         <FiltersControl
           conditionCheckers={this.state.conditionCheckers}
           filterOptions={gridExampleFilterOptions}
-          onRemoveConditionChecker={this.onRemoveConditionChecker.bind(this)}
-          onAddConditionChecker={this.onAddConditionChecker.bind(this)}
+          onRemoveConditionChecker={this.onRemoveConditionChecker}
+          onAddConditionChecker={this.onAddConditionChecker}
         />
         <SearchBox
-          onSearch={this.onSearch.bind(this)}
+          onSearch={this.onSearch}
         />
       </GridControls>
     );
@@ -702,7 +719,11 @@ export default class GridExample extends Component {
   }
 
   renderLoadingRow() {
-    if (this.state.isLoadingBodyRows && !this.state.isInitialLoad && !this.state.isEmpty) {
+    if (
+      this.state.isLoadingBodyRows &&
+      !this.state.isInitialLoad &&
+      !this.state.isEmpty
+    ) {
       return <GridLoadingRow columnsCount={this.COLUMNS_COUNT} />;
     }
   }
@@ -728,7 +749,7 @@ export default class GridExample extends Component {
           key={item.id}
           item={item}
           rowCellPropsProviders={this.rowCellPropsProviders}
-          onClick={this.onClickRow.bind(this)}
+          onClick={this.onClickRow}
           height={this.ROW_HEIGHT}
           classBodyRow={stripedClass}
         />
@@ -753,14 +774,14 @@ export default class GridExample extends Component {
           columnsCount={this.COLUMNS_COUNT}
           header={this.renderGridHeader()}
           rows={rows}
-          lazyLoadRows={this.lazyLoadBodyRows.bind(this)}
+          lazyLoadRows={this.lazyLoadBodyRows}
           // Initial loading state
           initialLoadingRow={this.renderInitialLoadingRow()}
           // Empty state
           emptyRow={this.renderEmptyRow()}
           // Loading state
           loadingRow={this.renderLoadingRow()}
-          onClickRow={this.onClickRow.bind(this)}
+          onClickRow={this.onClickRow}
           rowRecycler={rowRecycler}
         />
       </StickyGrid>

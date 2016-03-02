@@ -11,7 +11,10 @@ const GridHeaderCell = props => {
   // We want to add on our own classes to the inner cell, without destroying
   // any classes that have been provided.
   const decoratedInnerCellProps = Object.assign({}, props.innerCellProps, {
-    className: classNames('grid__header__cellLiner', props.innerCellProps.className),
+    className: classNames(
+      'grid__header__cellLiner',
+      props.innerCellProps.className
+    ),
   });
 
   return (

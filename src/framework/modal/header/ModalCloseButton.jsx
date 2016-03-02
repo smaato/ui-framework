@@ -7,7 +7,7 @@ const ModalCloseButton = props => {
   return (
     <div
       className="icon modalHeader__closeButton"
-      onClick={props.onClick}
+      onClick={ props.onClick }
     >
     </div>
   );

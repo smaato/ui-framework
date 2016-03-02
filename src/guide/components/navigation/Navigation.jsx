@@ -15,9 +15,13 @@ export default class Navigation extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       isMenuOpen: false,
     };
+
+    this.onClickNavButton = this.onClickNavButton.bind(this);
+    this.onToggleNav = this.onToggleNav.bind(this);
   }
 
   onToggleNav() {
@@ -43,7 +47,7 @@ export default class Navigation extends Component {
           <NavButton
             href={route.href}
             path={route.path}
-            onClick={this.onClickNavButton.bind(this)}
+            onClick={this.onClickNavButton}
             key={`${name}${i}`}
           >
             {route.name}
@@ -74,7 +78,7 @@ export default class Navigation extends Component {
       <div>
         <div
           className="examplesNavMenuButton"
-          onClick={this.onToggleNav.bind(this)}
+          onClick={this.onToggleNav}
         >
           Nav
         </div>

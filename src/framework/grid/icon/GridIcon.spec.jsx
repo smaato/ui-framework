@@ -69,7 +69,7 @@ for (let i = 0, length = gridIcons.length; i < length; i++) {
         onClick = jasmine.createSpy('onClick');
 
         const testCase =
-          TestCaseFactory.createFromFunction(gridIcon.component, {onClick});
+          TestCaseFactory.createFromFunction(gridIcon.component, { onClick });
 
         testCase.trigger('click');
       });

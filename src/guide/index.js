@@ -34,22 +34,24 @@ const routes = [{
   indexRoute: {
     component: HomeView,
   },
-  childRoutes: childRoutes,
+  childRoutes,
 }];
 
 // Update document title with route name.
 const onRouteEnter = (route) => {
   const leafRoute = route.routes[route.routes.length - 1];
-  document.title = leafRoute.name ? `Smaato UI Framework - ${leafRoute.name}` : 'Smaato UI Framework';
+  document.title = leafRoute.name ?
+    `Smaato UI Framework - ${leafRoute.name}` :
+    'Smaato UI Framework';
 };
 const syncTitleWithRoutes = routesList => {
   if (!routesList) return;
   routesList.forEach(route => {
-    route.onEnter = onRouteEnter;
+    route.onEnter = onRouteEnter; // eslint-disable-line no-param-reassign
     if (route.indexRoute) {
       // Index routes have a weird relationship with their "parent" routes,
       // so it seems we need to give their own onEnter hooks.
-      route.indexRoute.onEnter = onRouteEnter;
+      route.indexRoute.onEnter = onRouteEnter; // eslint-disable-line no-param-reassign
     }
     syncTitleWithRoutes(route.childRoutes);
   });

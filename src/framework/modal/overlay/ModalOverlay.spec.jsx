@@ -105,16 +105,19 @@ describe('ModalOverlay', () => {
     });
 
     describe('Behavior', () => {
-      it('is-modal-overlay-open class is removed from body when unmounted', () => {
-        const props = {
-          isOpen: true,
-          children: <div />,
-        };
-        const wrappedTestCase = createWrappedTestCase(props);
-        wrappedTestCase.unmount();
-        expect(document.body.getAttribute('class'))
-          .not.toContain('is-modal-overlay-open');
-      });
+      it(
+        'is-modal-overlay-open class is removed from body when unmounted',
+        () => {
+          const props = {
+            isOpen: true,
+            children: <div />,
+          };
+          const wrappedTestCase = createWrappedTestCase(props);
+          wrappedTestCase.unmount();
+          expect(document.body.getAttribute('class'))
+            .not.toContain('is-modal-overlay-open');
+        }
+      );
     });
   });
 });

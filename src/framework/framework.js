@@ -8,7 +8,10 @@ export { default as AppHeader } from './appHeader/AppHeader.jsx';
 export * from './body/Body.jsx';
 export { default as Body } from './body/Body.jsx';
 
-export * from './button/index.jsx';
+export * from './button/Button.jsx';
+export { default as Button } from './button/Button.jsx';
+
+export { default as ButtonGroup } from './buttonGroup/ButtonGroup.jsx';
 
 export * from './chart/Chart.jsx';
 export { default as Chart } from './chart/Chart.jsx';
@@ -23,6 +26,9 @@ export { default as FieldMessage } from './fieldMessage/FieldMessage.jsx';
 
 export * from './filtersControl/FiltersControl.jsx';
 export { default as FiltersControl } from './filtersControl/FiltersControl.jsx';
+
+export * from './form/Form.jsx';
+export { default as Form } from './form/Form.jsx';
 
 export * from './grid/Grid.jsx';
 export { default as Grid } from './grid/Grid.jsx';
@@ -44,13 +50,19 @@ export { default as Label } from './label/Label.jsx';
 export * from './labeledControl/LabeledControl.jsx';
 export { default as LabeledControl } from './labeledControl/LabeledControl.jsx';
 
+export { default as LabeledField } from './labeledField/LabeledField.jsx';
+
 export * from './spinner/Spinner.jsx';
 export { default as Spinner } from './spinner/Spinner.jsx';
 
-export { default as SummaryControl } from './summaryControl/SummaryControl.jsx';
-export { default as SummaryControlIcon } from './summaryControl/icon/SummaryControlIcon.jsx';
-export { default as SummaryControlIconCheck } from './summaryControl/icon/SummaryControlIconCheck.jsx';
-export { default as SummaryControlIconPaperclip } from './summaryControl/icon/SummaryControlIconPaperclip.jsx';
+export { default as SummaryControl, }
+  from './summaryControl/SummaryControl.jsx';
+export { default as SummaryControlIcon, }
+  from './summaryControl/icon/SummaryControlIcon.jsx';
+export { default as SummaryControlIconCheck, }
+  from './summaryControl/icon/SummaryControlIconCheck.jsx';
+export { default as SummaryControlIconPaperclip, }
+  from './summaryControl/icon/SummaryControlIconPaperclip.jsx';
 
 export * from './modal/Modal.jsx';
 export { default as Modal } from './modal/Modal.jsx';
@@ -65,6 +77,9 @@ export { default as SearchBox } from './searchBox/SearchBox.jsx';
 
 export * from './text/Text.jsx';
 export { default as Text } from './text/Text.jsx';
+
+export * from './textArea/TextArea.jsx';
+export { default as TextArea } from './textArea/TextArea.jsx';
 
 export * from './textInput/TextInput.jsx';
 export { default as TextInput } from './textInput/TextInput.jsx';

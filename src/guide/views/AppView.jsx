@@ -10,7 +10,8 @@ import $ from 'jquery';
 import classNames from 'classnames';
 
 import Navigation from '../components/navigation/Navigation.jsx';
-import SourceCodeViewer from '../components/sourceCodeViewer/SourceCodeViewer.jsx';
+import SourceCodeViewer
+  from '../components/sourceCodeViewer/SourceCodeViewer.jsx';
 
 import Route from '../services/route/Route';
 
@@ -23,6 +24,8 @@ export default class AppView extends Component {
     this.state = {
       isSourceCodeViewerOpen: false,
     };
+
+    this.onToggleSourceCodeViewer = this.onToggleSourceCodeViewer.bind(this);
   }
 
   componentDidMount() {
@@ -67,7 +70,7 @@ export default class AppView extends Component {
 
         <div
           className="examplesSourceCodeViewerButton"
-          onClick={this.onToggleSourceCodeViewer.bind(this)}
+          onClick={this.onToggleSourceCodeViewer}
         >
           Source
         </div>
@@ -76,4 +79,3 @@ export default class AppView extends Component {
   }
 
 }
-

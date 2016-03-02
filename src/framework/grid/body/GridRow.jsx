@@ -8,7 +8,8 @@ import GridBodyCell from './GridBodyCell.jsx';
 
 const GridRow = props => {
   // Create cells.
-  const rowCells = props.rowCellPropsProviders.map((cellPropsProvider, index) => {
+  const rowCells = props.rowCellPropsProviders
+  .map((cellPropsProvider, index) => {
     return (
       <GridBodyCell
         classBodyCell={props.classBodyCell}

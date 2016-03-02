@@ -19,6 +19,8 @@ export default class SearchBoxExample extends Component {
     this.state = {
       searchTerm: '',
     };
+
+    this.onSearch = this.onSearch.bind(this);
   }
 
   onSearch(term) {
@@ -63,7 +65,7 @@ export default class SearchBoxExample extends Component {
         <Example>
 
           <SearchBox
-            onSearch={this.onSearch.bind(this)}
+            onSearch={this.onSearch}
           />
 
           <ol>
@@ -75,7 +77,7 @@ export default class SearchBoxExample extends Component {
         <Example title="Search as you type">
 
           <SearchBox
-            onSearch={this.onSearch.bind(this)}
+            onSearch={this.onSearch}
             isImmediate
           />
 
@@ -84,7 +86,7 @@ export default class SearchBoxExample extends Component {
         <Example title="Full width">
 
           <SearchBox
-            onSearch={this.onSearch.bind(this)}
+            onSearch={this.onSearch}
             isFullWidth
           />
 
