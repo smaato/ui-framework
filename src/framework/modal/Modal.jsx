@@ -32,7 +32,7 @@ const Modal = props => {
 
   if (props.footer) {
     footer = (
-      <div className="modalSection modalSection--footer">
+      <div className="modal__footer">
         {props.footer}
       </div>
     );
