@@ -62,6 +62,8 @@ BaseDropdownOption.propTypes = {
 // These defaults exist for testing purposes. They should never be used in
 // production.
 BaseDropdownOption.defaultProps = {
+  onClick: () => undefined,
+  onMouseOver: () => undefined,
   classes: 'option',
   focusClasses: 'is-option-focus',
 };
