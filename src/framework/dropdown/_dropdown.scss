@@ -1,19 +1,24 @@
 
-.addOnDropdown {
+.dropdown {
   @include baseDropdown;
-  @include addOnLabelDimension;
+  display: inline-block;
 }
 
-  .addOnDropdown__input {
+  .dropdown__input {
     @include baseDropdownInput;
   }
 
-.addOnDropdownLabel {
+.dropdownLabel {
   @include baseDropdownLabel;
-  @include addOnLabelStyle;
-  padding: $addOnLabelPadding 25px $addOnLabelPadding $addOnLabelPadding;
+  font-size: 12px;
+  line-height: $lineHeight;
+  font-weight: 400;
+  border: 1px solid #c8cfd5;
+  background-color: #f6fafc;
+  padding: 8px 30px 8px 8px;
   white-space: nowrap;
   cursor: pointer;
+  border-radius: 4px;
 
   &:before,
   &:after {
@@ -38,23 +43,15 @@
     transform: rotate(45deg);
   }
 
-  &.is-add-on-dropdown-label-focus {
+  &.is-dropdown-label-focus {
     @include fieldFocus;
   }
-}
-
-.addOnDropdownLabel--left {
-  border-right: 0;
-}
-
-.addOnDropdownLabel--right {
-  border-left: 0;
 }
 
 /**
  * 1. Move up 1px to share border with the label.
  */
-.addOnDropdownOptionList {
+.dropdownOptionList {
   @include baseDropdownOptionList;
   box-sizing: content-box;
   margin-left: -1px;

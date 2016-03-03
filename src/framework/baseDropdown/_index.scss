@@ -1,0 +1,39 @@
+
+/**
+ * 1. Position some children absolutely.
+ */
+@mixin baseDropdown {
+  position: relative; /* 1 */
+}
+
+/**
+ * 1. Position beneath other elements because we want this input visually hidden
+ *    to the user but still accessible via tab.
+ * 2. Move it down and to the right a bit to make sure it's completely covered.
+ * 3. Also make it invisible just for the heck of it.
+ */
+@mixin baseDropdownInput {
+  position: absolute; /* 1 */
+  z-index: 0; /* 1 */
+  width: 0; /* 1 */
+  height: 0; /* 1 */
+  top: 6px; /* 2 */
+  left: 6px; /* 2 */
+  opacity: 0; /* 3 */
+}
+
+/**
+ * 1. Put the label on top of the input to hide it.
+ */
+@mixin baseDropdownLabel {
+  position: relative; /* 1 */
+  z-index: 1; /* 1 */
+}
+
+/**
+ * 1. Put the option list on top of the label, so the label doesn't hide it.
+ */
+@mixin baseDropdownOptionList {
+  position: absolute; /* 1 */
+  z-index: 2; /* 1 */
+}

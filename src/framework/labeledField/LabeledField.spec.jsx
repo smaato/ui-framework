@@ -8,6 +8,7 @@ describe('LabeledField', () => {
     describe('children', () => {
       it('are rendered', () => {
         const props = {
+          label: 'Test',
           children: <div id="test" />,
         };
 

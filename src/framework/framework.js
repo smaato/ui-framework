@@ -19,6 +19,9 @@ export { default as CheckBox } from './checkBox/CheckBox.jsx';
 export * from './dateRange/DateRange.jsx';
 export { default as DateRange } from './dateRange/DateRange.jsx';
 
+export * from './dropdown/Dropdown.jsx';
+export { default as Dropdown } from './dropdown/Dropdown.jsx';
+
 export { default as FieldMessage } from './fieldMessage/FieldMessage.jsx';
 
 export * from './filtersControl/FiltersControl.jsx';
