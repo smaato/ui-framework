@@ -22,6 +22,8 @@ import {
   CheckBox,
   DateRange,
   DescriptionText,
+  Dropdown,
+  DropdownOption,
   FieldMessage,
   FiltersControl,
   Form,
@@ -143,6 +145,12 @@ const components = [{
 }, {
   name: 'DescriptionText',
   component: DescriptionText,
+}, {
+  name: 'Dropdown',
+  component: Dropdown,
+}, {
+  name: 'DropdownOption',
+  component: DropdownOption,
 }, {
   name: 'FieldMessage',
   component: FieldMessage,

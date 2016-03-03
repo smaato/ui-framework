@@ -5,6 +5,9 @@
 // Global
 @import 'global/index';
 
+// Base components
+@import 'baseDropdown/index';
+
 // Components
 @import 'addOnControl/index';
 @import 'appHeader/index';
@@ -13,6 +16,7 @@
 @import 'chart/index';
 @import 'checkBox/index';
 @import 'dateRange/index';
+@import 'dropdown/index';
 @import 'fieldMessage/index';
 @import 'filtersControl/index';
 @import 'form/index';
