@@ -201,7 +201,6 @@ export default class BaseDropdown extends Component {
           onBlur={this.onBlur}
           onFocus={this.onFocus}
           onKeyDown={this.onKeyDown}
-          type="hidden"
         />
         <div
           className={labelClasses}
