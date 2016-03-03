@@ -36,4 +36,6 @@
 @mixin baseDropdownOptionList {
   position: absolute; /* 1 */
   z-index: 2; /* 1 */
+  max-height: 300px;
+  overflow-y: scroll;
 }

@@ -21,11 +21,29 @@ export default class DropdownExample extends Component {
     };
 
     this.dropdownItems = [{
-      name: 'Apache',
+      name: 'Apple',
     }, {
-      name: 'Blackfeet',
+      name: 'Berry',
     }, {
       name: 'Chippewa',
+    }, {
+      name: 'Daffodil',
+    }, {
+      name: 'Eggplant',
+    }, {
+      name: 'Flour',
+    }, {
+      name: 'Gummy bear',
+    }, {
+      name: 'Hot sauce',
+    }, {
+      name: 'Ice',
+    }, {
+      name: 'Jelly',
+    }, {
+      name: 'Krispy treats',
+    }, {
+      name: 'Lemon',
     }];
 
     this.dropdownLabelProvider = option => {
