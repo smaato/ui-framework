@@ -1,12 +1,10 @@
 
 import React from 'react';
 
-const FiltersDropdown = props => {
-  return (
-    <div className="filtersDropdown">
-      {props.children}
-    </div>
-  );
-};
+const FiltersDropdown = props => (
+  <div className="filtersDropdown">
+    {props.children}
+  </div>
+);
 
 export default FiltersDropdown;

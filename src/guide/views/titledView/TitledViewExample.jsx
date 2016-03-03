@@ -158,16 +158,14 @@ export default class TitledViewExample extends Component {
       name: 'Vitality',
     }];
 
-    const organizationList = orgs.map((item, index) => {
-      return (
-        <OrganizationSwitcherItem
-          key={index}
-          name={item.name}
-          id={item.id.toString()}
-          onSelect={this.selectOrganization.bind(this, item)} // eslint-disable-line react/jsx-no-bind
-        />
-      );
-    });
+    const organizationList = orgs.map((item, index) => (
+      <OrganizationSwitcherItem
+        key={index}
+        name={item.name}
+        id={item.id.toString()}
+        onSelect={this.selectOrganization.bind(this, item)} // eslint-disable-line react/jsx-no-bind
+      />
+    ));
 
     return ( // eslint-disable-line consistent-return
       <OrganizationSwitcher

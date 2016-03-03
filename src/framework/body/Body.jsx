@@ -9,12 +9,10 @@ export {
   default as BodyPanelItem,
 } from './BodyPanelItem.jsx';
 
-const Body = props => {
-  return (
-    <div className="body">
-      {props.children}
-    </div>
-  );
-};
+const Body = props => (
+  <div className="body">
+    {props.children}
+  </div>
+);
 
 export default Body;

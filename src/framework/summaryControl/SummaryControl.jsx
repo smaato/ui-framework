@@ -5,20 +5,18 @@ import React, {
 
 import IconCog from '../icon/IconCog.jsx';
 
-const SummaryControl = props => {
-  return (
-    <div
-      className="summaryControl"
-      onClick={props.onClick}
-    >
-      <span className="summaryControl__label">
-        {props.icon}
-        {props.children}
-      </span>
-      <IconCog classes="summaryControl_iconCog" />
-    </div>
-  );
-};
+const SummaryControl = props => (
+  <div
+    className="summaryControl"
+    onClick={props.onClick}
+  >
+    <span className="summaryControl__label">
+      {props.icon}
+      {props.children}
+    </span>
+    <IconCog classes="summaryControl_iconCog" />
+  </div>
+);
 
 SummaryControl.propTypes = {
   icon: PropTypes.any,

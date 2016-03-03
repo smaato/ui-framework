@@ -3,13 +3,11 @@ import React, {
   PropTypes,
 } from 'react';
 
-const FieldMessage = props => {
-  return (
-    <div className="fieldMessage">
-      {props.message}
-    </div>
-  );
-};
+const FieldMessage = props => (
+  <div className="fieldMessage">
+    {props.message}
+  </div>
+);
 
 FieldMessage.propTypes = {
   message: PropTypes.string.isRequired,

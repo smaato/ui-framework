@@ -35,17 +35,15 @@ export {
   default as AppTitleContainer,
 } from './title/AppTitleContainer.jsx';
 
-const AppHeader = props => {
-  return (
-    <div className="appHeader">
-      <div className="appHeader__liner">
-        {props.left}
-        {props.center}
-        {props.right}
-      </div>
+const AppHeader = props => (
+  <div className="appHeader">
+    <div className="appHeader__liner">
+      {props.left}
+      {props.center}
+      {props.right}
     </div>
-  );
-};
+  </div>
+);
 
 AppHeader.propTypes = {
   left: PropTypes.element,

@@ -6,11 +6,9 @@ export default class FilterableItems {
   }
 
   applyFilters(filters) {
-    return this.items.filter(item =>
-      filters.every(filter => {
-        return filter.doesItemPass(item);
-      })
-    );
+    return this.items.filter(item => (
+      filters.every(filter => filter.doesItemPass(item))
+    ));
   }
 
 }

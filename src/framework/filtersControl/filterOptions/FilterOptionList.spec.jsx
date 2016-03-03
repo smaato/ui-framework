@@ -14,7 +14,7 @@ describe('FilterOptionList', () => {
           filterOptions: [
             new FilterOption({ comparisonTypes: [] }),
           ],
-          onSelectFilterOption: () => {},
+          onSelectFilterOption: () => undefined,
         };
 
         const iterationSpy = spyOn(props.filterOptions, 'map');
@@ -37,7 +37,7 @@ describe('FilterOptionList', () => {
             filterOptions: [
               filterOption,
             ],
-            onSelectFilterOption: () => {},
+            onSelectFilterOption: () => undefined,
           };
 
           const testCase =

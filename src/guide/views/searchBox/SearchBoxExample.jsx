@@ -53,11 +53,9 @@ export default class SearchBoxExample extends Component {
       'vitality',
     ], this.state.searchTerm);
 
-    const results = items.map((item, index) => {
-      return (
-        <li key={index}>{item}</li>
-      );
-    });
+    const results = items.map((item, index) => (
+      <li key={index}>{item}</li>
+    ));
 
     return (
       <Page title={this.props.route.name}>

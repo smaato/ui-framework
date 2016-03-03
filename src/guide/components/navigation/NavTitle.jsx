@@ -1,12 +1,10 @@
 
 import React from 'react';
 
-export default (props) => {
-  return (
-    <div
-      className="examplesNavMenuTitle"
-    >
-      {props.children}
-    </div>
-  );
-};
+export default (props) => (
+  <div
+    className="examplesNavMenuTitle"
+  >
+    {props.children}
+  </div>
+);

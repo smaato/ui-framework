@@ -109,14 +109,10 @@ export default class GridStencil {
     // Sort the columns in the order in which they'll be removed, so we can
     // iterate through them and remove them one by one (simulating a browser
     // becoming gradually narrower).
-    const columnsByPriority = this.columnPriorities.map((priority, index) => {
-      return {
-        index,
-        priority,
-      };
-    }).sort((a, b) => {
-      return a.priority - b.priority;
-    });
+    const columnsByPriority = this.columnPriorities.map((priority, index) => ({
+      index,
+      priority,
+    })).sort((a, b) => a.priority - b.priority);
 
     // We'll use this convenience function for building media queries.
     function createMediaQuery(browserWidth, gridId, childNumber) {

@@ -24,7 +24,7 @@ describe('ModalHeader', () => {
     describe('onClose', () => {
       it('renders a close button when present', () => {
         const props = {
-          onClose: () => {},
+          onClose: () => undefined,
         };
         const testCase = TestCaseFactory.createFromFunction(ModalHeader, props);
         // We can't use firstComponent because ModalCloseButton isn't a class.

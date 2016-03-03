@@ -16,9 +16,7 @@ const VerticalLayout = props => {
   let children;
 
   if (Array.isArray(props.children)) {
-    children = props.children.map((item, index) => {
-      return wrap(item, index);
-    });
+    children = props.children.map((item, index) => wrap(item, index));
   } else if (props.children) {
     children = wrap(props.children);
   }
