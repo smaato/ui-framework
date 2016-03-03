@@ -17,6 +17,7 @@ import {
   CallOutButton,
   Chart,
   CheckBox,
+  Column,
   ColumnLayout,
   DateRange,
   DescriptionText,
@@ -126,6 +127,9 @@ const components = [{
 }, {
   name: 'CheckBox',
   component: CheckBox,
+}, {
+  name: 'Column',
+  component: Column,
 }, {
   name: 'ColumnLayout',
   component: ColumnLayout,

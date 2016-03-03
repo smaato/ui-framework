@@ -9,6 +9,7 @@ import Page, {
 
 import {
   AddOnControl,
+  Column,
   ColumnLayout,
   Label,
   LabeledField,
@@ -23,26 +24,23 @@ export default class ColumnLayoutExample extends Component {
 
   render() {
     const backgroundColor = {
-      backgroundColor: '#66b3ff',
+      backgroundColor: '#f0f0f0',
     };
 
     return (
       <Page title={this.props.route.name}>
 
         <Example title="Example of usage for Endpoint Settings">
-          <ColumnLayout
-            layout={[
-              ColumnLayout.LAYOUT.ONE_FIFTH,
-              ColumnLayout.LAYOUT.HALF,
-            ]}
-          >
-            <Label>EMEA Data Center</Label>
-            <div>
+          <ColumnLayout>
+            <Column width={3}>
+              <Label>EMEA Data Center</Label>
+            </Column>
+            <Column width={6}>
               <LabeledField label="Endpoint URL">
                 <TextInput isFullWidth />
               </LabeledField>
-            </div>
-            <div>
+            </Column>
+            <Column width={3}>
               <LabeledField label="QPS Limit">
                 <AddOnControl right="queries per second">
                   <TextInput
@@ -51,61 +49,32 @@ export default class ColumnLayoutExample extends Component {
                   />
                 </AddOnControl>
               </LabeledField>
-            </div>
+            </Column>
           </ColumnLayout>
         </Example>
 
-        <Example title="1/3 - auto">
-          <ColumnLayout
-            layout={[
-              ColumnLayout.LAYOUT.ONE_THIRD,
-            ]}
-          >
-            <div style={backgroundColor}>one-third</div>
-            <div style={backgroundColor}>auto</div>
+        <Example title="4/12th - 8/12th">
+          <ColumnLayout>
+            <Column width={4}>
+              <div style={backgroundColor}>4/12th</div>
+            </Column>
+            <Column width={8}>
+              <div style={backgroundColor}>8/12th</div>
+            </Column>
           </ColumnLayout>
         </Example>
 
-        <Example title="1/6 - 1/2 - auto">
-          <ColumnLayout
-            layout={[
-              ColumnLayout.LAYOUT.ONE_SIXTH,
-              ColumnLayout.LAYOUT.HALF,
-            ]}
-          >
-            <div style={backgroundColor}>one-sixth</div>
-            <div style={backgroundColor}>half</div>
-            <div style={backgroundColor}>auto</div>
-          </ColumnLayout>
-        </Example>
-
-        <Example title="1/3 - auto - 1/4">
-          <ColumnLayout
-            layout={[
-              ColumnLayout.LAYOUT.ONE_THIRD,
-              ColumnLayout.LAYOUT.AUTO,
-              ColumnLayout.LAYOUT.ONE_FOURTH,
-            ]}
-          >
-            <div style={backgroundColor}>one-third</div>
-            <div style={backgroundColor}>auto</div>
-            <div style={backgroundColor}>one-fourth</div>
-          </ColumnLayout>
-        </Example>
-
-        <Example title="1/5 - 1/4 - auto - 2/5">
-          <ColumnLayout
-            layout={[
-              ColumnLayout.LAYOUT.ONE_FIFTH,
-              ColumnLayout.LAYOUT.ONE_FOURTH,
-              ColumnLayout.LAYOUT.AUTO,
-              ColumnLayout.LAYOUT.TWO_FIFTHS,
-            ]}
-          >
-            <div style={backgroundColor}>one-fifth</div>
-            <div style={backgroundColor}>one-fourth</div>
-            <div style={backgroundColor}>auto</div>
-            <div style={backgroundColor}>two-fifths</div>
+        <Example title="2/12th - 6/12th - 4/12th">
+          <ColumnLayout>
+            <Column width={2}>
+              <div style={backgroundColor}>2/12th</div>
+            </Column>
+            <Column width={6}>
+              <div style={backgroundColor}>6/12th</div>
+            </Column>
+            <Column width={4}>
+              <div style={backgroundColor}>4/12th</div>
+            </Column>
           </ColumnLayout>
         </Example>
 
