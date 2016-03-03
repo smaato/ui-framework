@@ -10,6 +10,6 @@
 $numColumns: 12;
 @for $i from 1 through $numColumns {
   .column--#{$i} {
-    flex: 0 0 $i/$numColumns * 100%;
+    flex: 0 0 $i / $numColumns * 100%;
   }
 }
