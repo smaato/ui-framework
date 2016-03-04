@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -13,7 +14,7 @@ import {
   GroupedButton,
 } from '../../../framework/framework';
 
-export default class ButtonGroupExample extends Component {
+class ButtonGroupExample extends Component {
 
   constructor(props) {
     super(props);
@@ -65,3 +66,9 @@ export default class ButtonGroupExample extends Component {
   }
 
 }
+
+ButtonGroupExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default ButtonGroupExample;

@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -13,7 +14,7 @@ import {
   SummaryControlIconPaperclip,
 } from '../../../framework/framework';
 
-export default class SummaryControlExample extends Component {
+class SummaryControlExample extends Component {
 
   constructor(props) {
     super(props);
@@ -48,3 +49,9 @@ export default class SummaryControlExample extends Component {
   }
 
 }
+
+SummaryControlExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default SummaryControlExample;

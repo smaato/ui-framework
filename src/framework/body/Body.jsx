@@ -1,5 +1,7 @@
 
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 
 export {
   default as BodyPanel,
@@ -14,5 +16,12 @@ const Body = props => (
     {props.children}
   </div>
 );
+
+Body.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.element,
+  ]),
+};
 
 export default Body;

@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 import Kpi from './Kpi.jsx';
 
-export default class KpiNegative extends Component {
+class KpiNegative extends Component {
 
   constructor(props) {
     super(props);
@@ -24,5 +24,8 @@ export default class KpiNegative extends Component {
 }
 
 KpiNegative.propTypes = {
+  children: PropTypes.string,
   title: PropTypes.string,
 };
+
+export default KpiNegative;

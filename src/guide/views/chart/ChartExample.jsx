@@ -4,6 +4,7 @@ import 'd3';
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -14,7 +15,7 @@ import { Chart } from '../../../framework/framework';
 
 import chartExampleData from './chartExampleData.js';
 
-export default class ChartExample extends Component {
+class ChartExample extends Component {
 
   constructor(props) {
     super(props);
@@ -143,3 +144,9 @@ export default class ChartExample extends Component {
   }
 
 }
+
+ChartExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default ChartExample;

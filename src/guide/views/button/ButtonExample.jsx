@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -16,7 +17,7 @@ import {
   PrimaryButton,
 } from '../../../framework/framework';
 
-export default class ButtonExample extends Component {
+class ButtonExample extends Component {
 
   constructor(props) {
     super(props);
@@ -88,3 +89,9 @@ export default class ButtonExample extends Component {
   }
 
 }
+
+ButtonExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default ButtonExample;

@@ -34,6 +34,10 @@ const AddOnControl = props => {
 };
 
 AddOnControl.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.element,
+  ]),
   left: PropTypes.any,
   right: PropTypes.any,
 };

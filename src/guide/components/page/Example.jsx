@@ -40,6 +40,10 @@ Example.propTypes = {
   title: PropTypes.string,
   isClear: PropTypes.bool,
   isDark: PropTypes.bool,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array,
+  ]),
 };
 
 export default Example;

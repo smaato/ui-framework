@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
@@ -63,7 +64,7 @@ const defaultState = {
   conditionCheckers: [],
 };
 
-export default class GridExample extends Component {
+class GridExample extends Component {
 
   constructor(props) {
     super(props);
@@ -807,3 +808,9 @@ export default class GridExample extends Component {
   }
 
 }
+
+GridExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default GridExample;

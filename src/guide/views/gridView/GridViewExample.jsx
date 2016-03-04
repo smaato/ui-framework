@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 import $ from 'jquery';
 
@@ -10,7 +11,7 @@ import {
   Entity,
 } from '../../../framework/services.js';
 
-export default class GridViewExample extends Component {
+class GridViewExample extends Component {
 
   constructor(props) {
     super(props);
@@ -663,3 +664,9 @@ export default class GridViewExample extends Component {
   }
 
 }
+
+GridViewExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default GridViewExample;

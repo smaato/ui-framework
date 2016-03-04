@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -12,7 +13,7 @@ import {
   OrganizationSwitcherItem,
 } from '../../../framework/framework';
 
-export default class OrganizationSwitcherExample extends Component {
+class OrganizationSwitcherExample extends Component {
 
   constructor(props) {
     super(props);
@@ -125,3 +126,9 @@ export default class OrganizationSwitcherExample extends Component {
   }
 
 }
+
+OrganizationSwitcherExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default OrganizationSwitcherExample;

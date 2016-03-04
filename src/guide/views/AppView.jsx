@@ -5,6 +5,7 @@
 // them with commas.
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 import $ from 'jquery';
 import classNames from 'classnames';
@@ -16,7 +17,7 @@ import SourceCodeViewer
 import Route from '../services/route/Route';
 
 // Define the component class and provide it as an export.
-export default class AppView extends Component {
+class AppView extends Component {
 
   constructor(props) {
     super(props);
@@ -79,3 +80,13 @@ export default class AppView extends Component {
   }
 
 }
+
+AppView.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element,
+  ]),
+  routerState: PropTypes.object.isRequired,
+};
+
+export default AppView;

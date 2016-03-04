@@ -34,6 +34,11 @@ const GridHeaderSortableCell = props => {
 };
 
 GridHeaderSortableCell.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array,
+    PropTypes.string,
+  ]),
   onClick: PropTypes.func.isRequired,
   isSelected: PropTypes.bool,
   isSortDescending: PropTypes.bool,

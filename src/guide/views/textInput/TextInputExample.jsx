@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -11,7 +12,7 @@ import {
   TextInput,
 } from '../../../framework/framework';
 
-export default class TextInputExample extends Component {
+class TextInputExample extends Component {
 
   constructor(props) {
     super(props);
@@ -50,3 +51,9 @@ export default class TextInputExample extends Component {
   }
 
 }
+
+TextInputExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default TextInputExample;

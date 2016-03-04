@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 import classNames from 'classnames';
 
@@ -11,7 +12,7 @@ export { default as Title } from './Title.jsx';
 export { default as SubTitle } from './SubTitle.jsx';
 export { default as Text } from './Text.jsx';
 
-export default class Page extends Component {
+class Page extends Component {
 
   constructor(props) {
     super(props);
@@ -38,3 +39,14 @@ export default class Page extends Component {
   }
 
 }
+
+Page.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element,
+  ]),
+  isFullScreen: PropTypes.bool,
+  title: PropTypes.string,
+};
+
+export default Page;

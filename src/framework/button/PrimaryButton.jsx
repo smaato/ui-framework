@@ -1,5 +1,7 @@
 
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 
 import Button from './Button.jsx';
@@ -16,6 +18,12 @@ const PrimaryButton = props => {
   );
 };
 
-PrimaryButton.propTypes = Button.propTypes;
+PrimaryButton.propTypes = Object.assign(Button.propTypes, {
+  classes: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.string,
+    PropTypes.object,
+  ]),
+});
 
 export default PrimaryButton;

@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -11,7 +12,7 @@ import {
   TextArea,
 } from '../../../framework/framework';
 
-export default class TextAreaExample extends Component {
+class TextAreaExample extends Component {
 
   constructor(props) {
     super(props);
@@ -50,3 +51,9 @@ export default class TextAreaExample extends Component {
   }
 
 }
+
+TextAreaExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default TextAreaExample;

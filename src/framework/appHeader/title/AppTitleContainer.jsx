@@ -21,6 +21,7 @@ const AppTitleContainer = props => (
 );
 
 AppTitleContainer.propTypes = {
+  children: PropTypes.element,
   onClick: PropTypes.func,
   title: AppTitle.propTypes.text,
 };

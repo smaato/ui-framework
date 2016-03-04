@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -23,7 +24,7 @@ import {
   FormFooter,
 } from '../../../framework/framework';
 
-export default class ModalExample extends Component {
+class ModalExample extends Component {
 
   constructor(props) {
     super(props);
@@ -259,3 +260,9 @@ export default class ModalExample extends Component {
   }
 
 }
+
+ModalExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default ModalExample;

@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -14,7 +15,7 @@ import {
   KpiNegative,
 } from '../../../framework/framework';
 
-export default class KpiExample extends Component {
+class KpiExample extends Component {
 
   constructor(props) {
     super(props);
@@ -51,3 +52,9 @@ export default class KpiExample extends Component {
   }
 
 }
+
+KpiExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default KpiExample;

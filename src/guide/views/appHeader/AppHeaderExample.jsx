@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -19,7 +20,7 @@ import {
   AppHeaderDivider,
 } from '../../../framework/framework';
 
-export default class AppHeaderExample extends Component {
+class AppHeaderExample extends Component {
 
   constructor(props) {
     super(props);
@@ -150,3 +151,9 @@ export default class AppHeaderExample extends Component {
   }
 
 }
+
+AppHeaderExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default AppHeaderExample;

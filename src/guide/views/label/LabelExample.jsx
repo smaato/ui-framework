@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -13,7 +14,7 @@ import {
   SubLabel,
 } from '../../../framework/framework';
 
-export default class LabelExample extends Component {
+class LabelExample extends Component {
 
   constructor(props) {
     super(props);
@@ -42,3 +43,9 @@ export default class LabelExample extends Component {
   }
 
 }
+
+LabelExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default LabelExample;

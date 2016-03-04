@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -12,7 +13,7 @@ import {
   TextInput,
 } from '../../../framework/framework';
 
-export default class AddOnControlExample extends Component {
+class AddOnControlExample extends Component {
 
   constructor(props) {
     super(props);
@@ -50,3 +51,9 @@ export default class AddOnControlExample extends Component {
   }
 
 }
+
+AddOnControlExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default AddOnControlExample;

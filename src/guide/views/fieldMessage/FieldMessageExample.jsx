@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -14,7 +15,7 @@ import {
   TextInput,
 } from '../../../framework/framework';
 
-export default class FieldMessageExample extends Component {
+class FieldMessageExample extends Component {
 
   constructor(props) {
     super(props);
@@ -107,3 +108,9 @@ export default class FieldMessageExample extends Component {
   }
 
 }
+
+FieldMessageExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default FieldMessageExample;

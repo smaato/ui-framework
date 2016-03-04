@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -12,7 +13,7 @@ import {
   TitleBar,
 } from '../../../framework/framework';
 
-export default class TitleBarExample extends Component {
+class TitleBarExample extends Component {
 
   constructor(props) {
     super(props);
@@ -43,3 +44,9 @@ export default class TitleBarExample extends Component {
   }
 
 }
+
+TitleBarExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default TitleBarExample;

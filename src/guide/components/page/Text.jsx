@@ -1,9 +1,10 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
-export default class Text extends Component {
+class Text extends Component {
 
   constructor(props) {
     super(props);
@@ -18,3 +19,13 @@ export default class Text extends Component {
   }
 
 }
+
+Text.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.element,
+    PropTypes.string,
+  ]).isRequired,
+};
+
+export default Text;

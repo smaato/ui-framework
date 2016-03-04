@@ -19,6 +19,7 @@ const SummaryControl = props => (
 );
 
 SummaryControl.propTypes = {
+  children: PropTypes.string,
   icon: PropTypes.any,
   onClick: PropTypes.func,
 };

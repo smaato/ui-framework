@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -15,7 +16,7 @@ import {
   ViewHeaderNav,
 } from '../../../framework/framework';
 
-export default class ViewHeaderExample extends Component {
+class ViewHeaderExample extends Component {
 
   constructor(props) {
     super(props);
@@ -112,3 +113,9 @@ export default class ViewHeaderExample extends Component {
   }
 
 }
+
+ViewHeaderExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default ViewHeaderExample;

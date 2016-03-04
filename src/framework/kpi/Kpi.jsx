@@ -13,7 +13,7 @@ export {
   default as KpiNegative,
 } from './KpiNegative.jsx';
 
-export default class Kpi extends Component {
+class Kpi extends Component {
 
   constructor(props) {
     super(props);
@@ -37,6 +37,9 @@ export default class Kpi extends Component {
 }
 
 Kpi.propTypes = {
+  children: PropTypes.string,
   className: PropTypes.string,
   title: PropTypes.string,
 };
+
+export default Kpi;

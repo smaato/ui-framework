@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -13,7 +14,7 @@ import {
   BodyPanelItem,
 } from '../../../framework/framework';
 
-export default class BodyExample extends Component {
+class BodyExample extends Component {
 
   constructor(props) {
     super(props);
@@ -47,3 +48,9 @@ export default class BodyExample extends Component {
   }
 
 }
+
+BodyExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default BodyExample;

@@ -1,5 +1,7 @@
 
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 
 import Icon from '../icon/Icon.jsx';
@@ -16,6 +18,12 @@ const IconPaperclip = props => {
   );
 };
 
-IconPaperclip.propTypes = Icon.propTypes;
+IconPaperclip.propTypes = Object.assign(Icon.propTypes, {
+  classes: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.string,
+    PropTypes.object,
+  ]),
+});
 
 export default IconPaperclip;

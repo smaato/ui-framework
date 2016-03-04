@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -18,7 +19,7 @@ import {
   IconPaperclip,
 } from '../../../framework/framework';
 
-export default class IconExample extends Component {
+class IconExample extends Component {
 
   constructor(props) {
     super(props);
@@ -690,3 +691,9 @@ export default class IconExample extends Component {
   }
 
 }
+
+IconExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default IconExample;

@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -11,7 +12,7 @@ import {
   SearchBox,
 } from '../../../framework/framework';
 
-export default class SearchBoxExample extends Component {
+class SearchBoxExample extends Component {
 
   constructor(props) {
     super(props);
@@ -95,3 +96,9 @@ export default class SearchBoxExample extends Component {
   }
 
 }
+
+SearchBoxExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default SearchBoxExample;
