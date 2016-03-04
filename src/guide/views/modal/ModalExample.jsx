@@ -126,10 +126,12 @@ export default class ModalExample extends Component {
         <Example isClear>
           <Modal>
             <ModalHeader
+              key={1}
               title="Modal Title"
               icon={<IconLink/>}
             />
             <Form
+              key={2}
               body={
                 <div style={{ height: 110 }}></div>
               }
@@ -160,7 +162,7 @@ export default class ModalExample extends Component {
 
         <Example title="ModalConfirmation" isClear>
           <Modal>
-            <div>
+            <div key={1}>
               <ModalConfirmationBody>
                 This is a confirmation modal with a message that wraps to
                 multiple lines. Are you sure you want to do that?
@@ -183,10 +185,12 @@ export default class ModalExample extends Component {
           >
             <Modal>
               <ModalHeader
+                key={1}
                 title="Modal Title"
                 onClose={this.onCloseModal}
               />
               <Form
+                key={2}
                 body={(
                   <div style={{ height: 400 }}></div>
                 )}
@@ -194,10 +198,12 @@ export default class ModalExample extends Component {
                   <FormFooter
                     right={[
                       <HollowButton
+                        key="footer_right_1"
                         label="Cancel"
                         onClick={this.onCloseModal}
                       />,
                       <PrimaryButton
+                        key="footer_right_2"
                         label="Submit"
                       />,
                     ]}
