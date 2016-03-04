@@ -3,6 +3,9 @@ import {
   AccountNav,
   AccountPicture,
   AddOnControl,
+  AddOnDropdown,
+  AddOnDropdownOption,
+  AddOnLabel,
   AppHeader,
   AppHeaderDivider,
   AppLogo,
@@ -20,6 +23,8 @@ import {
   CheckBox,
   DateRange,
   DescriptionText,
+  Dropdown,
+  DropdownOption,
   FieldMessage,
   FiltersControl,
   Form,
@@ -85,6 +90,15 @@ const components = [{
   name: 'AddOnControl',
   component: AddOnControl,
 }, {
+  name: 'AddOnDropdown',
+  component: AddOnDropdown,
+}, {
+  name: 'AddOnDropdownOption',
+  component: AddOnDropdownOption,
+}, {
+  name: 'AddOnLabel',
+  component: AddOnLabel,
+}, {
   name: 'AppHeader',
   component: AppHeader,
 }, {
@@ -135,6 +149,12 @@ const components = [{
 }, {
   name: 'DescriptionText',
   component: DescriptionText,
+}, {
+  name: 'Dropdown',
+  component: Dropdown,
+}, {
+  name: 'DropdownOption',
+  component: DropdownOption,
 }, {
   name: 'FieldMessage',
   component: FieldMessage,
