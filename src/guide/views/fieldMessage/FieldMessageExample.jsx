@@ -10,6 +10,7 @@ import Page, {
 
 import {
   AddOnControl,
+  AddOnLabel,
   FieldMessage,
   LabeledControl,
   TextInput,
@@ -83,13 +84,12 @@ class FieldMessageExample extends Component {
             layout={LabeledControl.LAYOUT.ONE_SIXTH}
           >
             <div style={{ width: 200 }}>
-              <AddOnControl
-                right="queries per second"
-              >
+              <AddOnControl>
                 <TextInput
                   isFullWidth
                   isError={this.state.isErrorDisplayed}
                 />
+                <AddOnLabel isRightSide>queries per second</AddOnLabel>
               </AddOnControl>
               {this.renderError2()}
             </div>

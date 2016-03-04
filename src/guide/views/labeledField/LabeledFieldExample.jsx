@@ -10,6 +10,7 @@ import Page, {
 
 import {
   AddOnControl,
+  AddOnLabel,
   LabeledField,
   TextInput,
 } from '../../../framework/framework';
@@ -36,11 +37,10 @@ class LabeledFieldExample extends Component {
           <LabeledField
             label="Price"
           >
-            <AddOnControl
-              left="$"
-              right="USD"
-            >
+            <AddOnControl>
+              <AddOnLabel isLeftSide>$</AddOnLabel>
               <TextInput isFullWidth />
+              <AddOnLabel isRightSide>USD</AddOnLabel>
             </AddOnControl>
           </LabeledField>
         </Example>

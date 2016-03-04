@@ -229,10 +229,12 @@ class ModalExample extends Component {
                 <FormFooter
                   right={[
                     <HollowButton
+                      key="modal_overlay_footer_right_1"
                       label="Cancel"
                       onClick={this.onCloseModal}
                     />,
                     <PrimaryButton
+                      key="modal_overlay_footer_right_2"
                       label="Submit"
                     />,
                   ]}

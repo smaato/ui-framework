@@ -3,43 +3,29 @@ import React, {
   PropTypes,
 } from 'react';
 
-const AddOnControl = props => {
-  let left;
+export {
+  default as AddOnDropdown,
+} from './dropdown/AddOnDropdown.jsx';
 
-  if (props.left) {
-    left = (
-      <div className="addOnControl__left">
-        {props.left}
-      </div>
-    );
-  }
+export {
+  default as AddOnDropdownOption,
+} from './dropdown/AddOnDropdownOption.jsx';
 
-  let right;
+export {
+  default as AddOnLabel,
+} from './label/AddOnLabel.jsx';
 
-  if (props.right) {
-    right = (
-      <div className="addOnControl__right">
-        {props.right}
-      </div>
-    );
-  }
-
-  return (
-    <div className="addOnControl">
-      {left}
-      {props.children}
-      {right}
-    </div>
-  );
-};
+const AddOnControl = props => (
+  <div className="addOnControl">
+    {props.children}
+  </div>
+);
 
 AddOnControl.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.element,
   ]),
-  left: PropTypes.any,
-  right: PropTypes.any,
 };
 
 export default AddOnControl;

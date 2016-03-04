@@ -10,6 +10,7 @@ import ButtonExample from '../../views/button/ButtonExample.jsx';
 import ButtonGroupExample from '../../views/buttonGroup/ButtonGroupExample.jsx';
 import ChartExample from '../../views/chart/ChartExample.jsx';
 import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
+import DropdownExample from '../../views/dropdown/DropdownExample.jsx';
 import FieldMessageExample
   from '../../views/fieldMessage/FieldMessageExample.jsx';
 import FormExample from '../../views/form/FormExample.jsx';
@@ -70,6 +71,10 @@ const components = [{
   name: 'CheckBox',
   source: 'views/checkBox/CheckBoxExample.jsx',
   component: CheckBoxExample,
+}, {
+  name: 'Dropdown',
+  source: 'views/dropdown/DropdownExample.jsx',
+  component: DropdownExample,
 }, {
   name: 'FieldMessage',
   source: 'views/fieldMessage/FieldMessageExample.jsx',

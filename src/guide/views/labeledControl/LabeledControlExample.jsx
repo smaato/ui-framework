@@ -9,6 +9,7 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
+  Dropdown,
   LabeledControl,
   LabeledField,
   TextArea,
@@ -20,6 +21,31 @@ class LabelExample extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      selectedDropdownOption: undefined,
+    };
+
+    this.dropdownItems = [{
+      name: 'Apache',
+    }, {
+      name: 'Blackfeet',
+    }, {
+      name: 'Chippewa',
+    }];
+
+    this.dropdownLabelProvider = option => option ? option.name : 'Click me';
+
+    this.dropdownOptionLabelProvider =
+      option => option ? option.name : undefined;
+
+    this.onSelectDropdownOption = this.onSelectDropdownOption.bind(this);
+  }
+
+  onSelectDropdownOption(option) {
+    this.setState({
+      selectedDropdownOption: option,
+    });
   }
 
   render() {
@@ -117,6 +143,27 @@ class LabelExample extends Component {
               layout={LabeledControl.LAYOUT.ONE_SIXTH}
             >
               <TextInput isFullWidth />
+            </LabeledControl>
+          </VerticalLayout>
+        </Example>
+
+        <Example title="With Dropdown">
+          <VerticalLayout>
+            <LabeledControl
+              label="Type"
+              layout={LabeledControl.LAYOUT.ONE_SIXTH}
+            >
+              <LabeledField
+                label="Select your choice"
+              >
+                <Dropdown
+                  options={this.dropdownItems}
+                  selectedOption={this.state.selectedDropdownOption}
+                  onSelect={this.onSelectDropdownOption}
+                  labelProvider={this.dropdownLabelProvider}
+                  optionLabelProvider={this.dropdownOptionLabelProvider}
+                />
+              </LabeledField>
             </LabeledControl>
           </VerticalLayout>
         </Example>
