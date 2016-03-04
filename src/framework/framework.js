@@ -16,7 +16,7 @@ export { default as Chart } from './chart/Chart.jsx';
 export * from './checkBox/CheckBox.jsx';
 export { default as CheckBox } from './checkBox/CheckBox.jsx';
 
-export { default as Column } from './columnLayout/Column.jsx';
+export * from './columnLayout/ColumnLayout.jsx';
 export { default as ColumnLayout } from './columnLayout/ColumnLayout.jsx';
 
 export * from './dateRange/DateRange.jsx';

@@ -3,10 +3,6 @@
   display: flex;
 }
 
-.columnLayout > *:not(:last-child) {
-  padding-right: 10px;
-}
-
 $numColumns: 12;
 @for $i from 1 through $numColumns {
   .column--#{$i} {

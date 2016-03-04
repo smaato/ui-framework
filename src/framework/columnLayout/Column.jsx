@@ -5,11 +5,10 @@ import React, {
 import classNames from 'classnames';
 
 const Column = props => {
-  const classes = classNames('column--' + `${props.width}`);
+  const classes = classNames('column', 'column--' + `${props.width}`);
 
   return (
     <div
-      data-id={props.dataId}
       className={classes}
     >
       {props.children}
@@ -18,7 +17,6 @@ const Column = props => {
 };
 
 Column.propTypes = {
-  dataId: PropTypes.string,
   width: PropTypes.number.isRequired,
   children: PropTypes.any,
 };

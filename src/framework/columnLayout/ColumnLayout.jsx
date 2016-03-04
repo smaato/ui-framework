@@ -5,10 +5,13 @@ import React, {
 
 import Column from './Column.jsx';
 
+export {
+  default as Column,
+} from './Column.jsx';
+
 const ColumnLayout = props => {
   return (
     <div
-      data-id={props.dataId}
       className="columnLayout"
     >
       {props.children}
@@ -17,8 +20,9 @@ const ColumnLayout = props => {
 };
 
 ColumnLayout.propTypes = {
-  dataId: PropTypes.string,
-  children: PropTypes.arrayOf(PropTypes.instanceOf(Column)).isRequired,
+  children: PropTypes.arrayOf(React.PropTypes.shape({
+    type: React.PropTypes.oneOf([Column]),
+  })).isRequired,
 };
 
 export default ColumnLayout;

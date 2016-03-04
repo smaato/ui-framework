@@ -30,6 +30,7 @@ import {
   CallOutButton,
   Chart,
   CheckBox,
+  Column,
   ColumnLayout,
   DateRange,
   DescriptionText,

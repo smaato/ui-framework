@@ -1,15 +1,12 @@
 
 import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
-import { CommonAssertions } from '../services';
 import Column from './Column.jsx';
 
 describe('Column', () => {
   describe('Props', () => {
-    CommonAssertions.assertDataId(Column);
-
     describe('width', () => {
-      it('is rendered', () => {
+      it('applies the appropriate class', () => {
         const props = {
           width: 1,
           children: <div id="child" />,
