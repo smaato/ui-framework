@@ -14,6 +14,8 @@ import FieldMessageExample
   from '../../views/fieldMessage/FieldMessageExample.jsx';
 import FormExample from '../../views/form/FormExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
+import HtmlElementsExample
+  from '../../views/htmlElements/HtmlElementsExample.jsx';
 import IconExample from '../../views/icon/IconExample.jsx';
 import KpiExample from '../../views/kpi/KpiExample.jsx';
 import LabeledControlExample
@@ -27,7 +29,6 @@ import OrganizationSwitcherExample
 import SearchBoxExample
   from '../../views/searchBox/SearchBoxExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
-import StylesExample from '../../views/styles/StylesExample.jsx';
 import SummaryControlExample
   from '../../views/summaryControl/SummaryControlExample.jsx';
 import TextExample from '../../views/text/TextExample.jsx';
@@ -84,6 +85,10 @@ const components = [{
   source: 'views/grid/GridExample.jsx',
   component: GridExample,
 }, {
+  name: 'HTML elements',
+  source: 'views/htmlElements/htmlElementsExample.jsx',
+  component: HtmlElementsExample,
+}, {
   name: 'Icon',
   source: 'views/icon/IconExample.jsx',
   component: IconExample,
@@ -119,10 +124,6 @@ const components = [{
   name: 'Spinner',
   source: 'views/spinner/SpinnerExample.jsx',
   component: SpinnerExample,
-}, {
-  name: 'Styles',
-  source: 'views/styles/StylesExample.jsx',
-  component: StylesExample,
 }, {
   name: 'SummaryControl',
   source: 'views/summaryControl/SummaryControlExample.jsx',
