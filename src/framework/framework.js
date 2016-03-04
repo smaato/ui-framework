@@ -8,7 +8,10 @@ export { default as AppHeader } from './appHeader/AppHeader.jsx';
 export * from './body/Body.jsx';
 export { default as Body } from './body/Body.jsx';
 
-export * from './button/index.jsx';
+export * from './button/Button.jsx';
+export { default as Button } from './button/Button.jsx';
+
+export { default as ButtonGroup } from './buttonGroup/ButtonGroup.jsx';
 
 export * from './chart/Chart.jsx';
 export { default as Chart } from './chart/Chart.jsx';
@@ -22,11 +25,15 @@ export { default as ColumnLayout } from './columnLayout/ColumnLayout.jsx';
 export * from './dateRange/DateRange.jsx';
 export { default as DateRange } from './dateRange/DateRange.jsx';
 
+export * from './dropdown/Dropdown.jsx';
+export { default as Dropdown } from './dropdown/Dropdown.jsx';
+
 export { default as FieldMessage } from './fieldMessage/FieldMessage.jsx';
 
 export * from './filtersControl/FiltersControl.jsx';
 export { default as FiltersControl } from './filtersControl/FiltersControl.jsx';
 
+export * from './form/Form.jsx';
 export { default as Form } from './form/Form.jsx';
 
 export * from './grid/Grid.jsx';

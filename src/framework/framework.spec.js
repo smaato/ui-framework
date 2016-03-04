@@ -3,6 +3,9 @@ import {
   AccountNav,
   AccountPicture,
   AddOnControl,
+  AddOnDropdown,
+  AddOnDropdownOption,
+  AddOnLabel,
   AppHeader,
   AppHeaderDivider,
   AppLogo,
@@ -14,6 +17,7 @@ import {
   BodyPanel,
   BodyPanelItem,
   Button,
+  ButtonGroup,
   CallOutButton,
   Chart,
   CheckBox,
@@ -21,9 +25,12 @@ import {
   ColumnLayout,
   DateRange,
   DescriptionText,
+  Dropdown,
+  DropdownOption,
   FieldMessage,
   FiltersControl,
   Form,
+  FormFooter,
   Grid,
   GridBodyEditableCell,
   GridControls,
@@ -35,6 +42,7 @@ import {
   GridIconOptions,
   GridLoadingRow,
   GridRow,
+  GroupedButton,
   HollowButton,
   Icon,
   IconAsterisk,
@@ -53,7 +61,6 @@ import {
   ModalBody,
   ModalConfirmationBody,
   ModalConfirmationFooter,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
   OrganizationSwitcher,
@@ -85,6 +92,15 @@ const components = [{
 }, {
   name: 'AddOnControl',
   component: AddOnControl,
+}, {
+  name: 'AddOnDropdown',
+  component: AddOnDropdown,
+}, {
+  name: 'AddOnDropdownOption',
+  component: AddOnDropdownOption,
+}, {
+  name: 'AddOnLabel',
+  component: AddOnLabel,
 }, {
   name: 'AppHeader',
   component: AppHeader,
@@ -119,6 +135,9 @@ const components = [{
   name: 'Button',
   component: Button,
 }, {
+  name: 'ButtonGroup',
+  component: ButtonGroup,
+}, {
   name: 'CallOutButton',
   component: CallOutButton,
 }, {
@@ -140,6 +159,12 @@ const components = [{
   name: 'DescriptionText',
   component: DescriptionText,
 }, {
+  name: 'Dropdown',
+  component: Dropdown,
+}, {
+  name: 'DropdownOption',
+  component: DropdownOption,
+}, {
   name: 'FieldMessage',
   component: FieldMessage,
 }, {
@@ -148,6 +173,9 @@ const components = [{
 }, {
   name: 'Form',
   component: Form,
+}, {
+  name: 'FormFooter',
+  component: FormFooter,
 }, {
   name: 'Grid',
   component: Grid,
@@ -181,6 +209,9 @@ const components = [{
 }, {
   name: 'GridRow',
   component: GridRow,
+}, {
+  name: 'GroupedButton',
+  component: GroupedButton,
 }, {
   name: 'HollowButton',
   component: HollowButton,
@@ -235,9 +266,6 @@ const components = [{
 }, {
   name: 'ModalConfirmationFooter',
   component: ModalConfirmationFooter,
-}, {
-  name: 'ModalFooter',
-  component: ModalFooter,
 }, {
   name: 'ModalHeader',
   component: ModalHeader,

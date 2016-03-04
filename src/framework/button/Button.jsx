@@ -22,6 +22,7 @@ const Button = props => {
 
   const classes = classNames('button', props.classes, {
     'is-button-disabled': props.disabled,
+    'is-button-selected': props.selected,
   });
 
   let icon;
@@ -65,6 +66,7 @@ Button.propTypes = {
   ]),
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
+  selected: PropTypes.bool,
   classes: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.array,
@@ -77,3 +79,24 @@ Button.defaultProps = {
 };
 
 export default Button;
+
+// We need to export these classes after Button because they depend on Button
+export {
+  default as BasicButton,
+} from './BasicButton.jsx';
+
+export {
+  default as CallOutButton,
+} from './CallOutButton.jsx';
+
+export {
+  default as GroupedButton,
+} from './GroupedButton.jsx';
+
+export {
+  default as HollowButton,
+} from './HollowButton.jsx';
+
+export {
+  default as PrimaryButton,
+} from './PrimaryButton.jsx';
