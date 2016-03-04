@@ -20,9 +20,7 @@ const ColumnLayout = props => {
 };
 
 ColumnLayout.propTypes = {
-  children: PropTypes.arrayOf(React.PropTypes.shape({
-    type: React.PropTypes.oneOf([Column]),
-  })).isRequired,
+  children: PropTypes.arrayOf(Column).isRequired,
 };
 
 export default ColumnLayout;

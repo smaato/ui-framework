@@ -27,7 +27,7 @@ export default class ColumnLayoutExample extends Component {
     const columns = widths.map(width => {
       const otherWidth = 12 - width;
       return (
-        <div style={{ marginBottom: 10 }}>
+        <div style={{ marginBottom: 10 }} key={width}>
           <ColumnLayout>
             <Column width={width}>
               <div style={backgroundColor}>{width}</div>

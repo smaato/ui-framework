@@ -5,7 +5,7 @@ import React, {
 import classNames from 'classnames';
 
 const Column = props => {
-  const classes = classNames('column', 'column--' + `${props.width}`);
+  const classes = classNames('column', `column--${props.width}`);
 
   return (
     <div
