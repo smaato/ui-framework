@@ -4,10 +4,6 @@ import React, {
 } from 'react';
 
 export {
-  default as ModalBody,
-} from './ModalBody.jsx';
-
-export {
   default as ModalConfirmationBody,
 } from './confirmation/ModalConfirmationBody.jsx';
 
