@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import Icon from '../icon/Icon.jsx';
 
 const IconDocument = props => {
-  const classes = classNames('glyphicons-file', props.classes);
+  const classes = classNames('icon--document', props.classes);
 
   const extendedProps = Object.assign({}, props, {
     classes,
