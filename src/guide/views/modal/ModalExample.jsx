@@ -69,10 +69,15 @@ export default class ModalExample extends Component {
   renderModalStack() {
     const modalStackSequence = [
       <Modal
+        key={0}
+        index={0}
+        stackCount={this.state.stackedModalCount}
+        onCloseTopModal={this.removeModalFromStack}
         header={(
           <ModalHeader
             title="1st Level Modal"
             onClose={this.removeModalFromStack}
+            closeTopModalLabel="Cancel and go back to 1st level"
           />
         )}
         body={(
@@ -83,14 +88,18 @@ export default class ModalExample extends Component {
             />
           </ModalBody>
         )}
-        key={0}
       />,
 
       <Modal
+        key={1}
+        index={1}
+        stackCount={this.state.stackedModalCount}
+        onCloseTopModal={this.removeModalFromStack}
         header={(
           <ModalHeader
             title="2nd Level Modal"
             onClose={this.removeModalFromStack}
+            closeTopModalLabel="Cancel and go back to 2nd level"
           />
         )}
         body={(
@@ -101,14 +110,18 @@ export default class ModalExample extends Component {
             />
           </ModalBody>
         )}
-        key={1}
       />,
 
       <Modal
+        key={2}
+        index={2}
+        stackCount={this.state.stackedModalCount}
+        onCloseTopModal={this.removeModalFromStack}
         header={(
           <ModalHeader
             title="3rd Level Modal"
             onClose={this.removeModalFromStack}
+            closeTopModalLabel="Cancel and go back to 3rd level"
           />
         )}
         body={(
@@ -119,10 +132,10 @@ export default class ModalExample extends Component {
             />
           </ModalBody>
         )}
-        key={2}
       />,
 
       <Modal
+        key={3}
         header={(
           <ModalHeader
             title="4th Level Modal"
@@ -134,7 +147,6 @@ export default class ModalExample extends Component {
             <p>Notice that the first level modal is no longer visible.</p>
           </ModalBody>
         )}
-        key={3}
       />,
     ];
 
