@@ -184,6 +184,7 @@ class LabelExample extends Component {
             <LabeledControl
               label="Name"
               layout={LabeledControl.LAYOUT.ONE_SIXTH}
+              withLabeledField
             >
               <LabeledField
                 label="First"

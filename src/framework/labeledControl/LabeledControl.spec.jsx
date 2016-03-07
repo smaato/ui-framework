@@ -37,8 +37,8 @@ describe('LabeledControl', () => {
       // This may be a React bug or a problem with react-test-kit.
       // it('applies the class for ONE_THIRD by default', () => {
       //   const testCase = TestCaseFactory.createFromFunction(LabeledControl);
-      //   expect(testCase.dom.getAttribute('class')
-      //     .indexOf('labeledControl--oneThird') !== -1).toBe(true);
+      //   expect(testCase.dom.getAttribute('class'))
+      //     .toContain('labeledControl--oneThird');
       // });
 
       it('applies the class for TWO_FIFTHS when specified', () => {
@@ -50,8 +50,8 @@ describe('LabeledControl', () => {
           LabeledControl,
           props
         );
-        expect(testCase.dom.getAttribute('class')
-          .indexOf('labeledControl--twoFifths') !== -1).toBe(true);
+        expect(testCase.dom.getAttribute('class'))
+          .toContain('labeledControl--twoFifths');
       });
 
       it('applies the class for ONE_THIRD when specified', () => {
@@ -63,8 +63,8 @@ describe('LabeledControl', () => {
           LabeledControl,
           props
         );
-        expect(testCase.dom.getAttribute('class')
-          .indexOf('labeledControl--oneThird') !== -1).toBe(true);
+        expect(testCase.dom.getAttribute('class'))
+          .toContain('labeledControl--oneThird');
       });
 
       it('applies the class for ONE_FOURTH when specified', () => {
@@ -76,8 +76,8 @@ describe('LabeledControl', () => {
           LabeledControl,
           props
         );
-        expect(testCase.dom.getAttribute('class')
-          .indexOf('labeledControl--oneFourth') !== -1).toBe(true);
+        expect(testCase.dom.getAttribute('class'))
+          .toContain('labeledControl--oneFourth');
       });
 
       it('applies the class for ONE_FIFTH when specified', () => {
@@ -89,8 +89,8 @@ describe('LabeledControl', () => {
           LabeledControl,
           props
         );
-        expect(testCase.dom.getAttribute('class')
-          .indexOf('labeledControl--oneFifth') !== -1).toBe(true);
+        expect(testCase.dom.getAttribute('class'))
+          .toContain('labeledControl--oneFifth');
       });
 
       it('applies the class for ONE_SIXTH when specified', () => {
@@ -102,8 +102,40 @@ describe('LabeledControl', () => {
           LabeledControl,
           props
         );
-        expect(testCase.dom.getAttribute('class')
-          .indexOf('labeledControl--oneSixth') !== -1).toBe(true);
+        expect(testCase.dom.getAttribute('class'))
+          .toContain('labeledControl--oneSixth');
+      });
+    });
+
+    describe('withLabeledField', () => {
+      const withLabeledFieldClass = 'labeledControl--withLabeledField';
+
+      it('adds the appropriate class when true', () => {
+        const props = {
+          withLabeledField: true,
+        };
+
+        const testCase = TestCaseFactory.createFromFunction(
+          LabeledControl,
+          props
+        );
+
+        expect(testCase.dom.getAttribute('class'))
+          .toContain(withLabeledFieldClass);
+      });
+
+      it('doesn\'t add the appropriate class when false', () => {
+        const props = {
+          withLabeledField: false,
+        };
+
+        const testCase = TestCaseFactory.createFromFunction(
+          LabeledControl,
+          props
+        );
+
+        expect(testCase.dom.getAttribute('class'))
+          .not.toContain(withLabeledFieldClass);
       });
     });
   });
