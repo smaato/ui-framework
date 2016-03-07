@@ -28,10 +28,6 @@ export default class ColumnLayoutExample extends Component {
       backgroundColor: '#f0f0f0',
     };
 
-    const spacing = {
-      marginLeft: '10px',
-    };
-
     const widths = [1, 2, 3, 4, 5, 6];
     const columns = widths.map(width => {
       const otherWidth = 12 - width;
@@ -81,14 +77,12 @@ export default class ColumnLayoutExample extends Component {
               </LabeledField>
             </Column>
             <Column width={3}>
-              <div style={spacing}>
-                <LabeledField label="Labeled text input with AddOnLabel">
-                  <AddOnControl>
-                    <TextInput isFullWidth />
-                    <AddOnLabel isRightSide>unit</AddOnLabel>
-                  </AddOnControl>
-                </LabeledField>
-              </div>
+              <LabeledField label="Labeled text input with AddOnLabel">
+                <AddOnControl>
+                  <TextInput isFullWidth />
+                  <AddOnLabel isRightSide>unit</AddOnLabel>
+                </AddOnControl>
+              </LabeledField>
             </Column>
           </ColumnLayout>
         </Example>
