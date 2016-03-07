@@ -74,6 +74,10 @@ export default class Modal extends Component {
     });
   }
 
+  isModalStacked(props = this.props) {
+    return props.index < props.stackCount - 1;
+  }
+
   isNextInStack(props = this.props) {
     return props.index === props.stackCount - 2;
   }
@@ -95,6 +99,7 @@ export default class Modal extends Component {
 
     const classes = classNames('modal', {
       'is-modal-hovered': this.state.isMouseOver,
+      'is-modal-stacked': this.isModalStacked(),
       'is-modal-next-in-stack': this.isNextInStack(),
       'is-modal-buried-in-stack': this.isBuriedInStack(),
     });

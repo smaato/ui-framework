@@ -13,7 +13,8 @@ $stackedModalFontSize: 12px;
    * 1. Move the header up so it's not hidden behind the top-most modal.
    */
   .is-modal-next-in-stack & {
-    margin-top: 8px; /* 1 */
+    margin-top: 7px; /* 1 */
+    border-bottom: 0;
 
     .modalHeader__title {
       font-size: $stackedModalFontSize;
