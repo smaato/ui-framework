@@ -4,6 +4,7 @@ import Icon from './Icon.jsx';
 import IconAsterisk from './IconAsterisk.jsx';
 import IconCheck from './IconCheck.jsx';
 import IconCog from './IconCog.jsx';
+import IconDocument from './IconDocument.jsx';
 import IconEllipsis from './IconEllipsis.jsx';
 import IconLink from './IconLink.jsx';
 import IconPaperclip from './IconPaperclip.jsx';
@@ -20,6 +21,9 @@ const icons = [{
 }, {
   name: 'IconCog',
   component: IconCog,
+}, {
+  name: 'IconDocument',
+  component: IconDocument,
 }, {
   name: 'IconEllipsis',
   component: IconEllipsis,

@@ -6,6 +6,12 @@
 
 $fieldPadding: 10px;
 
+@mixin fieldFocus() {
+  outline: none;
+  border-color: #2ba7e8;
+  box-shadow: inset 0 0 0 2px #2ba7e8;
+}
+
 @mixin field() {
   display: block;
   appearance: none;
@@ -15,9 +21,7 @@ $fieldPadding: 10px;
   font-weight: 300;
 
   &:focus {
-    outline: none;
-    border-color: #2ba7e8;
-    box-shadow: inset 0 0 0 2px #2ba7e8;
+    @include fieldFocus;
   }
 }
 

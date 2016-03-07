@@ -1,6 +1,27 @@
+
+@mixin addOnLabelStyle {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 400;
+  color: #52676f;
+  border: 1px solid #c8cfd5;
+  background-color: #f2f5f7;
+}
+
+/**
+ * 1. Fix a bug in IE that prevented the left and right element widths from
+ *    being respected by the input.
+ */
+@mixin addOnLabelDimension {
+  flex: 1 0 auto; /* 1 */
+}
+
+$addOnLabelPadding: 9px;
+
 /**
  * 1. Implicitly set these styles on inputs only, because they'll be overridden
- *    for the left and right elements, below. These styles fix a bug in IE, so
+ *    for the left and right elements. These styles fix a bug in IE, so
  *    that the input will contract to respect the left and right elements'
  *    widths.
  */
@@ -12,30 +33,3 @@
     flex: 0 1 auto; /* 1 */
   }
 }
-
-
-  /**
-   * 1. Fix a bug in IE that prevented the left and right element widths from
-   *    being respected by the input.
-   */
-  .addOnControl__left,
-  .addOnControl__right {
-    display: flex;
-    align-items: center;
-    padding: 9px;
-    font-size: 12px;
-    font-weight: 400;
-    color: #52676f;
-    border: 1px solid #c8cfd5;
-    background-color: #f2f5f7;
-    white-space: nowrap;
-    flex: 1 0 auto; /* 1 */
-  }
-
-  .addOnControl__left {
-    border-right: 0;
-  }
-
-  .addOnControl__right {
-    border-left: 0;
-  }
