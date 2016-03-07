@@ -8,8 +8,13 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
+  AddOnControl,
+  AddOnLabel,
   Column,
   ColumnLayout,
+  Label,
+  LabeledField,
+  TextInput,
 } from '../../../framework/framework';
 
 export default class ColumnLayoutExample extends Component {
@@ -21,6 +26,10 @@ export default class ColumnLayoutExample extends Component {
   render() {
     const backgroundColor = {
       backgroundColor: '#f0f0f0',
+    };
+
+    const spacing = {
+      marginLeft: '10px',
     };
 
     const widths = [1, 2, 3, 4, 5, 6];
@@ -57,6 +66,29 @@ export default class ColumnLayoutExample extends Component {
             </Column>
             <Column width={4}>
               <div style={backgroundColor}>4/12th</div>
+            </Column>
+          </ColumnLayout>
+        </Example>
+
+        <Example title="Form example">
+          <ColumnLayout>
+            <Column width={3}>
+              <Label>Label</Label>
+            </Column>
+            <Column width={6}>
+              <LabeledField label="Labeled text input">
+                <TextInput isFullWidth />
+              </LabeledField>
+            </Column>
+            <Column width={3}>
+              <div style={spacing}>
+                <LabeledField label="Labeled text input with AddOnLabel">
+                  <AddOnControl>
+                    <TextInput isFullWidth />
+                    <AddOnLabel isRightSide>unit</AddOnLabel>
+                  </AddOnControl>
+                </LabeledField>
+              </div>
             </Column>
           </ColumnLayout>
         </Example>
