@@ -10,13 +10,12 @@ describe('ColumnLayout', () => {
       it('are rendered', () => {
         const props = {
           children: [
-            <Column key={1} width={1}>columnContent</Column>,
+            <Column key={0} width={1}>columnContent</Column>,
           ],
         };
 
-        const testCase = TestCaseFactory
-          .createFromFunction(ColumnLayout, props);
-        expect(testCase.dom.children[0].textContent).toBe('columnContent');
+        const testCase = TestCaseFactory.create(ColumnLayout, props);
+        expect(testCase.first('.column--1').textContent).toBe('columnContent');
       });
     });
   });
