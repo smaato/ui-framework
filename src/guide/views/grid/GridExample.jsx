@@ -620,10 +620,10 @@ export default class GridExample extends Component {
       this.cellValueProviders.some(provider => {
         const cellValue = provider(row);
         if (cellValue === undefined || cellValue === null) {
-          return;
+          return false;
         }
         const normalizedCellValue = cellValue.toString().trim().toLowerCase();
-        return normalizedCellValue.indexOf(normalizedTerm) !== -1;  // eslint-disable-line consistent-return
+        return normalizedCellValue.indexOf(normalizedTerm) !== -1;
       })
     ));
   }

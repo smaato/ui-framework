@@ -127,7 +127,7 @@ export default class TitledViewExample extends Component {
 
   renderOrganizationSwitcher() {
     if (!this.state.isOrganizationSwitcherOpen) {
-      return;
+      return undefined;
     }
 
     const orgs = [{

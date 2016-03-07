@@ -20,7 +20,7 @@ import {
   AppHeaderDivider,
 } from '../../../framework/framework';
 
-class AppHeaderExample extends Component {
+export default class AppHeaderExample extends Component {
 
   constructor(props) {
     super(props);
@@ -155,5 +155,3 @@ class AppHeaderExample extends Component {
 AppHeaderExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default AppHeaderExample;
