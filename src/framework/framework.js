@@ -44,9 +44,8 @@ export { default as IconEllipsis } from './icon/IconEllipsis.jsx';
 export { default as IconLink } from './icon/IconLink.jsx';
 export { default as IconPaperclip } from './icon/IconPaperclip.jsx';
 
+export * from './kpi/Kpi.jsx';
 export { default as Kpi } from './kpi/Kpi.jsx';
-export { default as KpiNegative } from './kpi/KpiNegative.jsx';
-export { default as KpiPositive } from './kpi/KpiPositive.jsx';
 
 export * from './label/Label.jsx';
 export { default as Label } from './label/Label.jsx';

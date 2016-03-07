@@ -36,3 +36,11 @@ Kpi.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
 };
+
+export {
+  default as KpiPositive,
+} from './KpiPositive.jsx';
+
+export {
+  default as KpiNegative,
+} from './KpiNegative.jsx';
