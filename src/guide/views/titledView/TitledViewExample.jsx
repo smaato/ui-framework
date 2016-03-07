@@ -168,7 +168,7 @@ export default class TitledViewExample extends Component {
       />
     ));
 
-    return ( // eslint-disable-line consistent-return
+    return (
       <OrganizationSwitcher
         title="Switch buyer"
         searchPrompt="Search by Buyer Name or ID"
