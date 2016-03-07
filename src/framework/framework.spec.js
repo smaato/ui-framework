@@ -57,7 +57,6 @@ import {
   LabeledControl,
   LabeledField,
   Modal,
-  ModalBody,
   ModalConfirmationBody,
   ModalConfirmationFooter,
   ModalHeader,
@@ -253,9 +252,6 @@ const components = [{
 }, {
   name: 'Modal',
   component: Modal,
-}, {
-  name: 'ModalBody',
-  component: ModalBody,
 }, {
   name: 'ModalConfirmationBody',
   component: ModalConfirmationBody,

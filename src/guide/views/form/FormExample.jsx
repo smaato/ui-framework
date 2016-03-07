@@ -30,6 +30,7 @@ export default class FormExample extends Component {
         <Example>
           <Form
             data-id="data-id"
+            pageForm
             body={
               <VerticalLayout>
                 <LabeledControl
@@ -52,6 +53,7 @@ export default class FormExample extends Component {
         <Example title="Form with footer">
           <Form
             data-id="data-id"
+            pageForm
             body={(
               <VerticalLayout>
                 <LabeledControl

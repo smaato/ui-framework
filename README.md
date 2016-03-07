@@ -69,7 +69,6 @@ import {
   LabeledControl,
   LabeledField,
   Modal,
-  ModalBody,
   ModalConfirmationBody,
   ModalConfirmationFooter,
   ModalHeader,

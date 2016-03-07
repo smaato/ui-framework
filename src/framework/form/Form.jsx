@@ -2,14 +2,19 @@
 import React, {
   PropTypes,
 } from 'react';
+import classNames from 'classnames';
 
 export {
   default as FormFooter,
 } from './footer/FormFooter.jsx';
 
 const Form = props => {
-  let footer;
+  const classes = classNames('form', props.className, {
+    'form--page': props.pageForm,
+    'form--modal': !props.pageForm,
+  });
 
+  let footer;
   if (props.footer) {
     footer = (
       <div className="formSection formSection--footer">
@@ -21,7 +26,7 @@ const Form = props => {
   return (
     <div
       data-id={props.dataId}
-      className="form"
+      className={classes}
     >
       {props.body}
       {footer}
@@ -30,6 +35,7 @@ const Form = props => {
 };
 
 Form.propTypes = {
+  pageForm: PropTypes.bool,
   dataId: PropTypes.string,
   body: PropTypes.element.isRequired,
   footer: PropTypes.element,
