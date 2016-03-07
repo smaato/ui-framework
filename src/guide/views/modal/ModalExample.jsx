@@ -82,12 +82,19 @@ export default class ModalExample extends Component {
         )}
         body={(
           <ModalBody>
-            <CallOutButton
-              label="Open 2nd Level Modal"
-              onClick={this.addModalToStack}
-            />
+            Modal content.
           </ModalBody>
         )}
+        footer={
+          <FormFooter
+            right={
+              <CallOutButton
+                label="Open 2nd Level Modal"
+                onClick={this.addModalToStack}
+              />
+            }
+          />
+        }
       />,
 
       <Modal
@@ -104,12 +111,19 @@ export default class ModalExample extends Component {
         )}
         body={(
           <ModalBody>
-            <CallOutButton
-              label="Open 3rd Level Modal"
-              onClick={this.addModalToStack}
-            />
+            Modal content.
           </ModalBody>
         )}
+        footer={
+          <FormFooter
+            right={
+              <CallOutButton
+                label="Open 3rd Level Modal"
+                onClick={this.addModalToStack}
+              />
+            }
+          />
+        }
       />,
 
       <Modal
@@ -126,12 +140,19 @@ export default class ModalExample extends Component {
         )}
         body={(
           <ModalBody>
-            <CallOutButton
-              label="Open 4th Level Modal"
-              onClick={this.addModalToStack}
-            />
+            Modal content.
           </ModalBody>
         )}
+        footer={
+          <FormFooter
+            right={
+              <CallOutButton
+                label="Open 4th Level Modal"
+                onClick={this.addModalToStack}
+              />
+            }
+          />
+        }
       />,
 
       <Modal
@@ -147,6 +168,13 @@ export default class ModalExample extends Component {
             <p>Notice that the first level modal is no longer visible.</p>
           </ModalBody>
         )}
+        footer={
+          <FormFooter
+            right={
+              <div />
+            }
+          />
+        }
       />,
     ];
 
