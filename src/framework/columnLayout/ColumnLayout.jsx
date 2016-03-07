@@ -3,8 +3,6 @@ import React, {
   PropTypes,
 } from 'react';
 
-import Column from './Column.jsx';
-
 export {
   default as Column,
 } from './Column.jsx';
@@ -20,7 +18,7 @@ const ColumnLayout = props => {
 };
 
 ColumnLayout.propTypes = {
-  children: PropTypes.arrayOf(Column).isRequired,
+  children: PropTypes.any,
 };
 
 export default ColumnLayout;
