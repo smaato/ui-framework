@@ -1,11 +1,10 @@
 
 import React, {
   Component,
-  PropTypes,
 } from 'react';
 import Kpi from './Kpi.jsx';
 
-class KpiPositive extends Component {
+export default class KpiPositive extends Component {
 
   constructor(props) {
     super(props);
@@ -23,9 +22,4 @@ class KpiPositive extends Component {
   }
 }
 
-KpiPositive.propTypes = {
-  children: PropTypes.string,
-  title: PropTypes.string,
-};
-
-export default KpiPositive;
+KpiPositive.propTypes = Object.assign({}, Kpi.propTypes);

@@ -12,7 +12,7 @@ import {
   TextInput,
 } from '../../../framework/framework';
 
-class TextInputExample extends Component {
+export default class TextInputExample extends Component {
 
   constructor(props) {
     super(props);
@@ -55,5 +55,3 @@ class TextInputExample extends Component {
 TextInputExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default TextInputExample;

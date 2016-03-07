@@ -14,7 +14,7 @@ import {
   SummaryControlIconPaperclip,
 } from '../../../framework/framework';
 
-class SummaryControlExample extends Component {
+export default class SummaryControlExample extends Component {
 
   constructor(props) {
     super(props);
@@ -53,5 +53,3 @@ class SummaryControlExample extends Component {
 SummaryControlExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default SummaryControlExample;

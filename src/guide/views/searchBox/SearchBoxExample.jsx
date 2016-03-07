@@ -12,7 +12,7 @@ import {
   SearchBox,
 } from '../../../framework/framework';
 
-class SearchBoxExample extends Component {
+export default class SearchBoxExample extends Component {
 
   constructor(props) {
     super(props);
@@ -100,5 +100,3 @@ class SearchBoxExample extends Component {
 SearchBoxExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default SearchBoxExample;

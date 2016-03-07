@@ -16,7 +16,7 @@ import {
   ViewHeaderNav,
 } from '../../../framework/framework';
 
-class ViewHeaderExample extends Component {
+export default class ViewHeaderExample extends Component {
 
   constructor(props) {
     super(props);
@@ -117,5 +117,3 @@ class ViewHeaderExample extends Component {
 ViewHeaderExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default ViewHeaderExample;

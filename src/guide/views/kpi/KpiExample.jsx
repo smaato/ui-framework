@@ -15,7 +15,7 @@ import {
   KpiNegative,
 } from '../../../framework/framework';
 
-class KpiExample extends Component {
+export default class KpiExample extends Component {
 
   constructor(props) {
     super(props);
@@ -56,5 +56,3 @@ class KpiExample extends Component {
 KpiExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default KpiExample;

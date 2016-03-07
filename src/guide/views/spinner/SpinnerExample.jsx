@@ -10,7 +10,7 @@ import Page, {
 
 import { Spinner } from '../../../framework/framework';
 
-class SpinnerExample extends Component {
+export default class SpinnerExample extends Component {
 
   constructor(props) {
     super(props);
@@ -33,5 +33,3 @@ class SpinnerExample extends Component {
 SpinnerExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default SpinnerExample;

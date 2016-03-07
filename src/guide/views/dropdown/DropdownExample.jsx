@@ -12,7 +12,7 @@ import {
   Dropdown,
 } from '../../../framework/framework';
 
-class DropdownExample extends Component {
+export default class DropdownExample extends Component {
 
   constructor(props) {
     super(props);
@@ -84,5 +84,3 @@ class DropdownExample extends Component {
 DropdownExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default DropdownExample;

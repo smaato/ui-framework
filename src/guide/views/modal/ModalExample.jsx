@@ -24,7 +24,7 @@ import {
   FormFooter,
 } from '../../../framework/framework';
 
-class ModalExample extends Component {
+export default class ModalExample extends Component {
 
   constructor(props) {
     super(props);
@@ -266,5 +266,3 @@ class ModalExample extends Component {
 ModalExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default ModalExample;

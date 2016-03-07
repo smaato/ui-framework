@@ -14,7 +14,7 @@ import {
   SubLabel,
 } from '../../../framework/framework';
 
-class LabelExample extends Component {
+export default class LabelExample extends Component {
 
   constructor(props) {
     super(props);
@@ -47,5 +47,3 @@ class LabelExample extends Component {
 LabelExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default LabelExample;

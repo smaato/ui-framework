@@ -19,7 +19,7 @@ import {
   VerticalLayout,
 } from '../../../framework/framework';
 
-class FormExample extends Component {
+export default class FormExample extends Component {
 
   constructor(props) {
     super(props);
@@ -102,5 +102,3 @@ class FormExample extends Component {
 FormExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default FormExample;

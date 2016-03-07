@@ -1,7 +1,5 @@
 
-import React, {
-  PropTypes,
-} from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 import Button from './Button.jsx';
@@ -18,12 +16,6 @@ const GroupedButton = props => {
   );
 };
 
-GroupedButton.propTypes = Object.assign(Button.propTypes, {
-  classes: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.string,
-    PropTypes.object,
-  ]),
-});
+GroupedButton.propTypes = Object.assign({}, Button.propTypes);
 
 export default GroupedButton;

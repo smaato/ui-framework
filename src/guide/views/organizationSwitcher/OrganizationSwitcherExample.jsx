@@ -13,7 +13,7 @@ import {
   OrganizationSwitcherItem,
 } from '../../../framework/framework';
 
-class OrganizationSwitcherExample extends Component {
+export default class OrganizationSwitcherExample extends Component {
 
   constructor(props) {
     super(props);
@@ -130,5 +130,3 @@ class OrganizationSwitcherExample extends Component {
 OrganizationSwitcherExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default OrganizationSwitcherExample;

@@ -14,7 +14,7 @@ import {
   GroupedButton,
 } from '../../../framework/framework';
 
-class ButtonGroupExample extends Component {
+export default class ButtonGroupExample extends Component {
 
   constructor(props) {
     super(props);
@@ -70,5 +70,3 @@ class ButtonGroupExample extends Component {
 ButtonGroupExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default ButtonGroupExample;

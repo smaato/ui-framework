@@ -4,7 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-class Text extends Component {
+export default class Text extends Component {
 
   constructor(props) {
     super(props);
@@ -27,5 +27,3 @@ Text.propTypes = {
     PropTypes.string,
   ]).isRequired,
 };
-
-export default Text;

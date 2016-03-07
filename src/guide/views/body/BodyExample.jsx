@@ -14,7 +14,7 @@ import {
   BodyPanelItem,
 } from '../../../framework/framework';
 
-class BodyExample extends Component {
+export default class BodyExample extends Component {
 
   constructor(props) {
     super(props);
@@ -52,5 +52,3 @@ class BodyExample extends Component {
 BodyExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default BodyExample;

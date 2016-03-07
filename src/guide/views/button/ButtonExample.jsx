@@ -17,7 +17,7 @@ import {
   PrimaryButton,
 } from '../../../framework/framework';
 
-class ButtonExample extends Component {
+export default class ButtonExample extends Component {
 
   constructor(props) {
     super(props);
@@ -93,5 +93,3 @@ class ButtonExample extends Component {
 ButtonExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default ButtonExample;

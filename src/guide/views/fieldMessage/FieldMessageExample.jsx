@@ -16,7 +16,7 @@ import {
   TextInput,
 } from '../../../framework/framework';
 
-class FieldMessageExample extends Component {
+export default class FieldMessageExample extends Component {
 
   constructor(props) {
     super(props);
@@ -112,5 +112,3 @@ class FieldMessageExample extends Component {
 FieldMessageExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default FieldMessageExample;

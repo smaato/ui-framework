@@ -10,7 +10,7 @@ import Page, {
 
 import { CheckBox } from '../../../framework/framework';
 
-class CheckBoxExample extends Component {
+export default class CheckBoxExample extends Component {
 
   constructor(props) {
     super(props);
@@ -31,5 +31,3 @@ class CheckBoxExample extends Component {
 CheckBoxExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default CheckBoxExample;

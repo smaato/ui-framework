@@ -4,7 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-class Title extends Component {
+export default class Title extends Component {
 
   constructor(props) {
     super(props);
@@ -23,5 +23,3 @@ class Title extends Component {
 Title.propTypes = {
   children: PropTypes.string.isRequired,
 };
-
-export default Title;

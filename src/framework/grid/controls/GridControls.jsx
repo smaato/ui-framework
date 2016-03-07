@@ -4,7 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-class GridControls extends Component {
+export default class GridControls extends Component {
 
   constructor(props) {
     super(props);
@@ -31,5 +31,3 @@ GridControls.propTypes = {
   isSelected: PropTypes.bool,
   isSortDescending: PropTypes.bool,
 };
-
-export default GridControls;

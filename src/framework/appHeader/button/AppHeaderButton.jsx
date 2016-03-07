@@ -18,7 +18,7 @@ const AppHeaderButton = props => {
   );
 };
 
-AppHeaderButton.propTypes = Object.assign(Button.propTypes, {
+AppHeaderButton.propTypes = Object.assign({}, Button.propTypes, {
   classes: PropTypes.string,
 });
 

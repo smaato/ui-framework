@@ -64,7 +64,7 @@ const defaultState = {
   conditionCheckers: [],
 };
 
-class GridExample extends Component {
+export default class GridExample extends Component {
 
   constructor(props) {
     super(props);
@@ -812,5 +812,3 @@ class GridExample extends Component {
 GridExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default GridExample;

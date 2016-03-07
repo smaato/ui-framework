@@ -13,7 +13,7 @@ import {
   TitleBar,
 } from '../../../framework/framework';
 
-class TitleBarExample extends Component {
+export default class TitleBarExample extends Component {
 
   constructor(props) {
     super(props);
@@ -48,5 +48,3 @@ class TitleBarExample extends Component {
 TitleBarExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default TitleBarExample;

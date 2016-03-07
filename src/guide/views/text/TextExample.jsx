@@ -13,7 +13,7 @@ import {
   Text,
 } from '../../../framework/framework';
 
-class TextExample extends Component {
+export default class TextExample extends Component {
 
   constructor(props) {
     super(props);
@@ -45,5 +45,3 @@ class TextExample extends Component {
 TextExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default TextExample;

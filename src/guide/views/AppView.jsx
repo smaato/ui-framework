@@ -17,7 +17,7 @@ import SourceCodeViewer
 import Route from '../services/route/Route';
 
 // Define the component class and provide it as an export.
-class AppView extends Component {
+export default class AppView extends Component {
 
   constructor(props) {
     super(props);
@@ -88,5 +88,3 @@ AppView.propTypes = {
   ]),
   routerState: PropTypes.object.isRequired,
 };
-
-export default AppView;

@@ -19,7 +19,7 @@ import {
   IconPaperclip,
 } from '../../../framework/framework';
 
-class IconExample extends Component {
+export default class IconExample extends Component {
 
   constructor(props) {
     super(props);
@@ -695,5 +695,3 @@ class IconExample extends Component {
 IconExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default IconExample;

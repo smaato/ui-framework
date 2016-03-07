@@ -15,7 +15,7 @@ import {
   TextInput,
 } from '../../../framework/framework';
 
-class LabeledFieldExample extends Component {
+export default class LabeledFieldExample extends Component {
 
   constructor(props) {
     super(props);
@@ -54,5 +54,3 @@ class LabeledFieldExample extends Component {
 LabeledFieldExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default LabeledFieldExample;

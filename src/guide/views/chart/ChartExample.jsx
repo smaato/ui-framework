@@ -15,7 +15,7 @@ import { Chart } from '../../../framework/framework';
 
 import chartExampleData from './chartExampleData.js';
 
-class ChartExample extends Component {
+export default class ChartExample extends Component {
 
   constructor(props) {
     super(props);
@@ -148,5 +148,3 @@ class ChartExample extends Component {
 ChartExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default ChartExample;

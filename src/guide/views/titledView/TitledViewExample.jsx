@@ -28,7 +28,7 @@ import {
   TitleBar,
 } from '../../../framework/framework';
 
-class TitledViewExample extends Component {
+export default class TitledViewExample extends Component {
 
   constructor(props) {
     super(props);
@@ -274,5 +274,3 @@ class TitledViewExample extends Component {
 TitledViewExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default TitledViewExample;

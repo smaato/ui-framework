@@ -15,7 +15,7 @@ import {
   TextInput,
 } from '../../../framework/framework';
 
-class AddOnControlExample extends Component {
+export default class AddOnControlExample extends Component {
 
   constructor(props) {
     super(props);
@@ -101,5 +101,3 @@ class AddOnControlExample extends Component {
 AddOnControlExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default AddOnControlExample;

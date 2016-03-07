@@ -12,7 +12,7 @@ import {
   TextArea,
 } from '../../../framework/framework';
 
-class TextAreaExample extends Component {
+export default class TextAreaExample extends Component {
 
   constructor(props) {
     super(props);
@@ -55,5 +55,3 @@ class TextAreaExample extends Component {
 TextAreaExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default TextAreaExample;

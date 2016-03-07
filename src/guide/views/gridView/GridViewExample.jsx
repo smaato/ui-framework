@@ -11,7 +11,7 @@ import {
   Entity,
 } from '../../../framework/services.js';
 
-class GridViewExample extends Component {
+export default class GridViewExample extends Component {
 
   constructor(props) {
     super(props);
@@ -668,5 +668,3 @@ class GridViewExample extends Component {
 GridViewExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default GridViewExample;
