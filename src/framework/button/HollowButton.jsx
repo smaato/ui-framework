@@ -16,6 +16,6 @@ const HollowButton = props => {
   );
 };
 
-HollowButton.propTypes = Button.propTypes;
+HollowButton.propTypes = Object.assign({}, Button.propTypes);
 
 export default HollowButton;

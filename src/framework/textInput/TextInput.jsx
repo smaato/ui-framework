@@ -23,6 +23,11 @@ const TextInput = props => {
 };
 
 TextInput.propTypes = {
+  className: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+    PropTypes.string,
+  ]),
   dataId: PropTypes.string,
   isError: PropTypes.bool,
   isFullWidth: PropTypes.bool,

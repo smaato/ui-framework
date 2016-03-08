@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -695,3 +696,7 @@ export default class IconExample extends Component {
   }
 
 }
+
+IconExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

@@ -16,6 +16,6 @@ const IconDocument = props => {
   );
 };
 
-IconDocument.propTypes = Icon.propTypes;
+IconDocument.propTypes = Object.assign({}, Icon.propTypes);
 
 export default IconDocument;

@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -97,3 +98,7 @@ export default class FormExample extends Component {
   }
 
 }
+
+FormExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

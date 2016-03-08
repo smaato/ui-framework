@@ -3,13 +3,11 @@ import React, {
   PropTypes,
 } from 'react';
 
-const ModalConfirmationFooter = props => {
-  return (
-    <div className="modalConfirmationFooter">
-      {props.children}
-    </div>
-  );
-};
+const ModalConfirmationFooter = props => (
+  <div className="modalConfirmationFooter">
+    {props.children}
+  </div>
+);
 
 ModalConfirmationFooter.propTypes = {
   children: PropTypes.oneOfType([

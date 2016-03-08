@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -28,3 +29,7 @@ export default class SpinnerExample extends Component {
   }
 
 }
+
+SpinnerExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

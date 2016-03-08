@@ -3,13 +3,11 @@ import React from 'react';
 
 import BaseDropdownOption from '../../baseDropdown/BaseDropdownOption.jsx';
 
-const AddOnDropdownOption = props => {
-  return (
-    <BaseDropdownOption
-      {...props}
-    />
-  );
-};
+const AddOnDropdownOption = props => (
+  <BaseDropdownOption
+    {...props}
+  />
+);
 
 AddOnDropdownOption.propTypes = BaseDropdownOption.propTypes;
 

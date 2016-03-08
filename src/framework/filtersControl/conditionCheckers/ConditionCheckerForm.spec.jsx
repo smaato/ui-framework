@@ -14,8 +14,8 @@ describe('ConditionCheckerForm', () => {
         const props = {
           filterOption: new FilterOption({ name: 'testFilterOption' }),
           comparisonType: '',
-          onAddConditionChecker: () => {},
-          onCancelConditionChecker: () => {},
+          onAddConditionChecker: () => undefined,
+          onCancelConditionChecker: () => undefined,
         };
 
         const testCase =
@@ -31,8 +31,8 @@ describe('ConditionCheckerForm', () => {
         const props = {
           filterOption: new FilterOption({}),
           comparisonType: 'testComparisonType',
-          onAddConditionChecker: () => {},
-          onCancelConditionChecker: () => {},
+          onAddConditionChecker: () => undefined,
+          onCancelConditionChecker: () => undefined,
         };
 
         const testCase =
@@ -55,7 +55,7 @@ describe('ConditionCheckerForm', () => {
             filterOption: new FilterOption({}),
             comparisonType: 'testComparisonType',
             onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
-            onCancelConditionChecker: () => {},
+            onCancelConditionChecker: () => undefined,
           };
 
           const testCase =
@@ -74,7 +74,7 @@ describe('ConditionCheckerForm', () => {
             filterOption: new FilterOption({}),
             comparisonType: 'testComparisonType',
             onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
-            onCancelConditionChecker: () => {},
+            onCancelConditionChecker: () => undefined,
           };
 
           const testCase =
@@ -93,7 +93,7 @@ describe('ConditionCheckerForm', () => {
           filterOption: new FilterOption({}),
           comparisonType: 'testComparisonType',
           onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
-          onCancelConditionChecker: () => {},
+          onCancelConditionChecker: () => undefined,
         };
 
         const testCase =
@@ -114,7 +114,7 @@ describe('ConditionCheckerForm', () => {
           filterOption: new FilterOption({}),
           comparisonType: 'testComparisonType',
           onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
-          onCancelConditionChecker: () => {},
+          onCancelConditionChecker: () => undefined,
         };
 
         const testCase =
@@ -134,7 +134,7 @@ describe('ConditionCheckerForm', () => {
             filterOption: new FilterOption({}),
             comparisonType: 'testComparisonType',
             onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
-            onCancelConditionChecker: () => {},
+            onCancelConditionChecker: () => undefined,
           };
 
           const testCase =
@@ -153,7 +153,7 @@ describe('ConditionCheckerForm', () => {
           filterOption: new FilterOption({}),
           comparisonType: 'testComparisonType',
           onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
-          onCancelConditionChecker: () => {},
+          onCancelConditionChecker: () => undefined,
         };
 
         const testCase =
@@ -184,7 +184,7 @@ describe('ConditionCheckerForm', () => {
         const props = {
           filterOption: new FilterOption({}),
           comparisonType: '',
-          onAddConditionChecker: () => {},
+          onAddConditionChecker: () => undefined,
           onCancelConditionChecker: jasmine.createSpy(
             'onCancelConditionChecker'
           ),

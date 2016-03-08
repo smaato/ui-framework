@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -228,10 +229,12 @@ export default class ModalExample extends Component {
                 <FormFooter
                   right={[
                     <HollowButton
+                      key="modal_overlay_footer_right_1"
                       label="Cancel"
                       onClick={this.onCloseModal}
                     />,
                     <PrimaryButton
+                      key="modal_overlay_footer_right_2"
                       label="Submit"
                     />,
                   ]}
@@ -259,3 +262,7 @@ export default class ModalExample extends Component {
   }
 
 }
+
+ModalExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

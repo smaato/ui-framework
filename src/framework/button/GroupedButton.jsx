@@ -16,6 +16,6 @@ const GroupedButton = props => {
   );
 };
 
-GroupedButton.propTypes = Button.propTypes;
+GroupedButton.propTypes = Object.assign({}, Button.propTypes);
 
 export default GroupedButton;

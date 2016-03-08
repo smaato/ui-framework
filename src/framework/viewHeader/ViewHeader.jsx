@@ -7,16 +7,14 @@ export {
   default as ViewHeaderNav,
 } from './ViewHeaderNav.jsx';
 
-const ViewHeader = props => {
-  return (
-    <div className="viewHeader">
-      <div className="viewHeader__liner">
-        {props.left}
-        {props.right}
-      </div>
+const ViewHeader = props => (
+  <div className="viewHeader">
+    <div className="viewHeader__liner">
+      {props.left}
+      {props.right}
     </div>
-  );
-};
+  </div>
+);
 
 ViewHeader.propTypes = {
   left: PropTypes.element,

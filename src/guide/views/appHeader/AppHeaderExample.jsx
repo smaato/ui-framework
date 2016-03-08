@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -150,3 +151,7 @@ export default class AppHeaderExample extends Component {
   }
 
 }
+
+AppHeaderExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

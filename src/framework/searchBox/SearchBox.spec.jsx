@@ -55,7 +55,7 @@ describe('SearchBox', () => {
     describe('placeholder', () => {
       it('is applied to input element', () => {
         const props = {
-          onSearch: () => {},
+          onSearch: () => undefined,
           placeholder: 'Placeholder text',
         };
 
@@ -68,7 +68,7 @@ describe('SearchBox', () => {
     describe('isFullWidth', () => {
       it('applies the appropriate class to the input element', () => {
         const props = {
-          onSearch: () => {},
+          onSearch: () => undefined,
           isFullWidth: true,
         };
 

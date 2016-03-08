@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -46,13 +47,10 @@ export default class DropdownExample extends Component {
       name: 'Lemon',
     }];
 
-    this.dropdownLabelProvider = option => {
-      return option ? option.name : 'Click me';
-    };
+    this.dropdownLabelProvider = option => option ? option.name : 'Click me';
 
-    this.dropdownOptionLabelProvider = option => {
-      return option ? option.name : undefined;
-    };
+    this.dropdownOptionLabelProvider =
+      option => option ? option.name : undefined;
 
     this.onSelectDropdownOption = this.onSelectDropdownOption.bind(this);
   }
@@ -82,3 +80,7 @@ export default class DropdownExample extends Component {
   }
 
 }
+
+DropdownExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

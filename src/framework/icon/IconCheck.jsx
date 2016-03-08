@@ -16,6 +16,6 @@ const IconCheck = props => {
   );
 };
 
-IconCheck.propTypes = Icon.propTypes;
+IconCheck.propTypes = Object.assign({}, Icon.propTypes);
 
 export default IconCheck;

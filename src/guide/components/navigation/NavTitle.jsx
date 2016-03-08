@@ -1,12 +1,18 @@
 
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 
-export default (props) => {
-  return (
-    <div
-      className="examplesNavMenuTitle"
-    >
-      {props.children}
-    </div>
-  );
+const NavTitle = (props) => (
+  <div
+    className="examplesNavMenuTitle"
+  >
+    {props.children}
+  </div>
+);
+
+NavTitle.propTypes = {
+  children: PropTypes.string.isRequired,
 };
+
+export default NavTitle;

@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -65,3 +66,7 @@ export default class ButtonGroupExample extends Component {
   }
 
 }
+
+ButtonGroupExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

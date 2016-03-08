@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -48,3 +49,7 @@ export default class SummaryControlExample extends Component {
   }
 
 }
+
+SummaryControlExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

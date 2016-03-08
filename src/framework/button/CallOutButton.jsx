@@ -16,6 +16,6 @@ const CallOutButton = props => {
   );
 };
 
-CallOutButton.propTypes = Button.propTypes;
+CallOutButton.propTypes = Object.assign({}, Button.propTypes);
 
 export default CallOutButton;

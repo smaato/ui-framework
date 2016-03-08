@@ -24,6 +24,11 @@ const Label = props => {
 
 Label.propTypes = {
   children: PropTypes.string.isRequired,
+  className: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+    PropTypes.string,
+  ]),
   htmlFor: PropTypes.string,
 };
 

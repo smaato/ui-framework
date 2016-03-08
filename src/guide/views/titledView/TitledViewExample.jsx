@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page from '../../components/page/Page.jsx';
@@ -126,7 +127,7 @@ export default class TitledViewExample extends Component {
 
   renderOrganizationSwitcher() {
     if (!this.state.isOrganizationSwitcherOpen) {
-      return;
+      return undefined;
     }
 
     const orgs = [{
@@ -158,18 +159,16 @@ export default class TitledViewExample extends Component {
       name: 'Vitality',
     }];
 
-    const organizationList = orgs.map((item, index) => {
-      return (
-        <OrganizationSwitcherItem
-          key={index}
-          name={item.name}
-          id={item.id.toString()}
-          onSelect={this.selectOrganization.bind(this, item)} // eslint-disable-line react/jsx-no-bind
-        />
-      );
-    });
+    const organizationList = orgs.map((item, index) => (
+      <OrganizationSwitcherItem
+        key={index}
+        name={item.name}
+        id={item.id.toString()}
+        onSelect={this.selectOrganization.bind(this, item)} // eslint-disable-line react/jsx-no-bind
+      />
+    ));
 
-    return ( // eslint-disable-line consistent-return
+    return (
       <OrganizationSwitcher
         title="Switch buyer"
         searchPrompt="Search by Buyer Name or ID"
@@ -271,3 +270,7 @@ export default class TitledViewExample extends Component {
   }
 
 }
+
+TitledViewExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

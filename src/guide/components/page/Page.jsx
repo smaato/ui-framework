@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 import classNames from 'classnames';
 
@@ -38,3 +39,12 @@ export default class Page extends Component {
   }
 
 }
+
+Page.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element,
+  ]),
+  isFullScreen: PropTypes.bool,
+  title: PropTypes.string,
+};

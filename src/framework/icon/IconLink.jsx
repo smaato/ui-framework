@@ -16,6 +16,6 @@ const IconLink = props => {
   );
 };
 
-IconLink.propTypes = Icon.propTypes;
+IconLink.propTypes = Object.assign({}, Icon.propTypes);
 
 export default IconLink;
