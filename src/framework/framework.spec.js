@@ -56,6 +56,9 @@ import {
   Label,
   LabeledControl,
   LabeledField,
+  Link,
+  Menu,
+  MenuItem,
   Modal,
   ModalBody,
   ModalConfirmationBody,
@@ -139,6 +142,12 @@ const components = [{
 }, {
   name: 'CallOutButton',
   component: CallOutButton,
+}, {
+  name: 'Menu',
+  component: Menu,
+}, {
+  name: 'MenuItem',
+  component: MenuItem,
 }, {
   name: 'Chart',
   component: Chart,
@@ -250,6 +259,9 @@ const components = [{
 }, {
   name: 'LabeledField',
   component: LabeledField,
+}, {
+  name: 'Link',
+  component: Link,
 }, {
   name: 'Modal',
   component: Modal,

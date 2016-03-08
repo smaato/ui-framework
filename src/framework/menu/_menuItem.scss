@@ -1,0 +1,41 @@
+
+.menuItem {
+  background-color: #f6fafc;
+  color: #526770;
+  font-size: 13px;
+  line-height: $lineHeight;
+  font-weight: 300;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & + & {
+    border-top: 1px solid #d4d8db;
+  }
+}
+
+  /**
+   * 1. Align items horizontally to the right.
+   * 2. All direct children of the right section will have space on the
+   *    left side.
+   */
+  .menuItem__actions {
+    display: flex;
+    justify-content: flex-end; /* 1 */
+    > * {
+      margin-left: 10px; /* 2 */
+    }
+  }
+
+.menuItem--clickable {
+  cursor: pointer;
+
+  &.is-menu-item-selected {
+    cursor: default;
+
+    .menuItem__label {
+      font-weight: 700;
+    }
+  }
+}
