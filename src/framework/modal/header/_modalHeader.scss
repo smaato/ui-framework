@@ -8,6 +8,11 @@ $stackedModalFontSize: 12px;
   padding-bottom: 10px;
   border-bottom: 1px dashed #cbd3d7;
   margin-bottom: 10px;
+  color: #526770;
+
+  .is-modal-stacked & {
+    color: rgba(#526770, 0.8);
+  }
 
   /**
    * 1. Move the header up so it's not hidden behind the top-most modal.
@@ -22,6 +27,12 @@ $stackedModalFontSize: 12px;
 
     .modalHeader__closeButton {
       display: none;
+    }
+  }
+
+  .is-modal-next-in-stack.is-modal-hovered & {
+    .modalHeader__closeTopModalLabel {
+      display: block;
     }
   }
 
@@ -49,10 +60,6 @@ $stackedModalFontSize: 12px;
     top: 0;
     right: 0;
     font-size: $stackedModalFontSize;
-
-    .is-modal-next-in-stack.is-modal-hovered & {
-      display: block;
-    }
   }
 
   .modalHeader__closeButton {
