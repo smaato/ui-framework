@@ -70,60 +70,94 @@ export default class ModalExample extends Component {
   renderModalStack() {
     const modalStackSequence = [
       <Modal
+        key={0}
+        index={0}
+        stackCount={this.state.stackedModalCount}
+        onCloseTopModal={this.removeModalFromStack}
         header={(
           <ModalHeader
             title="1st Level Modal"
             onClose={this.removeModalFromStack}
+            closeTopModalLabel="Cancel and go back to 1st level"
           />
         )}
         body={(
           <ModalBody>
-            <CallOutButton
-              label="Open 2nd Level Modal"
-              onClick={this.addModalToStack}
-            />
+            Modal content.
           </ModalBody>
         )}
-        key={0}
+        footer={
+          <FormFooter
+            right={
+              <CallOutButton
+                label="Open 2nd Level Modal"
+                onClick={this.addModalToStack}
+              />
+            }
+          />
+        }
       />,
 
       <Modal
+        key={1}
+        index={1}
+        stackCount={this.state.stackedModalCount}
+        onCloseTopModal={this.removeModalFromStack}
         header={(
           <ModalHeader
             title="2nd Level Modal"
             onClose={this.removeModalFromStack}
+            closeTopModalLabel="Cancel and go back to 2nd level"
           />
         )}
         body={(
           <ModalBody>
-            <CallOutButton
-              label="Open 3rd Level Modal"
-              onClick={this.addModalToStack}
-            />
+            Modal content.
           </ModalBody>
         )}
-        key={1}
+        footer={
+          <FormFooter
+            right={
+              <CallOutButton
+                label="Open 3rd Level Modal"
+                onClick={this.addModalToStack}
+              />
+            }
+          />
+        }
       />,
 
       <Modal
+        key={2}
+        index={2}
+        stackCount={this.state.stackedModalCount}
+        onCloseTopModal={this.removeModalFromStack}
         header={(
           <ModalHeader
             title="3rd Level Modal"
             onClose={this.removeModalFromStack}
+            closeTopModalLabel="Cancel and go back to 3rd level"
           />
         )}
         body={(
           <ModalBody>
-            <CallOutButton
-              label="Open 4th Level Modal"
-              onClick={this.addModalToStack}
-            />
+            Modal content.
           </ModalBody>
         )}
-        key={2}
+        footer={
+          <FormFooter
+            right={
+              <CallOutButton
+                label="Open 4th Level Modal"
+                onClick={this.addModalToStack}
+              />
+            }
+          />
+        }
       />,
 
       <Modal
+        key={3}
         header={(
           <ModalHeader
             title="4th Level Modal"
@@ -135,7 +169,13 @@ export default class ModalExample extends Component {
             <p>Notice that the first level modal is no longer visible.</p>
           </ModalBody>
         )}
-        key={3}
+        footer={
+          <FormFooter
+            right={
+              <div />
+            }
+          />
+        }
       />,
     ];
 
