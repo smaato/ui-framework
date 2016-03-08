@@ -60,6 +60,7 @@ import {
   IconAsterisk,
   IconCheck,
   IconCog,
+  IconDocument,
   IconEllipsis,
   Kpi,
   KpiNegative,

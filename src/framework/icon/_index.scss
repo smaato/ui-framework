@@ -2,6 +2,9 @@
 /**
  * 1. Align icon content within bounds of element.
  * 2. Use inherited font-size to adjust the size of this component.
+ * 3. Because we're going to use SVG background-images instead of an icon font,
+ *    we can't use `color` to adjust the icon color. Instead, all icons will
+ *    be a semi-transparent black.
  */
 .icon {
   display: inline-flex; /* 1 */
@@ -9,8 +12,54 @@
   justify-content: center; /* 1 */
   width: 1em; /* 2 */
   height: 1em; /* 2 */
+  color: black;
+  opacity: 0.6;
 }
 
 .icon--clickable {
   cursor: pointer;
+}
+
+.icon--document {
+  background-position: -2px -2px;
+  background-size: 19px;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml;base64,
+    PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiB
+    BZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW
+    9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RUR
+    CBTVkcgMS4xIEJhc2ljLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEv
+    RFREL3N2ZzExLWJhc2ljLmR0ZCIgWw0KCTwhRU5USVRZIG5zX2V4dGVuZCAiaHR0cDovL25zLmF
+    kb2JlLmNvbS9FeHRlbnNpYmlsaXR5LzEuMC8iPg0KCTwhRU5USVRZIG5zX2FpICJodHRwOi8vbn
+    MuYWRvYmUuY29tL0Fkb2JlSWxsdXN0cmF0b3IvMTAuMC8iPg0KCTwhRU5USVRZIG5zX2dyYXBoc
+    yAiaHR0cDovL25zLmFkb2JlLmNvbS9HcmFwaHMvMS4wLyI+DQoJPCFFTlRJVFkgbnNfdmFycyAi
+    aHR0cDovL25zLmFkb2JlLmNvbS9WYXJpYWJsZXMvMS4wLyI+DQoJPCFFTlRJVFkgbnNfaW1yZXA
+    gImh0dHA6Ly9ucy5hZG9iZS5jb20vSW1hZ2VSZXBsYWNlbWVudC8xLjAvIj4NCgk8IUVOVElUWS
+    Buc19zZncgImh0dHA6Ly9ucy5hZG9iZS5jb20vU2F2ZUZvcldlYi8xLjAvIj4NCgk8IUVOVElUW
+    SBuc19jdXN0b20gImh0dHA6Ly9ucy5hZG9iZS5jb20vR2VuZXJpY0N1c3RvbU5hbWVzcGFjZS8x
+    LjAvIj4NCgk8IUVOVElUWSBuc19hZG9iZV94cGF0aCAiaHR0cDovL25zLmFkb2JlLmNvbS9YUGF
+    0aC8xLjAvIj4NCl0+DQo8c3ZnIHZlcnNpb249IjEuMSIgYmFzZVByb2ZpbGU9ImJhc2ljIiBpZD
+    0iTGF5ZXJfMSIgeG1sbnM6eD0iJm5zX2V4dGVuZDsiIHhtbG5zOmk9IiZuc19haTsiIHhtbG5zO
+    mdyYXBoPSImbnNfZ3JhcGhzOyINCgkgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3Zn
+    IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSI
+    wcHgiIHdpZHRoPSI0MDBweCIgaGVpZ2h0PSI0MDBweCINCgkgdmlld0JveD0iMCAwIDQwMCA0MD
+    AiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPG1ldGFkYXRhPg0KCTxzZncgIHhtbG5zPSImbnNfc
+    2Z3OyI+DQoJCTxzbGljZXM+PC9zbGljZXM+DQoJCTxzbGljZVNvdXJjZUJvdW5kcyAgd2lkdGg9
+    IjI1MC4xMjMiIGhlaWdodD0iMzE1LjQyNiIgeD0iNzMuNzk5IiB5PSItMzYzLjI4OSIgYm90dG9
+    tTGVmdE9yaWdpbj0idHJ1ZSI+PC9zbGljZVNvdXJjZUJvdW5kcz4NCgk8L3Nmdz4NCjwvbWV0YW
+    RhdGE+DQo8ZyBpZD0iRG9jdW1lbnQiPg0KCTxyZWN0IHg9IjEyNy45ODYiIHk9IjI5MC4zNDIiI
+    HdpZHRoPSIxNDQuNTIzIiBoZWlnaHQ9IjguMzM2Ii8+DQoJPHJlY3QgeD0iMTI3Ljk4NiIgeT0i
+    MjU5Ljc2OSIgd2lkdGg9IjE0NC41MjMiIGhlaWdodD0iOC4zMzkiLz4NCgk8cmVjdCB4PSIxMjc
+    uOTg2IiB5PSIyMjYuNDE5IiB3aWR0aD0iMTQ0LjUyMyIgaGVpZ2h0PSI4LjM0Ii8+DQoJPHJlY3
+    QgeD0iMTI3Ljk4NiIgeT0iMTk1Ljg1IiB3aWR0aD0iMTQ0LjUyMyIgaGVpZ2h0PSI4LjM0Ii8+D
+    QoJPHJlY3QgeD0iMTI3Ljk4NiIgeT0iMTYyLjUwMSIgd2lkdGg9IjE0NC41MjMiIGhlaWdodD0i
+    OC4zMzkiLz4NCgk8cGF0aCBkPSJNOTguODEzLDM2My4yODloMjAwLjA5NWMxMy43OTMsMCwyNS4
+    wMTQtMTEuMjIzLDI1LjAxNC0yNS4wMTRWNzIuODc4YzAtMTMuNzk1LTExLjIyMS0yNS4wMTUtMj
+    UuMDE0LTI1LjAxNWgtMTYxLjE5DQoJCWMtMzUuMjQ2LDAtNjMuOTE5LDI4LjY3My02My45MTksN
+    jMuOTE5djIyNi40OTNDNzMuNzk5LDM1Mi4wNzEsODUuMDIyLDM2My4yODksOTguODEzLDM2My4y
+    ODl6IE0zMDcuMjUyLDcyLjg3OHYyNjUuMzk3DQoJCWMwLDQuNi0zLjc0Nyw4LjM0LTguMzQ0LDg
+    uMzRIOTguODEzYy00LjU5NCwwLTguMzM0LTMuNzQtOC4zMzQtOC4zNHYtMjE0LjY4aDYyLjUyNF
+    Y2NC41MzhoMTQ1LjkwNA0KCQlDMzAzLjUwNSw2NC41MzgsMzA3LjI1Miw2OC4yOCwzMDcuMjUyL
+    DcyLjg3OHogTTEzNi4zMzEsNjQuNjExdjQyLjMxSDkwLjcyOUM5My4xMjEsODMuNiwxMTIuNTYy
+    LDY1LjMxLDEzNi4zMzEsNjQuNjExeiIvPg0KPC9nPg0KPC9zdmc+DQo=");
 }
