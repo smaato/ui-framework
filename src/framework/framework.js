@@ -59,6 +59,14 @@ export { default as LabeledControl } from './labeledControl/LabeledControl.jsx';
 
 export { default as LabeledField } from './labeledField/LabeledField.jsx';
 
+export { default as Link } from './link/Link.jsx';
+
+export * from './menu/Menu.jsx';
+export { default as Menu } from './menu/Menu.jsx';
+
+export * from './panel/Panel.jsx';
+export { default as Panel } from './panel/Panel.jsx';
+
 export * from './spinner/Spinner.jsx';
 export { default as Spinner } from './spinner/Spinner.jsx';
 

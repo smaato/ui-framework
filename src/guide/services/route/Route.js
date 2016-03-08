@@ -26,9 +26,12 @@ import LabeledControlExample
 import LabeledFieldExample
   from '../../views/labeledField/LabeledFieldExample.jsx';
 import LabelExample from '../../views/label/LabelExample.jsx';
+import LinkExample from '../../views/link/LinkExample.jsx';
+import MenuExample from '../../views/menu/MenuExample.jsx';
 import ModalExample from '../../views/modal/ModalExample.jsx';
 import OrganizationSwitcherExample
   from '../../views/organizationSwitcher/OrganizationSwitcherExample.jsx';
+import PanelExample from '../../views/panel/PanelExample.jsx';
 import SearchBoxExample
   from '../../views/searchBox/SearchBoxExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
@@ -120,6 +123,14 @@ const components = [{
   source: 'views/label/LabelExample.jsx',
   component: LabelExample,
 }, {
+  name: 'Link',
+  source: 'views/link/LinkExample.jsx',
+  component: LinkExample,
+}, {
+  name: 'Menu',
+  source: 'views/menu/MenuExample.jsx',
+  component: MenuExample,
+}, {
   name: 'Modal',
   source: 'views/modal/ModalExample.jsx',
   component: ModalExample,
@@ -127,6 +138,10 @@ const components = [{
   name: 'OrganizationSwitcher',
   source: 'views/organizationSwitcher/OrganizationSwitcherExample.jsx',
   component: OrganizationSwitcherExample,
+}, {
+  name: 'Panel',
+  source: 'views/panel/PanelExample.jsx',
+  component: PanelExample,
 }, {
   name: 'SearchBox',
   source: 'views/searchBox/SearchBoxExample.jsx',
