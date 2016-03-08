@@ -71,6 +71,8 @@ import {
   OrganizationSwitcherItem,
   Panel,
   PanelLayout,
+  PickedList,
+  PickedListItem,
   PrimaryButton,
   SearchBox,
   Spinner,
@@ -302,6 +304,12 @@ const components = [{
 }, {
   name: 'PanelLayout',
   component: PanelLayout,
+}, {
+  name: 'PickedList',
+  component: PickedList,
+}, {
+  name: 'PickedListItem',
+  component: PickedListItem,
 }, {
   name: 'PrimaryButton',
   component: PrimaryButton,

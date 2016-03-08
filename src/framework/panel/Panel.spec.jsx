@@ -33,5 +33,16 @@ describe('Panel', () => {
         expect(testCase.dom.textContent).toBe(props.actions);
       });
     });
+
+    describe('isPadded', () => {
+      it('applies the appropriate class', () => {
+        const props = {
+          isPadded: true,
+        };
+        const testCase = TestCaseFactory.create(Panel, props);
+        const paddedEl = testCase.first('.panel__content--padded');
+        expect(paddedEl).toBeDefined();
+      });
+    });
   });
 });
