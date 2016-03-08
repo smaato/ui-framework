@@ -22,7 +22,7 @@ describe('GridRow', () => {
           dataId: 'dataId',
           item: {},
           rowCellPropsProviders: [
-            () => {},
+            () => undefined,
           ],
           height: 10,
         };
@@ -63,7 +63,7 @@ describe('GridRow', () => {
         const props = {
           item: {},
           rowCellPropsProviders: [
-            () => {},
+            () => undefined,
           ],
           height: 10,
         };
@@ -82,7 +82,7 @@ describe('GridRow', () => {
         const props = {
           item: {},
           rowCellPropsProviders: [
-            () => {},
+            () => undefined,
           ],
           height: 10,
           onClick,
@@ -103,7 +103,7 @@ describe('GridRow', () => {
         const props = {
           item: {},
           rowCellPropsProviders: [
-            () => {},
+            () => undefined,
           ],
           height: 10,
           classBodyRow: 'test',
@@ -123,7 +123,7 @@ describe('GridRow', () => {
         const props = {
           item: {},
           rowCellPropsProviders: [
-            () => {},
+            () => undefined,
           ],
           height: 10,
           classBodyCell: 'test',

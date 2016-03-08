@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -13,6 +14,7 @@ import {
   IconAsterisk,
   IconCheck,
   IconCog,
+  IconDocument,
   IconEllipsis,
   IconLink,
   IconPaperclip,
@@ -48,6 +50,10 @@ export default class IconExample extends Component {
         <Example title="IconCog">
           <Text>Allows the user to edit settings when clicked.</Text>
           <IconCog />
+        </Example>
+
+        <Example title="IconDocument">
+          <IconDocument />
         </Example>
 
         <Example title="IconLink">
@@ -690,3 +696,7 @@ export default class IconExample extends Component {
   }
 
 }
+
+IconExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

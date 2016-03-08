@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -90,5 +91,8 @@ export default class ColumnLayoutExample extends Component {
       </Page>
     );
   }
-
 }
+
+ColumnLayoutExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

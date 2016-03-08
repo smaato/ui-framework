@@ -8,7 +8,7 @@ describe('GridBodyEditableCell', () => {
       it('is rendered', () => {
         const props = {
           children: 'Test',
-          onClick: () => {},
+          onClick: () => undefined,
         };
 
         const testCase = TestCaseFactory.createFromFunction(

@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
@@ -530,9 +531,9 @@ export default class GridExample extends Component {
   updateStickyHeaderColumnWidths() {
     // Set sticky header column widths to match whatever they currently are
     // in the real table.
-    const columnWidths = this.headerColumnElements.map((index, column) => {
-      return $(column).innerWidth();
-    });
+    const columnWidths = this.headerColumnElements.map((index, column) => (
+      $(column).innerWidth()
+    ));
 
     this.stickyHeaderColumnElements.each((index, element) => {
       $(element).css('width', `${columnWidths[index]}px`);
@@ -614,17 +615,17 @@ export default class GridExample extends Component {
       return rows;
     }
     const normalizedTerm = term.trim().toLowerCase();
-    return rows.filter(row => {
+    return rows.filter(row => (
       // It will return true when 1st match is found, otherwise false
-      return this.cellValueProviders.some(provider => {
+      this.cellValueProviders.some(provider => {
         const cellValue = provider(row);
         if (cellValue === undefined || cellValue === null) {
-          return;
+          return false;
         }
         const normalizedCellValue = cellValue.toString().trim().toLowerCase();
-        return normalizedCellValue.indexOf(normalizedTerm) !== -1;  // eslint-disable-line consistent-return
-      });
-    });
+        return normalizedCellValue.indexOf(normalizedTerm) !== -1;
+      })
+    ));
   }
 
   toggleEmptyRows() {
@@ -760,9 +761,7 @@ export default class GridExample extends Component {
       rows,
       recycledRowsOverflowDistance: 1300,
       recycledRowsCount: 120,
-      getItemHeight: item => {
-        return item.props.height;
-      },
+      getItemHeight: item => item.props.height,
     });
 
     return (
@@ -809,3 +808,7 @@ export default class GridExample extends Component {
   }
 
 }
+
+GridExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

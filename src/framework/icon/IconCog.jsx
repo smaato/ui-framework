@@ -16,6 +16,6 @@ const IconCog = props => {
   );
 };
 
-IconCog.propTypes = Icon.propTypes;
+IconCog.propTypes = Object.assign({}, Icon.propTypes);
 
 export default IconCog;

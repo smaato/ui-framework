@@ -4,9 +4,6 @@ import { TestCaseFactory } from 'react-test-kit';
 import BodyPanelItem from './BodyPanelItem.jsx';
 
 describe('BodyPanelItem', () => {
-  describe('DOM structure', () => {
-  });
-
   describe('Props', () => {
     describe('children', () => {
       it('is rendered', () => {

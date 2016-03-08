@@ -48,6 +48,7 @@ import {
   IconAsterisk,
   IconCheck,
   IconCog,
+  IconDocument,
   IconEllipsis,
   IconLink,
   IconPaperclip,
@@ -227,6 +228,9 @@ const components = [{
 }, {
   name: 'IconCog',
   component: IconCog,
+}, {
+  name: 'IconDocument',
+  component: IconDocument,
 }, {
   name: 'IconEllipsis',
   component: IconEllipsis,

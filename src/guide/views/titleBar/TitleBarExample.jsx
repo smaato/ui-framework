@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -43,3 +44,7 @@ export default class TitleBarExample extends Component {
   }
 
 }
+
+TitleBarExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

@@ -1,12 +1,19 @@
 
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 
-const FiltersDropdown = props => {
-  return (
-    <div className="filtersDropdown">
-      {props.children}
-    </div>
-  );
+const FiltersDropdown = props => (
+  <div className="filtersDropdown">
+    {props.children}
+  </div>
+);
+
+FiltersDropdown.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array,
+  ]),
 };
 
 export default FiltersDropdown;

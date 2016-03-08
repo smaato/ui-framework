@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 export default class Title extends Component {
@@ -18,3 +19,7 @@ export default class Title extends Component {
   }
 
 }
+
+Title.propTypes = {
+  children: PropTypes.string.isRequired,
+};

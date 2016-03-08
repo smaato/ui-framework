@@ -6,8 +6,8 @@ import FilterOption from '../../services/filter/FilterOption';
 
 const FilterOptionsList = props => {
   const filterOptionListItems = props.filterOptions
-  .map((filterOption, index) => {
-    return filterOption.comparisonTypes
+  .map((filterOption, index) => (
+    filterOption.comparisonTypes
     .map((comparisonType, comparisonTypeIndex) => {
       const onSelectFilterOption = () => props
         .onSelectFilterOption(filterOption, comparisonType);
@@ -23,8 +23,8 @@ const FilterOptionsList = props => {
             : `${filterOption.name} (${comparisonType})`}
         </div>
       );
-    });
-  });
+    })
+  ));
 
   return (
     <div className="filtersList">

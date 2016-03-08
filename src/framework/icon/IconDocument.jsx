@@ -4,8 +4,8 @@ import classNames from 'classnames';
 
 import Icon from '../icon/Icon.jsx';
 
-const IconCheck = props => {
-  const classes = classNames('glyphicons-ok-2', props.classes);
+const IconDocument = props => {
+  const classes = classNames('icon--document', props.classes);
 
   const extendedProps = Object.assign({}, props, {
     classes,
@@ -16,6 +16,6 @@ const IconCheck = props => {
   );
 };
 
-IconCheck.propTypes = Object.assign({}, Icon.propTypes);
+IconDocument.propTypes = Object.assign({}, Icon.propTypes);
 
-export default IconCheck;
+export default IconDocument;

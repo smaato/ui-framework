@@ -31,7 +31,7 @@ describe('OrganizationSwitcher', () => {
     describe('searchPrompt', () => {
       it('is applied to input element', () => {
         const props = {
-          onSearch: () => {},
+          onSearch: () => undefined,
           searchPrompt: 'Search placeholder',
         };
 
@@ -59,7 +59,7 @@ describe('OrganizationSwitcher', () => {
     describe('onSearch', () => {
       it('creates a SearchBox component when present', () => {
         const props = {
-          onSearch: () => {},
+          onSearch: () => undefined,
         };
 
         testCase = TestCaseFactory.createFromClass(OrganizationSwitcher, props);

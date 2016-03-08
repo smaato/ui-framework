@@ -16,6 +16,6 @@ const BasicButton = props => {
   );
 };
 
-BasicButton.propTypes = Button.propTypes;
+BasicButton.propTypes = Object.assign({}, Button.propTypes);
 
 export default BasicButton;

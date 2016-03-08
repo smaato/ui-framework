@@ -7,13 +7,11 @@ const TitleBar = (props) => {
   let buttons;
 
   if (props.buttons) {
-    buttons = props.buttons.map((button, index) => {
-      return (
-        <div className="titleBar__button" key={index}>
-          {button}
-        </div>
-      );
-    });
+    buttons = props.buttons.map((button, index) => (
+      <div className="titleBar__button" key={index}>
+        {button}
+      </div>
+    ));
   }
 
   return (

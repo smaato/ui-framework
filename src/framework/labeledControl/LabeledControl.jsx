@@ -15,7 +15,9 @@ const LabeledControl = props => {
     [LabeledControl.LAYOUT.ONE_SIXTH]: 'labeledControl--oneSixth',
   };
 
-  const classes = classNames('labeledControl', layoutClassMap[props.layout]);
+  const classes = classNames('labeledControl', layoutClassMap[props.layout], {
+    'labeledControl--withLabeledField': props.withLabeledField,
+  });
 
   let label;
 
@@ -52,8 +54,13 @@ LabeledControl.LAYOUT = {
 };
 
 LabeledControl.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.element,
+  ]),
   label: PropTypes.string,
   layout: PropTypes.string.isRequired,
+  withLabeledField: PropTypes.bool,
 };
 
 LabeledControl.defaultProps = {

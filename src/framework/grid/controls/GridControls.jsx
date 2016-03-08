@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 export default class GridControls extends Component {
@@ -20,3 +21,13 @@ export default class GridControls extends Component {
   }
 
 }
+
+GridControls.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array,
+  ]),
+  onClick: PropTypes.func,
+  isSelected: PropTypes.bool,
+  isSortDescending: PropTypes.bool,
+};

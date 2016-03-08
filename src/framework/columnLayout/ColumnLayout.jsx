@@ -7,15 +7,13 @@ export {
   default as Column,
 } from './Column.jsx';
 
-const ColumnLayout = props => {
-  return (
-    <div
-      className="columnLayout"
-    >
-      {props.children}
-    </div>
-  );
-};
+const ColumnLayout = props => (
+  <div
+    className="columnLayout"
+  >
+    {props.children}
+  </div>
+);
 
 ColumnLayout.propTypes = {
   children: PropTypes.any,

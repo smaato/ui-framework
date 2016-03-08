@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -88,16 +89,14 @@ export default class OrganizationSwitcherExample extends Component {
     let organizationList;
 
     if (orgs.length) {
-      organizationList = orgs.map((item, index) => {
-        return (
-          <OrganizationSwitcherItem
-            key={index}
-            name={item.name}
-            id={item.id.toString()}
-            onSelect={this.selectOrganization.bind(this, item)} // eslint-disable-line react/jsx-no-bind
-          />
-        );
-      });
+      organizationList = orgs.map((item, index) => (
+        <OrganizationSwitcherItem
+          key={index}
+          name={item.name}
+          id={item.id.toString()}
+          onSelect={this.selectOrganization.bind(this, item)} // eslint-disable-line react/jsx-no-bind
+        />
+      ));
     } else {
       organizationList = (
         <OrganizationSwitcherItem
@@ -127,3 +126,7 @@ export default class OrganizationSwitcherExample extends Component {
   }
 
 }
+
+OrganizationSwitcherExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -49,3 +50,7 @@ export default class LabeledFieldExample extends Component {
   }
 
 }
+
+LabeledFieldExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
