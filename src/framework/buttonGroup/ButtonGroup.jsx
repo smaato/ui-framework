@@ -3,8 +3,6 @@ import React, {
   PropTypes,
 } from 'react';
 
-import GroupedButton from '../button/GroupedButton.jsx';
-
 const ButtonGroup = props => (
   <div className="buttonGroup">
     {props.children}
@@ -12,7 +10,7 @@ const ButtonGroup = props => (
 );
 
 ButtonGroup.propTypes = {
-  children: PropTypes.arrayOf(GroupedButton),
+  children: PropTypes.any,
 };
 
 export default ButtonGroup;
