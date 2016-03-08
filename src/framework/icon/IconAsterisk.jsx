@@ -16,6 +16,6 @@ const IconAsterisk = props => {
   );
 };
 
-IconAsterisk.propTypes = Icon.propTypes;
+IconAsterisk.propTypes = Object.assign({}, Icon.propTypes);
 
 export default IconAsterisk;

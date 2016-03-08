@@ -1,5 +1,7 @@
 
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 
 const VerticalLayout = props => {
   function wrap(item, index) {
@@ -16,9 +18,7 @@ const VerticalLayout = props => {
   let children;
 
   if (Array.isArray(props.children)) {
-    children = props.children.map((item, index) => {
-      return wrap(item, index);
-    });
+    children = props.children.map((item, index) => wrap(item, index));
   } else if (props.children) {
     children = wrap(props.children);
   }
@@ -28,6 +28,13 @@ const VerticalLayout = props => {
       {children}
     </div>
   );
+};
+
+VerticalLayout.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array,
+  ]),
 };
 
 export default VerticalLayout;

@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -40,3 +41,7 @@ export default class TextExample extends Component {
   }
 
 }
+
+TextExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

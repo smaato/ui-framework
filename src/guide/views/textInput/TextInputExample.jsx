@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -50,3 +51,7 @@ export default class TextInputExample extends Component {
   }
 
 }
+
+TextInputExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

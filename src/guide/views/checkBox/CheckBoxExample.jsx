@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -26,3 +27,7 @@ export default class CheckBoxExample extends Component {
   }
 
 }
+
+CheckBoxExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

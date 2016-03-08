@@ -31,6 +31,7 @@ const NavButton = (props) => {
 };
 
 NavButton.propTypes = {
+  children: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   path: PropTypes.string,
   href: PropTypes.string,

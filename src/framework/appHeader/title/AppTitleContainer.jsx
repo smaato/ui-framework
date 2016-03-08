@@ -5,24 +5,23 @@ import React, {
 
 import AppTitle from './AppTitle.jsx';
 
-const AppTitleContainer = props => {
-  return (
-    <div className="appTitleContainer">
-      <div
-        className="appTitleContainer__title"
-        onClick={props.onClick}
-      >
-        <AppTitle text={props.title} />
-        <span className="appHeaderDropdownArrow" />
-      </div>
-      <div className="appTitleContainer__target">
-        {props.children}
-      </div>
+const AppTitleContainer = props => (
+  <div className="appTitleContainer">
+    <div
+      className="appTitleContainer__title"
+      onClick={props.onClick}
+    >
+      <AppTitle text={props.title} />
+      <span className="appHeaderDropdownArrow" />
     </div>
-  );
-};
+    <div className="appTitleContainer__target">
+      {props.children}
+    </div>
+  </div>
+);
 
 AppTitleContainer.propTypes = {
+  children: PropTypes.element,
   onClick: PropTypes.func,
   title: AppTitle.propTypes.text,
 };

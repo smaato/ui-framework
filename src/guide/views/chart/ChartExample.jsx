@@ -4,6 +4,7 @@ import 'd3';
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -143,3 +144,7 @@ export default class ChartExample extends Component {
   }
 
 }
+
+ChartExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

@@ -16,6 +16,6 @@ const IconEllipsis = props => {
   );
 };
 
-IconEllipsis.propTypes = Icon.propTypes;
+IconEllipsis.propTypes = Object.assign({}, Icon.propTypes);
 
 export default IconEllipsis;

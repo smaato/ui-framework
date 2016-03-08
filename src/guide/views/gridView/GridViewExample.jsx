@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 import $ from 'jquery';
 
@@ -663,3 +664,7 @@ export default class GridViewExample extends Component {
   }
 
 }
+
+GridViewExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

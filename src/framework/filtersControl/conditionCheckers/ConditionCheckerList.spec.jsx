@@ -14,7 +14,7 @@ describe('ConditionCheckerList', () => {
           conditionCheckers: [
             new ConditionChecker({}),
           ],
-          onRemoveConditionChecker: () => {},
+          onRemoveConditionChecker: () => undefined,
         };
 
         const iterationSpy = spyOn(props.conditionCheckers, 'map');

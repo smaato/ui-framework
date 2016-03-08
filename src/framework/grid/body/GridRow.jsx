@@ -9,15 +9,13 @@ import GridBodyCell from './GridBodyCell.jsx';
 const GridRow = props => {
   // Create cells.
   const rowCells = props.rowCellPropsProviders
-  .map((cellPropsProvider, index) => {
-    return (
-      <GridBodyCell
-        classBodyCell={props.classBodyCell}
-        innerCellProps={cellPropsProvider(props.item)}
-        key={index}
-      />
-    );
-  });
+  .map((cellPropsProvider, index) => (
+    <GridBodyCell
+      classBodyCell={props.classBodyCell}
+      innerCellProps={cellPropsProvider(props.item)}
+      key={index}
+    />
+  ));
 
   const classes = classNames('gridRow', props.classBodyRow);
 

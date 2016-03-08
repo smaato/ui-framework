@@ -8,7 +8,7 @@ describe('GridHeaderSortableCell', () => {
       it('is rendered', () => {
         const props = {
           children: 'Test',
-          onClick: () => {},
+          onClick: () => undefined,
         };
 
         const testCase = TestCaseFactory.createFromFunction(
@@ -40,7 +40,7 @@ describe('GridHeaderSortableCell', () => {
     describe('isSelected', () => {
       it('applies the appropriate state class', () => {
         const props = {
-          onClick: () => {},
+          onClick: () => undefined,
           isSelected: true,
         };
 
@@ -57,7 +57,7 @@ describe('GridHeaderSortableCell', () => {
     describe('isSortDescending', () => {
       it('applies the appropriate state class', () => {
         const props = {
-          onClick: () => {},
+          onClick: () => undefined,
           isSortDescending: true,
         };
 

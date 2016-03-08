@@ -70,7 +70,7 @@ describe('GridHeader', () => {
     describe('classHeaderCell', () => {
       it('is applied as a class of the th element', () => {
         const props = {
-          headerCellPropsProviders: [() => {}],
+          headerCellPropsProviders: [() => undefined],
           classHeaderCell: 'test',
         };
 

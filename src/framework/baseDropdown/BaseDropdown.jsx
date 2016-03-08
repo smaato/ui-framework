@@ -170,8 +170,8 @@ export default class BaseDropdown extends Component {
     let optionList;
 
     if (this.state.isOpen) {
-      const options = this.props.options.map((option, index) => {
-        return React.createElement(this.props.optionType, {
+      const options = this.props.options.map((option, index) => (
+        React.createElement(this.props.optionType, {
           key: index,
           option,
           index,
@@ -179,8 +179,8 @@ export default class BaseDropdown extends Component {
           onMouseOver: this.onMouseOverOption,
           onClick: this.onSelectOption,
           children: this.props.optionLabelProvider(option),
-        });
-      });
+        })
+      ));
 
       optionList = (
         <div

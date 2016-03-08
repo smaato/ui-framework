@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -88,3 +89,7 @@ export default class ButtonExample extends Component {
   }
 
 }
+
+ButtonExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

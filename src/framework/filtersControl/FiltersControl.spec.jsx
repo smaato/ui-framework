@@ -15,8 +15,8 @@ describe('FiltersControl', () => {
             new ConditionChecker({}),
           ],
           filterOptions: [],
-          onAddConditionChecker: () => {},
-          onRemoveConditionChecker: () => {},
+          onAddConditionChecker: () => undefined,
+          onRemoveConditionChecker: () => undefined,
         };
 
         const iterationSpy = spyOn(props.conditionCheckers, 'map');
@@ -37,7 +37,7 @@ describe('FiltersControl', () => {
             new ConditionChecker({}),
           ],
           filterOptions: [],
-          onAddConditionChecker: () => {},
+          onAddConditionChecker: () => undefined,
           onRemoveConditionChecker: jasmine.createSpy(
             'onRemoveConditionChecker'
           ),

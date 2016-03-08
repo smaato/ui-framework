@@ -1,5 +1,7 @@
 
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 
 export {
   default as AddOnDropdown,
@@ -13,12 +15,17 @@ export {
   default as AddOnLabel,
 } from './label/AddOnLabel.jsx';
 
-const AddOnControl = props => {
-  return (
-    <div className="addOnControl">
-      {props.children}
-    </div>
-  );
+const AddOnControl = props => (
+  <div className="addOnControl">
+    {props.children}
+  </div>
+);
+
+AddOnControl.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.element,
+  ]),
 };
 
 export default AddOnControl;

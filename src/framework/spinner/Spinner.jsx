@@ -3,12 +3,10 @@
 import React from 'react';
 
 // Define stateless functional component.
-const Spinner = () => {
-  return (
-    <span
-      className="spinner"
-    ></span>
-  );
-};
+const Spinner = () => (
+  <span
+    className="spinner"
+  ></span>
+);
 
 export default Spinner;

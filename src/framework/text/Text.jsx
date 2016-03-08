@@ -27,7 +27,11 @@ Text.RHYTHM = {
 };
 
 Text.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.element,
+    PropTypes.string,
+  ]).isRequired,
   rhythm: PropTypes.string,
 };
 

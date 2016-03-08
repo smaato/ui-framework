@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -50,3 +51,7 @@ export default class TextAreaExample extends Component {
   }
 
 }
+
+TextAreaExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

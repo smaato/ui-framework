@@ -5,14 +5,6 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
-export {
-  default as KpiPositive,
-} from './KpiPositive.jsx';
-
-export {
-  default as KpiNegative,
-} from './KpiNegative.jsx';
-
 export default class Kpi extends Component {
 
   constructor(props) {
@@ -37,6 +29,18 @@ export default class Kpi extends Component {
 }
 
 Kpi.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+  ]),
   className: PropTypes.string,
   title: PropTypes.string,
 };
+
+export {
+  default as KpiPositive,
+} from './KpiPositive.jsx';
+
+export {
+  default as KpiNegative,
+} from './KpiNegative.jsx';

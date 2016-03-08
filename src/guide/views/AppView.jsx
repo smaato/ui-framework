@@ -5,6 +5,7 @@
 // them with commas.
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 import $ from 'jquery';
 import classNames from 'classnames';
@@ -79,3 +80,11 @@ export default class AppView extends Component {
   }
 
 }
+
+AppView.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element,
+  ]),
+  routerState: PropTypes.object.isRequired,
+};

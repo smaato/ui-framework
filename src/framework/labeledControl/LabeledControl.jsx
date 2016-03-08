@@ -54,6 +54,10 @@ LabeledControl.LAYOUT = {
 };
 
 LabeledControl.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.element,
+  ]),
   label: PropTypes.string,
   layout: PropTypes.string.isRequired,
   withLabeledField: PropTypes.bool,

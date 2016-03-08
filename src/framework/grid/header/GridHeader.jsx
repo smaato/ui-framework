@@ -12,15 +12,13 @@ const GridHeader = props => {
 
    // Create cells.
   const headerCells = props.headerCellPropsProviders
-  .map((cellPropsProvider, index) => {
-    return (
-      <GridHeaderCell
-        classHeaderCell={props.classHeaderCell}
-        innerCellProps={cellPropsProvider(index)}
-        key={index}
-      />
-    );
-  });
+  .map((cellPropsProvider, index) => (
+    <GridHeaderCell
+      classHeaderCell={props.classHeaderCell}
+      innerCellProps={cellPropsProvider(index)}
+      key={index}
+    />
+  ));
 
   return (
     <thead className={sectionClass}>

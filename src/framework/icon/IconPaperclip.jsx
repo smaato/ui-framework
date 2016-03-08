@@ -16,6 +16,6 @@ const IconPaperclip = props => {
   );
 };
 
-IconPaperclip.propTypes = Icon.propTypes;
+IconPaperclip.propTypes = Object.assign({}, Icon.propTypes);
 
 export default IconPaperclip;
