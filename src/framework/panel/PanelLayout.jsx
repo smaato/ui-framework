@@ -3,20 +3,16 @@ import React, {
   PropTypes,
 } from 'react';
 
-export {
-  default as MenuItem,
-} from './MenuItem.jsx';
-
-const Menu = props => {
+const PanelLayout = props => {
   return (
-    <div>
+    <div className="panelLayout">
       {props.children}
     </div>
   );
 };
 
-Menu.propTypes = {
+PanelLayout.propTypes = {
   children: PropTypes.any,
 };
 
-export default Menu;
+export default PanelLayout;

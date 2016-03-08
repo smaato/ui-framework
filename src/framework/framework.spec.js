@@ -67,6 +67,8 @@ import {
   ModalOverlay,
   OrganizationSwitcher,
   OrganizationSwitcherItem,
+  Panel,
+  PanelLayout,
   PrimaryButton,
   SearchBox,
   Spinner,
@@ -286,6 +288,12 @@ const components = [{
 }, {
   name: 'OrganizationSwitcherItem',
   component: OrganizationSwitcherItem,
+}, {
+  name: 'Panel',
+  component: Panel,
+}, {
+  name: 'PanelLayout',
+  component: PanelLayout,
 }, {
   name: 'PrimaryButton',
   component: PrimaryButton,

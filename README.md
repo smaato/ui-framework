@@ -79,6 +79,8 @@ import {
   ModalOverlay,
   OrganizationSwitcher,
   OrganizationSwitcherItem,
+  Panel,
+  PanelLayout,
   PrimaryButton,
   SearchBox,
   Spinner,

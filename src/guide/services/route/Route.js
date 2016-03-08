@@ -29,6 +29,7 @@ import MenuExample from '../../views/menu/MenuExample.jsx';
 import ModalExample from '../../views/modal/ModalExample.jsx';
 import OrganizationSwitcherExample
   from '../../views/organizationSwitcher/OrganizationSwitcherExample.jsx';
+import PanelExample from '../../views/panel/PanelExample.jsx';
 import SearchBoxExample
   from '../../views/searchBox/SearchBoxExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
@@ -131,6 +132,10 @@ const components = [{
   name: 'OrganizationSwitcher',
   source: 'views/organizationSwitcher/OrganizationSwitcherExample.jsx',
   component: OrganizationSwitcherExample,
+}, {
+  name: 'Panel',
+  source: 'views/panel/PanelExample.jsx',
+  component: PanelExample,
 }, {
   name: 'SearchBox',
   source: 'views/searchBox/SearchBoxExample.jsx',
