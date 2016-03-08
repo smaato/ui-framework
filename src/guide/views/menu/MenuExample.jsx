@@ -42,7 +42,7 @@ export default class MenuExample extends Component {
   }
 
   renderMenu() {
-    const itemItems = this.items.map((item, index) => {
+    const menuItems = this.items.map((item, index) => {
       return (
         <MenuItem
           key={index}
@@ -56,22 +56,20 @@ export default class MenuExample extends Component {
 
     return (
       <Menu>
-        {itemItems}
+        {menuItems}
       </Menu>
     );
   }
 
   renderMenuWithActions() {
-    const itemItems = this.items.map((item, index) => {
+    const menuItems = this.items.map((item, index) => {
       return (
         <MenuItem
           key={index}
-          item={item}
-          isSelected={this.state.selectedItem === item}
           label={item.name}
           actions={[
-            <Link isList key={0}>Allow</Link>,
-            <Link isList key={1}>Block</Link>,
+            <Link key={0}>Allow</Link>,
+            <Link key={1}>Block</Link>,
           ]}
         />
       );
@@ -79,7 +77,7 @@ export default class MenuExample extends Component {
 
     return (
       <Menu>
-        {itemItems}
+        {menuItems}
       </Menu>
     );
   }

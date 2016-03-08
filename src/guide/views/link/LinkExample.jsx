@@ -19,7 +19,7 @@ export default class LinkExample extends Component {
   }
 
   onClick() {
-    console.log('hello'); // eslint-disable-line no-console
+    window.alert('Test'); // eslint-disable-line no-alert
   }
 
   render() {
@@ -30,7 +30,7 @@ export default class LinkExample extends Component {
         </Example>
 
         <Example title="With onClick callback">
-          <Link onClick={this.onClick}>console.log('hello')</Link>
+          <Link onClick={this.onClick}>Show alert</Link>
         </Example>
       </Page>
     );

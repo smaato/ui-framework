@@ -16,7 +16,7 @@ import {
   SearchBox,
 } from '../../../framework/framework';
 
-export default class LinkExample extends Component {
+export default class PanelExample extends Component {
 
   constructor(props) {
     super(props);
@@ -60,7 +60,6 @@ export default class LinkExample extends Component {
       items.push(
         <MenuItem
           key={i}
-          item={item}
           label={item.name}
         />
       );

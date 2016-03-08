@@ -27,7 +27,7 @@ export default class IconExample extends Component {
 
   render() {
     function onClick() {
-      console.log('Clicked icon.'); // eslint-disable-line no-console
+      window.alert('Clicked icon.'); // eslint-disable-line no-alert
     }
 
     return (

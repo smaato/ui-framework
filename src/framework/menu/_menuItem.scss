@@ -1,22 +1,15 @@
 
 .menuItem {
-  background-color: #f6fafc;
-  color: #526770;
-  font-size: 13px;
-  line-height: $lineHeight;
-  font-weight: 300;
-  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  & + & {
-    border-top: 1px solid #d4d8db;
-  }
-
-  &:last-child {
-    border-bottom: 1px solid #d4d8db;
-  }
+  padding: 10px;
+  font-size: 13px;
+  line-height: $lineHeight;
+  font-weight: 300;
+  background-color: #f6fafc;
+  color: #526770;
+  border-bottom: 1px solid #d4d8db;
 }
 
   /**
@@ -39,7 +32,7 @@
     cursor: default;
 
     .menuItem__label {
-      font-weight: 700;
+      font-weight: 500;
     }
   }
 }

@@ -37,7 +37,7 @@ describe('MenuItem', () => {
 
       it('applies the appropriate class', () => {
         const props = {
-          onClick: jasmine.createSpy('onClick'),
+          onClick: () => undefined,
         };
         const testCase = TestCaseFactory.create(MenuItem, props);
         expect(testCase.dom.className).toContain('menuItem--clickable');

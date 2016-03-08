@@ -118,7 +118,7 @@ const components = [{
   component: LabelExample,
 }, {
   name: 'Link',
-  source: 'views/menu/LinkExample.jsx',
+  source: 'views/link/LinkExample.jsx',
   component: LinkExample,
 }, {
   name: 'Menu',

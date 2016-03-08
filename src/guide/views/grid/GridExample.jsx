@@ -451,17 +451,17 @@ export default class GridExample extends Component {
   }
 
   onClickRow(item) {
-    console.log('Clicked row with ID:', item.id); // eslint-disable-line no-console
+    window.alert('Clicked row with ID:', item.id); // eslint-disable-line no-alert
   }
 
   onClickRowEdit(item, event) {
     event.stopPropagation();
-    console.log('Clicked edit for row with ID:', item.id); // eslint-disable-line no-console
+    window.alert('Clicked edit for row with ID:', item.id); // eslint-disable-line no-alert
   }
 
   onClickRowOptions(item, event) {
     event.stopPropagation();
-    console.log('Clicked options for row with ID:', item.id); // eslint-disable-line no-console
+    window.alert('Clicked options for row with ID:', item.id); // eslint-disable-line no-alert
   }
 
   onSort(cellIndex) {
