@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -37,3 +38,7 @@ export default class LinkExample extends Component {
   }
 
 }
+
+LinkExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};

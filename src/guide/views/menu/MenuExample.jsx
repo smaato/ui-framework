@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 
 import Page, {
@@ -42,17 +43,15 @@ export default class MenuExample extends Component {
   }
 
   renderMenu() {
-    const menuItems = this.items.map((item, index) => {
-      return (
-        <MenuItem
-          key={index}
-          item={item}
-          isSelected={this.state.selectedItem === item}
-          onClick={this.onSelectItem}
-          label={item.name}
-        />
-      );
-    });
+    const menuItems = this.items.map((item, index) => (
+      <MenuItem
+        key={index}
+        item={item}
+        isSelected={this.state.selectedItem === item}
+        onClick={this.onSelectItem}
+        label={item.name}
+      />
+    ));
 
     return (
       <Menu>
@@ -62,18 +61,16 @@ export default class MenuExample extends Component {
   }
 
   renderMenuWithActions() {
-    const menuItems = this.items.map((item, index) => {
-      return (
-        <MenuItem
-          key={index}
-          label={item.name}
-          actions={[
-            <Link key={0}>Allow</Link>,
-            <Link key={1}>Block</Link>,
-          ]}
-        />
-      );
-    });
+    const menuItems = this.items.map((item, index) => (
+      <MenuItem
+        key={index}
+        label={item.name}
+        actions={[
+          <Link key={0}>Allow</Link>,
+          <Link key={1}>Block</Link>,
+        ]}
+      />
+    ));
 
     return (
       <Menu>
@@ -97,3 +94,7 @@ export default class MenuExample extends Component {
   }
 
 }
+
+MenuExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
