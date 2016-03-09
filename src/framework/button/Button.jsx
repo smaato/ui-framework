@@ -44,21 +44,24 @@ const Button = props => {
     );
   }
 
-  return (
-    <a
-      data-id={props.dataId}
-      className={classes}
-      onClick={onClick}
-    >
-      {icon}
-      {label}
-    </a>
-  );
+  const linkType = props.href ? 'a' : 'button';
+
+  return React.createElement(linkType, {
+    'data-id': props.dataId,
+    className: classes,
+    href: props.href,
+    onClick,
+    children: [
+      icon,
+      label,
+    ],
+  });
 };
 
 Button.propTypes = {
   dataId: PropTypes.string,
   label: PropTypes.string,
+  href: PropTypes.string,
   iconClasses: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.array,

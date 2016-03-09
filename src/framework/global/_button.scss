@@ -1,4 +1,6 @@
 @mixin button() {
+  @include font;
+  appearance: none;
   display: inline-flex;
   align-items: center;
   height: 30px;

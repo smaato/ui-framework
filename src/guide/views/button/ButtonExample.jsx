@@ -37,6 +37,13 @@ export default class ButtonExample extends Component {
           />
         </Example>
 
+        <Example title="Button as link">
+          <Button
+            label="Button"
+            href="//google.com"
+          />
+        </Example>
+
         <Example title="Disabled Button">
           <Button label="Button" disabled />
         </Example>
