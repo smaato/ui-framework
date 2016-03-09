@@ -7,13 +7,11 @@ export {
   default as MenuItem,
 } from './MenuItem.jsx';
 
-const Menu = props => {
-  return (
-    <div>
-      {props.children}
-    </div>
-  );
-};
+const Menu = props => (
+  <div>
+    {props.children}
+  </div>
+);
 
 Menu.propTypes = {
   children: PropTypes.any,
