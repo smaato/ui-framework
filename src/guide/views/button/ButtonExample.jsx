@@ -37,17 +37,6 @@ export default class ButtonExample extends Component {
           />
         </Example>
 
-        <Example title="Button as link">
-          <Button
-            label="Button"
-            href="//google.com"
-          />
-        </Example>
-
-        <Example title="Disabled Button">
-          <Button label="Button" disabled />
-        </Example>
-
         <Example title="Button with icon">
           <Button
             iconClasses="glyphicons-plus"
@@ -70,6 +59,20 @@ export default class ButtonExample extends Component {
           </Text>
           <BasicButton
             label="Delete"
+          />
+        </Example>
+
+        <Example title="BasicButton as link">
+          <BasicButton
+            label="Google.com"
+            href="//google.com"
+          />
+        </Example>
+
+        <Example title="Disabled BasicButton">
+          <BasicButton
+            label="Delete"
+            disabled
           />
         </Example>
 

@@ -1,10 +1,16 @@
+
+/**
+ * 1. Inline-block solves a problem with putting an icon and text next to each
+ *    other in Firefox.
+ * 2. Since we can't use `display: inline-flex` and `align-items: center` to
+ *    vertically align the content, we need to use padding to do it manually.
+ */
 @mixin button() {
   @include font;
   appearance: none;
-  display: inline-flex;
-  align-items: center;
+  display: inline-block; /* 1 */
   height: 30px;
-  padding: 0 11px;
+  padding: 7px 11px; /* 2 */
   font-size: 12px;
   line-height: $lineHeight;
   font-weight: 400;
