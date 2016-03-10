@@ -18,7 +18,9 @@ describe('LabeledControl', () => {
     });
 
     describe('label', () => {
-      it('becomes the textContent of the label element', () => {
+      it(
+        'becomes the textContent of the label element when it\'s a string',
+      () => {
         const props = {
           label: 'Test',
         };
@@ -28,6 +30,20 @@ describe('LabeledControl', () => {
           props
         );
         expect(testCase.first('label').textContent).toBe(props.label);
+      });
+
+      it(
+        'is rendered when it isn\'t a string',
+      () => {
+        const props = {
+          label: <div id="test" />,
+        };
+
+        const testCase = TestCaseFactory.createFromFunction(
+          LabeledControl,
+          props
+        );
+        expect(testCase.first('#test')).toBeDefined();
       });
     });
 
