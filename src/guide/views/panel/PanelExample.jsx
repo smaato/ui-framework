@@ -14,6 +14,8 @@ import {
   MenuItem,
   Panel,
   PanelLayout,
+  PickedList,
+  PickedListItem,
   SearchBox,
 } from '../../../framework/framework';
 
@@ -50,6 +52,10 @@ export default class PanelExample extends Component {
   }
 
   onSearch() {
+    // This is a no-op. It's just here to satisfy a required prop.
+  }
+
+  onRemoveItem() {
     // This is a no-op. It's just here to satisfy a required prop.
   }
 
@@ -113,6 +119,34 @@ export default class PanelExample extends Component {
             actions={<Link>Clear all</Link>}
           >
             Content
+          </Panel>
+        </Example>
+
+        <Example title="With picked list">
+          <Panel
+            title="Picked list"
+            isPadded
+          >
+            <PickedList title="Test">
+              <PickedListItem
+                isAllowed
+                onRemove={this.onRemoveItem}
+              >
+                A
+              </PickedListItem>
+              <PickedListItem
+                isAllowed
+                onRemove={this.onRemoveItem}
+              >
+                B
+              </PickedListItem>
+              <PickedListItem
+                isAllowed
+                onRemove={this.onRemoveItem}
+              >
+                C
+              </PickedListItem>
+            </PickedList>
           </Panel>
         </Example>
 

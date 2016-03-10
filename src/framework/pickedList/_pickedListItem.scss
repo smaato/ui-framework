@@ -1,0 +1,64 @@
+
+.pickedListItem {
+  @include listItem;
+  display: flex;
+  align-items: center;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+  .pickedListItem__label {
+    flex: 1 1 auto;
+  }
+
+  /**
+   * 1. Align items horizontally to the right.
+   */
+  .pickedListItem__removeButton {
+    $closeButtonSize: 10px;
+    display: flex; /* 1 */
+    justify-content: flex-end; /* 1 */
+    flex: 0 0 auto;
+    width: $closeButtonSize;
+    height: $closeButtonSize;
+    color: #517582;
+    cursor: pointer;
+
+    &:before,
+    &:after {
+      content: '';
+      width: 2px;
+      height: $closeButtonSize;
+      background-color: #517582;
+      position: absolute;
+      margin-left: -$closeButtonSize / 2;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+
+.pickedListItemIcon {
+  width: 13px;
+  margin-right: 4px;
+}
+
+.pickedListItemIcon--check {
+  color: #81d372;
+}
+
+.pickedListItemIcon--ban {
+  color: #f07576;
+}

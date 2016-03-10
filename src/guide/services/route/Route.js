@@ -32,6 +32,7 @@ import ModalExample from '../../views/modal/ModalExample.jsx';
 import OrganizationSwitcherExample
   from '../../views/organizationSwitcher/OrganizationSwitcherExample.jsx';
 import PanelExample from '../../views/panel/PanelExample.jsx';
+import PickedListExample from '../../views/pickedList/PickedListExample.jsx';
 import SearchBoxExample
   from '../../views/searchBox/SearchBoxExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
@@ -142,6 +143,10 @@ const components = [{
   name: 'Panel',
   source: 'views/panel/PanelExample.jsx',
   component: PanelExample,
+}, {
+  name: 'PickedList',
+  source: 'views/pickedList/PickedListExample.jsx',
+  component: PickedListExample,
 }, {
   name: 'SearchBox',
   source: 'views/searchBox/SearchBoxExample.jsx',
