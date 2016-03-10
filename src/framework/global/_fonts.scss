@@ -1,7 +1,11 @@
 @import url(//fonts.googleapis.com/css?family=Roboto:400,300,500,700);
 
-.font-roboto {
+@mixin font() {
   font-family: 'Roboto', sans-serif;
+}
+
+.font-roboto {
+  @include font;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
 }

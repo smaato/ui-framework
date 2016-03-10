@@ -4,17 +4,41 @@ import { CommonAssertions } from '../services';
 import Button from './Button.jsx';
 
 describe('Button', () => {
+  describe('DOM structure', () => {
+    it('is a button', () => {
+      const testCase = TestCaseFactory.createFromFunction(Button);
+      expect(testCase.dom.tagName).toBe('BUTTON');
+    });
+  });
+
   describe('Props', () => {
     CommonAssertions.assertDataId(Button);
 
     describe('label', () => {
       it('is rendered', () => {
-        const label = 'test text';
         const props = {
-          label,
+          label: 'test text',
         };
         const testCase = TestCaseFactory.createFromFunction(Button, props);
-        expect(testCase.first('.button__label').textContent).toBe(label);
+        expect(testCase.first('.button__label').textContent).toBe(props.label);
+      });
+    });
+
+    describe('href', () => {
+      it('renders the component as a link', () => {
+        const props = {
+          href: 'test',
+        };
+        const testCase = TestCaseFactory.createFromFunction(Button, props);
+        expect(testCase.dom.tagName).toBe('A');
+      });
+
+      it('is applied as href attribute', () => {
+        const props = {
+          href: 'test',
+        };
+        const testCase = TestCaseFactory.createFromFunction(Button, props);
+        expect(testCase.dom.getAttribute('href')).toBe(props.href);
       });
     });
 
