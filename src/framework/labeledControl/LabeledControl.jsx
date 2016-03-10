@@ -21,12 +21,14 @@ const LabeledControl = props => {
 
   let label;
 
-  if (props.label) {
+  if (typeof props.label === 'string') {
     label = (
       <Label>
         {props.label}
       </Label>
     );
+  } else {
+    label = props.label;
   }
 
   return (
@@ -58,7 +60,7 @@ LabeledControl.propTypes = {
     PropTypes.array,
     PropTypes.element,
   ]),
-  label: PropTypes.string,
+  label: PropTypes.any,
   layout: PropTypes.string.isRequired,
   withLabeledField: PropTypes.bool,
 };
