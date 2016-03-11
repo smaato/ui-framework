@@ -2,12 +2,19 @@
 import React, {
   PropTypes,
 } from 'react';
+import classNames from 'classnames';
 
-const BodyPanel = props => (
-  <div className="bodyPanel">
-    {props.children}
-  </div>
-);
+const BodyPanel = props => {
+  const classes = classNames('bodyPanel', {
+    'bodyPanel--topFlush': props.isTopFlush,
+  });
+
+  return (
+    <div className={classes}>
+      {props.children}
+    </div>
+  );
+};
 
 BodyPanel.propTypes = {
   children: PropTypes.oneOfType([
@@ -15,6 +22,7 @@ BodyPanel.propTypes = {
     PropTypes.element,
     PropTypes.string,
   ]),
+  isTopFlush: PropTypes.bool,
 };
 
 export default BodyPanel;
