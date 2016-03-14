@@ -9,3 +9,11 @@
 .label--clickable {
   cursor: pointer;
 }
+
+.label--alignedWthField {
+  margin-top: $alignLabelWithFieldOffsetTop;
+}
+
+.label--alignedWithLabeledField {
+  margin-top: $alignLabelWithLabeledFieldOffsetTop;
+}

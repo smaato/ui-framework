@@ -22,11 +22,11 @@ const LabeledControl = props => {
   let label;
 
   if (typeof props.label === 'string') {
-    label = (
-      <Label>
-        {props.label}
-      </Label>
-    );
+    label = React.createElement(Label, {
+      children: props.label,
+      isAlignedWithField: !props.withLabeledField,
+      isAlignedWithLabeledField: props.withLabeledField,
+    });
   } else {
     label = props.label;
   }

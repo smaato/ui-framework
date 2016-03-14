@@ -53,31 +53,34 @@ export default class ColumnLayoutExample extends Component {
           {columns}
         </Example>
 
-        <Example title="2/12th - 6/12th - 4/12th">
+        <Example title="Form">
           <ColumnLayout>
             <Column width={2}>
-              <div style={backgroundColor}>2/12th</div>
+              <Label isAlignedWithField>Label</Label>
             </Column>
             <Column width={6}>
-              <div style={backgroundColor}>6/12th</div>
+              <TextInput isFullWidth />
             </Column>
             <Column width={4}>
-              <div style={backgroundColor}>4/12th</div>
+              <AddOnControl>
+                <TextInput isFullWidth />
+                <AddOnLabel isRightSide>unit</AddOnLabel>
+              </AddOnControl>
             </Column>
           </ColumnLayout>
         </Example>
 
-        <Example title="Form example">
+        <Example title="Form with LabeledField">
           <ColumnLayout>
-            <Column width={3}>
-              <Label>Label</Label>
+            <Column width={2}>
+              <Label isAlignedWithLabeledField>Label</Label>
             </Column>
             <Column width={6}>
               <LabeledField label="Labeled text input">
                 <TextInput isFullWidth />
               </LabeledField>
             </Column>
-            <Column width={3}>
+            <Column width={4}>
               <LabeledField label="Labeled text input with AddOnLabel">
                 <AddOnControl>
                   <TextInput isFullWidth />
