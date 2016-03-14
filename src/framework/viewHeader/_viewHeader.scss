@@ -3,16 +3,21 @@
   display: flex;
   justify-content: center;
   height: 42px;
+  width: 100%;
 }
 
+/**
+ * 1. This allows children to take height from component root element.
+ * 2. Account for borders of BodyPanel, so that this component visually aligns
+ *    with the width of the BodyPanel component.
+ */
 .viewHeader__liner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // This allows children to take height from component root element
-  height: inherit;
+  height: inherit; /* 1 */
   flex: 1;
-  max-width: $maxWidth;
+  max-width: $maxWidth - 2px; /* 2 */
 
   @media #{$viewport_wideScreen} {
     padding: 0 15px;

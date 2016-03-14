@@ -1,21 +1,14 @@
 
 import React, {
   Component,
-  PropTypes,
 } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
-import Page, {
-  Example,
-} from '../../components/page/Page.jsx';
-
 import {
   CheckBox,
-  FiltersControl,
   Grid,
   GridBodyEditableCell,
-  GridControls,
   GridEmptyRow,
   GridHeader,
   GridHeaderSortableCell,
@@ -25,7 +18,6 @@ import {
   KpiPositive,
   GridLoadingRow,
   GridRow,
-  SearchBox,
   StickyGrid,
 } from '../../../framework/framework';
 
@@ -40,8 +32,7 @@ import {
 
 import numeral from 'numeral';
 
-import gridExampleFilterOptions from './gridExampleFilterOptions';
-import createRows from './createRows';
+import createRows from '../grid/createRows';
 
 const defaultState = {
   bodyRows: [],
@@ -75,7 +66,7 @@ export default class GridExample extends Component {
     this.onScrollHandler = this.onScroll.bind(this);
 
     this.GRID_ID = 'gridExample';
-    this.STICKY_THRESHOLD = 209;
+    this.STICKY_THRESHOLD = 155;
     this.ROW_HEIGHT = 34;
     this.BODY_HEIGHT = 500;
     this.COLUMNS_COUNT = 11;
@@ -551,7 +542,7 @@ export default class GridExample extends Component {
       headerCellPropsProviders: this.headerCellPropsProviders,
       rowHeight: this.ROW_HEIGHT,
       columnPriorities: this.COLUMN_PRIORITIES,
-      spaceToBothSidesOfGrid: 100,
+      spaceToBothSidesOfGrid: 0,
     });
     const node = ReactDOM.findDOMNode(this);
     const {
@@ -676,37 +667,6 @@ export default class GridExample extends Component {
     });
   }
 
-  renderExampleControls() {
-    return (
-      <p>
-        <button
-          type="button"
-          onClick={this.toggleEmptyRows}
-        >
-          {this.state.isEmptyStateDemonstration
-            ? 'Test loading rows'
-            : 'Test empty state'}
-        </button>
-      </p>
-    );
-  }
-
-  renderGridControls() {
-    return (
-      <GridControls>
-        <FiltersControl
-          conditionCheckers={this.state.conditionCheckers}
-          filterOptions={gridExampleFilterOptions}
-          onRemoveConditionChecker={this.onRemoveConditionChecker}
-          onAddConditionChecker={this.onAddConditionChecker}
-        />
-        <SearchBox
-          onSearch={this.onSearch}
-        />
-      </GridControls>
-    );
-  }
-
   renderInitialLoadingRow() {
     if (this.state.isInitialLoad) {
       return <GridLoadingRow columnsCount={this.COLUMNS_COUNT} isInitial />;
@@ -737,7 +697,7 @@ export default class GridExample extends Component {
     );
   }
 
-  renderGrid() {
+  render() {
     const rows = [];
     const items = this.getBodyRows();
     for (let i = 0; i < items.length; i++) {
@@ -761,7 +721,7 @@ export default class GridExample extends Component {
       rows,
       recycledRowsOverflowDistance: 1300,
       recycledRowsCount: 120,
-      getItemHeight: item => item ? item.props.height : undefined,
+      getItemHeight: item => item.props.height,
     });
 
     return (
@@ -787,28 +747,4 @@ export default class GridExample extends Component {
     );
   }
 
-  render() {
-    return (
-      <Page title={this.props.route.name}>
-
-        <Example isClear>
-
-          {this.renderExampleControls()}
-
-          <br/>
-
-          {this.renderGridControls()}
-
-          {this.renderGrid()}
-
-        </Example>
-
-      </Page>
-    );
-  }
-
 }
-
-GridExample.propTypes = {
-  route: PropTypes.object.isRequired,
-};
