@@ -574,9 +574,17 @@ export default class GridExample extends Component {
       // Current state
       const newRows = createRows(
         this.state.bodyRows.length,
-        this.ROWS_PER_PAGE,
-        this.state.areAllRowsSelected
+        this.ROWS_PER_PAGE
       );
+
+      // Update selection state
+      const selectionMap = Object.assign({}, this.state.selectionMap);
+      if (this.state.areAllRowsSelected) {
+        newRows.forEach(row => {
+          selectionMap[row.id] = true;
+        });
+      }
+
       const isInitialLoad = this.state.isInitialLoad;
       const isResultEmpty = newRows.length === 0;
 
@@ -592,6 +600,7 @@ export default class GridExample extends Component {
         isLoadingBodyRows: false,
         isLastPage,
         isEmpty,
+        selectionMap,
       });
     }, 2000);
 

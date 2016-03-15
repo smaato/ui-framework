@@ -1,5 +1,5 @@
 
-export default function createRows(indexStart, newRowsCount, isSelected) {
+export default function createRows(indexStart, newRowsCount) {
   // Returns a random integer between min (inclusive) and max (inclusive)
   function getRandomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -20,9 +20,6 @@ export default function createRows(indexStart, newRowsCount, isSelected) {
       registered: getRandomInteger(0, 2000000000),
       kpiSold: getRandomInteger(0, 100),
       kpiRegistered: getRandomInteger(0, 100),
-      // TODO: In the case of requesting data from server this
-      // could be a more distinct step when state is mixed in
-      isSelected,
     });
   }
 

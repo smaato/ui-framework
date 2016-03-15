@@ -67,7 +67,7 @@ describe('CheckBox', () => {
         testCase.trigger('change', input);
       });
 
-      it('is called once when clicked', () => {
+      it('is called once when the checkbox changes', () => {
         expect(props.onClick).toHaveBeenCalled();
         expect(props.onClick.calls.count()).toEqual(1);
       });
