@@ -10,8 +10,18 @@ describe('BodyPanel', () => {
         const props = {
           children: <div id="test">test</div>,
         };
-        const testCase = TestCaseFactory.createFromFunction(BodyPanel, props);
+        const testCase = TestCaseFactory.create(BodyPanel, props);
         expect(testCase.first('#test').textContent).toBe('test');
+      });
+    });
+
+    describe('isTopFlush', () => {
+      it('applies the appropriate class', () => {
+        const props = {
+          isTopFlush: true,
+        };
+        const testCase = TestCaseFactory.create(BodyPanel, props);
+        expect(testCase.dom.className).toContain('bodyPanel--topFlush');
       });
     });
   });

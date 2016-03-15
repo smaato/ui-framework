@@ -58,6 +58,9 @@ import {
   Label,
   LabeledControl,
   LabeledField,
+  Link,
+  Menu,
+  MenuItem,
   Modal,
   ModalBody,
   ModalConfirmationBody,
@@ -66,6 +69,10 @@ import {
   ModalOverlay,
   OrganizationSwitcher,
   OrganizationSwitcherItem,
+  Panel,
+  PanelLayout,
+  PickedList,
+  PickedListItem,
   PrimaryButton,
   SearchBox,
   Spinner,
@@ -141,6 +148,12 @@ const components = [{
 }, {
   name: 'CallOutButton',
   component: CallOutButton,
+}, {
+  name: 'Menu',
+  component: Menu,
+}, {
+  name: 'MenuItem',
+  component: MenuItem,
 }, {
   name: 'Chart',
   component: Chart,
@@ -259,6 +272,9 @@ const components = [{
   name: 'LabeledField',
   component: LabeledField,
 }, {
+  name: 'Link',
+  component: Link,
+}, {
   name: 'Modal',
   component: Modal,
 }, {
@@ -282,6 +298,18 @@ const components = [{
 }, {
   name: 'OrganizationSwitcherItem',
   component: OrganizationSwitcherItem,
+}, {
+  name: 'Panel',
+  component: Panel,
+}, {
+  name: 'PanelLayout',
+  component: PanelLayout,
+}, {
+  name: 'PickedList',
+  component: PickedList,
+}, {
+  name: 'PickedListItem',
+  component: PickedListItem,
 }, {
   name: 'PrimaryButton',
   component: PrimaryButton,

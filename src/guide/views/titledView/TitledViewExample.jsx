@@ -87,7 +87,7 @@ export default class TitledViewExample extends Component {
   }
 
   onSearch(term) {
-    console.log(term); // eslint-disable-line no-console
+    window.alert(term); // eslint-disable-line no-alert
   }
 
   getRows() {
@@ -122,7 +122,7 @@ export default class TitledViewExample extends Component {
   }
 
   selectOrganization(organization) {
-    console.log(organization); // eslint-disable-line no-console
+    window.alert(organization); // eslint-disable-line no-alert
   }
 
   renderOrganizationSwitcher() {

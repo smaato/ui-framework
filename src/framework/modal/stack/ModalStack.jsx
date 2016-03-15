@@ -15,18 +15,18 @@ export default class ModalStack extends Component {
   }
 
   componentDidMount() {
-    this.calcDimentions();
+    this.matchStackDimensionsToTopModal();
   }
 
   componentDidUpdate() {
-    this.calcDimentions();
+    this.matchStackDimensionsToTopModal();
   }
 
   /* CSS styles position the stackedModal wrapper components absolutely,
   so we need to use the top-most modal's dimensions as the source of truth
   for the ModalStack's dimensions */
-  calcDimentions() {
-    const $topModal = $(this.refs.stackedModalDepth1).find('.modal');
+  matchStackDimensionsToTopModal() {
+    const $topModal = $(this.refs.topModalRef).find('.modal');
     const $stack = $(this.refs.modalStack);
     // Measure
     $topModal.height('auto');
@@ -53,7 +53,7 @@ export default class ModalStack extends Component {
         <div
           className={stackedModalClasses}
           key={index}
-          ref={`stackedModalDepth${depth}`}
+          ref={depth === 1 ? 'topModalRef' : undefined}
         >
           {modal}
         </div>

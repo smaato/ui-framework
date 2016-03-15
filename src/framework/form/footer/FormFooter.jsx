@@ -29,8 +29,8 @@ const FormFooter = props => {
 };
 
 FormFooter.propTypes = {
-  left: PropTypes.arrayOf(PropTypes.element),
-  right: PropTypes.arrayOf(PropTypes.element).isRequired,
+  left: PropTypes.any,
+  right: PropTypes.any.isRequired,
 };
 
 export default FormFooter;

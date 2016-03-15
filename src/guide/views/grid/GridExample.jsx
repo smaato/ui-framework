@@ -58,7 +58,8 @@ const defaultState = {
   sortedColumnIndex: 1,
   // Search
   searchTerm: '',
-  // Select all
+  // Selection state
+  selectionMap: {},
   areAllRowsSelected: false,
   // Filters
   conditionCheckers: [],
@@ -75,7 +76,7 @@ export default class GridExample extends Component {
     this.onScrollHandler = this.onScroll.bind(this);
 
     this.GRID_ID = 'gridExample';
-    this.STICKY_THRESHOLD = 176;
+    this.STICKY_THRESHOLD = 209;
     this.ROW_HEIGHT = 34;
     this.BODY_HEIGHT = 500;
     this.COLUMNS_COUNT = 11;
@@ -132,9 +133,7 @@ export default class GridExample extends Component {
           <CheckBox
             id="select-all"
             checked={this.state.areAllRowsSelected}
-            onClick={event => // eslint-disable-line react/jsx-no-bind
-              this.toggleAllRowsSelected.bind(this)(event.target.checked)
-            }
+            onClick={this.toggleAllRowsSelected}
           />
         ),
       }), index => ({
@@ -260,10 +259,8 @@ export default class GridExample extends Component {
         children: (
           <CheckBox
             id={item.id}
-            checked={item.isSelected}
-            onClick={event => // eslint-disable-line react/jsx-no-bind
-              this.toggleRowSelected.bind(this)(item.id, event.target.checked)
-            }
+            checked={this.state.selectionMap[item.id]}
+            onClick={this.toggleRowSelected}
           />
         ),
       }), item => ({
@@ -356,6 +353,8 @@ export default class GridExample extends Component {
     this.onSearch = this.onSearch.bind(this);
     this.lazyLoadBodyRows = this.lazyLoadBodyRows.bind(this);
     this.onClickRow = this.onClickRow.bind(this);
+    this.toggleAllRowsSelected = this.toggleAllRowsSelected.bind(this);
+    this.toggleRowSelected = this.toggleRowSelected.bind(this);
   }
 
   componentDidMount() {
@@ -452,17 +451,17 @@ export default class GridExample extends Component {
   }
 
   onClickRow(item) {
-    console.log('Clicked row with ID:', item.id); // eslint-disable-line no-console
+    window.alert(`Clicked row with ID: ${item.id}`); // eslint-disable-line no-alert
   }
 
   onClickRowEdit(item, event) {
     event.stopPropagation();
-    console.log('Clicked edit for row with ID:', item.id); // eslint-disable-line no-console
+    window.alert(`Clicked edit for row with ID: ${item.id}`); // eslint-disable-line no-alert
   }
 
   onClickRowOptions(item, event) {
     event.stopPropagation();
-    console.log('Clicked options for row with ID:', item.id); // eslint-disable-line no-console
+    window.alert(`Clicked options for row with ID: ${item.id}`); // eslint-disable-line no-alert
   }
 
   onSort(cellIndex) {
@@ -584,9 +583,17 @@ export default class GridExample extends Component {
       // Current state
       const newRows = createRows(
         this.state.bodyRows.length,
-        this.ROWS_PER_PAGE,
-        this.state.areAllRowsSelected
+        this.ROWS_PER_PAGE
       );
+
+      // Update selection state
+      const selectionMap = Object.assign({}, this.state.selectionMap);
+      if (this.state.areAllRowsSelected) {
+        newRows.forEach(row => {
+          selectionMap[row.id] = true;
+        });
+      }
+
       const isInitialLoad = this.state.isInitialLoad;
       const isResultEmpty = newRows.length === 0;
 
@@ -602,6 +609,7 @@ export default class GridExample extends Component {
         isLoadingBodyRows: false,
         isLastPage,
         isEmpty,
+        selectionMap,
       });
     }, 2000);
 
@@ -646,32 +654,28 @@ export default class GridExample extends Component {
   }
 
   toggleAllRowsSelected(areAllRowsSelected) {
-    const bodyRows = this.state.bodyRows.map(row => {
-      const bodyRow = row;
-      bodyRow.isSelected = areAllRowsSelected;
-      return bodyRow;
+    const selectionMap = {};
+
+    this.state.bodyRows.forEach(item => {
+      selectionMap[item.id] = areAllRowsSelected;
     });
+
     this.setState({
-      bodyRows,
+      selectionMap,
       areAllRowsSelected,
     });
   }
 
-  toggleRowSelected(id, isRowSelected) {
-    let areAllRowsSelected = true;
-    const bodyRows = this.state.bodyRows.map(row => {
-      const bodyRow = row;
-      if (bodyRow.id === id) {
-        bodyRow.isSelected = isRowSelected;
-      }
-      if (!bodyRow.isSelected) {
-        areAllRowsSelected = false;
-      }
-      return bodyRow;
-    });
+  toggleRowSelected(isRowSelected, id) {
+    const selectionMap = Object.assign({}, this.state.selectionMap);
+    selectionMap[id] = isRowSelected;
+
+    const areAllRowsSelected = this.state.bodyRows.every(
+      item => selectionMap[item.id]
+    );
 
     this.setState({
-      bodyRows,
+      selectionMap,
       areAllRowsSelected,
     });
   }
@@ -761,7 +765,7 @@ export default class GridExample extends Component {
       rows,
       recycledRowsOverflowDistance: 1300,
       recycledRowsCount: 120,
-      getItemHeight: item => item.props.height,
+      getItemHeight: item => item ? item.props.height : undefined,
     });
 
     return (
@@ -780,7 +784,6 @@ export default class GridExample extends Component {
           emptyRow={this.renderEmptyRow()}
           // Loading state
           loadingRow={this.renderLoadingRow()}
-          onClickRow={this.onClickRow}
           rowRecycler={rowRecycler}
         />
       </StickyGrid>

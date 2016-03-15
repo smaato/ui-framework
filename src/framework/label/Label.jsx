@@ -11,6 +11,8 @@ export {
 const Label = props => {
   const classes = classNames('label', props.className, {
     'label--clickable': props.htmlFor,
+    'label--alignedWthField': props.isAlignedWithField,
+    'label--alignedWithLabeledField': props.isAlignedWithLabeledField,
   });
 
   const extendedProps = Object.assign({}, props, {
@@ -30,6 +32,8 @@ Label.propTypes = {
     PropTypes.string,
   ]),
   htmlFor: PropTypes.string,
+  isAlignedWithField: PropTypes.bool,
+  isAlignedWithLabeledField: PropTypes.bool,
 };
 
 export default Label;

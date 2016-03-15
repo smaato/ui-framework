@@ -27,7 +27,7 @@ export default class OrganizationSwitcherExample extends Component {
   }
 
   onClose() {
-    console.log('Close'); // eslint-disable-line no-console
+    window.alert('Close'); // eslint-disable-line no-alert
   }
 
   onSearch(term) {
@@ -56,7 +56,7 @@ export default class OrganizationSwitcherExample extends Component {
   }
 
   selectOrganization(organization) {
-    console.log(organization); // eslint-disable-line no-console
+    window.alert(organization); // eslint-disable-line no-alert
   }
 
   render() {

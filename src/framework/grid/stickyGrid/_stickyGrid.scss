@@ -13,9 +13,10 @@
     position: fixed;
     top: 0;
     z-index: 100;
-    height: 31px;
+    height: 34px;
     border: $gridContainerBorder;
     border-bottom: 1px solid $componentStrokeColor;
+    border-top: 0;
     background: $componentBackgroundColor;
 
     /**

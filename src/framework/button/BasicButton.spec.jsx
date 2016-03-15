@@ -5,7 +5,7 @@ import BasicButton from './BasicButton.jsx';
 describe('BasicButton', () => {
   describe('DOM structure', () => {
     it('has the appropriate class', () => {
-      const testCase = TestCaseFactory.createFromFunction(BasicButton);
+      const testCase = TestCaseFactory.create(BasicButton);
       expect(testCase.dom.getAttribute('class')).toContain('button--basic');
     });
   });
@@ -16,7 +16,7 @@ describe('BasicButton', () => {
         const props = {
           classes: 'testClass',
         };
-        const testCase = TestCaseFactory.createFromFunction(BasicButton, props);
+        const testCase = TestCaseFactory.create(BasicButton, props);
         expect(testCase.dom.className).toContain(props.classes);
       });
     });

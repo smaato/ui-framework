@@ -1,0 +1,18 @@
+
+.pickedListContainer {
+  line-height: $lineHeight;
+
+  & + & {
+    margin-top: 10px;
+  }
+}
+
+.pickedListTitle {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.pickedList {
+  border: 1px solid #d4d8db;
+  border-radius: 2px;
+}

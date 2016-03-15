@@ -10,8 +10,10 @@ import Page, {
 
 import {
   Dropdown,
+  Label,
   LabeledControl,
   LabeledField,
+  SubLabel,
   TextArea,
   TextInput,
   VerticalLayout,
@@ -147,23 +149,33 @@ export default class LabelExample extends Component {
           </VerticalLayout>
         </Example>
 
+        <Example title="With Label and SubLabel">
+          <VerticalLayout>
+            <LabeledControl
+              label={[
+                <Label key={0}>Label</Label>,
+                <SubLabel key={1}>Sub-label</SubLabel>,
+              ]}
+              layout={LabeledControl.LAYOUT.ONE_SIXTH}
+            >
+              <TextInput isFullWidth />
+            </LabeledControl>
+          </VerticalLayout>
+        </Example>
+
         <Example title="With Dropdown">
           <VerticalLayout>
             <LabeledControl
               label="Type"
               layout={LabeledControl.LAYOUT.ONE_SIXTH}
             >
-              <LabeledField
-                label="Select your choice"
-              >
-                <Dropdown
-                  options={this.dropdownItems}
-                  selectedOption={this.state.selectedDropdownOption}
-                  onSelect={this.onSelectDropdownOption}
-                  labelProvider={this.dropdownLabelProvider}
-                  optionLabelProvider={this.dropdownOptionLabelProvider}
-                />
-              </LabeledField>
+              <Dropdown
+                options={this.dropdownItems}
+                selectedOption={this.state.selectedDropdownOption}
+                onSelect={this.onSelectDropdownOption}
+                labelProvider={this.dropdownLabelProvider}
+                optionLabelProvider={this.dropdownOptionLabelProvider}
+              />
             </LabeledControl>
           </VerticalLayout>
         </Example>

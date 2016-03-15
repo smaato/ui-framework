@@ -21,12 +21,14 @@ const LabeledControl = props => {
 
   let label;
 
-  if (props.label) {
-    label = (
-      <Label>
-        {props.label}
-      </Label>
-    );
+  if (typeof props.label === 'string') {
+    label = React.createElement(Label, {
+      children: props.label,
+      isAlignedWithField: !props.withLabeledField,
+      isAlignedWithLabeledField: props.withLabeledField,
+    });
+  } else {
+    label = props.label;
   }
 
   return (
@@ -58,7 +60,7 @@ LabeledControl.propTypes = {
     PropTypes.array,
     PropTypes.element,
   ]),
-  label: PropTypes.string,
+  label: PropTypes.any,
   layout: PropTypes.string.isRequired,
   withLabeledField: PropTypes.bool,
 };
