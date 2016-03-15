@@ -1,6 +1,4 @@
 
-$labeledControlLabelPaddingTop: 11px;
-
 /**
  * 1. Use 0% instead of 0 because IE10-11 incorrectly interpret this as an error
  *    and discard the entire rule. For more info, see:
@@ -11,14 +9,8 @@ $labeledControlLabelPaddingTop: 11px;
   line-height: $lineHeight;
 }
 
-  /**
-   * 1. Vertically aligns label with control (top).
-   *    Especially useful for the case when field validation error is added
-   *    to control, so control height gets much bigger.
-   */
   .labeledControl__label {
     padding-right: 18px;
-    padding-top: $labeledControlLabelPaddingTop; /* 1 */
   }
 
 /**
@@ -88,14 +80,5 @@ $labeledControlLabelPaddingTop: 11px;
 
   .labeledControl__control {
     flex: 5 1 0%; /* 1 */
-  }
-}
-
-.labeledControl--withLabeledField {
-  /**
-  * 1. Default label padding-top + labeledField label height and margin.
-  */
-  .labeledControl__label {
-    padding-top: $labeledControlLabelPaddingTop + 15px; /* 1. */
   }
 }
