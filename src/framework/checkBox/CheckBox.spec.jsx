@@ -52,35 +52,31 @@ describe('CheckBox', () => {
     });
 
     describe('onClick', () => {
-      let onClick;
+      let props;
 
       beforeEach(() => {
-        onClick = jasmine.createSpy('onClick');
+        props = {
+          id: 'id',
+          data: {},
+          checked: true,
+          onClick: jasmine.createSpy('onClick'),
+        };
 
-        const testCase = TestCaseFactory.createFromElement(
-          <CheckBox
-            id="id"
-            onClick={onClick}
-          />
-        );
-
+        const testCase = TestCaseFactory.create(CheckBox, props);
         const input = testCase.first('input');
-
-        testCase.trigger('click', input);
+        testCase.trigger('change', input);
       });
 
-      it('is called when checked state is changed', () => {
-        expect(onClick).toHaveBeenCalled();
+      it('is called once when the checkbox changes', () => {
+        expect(props.onClick).toHaveBeenCalled();
+        expect(props.onClick.calls.count()).toEqual(1);
       });
 
-      it('is called once', () => {
-        expect(onClick.calls.count()).toEqual(1);
-      });
-
-      it('is called with event object as an argument', () => {
-        expect(onClick).toHaveBeenCalledWith(
-          jasmine.any(Object), // SyntheticEvent
-          jasmine.any(String) // Virtual DOM's 'data-reactid' attribute
+      it('is called with checked state, id, and data', () => {
+        expect(props.onClick).toHaveBeenCalledWith(
+          props.checked,
+          props.id,
+          props.data
         );
       });
     });
