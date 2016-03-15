@@ -59,7 +59,12 @@ export default class BaseDropdown extends Component {
     event.preventDefault();
   }
 
-  onClickLabel() {
+  onClickLabel(event) {
+    // Stop the event from bubbling up. This is useful in situations where
+    // the dropdown is inside of a grid row and the row has an onClick handler.
+    // By stopping the event from bubbling up, we prevent the row's onClick
+    // handler from being called when the dropdown label is clicked.
+    event.stopPropagation();
     this.setState({
       isOpen: !this.state.isOpen,
     });
