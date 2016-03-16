@@ -139,7 +139,8 @@ export default class GridExample extends Component {
       }), index => ({
         children: (
           <GridHeaderSortableCell
-            onClick={this.onSort.bind(this, index)} // eslint-disable-line react/jsx-no-bind
+            onSort={this.onSort}
+            index={index}
             isSelected={this.state.sortedColumnIndex === index}
             isSortDescending={this.state.isSortDescending}
           >
@@ -149,7 +150,8 @@ export default class GridExample extends Component {
       }), index => ({
         children: (
           <GridHeaderSortableCell
-            onClick={this.onSort.bind(this, index)} // eslint-disable-line react/jsx-no-bind
+            onSort={this.onSort}
+            index={index}
             isSelected={this.state.sortedColumnIndex === index}
             isSortDescending={this.state.isSortDescending}
           >
@@ -159,7 +161,8 @@ export default class GridExample extends Component {
       }), index => ({
         children: (
           <GridHeaderSortableCell
-            onClick={this.onSort.bind(this, index)} // eslint-disable-line react/jsx-no-bind
+            onSort={this.onSort}
+            index={index}
             isSelected={this.state.sortedColumnIndex === index}
             isSortDescending={this.state.isSortDescending}
           >
@@ -169,7 +172,8 @@ export default class GridExample extends Component {
       }), index => ({
         children: (
           <GridHeaderSortableCell
-            onClick={this.onSort.bind(this, index)} // eslint-disable-line react/jsx-no-bind
+            onSort={this.onSort}
+            index={index}
             isSelected={this.state.sortedColumnIndex === index}
             isSortDescending={this.state.isSortDescending}
           >
@@ -179,7 +183,8 @@ export default class GridExample extends Component {
       }), index => ({
         children: (
           <GridHeaderSortableCell
-            onClick={this.onSort.bind(this, index)} // eslint-disable-line react/jsx-no-bind
+            onSort={this.onSort}
+            index={index}
             isSelected={this.state.sortedColumnIndex === index}
             isSortDescending={this.state.isSortDescending}
           >
@@ -189,7 +194,8 @@ export default class GridExample extends Component {
       }), index => ({
         children: (
           <GridHeaderSortableCell
-            onClick={this.onSort.bind(this, index)} // eslint-disable-line react/jsx-no-bind
+            onSort={this.onSort}
+            index={index}
             isSelected={this.state.sortedColumnIndex === index}
             isSortDescending={this.state.isSortDescending}
           >
@@ -199,7 +205,8 @@ export default class GridExample extends Component {
       }), index => ({
         children: (
           <GridHeaderSortableCell
-            onClick={this.onSort.bind(this, index)} // eslint-disable-line react/jsx-no-bind
+            onSort={this.onSort}
+            index={index}
             isSelected={this.state.sortedColumnIndex === index}
             isSortDescending={this.state.isSortDescending}
           >
@@ -209,7 +216,8 @@ export default class GridExample extends Component {
       }), index => ({
         children: (
           <GridHeaderSortableCell
-            onClick={this.onSort.bind(this, index)} // eslint-disable-line react/jsx-no-bind
+            onSort={this.onSort}
+            index={index}
             isSelected={this.state.sortedColumnIndex === index}
             isSortDescending={this.state.isSortDescending}
           >
@@ -350,6 +358,7 @@ export default class GridExample extends Component {
     this.toggleEmptyRows = this.toggleEmptyRows.bind(this);
     this.onRemoveConditionChecker = this.onRemoveConditionChecker.bind(this);
     this.onAddConditionChecker = this.onAddConditionChecker.bind(this);
+    this.onSort = this.onSort.bind(this);
     this.onSearch = this.onSearch.bind(this);
     this.lazyLoadBodyRows = this.lazyLoadBodyRows.bind(this);
     this.onClickRow = this.onClickRow.bind(this);
