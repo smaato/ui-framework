@@ -26,6 +26,7 @@ import {
   FilterableItems,
   GridRowRecycler,
   Sorter,
+  SortState,
   GridStencil,
   ThrottledEventDispatcher,
 } from '../../../framework/services';
@@ -43,10 +44,6 @@ const defaultState = {
   isEmpty: false,
   // Reference to fake server request, provides ability to cancel it
   lazyLoadingTimeoutId: null,
-  // Sorting
-  isSortDescending: false,
-  // Index of column to sort by
-  sortedColumnIndex: 1,
   // Search
   searchTerm: '',
   // Selection state
@@ -88,8 +85,19 @@ export default class GridExample extends Component {
       8,
     ];
 
-    // In the app that uses Grid this state should be inside reducer
-    this.state = defaultState;
+    // State.
+    this.sortState = new SortState({
+      descendingProperty: 'isSortDescending',
+      indexProperty: 'sortedColumnIndex',
+      isDescending: false,
+      index: 1,
+    });
+
+    this.state = Object.assign(
+      {},
+      defaultState,
+      this.sortState.getState()
+    );
 
     // Because we need custom abbreviations, we need to overwrite the entire
     // English language definition.
@@ -465,9 +473,6 @@ export default class GridExample extends Component {
   }
 
   onSort(cellIndex) {
-    const isSortDescending = this.state.sortedColumnIndex === cellIndex ?
-      !this.state.isSortDescending : this.state.isSortDescending;
-
     // In the case of existing API, when lazy loading is enabled, we need to
     // purge bodyRows and request sorted data from the server.
     //
@@ -478,10 +483,8 @@ export default class GridExample extends Component {
     // }
     // ```
 
-    this.setState({
-      sortedColumnIndex: cellIndex,
-      isSortDescending,
-    });
+    this.sortState.sortOn(cellIndex);
+    this.setState(this.sortState.getState());
   }
 
   onRemoveConditionChecker(conditionCheckerToRemove) {

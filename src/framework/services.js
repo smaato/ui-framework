@@ -43,6 +43,10 @@ export {
   default as Sorter,
 } from './services/sort/Sorter';
 
+export {
+  default as SortState,
+} from './services/sort/SortState';
+
 // String
 
 export {
