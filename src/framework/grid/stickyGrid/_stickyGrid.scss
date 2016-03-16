@@ -6,6 +6,8 @@
   /**
    * This header is hidden until the user scrolls down far enough for the
    * grid header to become stuck.
+   *
+   * 1. Prevent cells from overflowing the header.
    */
   .stickyGridHeader {
     @include gridBaseStyles;
@@ -18,6 +20,7 @@
     border-bottom: 1px solid $componentStrokeColor;
     border-top: 0;
     background: $componentBackgroundColor;
+    overflow: hidden; /* 1 */
 
     /**
      * We stick the header with display instead of position, to avoid incurring

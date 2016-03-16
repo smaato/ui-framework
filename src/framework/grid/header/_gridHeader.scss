@@ -1,28 +1,43 @@
+/**
+ * 1. Applies inherited text-align property instead of "center" in IE
+ */
 .grid__header__cell {
   vertical-align: middle;
-
   height: 31px;
   border-bottom: 1px solid $componentStrokeColor;
   background: $componentBackgroundColor;
-  padding-left: 8px;
-  padding-right: 8px;
-
-  /**
-   * 1. Applies inherited text-align property instead of "center" in IE
-   */
   text-align: inherit; /* 1 */
+
+  &:first-child {
+    width: 35px;
+    padding-left: 7px;
+  }
 }
+
+  .grid__header__cellLiner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 
   .grid__header__row--placeholder {
     &.grid__header__cellLiner {
+      display: block;
       height: 0;
       border: 0;
       overflow: hidden;
     }
   }
 
+/**
+ * 1. Fill parent element so that the entire cell is interactive.
+ */
 .gridHeaderSortableCell {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  height: 100%; /* 1 */
   color: #2799c4;
   white-space: nowrap;
   cursor: pointer;
