@@ -20,10 +20,11 @@ describe('GridHeaderSortableCell', () => {
       });
     });
 
-    describe('onClick', () => {
-      it('is executed on click', () => {
+    describe('onSort', () => {
+      it('is called with index on click', () => {
         const props = {
-          onClick: jasmine.createSpy('onClick'),
+          onSort: jasmine.createSpy('onSort'),
+          index: 1,
         };
 
         const testCase = TestCaseFactory.createFromFunction(
@@ -31,9 +32,9 @@ describe('GridHeaderSortableCell', () => {
           props
         );
 
-        expect(props.onClick).not.toHaveBeenCalled();
+        expect(props.onSort).not.toHaveBeenCalled();
         testCase.trigger('click');
-        expect(props.onClick).toHaveBeenCalled();
+        expect(props.onSort).toHaveBeenCalledWith(props.index);
       });
     });
 

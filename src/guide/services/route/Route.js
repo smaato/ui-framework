@@ -36,6 +36,9 @@ import PickedListExample from '../../views/pickedList/PickedListExample.jsx';
 import SearchBoxExample
   from '../../views/searchBox/SearchBoxExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
+import StatusDotExample from '../../views/statusDot/StatusDotExample.jsx';
+import StatusDropdownExample
+  from '../../views/statusDropdown/StatusDropdownExample.jsx';
 import SummaryControlExample
   from '../../views/summaryControl/SummaryControlExample.jsx';
 import TextExample from '../../views/text/TextExample.jsx';
@@ -155,6 +158,14 @@ const components = [{
   name: 'Spinner',
   source: 'views/spinner/SpinnerExample.jsx',
   component: SpinnerExample,
+}, {
+  name: 'StatusDot',
+  source: 'views/statusDropdown/StatusDotExample.jsx',
+  component: StatusDotExample,
+}, {
+  name: 'StatusDropdown',
+  source: 'views/statusDropdown/StatusDropdownExample.jsx',
+  component: StatusDropdownExample,
 }, {
   name: 'SummaryControl',
   source: 'views/summaryControl/SummaryControlExample.jsx',

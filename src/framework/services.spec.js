@@ -10,6 +10,7 @@ import {
   GridRowRecycler,
   GridStencil,
   Sorter,
+  SortState,
   Entity,
 } from './services';
 
@@ -71,6 +72,12 @@ describe('UI Framework services', () => {
   describe('Sorter', () => {
     it('is exported', () => {
       expect(Sorter).toEqual(jasmine.any(Object));
+    });
+  });
+
+  describe('SortState', () => {
+    it('is exported', () => {
+      expect(SortState).toEqual(jasmine.any(Function));
     });
   });
 

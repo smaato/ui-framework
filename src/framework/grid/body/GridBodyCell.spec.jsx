@@ -26,8 +26,7 @@ describe('GridBodyCell', () => {
           wrap(<GridBodyCell {...props} />)
         );
 
-        expect(testCase.first('td').getAttribute('class')
-          .indexOf(props.classBodyCell) !== -1).toBe(true);
+        expect(testCase.first('td').className).toContain(props.classBodyCell);
       });
     });
 
@@ -59,8 +58,27 @@ describe('GridBodyCell', () => {
           wrap(<GridBodyCell {...props} />)
         );
 
-        expect(testCase.first('td > div').getAttribute('class')
-          .indexOf(props.innerCellProps.className) !== -1).toBe(true);
+        expect(testCase.first('td > div').className).toContain(
+          props.innerCellProps.className
+        );
+      });
+
+      describe('canOverflow', () => {
+        it('applies the appropriate class', () => {
+          const props = {
+            innerCellProps: {
+              canOverflow: true,
+            },
+          };
+
+          const testCase = TestCaseFactory.createFromElement(
+            wrap(<GridBodyCell {...props} />)
+          );
+
+          expect(testCase.first('td > div').className).toContain(
+            'grid__body__cellLiner--overflow'
+          );
+        });
       });
     });
   });

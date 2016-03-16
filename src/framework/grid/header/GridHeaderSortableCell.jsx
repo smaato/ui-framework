@@ -10,10 +10,14 @@ const GridHeaderSortableCell = props => {
     'is-grid-header-sort-descending': props.isSortDescending,
   });
 
+  function onClick() {
+    props.onSort(props.index);
+  }
+
   return (
     <div
       className={classes}
-      onClick={props.onClick}
+      onClick={onClick}
     >
       <div className="gridHeaderSortableCell__label">
         {props.children}
@@ -39,7 +43,8 @@ GridHeaderSortableCell.propTypes = {
     PropTypes.array,
     PropTypes.string,
   ]),
-  onClick: PropTypes.func.isRequired,
+  onSort: PropTypes.func.isRequired,
+  index: PropTypes.number,
   isSelected: PropTypes.bool,
   isSortDescending: PropTypes.bool,
 };
