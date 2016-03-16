@@ -28,3 +28,17 @@ $viewHeaderNav_selectedColor: $titleBarBackgroundColor;
 $appHeaderNav_textColor: $white;
 $appHeaderNav_backgroundColor: $darkGrey;
 $appHeaderNav_selectedColor: $viewHeaderNav_backgroundColor;
+
+/**
+ * Status
+ */
+
+// Line (border, font)
+$statusDefaultLineColor: rgba(black, 0.3);
+$statusNegativeLineColor: #e1472e;
+$statusPositiveLineColor: #41b586;
+
+// Fill (background)
+$statusDefaultFillColor: rgba(black, 0.1);
+$statusNegativeFillColor: #ff8875;
+$statusPositiveFillColor: #48cda4;

@@ -76,6 +76,9 @@ import {
   PrimaryButton,
   SearchBox,
   Spinner,
+  StatusDot,
+  StatusDropdown,
+  StatusDropdownOption,
   StickyGrid,
   SubLabel,
   SummaryControl,
@@ -319,6 +322,15 @@ const components = [{
 }, {
   name: 'Spinner',
   component: Spinner,
+}, {
+  name: 'StatusDot',
+  component: StatusDot,
+}, {
+  name: 'StatusDropdown',
+  component: StatusDropdown,
+}, {
+  name: 'StatusDropdownOption',
+  component: StatusDropdownOption,
 }, {
   name: 'StickyGrid',
   component: StickyGrid,

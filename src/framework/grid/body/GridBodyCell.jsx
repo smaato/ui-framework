@@ -13,7 +13,10 @@ const GridBodyCell = props => {
   const decoratedInnerCellProps = Object.assign({}, props.innerCellProps, {
     className: classNames(
       'grid__body__cellLiner',
-      props.innerCellProps.className
+      props.innerCellProps.className,
+      {
+        'grid__body__cellLiner--overflow': props.innerCellProps.canOverflow,
+      }
     ),
   });
 

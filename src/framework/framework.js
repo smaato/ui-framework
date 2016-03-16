@@ -93,6 +93,11 @@ export {
 export * from './searchBox/SearchBox.jsx';
 export { default as SearchBox } from './searchBox/SearchBox.jsx';
 
+export { default as StatusDot } from './statusDot/StatusDot.jsx';
+
+export * from './statusDropdown/StatusDropdown.jsx';
+export { default as StatusDropdown } from './statusDropdown/StatusDropdown.jsx';
+
 export * from './text/Text.jsx';
 export { default as Text } from './text/Text.jsx';
 

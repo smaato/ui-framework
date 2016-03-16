@@ -4,17 +4,15 @@
   border-bottom: 1px dashed $componentStrokeColor;
   font-weight: 300;
   vertical-align: middle;
-}
 
-  .grid__body__cell {
-    &:first-child {
-      padding-left: 15px;
-    }
-
-    &:last-child {
-      padding-right: 15px;
-    }
+  &:first-child {
+    padding-left: 15px;
   }
+
+  &:last-child {
+    padding-right: 15px;
+  }
+}
 
     .grid__body__cellLiner {
       // 4 props to make ellipsis work
@@ -24,6 +22,10 @@
       white-space: nowrap;
       // Or else 'g' is cut off at the bottom
       line-height: 1.2;
+    }
+
+    .grid__body__cellLiner--overflow {
+      overflow: visible;
     }
 
       .grid__body__cellValue--link,
