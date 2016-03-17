@@ -1,0 +1,30 @@
+
+.pickedSummary {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  font-size: 13px;
+  line-height: $lineHeight;
+  font-weight: 300;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+  .pickedSummary__label {
+    flex: 1 1 auto;
+  }
+
+.pickedSummaryIcon {
+  width: 13px;
+  margin-right: 4px;
+}
+
+.pickedSummaryIcon--check {
+  color: #81d372;
+}
+
+.pickedSummaryIcon--ban {
+  color: #f07576;
+}

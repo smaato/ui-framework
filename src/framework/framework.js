@@ -64,14 +64,33 @@ export { default as Link } from './link/Link.jsx';
 export * from './menu/Menu.jsx';
 export { default as Menu } from './menu/Menu.jsx';
 
+export * from './modal/Modal.jsx';
+export { default as Modal } from './modal/Modal.jsx';
+
+export * from './organizationSwitcher/OrganizationSwitcher.jsx';
+export {
+  default as OrganizationSwitcher,
+} from './organizationSwitcher/OrganizationSwitcher.jsx';
+
 export * from './panel/Panel.jsx';
 export { default as Panel } from './panel/Panel.jsx';
 
 export * from './pickedList/PickedList.jsx';
 export { default as PickedList } from './pickedList/PickedList.jsx';
 
+export * from './pickedSummary/PickedSummary.jsx';
+export { default as PickedSummary } from './pickedSummary/PickedSummary.jsx';
+
+export * from './searchBox/SearchBox.jsx';
+export { default as SearchBox } from './searchBox/SearchBox.jsx';
+
 export * from './spinner/Spinner.jsx';
 export { default as Spinner } from './spinner/Spinner.jsx';
+
+export { default as StatusDot } from './statusDot/StatusDot.jsx';
+
+export * from './statusDropdown/StatusDropdown.jsx';
+export { default as StatusDropdown } from './statusDropdown/StatusDropdown.jsx';
 
 export { default as SummaryControl, }
   from './summaryControl/SummaryControl.jsx';
@@ -81,22 +100,6 @@ export { default as SummaryControlIconCheck, }
   from './summaryControl/icon/SummaryControlIconCheck.jsx';
 export { default as SummaryControlIconPaperclip, }
   from './summaryControl/icon/SummaryControlIconPaperclip.jsx';
-
-export * from './modal/Modal.jsx';
-export { default as Modal } from './modal/Modal.jsx';
-
-export * from './organizationSwitcher/OrganizationSwitcher.jsx';
-export {
-  default as OrganizationSwitcher,
-} from './organizationSwitcher/OrganizationSwitcher.jsx';
-
-export * from './searchBox/SearchBox.jsx';
-export { default as SearchBox } from './searchBox/SearchBox.jsx';
-
-export { default as StatusDot } from './statusDot/StatusDot.jsx';
-
-export * from './statusDropdown/StatusDropdown.jsx';
-export { default as StatusDropdown } from './statusDropdown/StatusDropdown.jsx';
 
 export * from './text/Text.jsx';
 export { default as Text } from './text/Text.jsx';

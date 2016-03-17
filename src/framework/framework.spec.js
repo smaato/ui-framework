@@ -73,6 +73,7 @@ import {
   PanelLayout,
   PickedList,
   PickedListItem,
+  PickedSummary,
   PrimaryButton,
   SearchBox,
   Spinner,
@@ -313,6 +314,9 @@ const components = [{
 }, {
   name: 'PickedListItem',
   component: PickedListItem,
+}, {
+  name: 'PickedSummary',
+  component: PickedSummary,
 }, {
   name: 'PrimaryButton',
   component: PrimaryButton,
