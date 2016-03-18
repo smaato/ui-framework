@@ -8,7 +8,6 @@ describe('PickedSummary', () => {
       it('is rendered', () => {
         const props = {
           children: 'test',
-          onRemove: () => undefined,
         };
         const testCase = TestCaseFactory.create(PickedSummary, props);
         expect(testCase.dom.textContent).toBe(props.children);
@@ -19,7 +18,6 @@ describe('PickedSummary', () => {
       it('renders the correct icon when true', () => {
         const props = {
           isAllowed: true,
-          onRemove: () => undefined,
         };
         const testCase = TestCaseFactory.create(PickedSummary, props);
         expect(testCase.first('.pickedSummaryIcon--check'))
@@ -29,7 +27,6 @@ describe('PickedSummary', () => {
       it('renders the correct icon when false', () => {
         const props = {
           isAllowed: false,
-          onRemove: () => undefined,
         };
         const testCase = TestCaseFactory.create(PickedSummary, props);
         expect(testCase.first('.pickedSummaryIcon--ban'))

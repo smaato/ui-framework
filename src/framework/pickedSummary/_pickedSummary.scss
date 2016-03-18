@@ -2,18 +2,19 @@
 .pickedSummary {
   display: flex;
   align-items: center;
-  padding: 10px;
   font-size: 13px;
   line-height: $lineHeight;
   font-weight: 300;
-
-  &:last-child {
-    border-bottom: 0;
-  }
 }
 
+  /**
+   * 1. Display an ellipsis if the text overflows.
+   */
   .pickedSummary__label {
     flex: 1 1 auto;
+    text-overflow: ellipsis; /* 1 */
+    white-space: nowrap; /* 1 */
+    overflow: hidden; /* 1 */
   }
 
 .pickedSummaryIcon {

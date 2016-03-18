@@ -25,6 +25,7 @@ import {
   GridRow,
   KpiNegative,
   KpiPositive,
+  PickedSummary,
   SearchBox,
   StatusDot,
   StatusDropdown,
@@ -310,7 +311,11 @@ export default class GridExample extends Component {
           />
         ),
       }), item => ({
-        children: item.fuel,
+        children: (
+          <PickedSummary isAllowed={item.fuelEconomy % 2 === 0}>
+            {item.fuel}
+          </PickedSummary>
+        ),
       }), item => ({
         children: (
           <GridBodyEditableCell
