@@ -33,6 +33,8 @@ import OrganizationSwitcherExample
   from '../../views/organizationSwitcher/OrganizationSwitcherExample.jsx';
 import PanelExample from '../../views/panel/PanelExample.jsx';
 import PickedListExample from '../../views/pickedList/PickedListExample.jsx';
+import PickedSummaryExample
+  from '../../views/pickedSummary/PickedSummaryExample.jsx';
 import SearchBoxExample
   from '../../views/searchBox/SearchBoxExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
@@ -150,6 +152,10 @@ const components = [{
   name: 'PickedList',
   source: 'views/pickedList/PickedListExample.jsx',
   component: PickedListExample,
+}, {
+  name: 'PickedSummary',
+  source: 'views/pickedSummary/PickedSummaryExample.jsx',
+  component: PickedSummaryExample,
 }, {
   name: 'SearchBox',
   source: 'views/searchBox/SearchBoxExample.jsx',

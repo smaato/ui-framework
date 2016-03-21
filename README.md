@@ -85,6 +85,7 @@ import {
   PanelLayout,
   PickedList,
   PickedListItem,
+  PickedSummary,
   PrimaryButton,
   SearchBox,
   Spinner,
