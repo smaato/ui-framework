@@ -1,4 +1,6 @@
 
+$modalPadding: 20px;
+
 /**
  * 1. Center modal vertically and horizontally in IE11, and allow the container
  *    to scroll if the modal is clipped.
@@ -35,10 +37,5 @@
 }
 
 .modalBody {
-  padding: 0 20px;
-}
-
-.modal__footer {
-  margin-top: 10px;
-  padding: 0 20px 20px;
+  padding: 0 $modalPadding;
 }

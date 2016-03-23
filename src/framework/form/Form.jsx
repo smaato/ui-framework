@@ -4,35 +4,37 @@ import React, {
 } from 'react';
 
 export {
+  default as FormPanel,
+} from './FormPanel.jsx';
+
+export {
   default as FormFooter,
 } from './footer/FormFooter.jsx';
 
 const Form = props => {
-  let footer;
+  let submitInput;
 
-  if (props.footer) {
-    footer = (
-      <div className="formSection formSection--footer">
-        {props.footer}
-      </div>
-    );
+  if (props.onSubmit) {
+    submitInput = <input type="submit" style={{ display: 'none' }} />;
   }
 
   return (
-    <div
+    <form
       data-id={props.dataId}
-      className="form"
+      onSubmit={props.onSubmit}
     >
-      {props.body}
-      {footer}
-    </div>
+      {props.children}
+
+      {/* Submit form when user hits Enter */}
+      {submitInput}
+    </form>
   );
 };
 
 Form.propTypes = {
   dataId: PropTypes.string,
-  body: PropTypes.element.isRequired,
-  footer: PropTypes.element,
+  onSubmit: PropTypes.func,
+  children: PropTypes.any,
 };
 
 export default Form;

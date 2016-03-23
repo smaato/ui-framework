@@ -10,35 +10,13 @@ describe('Modal', () => {
       body: <div />,
     });
 
-    describe('header', () => {
+    describe('children', () => {
       it('is rendered', () => {
         const props = {
-          header: <div id="header">header</div>,
-          body: <div />,
+          children: 'test',
         };
         const testCase = TestCaseFactory.create(Modal, props);
-        expect(testCase.first('#header').textContent).toBe('header');
-      });
-    });
-
-    describe('body', () => {
-      it('is rendered', () => {
-        const props = {
-          body: <div id="body">body</div>,
-        };
-        const testCase = TestCaseFactory.create(Modal, props);
-        expect(testCase.first('#body').textContent).toBe('body');
-      });
-    });
-
-    describe('footer', () => {
-      it('is rendered', () => {
-        const props = {
-          body: <div />,
-          footer: <div id="footer">footer</div>,
-        };
-        const testCase = TestCaseFactory.create(Modal, props);
-        expect(testCase.first('#footer').textContent).toBe('footer');
+        expect(testCase.dom.textContent).toBe(props.children);
       });
     });
 
