@@ -1,9 +1,12 @@
 
 import { TestCaseFactory } from 'react-test-kit';
+import { CommonAssertions } from '../services';
 import PickedList from './PickedList.jsx';
 
 describe('PickedList', () => {
   describe('Props', () => {
+    CommonAssertions.assertDataId(PickedList, undefined, '.pickedList');
+
     describe('children', () => {
       it('is rendered', () => {
         const props = {
