@@ -10,8 +10,10 @@ import Page, {
 
 import {
   BasicButton,
+  Dropdown,
   Form,
   FormFooter,
+  FormPanel,
   HollowButton,
   LabeledControl,
   PrimaryButton,
@@ -23,15 +25,54 @@ export default class FormExample extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      selectedDropdownOption: undefined,
+    };
+
+    this.dropdownItems = [{
+      name: 'Red',
+    }, {
+      name: 'Green',
+    }, {
+      name: 'Blue',
+    }];
+
+    this.dropdownLabelProvider = option => option ? option.name : 'Click me';
+
+    this.dropdownOptionLabelProvider =
+      option => option ? option.name : undefined;
+
+    this.onCancel = this.onCancel.bind(this);
+    this.onSelectDropdownOption = this.onSelectDropdownOption.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onCancel(event) {
+    event.preventDefault();
+    window.alert('Cancel form'); // eslint-disable-line no-alert
+  }
+
+  onSelectDropdownOption(option) {
+    this.setState({
+      selectedDropdownOption: option,
+    });
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
+    window.alert('Submit form'); // eslint-disable-line no-alert
   }
 
   render() {
     return (
       <Page title={this.props.route.name}>
         <Example>
-          <Form
-            data-id="data-id"
-            body={
+          <FormPanel>
+            <Form
+              dataId="data-id"
+              onSubmit={this.onSubmit}
+            >
               <VerticalLayout>
                 <LabeledControl
                   label="First Name"
@@ -46,30 +87,36 @@ export default class FormExample extends Component {
                   <TextInput isFullWidth />
                 </LabeledControl>
               </VerticalLayout>
-            }
-          />
+            </Form>
+          </FormPanel>
         </Example>
 
         <Example title="Form with footer">
-          <Form
-            data-id="data-id"
-            body={(
+          <FormPanel>
+            <Form
+              dataId="data-id"
+              onSubmit={this.onSubmit}
+            >
               <VerticalLayout>
                 <LabeledControl
-                  label="First Name"
+                  label="Name"
                   layout={LabeledControl.LAYOUT.ONE_SIXTH}
                 >
                   <TextInput isFullWidth />
                 </LabeledControl>
                 <LabeledControl
-                  label="Last Name"
+                  label="Favorite color"
                   layout={LabeledControl.LAYOUT.ONE_SIXTH}
                 >
-                  <TextInput isFullWidth />
+                  <Dropdown
+                    options={this.dropdownItems}
+                    selectedOption={this.state.selectedDropdownOption}
+                    onSelect={this.onSelectDropdownOption}
+                    labelProvider={this.dropdownLabelProvider}
+                    optionLabelProvider={this.dropdownOptionLabelProvider}
+                  />
                 </LabeledControl>
               </VerticalLayout>
-            )}
-            footer={
               <FormFooter
                 left={[
                   <BasicButton
@@ -82,15 +129,17 @@ export default class FormExample extends Component {
                   <HollowButton
                     key="footer_right_1"
                     label="Cancel"
+                    onClick={this.onCancel}
                   />,
                   <PrimaryButton
                     key="footer_right_2"
                     label="Save"
+                    onClick={this.onSubmit}
                   />,
                 ]}
               />
-            }
-          />
+            </Form>
+          </FormPanel>
         </Example>
 
       </Page>

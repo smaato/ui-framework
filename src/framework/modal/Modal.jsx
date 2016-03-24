@@ -18,6 +18,10 @@ export {
 } from './confirmation/ModalConfirmationFooter.jsx';
 
 export {
+  default as ModalFooter,
+} from './footer/ModalFooter.jsx';
+
+export {
   default as ModalHeader,
 } from './header/ModalHeader.jsx';
 
@@ -87,16 +91,6 @@ export default class Modal extends Component {
   }
 
   render() {
-    let footer;
-
-    if (this.props.footer) {
-      footer = (
-        <div className="modal__footer">
-          {this.props.footer}
-        </div>
-      );
-    }
-
     const classes = classNames('modal', {
       'is-modal-hovered': this.state.isMouseOver,
       'is-modal-stacked': this.isModalStacked(),
@@ -112,9 +106,7 @@ export default class Modal extends Component {
         onMouseOver={this.onMouseOver}
         onMouseOut={this.onMouseOut}
       >
-        {this.props.header}
-        {this.props.body}
-        {footer}
+        {this.props.children}
       </div>
     );
   }
@@ -122,9 +114,7 @@ export default class Modal extends Component {
 
 Modal.propTypes = {
   dataId: PropTypes.string,
-  header: PropTypes.element,
-  body: PropTypes.element.isRequired,
-  footer: PropTypes.element,
+  children: PropTypes.any,
   index: PropTypes.number,
   stackCount: PropTypes.number,
   onCloseTopModal: PropTypes.func,
