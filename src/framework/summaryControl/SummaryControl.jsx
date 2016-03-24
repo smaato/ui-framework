@@ -7,6 +7,7 @@ import IconCog from '../icon/IconCog.jsx';
 
 const SummaryControl = props => (
   <div
+    data-id={props.dataId}
     className="summaryControl"
     onClick={props.onClick}
   >
@@ -19,6 +20,7 @@ const SummaryControl = props => (
 );
 
 SummaryControl.propTypes = {
+  dataId: PropTypes.string,
   children: PropTypes.string,
   icon: PropTypes.any,
   onClick: PropTypes.func,

@@ -31,6 +31,7 @@ import {
   FiltersControl,
   Form,
   FormFooter,
+  FormPanel,
   Grid,
   GridBodyEditableCell,
   GridControls,
@@ -65,6 +66,7 @@ import {
   ModalBody,
   ModalConfirmationBody,
   ModalConfirmationFooter,
+  ModalFooter,
   ModalHeader,
   ModalOverlay,
   OrganizationSwitcher,
@@ -195,6 +197,9 @@ const components = [{
   name: 'FormFooter',
   component: FormFooter,
 }, {
+  name: 'FormPanel',
+  component: FormPanel,
+}, {
   name: 'Grid',
   component: Grid,
 }, {
@@ -290,6 +295,9 @@ const components = [{
 }, {
   name: 'ModalConfirmationFooter',
   component: ModalConfirmationFooter,
+}, {
+  name: 'ModalFooter',
+  component: ModalFooter,
 }, {
   name: 'ModalHeader',
   component: ModalHeader,

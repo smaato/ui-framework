@@ -1,9 +1,12 @@
 
 import { TestCaseFactory } from 'react-test-kit';
+import { CommonAssertions } from '../services';
 import FieldMessage from './FieldMessage.jsx';
 
 describe('FieldMessage', () => {
   describe('Props', () => {
+    CommonAssertions.assertDataId(FieldMessage);
+
     describe('message', () => {
       it('is rendered as text', () => {
         const props = {

@@ -1,5 +1,6 @@
 
 import { TestCaseFactory } from 'react-test-kit';
+import { CommonAssertions } from '../services';
 import BaseDropdown from './BaseDropdown.jsx';
 import BaseDropdownOption from './BaseDropdownOption.jsx';
 
@@ -45,6 +46,8 @@ describe('BaseDropdown', () => {
   });
 
   describe('Props', () => {
+    CommonAssertions.assertDataId(BaseDropdown, basicProps);
+
     describe('options', () => {
       it('populates the option list', () => {
         const options = [{

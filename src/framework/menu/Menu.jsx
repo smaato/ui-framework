@@ -8,12 +8,13 @@ export {
 } from './MenuItem.jsx';
 
 const Menu = props => (
-  <div>
+  <div data-id={props.dataId}>
     {props.children}
   </div>
 );
 
 Menu.propTypes = {
+  dataId: PropTypes.string,
   children: PropTypes.any,
 };
 
