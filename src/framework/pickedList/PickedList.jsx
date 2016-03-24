@@ -12,13 +12,17 @@ const PickedList = props => (
     <div className="pickedListTitle">
       {props.title}
     </div>
-    <div className="pickedList">
+    <div
+      data-id={props.dataId}
+      className="pickedList"
+    >
       {props.children}
     </div>
   </div>
 );
 
 PickedList.propTypes = {
+  dataId: PropTypes.string,
   children: PropTypes.any,
   title: PropTypes.string.isRequired,
 };

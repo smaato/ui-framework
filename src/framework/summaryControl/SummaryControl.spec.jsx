@@ -1,10 +1,13 @@
 
 import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
+import { CommonAssertions } from '../services';
 import SummaryControl from './SummaryControl.jsx';
 
 describe('SummaryControl', () => {
   describe('Props', () => {
+    CommonAssertions.assertDataId(SummaryControl);
+
     describe('children', () => {
       it('is rendered', () => {
         const props = {

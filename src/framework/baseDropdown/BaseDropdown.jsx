@@ -198,7 +198,10 @@ export default class BaseDropdown extends Component {
     }
 
     return (
-      <div className={this.props.classes}>
+      <div
+        data-id={this.props.dataId}
+        className={this.props.classes}
+      >
         {/* Allow this component to be focusable by adding a hidden input. */}
         <input
           ref="input"
@@ -222,6 +225,7 @@ export default class BaseDropdown extends Component {
 }
 
 BaseDropdown.propTypes = {
+  dataId: PropTypes.string,
   classes: PropTypes.string.isRequired,
   inputClasses: PropTypes.string.isRequired,
   labelClasses: PropTypes.string.isRequired,
