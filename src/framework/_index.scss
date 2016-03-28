@@ -1,6 +1,7 @@
 
 // Libraries
 @import 'compass';
+@import 'icon-library/scss/icons';
 
 // Global
 @import 'global/index';
@@ -24,7 +25,6 @@
 @import 'filtersControl/index';
 @import 'form/index';
 @import 'grid/index';
-@import 'icon/index';
 @import 'kpi/index';
 @import 'label/index';
 @import 'labeledControl/index';
@@ -46,3 +46,4 @@
 @import 'titleBar/index';
 @import 'verticalLayout/index';
 @import 'viewHeader/index';
+

@@ -6,16 +6,16 @@ import classNames from 'classnames';
 
 const GridBodyCell = props => {
   // Cell classes.
-  const classes = classNames('grid__body__cell', props.classBodyCell);
+  const classes = classNames('gridBodyCell', props.classBodyCell);
 
   // We want to add on our own classes to the inner cell, without destroying
   // any classes that have been provided.
   const decoratedInnerCellProps = Object.assign({}, props.innerCellProps, {
     className: classNames(
-      'grid__body__cellLiner',
+      'gridBodyCellLiner',
       props.innerCellProps.className,
       {
-        'grid__body__cellLiner--overflow': props.innerCellProps.canOverflow,
+        'gridBodyCellLiner--overflow': props.innerCellProps.canOverflow,
       }
     ),
   });

@@ -21,7 +21,7 @@ import {
   Grid,
   GridHeader,
   GridRow,
-  IconCog,
+  GridIcon,
   OrganizationSwitcher,
   OrganizationSwitcherItem,
   Text,
@@ -59,7 +59,7 @@ export default class TitledViewExample extends Component {
       }), item => ({
         children: item.qps_limit,
       }), () => ({
-        children: <IconCog />,
+        children: <GridIcon type={GridIcon.TYPE.EDIT} />,
       }),
     ];
 
@@ -243,10 +243,9 @@ export default class TitledViewExample extends Component {
               <TitleBar
                 label="Title bar example"
                 buttons={[
-                  <CallOutButton
-                    iconClasses="glyphicons-plus"
-                    label="Add something"
-                  />,
+                  <CallOutButton type={CallOutButton.TYPE.ADD}>
+                    Add something
+                  </CallOutButton>,
                 ]}
               />
             </BodyPanelItem>

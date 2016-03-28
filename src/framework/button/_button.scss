@@ -54,10 +54,19 @@ $ctaButtonColor: #35d0a0;
   border-color: $ctaButtonColor;
 }
 
+/**
+ * 1. Allow the focused button to be on the top of the others, so the focused
+ *    state doesn't looks strange.
+ */
 .button--grouped {
+  position: relative; /* 1 */
   background: #fafcfd;
   color: #434749;
   border-color: #cad4da;
+
+  &:focus {
+    z-index: 1; /* 1 */
+  }
 
   &.is-button-selected {
     background: #e9f0f4;

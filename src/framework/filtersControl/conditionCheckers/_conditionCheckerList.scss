@@ -8,13 +8,13 @@
 
     &:hover {
       .conditionCheckerListItem__removeButton {
-        opacity: 1;
+        opacity: 0.8;
       }
     }
   }
 
     .conditionCheckerListItem__label {
-      max-width: 100px;
+      max-width: 115px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -25,12 +25,11 @@
       }
 
   .conditionCheckerListItem__removeButton {
-    opacity: 0;
     display: flex;
-    margin-left: -14px;
-    font-size: 14px;
-    cursor: pointer;
-    background: shade(scale-saturation($componentBackgroundColor, 60%), 3%);
+    margin-left: 2px;
+    width: 10px;
+    background-color: shade(scale-saturation($componentBackgroundColor, 60%), 3%);
     box-shadow: -10px 0 5px shade(scale-saturation($componentBackgroundColor, 60%), 3%);
-    color: $linkColor;
+    opacity: 0.6;
+    cursor: pointer;
   }

@@ -6,7 +6,7 @@ import Button from './Button.jsx';
 describe('Button', () => {
   describe('DOM structure', () => {
     it('is a button', () => {
-      const testCase = TestCaseFactory.createFromFunction(Button);
+      const testCase = TestCaseFactory.create(Button);
       expect(testCase.dom.tagName).toBe('BUTTON');
     });
   });
@@ -14,13 +14,14 @@ describe('Button', () => {
   describe('Props', () => {
     CommonAssertions.assertDataId(Button);
 
-    describe('label', () => {
+    describe('children', () => {
       it('is rendered', () => {
         const props = {
-          label: 'test text',
+          children: 'test text',
         };
-        const testCase = TestCaseFactory.createFromFunction(Button, props);
-        expect(testCase.first('.button__label').textContent).toBe(props.label);
+        const testCase = TestCaseFactory.create(Button, props);
+        expect(testCase.first('.button__label').textContent)
+          .toBe(props.children);
       });
     });
 
@@ -29,7 +30,7 @@ describe('Button', () => {
         const props = {
           href: 'test',
         };
-        const testCase = TestCaseFactory.createFromFunction(Button, props);
+        const testCase = TestCaseFactory.create(Button, props);
         expect(testCase.dom.tagName).toBe('A');
       });
 
@@ -37,7 +38,7 @@ describe('Button', () => {
         const props = {
           href: 'test',
         };
-        const testCase = TestCaseFactory.createFromFunction(Button, props);
+        const testCase = TestCaseFactory.create(Button, props);
         expect(testCase.dom.getAttribute('href')).toBe(props.href);
       });
     });
@@ -47,7 +48,7 @@ describe('Button', () => {
         const props = {
           disabled: true,
         };
-        const testCase = TestCaseFactory.createFromFunction(Button, props);
+        const testCase = TestCaseFactory.create(Button, props);
         expect(
           testCase.dom.getAttribute('class')
         ).toContain('is-button-disabled');
@@ -57,7 +58,7 @@ describe('Button', () => {
         const props = {
           disabled: false,
         };
-        const testCase = TestCaseFactory.createFromFunction(Button, props);
+        const testCase = TestCaseFactory.create(Button, props);
         expect(
           testCase.dom.getAttribute('class')
         ).not.toContain('is-button-disabled');
@@ -69,7 +70,7 @@ describe('Button', () => {
         const props = {
           selected: true,
         };
-        const testCase = TestCaseFactory.createFromFunction(Button, props);
+        const testCase = TestCaseFactory.create(Button, props);
         expect(
           testCase.dom.getAttribute('class')
         ).toContain('is-button-selected');
@@ -79,7 +80,7 @@ describe('Button', () => {
         const props = {
           selected: false,
         };
-        const testCase = TestCaseFactory.createFromFunction(Button, props);
+        const testCase = TestCaseFactory.create(Button, props);
         expect(
           testCase.dom.getAttribute('class')
         ).not.toContain('is-button-selected');
@@ -87,27 +88,25 @@ describe('Button', () => {
     });
 
     describe('onClick', () => {
-      let onClick;
-
-      beforeEach(() => {
-        onClick = jasmine.createSpy('onClick');
-
-        const testCase =
-          TestCaseFactory.createFromFunction(Button, {
-            onClick,
-          });
-
+      it('is called with event object when clicked', () => {
+        const props = {
+          onClick: jasmine.createSpy('onClick'),
+        };
+        const testCase = TestCaseFactory.create(Button, props);
         testCase.trigger('click');
-      });
-
-      it('is called once', () => {
-        expect(onClick.calls.count()).toEqual(1);
-      });
-
-      it('is called with event object as an argument', () => {
-        expect(onClick).toHaveBeenCalledWith(
+        expect(props.onClick).toHaveBeenCalledWith(
           jasmine.any(Object) // SyntheticEvent
         );
+      });
+
+      it('isn\'t called when disabled is true', () => {
+        const props = {
+          disabled: true,
+          onClick: jasmine.createSpy('onClick'),
+        };
+        const testCase = TestCaseFactory.create(Button, props);
+        testCase.trigger('click');
+        expect(props.onClick).not.toHaveBeenCalled();
       });
     });
 
@@ -117,21 +116,27 @@ describe('Button', () => {
         const props = {
           classes,
         };
-        const testCase = TestCaseFactory.createFromFunction(Button, props);
+        const testCase = TestCaseFactory.create(Button, props);
         expect(testCase.dom.getAttribute('class')).toContain(classes);
       });
     });
 
-    describe('iconClasses', () => {
-      it('are added to the element', () => {
-        const iconClasses = 'test-class';
-        const props = {
-          iconClasses,
-        };
-        const testCase = TestCaseFactory.createFromFunction(Button, props);
-        expect(
-          testCase.first('.button__icon').getAttribute('class')
-        ).toContain(iconClasses);
+    describe('type', () => {
+      Object.keys(Button.TYPE).forEach(type => {
+        describe(`${type}`, () => {
+          it('adds an icon', () => {
+            const props = {
+              type,
+            };
+            const testCase = TestCaseFactory.create(Button, props);
+            expect(testCase.first('.icon')).toBeDefined();
+          });
+        });
+      });
+
+      it('doesn\'t render an icon when not defined', () => {
+        const testCase = TestCaseFactory.create(Button);
+        expect(testCase.first('.icon')).not.toBeDefined();
       });
     });
   });

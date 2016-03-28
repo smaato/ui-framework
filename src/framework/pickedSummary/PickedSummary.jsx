@@ -3,16 +3,28 @@ import React, {
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
+import keyMirror from 'keymirror';
 
 const PickedSummary = props => {
-  const iconClasses = classNames('pickedSummaryIcon', {
-    'pickedSummaryIcon--check glyphicons-ok-2': props.isAllowed,
-    'pickedSummaryIcon--ban glyphicons-ban': !props.isAllowed,
-  });
+  let icon;
+
+  if (props.type) {
+    const typeToIconClassMap = {
+      [PickedSummary.TYPE.ALLOWED]: 'icon-check-green',
+      [PickedSummary.TYPE.NOT_ALLOWED]: 'icon-not-allowed-red',
+    };
+
+    const iconClasses = classNames(
+      'pickedSummaryIcon icon',
+      typeToIconClassMap[props.type]
+    );
+
+    icon = <div className={iconClasses} />;
+  }
 
   return (
     <div className="pickedSummary">
-      <div className={iconClasses} />
+      {icon}
       <div className="pickedSummary__label">
         {props.children}
       </div>
@@ -20,9 +32,14 @@ const PickedSummary = props => {
   );
 };
 
+PickedSummary.TYPE = keyMirror({
+  ALLOWED: null,
+  NOT_ALLOWED: null,
+});
+
 PickedSummary.propTypes = {
   children: PropTypes.string,
-  isAllowed: PropTypes.bool,
+  type: PropTypes.string,
 };
 
 export default PickedSummary;

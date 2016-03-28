@@ -28,25 +28,22 @@ describe('PickedListItem', () => {
       });
     });
 
-    describe('isAllowed', () => {
-      it('renders the correct icon when true', () => {
-        const props = {
-          isAllowed: true,
-          onRemove: () => undefined,
-        };
-        const testCase = TestCaseFactory.create(PickedListItem, props);
-        expect(testCase.first('.pickedListItemIcon--check'))
-          .toBeDefined();
+    describe('type', () => {
+      Object.keys(PickedListItem.TYPE).forEach(type => {
+        describe(`${type}`, () => {
+          it('renders an icon', () => {
+            const props = {
+              type,
+            };
+            const testCase = TestCaseFactory.create(PickedListItem, props);
+            expect(testCase.first('.icon')).toBeDefined();
+          });
+        });
       });
 
-      it('renders the correct icon when false', () => {
-        const props = {
-          isAllowed: false,
-          onRemove: () => undefined,
-        };
-        const testCase = TestCaseFactory.create(PickedListItem, props);
-        expect(testCase.first('.pickedListItemIcon--ban'))
-          .toBeDefined();
+      it('doesn\'t render an icon when not defined', () => {
+        const testCase = TestCaseFactory.create(PickedListItem);
+        expect(testCase.first('.icon')).not.toBeDefined();
       });
     });
   });

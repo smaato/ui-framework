@@ -1,21 +1,20 @@
-$checkboxSize: 12px;
-$checkedColor: tint(scale-saturation($blue, 30%), 5%);
+$checkBoxSize: 12px;
 
-.checkboxWrapper {
+.checkBox {
   display: inline-block;
   vertical-align: middle;
 }
 
-  .checkbox__input {
+  .checkBox__input {
     display: none;
   }
 
-  .checkbox__faux__input {
+  .checkBox__label {
     display: block;
     position: relative;
-    width: $checkboxSize;
-    height: $checkboxSize;
-    line-height: $checkboxSize;
+    width: $checkBoxSize;
+    height: $checkBoxSize;
+    line-height: $checkBoxSize;
     border: 1px solid shade($componentStrokeColor, 7%);
     border-radius: 2px;
     cursor: pointer;
@@ -26,37 +25,24 @@ $checkedColor: tint(scale-saturation($blue, 30%), 5%);
       box-shadow: 0 1px 1px rgba(black, 0.2);
     }
 
-    .checkbox__input:checked + & {
+    .checkBox__input:checked + & {
+      $checkedColor: tint(scale-saturation($blue, 30%), 5%);
       background: $checkedColor;
       border-color: $checkedColor;
       box-shadow: 0 0 0 transparent;
 
-      &:before,
-      &:after {
-        @extend .glyphicons:before;
-        @extend .glyphicons-ok-2:before;
-        font-size: 8px;
-        color: transparent;
-        // Two icons take size of parent. :after is on top of :before
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        // Icon is a text content, so this will centers it perfectly
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      &:before {
-        top: 0;
-        color: tint($checkedColor, 99%);
-      }
-
-      &:after {
-        // Makes checkbox slimmer by covering light icon with 2nd icon having bg color
-        top: -2px;
-        color: $checkedColor;
+      .checkBox__icon {
+        display: block;
       }
     }
   }
+
+    .checkBox__icon {
+      $checkBoxIconSize: 8px;
+      display: none;
+      width: $checkBoxIconSize;
+      height: $checkBoxIconSize;
+      position: absolute;
+      top: 1px;
+      left: 1px;
+    }

@@ -3,20 +3,32 @@ import React, {
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
+import keyMirror from 'keymirror';
 
 const PickedListItem = props => {
   function onClickRemove() {
     props.onRemove(props.data);
   }
 
-  const iconClasses = classNames('pickedListItemIcon', {
-    'pickedListItemIcon--check glyphicons-ok-2': props.isAllowed,
-    'pickedListItemIcon--ban glyphicons-ban': !props.isAllowed,
-  });
+  let icon;
+
+  if (props.type) {
+    const typeToIconClassMap = {
+      [PickedListItem.TYPE.ALLOWED]: 'icon-check-green',
+      [PickedListItem.TYPE.NOT_ALLOWED]: 'icon-not-allowed-red',
+    };
+
+    const iconClasses = classNames(
+      'pickedListItemIcon icon',
+      typeToIconClassMap[props.type]
+    );
+
+    icon = <div className={iconClasses} />;
+  }
 
   return (
     <div className="pickedListItem">
-      <div className={iconClasses} />
+      {icon}
       <div className="pickedListItem__label">
         {props.children}
       </div>
@@ -28,10 +40,15 @@ const PickedListItem = props => {
   );
 };
 
+PickedListItem.TYPE = keyMirror({
+  ALLOWED: null,
+  NOT_ALLOWED: null,
+});
+
 PickedListItem.propTypes = {
   children: PropTypes.string,
   data: PropTypes.any,
-  isAllowed: PropTypes.bool,
+  type: PropTypes.string,
   onRemove: PropTypes.func.isRequired,
 };
 

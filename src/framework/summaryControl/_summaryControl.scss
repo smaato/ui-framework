@@ -1,4 +1,6 @@
 
+$summaryControlIconSize: 12px;
+
 .summaryControl {
   display: flex;
   justify-content: space-between;
@@ -18,8 +20,15 @@
     flex: 1;
   }
 
-  .summaryControl_iconCog {
-    color: #95a4ac;
-    font-size: 13px;
+  .summaryControl__cogIcon {
+    height: $summaryControlIconSize;
+    width: $summaryControlIconSize;
+    opacity: 0.25;
   }
 
+.summaryControlIcon {
+  height: $summaryControlIconSize;
+  width: $summaryControlIconSize;
+  vertical-align: top;
+  margin-right: 5px;
+}

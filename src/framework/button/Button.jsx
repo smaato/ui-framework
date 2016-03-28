@@ -3,8 +3,8 @@
 import React, {
   PropTypes,
 } from 'react';
-
 import classNames from 'classnames';
+import keyMirror from 'keymirror';
 
 // Define stateless functional component.
 const Button = props => {
@@ -27,19 +27,25 @@ const Button = props => {
 
   let icon;
 
-  if (props.iconClasses) {
-    const iconClasses = classNames('button__icon', props.iconClasses);
-    icon = (
-      <span className={iconClasses}></span>
+  if (props.type) {
+    const typeToIconClassMap = {
+      [Button.TYPE.ADD]: 'icon-plus',
+    };
+
+    const iconClasses = classNames(
+      'button__icon icon',
+      typeToIconClassMap[props.type]
     );
+
+    icon = <span className={iconClasses} />;
   }
 
-  let label;
+  let children;
 
-  if (props.label) {
-    label = (
+  if (props.children) {
+    children = (
       <span className="button__label">
-        {props.label}
+        {props.children}
       </span>
     );
   }
@@ -53,20 +59,20 @@ const Button = props => {
     onClick,
     children: [
       icon,
-      label,
+      children,
     ],
   });
 };
 
+Button.TYPE = keyMirror({
+  ADD: null,
+});
+
 Button.propTypes = {
   dataId: PropTypes.string,
-  label: PropTypes.string,
+  children: PropTypes.string,
+  type: PropTypes.string,
   href: PropTypes.string,
-  iconClasses: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.array,
-    PropTypes.object,
-  ]),
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
   selected: PropTypes.bool,
@@ -75,10 +81,6 @@ Button.propTypes = {
     PropTypes.array,
     PropTypes.object,
   ]),
-};
-
-Button.defaultProps = {
-  type: 'button',
 };
 
 export default Button;

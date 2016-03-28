@@ -19,19 +19,20 @@ export default class PickedListExample extends Component {
   }
 
   render() {
+    const examples = Object.keys(PickedSummary.TYPE).map(key =>
+      <Example
+        title={key}
+        key={key}
+      >
+        <PickedSummary type={PickedSummary.TYPE[key]}>
+          {key}
+        </PickedSummary>
+      </Example>
+    );
+
     return (
       <Page title={this.props.route.name}>
-        <Example title="Allowed">
-          <PickedSummary isAllowed>
-            This is allowed
-          </PickedSummary>
-        </Example>
-
-        <Example title="Now allowed">
-          <PickedSummary isAllowed={false}>
-            This is not allowed
-          </PickedSummary>
-        </Example>
+        {examples}
       </Page>
     );
   }
