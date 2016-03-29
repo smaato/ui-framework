@@ -16,6 +16,13 @@ $summaryControlIconSize: 12px;
   cursor: pointer;
 }
 
+  .summaryControl__icon {
+    height: $summaryControlIconSize;
+    width: $summaryControlIconSize;
+    vertical-align: top;
+    margin-right: 5px;
+  }
+
   .summaryControl__label {
     flex: 1;
   }
@@ -26,9 +33,3 @@ $summaryControlIconSize: 12px;
     opacity: 0.25;
   }
 
-.summaryControlIcon {
-  height: $summaryControlIconSize;
-  width: $summaryControlIconSize;
-  vertical-align: top;
-  margin-right: 5px;
-}

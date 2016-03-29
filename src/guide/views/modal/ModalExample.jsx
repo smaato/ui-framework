@@ -182,9 +182,9 @@ export default class ModalExample extends Component {
         <Example isClear>
           <Modal>
             <ModalHeader
-              type={ModalHeader.TYPE.LINK}
+              type={ModalHeader.TYPE.ENDPOINT}
             >
-              Modal Title
+              Endpoint
             </ModalHeader>
             <ModalBody>
               <Form>

@@ -40,16 +40,14 @@ describe('GridIcon', () => {
               type,
             };
             const testCase = TestCaseFactory.create(GridIcon, props);
-            // The icon- prefix is used for icon modifiers.
-            expect(testCase.dom.className).toContain('icon-');
+            expect(testCase.dom.className).toContain('icon');
           });
         });
       });
 
       it('doesn\'t render an icon when not defined', () => {
         const testCase = TestCaseFactory.create(GridIcon);
-        // The icon- prefix is used for icon modifiers.
-        expect(testCase.dom.className).not.toContain('icon-');
+        expect(testCase.dom.className).not.toContain('icon');
       });
     });
   });

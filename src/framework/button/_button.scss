@@ -6,10 +6,11 @@ $ctaButtonColor: #35d0a0;
 }
 
   .button__icon {
+    $iconSize: 8px;
     display: inline-block;
     vertical-align: middle;
-    height: 12px;
-    width: 10px;
+    height: $iconSize;
+    width: $iconSize;
     font-size: 10px;
     opacity: 0.7;
   }

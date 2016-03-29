@@ -16,7 +16,7 @@ const SummaryControl = props => {
     };
 
     const iconClasses = classNames(
-      'summaryControlIcon icon',
+      'summaryControl__icon icon',
       typeToIconClassMap[props.type]
     );
 

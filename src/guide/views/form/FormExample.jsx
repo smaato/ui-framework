@@ -124,7 +124,10 @@ export default class FormExample extends Component {
                   </BasicButton>,
                 ]}
                 right={[
-                  <HollowButton key="footer_right_1">
+                  <HollowButton
+                    key="footer_right_1"
+                    onClick={this.onCancel}
+                  >
                     Cancel
                   </HollowButton>,
                   <PrimaryButton

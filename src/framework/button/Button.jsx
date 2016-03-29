@@ -29,6 +29,7 @@ const Button = props => {
 
   if (props.type) {
     const typeToIconClassMap = {
+      // TODO: Change this to icon-plus-white when it's in icon-library.
       [Button.TYPE.ADD]: 'icon-plus',
     };
 

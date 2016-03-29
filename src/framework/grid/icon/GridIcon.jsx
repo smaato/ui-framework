@@ -3,6 +3,7 @@ import React, {
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
+import keyMirror from 'keymirror';
 
 const GridIcon = props => {
   const typeToIconClassMap = {
@@ -11,8 +12,11 @@ const GridIcon = props => {
   };
 
   const classes = classNames(
-    'gridIcon icon',
-    typeToIconClassMap[props.type]
+    'gridIcon',
+    typeToIconClassMap[props.type],
+    {
+      icon: props.type,
+    }
   );
 
   return (
@@ -23,10 +27,10 @@ const GridIcon = props => {
   );
 };
 
-GridIcon.TYPE = {
-  EDIT: 'EDIT',
-  OPTIONS: 'OPTIONS',
-};
+GridIcon.TYPE = keyMirror({
+  EDIT: null,
+  OPTIONS: null,
+});
 
 GridIcon.propTypes = {
   type: PropTypes.string,
