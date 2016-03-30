@@ -38,6 +38,8 @@ export default class ModalExample extends Component {
       stackedModalCount: 0,
     };
 
+    this.STACKED_MODAL_WIDTH = 750;
+
     this.addModalToStack = this.addModalToStack.bind(this);
     this.removeModalFromStack = this.removeModalFromStack.bind(this);
     this.onOpenModal = this.onOpenModal.bind(this);
@@ -78,6 +80,7 @@ export default class ModalExample extends Component {
         index={0}
         stackCount={this.state.stackedModalCount}
         onCloseTopModal={this.removeModalFromStack}
+        width={this.STACKED_MODAL_WIDTH}
       >
         <ModalHeader
           title="1st Level Modal"
@@ -102,6 +105,7 @@ export default class ModalExample extends Component {
         index={1}
         stackCount={this.state.stackedModalCount}
         onCloseTopModal={this.removeModalFromStack}
+        width={this.STACKED_MODAL_WIDTH}
       >
         <ModalHeader
           title="2nd Level Modal"
@@ -126,6 +130,7 @@ export default class ModalExample extends Component {
         index={2}
         stackCount={this.state.stackedModalCount}
         onCloseTopModal={this.removeModalFromStack}
+        width={this.STACKED_MODAL_WIDTH}
       >
         <ModalHeader
           title="3rd Level Modal"
@@ -145,7 +150,10 @@ export default class ModalExample extends Component {
         />
       </Modal>,
 
-      <Modal key={3}>
+      <Modal
+        key={3}
+        width={this.STACKED_MODAL_WIDTH}
+      >
         <ModalHeader
           title="4th Level Modal"
           onClose={this.removeModalFromStack}

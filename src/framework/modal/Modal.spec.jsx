@@ -33,6 +33,16 @@ describe('Modal', () => {
         expect(props.onCloseTopModal).toHaveBeenCalled();
       });
     });
+
+    describe('width', () => {
+      it('is applied as a style of the modal', () => {
+        const props = {
+          width: 33,
+        };
+        const testCase = TestCaseFactory.create(Modal, props);
+        expect(testCase.dom.style.width).toBe(`${props.width}px`);
+      });
+    });
   });
 
   describe('Behavior', () => {
