@@ -129,19 +129,19 @@ export default class PanelExample extends Component {
           >
             <PickedList title="Test">
               <PickedListItem
-                isAllowed
+                type={PickedListItem.TYPE.ALLOWED}
                 onRemove={this.onRemoveItem}
               >
                 A
               </PickedListItem>
               <PickedListItem
-                isAllowed
+                type={PickedListItem.TYPE.ALLOWED}
                 onRemove={this.onRemoveItem}
               >
                 B
               </PickedListItem>
               <PickedListItem
-                isAllowed
+                type={PickedListItem.TYPE.ALLOWED}
                 onRemove={this.onRemoveItem}
               >
                 C

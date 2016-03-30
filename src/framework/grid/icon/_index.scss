@@ -1,14 +1,19 @@
 
+$gridIconSize: 14px;
+
 /**
  * 1. Minor vertical alignment adjustment within grid rows.
  */
 .gridIcon {
+  display: inline-block;
+  width: $gridIconSize;
+  height: $gridIconSize;
   vertical-align: top; /* 1 */
-  font-size: 14px;
-  color: shade($lightGrey, 20%);
+  opacity: 0.6;
+  cursor: pointer;
 
   &:hover {
-    color: shade($lightGrey, 40%);
+    opacity: 0.25;
   }
 
   & + & {

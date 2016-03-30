@@ -44,14 +44,6 @@ export {
 } from './icon/GridIcon.jsx';
 
 export {
-  default as GridIconEdit,
-} from './icon/GridIconEdit.jsx';
-
-export {
-  default as GridIconOptions,
-} from './icon/GridIconOptions.jsx';
-
-export {
   default as GridControls,
 } from './controls/GridControls.jsx';
 

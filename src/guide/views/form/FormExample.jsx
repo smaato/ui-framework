@@ -119,23 +119,23 @@ export default class FormExample extends Component {
               </VerticalLayout>
               <FormFooter
                 left={[
-                  <BasicButton
-                    key="footer_left_1"
-                    iconClasses="glyphicons-bin"
-                    label="Delete"
-                  />,
+                  <BasicButton key="footer_left_1">
+                    Delete
+                  </BasicButton>,
                 ]}
                 right={[
                   <HollowButton
                     key="footer_right_1"
-                    label="Cancel"
                     onClick={this.onCancel}
-                  />,
+                  >
+                    Cancel
+                  </HollowButton>,
                   <PrimaryButton
                     key="footer_right_2"
-                    label="Save"
                     onClick={this.onSubmit}
-                  />,
+                  >
+                    Save
+                  </PrimaryButton>,
                 ]}
               />
             </Form>

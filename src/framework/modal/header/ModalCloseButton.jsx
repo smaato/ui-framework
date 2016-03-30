@@ -5,8 +5,8 @@ import React, {
 
 const ModalCloseButton = props => (
   <div
-    className="icon modalHeader__closeButton"
-    onClick={ props.onClick }
+    className="modalHeader__closeButton"
+    onClick={props.onClick}
   >
   </div>
 );

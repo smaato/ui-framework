@@ -12,12 +12,11 @@ import {
   GridEmptyRow,
   GridHeader,
   GridHeaderSortableCell,
-  GridIconEdit,
-  GridIconOptions,
-  KpiNegative,
-  KpiPositive,
+  GridIcon,
   GridLoadingRow,
   GridRow,
+  KpiNegative,
+  KpiPositive,
   StickyGrid,
 } from '../../../framework/framework';
 
@@ -344,10 +343,14 @@ export default class GridExample extends Component {
         /* eslint-disable react/jsx-no-bind */
         children: (
           <div>
-            <GridIconOptions
+            <GridIcon
+              type={GridIcon.TYPE.OPTIONS}
               onClick={this.onClickRowOptions.bind(this, item)}
             />
-            <GridIconEdit onClick={this.onClickRowEdit.bind(this, item)} />
+            <GridIcon
+              type={GridIcon.TYPE.EDIT}
+              onClick={this.onClickRowEdit.bind(this, item)}
+            />
           </div>
         ),
         /* eslint-ensable react/jsx-no-bind */

@@ -13,7 +13,6 @@ import {
   CallOutButton,
   Form,
   HollowButton,
-  IconLink,
   LabeledControl,
   Modal,
   ModalBody,
@@ -83,23 +82,22 @@ export default class ModalExample extends Component {
         width={this.STACKED_MODAL_WIDTH}
       >
         <ModalHeader
-          title="1st Level Modal"
           onClose={this.removeModalFromStack}
           closeTopModalLabel="Cancel and go back to 1st level"
-        />
+        >
+          1st Level Modal
+        </ModalHeader>
         <ModalBody>
           Modal content.
         </ModalBody>
         <ModalFooter
           right={
-            <CallOutButton
-              label="Open 2nd Level Modal"
-              onClick={this.addModalToStack}
-            />
+            <CallOutButton onClick={this.addModalToStack}>
+              Open 2nd Level Modal
+            </CallOutButton>
           }
         />
       </Modal>,
-
       <Modal
         key={1}
         index={1}
@@ -108,23 +106,22 @@ export default class ModalExample extends Component {
         width={this.STACKED_MODAL_WIDTH}
       >
         <ModalHeader
-          title="2nd Level Modal"
           onClose={this.removeModalFromStack}
           closeTopModalLabel="Cancel and go back to 2nd level"
-        />
+        >
+          2nd Level Modal
+        </ModalHeader>
         <ModalBody>
           Modal content.
         </ModalBody>
         <ModalFooter
           right={
-            <CallOutButton
-              label="Open 3rd Level Modal"
-              onClick={this.addModalToStack}
-            />
+            <CallOutButton onClick={this.addModalToStack}>
+              Open 3rd Level Modal
+            </CallOutButton>
           }
         />
       </Modal>,
-
       <Modal
         key={2}
         index={2}
@@ -133,19 +130,19 @@ export default class ModalExample extends Component {
         width={this.STACKED_MODAL_WIDTH}
       >
         <ModalHeader
-          title="3rd Level Modal"
           onClose={this.removeModalFromStack}
           closeTopModalLabel="Cancel and go back to 3rd level"
-        />
+        >
+          3rd Level Modal
+        </ModalHeader>
         <ModalBody>
           Modal content.
         </ModalBody>
         <ModalFooter
           right={
-            <CallOutButton
-              label="Open 4th Level Modal"
-              onClick={this.addModalToStack}
-            />
+            <CallOutButton onClick={this.addModalToStack}>
+              Open 4th Level Modal
+            </CallOutButton>
           }
         />
       </Modal>,
@@ -179,14 +176,24 @@ export default class ModalExample extends Component {
   }
 
   render() {
+    const modalHeaders = Object.keys(ModalHeader.TYPE).map(key =>
+      <ModalHeader
+        key={key}
+        type={ModalHeader.TYPE[key]}
+      >
+        {key}
+      </ModalHeader>
+    );
+
     return (
       <Page title={this.props.route.name}>
         <Example isClear>
           <Modal>
             <ModalHeader
-              title="Modal Title"
-              icon={<IconLink/>}
-            />
+              type={ModalHeader.TYPE.ENDPOINT}
+            >
+              Endpoint
+            </ModalHeader>
             <ModalBody>
               <Form>
                 <VerticalLayout>
@@ -207,21 +214,17 @@ export default class ModalExample extends Component {
             </ModalBody>
             <ModalFooter
               left={[
-                <BasicButton
-                  key="footer_left_1"
-                  iconClasses="glyphicons-bin"
-                  label="Delete"
-                />,
+                <BasicButton key="footer_left_1">
+                  Delete
+                </BasicButton>,
               ]}
               right={[
-                <HollowButton
-                  key="footer_right_1"
-                  label="Cancel"
-                />,
-                <PrimaryButton
-                  key="footer_right_2"
-                  label="Save"
-                />,
+                <HollowButton key="footer_right_1">
+                  Cancel
+                </HollowButton>,
+                <PrimaryButton key="footer_right_2">
+                  Save
+                </PrimaryButton>,
               ]}
             />
           </Modal>
@@ -234,25 +237,27 @@ export default class ModalExample extends Component {
               multiple lines. Are you sure you want to do that?
             </ModalConfirmationBody>
             <ModalConfirmationFooter>
-              <HollowButton label="No, Cancel" />
-              <PrimaryButton label="Yes, Continue" />
+              <HollowButton>
+                No, Cancel
+              </HollowButton>
+              <PrimaryButton>
+                Yes, Continue
+              </PrimaryButton>
             </ModalConfirmationFooter>
           </Modal>
         </Example>
 
         <Example title="In ModalOverlay">
-          <CallOutButton
-            label="Open Modal"
-            onClick={this.onOpenModal}
-          />
+          <button onClick={this.onOpenModal}>
+            Open Modal
+          </button>
           <ModalOverlay
             isOpen={this.state.isModalOpen}
           >
             <Modal>
-              <ModalHeader
-                title="Modal Title"
-                onClose={this.onCloseModal}
-              />
+              <ModalHeader onClose={this.onCloseModal}>
+                Modal Title
+              </ModalHeader>
               <ModalBody>
                 <div style={{ height: 400 }}></div>
               </ModalBody>
@@ -260,13 +265,13 @@ export default class ModalExample extends Component {
                 right={[
                   <HollowButton
                     key="modal_overlay_footer_right_1"
-                    label="Cancel"
                     onClick={this.onCloseModal}
-                  />,
-                  <PrimaryButton
-                    key="modal_overlay_footer_right_2"
-                    label="Submit"
-                  />,
+                  >
+                    Cancel
+                  </HollowButton>,
+                  <PrimaryButton key="modal_overlay_footer_right_2">
+                    Submit
+                  </PrimaryButton>,
                 ]}
               />
             </Modal>
@@ -274,10 +279,9 @@ export default class ModalExample extends Component {
         </Example>
 
         <Example title="ModalStack">
-          <CallOutButton
-            label="Open ModalStack"
-            onClick={this.addModalToStack}
-          />
+          <button onClick={this.addModalToStack}>
+            Open ModalStack
+          </button>
           <ModalOverlay
             isOpen={this.state.isModalStackOpen}
           >
@@ -285,6 +289,10 @@ export default class ModalExample extends Component {
               {this.renderModalStack()}
             </ModalStack>
           </ModalOverlay>
+        </Example>
+
+        <Example title="ModalHeader">
+          {modalHeaders}
         </Example>
       </Page>
     );

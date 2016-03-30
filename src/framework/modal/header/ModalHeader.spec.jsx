@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
 import { CommonAssertions } from '../../services';
 import ModalHeader from './ModalHeader.jsx';
@@ -7,18 +6,18 @@ import ModalHeader from './ModalHeader.jsx';
 describe('ModalHeader', () => {
   describe('Props', () => {
     CommonAssertions.assertDataId(ModalHeader, {
-      title: 'title',
+      children: 'title',
     }, '.modalHeader__title');
 
-    describe('title', () => {
+    describe('children', () => {
       it('is rendered', () => {
         const props = {
-          title: 'Modal test title',
+          children: 'Modal test title',
         };
         const testCase = TestCaseFactory.create(ModalHeader, props);
         expect(
           testCase.first('.modalHeader__title').textContent
-        ).toBe(props.title);
+        ).toBe(props.children);
       });
     });
 
@@ -42,14 +41,22 @@ describe('ModalHeader', () => {
       });
     });
 
-    describe('icon', () => {
-      it('is rendered when there is a title', () => {
-        const props = {
-          icon: <div id="icon" />,
-          title: 'Modal test title',
-        };
-        const testCase = TestCaseFactory.create(ModalHeader, props);
-        expect(testCase.first('#icon')).toBeDefined();
+    describe('type', () => {
+      Object.keys(ModalHeader.TYPE).forEach(type => {
+        describe(`${type}`, () => {
+          it('renders an icon', () => {
+            const props = {
+              type,
+            };
+            const testCase = TestCaseFactory.create(ModalHeader, props);
+            expect(testCase.first('.icon')).toBeDefined();
+          });
+        });
+      });
+
+      it('doesn\'t render an icon when not defined', () => {
+        const testCase = TestCaseFactory.create(ModalHeader);
+        expect(testCase.first('.icon')).not.toBeDefined();
       });
     });
 

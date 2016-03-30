@@ -45,7 +45,7 @@ export default class SearchBox extends Component {
           ref="searchField"
           onKeyUp={this.onKeyUp}
         />
-        <span className="icon glyphicons-search searchBox__icon"/>
+        <span className="searchBox__icon icon icon-magnifier"/>
       </label>
     );
   }

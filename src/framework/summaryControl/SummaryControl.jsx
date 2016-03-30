@@ -2,28 +2,53 @@
 import React, {
   PropTypes,
 } from 'react';
+import classNames from 'classnames';
+import keyMirror from 'keymirror';
 
-import IconCog from '../icon/IconCog.jsx';
+const SummaryControl = props => {
+  let icon;
 
-const SummaryControl = props => (
-  <div
-    data-id={props.dataId}
-    className="summaryControl"
-    onClick={props.onClick}
-  >
-    <span className="summaryControl__label">
-      {props.icon}
-      {props.children}
-    </span>
-    <IconCog classes="summaryControl_iconCog" />
-  </div>
-);
+  if (props.type) {
+    const typeToIconClassMap = {
+      [SummaryControl.TYPE.ALLOWED]: 'icon-check-green',
+      [SummaryControl.TYPE.NOT_ALLOWED]: 'icon-not-allowed-red',
+      [SummaryControl.TYPE.ATTACHMENT]: 'icon-paperclip',
+    };
+
+    const iconClasses = classNames(
+      'summaryControl__icon icon',
+      typeToIconClassMap[props.type]
+    );
+
+    icon = <div className={iconClasses} />;
+  }
+
+  return (
+    <div
+      data-id={props.dataId}
+      className="summaryControl"
+      onClick={props.onClick}
+    >
+      {icon}
+      <span className="summaryControl__label">
+        {props.children}
+      </span>
+      <div className="summaryControl__cogIcon icon icon-cog" />
+    </div>
+  );
+};
+
+SummaryControl.TYPE = keyMirror({
+  ALLOWED: null,
+  NOT_ALLOWED: null,
+  ATTACHMENT: null,
+});
 
 SummaryControl.propTypes = {
   dataId: PropTypes.string,
   children: PropTypes.string,
-  icon: PropTypes.any,
   onClick: PropTypes.func,
+  type: PropTypes.string,
 };
 
 export default SummaryControl;

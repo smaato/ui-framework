@@ -10,8 +10,6 @@ import Page, {
 
 import {
   SummaryControl,
-  SummaryControlIconCheck,
-  SummaryControlIconPaperclip,
 } from '../../../framework/framework';
 
 export default class SummaryControlExample extends Component {
@@ -21,29 +19,20 @@ export default class SummaryControlExample extends Component {
   }
 
   render() {
+    const examples = Object.keys(SummaryControl.TYPE).map(key =>
+      <Example
+        title={key}
+        key={key}
+      >
+        <SummaryControl type={SummaryControl.TYPE[key]}>
+          {key}
+        </SummaryControl>
+      </Example>
+    );
+
     return (
       <Page title={this.props.route.name}>
-        <Example>
-          <SummaryControl
-            icon={<SummaryControlIconCheck />}
-          >
-            Include All Adspaces
-          </SummaryControl>
-        </Example>
-
-        <Example title="Paperclip icon">
-          <SummaryControl
-            icon={<SummaryControlIconPaperclip />}
-          >
-            None Attached
-          </SummaryControl>
-        </Example>
-
-        <Example title="No icon">
-          <SummaryControl>
-            No icon
-          </SummaryControl>
-        </Example>
+        {examples}
       </Page>
     );
   }

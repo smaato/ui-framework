@@ -19,8 +19,7 @@ import {
   GridEmptyRow,
   GridHeader,
   GridHeaderSortableCell,
-  GridIconEdit,
-  GridIconOptions,
+  GridIcon,
   GridLoadingRow,
   GridRow,
   KpiNegative,
@@ -310,13 +309,20 @@ export default class GridExample extends Component {
             status={StatusDropdown.STATUS.POSITIVE}
           />
         ),
-      }), item => ({
-        children: (
-          <PickedSummary isAllowed={item.fuelEconomy % 2 === 0}>
-            {item.fuel}
-          </PickedSummary>
-        ),
-      }), item => ({
+      }), item => {
+        const isAllowed = item.fuelEconomy % 2 === 0;
+        return {
+          children: (
+            <PickedSummary type={
+              isAllowed
+              ? PickedSummary.TYPE.ALLOWED
+              : PickedSummary.TYPE.NOT_ALLOWED}
+            >
+              {item.fuel}
+            </PickedSummary>
+          ),
+        };
+      }, item => ({
         children: (
           <GridBodyEditableCell
             onClick={event => { // eslint-disable-line react/jsx-no-bind
@@ -382,10 +388,14 @@ export default class GridExample extends Component {
         /* eslint-disable react/jsx-no-bind */
         children: (
           <div>
-            <GridIconOptions
+            <GridIcon
+              type={GridIcon.TYPE.OPTIONS}
               onClick={this.onClickRowOptions.bind(this, item)}
             />
-            <GridIconEdit onClick={this.onClickRowEdit.bind(this, item)} />
+            <GridIcon
+              type={GridIcon.TYPE.EDIT}
+              onClick={this.onClickRowEdit.bind(this, item)}
+            />
           </div>
         ),
         /* eslint-ensable react/jsx-no-bind */

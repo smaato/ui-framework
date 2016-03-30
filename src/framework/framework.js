@@ -39,15 +39,6 @@ export { default as Form } from './form/Form.jsx';
 export * from './grid/Grid.jsx';
 export { default as Grid } from './grid/Grid.jsx';
 
-export { default as Icon } from './icon/Icon.jsx';
-export { default as IconAsterisk } from './icon/IconAsterisk.jsx';
-export { default as IconCheck } from './icon/IconCheck.jsx';
-export { default as IconCog } from './icon/IconCog.jsx';
-export { default as IconDocument } from './icon/IconDocument.jsx';
-export { default as IconEllipsis } from './icon/IconEllipsis.jsx';
-export { default as IconLink } from './icon/IconLink.jsx';
-export { default as IconPaperclip } from './icon/IconPaperclip.jsx';
-
 export * from './kpi/Kpi.jsx';
 export { default as Kpi } from './kpi/Kpi.jsx';
 
@@ -94,12 +85,6 @@ export { default as StatusDropdown } from './statusDropdown/StatusDropdown.jsx';
 
 export { default as SummaryControl, }
   from './summaryControl/SummaryControl.jsx';
-export { default as SummaryControlIcon, }
-  from './summaryControl/icon/SummaryControlIcon.jsx';
-export { default as SummaryControlIconCheck, }
-  from './summaryControl/icon/SummaryControlIconCheck.jsx';
-export { default as SummaryControlIconPaperclip, }
-  from './summaryControl/icon/SummaryControlIconPaperclip.jsx';
 
 export * from './text/Text.jsx';
 export { default as Text } from './text/Text.jsx';

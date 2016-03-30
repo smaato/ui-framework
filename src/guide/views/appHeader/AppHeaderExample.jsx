@@ -79,7 +79,7 @@ export default class AppHeaderExample extends Component {
                 onClick={this.onAccountNavClick}
                 isOpen={this.state.isAccountNavOpen}
                 disableDropdown
-                right={<AppHeaderButton label="Logout"/>}
+                right={<AppHeaderButton>Logout</AppHeaderButton>}
               />
             }
           />

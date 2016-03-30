@@ -1,11 +1,9 @@
 
 import React from 'react';
 
-import IconEllipsis from '../../icon/IconEllipsis.jsx';
-
 // TODO: This component isn't active in the example yet.
 const FilterEllipsis = () => (
-  <IconEllipsis classes="filterEllipsis" />
+  <div classes="icon icon-ellipsis filterEllipsis" />
 );
 
 export default FilterEllipsis;

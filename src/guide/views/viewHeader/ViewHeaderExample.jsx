@@ -11,7 +11,6 @@ import Page, {
 
 import {
   DateRange,
-  IconEllipsis,
   ViewHeader,
   ViewHeaderNav,
 } from '../../../framework/framework';
@@ -28,7 +27,7 @@ export default class ViewHeaderExample extends Component {
       href: '#',
       children: (
         <span>
-          <span className="icon glyphicons-car viewHeaderNav__link__icon" />
+          <span className="viewHeaderNav__link__icon icon icon-document" />
           Automobile
         </span>
       ),
@@ -36,7 +35,7 @@ export default class ViewHeaderExample extends Component {
       href: '#',
       children: (
         <span>
-          <span className="icon glyphicons-train viewHeaderNav__link__icon" />
+          <span className="viewHeaderNav__link__icon icon icon-document" />
           Train
         </span>
       ),
@@ -45,7 +44,7 @@ export default class ViewHeaderExample extends Component {
       children: (
         <span>
           <span
-            className="icon glyphicons-airplane viewHeaderNav__link__icon"
+            className="viewHeaderNav__link__icon icon icon-document"
           />
           Airplane
         </span>
@@ -54,7 +53,7 @@ export default class ViewHeaderExample extends Component {
       href: '#',
       children: (
         <span>
-          <span className="icon glyphicons-bicycle viewHeaderNav__link__icon" />
+          <span className="viewHeaderNav__link__icon icon icon-document" />
           Bicycle
         </span>
       ),
@@ -63,7 +62,7 @@ export default class ViewHeaderExample extends Component {
       children: (
         <span>
           <span
-            className="icon glyphicons-person-walking viewHeaderNav__link__icon"
+            className="viewHeaderNav__link__icon icon icon-document"
           />
           Walking
         </span>
@@ -71,9 +70,7 @@ export default class ViewHeaderExample extends Component {
     }, {
       href: '#',
       children: (
-        <span className="viewHeaderNav__ellipsis">
-          <IconEllipsis/>
-        </span>
+        <span className="viewHeaderNav__ellipsis icon icon-ellipsis" />
       ),
     }];
 

@@ -5,7 +5,7 @@ const DateRange = () => (
   <div className="dateRange">
     <div className="dateRange__option dateRange__option--required">
       <a className="dateRange__trigger">
-        <span className="icon glyphicons-calendar dateRange__triggerIcon" />
+        <span className="dateRange__triggerIcon icon icon-calendar-white" />
         Jul 18-Jul 28
       </a>
     </div>
