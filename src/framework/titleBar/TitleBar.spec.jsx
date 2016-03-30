@@ -1,30 +1,30 @@
 
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { TestCaseFactory } from 'react-test-kit';
 import TitleBar from './TitleBar.jsx';
 
-function renderShallowComponent(component) {
-  const renderer = TestUtils.createRenderer();
-  renderer.render(component);
-  return renderer.getRenderOutput();
-}
-
-describe('TextInput', () => {
-  function makeShallow() {
-    return renderShallowComponent(
-      <TitleBar />
-    );
-  }
-
-  describe('Structure', () => {
-    let titleBar;
-
-    beforeEach(() => {
-      titleBar = makeShallow(false);
+describe('TitleBar', () => {
+  describe('Props', () => {
+    describe('label', () => {
+      it('is rendered', () => {
+        const props = {
+          label: 'title',
+        };
+        const testCase = TestCaseFactory.create(TitleBar, props);
+        expect(testCase.dom.textContent).toBe(props.label);
+      });
     });
 
-    it('is a div', () => {
-      expect(titleBar.type).toEqual('div');
+    describe('buttons', () => {
+      it('are rendered', () => {
+        const props = {
+          buttons: [
+            <div>button</div>,
+          ],
+        };
+        const testCase = TestCaseFactory.create(TitleBar, props);
+        expect(testCase.dom.textContent).toBe('button');
+      });
     });
   });
 });

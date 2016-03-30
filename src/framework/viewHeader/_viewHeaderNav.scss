@@ -48,23 +48,12 @@
     }
 
     .viewHeaderNav__ellipsis {
+      width: 10px;
+      height: 10px;
       opacity: 0.6;
       cursor: pointer;
 
       .viewHeaderNav__link:hover & {
         opacity: 1;
-      }
-
-      .icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        // Cancel inherited from .viewHeaderNav__link .icon
-        margin-right: 0;
-
-        &:before {
-          // Cancel inherited position: absolute from glyphicons
-          position: static;
-        }
       }
     }

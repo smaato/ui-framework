@@ -13,7 +13,7 @@ describe('SummaryControl', () => {
         const props = {
           children: <div id="test">test</div>,
         };
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           SummaryControl,
           props
         );
@@ -21,16 +21,24 @@ describe('SummaryControl', () => {
       });
     });
 
-    describe('icon', () => {
-      it('is rendered', () => {
-        const props = {
-          icon: <div id="icon">icon</div>,
-        };
-        const testCase = TestCaseFactory.createFromFunction(
-          SummaryControl,
-          props
-        );
-        expect(testCase.first('#icon').textContent).toBe('icon');
+    describe('type', () => {
+      Object.keys(SummaryControl.TYPE).forEach(type => {
+        describe(`${type}`, () => {
+          it('renders an icon', () => {
+            const props = {
+              type,
+            };
+            const testCase = TestCaseFactory.create(SummaryControl, props);
+            // There is already 1 icon that will always be rendered.
+            expect(testCase.find('.icon').length).toBe(2);
+          });
+        });
+      });
+
+      it('doesn\'t render an icon when not defined', () => {
+        const testCase = TestCaseFactory.create(SummaryControl);
+        // There is already 1 icon that will always be rendered.
+        expect(testCase.find('.icon').length).toBe(1);
       });
     });
 
@@ -39,16 +47,10 @@ describe('SummaryControl', () => {
 
       beforeEach(() => {
         onClick = jasmine.createSpy('onClick');
-
         const props = {
           onClick,
         };
-
-        const testCase = TestCaseFactory.createFromFunction(
-          SummaryControl,
-          props
-        );
-
+        const testCase = TestCaseFactory.create(SummaryControl, props);
         testCase.trigger('click');
       });
 

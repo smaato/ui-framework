@@ -15,7 +15,7 @@ const CSS_DST = `${DISTRIBUTION_DIR}/css`;
 const JS_DST = `${DISTRIBUTION_DIR}/js`;
 
 const SOURCE_DIR = './src';
-const ASSETS_SRC = `${SOURCE_DIR}/assets/**/*.*`;
+const PROTOTYPE_ASSETS_SRC = `${SOURCE_DIR}/prototype/assets/**/*.*`;
 const JS_SRC = `${SOURCE_DIR}/guide/index.js`;
 const FRAMEWORK_SCSS_SRC = `${SOURCE_DIR}/framework/**/*.scss`;
 const GUIDE_SCSS_SRC = `${SOURCE_DIR}/guide/**/*.scss`;
@@ -27,9 +27,9 @@ const TEMPLATES_SRC = `${SOURCE_DIR}/**/*.jade`;
  *******************************************************************************
  */
 
-gulp.task('copyAssets', gulpTasks.copy({
+gulp.task('copyPrototypeAssets', gulpTasks.copy({
   dst: `${DISTRIBUTION_DIR}/assets`,
-  src: ASSETS_SRC,
+  src: PROTOTYPE_ASSETS_SRC,
 }).task);
 
 gulp.task('copySource', gulpTasks.copy({
@@ -96,7 +96,7 @@ gulp.task('serveLocally', gulpTasks.serve({
 
 gulp.task('watch', [
   'templates',
-  'copyAssets',
+  'copyPrototypeAssets',
   'copySource',
   'styles',
   'styles:prototype',
@@ -104,7 +104,7 @@ gulp.task('watch', [
   'serveLocally',
 ], () => {
   gulp.watch([TEMPLATES_SRC], ['templates']);
-  gulp.watch([ASSETS_SRC], ['copyAssets']);
+  gulp.watch([PROTOTYPE_ASSETS_SRC], ['copyPrototypeAssets']);
   gulp.watch([`${SOURCE_DIR}/guide/**/*.jsx`], ['copySource']);
   gulp.watch([
     FRAMEWORK_SCSS_SRC,
@@ -151,7 +151,7 @@ gulp.task('production', (callback) => {
 
   runSequence(
     'templates',
-    'copyAssets',
+    'copyPrototypeAssets',
     'copySource',
     'styles',
     'styles:prototype',

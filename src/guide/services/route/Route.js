@@ -19,7 +19,6 @@ import FormExample from '../../views/form/FormExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
 import HtmlElementsExample
   from '../../views/htmlElements/HtmlElementsExample.jsx';
-import IconExample from '../../views/icon/IconExample.jsx';
 import KpiExample from '../../views/kpi/KpiExample.jsx';
 import LabeledControlExample
   from '../../views/labeledControl/LabeledControlExample.jsx';
@@ -108,10 +107,6 @@ const components = [{
   name: 'HTML elements',
   source: 'views/htmlElements/htmlElementsExample.jsx',
   component: HtmlElementsExample,
-}, {
-  name: 'Icon',
-  source: 'views/icon/IconExample.jsx',
-  component: IconExample,
 }, {
   name: 'Kpi',
   source: 'views/kpi/KpiExample.jsx',

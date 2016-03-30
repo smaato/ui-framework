@@ -51,14 +51,8 @@
 
 
 .pickedListItemIcon {
-  width: 13px;
+  $iconSize: 13px;
+  width: $iconSize;
+  height: $iconSize;
   margin-right: 4px;
-}
-
-.pickedListItemIcon--check {
-  color: #81d372;
-}
-
-.pickedListItemIcon--ban {
-  color: #f07576;
 }

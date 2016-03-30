@@ -27,14 +27,12 @@ export default class TitleBarExample extends Component {
           <TitleBar
             label="Title bar example"
             buttons={[
-              <CallOutButton
-                iconClasses="glyphicons-plus"
-                label="Add something"
-              />,
-              <CallOutButton
-                iconClasses="glyphicons-plus"
-                label="Add something else"
-              />,
+              <CallOutButton type={CallOutButton.TYPE.ADD}>
+                Add something
+              </CallOutButton>,
+              <CallOutButton type={CallOutButton.TYPE.ADD}>
+                Add something else
+              </CallOutButton>,
             ]}
           />
         </Example>

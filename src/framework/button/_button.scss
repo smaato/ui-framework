@@ -6,10 +6,11 @@ $ctaButtonColor: #35d0a0;
 }
 
   .button__icon {
+    $iconSize: 8px;
     display: inline-block;
     vertical-align: middle;
-    height: 12px;
-    width: 10px;
+    height: $iconSize;
+    width: $iconSize;
     font-size: 10px;
     opacity: 0.7;
   }
@@ -54,10 +55,19 @@ $ctaButtonColor: #35d0a0;
   border-color: $ctaButtonColor;
 }
 
+/**
+ * 1. Allow the focused button to be on the top of the others, so the focused
+ *    state doesn't looks strange.
+ */
 .button--grouped {
+  position: relative; /* 1 */
   background: #fafcfd;
   color: #434749;
   border-color: #cad4da;
+
+  &:focus {
+    z-index: 1; /* 1 */
+  }
 
   &.is-button-selected {
     background: #e9f0f4;

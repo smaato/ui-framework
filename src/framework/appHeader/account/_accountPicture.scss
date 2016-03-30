@@ -14,15 +14,7 @@
 }
 
   .accountPicture__icon {
-    // Cancels inherited dimensions from .icon
-    width: auto;
-    height: auto;
-
-    &:before {
-      // Cancels inherited from .icon position: absolute
-      position: static;
-      font-size: 11px;
-      color: $appHeaderNav_textColor;
-      opacity: 0.6;
-    }
+    width: 10px;
+    height: 10px;
+    opacity: 0.5;
   }

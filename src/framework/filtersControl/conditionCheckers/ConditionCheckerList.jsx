@@ -34,7 +34,7 @@ const ConditionCheckerList = props => {
         <span
           className="
             icon
-            glyphicons-remove-2
+            icon-remove
             conditionCheckerListItem__removeButton
           "
           onClick={onRemoveConditionChecker}

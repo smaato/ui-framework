@@ -39,20 +39,10 @@ import {
   GridHeader,
   GridHeaderSortableCell,
   GridIcon,
-  GridIconEdit,
-  GridIconOptions,
   GridLoadingRow,
   GridRow,
   GroupedButton,
   HollowButton,
-  Icon,
-  IconAsterisk,
-  IconCheck,
-  IconCog,
-  IconDocument,
-  IconEllipsis,
-  IconLink,
-  IconPaperclip,
   Kpi,
   KpiNegative,
   KpiPositive,
@@ -85,9 +75,6 @@ import {
   StickyGrid,
   SubLabel,
   SummaryControl,
-  SummaryControlIcon,
-  SummaryControlIconCheck,
-  SummaryControlIconPaperclip,
   Text,
   TextArea,
   TextInput,
@@ -221,12 +208,6 @@ const components = [{
   name: 'GridIcon',
   component: GridIcon,
 }, {
-  name: 'GridIconEdit',
-  component: GridIconEdit,
-}, {
-  name: 'GridIconOptions',
-  component: GridIconOptions,
-}, {
   name: 'GridLoadingRow',
   component: GridLoadingRow,
 }, {
@@ -238,30 +219,6 @@ const components = [{
 }, {
   name: 'HollowButton',
   component: HollowButton,
-}, {
-  name: 'Icon',
-  component: Icon,
-}, {
-  name: 'IconAsterisk',
-  component: IconAsterisk,
-}, {
-  name: 'IconCheck',
-  component: IconCheck,
-}, {
-  name: 'IconCog',
-  component: IconCog,
-}, {
-  name: 'IconDocument',
-  component: IconDocument,
-}, {
-  name: 'IconEllipsis',
-  component: IconEllipsis,
-}, {
-  name: 'IconLink',
-  component: IconLink,
-}, {
-  name: 'IconPaperclip',
-  component: IconPaperclip,
 }, {
   name: 'Kpi',
   component: Kpi,
@@ -352,15 +309,6 @@ const components = [{
 }, {
   name: 'SummaryControl',
   component: SummaryControl,
-}, {
-  name: 'SummaryControlIcon',
-  component: SummaryControlIcon,
-}, {
-  name: 'SummaryControlIconCheck',
-  component: SummaryControlIconCheck,
-}, {
-  name: 'SummaryControlIconPaperclip',
-  component: SummaryControlIconPaperclip,
 }, {
   name: 'Text',
   component: Text,

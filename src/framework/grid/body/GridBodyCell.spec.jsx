@@ -76,7 +76,7 @@ describe('GridBodyCell', () => {
           );
 
           expect(testCase.first('td > div').className).toContain(
-            'grid__body__cellLiner--overflow'
+            'gridBodyCellLiner--overflow'
           );
         });
       });

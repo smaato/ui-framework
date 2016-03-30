@@ -105,6 +105,7 @@ export default class Modal extends Component {
         onClick={this.onClick}
         onMouseOver={this.onMouseOver}
         onMouseOut={this.onMouseOut}
+        style={{ width: this.props.width }}
       >
         {this.props.children}
       </div>
@@ -118,4 +119,9 @@ Modal.propTypes = {
   index: PropTypes.number,
   stackCount: PropTypes.number,
   onCloseTopModal: PropTypes.func,
+  width: PropTypes.number.isRequired,
+};
+
+Modal.defaultProps = {
+  width: 450,
 };

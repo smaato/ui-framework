@@ -10,7 +10,7 @@ const AccountPicture = props => {
       title={props.title}
     /> :
     <span
-      className="icon glyphicons-user accountPicture__icon"
+      className="icon icon-user-white accountPicture__icon"
       title={props.title}
     />;
 

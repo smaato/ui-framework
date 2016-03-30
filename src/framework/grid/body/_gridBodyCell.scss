@@ -1,4 +1,4 @@
-.grid__body__cell {
+.gridBodyCell {
   padding-left: 8px;
   padding-right: 8px;
   border-bottom: 1px dashed $componentStrokeColor;
@@ -14,77 +14,74 @@
   }
 }
 
-    .grid__body__cellLiner {
-      // 4 props to make ellipsis work
-      width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      // Or else 'g' is cut off at the bottom
-      line-height: 1.2;
-    }
+  /*
+   * 1. Truncate text with ellipsis.
+   * 2. Line-height makes sure 'g' isn't cut off at the bottom.
+   */
+  .gridBodyCellLiner {
+    width: 100%; /* 1 */
+    overflow: hidden; /* 1 */
+    text-overflow: ellipsis; /* 1 */
+    white-space: nowrap; /* 1 */
+    line-height: 1.2; /* 2 */
+  }
 
-    .grid__body__cellLiner--overflow {
-      overflow: visible;
-    }
+  .gridBodyCellLiner--overflow {
+    overflow: visible;
+  }
 
-      .grid__body__cellValue--link,
-      .grid__body__cellValue--readOnly,
-      .grid__body__cellValue--editable {
-        padding: 4px 5px;
-        display: inline-block;
-        vertical-align: middle;
-        color: $componentTextColor;
-        // 4 props to make ellipsis work
-        max-width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
+    /*
+     * 1. Truncate text with ellipsis.
+     */
+    .gridBodyEditableCell {
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      padding: 4px 5px;
+      color: $componentTextColor;
+      max-width: 100%; /* 1 */
+      overflow: hidden; /* 1 */
+      text-overflow: ellipsis; /* 1 */
+      white-space: nowrap; /* 1 */
+      border: 1px dashed transparent;
+      border-radius: 4px;
 
-      .grid__body__cellValue--readOnly {
-        cursor: default;
-      }
+      &:hover {
+        border-color: $componentStrokeColor;
+        background: $componentBackgroundColor;
 
-      .grid__body__cellValue--link {
-        cursor: pointer;
-        color: $linkColor;
-        font-weight: 400;
-
-        &:hover {
-          opacity: 0.8;
-        }
-      }
-
-      .grid__body__cellValue--editable {
-        border: 1px dashed transparent;
-        border-radius: 4px;
-        transition: 0.1s all ease-in-out;
-        position: relative;
-
-        &:before {
-          @extend .glyphicons-cogwheel:before, .glyphicons:before;
-          display: block;
+        &:after {
+          $shadowSize: 20px;
           position: absolute;
+          z-index: 2;
+          right: -$shadowSize;
           top: 0;
-          left: auto;
           bottom: 0;
-          right: 0;
-          font-size: 10px;
-          padding: 5px 4px 0;
-          z-index: 3;
-          color: tint($componentTextColor, 50%);
-          background: $componentBackgroundColor;
-          box-shadow: -4px 0 10px 2px $componentBackgroundColor;
-          opacity: 0;
+          width: $shadowSize;
+          content: ' ';
+          box-shadow: -$shadowSize 0 10px 2px $componentBackgroundColor;
+          pointer-events: none;
         }
 
-        &:hover {
-          border-color: $componentStrokeColor;
-          background: $componentBackgroundColor;
-
-          &:before {
-            opacity: 1;
-          }
+        .gridBodyEditableCell__icon {
+          opacity: 0.4;
         }
+      }
+    }
+
+      .gridBodyEditableCell__content {
+        position: relative;
+      }
+
+      .gridBodyEditableCell__icon {
+        $iconSize: 11px;
+        display: inline-block;
+        position: absolute;
+        top: 6px;
+        right: 2px;
+        z-index: 3;
+        width: $iconSize;
+        height: $iconSize;
+        background-color: $componentBackgroundColor;
+        opacity: 0;
       }

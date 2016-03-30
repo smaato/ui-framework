@@ -18,14 +18,8 @@
   }
 
 .pickedSummaryIcon {
-  width: 13px;
+  $pickedSummaryIconSize: 13px;
+  width: $pickedSummaryIconSize;
+  height: $pickedSummaryIconSize;
   margin-right: 4px;
-}
-
-.pickedSummaryIcon--check {
-  color: #81d372;
-}
-
-.pickedSummaryIcon--ban {
-  color: #f07576;
 }

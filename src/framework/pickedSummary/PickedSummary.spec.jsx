@@ -14,23 +14,22 @@ describe('PickedSummary', () => {
       });
     });
 
-    describe('isAllowed', () => {
-      it('renders the correct icon when true', () => {
-        const props = {
-          isAllowed: true,
-        };
-        const testCase = TestCaseFactory.create(PickedSummary, props);
-        expect(testCase.first('.pickedSummaryIcon--check'))
-          .toBeDefined();
+    describe('type', () => {
+      Object.keys(PickedSummary.TYPE).forEach(type => {
+        describe(`${type}`, () => {
+          it('renders an icon', () => {
+            const props = {
+              type,
+            };
+            const testCase = TestCaseFactory.create(PickedSummary, props);
+            expect(testCase.first('.icon')).toBeDefined();
+          });
+        });
       });
 
-      it('renders the correct icon when false', () => {
-        const props = {
-          isAllowed: false,
-        };
-        const testCase = TestCaseFactory.create(PickedSummary, props);
-        expect(testCase.first('.pickedSummaryIcon--ban'))
-          .toBeDefined();
+      it('doesn\'t render an icon when not defined', () => {
+        const testCase = TestCaseFactory.create(PickedSummary);
+        expect(testCase.first('.icon')).not.toBeDefined();
       });
     });
   });

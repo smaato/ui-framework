@@ -8,11 +8,14 @@ const GridBodyEditableCell = props => {
 
   return (
     <a
-      className="grid__body__cellValue--editable"
+      className="gridBodyEditableCell"
       href="#"
       onClick={onClick}
     >
-      {props.children}
+      <span className="gridBodyEditableCell__content">
+        {props.children}
+      </span>
+      <span className="gridBodyEditableCell__icon icon icon-cog" />
     </a>
   );
 };

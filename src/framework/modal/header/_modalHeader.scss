@@ -9,6 +9,7 @@ $stackedModalFontSize: 12px;
   border-bottom: 1px dashed #cbd3d7;
   margin-bottom: 10px;
   color: #526770;
+  line-height: $lineHeight;
 
   .is-modal-stacked & {
     color: rgba(#526770, 0.8);
@@ -47,10 +48,14 @@ $stackedModalFontSize: 12px;
   /**
   * 1. Align icon with title text.
   */
-  .modalHeader__icon {
+
+  .modalHeaderIcon {
+    $modalHeaderIconSize: 15px;
     display: inline-flex;
+    width: $modalHeaderIconSize;
+    height: $modalHeaderIconSize;
     vertical-align: bottom; /* 1 */
-    opacity: 0.75;
+    opacity: 0.5;
     margin-right: 5px;
   }
 

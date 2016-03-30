@@ -43,22 +43,22 @@ export default class ButtonGroupExample extends Component {
           <ButtonGroup>
             <GroupedButton
               selected={this.isButtonSelected(0)}
-              iconClasses="glyphicons-transfer"
-              label="RTB Open Auction"
               onClick={() => this.setButtonSelected(0)} // eslint-disable-line react/jsx-no-bind
-            />
+            >
+              First
+            </GroupedButton>
             <GroupedButton
               selected={this.isButtonSelected(1)}
-              iconClasses="glyphicons-handshake"
-              label="Preferred Deal"
               onClick={() => this.setButtonSelected(1)} // eslint-disable-line react/jsx-no-bind
-            />
+            >
+              Second
+            </GroupedButton>
             <GroupedButton
               selected={this.isButtonSelected(2)}
-              iconClasses="glyphicons-folder-lock"
-              label="Private Exchange"
               onClick={() => this.setButtonSelected(2)} // eslint-disable-line react/jsx-no-bind
-            />
+            >
+              Third
+            </GroupedButton>
           </ButtonGroup>
         </Example>
       </Page>

@@ -33,21 +33,23 @@ export default class CheckBox extends Component {
   render() {
     return (
       <span
-        className="checkboxWrapper"
+        className="checkBox"
         onClick={this.onClick}
       >
         <input
           type="checkbox"
           name={this.props.id}
           id={this.props.id}
-          className="checkbox__input"
+          className="checkBox__input"
           onChange={this.onChange}
           checked={this.props.checked}
         />
         <label
           htmlFor={this.props.id}
-          className="checkbox__faux__input"
-        />
+          className="checkBox__label"
+        >
+          <span className="checkBox__icon icon icon-check-white" />
+        </label>
       </span>
     );
   }
