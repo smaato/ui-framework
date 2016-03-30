@@ -21,14 +21,22 @@
     transform-origin: top center;
   }
 
+  /**
+   * 1. Use margin and translate to center the modal horizontally.
+   */
   .stackedModal--depth2 {
     margin-top: -30px;
-    transform: scale(0.9, 0.9);
+    margin-left: 50%; /* 1 */
+    transform: translateX(-50%) scale(0.9, 0.9); /* 1 */
   }
 
+  /**
+   * 1. Use margin and translate to center the modal horizontally.
+   */
   .stackedModal--depth3 {
     margin-top: -50px;
-    transform: scale(0.8, 0.8);
+    margin-left: 50%; /* 1 */
+    transform: translateX(-50%) scale(0.8, 0.8); /* 1 */
   }
 
   .stackedModal--depthMax {
