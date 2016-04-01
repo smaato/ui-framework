@@ -22,6 +22,12 @@ $stackedModalFontSize: 12px;
     margin-top: 7px; /* 1 */
     border-bottom: 0;
 
+    .modalHeaderIcon {
+      $modalHeaderIconSize: 11px;
+      width: $modalHeaderIconSize;
+      height: $modalHeaderIconSize;
+    }
+
     .modalHeader__title {
       font-size: $stackedModalFontSize;
     }

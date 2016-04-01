@@ -82,6 +82,7 @@ export default class ModalExample extends Component {
         width={this.STACKED_MODAL_WIDTH}
       >
         <ModalHeader
+          type={ModalHeader.TYPE.ENDPOINT}
           onClose={this.removeModalFromStack}
           closeTopModalLabel="Cancel and go back to 1st level"
         >
@@ -106,6 +107,7 @@ export default class ModalExample extends Component {
         width={this.STACKED_MODAL_WIDTH}
       >
         <ModalHeader
+          type={ModalHeader.TYPE.ENDPOINT}
           onClose={this.removeModalFromStack}
           closeTopModalLabel="Cancel and go back to 2nd level"
         >
@@ -130,6 +132,7 @@ export default class ModalExample extends Component {
         width={this.STACKED_MODAL_WIDTH}
       >
         <ModalHeader
+          type={ModalHeader.TYPE.ENDPOINT}
           onClose={this.removeModalFromStack}
           closeTopModalLabel="Cancel and go back to 3rd level"
         >
