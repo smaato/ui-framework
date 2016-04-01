@@ -15,12 +15,14 @@
 
   /**
    * 1. Align items horizontally to the right.
+   * 2. Position remove button icon absolutely.
    */
   .pickedListItem__removeButton {
     $closeButtonSize: 10px;
     display: flex; /* 1 */
     justify-content: flex-end; /* 1 */
     flex: 0 0 auto;
+    position: relative; /* 2 */
     width: $closeButtonSize;
     height: $closeButtonSize;
     color: #517582;
