@@ -8,7 +8,7 @@ import keyMirror from 'keymirror';
 
 // Define stateless functional component.
 const Button = props => {
-  function onClick(event) {
+  function onClick() {
     // onClick is optional, so exit early if it doesn't exist.
     if (!props.onClick) {
       return;
@@ -17,7 +17,7 @@ const Button = props => {
     if (props.disabled) {
       return;
     }
-    props.onClick(event);
+    props.onClick(props.data);
   }
 
   const classes = classNames('button', props.classes, {
@@ -71,6 +71,7 @@ Button.TYPE = keyMirror({
 
 Button.propTypes = {
   dataId: PropTypes.string,
+  data: PropTypes.any,
   children: PropTypes.string,
   type: PropTypes.string,
   href: PropTypes.string,

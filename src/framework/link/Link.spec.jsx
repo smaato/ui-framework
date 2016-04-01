@@ -40,6 +40,16 @@ describe('Link', () => {
         testCase.trigger('click');
         expect(props.onClick).toHaveBeenCalled();
       });
+
+      it('is called with the data prop', () => {
+        const props = {
+          data: 'test',
+          onClick: jasmine.createSpy('onClick'),
+        };
+        const testCase = TestCaseFactory.create(Link, props);
+        testCase.trigger('click');
+        expect(props.onClick).toHaveBeenCalledWith(props.data);
+      });
     });
   });
 });

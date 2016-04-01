@@ -48,6 +48,23 @@ describe('OrganizationSwitcherItem', () => {
         testCase.trigger('click', switchEl);
         expect(props.onSelect).toHaveBeenCalled();
       });
+
+      it('is called with the data prop', () => {
+        const props = {
+          data: 'test',
+          onSelect: jasmine.createSpy('onSelect'),
+        };
+
+        const testCase = TestCaseFactory.createFromFunction(
+          OrganizationSwitcherItem,
+          props
+        );
+        expect(props.onSelect).not.toHaveBeenCalled();
+        const switchEl = testCase
+          .first('.organizationSwitcherItem__switchButton');
+        testCase.trigger('click', switchEl);
+        expect(props.onSelect).toHaveBeenCalledWith(props.data);
+      });
     });
 
     describe('message', () => {

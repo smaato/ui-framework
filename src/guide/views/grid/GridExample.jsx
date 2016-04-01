@@ -803,7 +803,7 @@ export default class GridExample extends Component {
       rows.push(
         <GridRow
           key={item.id}
-          item={item}
+          data={item}
           rowCellPropsProviders={this.rowCellPropsProviders}
           onClick={this.onClickRow}
           height={this.ROW_HEIGHT}

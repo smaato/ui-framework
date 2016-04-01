@@ -25,14 +25,14 @@ describe('MenuItem', () => {
     });
 
     describe('onClick', () => {
-      it('is called with item when the component is clicked', () => {
+      it('is called with data when the component is clicked', () => {
         const props = {
-          item: {},
+          data: {},
           onClick: jasmine.createSpy('onClick'),
         };
         const testCase = TestCaseFactory.create(MenuItem, props);
         testCase.trigger('click');
-        expect(props.onClick).toHaveBeenCalledWith(props.item);
+        expect(props.onClick).toHaveBeenCalledWith(props.data);
       });
 
       it('applies the appropriate class', () => {
