@@ -11,24 +11,30 @@ const ModalHeader = props => {
   let title;
 
   if (props.children || props.type) {
-    const typeToIconClassMap = {
-      [ModalHeader.TYPE.EDIT]: 'icon-cog',
-      [ModalHeader.TYPE.DOCUMENT]: 'icon-document',
-      [ModalHeader.TYPE.LINE_ITEM]: 'icon-asterisk',
-      [ModalHeader.TYPE.ENDPOINT]: 'icon-link',
-    };
+    let icon;
 
-    const iconClasses = classNames(
-      'modalHeaderIcon icon',
-      typeToIconClassMap[props.type]
-    );
+    if (props.type) {
+      const typeToIconClassMap = {
+        [ModalHeader.TYPE.EDIT]: 'icon-cog',
+        [ModalHeader.TYPE.DOCUMENT]: 'icon-document',
+        [ModalHeader.TYPE.LINE_ITEM]: 'icon-asterisk',
+        [ModalHeader.TYPE.ENDPOINT]: 'icon-link',
+      };
+
+      const iconClasses = classNames(
+        'modalHeaderIcon icon',
+        typeToIconClassMap[props.type]
+      );
+
+      icon = <div className={iconClasses} />;
+    }
 
     title = (
       <div
         data-id={props.dataId}
         className="modalHeader__title"
       >
-        <div className={iconClasses} />
+        {icon}
         {props.children}
       </div>
     );

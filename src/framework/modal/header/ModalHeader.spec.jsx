@@ -49,14 +49,14 @@ describe('ModalHeader', () => {
               type,
             };
             const testCase = TestCaseFactory.create(ModalHeader, props);
-            expect(testCase.first('.icon')).toBeDefined();
+            expect(testCase.first('.modalHeaderIcon')).toBeDefined();
           });
         });
       });
 
       it('doesn\'t render an icon when not defined', () => {
         const testCase = TestCaseFactory.create(ModalHeader);
-        expect(testCase.first('.icon')).not.toBeDefined();
+        expect(testCase.first('.modalHeaderIcon')).not.toBeDefined();
       });
     });
 
