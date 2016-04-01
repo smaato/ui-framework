@@ -20,6 +20,25 @@ export default class TextExample extends Component {
   }
 
   render() {
+    const rhythms = Object.keys(Text.RHYTHM).map(key => (
+      <div
+        style={{
+          backgroundColor: '#f0f0f0',
+          marginBottom: 10,
+        }}
+      >
+        <Text
+          key={key}
+          rhythm={Text.RHYTHM[key]}
+        >
+          '{key.toLowerCase()}' rhythm
+        </Text>
+        <DescriptionText>
+          This text shows you the space between the lines.
+        </DescriptionText>
+      </div>
+    ));
+
     return (
       <Page title={this.props.route.name}>
 
@@ -34,6 +53,10 @@ export default class TextExample extends Component {
 
         <Example title="DescriptionText">
           <DescriptionText>This is description text.</DescriptionText>
+        </Example>
+
+        <Example title="Rhythms">
+          {rhythms}
         </Example>
 
       </Page>
