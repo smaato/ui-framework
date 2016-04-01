@@ -23,8 +23,18 @@ describe('Text', () => {
           };
 
           const testCase = TestCaseFactory.createFromFunction(Text, props);
-          expect(testCase.dom.getAttribute('class')
-            .indexOf('text--xSmallRhythm') !== -1).toBe(true);
+          expect(testCase.dom.className).toContain('text--xSmallRhythm');
+        });
+      });
+
+      describe('SMALL', () => {
+        it('adds the appropriate class', () => {
+          const props = {
+            rhythm: Text.RHYTHM.SMALL,
+          };
+
+          const testCase = TestCaseFactory.createFromFunction(Text, props);
+          expect(testCase.dom.className).toContain('text--smallRhythm');
         });
       });
     });
