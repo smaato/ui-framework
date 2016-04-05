@@ -3,7 +3,7 @@ import React, {
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
-import keyMirror from 'keyMirror';
+import keyMirror from 'keymirror';
 
 export {
   default as DescriptionText,
