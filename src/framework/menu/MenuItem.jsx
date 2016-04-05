@@ -7,7 +7,7 @@ import classNames from 'classnames';
 const MenuItem = props => {
   function onClick() {
     if (props.onClick) {
-      props.onClick(props.item);
+      props.onClick(props.data);
     }
   }
 
@@ -36,7 +36,7 @@ MenuItem.propTypes = {
   label: PropTypes.any,
   actions: PropTypes.any,
   isSelected: PropTypes.bool,
-  item: PropTypes.object,
+  data: PropTypes.any,
   onClick: PropTypes.func,
 };
 

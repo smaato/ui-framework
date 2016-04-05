@@ -46,7 +46,7 @@ export default class MenuExample extends Component {
     const menuItems = this.items.map((item, index) => (
       <MenuItem
         key={index}
-        item={item}
+        data={item}
         isSelected={this.state.selectedItem === item}
         onClick={this.onSelectItem}
         label={item.name}
@@ -82,7 +82,7 @@ export default class MenuExample extends Component {
   render() {
     return (
       <Page title={this.props.route.name}>
-        <Example>
+        <Example title="Selectable">
           {this.renderMenu()}
         </Example>
 

@@ -64,7 +64,7 @@ export default class GridStencil {
       // Add rows, in order.
       rows.push(
         <GridRow
-          item={item}
+          data={item}
           rowCellPropsProviders={this.rowCellPropsProviders}
           height={this.rowHeight}
           key={i}

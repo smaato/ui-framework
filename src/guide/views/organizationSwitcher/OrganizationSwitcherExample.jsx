@@ -24,6 +24,7 @@ export default class OrganizationSwitcherExample extends Component {
 
     this.onSearch = this.onSearch.bind(this);
     this.onClose = this.onClose.bind(this);
+    this.selectOrganization = this.selectOrganization.bind(this);
   }
 
   onClose() {
@@ -56,7 +57,7 @@ export default class OrganizationSwitcherExample extends Component {
   }
 
   selectOrganization(organization) {
-    window.alert(organization); // eslint-disable-line no-alert
+    window.alert(organization.name); // eslint-disable-line no-alert
   }
 
   render() {
@@ -94,7 +95,8 @@ export default class OrganizationSwitcherExample extends Component {
           key={index}
           name={item.name}
           id={item.id.toString()}
-          onSelect={this.selectOrganization.bind(this, item)} // eslint-disable-line react/jsx-no-bind
+          data={item}
+          onSelect={this.selectOrganization}
         />
       ));
     } else {
