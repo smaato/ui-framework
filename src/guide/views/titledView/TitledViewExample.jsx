@@ -110,7 +110,7 @@ export default class TitledViewExample extends Component {
     for (let i = 0, l = endpoints.length; i < l; i++) {
       rows.push(
         <GridRow
-          item={endpoints[i]}
+          data={endpoints[i]}
           height={this.ROW_HEIGHT}
           key={i}
           rowCellPropsProviders={this.rowCellPropsProviders}

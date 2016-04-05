@@ -1,7 +1,9 @@
 
 // Libraries
 @import 'compass';
-@import 'icon-library/scss/icons';
+// Use a relative path so this import works without requiring icon-library
+// to be a dependency of the consuming project.
+@import '../../node_modules/icon-library/scss/icons';
 
 // Global
 @import 'global/index';

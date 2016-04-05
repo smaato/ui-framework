@@ -12,7 +12,7 @@ const GridRow = props => {
   .map((cellPropsProvider, index) => (
     <GridBodyCell
       classBodyCell={props.classBodyCell}
-      innerCellProps={cellPropsProvider(props.item)}
+      innerCellProps={cellPropsProvider(props.data)}
       key={index}
     />
   ));
@@ -25,7 +25,7 @@ const GridRow = props => {
 
   function onClick() {
     if (props.onClick) {
-      props.onClick(props.item);
+      props.onClick(props.data);
     }
   }
 
@@ -43,7 +43,7 @@ const GridRow = props => {
 
 GridRow.propTypes = {
   dataId: PropTypes.string,
-  item: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
   rowCellPropsProviders: PropTypes.array.isRequired,
   height: PropTypes.number.isRequired,
   onClick: PropTypes.func,

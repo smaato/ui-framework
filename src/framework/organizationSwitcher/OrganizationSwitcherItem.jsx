@@ -12,6 +12,12 @@ const OrganizationSwitcherItem = props => {
     );
   }
 
+  function onSelect() {
+    if (props.onSelect) {
+      props.onSelect(props.data);
+    }
+  }
+
   return (
     <div className="organizationSwitcherItem">
       <div
@@ -33,7 +39,7 @@ const OrganizationSwitcherItem = props => {
       >
         <span
           className="organizationSwitcherItem__switchButton"
-          onClick={props.onSelect}
+          onClick={onSelect}
         >
           Switch
         </span>
@@ -46,6 +52,7 @@ OrganizationSwitcherItem.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   onSelect: PropTypes.func,
+  data: PropTypes.any,
   message: PropTypes.string,
 };
 

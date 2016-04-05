@@ -20,7 +20,7 @@ describe('GridRow', () => {
       it('is added to root element', () => {
         const props = {
           dataId: 'dataId',
-          item: {},
+          data: {},
           rowCellPropsProviders: [
             () => undefined,
           ],
@@ -36,11 +36,11 @@ describe('GridRow', () => {
     });
 
     describe('rowCellsPropsProviders', () => {
-      it('are called and receive item as argument', () => {
+      it('are called and receive data as argument', () => {
         const cellPropsProvider1 = jasmine.createSpy('cellPropsProvider1');
         const cellPropsProvider2 = jasmine.createSpy('cellPropsProvider2');
         const props = {
-          item: {},
+          data: {},
           rowCellPropsProviders: [
             cellPropsProvider1,
             cellPropsProvider2,
@@ -53,15 +53,15 @@ describe('GridRow', () => {
 
         TestCaseFactory.createFromElement(wrap(<GridRow {...props} />));
 
-        expect(cellPropsProvider1).toHaveBeenCalledWith(props.item);
-        expect(cellPropsProvider2).toHaveBeenCalledWith(props.item);
+        expect(cellPropsProvider1).toHaveBeenCalledWith(props.data);
+        expect(cellPropsProvider2).toHaveBeenCalledWith(props.data);
       });
     });
 
     describe('height', () => {
       it('is set as inline style height in px', () => {
         const props = {
-          item: {},
+          data: {},
           rowCellPropsProviders: [
             () => undefined,
           ],
@@ -77,10 +77,10 @@ describe('GridRow', () => {
     });
 
     describe('onClick', () => {
-      it('receives item as argument', () => {
+      it('receives data as argument', () => {
         const onClick = jasmine.createSpy('onClick');
         const props = {
-          item: {},
+          data: {},
           rowCellPropsProviders: [
             () => undefined,
           ],
@@ -94,14 +94,14 @@ describe('GridRow', () => {
 
         expect(onClick).not.toHaveBeenCalled();
         testCase.trigger('click', testCase.first('tr'));
-        expect(onClick).toHaveBeenCalledWith(props.item);
+        expect(onClick).toHaveBeenCalledWith(props.data);
       });
     });
 
     describe('classBodyRow', () => {
       it('is applied as a class of the tr element', () => {
         const props = {
-          item: {},
+          data: {},
           rowCellPropsProviders: [
             () => undefined,
           ],
@@ -121,7 +121,7 @@ describe('GridRow', () => {
     describe('classBodyCell', () => {
       it('is applied as a class of the td element', () => {
         const props = {
-          item: {},
+          data: {},
           rowCellPropsProviders: [
             () => undefined,
           ],
