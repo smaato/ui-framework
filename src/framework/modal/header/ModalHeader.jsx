@@ -16,7 +16,7 @@ const ModalHeader = props => {
     if (props.type) {
       const typeToIconClassMap = {
         [ModalHeader.TYPE.EDIT]: 'icon-cog',
-        [ModalHeader.TYPE.DOCUMENT]: 'icon-document',
+        [ModalHeader.TYPE.SMX_LINE_ITEM]: 'icon-document',
         [ModalHeader.TYPE.LINE_ITEM]: 'icon-asterisk',
         [ModalHeader.TYPE.ENDPOINT]: 'icon-link',
       };
@@ -69,7 +69,7 @@ const ModalHeader = props => {
 
 ModalHeader.TYPE = keyMirror({
   EDIT: null,
-  DOCUMENT: null,
+  SMX_LINE_ITEM: null,
   LINE_ITEM: null,
   ENDPOINT: null,
 });
