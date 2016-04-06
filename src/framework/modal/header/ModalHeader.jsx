@@ -53,6 +53,7 @@ const ModalHeader = props => {
   if (props.closeTopModalLabel) {
     closeTopModalLabel = (
       <div className="modalHeader__closeTopModalLabel">
+        <div className="modalHeader__closeTopModalIcon icon icon-close" />
         {props.closeTopModalLabel}
       </div>
     );
