@@ -1,4 +1,13 @@
+
+$modalHeaderIconSize: 15px;
+$smallModalHeaderIconSize: 11px;
 $stackedModalFontSize: 12px;
+
+@mixin modalHeaderIcon($size) {
+  width: $size;
+  height: $size;
+  opacity: 0.5;
+}
 
 .modalHeader {
   display: flex;
@@ -23,9 +32,8 @@ $stackedModalFontSize: 12px;
     border-bottom: 0;
 
     .modalHeaderIcon {
-      $modalHeaderIconSize: 11px;
-      width: $modalHeaderIconSize;
-      height: $modalHeaderIconSize;
+      width: $smallModalHeaderIconSize;
+      height: $smallModalHeaderIconSize;
     }
 
     .modalHeader__title {
@@ -39,7 +47,8 @@ $stackedModalFontSize: 12px;
 
   .is-modal-next-in-stack.is-modal-hovered & {
     .modalHeader__closeTopModalLabel {
-      display: block;
+      display: flex;
+      align-items: center;
     }
   }
 
@@ -51,19 +60,15 @@ $stackedModalFontSize: 12px;
   }
 }
 
-  /**
-  * 1. Align icon with title text.
-  */
-
-  .modalHeaderIcon {
-    $modalHeaderIconSize: 15px;
-    display: inline-flex;
-    width: $modalHeaderIconSize;
-    height: $modalHeaderIconSize;
-    vertical-align: bottom; /* 1 */
-    opacity: 0.5;
-    margin-right: 5px;
+  .modalHeader__title {
+    display: flex;
+    align-items: center;
   }
+
+    .modalHeaderIcon {
+      @include modalHeaderIcon($modalHeaderIconSize);
+      margin-right: 5px;
+    }
 
   .modalHeader__closeTopModalLabel {
     display: none;
@@ -72,6 +77,11 @@ $stackedModalFontSize: 12px;
     right: 0;
     font-size: $stackedModalFontSize;
   }
+
+    .modalHeader__closeTopModalIcon {
+      @include modalHeaderIcon($smallModalHeaderIconSize);
+      margin-right: 6px;
+    }
 
   .modalHeader__closeButton {
     $closeButtonSide: 20px;
