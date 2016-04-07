@@ -17,6 +17,7 @@ import {
   PickedList,
   PickedListItem,
   SearchBox,
+  SummaryControl,
 } from '../../../framework/framework';
 
 export default class PanelExample extends Component {
@@ -120,6 +121,22 @@ export default class PanelExample extends Component {
           >
             Content
           </Panel>
+        </Example>
+
+        <Example title="Centered">
+          <div style={{ height: 300 }}>
+            <Panel
+              title="Centered"
+              isCentered
+            >
+              <SummaryControl
+                type={SummaryControl.TYPE.ALLOWED}
+                isStatic
+              >
+                Everything is great
+              </SummaryControl>
+            </Panel>
+          </div>
         </Example>
 
         <Example title="With picked list">

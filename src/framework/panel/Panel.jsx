@@ -11,6 +11,7 @@ export {
 const Panel = props => {
   const contentClasses = classNames('panel__content', {
     'panel__content--padded': props.isPadded,
+    'panel__content--centered': props.isCentered,
   });
 
   return (
@@ -36,6 +37,7 @@ Panel.propTypes = {
   children: PropTypes.any,
   actions: PropTypes.any,
   isPadded: PropTypes.bool,
+  isCentered: PropTypes.bool,
 };
 
 export default Panel;

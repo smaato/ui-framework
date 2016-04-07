@@ -44,5 +44,16 @@ describe('Panel', () => {
         expect(paddedEl).toBeDefined();
       });
     });
+
+    describe('isCentered', () => {
+      it('applies the appropriate class', () => {
+        const props = {
+          isCentered: true,
+        };
+        const testCase = TestCaseFactory.create(Panel, props);
+        const paddedEl = testCase.first('.panel__content--centered');
+        expect(paddedEl).toBeDefined();
+      });
+    });
   });
 });
