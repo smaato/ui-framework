@@ -65,5 +65,33 @@ describe('SummaryControl', () => {
         );
       });
     });
+
+    describe('isStatic', () => {
+      it('doesn\'t render a cog icon', () => {
+        const props = {
+          isStatic: true,
+        };
+        const testCase = TestCaseFactory.create(SummaryControl, props);
+        expect(testCase.find('.icon').length).toBe(0);
+      });
+
+      it('disables the onClick callback', () => {
+        const props = {
+          onClick: jasmine.createSpy('onClick'),
+          isStatic: true,
+        };
+        const testCase = TestCaseFactory.create(SummaryControl, props);
+        testCase.trigger('click');
+        expect(props.onClick).not.toHaveBeenCalled();
+      });
+
+      it('adds the appropriate class', () => {
+        const props = {
+          isStatic: true,
+        };
+        const testCase = TestCaseFactory.create(SummaryControl, props);
+        expect(testCase.dom.className).toContain('summaryControl--static');
+      });
+    });
   });
 });

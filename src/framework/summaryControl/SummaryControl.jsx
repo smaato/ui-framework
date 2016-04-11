@@ -23,17 +23,29 @@ const SummaryControl = props => {
     icon = <div className={iconClasses} />;
   }
 
+  let cogIcon;
+
+  if (!props.isStatic) {
+    cogIcon = <div className="summaryControl__cogIcon icon icon-cog" />;
+  }
+
+  const classes = classNames('summaryControl', {
+    'summaryControl--static': props.isStatic,
+  });
+
   return (
     <div
       data-id={props.dataId}
-      className="summaryControl"
-      onClick={props.onClick}
+      className={classes}
+      onClick={props.isStatic ? undefined : props.onClick}
     >
       {icon}
+
       <span className="summaryControl__label">
         {props.children}
       </span>
-      <div className="summaryControl__cogIcon icon icon-cog" />
+
+      {cogIcon}
     </div>
   );
 };
@@ -49,6 +61,7 @@ SummaryControl.propTypes = {
   children: PropTypes.string,
   onClick: PropTypes.func,
   type: PropTypes.string,
+  isStatic: PropTypes.bool,
 };
 
 export default SummaryControl;

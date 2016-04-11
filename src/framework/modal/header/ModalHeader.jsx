@@ -16,9 +16,10 @@ const ModalHeader = props => {
     if (props.type) {
       const typeToIconClassMap = {
         [ModalHeader.TYPE.EDIT]: 'icon-cog',
-        [ModalHeader.TYPE.SMX_LINE_ITEM]: 'icon-document',
-        [ModalHeader.TYPE.LINE_ITEM]: 'icon-asterisk',
         [ModalHeader.TYPE.ENDPOINT]: 'icon-link',
+        [ModalHeader.TYPE.LINE_ITEM]: 'icon-asterisk',
+        [ModalHeader.TYPE.SMX_LINE_ITEM]: 'icon-document',
+        [ModalHeader.TYPE.TARGETING]: 'icon-target',
       };
 
       const iconClasses = classNames(
@@ -53,6 +54,7 @@ const ModalHeader = props => {
   if (props.closeTopModalLabel) {
     closeTopModalLabel = (
       <div className="modalHeader__closeTopModalLabel">
+        <div className="modalHeader__closeTopModalIcon icon icon-close" />
         {props.closeTopModalLabel}
       </div>
     );
@@ -69,9 +71,10 @@ const ModalHeader = props => {
 
 ModalHeader.TYPE = keyMirror({
   EDIT: null,
-  SMX_LINE_ITEM: null,
-  LINE_ITEM: null,
   ENDPOINT: null,
+  LINE_ITEM: null,
+  SMX_LINE_ITEM: null,
+  TARGETING: null,
 });
 
 ModalHeader.propTypes = {

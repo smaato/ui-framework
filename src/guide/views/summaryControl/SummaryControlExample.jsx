@@ -19,20 +19,31 @@ export default class SummaryControlExample extends Component {
   }
 
   render() {
-    const examples = Object.keys(SummaryControl.TYPE).map(key =>
-      <Example
-        title={key}
+    const types = Object.keys(SummaryControl.TYPE).map(key =>
+      <div
+        style={{ marginBottom: 20 }}
         key={key}
       >
         <SummaryControl type={SummaryControl.TYPE[key]}>
           {key}
         </SummaryControl>
-      </Example>
+      </div>
     );
 
     return (
       <Page title={this.props.route.name}>
-        {examples}
+        <Example>
+          {types}
+        </Example>
+
+        <Example title="Static">
+          <SummaryControl
+            type={SummaryControl.TYPE.ALLOWED}
+            isStatic
+          >
+            This summary control isn't clickable
+          </SummaryControl>
+        </Example>
       </Page>
     );
   }

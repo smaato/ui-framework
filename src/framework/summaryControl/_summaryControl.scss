@@ -33,3 +33,12 @@ $summaryControlIconSize: 12px;
     opacity: 0.25;
   }
 
+/**
+ * 1. Don't fill container width.
+ * 2. Non-clickable.
+ */
+.summaryControl--static {
+  display: inline-flex; /* 1 */
+  box-shadow: none; /* 2 */
+  cursor: default; /* 2 */
+}
