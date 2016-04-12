@@ -67,6 +67,9 @@ import {
   PickedListItem,
   PickedSummary,
   PrimaryButton,
+  Progress,
+  ProgressModal,
+  ProgressSuccess,
   SearchBox,
   Spinner,
   StatusDot,
@@ -285,6 +288,15 @@ const components = [{
 }, {
   name: 'PrimaryButton',
   component: PrimaryButton,
+}, {
+  name: 'Progress',
+  component: Progress,
+}, {
+  name: 'ProgressModal',
+  component: ProgressModal,
+}, {
+  name: 'ProgressSuccess',
+  component: ProgressSuccess,
 }, {
   name: 'SearchBox',
   component: SearchBox,

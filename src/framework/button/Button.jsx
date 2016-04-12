@@ -86,7 +86,8 @@ Button.propTypes = {
 
 export default Button;
 
-// We need to export these classes after Button because they depend on Button
+// We need to export these components after the default export because they
+// depend on it.
 export {
   default as BasicButton,
 } from './BasicButton.jsx';

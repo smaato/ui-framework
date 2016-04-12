@@ -34,6 +34,8 @@ import PanelExample from '../../views/panel/PanelExample.jsx';
 import PickedListExample from '../../views/pickedList/PickedListExample.jsx';
 import PickedSummaryExample
   from '../../views/pickedSummary/PickedSummaryExample.jsx';
+import ProgressExample
+  from '../../views/progress/ProgressExample.jsx';
 import SearchBoxExample
   from '../../views/searchBox/SearchBoxExample.jsx';
 import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
@@ -151,6 +153,10 @@ const components = [{
   name: 'PickedSummary',
   source: 'views/pickedSummary/PickedSummaryExample.jsx',
   component: PickedSummaryExample,
+}, {
+  name: 'Progress',
+  source: 'views/progress/ProgressExample.jsx',
+  component: ProgressExample,
 }, {
   name: 'SearchBox',
   source: 'views/searchBox/SearchBoxExample.jsx',
