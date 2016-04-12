@@ -38,7 +38,6 @@ import ProgressExample
   from '../../views/progress/ProgressExample.jsx';
 import SearchBoxExample
   from '../../views/searchBox/SearchBoxExample.jsx';
-import SpinnerExample from '../../views/spinner/SpinnerExample.jsx';
 import StatusDotExample from '../../views/statusDot/StatusDotExample.jsx';
 import StatusDropdownExample
   from '../../views/statusDropdown/StatusDropdownExample.jsx';
@@ -161,10 +160,6 @@ const components = [{
   name: 'SearchBox',
   source: 'views/searchBox/SearchBoxExample.jsx',
   component: SearchBoxExample,
-}, {
-  name: 'Spinner',
-  source: 'views/spinner/SpinnerExample.jsx',
-  component: SpinnerExample,
 }, {
   name: 'StatusDot',
   source: 'views/statusDropdown/StatusDotExample.jsx',

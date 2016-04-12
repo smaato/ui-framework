@@ -71,7 +71,6 @@ import {
   ProgressModal,
   ProgressSuccess,
   SearchBox,
-  Spinner,
   StatusDot,
   StatusDropdown,
   StatusDropdownOption,
@@ -300,9 +299,6 @@ const components = [{
 }, {
   name: 'SearchBox',
   component: SearchBox,
-}, {
-  name: 'Spinner',
-  component: Spinner,
 }, {
   name: 'StatusDot',
   component: StatusDot,

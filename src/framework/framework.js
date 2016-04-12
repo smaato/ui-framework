@@ -78,9 +78,6 @@ export { default as Progress } from './progress/Progress.jsx';
 export * from './searchBox/SearchBox.jsx';
 export { default as SearchBox } from './searchBox/SearchBox.jsx';
 
-export * from './spinner/Spinner.jsx';
-export { default as Spinner } from './spinner/Spinner.jsx';
-
 export { default as StatusDot } from './statusDot/StatusDot.jsx';
 
 export * from './statusDropdown/StatusDropdown.jsx';
