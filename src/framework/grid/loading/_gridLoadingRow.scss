@@ -1,11 +1,15 @@
+
 .gridLoadingRow {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 200px;
-  border: 4px dashed rgba(#ffad00, 0.5);
+  height: 68px;
 }
 
+/**
+ * 1. Optically center the progress component.
+ */
 .gridLoadingRow--initial {
   height: 400px;
+  padding-bottom: 30px; /* 1 */
 }

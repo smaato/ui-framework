@@ -72,11 +72,11 @@ export { default as PickedList } from './pickedList/PickedList.jsx';
 export * from './pickedSummary/PickedSummary.jsx';
 export { default as PickedSummary } from './pickedSummary/PickedSummary.jsx';
 
+export * from './progress/Progress.jsx';
+export { default as Progress } from './progress/Progress.jsx';
+
 export * from './searchBox/SearchBox.jsx';
 export { default as SearchBox } from './searchBox/SearchBox.jsx';
-
-export * from './spinner/Spinner.jsx';
-export { default as Spinner } from './spinner/Spinner.jsx';
 
 export { default as StatusDot } from './statusDot/StatusDot.jsx';
 

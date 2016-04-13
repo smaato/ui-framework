@@ -1,0 +1,70 @@
+
+@keyframes progressFrame1 {
+  0% { opacity: 0.4; }
+  20% { opacity: 1; }
+  40% { opacity: 1; }
+  60% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes progressFrame2 {
+  0% { opacity: 0.4; }
+  20% { opacity: 0.4; }
+  40% { opacity: 1; }
+  60% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes progressFrame3 {
+  0% { opacity: 0.4; }
+  20% { opacity: 0.4; }
+  40% { opacity: 0.4; }
+  60% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes progressFrame4 {
+  0% { opacity: 0.4; }
+  20% { opacity: 0.4; }
+  40% { opacity: 0.4; }
+  60% { opacity: 0.4; }
+  80% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.progress {
+  display: inline-block;
+  line-height: 0;
+  height: 8px;
+}
+
+  .progress__dot {
+    display: inline-block;
+    width: 9px;
+    height: 100%;
+    background: #23667f;
+    border-radius: 2px;
+
+    & + & {
+      margin-left: 4px;
+    }
+
+    &:nth-child(1) {
+      animation: progressFrame1 1s infinite ease-in-out;
+    }
+
+    &:nth-child(2) {
+      animation: progressFrame2 1s infinite ease-in-out;
+    }
+
+    &:nth-child(3) {
+      animation: progressFrame3 1s infinite ease-in-out;
+    }
+
+    &:nth-child(4) {
+      animation: progressFrame4 1s infinite ease-in-out;
+    }
+  }

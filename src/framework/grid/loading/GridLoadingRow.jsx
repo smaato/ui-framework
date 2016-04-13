@@ -3,7 +3,8 @@ import React, {
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
-import Spinner from '../../spinner/Spinner.jsx';
+
+import Progress from '../../progress/Progress.jsx';
 
 const GridLoadingRow = props => {
   const className = classNames(
@@ -15,8 +16,7 @@ const GridLoadingRow = props => {
     <tr>
       <td colSpan={props.columnsCount}>
         <div className={className}>
-          <Spinner />
-          <span>Loading...</span>
+          <Progress />
         </div>
       </td>
     </tr>
