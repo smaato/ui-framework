@@ -1,5 +1,6 @@
 
 import { TestCaseFactory } from 'react-test-kit';
+import { CommonAssertions } from '../services';
 import Link from './Link.jsx';
 
 describe('Link', () => {
@@ -11,6 +12,8 @@ describe('Link', () => {
   });
 
   describe('Props', () => {
+    CommonAssertions.assertDataId(Link);
+
     describe('children', () => {
       it('is rendered', () => {
         const props = {
