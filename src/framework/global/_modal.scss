@@ -1,0 +1,12 @@
+
+/**
+ * 1. Center modal vertically and horizontally in IE11, and allow the container
+ *    to scroll if the modal is clipped.
+ * 2. Center modal vertically.
+ */
+@mixin modal {
+  flex: 0 0 auto; /* 1 */
+  margin: auto; /* 2 */
+  line-height: $lineHeight;
+  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.15);
+}

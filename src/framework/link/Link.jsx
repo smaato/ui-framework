@@ -15,6 +15,7 @@ const Link = props => {
       className="link"
       href={props.href}
       onClick={onClick}
+      data-id={props.dataId}
     >
       {props.children}
     </a>
@@ -22,6 +23,7 @@ const Link = props => {
 };
 
 Link.propTypes = {
+  dataId: PropTypes.string,
   children: PropTypes.string,
   href: PropTypes.string,
   onClick: PropTypes.func,

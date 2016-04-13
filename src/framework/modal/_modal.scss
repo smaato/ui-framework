@@ -1,20 +1,12 @@
 
 $modalPadding: 20px;
 
-/**
- * 1. Center modal vertically and horizontally in IE11, and allow the container
- *    to scroll if the modal is clipped.
- * 2. Center modal vertically.
- */
 .modal {
-  flex: 0 0 auto; /* 1 */
-  margin: auto; /* 2 */
+  @include modal;
   border: 4px solid white;
   background: #f7fbfc;
   border-radius: 1px;
-  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.15);
   color: #526770;
-  line-height: $lineHeight;
 
   &.is-modal-stacked {
     border-color: transparent;

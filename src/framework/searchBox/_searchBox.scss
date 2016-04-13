@@ -1,7 +1,11 @@
 
+/**
+ * 1. Ensure we don't inherit anything from containing elements.
+ */
 .searchBox {
   position: relative;
-  line-height: $lineHeight;
+  line-height: $lineHeight; /* 1 */
+  font-size: 16px; /* 1 */
 }
 
 $searchBoxHeight: 23px;
