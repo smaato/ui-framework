@@ -45,9 +45,6 @@ export { default as Kpi } from './kpi/Kpi.jsx';
 export * from './label/Label.jsx';
 export { default as Label } from './label/Label.jsx';
 
-export * from './labeledControl/LabeledControl.jsx';
-export { default as LabeledControl } from './labeledControl/LabeledControl.jsx';
-
 export { default as LabeledField } from './labeledField/LabeledField.jsx';
 
 export { default as Link } from './link/Link.jsx';
