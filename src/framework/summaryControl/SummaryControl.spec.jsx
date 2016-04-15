@@ -54,15 +54,8 @@ describe('SummaryControl', () => {
         testCase.trigger('click');
       });
 
-      it('is called once', () => {
-        expect(onClick.calls.count()).toEqual(1);
-      });
-
-      it('is called with event object as an argument', () => {
-        expect(onClick).toHaveBeenCalledWith(
-          jasmine.any(Object), // SyntheticEvent
-          jasmine.any(String) // React ID
-        );
+      it('is called', () => {
+        expect(onClick).toHaveBeenCalled();
       });
     });
 
