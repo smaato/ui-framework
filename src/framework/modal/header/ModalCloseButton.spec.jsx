@@ -16,15 +16,8 @@ describe('ModalCloseButton', () => {
         testCase.trigger('click');
       });
 
-      it('is called once', () => {
-        expect(onClick.calls.count()).toEqual(1);
-      });
-
-      it('is called with event object as an argument', () => {
-        expect(onClick).toHaveBeenCalledWith(
-          jasmine.any(Object), // SyntheticEvent
-          jasmine.any(String) // Virtual DOM's 'data-reactid' attribute
-        );
+      it('is called', () => {
+        expect(onClick).toHaveBeenCalled();
       });
     });
   });

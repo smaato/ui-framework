@@ -54,7 +54,7 @@ describe('FiltersControl', () => {
         expect(props.onRemoveConditionChecker).toHaveBeenCalledWith(
           props.conditionCheckers[0],
           jasmine.any(Object), // SyntheticEvent
-          jasmine.any(String) // React ID
+          undefined
         );
       });
     });
