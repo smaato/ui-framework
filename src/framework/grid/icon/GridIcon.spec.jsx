@@ -5,23 +5,16 @@ import GridIcon from './GridIcon.jsx';
 describe('GridIcon', () => {
   describe('Props', () => {
     describe('onClick', () => {
-      let onClick;
-
-      beforeEach(() => {
-        onClick = jasmine.createSpy('onClick');
-
+      it('receives data as argument', () => {
+        const onClick = jasmine.createSpy('onClick');
         const props = {
+          data: {},
           onClick,
         };
 
-        const testCase =
-          TestCaseFactory.createFromFunction(GridIcon, props);
-
+        const testCase = TestCaseFactory.create(GridIcon, props);
         testCase.trigger('click');
-      });
-
-      it('is called', () => {
-        expect(onClick).toHaveBeenCalled();
+        expect(onClick).toHaveBeenCalledWith(props.data);
       });
     });
 

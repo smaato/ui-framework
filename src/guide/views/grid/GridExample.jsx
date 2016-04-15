@@ -390,11 +390,13 @@ export default class GridExample extends Component {
           <div>
             <GridIcon
               type={GridIcon.TYPE.OPTIONS}
-              onClick={this.onClickRowOptions.bind(this, item)}
+              data={item}
+              onClick={this.onClickRowOptions}
             />
             <GridIcon
               type={GridIcon.TYPE.EDIT}
-              onClick={this.onClickRowEdit.bind(this, item)}
+              data={item}
+              onClick={this.onClickRowEdit}
             />
           </div>
         ),
