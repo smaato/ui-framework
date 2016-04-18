@@ -10,12 +10,14 @@ import Page, {
 
 import {
   BasicButton,
+  Column,
+  ColumnLayout,
   Dropdown,
   Form,
   FormFooter,
   FormPanel,
   HollowButton,
-  LabeledControl,
+  Label,
   PrimaryButton,
   TextInput,
   VerticalLayout,
@@ -74,18 +76,23 @@ export default class FormExample extends Component {
               onSubmit={this.onSubmit}
             >
               <VerticalLayout>
-                <LabeledControl
-                  label="First Name"
-                  layout={LabeledControl.LAYOUT.ONE_SIXTH}
-                >
-                  <TextInput isFullWidth />
-                </LabeledControl>
-                <LabeledControl
-                  label="Last Name"
-                  layout={LabeledControl.LAYOUT.ONE_SIXTH}
-                >
-                  <TextInput isFullWidth />
-                </LabeledControl>
+                <ColumnLayout>
+                  <Column width={2}>
+                    <Label isAlignedWithField>First Name</Label>
+                  </Column>
+                  <Column width={10}>
+                    <TextInput isFullWidth />
+                  </Column>
+                </ColumnLayout>
+
+                <ColumnLayout>
+                  <Column width={2}>
+                    <Label isAlignedWithField>Last Name</Label>
+                  </Column>
+                  <Column width={10}>
+                    <TextInput isFullWidth />
+                  </Column>
+                </ColumnLayout>
               </VerticalLayout>
             </Form>
           </FormPanel>
@@ -98,24 +105,29 @@ export default class FormExample extends Component {
               onSubmit={this.onSubmit}
             >
               <VerticalLayout>
-                <LabeledControl
-                  label="Name"
-                  layout={LabeledControl.LAYOUT.ONE_SIXTH}
-                >
-                  <TextInput isFullWidth />
-                </LabeledControl>
-                <LabeledControl
-                  label="Favorite color"
-                  layout={LabeledControl.LAYOUT.ONE_SIXTH}
-                >
-                  <Dropdown
-                    options={this.dropdownItems}
-                    selectedOption={this.state.selectedDropdownOption}
-                    onSelect={this.onSelectDropdownOption}
-                    labelProvider={this.dropdownLabelProvider}
-                    optionLabelProvider={this.dropdownOptionLabelProvider}
-                  />
-                </LabeledControl>
+                <ColumnLayout>
+                  <Column width={2}>
+                    <Label isAlignedWithField>Name</Label>
+                  </Column>
+                  <Column width={10}>
+                    <TextInput isFullWidth />
+                  </Column>
+                </ColumnLayout>
+
+                <ColumnLayout>
+                  <Column width={2}>
+                    <Label isAlignedWithField>Favorite color</Label>
+                  </Column>
+                  <Column width={10}>
+                    <Dropdown
+                      options={this.dropdownItems}
+                      selectedOption={this.state.selectedDropdownOption}
+                      onSelect={this.onSelectDropdownOption}
+                      labelProvider={this.dropdownLabelProvider}
+                      optionLabelProvider={this.dropdownOptionLabelProvider}
+                    />
+                  </Column>
+                </ColumnLayout>
               </VerticalLayout>
               <FormFooter
                 left={[

@@ -11,9 +11,11 @@ import Page, {
 import {
   BasicButton,
   CallOutButton,
+  Column,
+  ColumnLayout,
   Form,
   HollowButton,
-  LabeledControl,
+  Label,
   Modal,
   ModalBody,
   ModalConfirmationBody,
@@ -200,18 +202,23 @@ export default class ModalExample extends Component {
             <ModalBody>
               <Form>
                 <VerticalLayout>
-                  <LabeledControl
-                    label="First Name"
-                    layout={LabeledControl.LAYOUT.ONE_SIXTH}
-                  >
-                    <TextInput isFullWidth />
-                  </LabeledControl>
-                  <LabeledControl
-                    label="Last Name"
-                    layout={LabeledControl.LAYOUT.ONE_SIXTH}
-                  >
-                    <TextInput isFullWidth />
-                  </LabeledControl>
+                  <ColumnLayout>
+                    <Column width={2}>
+                      <Label isAlignedWithField>First Name</Label>
+                    </Column>
+                    <Column width={10}>
+                      <TextInput isFullWidth />
+                    </Column>
+                  </ColumnLayout>
+
+                  <ColumnLayout>
+                    <Column width={2}>
+                      <Label isAlignedWithField>Last Name</Label>
+                    </Column>
+                    <Column width={10}>
+                      <TextInput isFullWidth />
+                    </Column>
+                  </ColumnLayout>
                 </VerticalLayout>
               </Form>
             </ModalBody>

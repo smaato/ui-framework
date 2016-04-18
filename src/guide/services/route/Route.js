@@ -20,8 +20,6 @@ import GridExample from '../../views/grid/GridExample.jsx';
 import HtmlElementsExample
   from '../../views/htmlElements/HtmlElementsExample.jsx';
 import KpiExample from '../../views/kpi/KpiExample.jsx';
-import LabeledControlExample
-  from '../../views/labeledControl/LabeledControlExample.jsx';
 import LabeledFieldExample
   from '../../views/labeledField/LabeledFieldExample.jsx';
 import LabelExample from '../../views/label/LabelExample.jsx';
@@ -112,10 +110,6 @@ const components = [{
   name: 'Kpi',
   source: 'views/kpi/KpiExample.jsx',
   component: KpiExample,
-}, {
-  name: 'LabeledControl',
-  source: 'views/labeledControl/LabeledControlExample.jsx',
-  component: LabeledControlExample,
 }, {
   name: 'LabeledField',
   source: 'views/labeledField/LabeledFieldExample.jsx',

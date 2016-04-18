@@ -11,8 +11,10 @@ import Page, {
 import {
   AddOnControl,
   AddOnLabel,
+  Column,
+  ColumnLayout,
   FieldMessage,
-  LabeledControl,
+  Label,
   TextInput,
 } from '../../../framework/framework';
 
@@ -59,16 +61,18 @@ export default class FieldMessageExample extends Component {
       <Page title={this.props.route.name}>
 
         <Example>
-          <LabeledControl
-            label="Name"
-            layout={LabeledControl.LAYOUT.ONE_SIXTH}
-          >
-            <TextInput
-              isError={this.state.isErrorDisplayed}
-              isFullWidth
-            />
-            {this.renderError1()}
-          </LabeledControl>
+          <ColumnLayout>
+            <Column width={2}>
+              <Label isAlignedWithField>Name</Label>
+            </Column>
+            <Column width={10}>
+              <TextInput
+                isError={this.state.isErrorDisplayed}
+                isFullWidth
+              />
+              {this.renderError1()}
+            </Column>
+          </ColumnLayout>
 
           <button
             type="button"
@@ -79,21 +83,23 @@ export default class FieldMessageExample extends Component {
         </Example>
 
         <Example title="Message balloon as wide as field">
-          <LabeledControl
-            label="QPS Limit"
-            layout={LabeledControl.LAYOUT.ONE_SIXTH}
-          >
-            <div style={{ width: 200 }}>
-              <AddOnControl>
-                <TextInput
-                  isFullWidth
-                  isError={this.state.isErrorDisplayed}
-                />
-                <AddOnLabel isRightSide>queries per second</AddOnLabel>
-              </AddOnControl>
-              {this.renderError2()}
-            </div>
-          </LabeledControl>
+          <ColumnLayout>
+            <Column width={2}>
+              <Label isAlignedWithField>QPS Limit</Label>
+            </Column>
+            <Column width={10}>
+              <div style={{ width: 200 }}>
+                <AddOnControl>
+                  <TextInput
+                    isFullWidth
+                    isError={this.state.isErrorDisplayed}
+                  />
+                  <AddOnLabel isRightSide>queries per second</AddOnLabel>
+                </AddOnControl>
+                {this.renderError2()}
+              </div>
+            </Column>
+          </ColumnLayout>
 
           <button
             type="button"
