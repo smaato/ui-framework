@@ -10,10 +10,7 @@ const ModalConfirmationFooter = props => (
 );
 
 ModalConfirmationFooter.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.array,
-  ]).isRequired,
+  children: PropTypes.any,
 };
 
 export default ModalConfirmationFooter;
