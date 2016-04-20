@@ -47,7 +47,6 @@ import {
   KpiNegative,
   KpiPositive,
   Label,
-  LabeledControl,
   LabeledField,
   Link,
   Menu,
@@ -233,9 +232,6 @@ const components = [{
 }, {
   name: 'Label',
   component: Label,
-}, {
-  name: 'LabeledControl',
-  component: LabeledControl,
 }, {
   name: 'LabeledField',
   component: LabeledField,

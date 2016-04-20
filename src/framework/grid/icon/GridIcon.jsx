@@ -19,10 +19,16 @@ const GridIcon = props => {
     }
   );
 
+  function onClick() {
+    if (props.onClick) {
+      props.onClick(props.data);
+    }
+  }
+
   return (
     <div
       className={classes}
-      onClick={props.onClick}
+      onClick={onClick}
     />
   );
 };
@@ -35,6 +41,7 @@ GridIcon.TYPE = keyMirror({
 GridIcon.propTypes = {
   type: PropTypes.string,
   onClick: PropTypes.func,
+  data: PropTypes.any,
 };
 
 export default GridIcon;
