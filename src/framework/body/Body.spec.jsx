@@ -10,8 +10,19 @@ describe('Body', () => {
         const props = {
           children: <div id="test">test</div>,
         };
-        const testCase = TestCaseFactory.createFromFunction(Body, props);
+        const testCase = TestCaseFactory.create(Body, props);
         expect(testCase.first('#test').textContent).toBe('test');
+      });
+    });
+
+    describe('isDark', () => {
+      it('applies the appropriate class', () => {
+        const props = {
+          children: '',
+          isDark: true,
+        };
+        const testCase = TestCaseFactory.create(Body, props);
+        expect(testCase.dom.className).toContain('body--dark');
       });
     });
   });
