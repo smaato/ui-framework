@@ -86,6 +86,9 @@ export { default as SummaryControl, }
 export * from './text/Text.jsx';
 export { default as Text } from './text/Text.jsx';
 
+export * from './heading/Heading.jsx';
+export { default as Heading } from './heading/Heading.jsx';
+
 export * from './textArea/TextArea.jsx';
 export { default as TextArea } from './textArea/TextArea.jsx';
 
