@@ -42,7 +42,6 @@ import StatusDropdownExample
 import SummaryControlExample
   from '../../views/summaryControl/SummaryControlExample.jsx';
 import TextExample from '../../views/text/TextExample.jsx';
-import HeadingExample from '../../views/heading/HeadingExample.jsx';
 import TextAreaExample from '../../views/textArea/TextAreaExample.jsx';
 import TextInputExample from '../../views/textInput/TextInputExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
@@ -107,10 +106,6 @@ const components = [{
   name: 'HTML elements',
   source: 'views/htmlElements/htmlElementsExample.jsx',
   component: HtmlElementsExample,
-}, {
-  name: 'Heading',
-  source: 'views/heading/headingExample.jsx',
-  component: HeadingExample,
 }, {
   name: 'Kpi',
   source: 'views/kpi/KpiExample.jsx',

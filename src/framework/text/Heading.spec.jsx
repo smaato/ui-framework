@@ -4,7 +4,7 @@ import Heading from './Heading.jsx';
 describe('Heading', () => {
   describe('Props', () => {
     describe('children', () => {
-      it('is rendered as the Heading of the component', () => {
+      it('is rendered', () => {
         const props = {
           children: 'Test',
         };
