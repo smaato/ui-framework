@@ -70,6 +70,14 @@ export default class PickedListExample extends Component {
           </PickedListItem>
         );
       });
+      items.push(
+        <PickedListItem
+          key={items.length}
+          type={PickedListItem.TYPE.NOT_ALLOWED}
+        >
+          All Other {this.categories[categoryIndex].name}
+        </PickedListItem>
+      );
 
       return (
         <PickedList
