@@ -42,6 +42,7 @@ import {
   GridLoadingRow,
   GridRow,
   GroupedButton,
+  Heading,
   HollowButton,
   Kpi,
   KpiNegative,
@@ -217,6 +218,9 @@ const components = [{
 }, {
   name: 'GroupedButton',
   component: GroupedButton,
+}, {
+  name: 'Heading',
+  component: Heading,
 }, {
   name: 'HollowButton',
   component: HollowButton,

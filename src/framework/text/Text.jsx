@@ -9,6 +9,10 @@ export {
   default as DescriptionText,
 } from './DescriptionText.jsx';
 
+export {
+  default as Heading,
+} from './Heading.jsx';
+
 const Text = props => {
   const rhythmClassMap = {
     [Text.RHYTHM.XSMALL]: 'text--xSmallRhythm',

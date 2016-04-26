@@ -11,6 +11,7 @@ import Page, {
 import {
   DescriptionText,
   Text,
+  Heading,
 } from '../../../framework/framework';
 
 export default class TextExample extends Component {
@@ -57,6 +58,10 @@ export default class TextExample extends Component {
 
         <Example title="Rhythms">
           {rhythms}
+        </Example>
+
+        <Example title="Heading">
+          <Heading>This is heading text.</Heading>
         </Example>
 
       </Page>

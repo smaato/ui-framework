@@ -2,6 +2,7 @@
 import React, {
   PropTypes,
 } from 'react';
+import classNames from 'classnames';
 
 export {
   default as BodyPanel,
@@ -11,17 +12,24 @@ export {
   default as BodyPanelItem,
 } from './BodyPanelItem.jsx';
 
-const Body = props => (
-  <div className="body">
-    {props.children}
-  </div>
-);
+const Body = props => {
+  const classes = classNames('body', {
+    'body--dark': props.isDark,
+  });
+
+  return (
+    <div className={classes}>
+      {props.children}
+    </div>
+  );
+};
 
 Body.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.element,
   ]),
+  isDark: PropTypes.bool,
 };
 
 export default Body;
