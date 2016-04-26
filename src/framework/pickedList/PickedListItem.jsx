@@ -26,16 +26,24 @@ const PickedListItem = props => {
     icon = <div className={iconClasses} />;
   }
 
+  let removeButton;
+
+  if (props.onRemove) {
+    removeButton = (
+      <div
+        className="pickedListItem__removeButton"
+        onClick={onClickRemove}
+      />
+    );
+  }
+
   return (
     <div className="pickedListItem">
       {icon}
       <div className="pickedListItem__label">
         {props.children}
       </div>
-      <div
-        className="pickedListItem__removeButton"
-        onClick={onClickRemove}
-      />
+      {removeButton}
     </div>
   );
 };
@@ -49,7 +57,7 @@ PickedListItem.propTypes = {
   children: PropTypes.string,
   data: PropTypes.any,
   type: PropTypes.string,
-  onRemove: PropTypes.func.isRequired,
+  onRemove: PropTypes.func,
 };
 
 export default PickedListItem;

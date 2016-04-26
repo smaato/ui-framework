@@ -16,6 +16,25 @@ describe('PickedListItem', () => {
     });
 
     describe('onRemove', () => {
+      it('doesn\'t render remove button when not defined', () => {
+        const props = {
+          data: {},
+        };
+        const testCase = TestCaseFactory.create(PickedListItem, props);
+        expect(
+          testCase.first('.pickedListItem__removeButton')
+        ).not.toBeDefined();
+      });
+
+      it('renders remove button when defined', () => {
+        const props = {
+          onRemove: () => undefined,
+          data: {},
+        };
+        const testCase = TestCaseFactory.create(PickedListItem, props);
+        expect(testCase.first('.pickedListItem__removeButton')).toBeDefined();
+      });
+
       it('is called with data when remove button is clicked', () => {
         const props = {
           onRemove: jasmine.createSpy('onRemove'),
