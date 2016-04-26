@@ -16,7 +16,7 @@ describe('PickedListItem', () => {
     });
 
     describe('onRemove', () => {
-      it('is not rendered when not defined', () => {
+      it('doesn\'t render remove button when not defined', () => {
         const props = {
           data: {},
         };
@@ -26,7 +26,7 @@ describe('PickedListItem', () => {
         ).not.toBeDefined();
       });
 
-      it('is rendered when defined', () => {
+      it('renders remove button when defined', () => {
         const props = {
           onRemove: () => undefined,
           data: {},

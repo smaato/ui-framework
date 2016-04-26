@@ -26,10 +26,10 @@ const PickedListItem = props => {
     icon = <div className={iconClasses} />;
   }
 
-  let clickRemove;
+  let removeButton;
 
   if (props.onRemove) {
-    clickRemove = (
+    removeButton = (
       <div
         className="pickedListItem__removeButton"
         onClick={onClickRemove}
@@ -43,7 +43,7 @@ const PickedListItem = props => {
       <div className="pickedListItem__label">
         {props.children}
       </div>
-      {clickRemove}
+      {removeButton}
     </div>
   );
 };
