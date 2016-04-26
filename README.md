@@ -56,6 +56,7 @@ import {
   GridRow,
   GridSearch,
   GroupedButton,
+  Heading,
   HollowButton,
   Kpi,
   KpiNegative,
