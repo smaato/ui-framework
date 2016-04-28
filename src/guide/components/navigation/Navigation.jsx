@@ -60,7 +60,6 @@ export default class Navigation extends Component {
 
     addRoutesToNav('Components', this.props.componentRoutes, navItems);
     addRoutesToNav('Integrations', this.props.integrationRoutes, navItems);
-    addRoutesToNav('Prototypes', this.props.prototypeRoutes, navItems);
 
     const navMenuClasses = classNames('examplesNavMenu', {
       'is-examples-nav-menu-visible': this.state.isMenuOpen,
@@ -92,5 +91,4 @@ export default class Navigation extends Component {
 Navigation.propTypes = {
   componentRoutes: PropTypes.array,
   integrationRoutes: PropTypes.array,
-  prototypeRoutes: PropTypes.array,
 };
