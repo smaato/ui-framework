@@ -18,7 +18,7 @@ const SOURCE_DIR = './src';
 const JS_SRC = `${SOURCE_DIR}/guide/index.js`;
 const FRAMEWORK_SCSS_SRC = `${SOURCE_DIR}/framework/**/*.scss`;
 const GUIDE_SCSS_SRC = `${SOURCE_DIR}/guide/**/*.scss`;
-const TEMPLATES_SRC = `${SOURCE_DIR}/**/*.jade`;
+const TEMPLATES_SRC = `${SOURCE_DIR}/guide/index.jade`;
 
 /**
  * @description Main tasks
@@ -49,17 +49,9 @@ gulp.task('styles', gulpTasks.compileCss({
   subTaskPrefix: 'styles',
 }).task);
 
-gulp.task('templates', ['templates:index'], gulpTasks.compileHtml({
+gulp.task('templates', gulpTasks.compileHtml({
   dst: DISTRIBUTION_DIR,
-  src: [
-    TEMPLATES_SRC,
-    `!${SOURCE_DIR}/guide/index.jade`,
-  ],
-}).task);
-
-gulp.task('templates:index', gulpTasks.compileHtml({
-  dst: DISTRIBUTION_DIR,
-  src: `${SOURCE_DIR}/guide/index.jade`,
+  src: TEMPLATES_SRC,
 }).task);
 
 /**

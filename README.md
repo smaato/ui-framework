@@ -251,19 +251,16 @@ gulp production
 
 _Generates minified distribution with sourcemaps in ./dist/_
 
-#### Deployment to S3
+#### Deployment to AWS S3
 
-To manually deploy the working copy the following command can be used:
+Use this gulp task to deploy the UI Framework to AWS S3:
+
 ```bash
-gulp deploy --accessKeyId=XXX --bucket=XXX --secretAccessKey=XXX
+gulp deploy
 ```
 
-The arguments can be provided via the command line as in this example where
-- accessKeyId is the AWS access key id,
-- bucket is the AWS S3 bucket and
-- secretAccessKey is the AWS secret access key.
+This command expects the following environment variables to be set:
 
-If the arguments are not provided via the command line they will be read from the environment variables
-- AWS_ACCESS_KEY_ID
-- AWS_BUCKET_UI_FRAMEWORK
-- AWS_SECRET_ACCESS_KEY
+- AWS_ACCESS_KEY_ID (the AWS access key ID)
+- AWS_BUCKET_UI_FRAMEWORK (the AWS S3 bucket)
+- AWS_SECRET_ACCESS_KEY (the AWS secret access key)
