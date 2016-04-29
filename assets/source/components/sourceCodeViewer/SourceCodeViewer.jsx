@@ -34,7 +34,6 @@ export default class SourceCodeViewer extends Component {
   }
 
   loadSource(source) {
-    console.log('load', source)
     if (source) {
       const self = this;
       $.ajax(`./assets/source/${source}`, {
