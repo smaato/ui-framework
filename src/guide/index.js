@@ -4,10 +4,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import {
-  browserHistory,
   Router,
+  useRouterHistory,
 } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+import createHashHistory from 'history/lib/createHashHistory';
 
 // Store.
 import configureStore from './store/configureStore';
@@ -24,6 +25,9 @@ import { polyfillCustomEvent } from '../framework/services';
 polyfillCustomEvent();
 
 const store = configureStore();
+const browserHistory = useRouterHistory(createHashHistory)({
+  queryKey: false,
+});
 const history = syncHistoryWithStore(browserHistory, store);
 
 const childRoutes = Route.getAppRoutes();

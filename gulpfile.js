@@ -8,6 +8,7 @@ const del = require('del');
 const gulp = require('gulp');
 const gulpReplace = require('gulp-replace');
 const gulpTasks = require('gulp-tasks');
+const ghPages = require('gulp-gh-pages');
 const runSequence = require('run-sequence');
 
 const DISTRIBUTION_DIR = './dist';
@@ -30,12 +31,18 @@ gulp.task('copySource', gulpTasks.copy({
   src: `${SOURCE_DIR}/guide/**/*.jsx`,
 }).task);
 
-gulp.task('deploy', gulpTasks.deploy({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID || 'No ENV',
-  bucketName: process.env.AWS_BUCKET_UI_FRAMEWORK || 'No ENV',
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || 'No ENV',
-  src: `${DISTRIBUTION_DIR}/**/*.*`,
-}).task);
+gulp.task('deployToGitHubPages', () => (
+  gulp.src('./dist/**/*')
+    .pipe(ghPages())
+));
+
+gulp.task('deploy', done => {
+  runSequence(
+    'production',
+    'deployToGitHubPages',
+    done
+  );
+});
 
 gulp.task('scripts', gulpTasks.compileJs({
   dst: JS_DST,
@@ -113,14 +120,14 @@ gulp.task('replace', () => {
     .pipe(gulp.dest(DISTRIBUTION_DIR));
 });
 
-gulp.task('clean', (callback) => {
+gulp.task('clean', done => {
   return del([
     `${CSS_DST}/dist.css`,
     `${JS_DST}/dist.js`,
-  ], callback);
+  ], done);
 });
 
-gulp.task('production', (callback) => {
+gulp.task('production', done => {
   process.env.NODE_ENV = 'production';
 
   runSequence(
@@ -131,7 +138,7 @@ gulp.task('production', (callback) => {
     ['minifyCss', 'minifyJs'],
     'replace',
     'clean',
-    callback
+    done
   );
 });
 
