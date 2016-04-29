@@ -1,7 +1,0 @@
-.sass-cache
-.DS_Store
-coverage
-node_modules
-dist
-reports
-*.log
