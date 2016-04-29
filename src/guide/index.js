@@ -3,7 +3,11 @@ import 'babel-core/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { ReduxRouter } from 'redux-router';
+import {
+  browserHistory,
+  Router,
+} from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 
 // Store.
 import configureStore from './store/configureStore';
@@ -20,6 +24,7 @@ import { polyfillCustomEvent } from '../framework/services';
 polyfillCustomEvent();
 
 const store = configureStore();
+const history = syncHistoryWithStore(browserHistory, store);
 
 const childRoutes = Route.getAppRoutes();
 childRoutes.push({
@@ -38,12 +43,13 @@ const routes = [{
 }];
 
 // Update document title with route name.
-const onRouteEnter = (route) => {
+const onRouteEnter = route => {
   const leafRoute = route.routes[route.routes.length - 1];
   document.title = leafRoute.name ?
     `Smaato UI Framework - ${leafRoute.name}` :
     'Smaato UI Framework';
 };
+
 const syncTitleWithRoutes = routesList => {
   if (!routesList) return;
   routesList.forEach(route => {
@@ -56,11 +62,15 @@ const syncTitleWithRoutes = routesList => {
     syncTitleWithRoutes(route.childRoutes);
   });
 };
+
 syncTitleWithRoutes(routes);
 
 ReactDOM.render(
   <Provider store={store}>
-    <ReduxRouter routes={routes} />
+    <Router
+      history={history}
+      routes={routes}
+    />
   </Provider>,
   document.getElementById('app')
 );

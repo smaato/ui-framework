@@ -46,7 +46,7 @@ export default class AppView extends Component {
   }
 
   render() {
-    const routes = this.props.routerState.routes;
+    const routes = this.props.routes;
     const source = routes[routes.length - 1].source;
 
     const classes = classNames('app', {
@@ -85,5 +85,5 @@ AppView.propTypes = {
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element,
   ]),
-  routerState: PropTypes.object.isRequired,
+  routes: PropTypes.array.isRequired,
 };

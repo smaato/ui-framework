@@ -4,11 +4,11 @@ import {
   compose,
 } from 'redux';
 import thunk from 'redux-thunk';
+import { browserHistory } from 'react-router';
 import {
-  reduxReactRouter,
-  routerStateReducer,
-} from 'redux-router';
-import createBrowserHistory from 'history/lib/createBrowserHistory';
+  routerMiddleware,
+  routerReducer,
+} from 'react-router-redux';
 
 /**
  * @param {Object} initialState An object defining the application's initial
@@ -16,17 +16,16 @@ import createBrowserHistory from 'history/lib/createBrowserHistory';
  */
 export default function configureStore(initialState) {
   function rootReducer(state = {}, action) {
-    const router = routerStateReducer(state.router, action);
     return {
-      router,
+      routing: routerReducer(state.routing, action),
     };
   }
 
   const finalStore = compose(
-    applyMiddleware(thunk),
-    reduxReactRouter({
-      createHistory: createBrowserHistory,
-    })
+    applyMiddleware(
+      thunk,
+      routerMiddleware(browserHistory)
+    )
   )(createStore)(rootReducer, initialState);
 
   return finalStore;
