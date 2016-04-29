@@ -1,7 +1,12 @@
 
 # Smaato UI Framework
 
-> Smaato UI Framework (React, SCSS)
+We use this UI Framework to reduce development time when building apps, provide
+a default blanket of test coverage to our apps' view layer, and ensure
+consistency throughout our apps' UIs.
+
+This framework provides a number of UI components and generic UI-related
+services. It's built upon React and SCSS.
 
 ## Usage
 
@@ -131,7 +136,7 @@ add vendor-prefixed properties to your compiled CSS.
 This is not yet supported but we can add the compiled CSS file to the repo, so
 that simpler projects will have access to the CSS, if such a use case arises.
 
-## Getting Started
+## Viewing locally
 
 Work on examples in the `src/examples` directory.
 
@@ -150,31 +155,6 @@ gulp
 ```bash
 open http://localhost:8000/
 ```
-
-#### Production
-
-```bash
-gulp production
-```
-
-_Generates minified distribution with sourcemaps in ./dist/_
-
-#### Deployment
-
-To manually deploy the working copy the following command can be used:
-```bash
-gulp deploy --accessKeyId=XXX --bucket=XXX --secretAccessKey=XXX
-```
-
-The arguments can be provided via the command line as in this example where
-- accessKeyId is the AWS access key id,
-- bucket is the AWS S3 bucket and
-- secretAccessKey is the AWS secret access key.
-
-If the arguments are not provided via the command line they will be read from the environment variables
-- AWS_ACCESS_KEY_ID
-- AWS_BUCKET_UI_FRAMEWORK
-- AWS_SECRET_ACCESS_KEY
 
 ## Maintenance
 
@@ -224,7 +204,7 @@ interfaces as React components.
 
 Contains the SCSS and JSX files that form the core of the framework.
 
-### Adding new components
+### Adding new components and services
 
 #### Checklist
 
@@ -261,3 +241,27 @@ should be documented in a file in the `examples/components` directory.
 
 Composing components together into common UI patterns should be documented in
 the `examples/integrations` directory.
+
+## Publishing
+
+#### Production
+
+```bash
+gulp production
+```
+
+_Generates minified distribution with sourcemaps in ./dist/_
+
+#### Deployment to AWS S3
+
+Use this gulp task to deploy the UI Framework to AWS S3:
+
+```bash
+gulp deploy
+```
+
+This command expects the following environment variables to be set:
+
+- AWS_ACCESS_KEY_ID (the AWS access key ID)
+- AWS_BUCKET_UI_FRAMEWORK (the AWS S3 bucket)
+- AWS_SECRET_ACCESS_KEY (the AWS secret access key)

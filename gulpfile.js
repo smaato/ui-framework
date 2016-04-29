@@ -15,22 +15,15 @@ const CSS_DST = `${DISTRIBUTION_DIR}/css`;
 const JS_DST = `${DISTRIBUTION_DIR}/js`;
 
 const SOURCE_DIR = './src';
-const PROTOTYPE_ASSETS_SRC = `${SOURCE_DIR}/prototype/assets/**/*.*`;
 const JS_SRC = `${SOURCE_DIR}/guide/index.js`;
 const FRAMEWORK_SCSS_SRC = `${SOURCE_DIR}/framework/**/*.scss`;
 const GUIDE_SCSS_SRC = `${SOURCE_DIR}/guide/**/*.scss`;
-const PROTOTYPE_SCSS_SRC = `${SOURCE_DIR}/prototype/**/*.scss`;
-const TEMPLATES_SRC = `${SOURCE_DIR}/**/*.jade`;
+const TEMPLATES_SRC = `${SOURCE_DIR}/guide/index.jade`;
 
 /**
  * @description Main tasks
  *******************************************************************************
  */
-
-gulp.task('copyPrototypeAssets', gulpTasks.copy({
-  dst: `${DISTRIBUTION_DIR}/assets`,
-  src: PROTOTYPE_ASSETS_SRC,
-}).task);
 
 gulp.task('copySource', gulpTasks.copy({
   dst: `${DISTRIBUTION_DIR}/assets/source`,
@@ -56,24 +49,9 @@ gulp.task('styles', gulpTasks.compileCss({
   subTaskPrefix: 'styles',
 }).task);
 
-gulp.task('styles:prototype', gulpTasks.compileCss({
-  compassSassDir: `${SOURCE_DIR}/prototype`,
-  dst: `${DISTRIBUTION_DIR}/prototype`,
-  src: PROTOTYPE_SCSS_SRC,
-  subTaskPrefix: 'styles:prototype',
-}).task);
-
-gulp.task('templates', ['templates:index'], gulpTasks.compileHtml({
+gulp.task('templates', gulpTasks.compileHtml({
   dst: DISTRIBUTION_DIR,
-  src: [
-    TEMPLATES_SRC,
-    `!${SOURCE_DIR}/guide/index.jade`,
-  ],
-}).task);
-
-gulp.task('templates:index', gulpTasks.compileHtml({
-  dst: DISTRIBUTION_DIR,
-  src: `${SOURCE_DIR}/guide/index.jade`,
+  src: TEMPLATES_SRC,
 }).task);
 
 /**
@@ -96,21 +74,17 @@ gulp.task('serveLocally', gulpTasks.serve({
 
 gulp.task('watch', [
   'templates',
-  'copyPrototypeAssets',
   'copySource',
   'styles',
-  'styles:prototype',
   'scriptsThenWatch',
   'serveLocally',
 ], () => {
   gulp.watch([TEMPLATES_SRC], ['templates']);
-  gulp.watch([PROTOTYPE_ASSETS_SRC], ['copyPrototypeAssets']);
   gulp.watch([`${SOURCE_DIR}/guide/**/*.jsx`], ['copySource']);
   gulp.watch([
     FRAMEWORK_SCSS_SRC,
     GUIDE_SCSS_SRC,
   ], ['styles']);
-  gulp.watch([PROTOTYPE_SCSS_SRC], ['styles:prototype']);
 });
 
 gulp.task('default', () => {
@@ -151,10 +125,8 @@ gulp.task('production', (callback) => {
 
   runSequence(
     'templates',
-    'copyPrototypeAssets',
     'copySource',
     'styles',
-    'styles:prototype',
     'scripts',
     ['minifyCss', 'minifyJs'],
     'replace',
