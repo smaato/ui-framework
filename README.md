@@ -8,6 +8,8 @@ consistency throughout our apps' UIs.
 This framework provides a number of UI components and generic UI-related
 services. It's built upon React and SCSS.
 
+See the live examples at [http://smaato.github.io/ui-framework/](http://smaato.github.io/ui-framework/).
+
 ## Usage
 
 Install this repo as an NPM dependency to gain access to its UI components.
@@ -250,14 +252,24 @@ the `examples/integrations` directory.
 gulp production
 ```
 
-_Generates minified distribution with sourcemaps in ./dist/_
+This command generates minified distribution with sourcemaps in `./dist/`.
 
-#### Deployment to AWS S3
-
-Use this gulp task to deploy the UI Framework to AWS S3:
+#### Deploy
 
 ```bash
 gulp deploy
+```
+
+This command will run the `production` gulp task, and then deploy the contents
+of `./dist/` to [http://smaato.github.io/ui-framework/](http://smaato.github.io/ui-framework/).
+
+#### Deployment to AWS S3
+
+Use this gulp task to deploy the UI Framework to AWS S3 (typically used for
+internal review):
+
+```bash
+gulp deployToAws
 ```
 
 This command expects the following environment variables to be set:

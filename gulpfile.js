@@ -31,8 +31,15 @@ gulp.task('copySource', gulpTasks.copy({
   src: `${SOURCE_DIR}/guide/**/*.jsx`,
 }).task);
 
+gulp.task('deployToAws', gulpTasks.deploy({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID || 'No ENV',
+  bucketName: process.env.AWS_BUCKET_UI_FRAMEWORK || 'No ENV',
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || 'No ENV',
+  src: `${DISTRIBUTION_DIR}/**/*.*`,
+}).task);
+
 gulp.task('deployToGitHubPages', () => (
-  gulp.src('./dist/**/*')
+  gulp.src(`${DISTRIBUTION_DIR}/**/*`)
     .pipe(ghPages())
 ));
 
