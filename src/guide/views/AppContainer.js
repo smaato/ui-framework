@@ -2,9 +2,9 @@
 import { connect } from 'react-redux';
 import AppView from './AppView.jsx';
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   return {
-    routerState: state.router,
+    routes: ownProps.routes,
   };
 }
 
