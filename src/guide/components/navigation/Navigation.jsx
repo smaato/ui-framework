@@ -17,50 +17,42 @@ export default class Navigation extends Component {
     super(props);
   }
 
+  renderNavMenu(name, routeItems) {
+    // Add items.
+    const navItems = routeItems.map((route, index) => (
+      <NavItem
+        href={route.href}
+        path={route.path}
+        onClick={this.props.onClickNavItem}
+        key={`${name}${index}`}
+      >
+        {route.name}
+      </NavItem>
+    ));
+
+    // Add title at the top.
+    navItems.unshift(
+      <NavTitle key={name}>
+        {name}
+      </NavTitle>
+    );
+
+    return (
+      <div className="examplesNavMenu">
+        {navItems}
+      </div>
+    );
+  }
+
   render() {
-    const addRoutesToNav = (name, routeItems, navItems) => {
-      navItems.push(
-        <NavTitle key={name}>{name}</NavTitle>
-      );
-      for (let i = 0; i < routeItems.length; i++) {
-        const route = routeItems[i];
-        navItems.push(
-          <NavItem
-            href={route.href}
-            path={route.path}
-            onClick={this.props.onClickNavItem}
-            key={`${name}${i}`}
-          >
-            {route.name}
-          </NavItem>
-        );
-      }
-    };
+    const componentNavMenu = this.renderNavMenu(
+      'Components',
+      this.props.componentRoutes
+    );
 
-    const componentNavItems = [];
-    addRoutesToNav('Components', this.props.componentRoutes, componentNavItems);
-
-    const integrationNavItems = [];
-    addRoutesToNav(
+    const integrationNavMenu = this.renderNavMenu(
       'Integrations',
-      this.props.integrationRoutes,
-      integrationNavItems
-    );
-
-    const componentNavMenu = (
-      <div
-        className="examplesNavMenu"
-      >
-        {componentNavItems}
-      </div>
-    );
-
-    const integrationNavMenu = (
-      <div
-        className="examplesNavMenu"
-      >
-        {integrationNavItems}
-      </div>
+      this.props.integrationRoutes
     );
 
     const navClasses = classNames('examplesNav', {
