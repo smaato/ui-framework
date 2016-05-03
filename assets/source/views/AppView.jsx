@@ -7,6 +7,7 @@ import React, {
   Component,
   PropTypes,
 } from 'react';
+import { Link } from 'react-router';
 import $ from 'jquery';
 import classNames from 'classnames';
 
@@ -77,12 +78,12 @@ export default class AppView extends Component {
           Examples
         </div>
 
-        <a
+        <Link
           className="examplesNavMenuButton examplesNavMenuButton--home"
-          href="/#/"
+          to="/"
         >
           Home
-        </a>
+        </Link>
 
         <Navigation
           onClickNavItem={this.onClickNavItem}
