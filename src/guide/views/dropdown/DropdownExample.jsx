@@ -26,7 +26,7 @@ export default class DropdownExample extends Component {
     }, {
       name: 'Berry',
     }, {
-      name: 'Chippewa',
+      name: 'Corn',
     }, {
       name: 'Daffodil',
     }, {

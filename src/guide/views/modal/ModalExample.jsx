@@ -13,6 +13,7 @@ import {
   CallOutButton,
   Column,
   ColumnLayout,
+  Dropdown,
   Form,
   HollowButton,
   Label,
@@ -91,7 +92,26 @@ export default class ModalExample extends Component {
           1st Level Modal
         </ModalHeader>
         <ModalBody>
-          Modal content.
+          <div>
+            Modal content. This dropdown demonstrates that it isn't cropped when
+            it's opened.
+          </div>
+          <Dropdown
+            options={[{
+              name: 'Apple',
+            }, {
+              name: 'Berry',
+            }, {
+              name: 'Corn',
+            }, {
+              name: 'Daffodil',
+            }, {
+              name: 'Eggplant',
+            }]}
+            onSelect={() => undefined} // eslint-disable-line react/jsx-no-bind
+            labelProvider={() => 'Click me'} // eslint-disable-line react/jsx-no-bind
+            optionLabelProvider={option => option.name} // eslint-disable-line react/jsx-no-bind
+          />
         </ModalBody>
         <ModalFooter
           right={
