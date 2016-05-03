@@ -42,6 +42,7 @@ const routes = [{
   component: AppContainer,
   indexRoute: {
     component: HomeView,
+    source: 'views/home/HomeView.jsx',
   },
   childRoutes,
 }];
