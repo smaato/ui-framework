@@ -1,0 +1,46 @@
+
+.examplesHome {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5% 40px 12%;
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 700;
+}
+
+  .examplesHomeContent {
+    padding: 10px 410px 0 30px;
+    max-width: 900px;
+    border-left: 10px solid #bfbfc5;
+
+    @include whenNarrowerThan(1200px) {
+      padding-right: 30px;
+    }
+  }
+
+  .examplesHome__title {
+    font-size: 44px;
+    font-weight: 300;
+    margin-bottom: 24px;
+    line-height: 1;
+  }
+
+  .examplesHome__text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
+  .examplesHome__link {
+    &:hover {
+      text-decoration: underline;
+    }
+  }

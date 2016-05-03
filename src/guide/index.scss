@@ -24,10 +24,17 @@ $sourceCodeViewerWidth: 600px;
   }
 }
 
+@mixin whenNarrowerThan($browserWidth) {
+  @media only screen and (max-width: #{$browserWidth}) {
+    @content;
+  }
+}
+
 @import '../framework/index';
 @import './components/navigation/navigation';
 @import './components/sourceCodeViewer/sourceCodeViewer';
 @import './views/app';
+@import './views/home/homeView';
 
 /**
  * 1. Insane line-height makes it easier to notice when components are relying
@@ -36,18 +43,6 @@ $sourceCodeViewerWidth: 600px;
 body {
   background: #e7e7ed;
   line-height: 40px; /* 1 */
-}
-
-.examplesHome {
-  font-size: 24px;
-  line-height: 36px;
-  font-weight: 700;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 100%;
 }
 
 .examplePage {
