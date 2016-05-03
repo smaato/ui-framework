@@ -42,7 +42,7 @@ const StickyGrid = props => {
 StickyGrid.propTypes = {
   id: PropTypes.string,
   headerCellPropsProviders: PropTypes.array.isRequired,
-  children: PropTypes.element,
+  children: PropTypes.any,
 };
 
 export default StickyGrid;

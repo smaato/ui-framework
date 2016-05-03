@@ -31,10 +31,7 @@ const VerticalLayout = props => {
 };
 
 VerticalLayout.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.array,
-  ]),
+  children: PropTypes.any,
 };
 
 export default VerticalLayout;

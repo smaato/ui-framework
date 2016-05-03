@@ -79,7 +79,7 @@ ModalHeader.TYPE = keyMirror({
 
 ModalHeader.propTypes = {
   dataId: PropTypes.string,
-  children: PropTypes.string,
+  children: PropTypes.any,
   onClose: PropTypes.func,
   type: PropTypes.string,
   closeTopModalLabel: PropTypes.string,

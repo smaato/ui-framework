@@ -20,7 +20,7 @@ const AddOnLabel = props => {
 };
 
 AddOnLabel.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.any,
   isLeftSide: PropTypes.bool,
   isRightSide: PropTypes.bool,
 };

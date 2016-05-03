@@ -23,11 +23,7 @@ BodyPanelItem.RHYTHM = {
 };
 
 BodyPanelItem.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.element,
-    PropTypes.string,
-  ]),
+  children: PropTypes.any,
   rhythm: PropTypes.string,
 };
 

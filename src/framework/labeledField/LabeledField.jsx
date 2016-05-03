@@ -17,10 +17,7 @@ const LabeledField = props => (
 );
 
 LabeledField.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.element,
-  ]),
+  children: PropTypes.any,
   label: PropTypes.string,
 };
 

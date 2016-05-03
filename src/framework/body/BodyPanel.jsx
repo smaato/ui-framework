@@ -17,11 +17,7 @@ const BodyPanel = props => {
 };
 
 BodyPanel.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.element,
-    PropTypes.string,
-  ]),
+  children: PropTypes.any,
   isTopFlush: PropTypes.bool,
 };
 

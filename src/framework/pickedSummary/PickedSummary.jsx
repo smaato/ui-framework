@@ -38,7 +38,7 @@ PickedSummary.TYPE = keyMirror({
 });
 
 PickedSummary.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.any,
   type: PropTypes.string,
 };
 

@@ -23,10 +23,7 @@ export default class GridControls extends Component {
 }
 
 GridControls.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.array,
-  ]),
+  children: PropTypes.any,
   onClick: PropTypes.func,
   isSelected: PropTypes.bool,
   isSortDescending: PropTypes.bool,

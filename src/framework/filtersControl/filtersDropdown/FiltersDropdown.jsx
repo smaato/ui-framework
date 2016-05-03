@@ -10,10 +10,7 @@ const FiltersDropdown = props => (
 );
 
 FiltersDropdown.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.array,
-  ]),
+  children: PropTypes.any,
 };
 
 export default FiltersDropdown;
