@@ -79,7 +79,7 @@ export default class AppView extends Component {
 
         <a
           className="examplesNavMenuButton examplesNavMenuButton--home"
-          href="/"
+          href="/#/"
         >
           Home
         </a>
