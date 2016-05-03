@@ -24,8 +24,11 @@ export default class AppView extends Component {
 
     this.state = {
       isSourceCodeViewerOpen: false,
+      isMenuOpen: false,
     };
 
+    this.onClickNavItem = this.onClickNavItem.bind(this);
+    this.onToggleNav = this.onToggleNav.bind(this);
     this.onToggleSourceCodeViewer = this.onToggleSourceCodeViewer.bind(this);
   }
 
@@ -36,6 +39,18 @@ export default class AppView extends Component {
       if ((event.charCode === 96) || (event.altKey && event.charCode === 161)) {
         self.onToggleSourceCodeViewer();
       }
+    });
+  }
+
+  onClickNavItem() {
+    this.setState({
+      isMenuOpen: false,
+    });
+  }
+
+  onToggleNav() {
+    this.setState({
+      isMenuOpen: !this.state.isMenuOpen,
     });
   }
 
@@ -55,7 +70,23 @@ export default class AppView extends Component {
 
     return (
       <div className={classes}>
+        <div
+          className="examplesNavMenuButton"
+          onClick={this.onToggleNav}
+        >
+          Examples
+        </div>
+
+        <a
+          className="examplesNavMenuButton examplesNavMenuButton--home"
+          href="/"
+        >
+          Home
+        </a>
+
         <Navigation
+          onClickNavItem={this.onClickNavItem}
+          isMenuOpen={this.state.isMenuOpen}
           componentRoutes={Route.components}
           integrationRoutes={Route.integrations}
         />

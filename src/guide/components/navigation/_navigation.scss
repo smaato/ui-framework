@@ -1,0 +1,52 @@
+
+.examplesNav {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 40px 0;
+  background: #7b8396;
+  width: 400px;
+  overflow-y: auto;
+  transition: transform 0.5s ease-out;
+  box-shadow: 10px 0 rgba(#b6c1c3, 0.2);
+  transform: translateX(-100%);
+
+  &.is-examples-nav-visible {
+    transform: translateX(0);
+  }
+}
+
+  .examplesNavMenusContainer {
+    display: flex;
+    padding: 10px 20px;
+  }
+
+    .examplesNavMenu {
+      line-height: 12px;
+      flex: 1 1 auto;
+    }
+
+      .examplesNavMenuTitle {
+        max-width: 120px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 10px;
+        margin-left: 10px;
+        margin-bottom: 6px;
+        font-weight: 700;
+        color: white;
+      }
+
+      .examplesNavItem {
+        display: block;
+        font-size: 14px;
+        padding: 6px 10px;
+        color: white;
+        font-weight: 400;
+
+        &:hover {
+          background: #697182;
+        }
+      }

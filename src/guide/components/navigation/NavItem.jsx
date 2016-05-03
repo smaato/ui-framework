@@ -5,11 +5,11 @@ import React, {
 
 import { Link } from 'react-router';
 
-const NavButton = (props) => {
+const NavItem = (props) => {
   if (props.href) {
     return (
       <a
-        className="examplesNavButton"
+        className="examplesNavItem"
         target="_blank"
         href={props.href}
         onClick={props.onClick}
@@ -21,7 +21,7 @@ const NavButton = (props) => {
 
   return (
     <Link
-      className="examplesNavButton"
+      className="examplesNavItem"
       to={`/${props.path}`}
       onClick={props.onClick}
     >
@@ -30,11 +30,11 @@ const NavButton = (props) => {
   );
 };
 
-NavButton.propTypes = {
+NavItem.propTypes = {
   children: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   path: PropTypes.string,
   href: PropTypes.string,
 };
 
-export default NavButton;
+export default NavItem;
