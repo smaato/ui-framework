@@ -6,20 +6,35 @@ $sourceCodeViewerWidth: 600px;
   font-size: 11px;
   line-height: 12px;
   font-weight: 700;
-  background: white;
   color: #626262;
-  border: 1px solid #d8d8d8;
   cursor: pointer;
   user-select: none;
+  opacity: 0.3;
+  background: #e7e7ed;
+  border: 1px solid transparent;
+  transition: color 0.2s,
+    opacity 0.2s,
+    background 0.2s;
 
   &:hover {
+    opacity: 1;
     color: #1cc4ec;
+    border: 1px solid #d8d8d8;
+    background: white;
+  }
+}
+
+@mixin whenNarrowerThan($browserWidth) {
+  @media only screen and (max-width: #{$browserWidth}) {
+    @content;
   }
 }
 
 @import '../framework/index';
+@import './components/navigation/navigation';
 @import './components/sourceCodeViewer/sourceCodeViewer';
 @import './views/app';
+@import './views/home/homeView';
 
 /**
  * 1. Insane line-height makes it easier to notice when components are relying
@@ -28,18 +43,6 @@ $sourceCodeViewerWidth: 600px;
 body {
   background: #e7e7ed;
   line-height: 40px; /* 1 */
-}
-
-.examplesHome {
-  font-size: 24px;
-  line-height: 36px;
-  font-weight: 700;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 100%;
 }
 
 .examplePage {
@@ -61,6 +64,10 @@ body {
   left: 5px;
 }
 
+.examplesNavMenuButton--home {
+  left: 80px;
+}
+
 .examplesSourceCodeViewerButton {
   @include chromeButton;
   position: fixed;
@@ -68,56 +75,6 @@ body {
   top: 5px;
   right: 5px;
 }
-
-.examplesNavMenu {
-  position: fixed;
-  z-index: 999;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  padding: 40px;
-  line-height: 12px;
-  background: white;
-  color: #626262;
-  border: 1px solid #d8d8d8;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  overflow-x: auto;
-  transform: translateY(-110%);
-  transition: transform 0.2s ease-out;
-
-  &.is-examples-nav-menu-visible {
-    transform: translateY(0);
-  }
-}
-
-  .examplesNavButton,
-  .examplesNavMenuTitle {
-    padding: 6px 10px;
-    font-weight: 700;
-    color: #626262;
-    border: 1px solid transparent;
-    max-width: 120px;
-  }
-
-  .examplesNavMenuTitle {
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 10px;
-    opacity: 0.8;
-  }
-
-  .examplesNavButton {
-    font-size: 14px;
-    cursor: pointer;
-
-    &:hover {
-      color: #1cc4ec;
-      border-color: #d8d8d8;
-    }
-  }
 
 .exampleContainer {
   margin-bottom: 16px;
