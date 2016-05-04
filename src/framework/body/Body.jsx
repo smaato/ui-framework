@@ -25,10 +25,7 @@ const Body = props => {
 };
 
 Body.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.element,
-  ]),
+  children: PropTypes.any,
   isDark: PropTypes.bool,
 };
 

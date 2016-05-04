@@ -10,7 +10,7 @@ const DescriptionText = props => (
 );
 
 DescriptionText.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.any,
 };
 
 export default DescriptionText;

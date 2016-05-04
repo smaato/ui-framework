@@ -24,7 +24,7 @@ const Link = props => {
 
 Link.propTypes = {
   dataId: PropTypes.string,
-  children: PropTypes.string,
+  children: PropTypes.any,
   href: PropTypes.string,
   onClick: PropTypes.func,
   data: PropTypes.any,

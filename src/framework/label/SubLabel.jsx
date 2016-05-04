@@ -10,7 +10,7 @@ const SubLabel = props => (
 );
 
 SubLabel.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.any,
 };
 
 export default SubLabel;

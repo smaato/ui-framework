@@ -25,7 +25,7 @@ const Label = props => {
 };
 
 Label.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.any,
   className: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array,

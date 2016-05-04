@@ -34,11 +34,7 @@ Text.RHYTHM = keyMirror({
 });
 
 Text.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.element,
-    PropTypes.string,
-  ]).isRequired,
+  children: PropTypes.any,
   rhythm: PropTypes.string,
 };
 

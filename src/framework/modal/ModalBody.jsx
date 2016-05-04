@@ -10,7 +10,7 @@ const ModalBody = props => (
 );
 
 ModalBody.propTypes = {
-  children: PropTypes.any.isRequired,
+  children: PropTypes.any,
 };
 
 export default ModalBody;

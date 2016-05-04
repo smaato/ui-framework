@@ -29,10 +29,7 @@ export default class Kpi extends Component {
 }
 
 Kpi.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-  ]),
+  children: PropTypes.any,
   className: PropTypes.string,
   title: PropTypes.string,
 };

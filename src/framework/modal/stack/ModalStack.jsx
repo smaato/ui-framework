@@ -69,5 +69,5 @@ export default class ModalStack extends Component {
 }
 
 ModalStack.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  children: PropTypes.any,
 };

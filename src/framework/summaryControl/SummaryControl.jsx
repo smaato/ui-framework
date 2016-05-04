@@ -58,7 +58,7 @@ SummaryControl.TYPE = keyMirror({
 
 SummaryControl.propTypes = {
   dataId: PropTypes.string,
-  children: PropTypes.string,
+  children: PropTypes.any,
   onClick: PropTypes.func,
   type: PropTypes.string,
   isStatic: PropTypes.bool,

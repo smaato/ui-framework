@@ -10,7 +10,7 @@ const ModalConfirmationBody = props => (
 );
 
 ModalConfirmationBody.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.any,
 };
 
 export default ModalConfirmationBody;
