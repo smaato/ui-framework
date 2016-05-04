@@ -1,15 +1,17 @@
 
-.columnLayout {
-  display: flex;
-}
-
 .column + .column {
   padding-left: 10px;
 }
 
+/**
+ * 1. Use inline-block instead of flexbox so that content doesn't overflow.
+ * 2. Content can be aligned by offsetting from the top.
+ */
 $numColumns: 12;
 @for $i from 1 through $numColumns {
   .column--#{$i} {
-    flex: 0 0 $i / $numColumns * 100%;
+    display: inline-block; /* 1 */
+    vertical-align: top; /* 2 */
+    width: $i / $numColumns * 100%;
   }
 }
