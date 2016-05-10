@@ -38,6 +38,15 @@ export default class LinkExample extends Component {
             Show alert
           </Link>
         </Example>
+
+        <Example title="With target">
+          <Link
+            href="//www.google.com"
+            isTargetBlank
+          >
+            Open Google in a new window
+          </Link>
+        </Example>
       </Page>
     );
   }

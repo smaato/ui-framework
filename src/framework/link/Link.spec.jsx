@@ -54,5 +54,15 @@ describe('Link', () => {
         expect(props.onClick).toHaveBeenCalledWith(props.data);
       });
     });
+
+    describe('isTargetBlank', () => {
+      it('adds target="_blank"', () => {
+        const props = {
+          isTargetBlank: true,
+        };
+        const testCase = TestCaseFactory.create(Link, props);
+        expect(testCase.dom.getAttribute('target')).toBe('_blank');
+      });
+    });
   });
 });

@@ -10,12 +10,18 @@ const Link = props => {
     }
   }
 
+  let target;
+  if (props.isTargetBlank) {
+    target = '_blank';
+  }
+
   return (
     <a
       className="link"
       href={props.href}
       onClick={onClick}
       data-id={props.dataId}
+      target={target}
     >
       {props.children}
     </a>
@@ -28,6 +34,7 @@ Link.propTypes = {
   href: PropTypes.string,
   onClick: PropTypes.func,
   data: PropTypes.any,
+  isTargetBlank: PropTypes.bool,
 };
 
 export default Link;
