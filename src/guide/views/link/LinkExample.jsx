@@ -39,10 +39,10 @@ export default class LinkExample extends Component {
           </Link>
         </Example>
 
-        <Example title="With target">
+        <Example title="With target='_blank'">
           <Link
             href="//www.google.com"
-            isTargetBlank
+            target="_blank"
           >
             Open Google in a new window
           </Link>

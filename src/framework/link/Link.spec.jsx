@@ -55,13 +55,13 @@ describe('Link', () => {
       });
     });
 
-    describe('isTargetBlank', () => {
-      it('adds target="_blank"', () => {
+    describe('target', () => {
+      it('is applied as target attribute', () => {
         const props = {
-          isTargetBlank: true,
+          target: 'test',
         };
         const testCase = TestCaseFactory.create(Link, props);
-        expect(testCase.dom.getAttribute('target')).toBe('_blank');
+        expect(testCase.dom.getAttribute('target')).toBe(props.target);
       });
     });
   });
