@@ -65,10 +65,7 @@ class OrganizationSwitcher extends Component {
 }
 
 OrganizationSwitcher.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.element,
-  ]),
+  children: PropTypes.any,
   title: PropTypes.string,
   searchPrompt: PropTypes.string,
   onClose: PropTypes.func,

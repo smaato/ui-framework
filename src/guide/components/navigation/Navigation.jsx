@@ -5,7 +5,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-import NavButton from './NavButton.jsx';
+import NavItem from './NavItem.jsx';
 import NavTitle from './NavTitle.jsx';
 
 import classNames from 'classnames';
@@ -15,74 +15,56 @@ export default class Navigation extends Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      isMenuOpen: false,
-    };
-
-    this.onClickNavButton = this.onClickNavButton.bind(this);
-    this.onToggleNav = this.onToggleNav.bind(this);
   }
 
-  onToggleNav() {
-    this.setState({
-      isMenuOpen: !this.state.isMenuOpen,
-    });
-  }
-
-  onClickNavButton() {
-    this.setState({
-      isMenuOpen: false,
-    });
-  }
-
-  render() {
-    const addRoutesToNav = function addRoutesToNav(name, routeItems, navItems) {
-      navItems.push(
-        <NavTitle key={name}>{name}</NavTitle>
-      );
-      for (let i = 0; i < routeItems.length; i++) {
-        const route = routeItems[i];
-        navItems.push(
-          <NavButton
-            href={route.href}
-            path={route.path}
-            onClick={this.onClickNavButton}
-            key={`${name}${i}`}
-          >
-            {route.name}
-          </NavButton>
-        );
-      }
-    }.bind(this);
-
-    const navItems = [];
-
-    addRoutesToNav('Components', this.props.componentRoutes, navItems);
-    addRoutesToNav('Integrations', this.props.integrationRoutes, navItems);
-    addRoutesToNav('Prototypes', this.props.prototypeRoutes, navItems);
-
-    const navMenuClasses = classNames('examplesNavMenu', {
-      'is-examples-nav-menu-visible': this.state.isMenuOpen,
-    });
-
-    const navMenu = (
-      <div
-        className={navMenuClasses}
+  renderNavMenu(name, routeItems) {
+    // Add items.
+    const navItems = routeItems.map((route, index) => (
+      <NavItem
+        href={route.href}
+        path={route.path}
+        onClick={this.props.onClickNavItem}
+        key={`${name}${index}`}
       >
-        {navItems}
-      </div>
+        {route.name}
+      </NavItem>
+    ));
+
+    // Add title at the top.
+    navItems.unshift(
+      <NavTitle key={name}>
+        {name}
+      </NavTitle>
     );
 
     return (
-      <div>
-        <div
-          className="examplesNavMenuButton"
-          onClick={this.onToggleNav}
-        >
-          Nav
+      <div className="examplesNavMenu">
+        {navItems}
+      </div>
+    );
+  }
+
+  render() {
+    const componentNavMenu = this.renderNavMenu(
+      'Components',
+      this.props.componentRoutes
+    );
+
+    const integrationNavMenu = this.renderNavMenu(
+      'Integrations',
+      this.props.integrationRoutes
+    );
+
+    const navClasses = classNames('examplesNav', {
+      'is-examples-nav-visible': this.props.isMenuOpen,
+    });
+
+    return (
+      <div className={navClasses}>
+        <div className="examplesNavMenusContainer">
+          {componentNavMenu}
+          {integrationNavMenu}
         </div>
-        {navMenu}
       </div>
     );
   }
@@ -90,7 +72,8 @@ export default class Navigation extends Component {
 }
 
 Navigation.propTypes = {
+  isMenuOpen: PropTypes.bool,
+  onClickNavItem: PropTypes.func,
   componentRoutes: PropTypes.array,
   integrationRoutes: PropTypes.array,
-  prototypeRoutes: PropTypes.array,
 };

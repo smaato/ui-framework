@@ -71,7 +71,7 @@ Button.TYPE = keyMirror({
 Button.propTypes = {
   dataId: PropTypes.string,
   data: PropTypes.any,
-  children: PropTypes.string,
+  children: PropTypes.any,
   type: PropTypes.string,
   href: PropTypes.string,
   onClick: PropTypes.func,

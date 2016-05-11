@@ -16,6 +16,7 @@ const Link = props => {
       href={props.href}
       onClick={onClick}
       data-id={props.dataId}
+      target={props.target}
     >
       {props.children}
     </a>
@@ -24,10 +25,11 @@ const Link = props => {
 
 Link.propTypes = {
   dataId: PropTypes.string,
-  children: PropTypes.string,
+  children: PropTypes.any,
   href: PropTypes.string,
   onClick: PropTypes.func,
   data: PropTypes.any,
+  target: PropTypes.string,
 };
 
 export default Link;

@@ -54,7 +54,7 @@ PickedListItem.TYPE = keyMirror({
 });
 
 PickedListItem.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.any,
   data: PropTypes.any,
   type: PropTypes.string,
   onRemove: PropTypes.func,

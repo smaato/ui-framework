@@ -7,6 +7,7 @@ import React, {
   Component,
   PropTypes,
 } from 'react';
+import { Link } from 'react-router';
 import $ from 'jquery';
 import classNames from 'classnames';
 
@@ -24,8 +25,11 @@ export default class AppView extends Component {
 
     this.state = {
       isSourceCodeViewerOpen: false,
+      isMenuOpen: false,
     };
 
+    this.onClickNavItem = this.onClickNavItem.bind(this);
+    this.onToggleNav = this.onToggleNav.bind(this);
     this.onToggleSourceCodeViewer = this.onToggleSourceCodeViewer.bind(this);
   }
 
@@ -39,6 +43,18 @@ export default class AppView extends Component {
     });
   }
 
+  onClickNavItem() {
+    this.setState({
+      isMenuOpen: false,
+    });
+  }
+
+  onToggleNav() {
+    this.setState({
+      isMenuOpen: !this.state.isMenuOpen,
+    });
+  }
+
   onToggleSourceCodeViewer() {
     this.setState({
       isSourceCodeViewerOpen: !this.state.isSourceCodeViewerOpen,
@@ -46,7 +62,7 @@ export default class AppView extends Component {
   }
 
   render() {
-    const routes = this.props.routerState.routes;
+    const routes = this.props.routes;
     const source = routes[routes.length - 1].source;
 
     const classes = classNames('app', {
@@ -55,10 +71,25 @@ export default class AppView extends Component {
 
     return (
       <div className={classes}>
+        <div
+          className="examplesNavMenuButton"
+          onClick={this.onToggleNav}
+        >
+          Examples
+        </div>
+
+        <Link
+          className="examplesNavMenuButton examplesNavMenuButton--home"
+          to="/"
+        >
+          Home
+        </Link>
+
         <Navigation
+          onClickNavItem={this.onClickNavItem}
+          isMenuOpen={this.state.isMenuOpen}
           componentRoutes={Route.components}
           integrationRoutes={Route.integrations}
-          prototypeRoutes={Route.prototypes}
         />
 
         {/* Frame the app's different views. */}
@@ -86,5 +117,5 @@ AppView.propTypes = {
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element,
   ]),
-  routerState: PropTypes.object.isRequired,
+  routes: PropTypes.array.isRequired,
 };

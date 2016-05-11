@@ -54,5 +54,15 @@ describe('Link', () => {
         expect(props.onClick).toHaveBeenCalledWith(props.data);
       });
     });
+
+    describe('target', () => {
+      it('is applied as target attribute', () => {
+        const props = {
+          target: 'test',
+        };
+        const testCase = TestCaseFactory.create(Link, props);
+        expect(testCase.dom.getAttribute('target')).toBe(props.target);
+      });
+    });
   });
 });

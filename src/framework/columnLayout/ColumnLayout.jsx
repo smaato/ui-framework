@@ -8,9 +8,7 @@ export {
 } from './Column.jsx';
 
 const ColumnLayout = props => (
-  <div
-    className="columnLayout"
-  >
+  <div>
     {props.children}
   </div>
 );

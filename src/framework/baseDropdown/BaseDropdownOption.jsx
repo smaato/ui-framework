@@ -50,11 +50,7 @@ export default class BaseDropdownOption extends Component {
 }
 
 BaseDropdownOption.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.element,
-    PropTypes.string,
-  ]),
+  children: PropTypes.any,
   classes: PropTypes.string,
   focusClasses: PropTypes.string,
   onClick: PropTypes.func.isRequired,

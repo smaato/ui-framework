@@ -9,7 +9,7 @@ const Heading = props => (
 );
 
 Heading.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.any,
 };
 
 export default Heading;

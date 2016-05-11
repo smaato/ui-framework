@@ -1,15 +1,24 @@
 
+/**
+ * 1. Make sure dropdown doesn't exceed the width of its container, e.g. modal.
+ */
 .dropdown {
   @include baseDropdown;
   display: inline-block;
+  max-width: 100%; /* 1 */
 }
 
   .dropdown__input {
     @include baseDropdownInput;
   }
 
+/**
+ * 1. If the dropdown is narrower than its label, truncate the text.
+ */
 .dropdownLabel {
   @include baseDropdownLabel;
+  text-overflow: ellipsis; /* 1 */
+  overflow: hidden; /* 1 */
   font-size: 12px;
   line-height: $lineHeight;
   font-weight: 400;

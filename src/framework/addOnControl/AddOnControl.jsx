@@ -22,10 +22,7 @@ const AddOnControl = props => (
 );
 
 AddOnControl.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.element,
-  ]),
+  children: PropTypes.any,
 };
 
 export default AddOnControl;

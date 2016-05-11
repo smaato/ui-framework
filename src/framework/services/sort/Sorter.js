@@ -1,3 +1,4 @@
+let Sorter;
 
 function normalizeValue(value) {
   if (value === undefined || value === null) {
@@ -9,23 +10,37 @@ function normalizeValue(value) {
 
 function sort(
   originalItems,
-  valueProviders,
+  valueProviderOrProviders,
   providerPropertyOrIndex,
-  isDescending
+  isDescending = false
 ) {
-  const typeOfProviderPropertyOrIndex = typeof providerPropertyOrIndex;
-  if (typeOfProviderPropertyOrIndex !== 'string' &&
-    typeOfProviderPropertyOrIndex !== 'number') {
-    throw new Error(
-      `providerPropertyOrIndex must be a string or number.
-      Got ${providerPropertyOrIndex}.`);
+  const isSingleValueProvider = typeof valueProviderOrProviders === 'function';
+
+  // If we've received an array of value providers, then we need to make sure
+  // an acceptable providerPropertyOrIndex has been provided.
+  if (!isSingleValueProvider) {
+    const typeOfProviderPropertyOrIndex = typeof providerPropertyOrIndex;
+    if (typeOfProviderPropertyOrIndex !== 'string' &&
+      typeOfProviderPropertyOrIndex !== 'number') {
+      throw new Error(
+        `providerPropertyOrIndex must be a string or number.
+        Got ${providerPropertyOrIndex}.`
+      );
+    }
   }
 
   const items = originalItems.slice();
 
   return items.sort((a, b) => {
-    const providedValueA = valueProviders[providerPropertyOrIndex](a);
-    const providedValueB = valueProviders[providerPropertyOrIndex](b);
+    const providedValueA =
+      isSingleValueProvider
+      ? valueProviderOrProviders(a)
+      : valueProviderOrProviders[providerPropertyOrIndex](a);
+
+    const providedValueB =
+      isSingleValueProvider
+      ? valueProviderOrProviders(b)
+      : valueProviderOrProviders[providerPropertyOrIndex](b);
 
     let valueA;
     let valueB;
@@ -73,7 +88,18 @@ function sort(
   });
 }
 
-export default {
+function simpleSort(
+  originalItems,
+  valueProvider,
+  isDescending
+) {
+  return Sorter.sort(originalItems, valueProvider, undefined, isDescending);
+}
+
+Sorter = {
   normalizeValue,
+  simpleSort,
   sort,
 };
+
+export default Sorter;

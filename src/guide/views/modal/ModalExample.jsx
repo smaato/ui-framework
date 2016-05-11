@@ -13,6 +13,7 @@ import {
   CallOutButton,
   Column,
   ColumnLayout,
+  Dropdown,
   Form,
   HollowButton,
   Label,
@@ -25,6 +26,7 @@ import {
   ModalOverlay,
   ModalStack,
   PrimaryButton,
+  Text,
   TextInput,
   VerticalLayout,
 } from '../../../framework/framework';
@@ -39,7 +41,7 @@ export default class ModalExample extends Component {
       stackedModalCount: 0,
     };
 
-    this.STACKED_MODAL_WIDTH = 750;
+    this.STACKED_MODAL_WIDTH = 400;
 
     this.addModalToStack = this.addModalToStack.bind(this);
     this.removeModalFromStack = this.removeModalFromStack.bind(this);
@@ -91,7 +93,41 @@ export default class ModalExample extends Component {
           1st Level Modal
         </ModalHeader>
         <ModalBody>
-          Modal content.
+          <div>
+            <Text rhythm={Text.RHYTHM.SMALL}>
+              This dropdown demonstrates two things: 1) it isn't
+              cropped when it's open, 2) it isn't cropped when it's wider than
+              the modal.
+            </Text>
+          </div>
+          <ColumnLayout>
+            <Column width={4}>
+              <Label isAlignedWithField>
+                Dropdown
+              </Label>
+            </Column>
+            <Column width={8}>
+              <Dropdown
+                options={[{
+                  name: 'Apple',
+                }, {
+                  name: 'Berry',
+                }, {
+                  name: 'Corn',
+                }, {
+                  name: 'Daffodil',
+                }, {
+                  name: 'Eggplant',
+                }]}
+                onSelect={() => undefined} // eslint-disable-line react/jsx-no-bind
+                labelProvider={() => // eslint-disable-line react/jsx-no-bind
+                  `This dropdown should be wider than this modal, but it should
+                  not be cropped.`
+                }
+                optionLabelProvider={option => option.name} // eslint-disable-line react/jsx-no-bind
+              />
+            </Column>
+          </ColumnLayout>
         </ModalBody>
         <ModalFooter
           right={
