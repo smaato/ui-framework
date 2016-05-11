@@ -3,6 +3,28 @@ import TestUtils from '../../../services/TestUtils';
 
 describe('Sorter', () => {
   describe('interface', () => {
+    const items = [{
+      a: 'TestB1',
+      b: 'TestA2',
+    }, {
+      a: 'TestA1',
+      b: 'TestB2',
+    }, {
+      a: null,
+      b: null,
+    }, {
+      a: 1,
+      b: 2,
+    }, {
+      a: 2,
+      b: 1,
+    }, {
+      a: undefined,
+      b: undefined,
+    }];
+
+    const valueProvider = item => item.a;
+
     describe('normalizeValue method', () => {
       it('allows undefined to pass through', () => {
         expect(Sorter.normalizeValue(undefined)).toBe(undefined);
@@ -41,27 +63,16 @@ describe('Sorter', () => {
       });
     });
 
-    describe('sort method', () => {
-      const items = [{
-        a: 'TestB1',
-        b: 'TestA2',
-      }, {
-        a: 'TestA1',
-        b: 'TestB2',
-      }, {
-        a: null,
-        b: null,
-      }, {
-        a: 1,
-        b: 2,
-      }, {
-        a: 2,
-        b: 1,
-      }, {
-        a: undefined,
-        b: undefined,
-      }];
+    describe('simpleSort method', () => {
+      it('delegates to the sort method', () => {
+        spyOn(Sorter, 'sort');
+        Sorter.simpleSort(items, valueProvider);
+        expect(Sorter.sort)
+          .toHaveBeenCalledWith(items, valueProvider, undefined, undefined);
+      });
+    });
 
+    describe('sort method', () => {
       const valueProvidersByIndex = [
         item => item.a,
         item => item.b,
@@ -72,13 +83,13 @@ describe('Sorter', () => {
         expect(test).toBe(false);
       });
 
-      describe('items parameter', () => {
-        it('isn\'t sorted sorted if it has 0 items', () => {
+      describe('originalItems parameter', () => {
+        it('isn\'t sorted if it has 0 items', () => {
           const sortedItems = Sorter.sort([], valueProvidersByIndex, 0);
           expect(sortedItems).toEqual([]);
         });
 
-        it('isn\'t sorted sorted if it has 1 item', () => {
+        it('isn\'t sorted if it has 1 item', () => {
           const sortedItems = Sorter.sort(['item'], valueProvidersByIndex, 0);
           expect(sortedItems).toEqual(['item']);
         });
@@ -107,76 +118,19 @@ describe('Sorter', () => {
         });
       });
 
-      describe('valueProviders parameter', () => {
+      describe('valueProviderOrProviders parameter', () => {
+        it('provides a single function that provides sort values', () => {
+          const fakeItems = ['item1', 'item2'];
+          const provider = jasmine.createSpy('provider');
+          Sorter.sort(fakeItems, provider);
+          expect(provider).toHaveBeenCalledWith(fakeItems[0]);
+        });
+
         it('provides functions that provide sort values', () => {
           const fakeItems = ['item1', 'item2'];
           const providers = [jasmine.createSpy('provider')];
           Sorter.sort(fakeItems, providers, 0);
           expect(providers[0]).toHaveBeenCalledWith(fakeItems[0]);
-        });
-      });
-
-      describe('providerPropertyOrIndex parameter', () => {
-        it('throws an error if undefined', () => {
-          expect(
-            () => Sorter.sort(items, valueProvidersByIndex, undefined)
-          ).toThrow();
-        });
-
-        it('throws an error if null', () => {
-          expect(
-            () => Sorter.sort(items, valueProvidersByIndex, null)
-          ).toThrow();
-        });
-
-        it('defnes a provider via an element index', () => {
-          const sortedItems = Sorter.sort(items, valueProvidersByIndex, 1);
-          expect(sortedItems).toEqual([{
-            a: 2,
-            b: 1,
-          }, {
-            a: 1,
-            b: 2,
-          }, {
-            a: 'TestB1',
-            b: 'TestA2',
-          }, {
-            a: 'TestA1',
-            b: 'TestB2',
-          }, {
-            a: null,
-            b: null,
-          }, {
-            a: undefined,
-            b: undefined,
-          }]);
-        });
-
-        it('defines a provider via a property name', () => {
-          const valueProvidersByProperty = {
-            a: item => item.a,
-            b: item => item.b,
-          };
-          const sortedItems = Sorter.sort(items, valueProvidersByProperty, 'b');
-          expect(sortedItems).toEqual([{
-            a: 2,
-            b: 1,
-          }, {
-            a: 1,
-            b: 2,
-          }, {
-            a: 'TestB1',
-            b: 'TestA2',
-          }, {
-            a: 'TestA1',
-            b: 'TestB2',
-          }, {
-            a: null,
-            b: null,
-          }, {
-            a: undefined,
-            b: undefined,
-          }]);
         });
       });
 
@@ -213,6 +167,7 @@ describe('Sorter', () => {
           ), () => {
             const sortedItems =
               Sorter.sort(items, valueProvidersByIndex, 0, true);
+
             expect(sortedItems).toEqual([{
               a: undefined,
               b: undefined,
@@ -231,6 +186,90 @@ describe('Sorter', () => {
             }, {
               a: 1,
               b: 2,
+            }]);
+          });
+        });
+      });
+
+      describe('providerPropertyOrIndex parameter', () => {
+        describe('when there is a single value provider', () => {
+          it('doesn\'t throw an error if undefined', () => {
+            expect(
+              () => Sorter.sort(items, valueProvider, undefined)
+            ).not.toThrow();
+          });
+
+          it('doesn\'t throw an error if null', () => {
+            expect(
+              () => Sorter.sort(items, valueProvider, null)
+            ).not.toThrow();
+          });
+        });
+
+        describe('when there are multiple value providers', () => {
+          it('throws an error if undefined', () => {
+            expect(
+              () => Sorter.sort(items, valueProvidersByIndex, undefined)
+            ).toThrowError();
+          });
+
+          it('throws an error if null', () => {
+            expect(
+              () => Sorter.sort(items, valueProvidersByIndex, null)
+            ).toThrowError();
+          });
+
+          it('defines a provider via an element index', () => {
+            const sortedItems =
+              Sorter.sort(items, valueProvidersByIndex, 1);
+
+            expect(sortedItems).toEqual([{
+              a: 2,
+              b: 1,
+            }, {
+              a: 1,
+              b: 2,
+            }, {
+              a: 'TestB1',
+              b: 'TestA2',
+            }, {
+              a: 'TestA1',
+              b: 'TestB2',
+            }, {
+              a: null,
+              b: null,
+            }, {
+              a: undefined,
+              b: undefined,
+            }]);
+          });
+
+          it('defines a provider via a property name', () => {
+            const valueProvidersByProperty = {
+              a: item => item.a,
+              b: item => item.b,
+            };
+            const sortedItems =
+              Sorter.sort(items, valueProvidersByProperty, 'b');
+
+            expect(sortedItems).toEqual([{
+              a: 2,
+              b: 1,
+            }, {
+              a: 1,
+              b: 2,
+            }, {
+              a: 'TestB1',
+              b: 'TestA2',
+            }, {
+              a: 'TestA1',
+              b: 'TestB2',
+            }, {
+              a: null,
+              b: null,
+            }, {
+              a: undefined,
+              b: undefined,
             }]);
           });
         });
