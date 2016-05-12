@@ -120,19 +120,19 @@ gulp.task('minifyJs', gulpTasks.minifyJs({
   src: JS_DST,
 }).task);
 
-gulp.task('replace', () => {
-  return gulp.src([`${DISTRIBUTION_DIR}/index.html`])
+gulp.task('replace', () => (
+  gulp.src([`${DISTRIBUTION_DIR}/index.html`])
     .pipe(gulpReplace(/\.css/, '.min.css'))
     .pipe(gulpReplace(/\.js/, '.min.js'))
-    .pipe(gulp.dest(DISTRIBUTION_DIR));
-});
+    .pipe(gulp.dest(DISTRIBUTION_DIR))
+));
 
-gulp.task('clean', done => {
-  return del([
+gulp.task('clean', done => (
+  del([
     `${CSS_DST}/dist.css`,
     `${JS_DST}/dist.js`,
-  ], done);
-});
+  ], done)
+));
 
 gulp.task('production', done => {
   process.env.NODE_ENV = 'production';
@@ -156,6 +156,7 @@ gulp.task('production', done => {
 
 gulp.task('lintJs', gulpTasks.lintJs({
   src: [
+    './gulpfile.js',
     `${SOURCE_DIR}/framework/**/*.jsx`,
     `${SOURCE_DIR}/framework/**/*.js`,
     `${SOURCE_DIR}/guide/**/*.jsx`,
@@ -164,7 +165,7 @@ gulp.task('lintJs', gulpTasks.lintJs({
 }).task);
 
 gulp.task('lintScss', gulpTasks.lintScss({
-  file: './scss-config.yml',
+  file: './scss-lint.yml',
   src: [
     FRAMEWORK_SCSS_SRC,
     GUIDE_SCSS_SRC,
