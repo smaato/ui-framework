@@ -63,10 +63,10 @@ describe('Sorter', () => {
       });
     });
 
-    describe('simpleSort method', () => {
+    describe('sortBy method', () => {
       it('delegates to the sort method', () => {
         spyOn(Sorter, 'sort');
-        Sorter.simpleSort(items, valueProvider);
+        Sorter.sortBy(items, valueProvider);
         expect(Sorter.sort)
           .toHaveBeenCalledWith(items, valueProvider, undefined, undefined);
       });
@@ -118,15 +118,38 @@ describe('Sorter', () => {
         });
       });
 
-      describe('valueProviderOrProviders parameter', () => {
-        it('provides a single function that provides sort values', () => {
+      describe('propertyNameOrValueProviderOrProviders parameter', () => {
+        it('can be a property name that provides sort values', () => {
+          const sortedItems = Sorter.sort(items, 'b');
+          expect(sortedItems).toEqual([{
+            a: 2,
+            b: 1,
+          }, {
+            a: 1,
+            b: 2,
+          }, {
+            a: 'TestB1',
+            b: 'TestA2',
+          }, {
+            a: 'TestA1',
+            b: 'TestB2',
+          }, {
+            a: null,
+            b: null,
+          }, {
+            a: undefined,
+            b: undefined,
+          }]);
+        });
+
+        it('can be a single function that provides sort values', () => {
           const fakeItems = ['item1', 'item2'];
           const provider = jasmine.createSpy('provider');
           Sorter.sort(fakeItems, provider);
           expect(provider).toHaveBeenCalledWith(fakeItems[0]);
         });
 
-        it('provides functions that provide sort values', () => {
+        it('can be an array of functions that provide sort values', () => {
           const fakeItems = ['item1', 'item2'];
           const providers = [jasmine.createSpy('provider')];
           Sorter.sort(fakeItems, providers, 0);

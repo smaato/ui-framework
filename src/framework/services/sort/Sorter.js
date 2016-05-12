@@ -10,37 +10,50 @@ function normalizeValue(value) {
 
 function sort(
   originalItems,
-  valueProviderOrProviders,
+  propertyNameOrValueProviderOrProviders,
   providerPropertyOrIndex,
   isDescending = false
 ) {
-  const isSingleValueProvider = typeof valueProviderOrProviders === 'function';
+  const isPropertyName =
+    typeof propertyNameOrValueProviderOrProviders === 'string';
 
-  // If we've received an array of value providers, then we need to make sure
-  // an acceptable providerPropertyOrIndex has been provided.
-  if (!isSingleValueProvider) {
-    const typeOfProviderPropertyOrIndex = typeof providerPropertyOrIndex;
-    if (typeOfProviderPropertyOrIndex !== 'string' &&
-      typeOfProviderPropertyOrIndex !== 'number') {
-      throw new Error(
-        `providerPropertyOrIndex must be a string or number.
-        Got ${providerPropertyOrIndex}.`
-      );
+  const isSingleValueProvider =
+    typeof propertyNameOrValueProviderOrProviders === 'function';
+
+  if (!isPropertyName) {
+    // If we've received an array of value providers, then we need to make sure
+    // an acceptable providerPropertyOrIndex has been provided.
+    if (!isSingleValueProvider) {
+      const typeOfProviderPropertyOrIndex = typeof providerPropertyOrIndex;
+      if (typeOfProviderPropertyOrIndex !== 'string' &&
+        typeOfProviderPropertyOrIndex !== 'number') {
+        throw new Error(
+          `providerPropertyOrIndex must be a string or number.
+          Got ${providerPropertyOrIndex}.`
+        );
+      }
     }
   }
 
   const items = originalItems.slice();
 
   return items.sort((a, b) => {
-    const providedValueA =
-      isSingleValueProvider
-      ? valueProviderOrProviders(a)
-      : valueProviderOrProviders[providerPropertyOrIndex](a);
+    let providedValueA;
+    let providedValueB;
 
-    const providedValueB =
-      isSingleValueProvider
-      ? valueProviderOrProviders(b)
-      : valueProviderOrProviders[providerPropertyOrIndex](b);
+    if (isPropertyName) {
+      providedValueA = a[propertyNameOrValueProviderOrProviders];
+      providedValueB = b[propertyNameOrValueProviderOrProviders];
+    } else if (isSingleValueProvider) {
+      providedValueA = propertyNameOrValueProviderOrProviders(a);
+      providedValueB = propertyNameOrValueProviderOrProviders(b);
+    } else {
+      // Default to assuming there are multiple value providers.
+      providedValueA =
+        propertyNameOrValueProviderOrProviders[providerPropertyOrIndex](a);
+      providedValueB =
+        propertyNameOrValueProviderOrProviders[providerPropertyOrIndex](b);
+    }
 
     let valueA;
     let valueB;
@@ -88,18 +101,23 @@ function sort(
   });
 }
 
-function simpleSort(
+function sortBy(
   originalItems,
-  valueProvider,
+  propertyNameOrValueProvider,
   isDescending
 ) {
-  return Sorter.sort(originalItems, valueProvider, undefined, isDescending);
+  return Sorter.sort(
+    originalItems,
+    propertyNameOrValueProvider,
+    undefined,
+    isDescending
+  );
 }
 
 Sorter = {
   normalizeValue,
-  simpleSort,
   sort,
+  sortBy,
 };
 
 export default Sorter;
