@@ -1,5 +1,60 @@
 let Sorter;
 
+/**
+ * Use the item's property to get a sort value.
+ */
+class PropertyValueProvider {
+  constructor(propertyName) {
+    this.propertyName = propertyName;
+  }
+
+  getValueFor(item) {
+    return item[this.propertyName];
+  }
+}
+
+/**
+ * Use a single function to get an item's sort value.
+ */
+class FunctionValueProvider {
+  constructor(provider) {
+    this.provider = provider;
+  }
+
+  getValueFor(item) {
+    return this.provider(item);
+  }
+}
+
+/**
+ * Use an index or key to identify a function in an object or array of
+ * multiple functions. Use this function to get an item's sort value.
+ */
+class MultiAxisValueProvider {
+  constructor(providers, providerKeyOrIndex) {
+    this.providers = providers;
+    this.providerKeyOrIndex = providerKeyOrIndex;
+
+    // We need to make sure an acceptable providerKeyOrIndex has been provided.
+    const providerKeyOrIndexType = typeof providerKeyOrIndex;
+    if (
+      providerKeyOrIndexType !== 'string' &&
+      providerKeyOrIndexType !== 'number'
+    ) {
+      throw new Error(
+        `providerKeyOrIndex must be a string or number.
+        Got ${providerKeyOrIndex}.`
+      );
+    }
+  }
+
+  getValueFor(item) {
+    // NOTE: For now (for the sake of simplicity), we're assuming the providers
+    // are functions, not property names.
+    return this.providers[this.providerKeyOrIndex](item);
+  }
+}
+
 function normalizeValue(value) {
   if (value === undefined || value === null) {
     return value;
@@ -8,52 +63,47 @@ function normalizeValue(value) {
   return value.toString().toLowerCase().trim();
 }
 
+/**
+ * Sort an array of items along either a single axis or multiple axes.
+ */
 function sort(
   originalItems,
-  propertyNameOrValueProviderOrProviders,
-  providerPropertyOrIndex,
+  keyOrValueProviderOrProviders,
+  providerKeyOrIndex,
   isDescending = false
 ) {
-  const isPropertyName =
-    typeof propertyNameOrValueProviderOrProviders === 'string';
+  // Figure out whether we're using a value provider function or just a property
+  // name, and if we're sorting along a single axis or multiple axes.
+  const ValueProvider = (() => {
+    const valueProviderType = typeof keyOrValueProviderOrProviders;
 
-  const isSingleValueProvider =
-    typeof propertyNameOrValueProviderOrProviders === 'function';
+    switch (valueProviderType) {
+      case 'string': {
+        // If the provider is a string, then it's a property name.
+        return PropertyValueProvider;
+      }
 
-  if (!isPropertyName) {
-    // If we've received an array of value providers, then we need to make sure
-    // an acceptable providerPropertyOrIndex has been provided.
-    if (!isSingleValueProvider) {
-      const typeOfProviderPropertyOrIndex = typeof providerPropertyOrIndex;
-      if (typeOfProviderPropertyOrIndex !== 'string' &&
-        typeOfProviderPropertyOrIndex !== 'number') {
-        throw new Error(
-          `providerPropertyOrIndex must be a string or number.
-          Got ${providerPropertyOrIndex}.`
-        );
+      case 'function': {
+        // A single function means it's a single provider function.
+        return FunctionValueProvider;
+      }
+
+      default: {
+        // Otherwise we'll assume it's an array or object of providers,
+        // which means we can sort along multiple axes.
+        return MultiAxisValueProvider;
       }
     }
-  }
+  })();
+
+  const valueProvider =
+    new ValueProvider(keyOrValueProviderOrProviders, providerKeyOrIndex);
 
   const items = originalItems.slice();
 
   return items.sort((a, b) => {
-    let providedValueA;
-    let providedValueB;
-
-    if (isPropertyName) {
-      providedValueA = a[propertyNameOrValueProviderOrProviders];
-      providedValueB = b[propertyNameOrValueProviderOrProviders];
-    } else if (isSingleValueProvider) {
-      providedValueA = propertyNameOrValueProviderOrProviders(a);
-      providedValueB = propertyNameOrValueProviderOrProviders(b);
-    } else {
-      // Default to assuming there are multiple value providers.
-      providedValueA =
-        propertyNameOrValueProviderOrProviders[providerPropertyOrIndex](a);
-      providedValueB =
-        propertyNameOrValueProviderOrProviders[providerPropertyOrIndex](b);
-    }
+    const providedValueA = valueProvider.getValueFor(a);
+    const providedValueB = valueProvider.getValueFor(b);
 
     let valueA;
     let valueB;
@@ -101,6 +151,9 @@ function sort(
   });
 }
 
+/**
+ * Convenience function for sorting an array of items ONLY along a single axis.
+ */
 function sortBy(
   originalItems,
   propertyNameOrValueProvider,

@@ -73,29 +73,29 @@ describe('Sorter', () => {
     });
 
     describe('sort method', () => {
-      const valueProvidersByIndex = [
+      const valueProvidersArray = [
         item => item.a,
         item => item.b,
       ];
 
       it('returns a new array', () => {
-        const test = items === Sorter.sort(items, valueProvidersByIndex, 0);
+        const test = items === Sorter.sort(items, valueProvidersArray, 0);
         expect(test).toBe(false);
       });
 
       describe('originalItems parameter', () => {
         it('isn\'t sorted if it has 0 items', () => {
-          const sortedItems = Sorter.sort([], valueProvidersByIndex, 0);
+          const sortedItems = Sorter.sort([], valueProvidersArray, 0);
           expect(sortedItems).toEqual([]);
         });
 
         it('isn\'t sorted if it has 1 item', () => {
-          const sortedItems = Sorter.sort(['item'], valueProvidersByIndex, 0);
+          const sortedItems = Sorter.sort(['item'], valueProvidersArray, 0);
           expect(sortedItems).toEqual(['item']);
         });
 
         it('is sorted in order of numbers. strings, null, undefined', () => {
-          const sortedItems = Sorter.sort(items, valueProvidersByIndex, 0);
+          const sortedItems = Sorter.sort(items, valueProvidersArray, 0);
           expect(sortedItems).toEqual([{
             a: 1,
             b: 2,
@@ -118,7 +118,7 @@ describe('Sorter', () => {
         });
       });
 
-      describe('propertyNameOrValueProviderOrProviders parameter', () => {
+      describe('keyOrValueProviderOrProviders parameter', () => {
         it('can be a property name that provides sort values', () => {
           const sortedItems = Sorter.sort(items, 'b');
           expect(sortedItems).toEqual([{
@@ -160,7 +160,7 @@ describe('Sorter', () => {
       describe('isDescending parameter', () => {
         describe('when false (default)', () => {
           it('sorts items ascending', () => {
-            const sortedItems = Sorter.sort(items, valueProvidersByIndex, 0);
+            const sortedItems = Sorter.sort(items, valueProvidersArray, 0);
             expect(sortedItems).toEqual([{
               a: 1,
               b: 2,
@@ -189,7 +189,7 @@ describe('Sorter', () => {
             strings, numbers when true`
           ), () => {
             const sortedItems =
-              Sorter.sort(items, valueProvidersByIndex, 0, true);
+              Sorter.sort(items, valueProvidersArray, 0, true);
 
             expect(sortedItems).toEqual([{
               a: undefined,
@@ -214,7 +214,7 @@ describe('Sorter', () => {
         });
       });
 
-      describe('providerPropertyOrIndex parameter', () => {
+      describe('providerKeyOrIndex parameter', () => {
         describe('when there is a single value provider', () => {
           it('doesn\'t throw an error if undefined', () => {
             expect(
@@ -232,19 +232,19 @@ describe('Sorter', () => {
         describe('when there are multiple value providers', () => {
           it('throws an error if undefined', () => {
             expect(
-              () => Sorter.sort(items, valueProvidersByIndex, undefined)
+              () => Sorter.sort(items, valueProvidersArray, undefined)
             ).toThrowError();
           });
 
           it('throws an error if null', () => {
             expect(
-              () => Sorter.sort(items, valueProvidersByIndex, null)
+              () => Sorter.sort(items, valueProvidersArray, null)
             ).toThrowError();
           });
 
-          it('defines a provider via an element index', () => {
+          it('defines a provider via an index', () => {
             const sortedItems =
-              Sorter.sort(items, valueProvidersByIndex, 1);
+              Sorter.sort(items, valueProvidersArray, 1);
 
             expect(sortedItems).toEqual([{
               a: 2,
@@ -267,13 +267,13 @@ describe('Sorter', () => {
             }]);
           });
 
-          it('defines a provider via a property name', () => {
-            const valueProvidersByProperty = {
-              a: item => item.a,
-              b: item => item.b,
+          it('defines a provider via a key', () => {
+            const valueProvidersObject = {
+              provider1: item => item.a,
+              provider2: item => item.b,
             };
             const sortedItems =
-              Sorter.sort(items, valueProvidersByProperty, 'b');
+              Sorter.sort(items, valueProvidersObject, 'provider2');
 
             expect(sortedItems).toEqual([{
               a: 2,
