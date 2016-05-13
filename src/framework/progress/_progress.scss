@@ -41,6 +41,18 @@
   height: 8px;
 }
 
+.progress--small {
+  height: 6px;
+
+  .progress__dot {
+    width: 6px;
+
+    & + & {
+      margin-left: 5px;
+    }
+  }
+}
+
   .progress__dot {
     display: inline-block;
     width: 9px;

@@ -1,14 +1,37 @@
 
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
+import classNames from 'classnames';
+import keyMirror from 'keymirror';
 
-const Progress = () => (
-  <div className="progress">
-    <div className="progress__dot" />
-    <div className="progress__dot" />
-    <div className="progress__dot" />
-    <div className="progress__dot" />
-  </div>
-);
+const Progress = props => {
+  const sizeToClassMap = {
+    [Progress.SIZE.SMALL]: 'progress--small',
+  };
+
+  const classes = classNames(
+    'progress',
+    sizeToClassMap[props.size]
+  );
+
+  return (
+    <div className={classes}>
+      <div className="progress__dot" />
+      <div className="progress__dot" />
+      <div className="progress__dot" />
+      <div className="progress__dot" />
+    </div>
+  );
+};
+
+Progress.SIZE = keyMirror({
+  SMALL: null,
+});
+
+Progress.propTypes = {
+  size: PropTypes.string,
+};
 
 export default Progress;
 

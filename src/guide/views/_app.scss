@@ -1,6 +1,6 @@
 .app {
   position: relative;
-  transition: padding-right 0.5s ease-out;
+  transition: padding-right 0.25s ease-out;
 
   &.is-source-code-viewer-open {
     padding-right: $sourceCodeViewerWidth;

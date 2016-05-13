@@ -55,6 +55,10 @@ export default class ProgressExample extends Component {
           <Progress />
         </Example>
 
+        <Example title="Small">
+          <Progress size={Progress.SIZE.SMALL} />
+        </Example>
+
         <Example title="ProgressSuccess">
           <ProgressSuccess />
         </Example>

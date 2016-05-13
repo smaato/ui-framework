@@ -5,7 +5,7 @@ import Progress from '../../progress/Progress.jsx';
 
 const PanelProgress = () => (
   <div className="panelProgress">
-    <Progress />
+    <Progress size={Progress.SIZE.SMALL} />
   </div>
 );
 
