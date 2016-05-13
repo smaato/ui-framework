@@ -63,6 +63,7 @@ import {
   OrganizationSwitcherItem,
   Panel,
   PanelLayout,
+  PanelProgress,
   PickedList,
   PickedListItem,
   PickedSummary,
@@ -275,6 +276,9 @@ const components = [{
 }, {
   name: 'PanelLayout',
   component: PanelLayout,
+}, {
+  name: 'PanelProgress',
+  component: PanelProgress,
 }, {
   name: 'PickedList',
   component: PickedList,
