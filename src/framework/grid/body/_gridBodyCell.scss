@@ -1,17 +1,10 @@
+
 .gridBodyCell {
-  padding-left: 8px;
-  padding-right: 8px;
+  @include gridCellPadding;
   border-bottom: 1px dashed $componentStrokeColor;
   font-weight: 300;
   vertical-align: middle;
-
-  &:first-child {
-    padding-left: 15px;
-  }
-
-  &:last-child {
-    padding-right: 15px;
-  }
+  max-width: 250px;
 }
 
   /*

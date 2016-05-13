@@ -7,20 +7,20 @@
   font-weight: 300;
 }
 
+  .pickedSummaryIcon {
+    $pickedSummaryIconSize: 13px;
+    width: $pickedSummaryIconSize;
+    height: $pickedSummaryIconSize;
+    margin-right: 4px;
+    left: 1px;
+  }
+
   /**
    * 1. Display an ellipsis if the text overflows.
    */
   .pickedSummary__label {
-    flex: 1 1 auto;
+    flex: 1;
     text-overflow: ellipsis; /* 1 */
     white-space: nowrap; /* 1 */
     overflow: hidden; /* 1 */
   }
-
-.pickedSummaryIcon {
-  $pickedSummaryIconSize: 13px;
-  width: $pickedSummaryIconSize;
-  height: $pickedSummaryIconSize;
-  margin-right: 4px;
-  left: 1px;
-}
