@@ -14,6 +14,7 @@ import {
   MenuItem,
   Panel,
   PanelLayout,
+  PanelProgress,
   PickedList,
   PickedListItem,
   SearchBox,
@@ -93,12 +94,13 @@ export default class PanelExample extends Component {
           </div>
         </Example>
 
-        <Example title="Scrollable">
+        <Example title="Scrollable, with PanelProgress">
           <div style={{ height: 300 }}>
             <Panel
               title="Letters"
             >
               {this.renderMenu()}
+              <PanelProgress />
             </Panel>
           </div>
         </Example>
