@@ -8,6 +8,10 @@ export {
   default as PanelLayout,
 } from './PanelLayout.jsx';
 
+export {
+  default as PanelProgress,
+} from './progress/PanelProgress.jsx';
+
 const Panel = props => {
   const contentClasses = classNames('panel__content', {
     'panel__content--padded': props.isPadded,

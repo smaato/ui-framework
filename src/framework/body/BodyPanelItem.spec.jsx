@@ -10,10 +10,7 @@ describe('BodyPanelItem', () => {
         const props = {
           children: <div id="test">test</div>,
         };
-        const testCase = TestCaseFactory.createFromFunction(
-          BodyPanelItem,
-          props
-        );
+        const testCase = TestCaseFactory.create(BodyPanelItem, props);
         expect(testCase.first('#test').textContent).toBe('test');
       });
     });
@@ -25,12 +22,9 @@ describe('BodyPanelItem', () => {
             rhythm: BodyPanelItem.RHYTHM.LARGE,
           };
 
-          const testCase = TestCaseFactory.createFromFunction(
-            BodyPanelItem,
-            props
-          );
-          expect(testCase.dom.getAttribute('class')
-            .indexOf('bodyPanelItem--largeRhythm') !== -1).toBe(true);
+          const testCase = TestCaseFactory.create(BodyPanelItem, props);
+          expect(testCase.dom.className)
+            .toContain('bodyPanelItem--largeRhythm');
         });
       });
     });

@@ -847,6 +847,38 @@ export default class GridExample extends Component {
     return (
       <Page title={this.props.route.name}>
 
+        <Example title="Columns have a maximum width of 250px">
+          <Grid
+            columnsCount={5}
+            rows={(
+              <GridRow
+                data={{
+                  text: 'This text is very long. This text is very long.',
+                }}
+                height={30}
+                key={1}
+                rowCellPropsProviders={[
+                  data => ({
+                    children: data.text,
+                  }),
+                  data => ({
+                    children: data.text,
+                  }),
+                  data => ({
+                    children: data.text,
+                  }),
+                  data => ({
+                    children: data.text,
+                  }),
+                  data => ({
+                    children: data.text,
+                  }),
+                ]}
+              />
+            )}
+          />
+        </Example>
+
         <Example isClear>
 
           {this.renderExampleControls()}

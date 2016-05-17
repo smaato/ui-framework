@@ -1,25 +1,20 @@
+
 /**
  * 1. Applies inherited text-align property instead of "center" in IE
  */
 .grid__header__cell {
+  @include gridCellPadding;
   vertical-align: middle;
   height: 31px;
   border-bottom: 1px solid $componentStrokeColor;
   background: $componentBackgroundColor;
   text-align: inherit; /* 1 */
-
-  &:first-child {
-    width: 35px;
-    padding-left: 7px;
-  }
 }
 
   .grid__header__cellLiner {
     display: flex;
     align-items: center;
     height: 100%;
-    padding-left: 8px;
-    padding-right: 8px;
   }
 
   .grid__header__row--placeholder {

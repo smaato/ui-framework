@@ -85,6 +85,7 @@ import {
   OrganizationSwitcherItem,
   Panel,
   PanelLayout,
+  PanelProgress,
   PickedList,
   PickedListItem,
   PickedSummary,
