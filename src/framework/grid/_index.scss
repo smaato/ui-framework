@@ -1,6 +1,18 @@
 
 $gridContainerBorder: 1px solid $componentStrokeColor;
-$gridRowBookendPadding: 15px;
+
+@mixin gridCellPadding {
+  padding-left: 8px;
+  padding-right: 8px;
+
+  &:first-child {
+    padding-left: 15px;
+  }
+
+  &:last-child {
+    padding-right: 15px;
+  }
+}
 
 @mixin gridBaseStyles {
   color: #474b4e;
@@ -29,18 +41,3 @@ $gridRowBookendPadding: 15px;
     text-align: left;
     line-height: $lineHeight;
   }
-
-    .grid__body__cell,
-    .grid__footer__cell {
-
-      &:first-child {
-        width: 35px;
-        padding-left: 15px;
-      }
-    }
-
-      .grid__body__cell:last-child {
-        .grid__body__cellLiner {
-          text-align: right;
-        }
-      }

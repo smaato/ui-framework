@@ -34,18 +34,8 @@
   }
 
     .stickyGridHeaderCell {
+      @include gridCellPadding;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-
-      padding-left: 8px;
-      padding-right: 8px;
-
-      &:first-child {
-        padding-left: $gridRowBookendPadding;
-      }
-
-      &:last-child {
-        padding-right: $gridRowBookendPadding;
-      }
     }
