@@ -4,6 +4,7 @@
   justify-content: center;
   height: 42px;
   width: 100%;
+  padding: 0 15px;
 }
 
 /**
@@ -18,8 +19,4 @@
   height: inherit; /* 1 */
   flex: 1;
   max-width: $maxWidth - 2px; /* 2 */
-
-  @media #{$viewport_wideScreen} {
-    padding: 0 15px;
-  }
 }
