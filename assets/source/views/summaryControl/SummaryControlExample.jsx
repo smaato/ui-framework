@@ -36,6 +36,14 @@ export default class SummaryControlExample extends Component {
           {types}
         </Example>
 
+        <Example title="Labels that are too long will be truncated">
+          <div style={{ width: '150px' }}>
+            <SummaryControl type={SummaryControl.TYPE.ALLOWED}>
+              This label is truncated because it is too long
+            </SummaryControl>
+          </div>
+        </Example>
+
         <Example title="Static">
           <SummaryControl
             type={SummaryControl.TYPE.ALLOWED}
