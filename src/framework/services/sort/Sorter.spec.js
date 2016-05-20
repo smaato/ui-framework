@@ -63,39 +63,39 @@ describe('Sorter', () => {
       });
     });
 
-    describe('simpleSort method', () => {
+    describe('sortBy method', () => {
       it('delegates to the sort method', () => {
         spyOn(Sorter, 'sort');
-        Sorter.simpleSort(items, valueProvider);
+        Sorter.sortBy(items, valueProvider);
         expect(Sorter.sort)
           .toHaveBeenCalledWith(items, valueProvider, undefined, undefined);
       });
     });
 
     describe('sort method', () => {
-      const valueProvidersByIndex = [
+      const valueProvidersArray = [
         item => item.a,
         item => item.b,
       ];
 
       it('returns a new array', () => {
-        const test = items === Sorter.sort(items, valueProvidersByIndex, 0);
+        const test = items === Sorter.sort(items, valueProvidersArray, 0);
         expect(test).toBe(false);
       });
 
       describe('originalItems parameter', () => {
         it('isn\'t sorted if it has 0 items', () => {
-          const sortedItems = Sorter.sort([], valueProvidersByIndex, 0);
+          const sortedItems = Sorter.sort([], valueProvidersArray, 0);
           expect(sortedItems).toEqual([]);
         });
 
         it('isn\'t sorted if it has 1 item', () => {
-          const sortedItems = Sorter.sort(['item'], valueProvidersByIndex, 0);
+          const sortedItems = Sorter.sort(['item'], valueProvidersArray, 0);
           expect(sortedItems).toEqual(['item']);
         });
 
         it('is sorted in order of numbers. strings, null, undefined', () => {
-          const sortedItems = Sorter.sort(items, valueProvidersByIndex, 0);
+          const sortedItems = Sorter.sort(items, valueProvidersArray, 0);
           expect(sortedItems).toEqual([{
             a: 1,
             b: 2,
@@ -118,15 +118,38 @@ describe('Sorter', () => {
         });
       });
 
-      describe('valueProviderOrProviders parameter', () => {
-        it('provides a single function that provides sort values', () => {
+      describe('keyOrValueProviderOrProviders parameter', () => {
+        it('can be a property name that provides sort values', () => {
+          const sortedItems = Sorter.sort(items, 'b');
+          expect(sortedItems).toEqual([{
+            a: 2,
+            b: 1,
+          }, {
+            a: 1,
+            b: 2,
+          }, {
+            a: 'TestB1',
+            b: 'TestA2',
+          }, {
+            a: 'TestA1',
+            b: 'TestB2',
+          }, {
+            a: null,
+            b: null,
+          }, {
+            a: undefined,
+            b: undefined,
+          }]);
+        });
+
+        it('can be a single function that provides sort values', () => {
           const fakeItems = ['item1', 'item2'];
           const provider = jasmine.createSpy('provider');
           Sorter.sort(fakeItems, provider);
           expect(provider).toHaveBeenCalledWith(fakeItems[0]);
         });
 
-        it('provides functions that provide sort values', () => {
+        it('can be an array of functions that provide sort values', () => {
           const fakeItems = ['item1', 'item2'];
           const providers = [jasmine.createSpy('provider')];
           Sorter.sort(fakeItems, providers, 0);
@@ -137,7 +160,7 @@ describe('Sorter', () => {
       describe('isDescending parameter', () => {
         describe('when false (default)', () => {
           it('sorts items ascending', () => {
-            const sortedItems = Sorter.sort(items, valueProvidersByIndex, 0);
+            const sortedItems = Sorter.sort(items, valueProvidersArray, 0);
             expect(sortedItems).toEqual([{
               a: 1,
               b: 2,
@@ -166,7 +189,7 @@ describe('Sorter', () => {
             strings, numbers when true`
           ), () => {
             const sortedItems =
-              Sorter.sort(items, valueProvidersByIndex, 0, true);
+              Sorter.sort(items, valueProvidersArray, 0, true);
 
             expect(sortedItems).toEqual([{
               a: undefined,
@@ -191,7 +214,7 @@ describe('Sorter', () => {
         });
       });
 
-      describe('providerPropertyOrIndex parameter', () => {
+      describe('providerKeyOrIndex parameter', () => {
         describe('when there is a single value provider', () => {
           it('doesn\'t throw an error if undefined', () => {
             expect(
@@ -209,19 +232,19 @@ describe('Sorter', () => {
         describe('when there are multiple value providers', () => {
           it('throws an error if undefined', () => {
             expect(
-              () => Sorter.sort(items, valueProvidersByIndex, undefined)
+              () => Sorter.sort(items, valueProvidersArray, undefined)
             ).toThrowError();
           });
 
           it('throws an error if null', () => {
             expect(
-              () => Sorter.sort(items, valueProvidersByIndex, null)
+              () => Sorter.sort(items, valueProvidersArray, null)
             ).toThrowError();
           });
 
-          it('defines a provider via an element index', () => {
+          it('defines a provider via an index', () => {
             const sortedItems =
-              Sorter.sort(items, valueProvidersByIndex, 1);
+              Sorter.sort(items, valueProvidersArray, 1);
 
             expect(sortedItems).toEqual([{
               a: 2,
@@ -244,13 +267,13 @@ describe('Sorter', () => {
             }]);
           });
 
-          it('defines a provider via a property name', () => {
-            const valueProvidersByProperty = {
-              a: item => item.a,
-              b: item => item.b,
+          it('defines a provider via a key', () => {
+            const valueProvidersObject = {
+              provider1: item => item.a,
+              provider2: item => item.b,
             };
             const sortedItems =
-              Sorter.sort(items, valueProvidersByProperty, 'b');
+              Sorter.sort(items, valueProvidersObject, 'provider2');
 
             expect(sortedItems).toEqual([{
               a: 2,
