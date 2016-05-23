@@ -14,6 +14,16 @@ describe('MenuItem', () => {
       });
     });
 
+    describe('meta', () => {
+      it('is rendered', () => {
+        const props = {
+          meta: 'test',
+        };
+        const testCase = TestCaseFactory.create(MenuItem, props);
+        expect(testCase.dom.textContent).toContain(props.meta);
+      });
+    });
+
     describe('actions', () => {
       it('is rendered', () => {
         const props = {

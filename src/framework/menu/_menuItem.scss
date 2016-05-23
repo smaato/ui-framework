@@ -7,15 +7,41 @@
 }
 
   /**
+   * 1. Expand and contract.
+   */
+  .menuItem__label {
+    flex: 1 1 auto; /* 1 */
+  }
+
+  /**
+   * 1. Expand and contract.
+   * 2. Baseline-align text with actions and label.
+   */
+  .menuItem__meta {
+    flex: 1 1 auto; /* 1 */
+    text-align: right;
+    padding-left: 10px;
+    font-size: 11px;
+    line-height: 1; /* 2 */
+    opacity: 0.75;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /**
    * 1. Align items horizontally to the right.
-   * 2. All direct children of the right section will have space on the
+   * 2. Shrink but don't expand, to make sure the meta element expands as much
+   *    as possible.
+   * 3. All direct children of the right section will have space on the
    *    left side.
    */
   .menuItem__actions {
     display: flex;
     justify-content: flex-end; /* 1 */
+    flex: 0 1 auto; /* 2 */
+
     > * {
-      margin-left: 10px; /* 2 */
+      margin-left: 10px; /* 3 */
     }
   }
 
