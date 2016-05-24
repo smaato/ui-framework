@@ -21,12 +21,16 @@ export default class MenuExample extends Component {
 
     this.items = [{
       name: 'Language',
+      serial: '23454123289017890103873492468923189302134728493',
     }, {
       name: 'Country',
+      serial: '69923',
     }, {
       name: 'Favorite color',
+      serial: '5676',
     }, {
       name: 'Hat size',
+      serial: '4021546',
     }];
 
     this.state = {
@@ -65,6 +69,7 @@ export default class MenuExample extends Component {
       <MenuItem
         key={index}
         label={item.name}
+        meta={item.serial}
         actions={[
           <Link key={0}>Allow</Link>,
           <Link key={1}>Block</Link>,
@@ -86,7 +91,7 @@ export default class MenuExample extends Component {
           {this.renderMenu()}
         </Example>
 
-        <Example title="With actions">
+        <Example title="With meta and actions">
           {this.renderMenuWithActions()}
         </Example>
       </Page>

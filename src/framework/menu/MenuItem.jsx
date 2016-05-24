@@ -11,6 +11,26 @@ const MenuItem = props => {
     }
   }
 
+  let meta;
+
+  if (props.meta) {
+    meta = (
+      <div className="menuItem__meta">
+        {props.meta}
+      </div>
+    );
+  }
+
+  let actions;
+
+  if (props.actions) {
+    actions = (
+      <div className="menuItem__actions">
+        {props.actions}
+      </div>
+    );
+  }
+
   const classes = classNames('menuItem', {
     'is-menu-item-selected': props.isSelected,
     'menuItem--clickable': props.onClick,
@@ -25,15 +45,16 @@ const MenuItem = props => {
         {props.label}
       </div>
 
-      <div className="menuItem__actions">
-        {props.actions}
-      </div>
+      {meta}
+
+      {actions}
     </div>
   );
 };
 
 MenuItem.propTypes = {
   label: PropTypes.any,
+  meta: PropTypes.any,
   actions: PropTypes.any,
   isSelected: PropTypes.bool,
   data: PropTypes.any,
