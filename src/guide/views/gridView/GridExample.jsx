@@ -8,8 +8,10 @@ import $ from 'jquery';
 import {
   CheckBox,
   Grid,
+  GridBody,
   GridBodyEditableCell,
   GridEmptyRow,
+  GridFakeRow,
   GridHeader,
   GridHeaderSortableCell,
   GridIcon,
@@ -17,13 +19,14 @@ import {
   GridRow,
   KpiNegative,
   KpiPositive,
+  RecycledList,
   StickyGrid,
 } from '../../../framework/framework';
 
 import {
   Entity,
   FilterableItems,
-  GridRowRecycler,
+  ScrollPosition,
   Sorter,
   SortState,
   GridStencil,
@@ -59,8 +62,8 @@ export default class GridExample extends Component {
 
     this.hasColumnWidths = false;
 
-    this.onResizeHandler = this.onResize.bind(this);
-    this.onScrollHandler = this.onScroll.bind(this);
+    this.onResize = this.onResize.bind(this);
+    this.onScroll = this.onScroll.bind(this);
 
     this.GRID_ID = 'gridExample';
     this.STICKY_THRESHOLD = 155;
@@ -97,6 +100,8 @@ export default class GridExample extends Component {
       defaultState,
       this.sortState.getState()
     );
+
+    this.scrollPosition = new ScrollPosition();
 
     // Because we need custom abbreviations, we need to overwrite the entire
     // English language definition.
@@ -281,7 +286,10 @@ export default class GridExample extends Component {
         children: (
           <GridBodyEditableCell
             onClick={event => { // eslint-disable-line react/jsx-no-bind
+              // Block click from reaching the entire row.
               event.stopPropagation();
+              // Block click from changing the location.
+              event.preventDefault();
 
               // Temp replacement for the edit modal
               let newValue = window.prompt( // eslint-disable-line no-alert
@@ -371,14 +379,12 @@ export default class GridExample extends Component {
   }
 
   componentDidMount() {
+    this.scrollPosition.init();
+    this.scrollPosition.addListener(this.onScroll);
+
     // Throttle resize event handling, in an attempt to improve performance.
     this.resizeEventDispatcher = new ThrottledEventDispatcher(
-      'resize', 'optimizedResize', window, this.onResizeHandler
-    );
-
-    // Throttle scroll event handling, in an attempt to improve performance.
-    this.scrollEventDispatcher = new ThrottledEventDispatcher(
-      'scroll', 'optimizedScroll', window, this.onScrollHandler
+      'resize', 'optimizedResize', window, this.onResize
     );
 
     // Cache references to DOM elements.
@@ -413,8 +419,8 @@ export default class GridExample extends Component {
   }
 
   componentWillUnmount() {
+    this.scrollPosition.teardown();
     this.resizeEventDispatcher.teardown();
-    this.scrollEventDispatcher.teardown();
 
     // Clean up the DOM element we've created.
     if (this.$stylesContainer) {
@@ -431,13 +437,8 @@ export default class GridExample extends Component {
   onScroll() {
     this.updateStickyHeaderColumnWidths();
 
-    // Get our current scroll position. Compare between values useful in Chrome
-    // and Firefox, respectively.
-    const scrollPosition = Math.max(
-      document.body.scrollTop, document.documentElement.scrollTop);
-
     // Set header's fixed state manually, for better performance.
-    const isHeaderFixed = scrollPosition >= this.STICKY_THRESHOLD;
+    const isHeaderFixed = this.scrollPosition.current >= this.STICKY_THRESHOLD;
     if (isHeaderFixed !== this.isHeaderFixed) {
       this.isHeaderFixed = isHeaderFixed;
       if (isHeaderFixed) {
@@ -721,6 +722,7 @@ export default class GridExample extends Component {
   render() {
     const rows = [];
     const items = this.getBodyRows();
+
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
 
@@ -738,32 +740,35 @@ export default class GridExample extends Component {
       );
     }
 
-    const rowRecycler = new GridRowRecycler({
-      rows,
-      recycledRowsOverflowDistance: 1300,
-      recycledRowsCount: 120,
-      getItemHeight: item => item.props.height,
-    });
-
     return (
       <StickyGrid
         id={this.GRID_ID}
         headerCellPropsProviders={this.headerCellPropsProviders}
       >
-        <Grid
-          columnsCount={this.COLUMNS_COUNT}
-          header={this.renderGridHeader()}
-          rows={rows}
-          lazyLoadRows={this.lazyLoadBodyRows}
-          // Initial loading state
-          initialLoadingRow={this.renderInitialLoadingRow()}
-          // Empty state
-          emptyRow={this.renderEmptyRow()}
-          // Loading state
-          loadingRow={this.renderLoadingRow()}
-          onClickRow={this.onClickRow}
-          rowRecycler={rowRecycler}
-        />
+        <Grid header={this.renderGridHeader()}>
+          <RecycledList
+            rootElement={
+              <GridBody
+                // Initial loading state
+                initialLoadingRow={this.renderInitialLoadingRow()}
+                // Loading state
+                loadingRow={this.renderLoadingRow()}
+                // Empty state
+                emptyRow={this.renderEmptyRow()}
+              />
+            }
+            fakeItemElement={
+              <GridFakeRow
+                columnsCount={this.COLUMNS_COUNT}
+              />
+            }
+            items={rows}
+            overflowDistance={650}
+            recycledItemsCount={60}
+            itemHeightProvider={item => item.props.height}
+            scrollPosition={this.scrollPosition}
+          />
+        </Grid>
       </StickyGrid>
     );
   }
