@@ -1,5 +1,6 @@
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { TestCaseFactory } from 'react-test-kit';
 import RecycledList from './RecycledList.jsx';
 import ScrollPosition from '../services/scroll/ScrollPosition';
@@ -112,9 +113,11 @@ describe('RecycledList', () => {
         expect(props.itemHeightProvider).toHaveBeenCalled();
       });
     });
+  });
 
-    describe('scrollPosition', () => {
-      it('is expected to be an instance of ScrollPosition', () => {
+  describe('Behavior', () => {
+    describe('when mounted', () => {
+      it('it adds a listener to scrollPosition', () => {
         const props = {
           rootElement: <div />,
           items: [],
@@ -128,7 +131,30 @@ describe('RecycledList', () => {
 
         TestCaseFactory.create(RecycledList, props);
 
-        expect(props.scrollPosition.addListener).toHaveBeenCalled();
+        expect(props.scrollPosition.addListener)
+          .toHaveBeenCalledWith(jasmine.any(Function));
+      });
+    });
+
+    describe('when unmounted', () => {
+      it('it removes a listener from scrollPosition', () => {
+        const props = {
+          rootElement: <div />,
+          items: [],
+          overflowDistance: 0,
+          recycledItemsCount: 0,
+          itemHeightProvider: () => 0,
+          scrollPosition: new ScrollPosition(),
+        };
+
+        spyOn(props.scrollPosition, 'removeListener');
+
+        const testCase = TestCaseFactory.create(RecycledList, props);
+        // TODO: Add unmount method to TestCase class in react-test-kit.
+        ReactDOM.unmountComponentAtNode(testCase.dom.parentNode);
+
+        expect(props.scrollPosition.removeListener)
+          .toHaveBeenCalledWith(jasmine.any(Function));
       });
     });
   });

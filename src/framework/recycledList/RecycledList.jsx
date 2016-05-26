@@ -44,15 +44,23 @@ export default class RecycledList extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    // This state will change when the scrollPosition changes. We only need
+    // to update if the scroll has had an effect on the recycled items'
+    // positions.
     if (nextState.firstItemOffset !== this.state.firstItemOffset) {
       return true;
     }
 
+    // If we have new props then we should update.
     if (nextProps !== this.props) {
       return true;
     }
 
     return false;
+  }
+
+  componentWillUnmount() {
+    this.props.scrollPosition.removeListener(this.onScroll);
   }
 
   onScroll() {
@@ -91,6 +99,7 @@ export default class RecycledList extends Component {
         // If we've scrolled the first visible item entirely out of the grid
         // then we need to increment the index.
         let itemDistanceScrolled = 0;
+
         while (
           itemDistanceScrolled < distanceScrolled &&
           firstItemIndex < itemsCount
@@ -99,6 +108,7 @@ export default class RecycledList extends Component {
           itemDistanceScrolled += this.props.itemHeightProvider(item);
           firstItemIndex ++;
         }
+
         firstItemOffset += itemDistanceScrolled;
       }
     } else {
@@ -108,9 +118,10 @@ export default class RecycledList extends Component {
       const firstItemTopEdgePosition = oldFirstItemOffset;
 
       if (offsetScrollPosition < firstItemTopEdgePosition) {
-        // If we've scrolled the frist visible item just a tiny bit below the
+        // If we've scrolled the first visible item just a tiny bit below the
         // top edge of the grid, then we need to decrement the index.
         let itemDistanceScrolled = 0;
+
         while (
           itemDistanceScrolled > distanceScrolled &&
           firstItemIndex > 0
@@ -119,6 +130,7 @@ export default class RecycledList extends Component {
           itemDistanceScrolled -= this.props.itemHeightProvider(item);
           firstItemIndex --;
         }
+
         firstItemOffset += itemDistanceScrolled;
       }
     }
@@ -206,6 +218,8 @@ export default class RecycledList extends Component {
 RecycledList.propTypes = {
   rootElement: React.PropTypes.element.isRequired,
   fakeItemElement: React.PropTypes.element,
+  // NOTE: The render method of the owner component should provide an original
+  // array, as expected by componentWillReceiveProps.
   items: PropTypes.array.isRequired,
   overflowDistance: PropTypes.number.isRequired,
   recycledItemsCount: PropTypes.number.isRequired,

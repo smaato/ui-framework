@@ -6,6 +6,10 @@ export default class ScrollPosition {
   constructor() {
     this.listeners = [];
     this.previous = this.current = 0;
+    // NOTE: We don't set a default value for fromBottom, since we
+    // don't have any information on the scrolling element yet, so any default
+    // value we assign will be incorrect.
+    this.fromBottom = undefined;
   }
 
   init(element) {
@@ -22,7 +26,7 @@ export default class ScrollPosition {
       );
     }
 
-    const getDistanceFromBottom = () => {
+    const getPositionFromBottom = () => {
       if (element) {
         // Subtract scroll position from the height of the scrollable content
         // (minus the height of the *visible* content).
@@ -45,7 +49,7 @@ export default class ScrollPosition {
         // Update state.
         this.previous = this.current;
         this.current = getPosition();
-        this.distanceFromBottom = getDistanceFromBottom();
+        this.fromBottom = getPositionFromBottom();
 
         // Call listeners.
         this.listeners.forEach(listener => listener());
@@ -54,12 +58,20 @@ export default class ScrollPosition {
   }
 
   teardown() {
+    // Remove references to objects to avoid memory leaks.
     this.eventDispatcher.teardown();
     this.listeners = undefined;
   }
 
   addListener(listener) {
     this.listeners.push(listener);
+  }
+
+  removeListener(listener) {
+    const indexOfListener = this.listeners.indexOf(listener);
+    if (indexOfListener !== -1) {
+      this.listeners.splice(indexOfListener, 1);
+    }
   }
 
 }

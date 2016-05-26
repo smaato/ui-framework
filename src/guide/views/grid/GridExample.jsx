@@ -494,7 +494,7 @@ export default class GridExample extends Component {
     }
 
     // Lazy-load more rows if scroll position is near the bottom.
-    if (this.scrollPosition.distanceFromBottom <= 1000) {
+    if (this.scrollPosition.fromBottom <= 1000) {
       this.lazyLoadBodyRows();
     }
   }
@@ -844,8 +844,8 @@ export default class GridExample extends Component {
               />
             }
             items={rows}
-            overflowDistance={650}
-            recycledItemsCount={60}
+            overflowDistance={1300}
+            recycledItemsCount={120}
             itemHeightProvider={item => item ? item.props.height : undefined}
             scrollPosition={this.scrollPosition}
           />
