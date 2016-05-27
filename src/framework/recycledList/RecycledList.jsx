@@ -67,12 +67,11 @@ export default class RecycledList extends Component {
     this.updateItemPositions();
   }
 
-  getFirstItemState(items) {
+  /**
+   * Calculate the index and offset of the first recycled item.
+   */
+  getFirstItemState(items, oldFirstItemIndex, oldFirstItemOffset) {
     const itemsCount = items.length;
-
-    // Calculate the index and offset of the first recycled item.
-    const oldFirstItemIndex = this.state.firstItemIndex;
-    const oldFirstItemOffset = this.state.firstItemOffset;
 
     // Measure scroll amount and direction.
     const distanceScrolled =
@@ -141,14 +140,17 @@ export default class RecycledList extends Component {
     };
   }
 
-  getLastItemState(items) {
+  /**
+   * Calculate the index and offset of the last recycled item. Note that this
+   * depends on the new updated state of the first recycled item.
+   */
+  getLastItemState(items, newFirstItemIndex) {
     const itemsCount = items.length;
 
     // Calculate the index and offset of the last recycled item.
     const recycledItemsCount = this.props.recycledItemsCount;
-
     const lastItemIndex = Math.min(
-      this.state.firstItemIndex + recycledItemsCount,
+      newFirstItemIndex + recycledItemsCount,
       itemsCount
     );
 
@@ -175,9 +177,21 @@ export default class RecycledList extends Component {
   }
 
   updateItemPositions(items = this.props.items) {
+    const firstItemState = this.getFirstItemState(
+      items,
+      this.state.firstItemIndex,
+      this.state.firstItemOffset
+    );
+
+    const lastItemState = this.getLastItemState(
+      items,
+      firstItemState.firstItemIndex
+    );
+
     this.setState(Object.assign(
-      this.getFirstItemState(items),
-      this.getLastItemState(items)
+      {},
+      firstItemState,
+      lastItemState
     ));
   }
 
