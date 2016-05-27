@@ -52,6 +52,8 @@ const MenuItem = props => {
   );
 };
 
+MenuItem.HEIGHT = 33;
+
 MenuItem.propTypes = {
   label: PropTypes.any,
   meta: PropTypes.any,

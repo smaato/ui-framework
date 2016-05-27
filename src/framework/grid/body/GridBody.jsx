@@ -16,28 +16,6 @@ const GridBody = props => {
     props.classBody
   );
 
-  let fakePrecedingRows;
-  if (props.firstRecycledRowOffset) {
-    fakePrecedingRows = (
-      <tr>
-        <td colSpan={props.columnsCount}>
-          <div style={{ minHeight: props.firstRecycledRowOffset }}></div>
-        </td>
-      </tr>
-    );
-  }
-
-  let fakeFollowingRows;
-  if (props.lastRecycledRowOffset) {
-    fakeFollowingRows = (
-      <tr>
-        <td colSpan={props.columnsCount}>
-          <div style={{ minHeight: props.lastRecycledRowOffset }}></div>
-        </td>
-      </tr>
-    );
-  }
-
   return (
     <tbody className={sectionClass}>
       {/* A row to indicate initial loading progress */}
@@ -46,14 +24,8 @@ const GridBody = props => {
       {/* A row to indicate empty state */}
       {emptyRow}
 
-      {/* Fake the preceding rows */}
-      {fakePrecedingRows}
-
       {/* Recycled rows */}
       {props.children}
-
-      {/* Fake the following rows */}
-      {fakeFollowingRows}
 
       {/* A row to indicate loading progress */}
       {loadingRow}
@@ -62,13 +34,7 @@ const GridBody = props => {
 };
 
 GridBody.propTypes = {
-  columnsCount: PropTypes.number.isRequired,
-  firstRecycledRowOffset: PropTypes.number.isRequired,
-  lastRecycledRowOffset: PropTypes.number.isRequired,
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.object,
-    React.PropTypes.array,
-  ]),
+  children: React.PropTypes.any,
   // Initial loading state
   initialLoadingRow: PropTypes.element,
   // Empty state
