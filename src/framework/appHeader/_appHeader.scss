@@ -2,7 +2,6 @@
   width: 100%;
   background: $appHeaderNav_backgroundColor;
   height: 45px;
-  padding: 0 15px;
 }
 
   /**
@@ -17,6 +16,7 @@
     height: inherit;
     flex: 1;
     max-width: $maxWidth;
+    padding: 0 15px;
   }
 
 $appHeaderDropdownArrowSide: 7px;
