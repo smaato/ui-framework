@@ -2,12 +2,20 @@
   display: flex;
   align-items: stretch;
   height: 100%;
+  overflow: hidden;
 
   /**
    * TODO: Add Column-like options for specifying different panel widths.
    */
   .panel {
     flex: 1 1 auto;
+
+    /**
+    * 1. Prevent shrinking.
+    */
+    &.panel--fullWidth {
+      flex-shrink: 0; /* 1 */
+    }
   }
 
   .panel + .panel {

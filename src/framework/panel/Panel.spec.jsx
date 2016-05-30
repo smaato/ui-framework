@@ -34,6 +34,16 @@ describe('Panel', () => {
       });
     });
 
+    describe('isFullWidth', () => {
+      it('applies the appropriate class', () => {
+        const props = {
+          isFullWidth: true,
+        };
+        const testCase = TestCaseFactory.create(Panel, props);
+        expect(testCase.dom.className).toContain('panel--fullWidth');
+      });
+    });
+
     describe('isPadded', () => {
       it('applies the appropriate class', () => {
         const props = {
