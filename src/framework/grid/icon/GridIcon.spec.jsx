@@ -14,7 +14,10 @@ describe('GridIcon', () => {
 
         const testCase = TestCaseFactory.create(GridIcon, props);
         testCase.trigger('click');
-        expect(onClick).toHaveBeenCalledWith(props.data);
+        expect(onClick).toHaveBeenCalledWith(
+          props.data,
+          jasmine.any(Object) // SyntheticEvent
+        );
       });
     });
 

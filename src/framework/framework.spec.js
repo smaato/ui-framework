@@ -33,9 +33,11 @@ import {
   FormFooter,
   FormPanel,
   Grid,
+  GridBody,
   GridBodyEditableCell,
   GridControls,
   GridEmptyRow,
+  GridFakeRow,
   GridHeader,
   GridHeaderSortableCell,
   GridIcon,
@@ -71,6 +73,7 @@ import {
   Progress,
   ProgressModal,
   ProgressSuccess,
+  RecycledList,
   SearchBox,
   StatusDot,
   StatusDropdown,
@@ -193,6 +196,9 @@ const components = [{
   name: 'Grid',
   component: Grid,
 }, {
+  name: 'GridBody',
+  component: GridBody,
+}, {
   name: 'GridBodyEditableCell',
   component: GridBodyEditableCell,
 }, {
@@ -201,6 +207,9 @@ const components = [{
 }, {
   name: 'GridEmptyRow',
   component: GridEmptyRow,
+}, {
+  name: 'GridFakeRow',
+  component: GridFakeRow,
 }, {
   name: 'GridHeader',
   component: GridHeader,
@@ -300,6 +309,9 @@ const components = [{
 }, {
   name: 'ProgressSuccess',
   component: ProgressSuccess,
+}, {
+  name: 'RecycledList',
+  component: RecycledList,
 }, {
   name: 'SearchBox',
   component: SearchBox,

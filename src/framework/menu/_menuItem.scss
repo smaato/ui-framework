@@ -8,14 +8,21 @@
 
   /**
    * 1. Expand and contract.
+   * 2. Truncate text with ellipsis.
+   * 3. Line-height makes sure 'g' isn't cut off at the bottom.
    */
   .menuItem__label {
     flex: 1 1 auto; /* 1 */
+    overflow: hidden; /* 2 */
+    text-overflow: ellipsis; /* 2 */
+    white-space: nowrap; /* 2 */
+    line-height: 1.2; /* 3 */
   }
 
   /**
    * 1. Expand and contract.
    * 2. Baseline-align text with actions and label.
+   * 3. Truncate text with ellipsis.
    */
   .menuItem__meta {
     flex: 1 1 auto; /* 1 */
@@ -24,8 +31,9 @@
     font-size: 11px;
     line-height: 1; /* 2 */
     opacity: 0.75;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: hidden; /* 3 */
+    text-overflow: ellipsis; /* 3 */
+    white-space: nowrap; /* 3 */
   }
 
   /**

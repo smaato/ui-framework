@@ -19,9 +19,9 @@ const GridIcon = props => {
     }
   );
 
-  function onClick() {
+  function onClick(event) {
     if (props.onClick) {
-      props.onClick(props.data);
+      props.onClick(props.data, event);
     }
   }
 

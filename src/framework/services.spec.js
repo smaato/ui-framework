@@ -7,8 +7,8 @@ import {
   ConditionChecker,
   FilterOption,
   FilterableItems,
-  GridRowRecycler,
   GridStencil,
+  ScrollPosition,
   Sorter,
   SortState,
   Entity,
@@ -57,15 +57,15 @@ describe('UI Framework services', () => {
     });
   });
 
-  describe('GridRowRecycler', () => {
-    it('is exported', () => {
-      expect(GridRowRecycler).toEqual(jasmine.any(Function));
-    });
-  });
-
   describe('GridStencil', () => {
     it('is exported', () => {
       expect(GridStencil).toEqual(jasmine.any(Function));
+    });
+  });
+
+  describe('ScrollPosition', () => {
+    it('is exported', () => {
+      expect(ScrollPosition).toEqual(jasmine.any(Function));
     });
   });
 

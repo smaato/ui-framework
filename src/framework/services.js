@@ -30,12 +30,14 @@ export {
 // Grid
 
 export {
-  default as GridRowRecycler,
-} from './services/grid/GridRowRecycler';
-
-export {
   default as GridStencil,
 } from './services/grid/GridStencil';
+
+// Scroll
+
+export {
+  default as ScrollPosition,
+} from './services/scroll/ScrollPosition';
 
 // Sort
 
