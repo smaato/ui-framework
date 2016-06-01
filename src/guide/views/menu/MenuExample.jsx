@@ -54,6 +54,7 @@ export default class MenuExample extends Component {
   }
 
   componentWillUnmount() {
+    this.scrollPosition.removeListener(this.onScroll);
     this.scrollPosition.teardown();
   }
 

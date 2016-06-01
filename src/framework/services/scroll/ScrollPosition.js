@@ -68,9 +68,11 @@ export default class ScrollPosition {
   }
 
   removeListener(listener) {
-    const indexOfListener = this.listeners.indexOf(listener);
-    if (indexOfListener !== -1) {
-      this.listeners.splice(indexOfListener, 1);
+    if (this.listeners) {
+      const indexOfListener = this.listeners.indexOf(listener);
+      if (indexOfListener !== -1) {
+        this.listeners.splice(indexOfListener, 1);
+      }
     }
   }
 
