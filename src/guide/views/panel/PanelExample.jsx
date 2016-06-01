@@ -177,6 +177,49 @@ export default class PanelExample extends Component {
             </PanelLayout>
           </div>
         </Example>
+
+        <Example title="Full Width Panels won't shrink">
+          isFullWidth isn't set on left panel:
+          <PanelLayout>
+            <Panel title="Left panel">
+              <Menu>
+                <MenuItem label="Short text." />
+              </Menu>
+            </Panel>
+            <Panel title="Right panel">
+              <Menu>
+                <MenuItem
+                  label="This text is very long and will make the left panel
+                  shrink. This text is very long and will make the left panel
+                  shrink. This text is very long and will make the left panel
+                  shrink. This text is very long and will make the left panel
+                  shrink. This text is very long and will make the left panel
+                  shrink."
+                />
+              </Menu>
+            </Panel>
+          </PanelLayout>
+          isFullWidth is set on left panel:
+          <PanelLayout>
+            <Panel title="Left panel (isFullWidth)" isFullWidth>
+              <Menu>
+                <MenuItem label="Short text." />
+              </Menu>
+            </Panel>
+            <Panel title="Right panel">
+              <Menu>
+                <MenuItem
+                  label="This text is very long and will make the left panel
+                  shrink. This text is very long and will make the left panel
+                  shrink. This text is very long and will make the left panel
+                  shrink. This text is very long and will make the left panel
+                  shrink. This text is very long and will make the left panel
+                  shrink."
+                />
+              </Menu>
+            </Panel>
+          </PanelLayout>
+        </Example>
       </Page>
     );
   }

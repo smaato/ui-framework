@@ -36,6 +36,17 @@ export default class MenuExample extends Component {
     }, {
       name: 'Hat size',
       serial: '4021546',
+    }, {
+      name: `
+        Very long text that will be truncated if there's not enough space.
+        Very long text that will be truncated if there's not enough space.
+        Very long text that will be truncated if there's not enough space.
+      `,
+      serial: `
+        Very long text that will be truncated if there's not enough space.
+        Very long text that will be truncated if there's not enough space.
+        Very long text that will be truncated if there's not enough space.
+      `,
     }];
 
     this.state = {
