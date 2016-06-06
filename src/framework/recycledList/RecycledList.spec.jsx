@@ -80,19 +80,21 @@ describe('RecycledList', () => {
     });
 
     describe('items', () => {
-      it('are rendered', () => {
+      it('are passed to renderItem', () => {
+        const item = <span key="item" className="item" />;
         const props = {
           rootElement: <div />,
-          items: [<span key="item" className="item" />],
+          items: [item],
           overflowDistance: 0,
           recycledItemsCount: 0,
           itemHeightProvider: () => 0,
+          renderItem: jasmine.createSpy('renderItem'),
           scrollPosition: new ScrollPosition(),
         };
 
-        const testCase = TestCaseFactory.create(RecycledList, props);
+        TestCaseFactory.create(RecycledList, props);
 
-        expect(testCase.find('.item')).toBeDefined();
+        expect(props.renderItem).toHaveBeenCalledWith(item, 0);
       });
     });
 
@@ -111,6 +113,48 @@ describe('RecycledList', () => {
         TestCaseFactory.create(RecycledList, props);
 
         expect(props.itemHeightProvider).toHaveBeenCalled();
+      });
+    });
+
+    describe('renderItem', () => {
+      it('defines the rendering logic of the items', () => {
+        const itemData = {
+          className: 'item',
+        };
+        const props = {
+          rootElement: <div />,
+          items: [itemData],
+          overflowDistance: 0,
+          recycledItemsCount: 0,
+          itemHeightProvider: () => 0,
+          renderItem: (item, index) => (
+            <span
+              key={index}
+              className={item.className}
+            />
+          ),
+          scrollPosition: new ScrollPosition(),
+        };
+
+        const testCase = TestCaseFactory.create(RecycledList, props);
+
+        expect(testCase.find('.item')).toBeDefined();
+      });
+
+      it('returns the passed item by default', () => {
+        const item = <span key="item" className="item" />;
+        const props = {
+          rootElement: <div />,
+          items: [item],
+          overflowDistance: 0,
+          recycledItemsCount: 0,
+          itemHeightProvider: () => 0,
+          scrollPosition: new ScrollPosition(),
+        };
+
+        const testCase = TestCaseFactory.create(RecycledList, props);
+
+        expect(testCase.find('.item')).toBeDefined();
       });
     });
   });
