@@ -210,7 +210,7 @@ export default class RecycledList extends Component {
       index <= this.state.lastItemIndex && index < itemsCount;
       index++
     ) {
-      visibleItems.push(items[index]);
+      visibleItems.push(this.props.renderItem(items[index], index));
     }
 
     // Append the bottom fake item last.
@@ -238,6 +238,7 @@ RecycledList.propTypes = {
   overflowDistance: PropTypes.number.isRequired,
   recycledItemsCount: PropTypes.number.isRequired,
   itemHeightProvider: PropTypes.func.isRequired,
+  renderItem: PropTypes.func.isRequired,
   // NOTE: Expects an instance of ScrollPosition.
   scrollPosition: PropTypes.object.isRequired,
 };
@@ -245,4 +246,5 @@ RecycledList.propTypes = {
 RecycledList.defaultProps = {
   // NOTE: fakeItemElement needs to accept style as a prop.
   fakeItemElement: <div />,
+  renderItem: item => item,
 };

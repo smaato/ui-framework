@@ -35,7 +35,7 @@ module.exports = function(config) {
     browsers: ['PhantomJS'],
     // The reporters with which to surface test results.
     reporters: [
-      'dots',
+      'spec',
       'coverage',
       'junit'
     ],
