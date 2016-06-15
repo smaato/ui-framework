@@ -18,9 +18,7 @@ describe('ModalStack', () => {
         const props = {
           children,
         };
-        const testCase = TestCaseFactory.createFromElement(
-          <ModalStack {...props} />
-        );
+        const testCase = TestCaseFactory.create(ModalStack, props);
         expect(testCase.first('.modal1')).toBeDefined();
         expect(testCase.first('.modal2')).toBeDefined();
         expect(testCase.first('.modal3')).toBeDefined();
@@ -35,9 +33,7 @@ describe('ModalStack', () => {
       const props = {
         children,
       };
-      const testCase = TestCaseFactory.createFromElement(
-        <ModalStack {...props} />
-      );
+      const testCase = TestCaseFactory.create(ModalStack, props);
       expect(testCase.first('.stackedModal--depth1 .modal5')).toBeDefined();
       expect(testCase.first('.stackedModal--depth2 .modal4')).toBeDefined();
       expect(testCase.first('.stackedModal--depth3 .modal3')).toBeDefined();
@@ -47,9 +43,7 @@ describe('ModalStack', () => {
       const props = {
         children,
       };
-      const testCase = TestCaseFactory.createFromElement(
-        <ModalStack {...props} />
-      );
+      const testCase = TestCaseFactory.create(ModalStack, props);
       const stackedModals = testCase.find('.stackedModal');
       expect(stackedModals[0].className).not.toContain('stackedModal--depth5');
       expect(stackedModals[1].className).not.toContain('stackedModal--depth4');
@@ -62,9 +56,7 @@ describe('ModalStack', () => {
       const props = {
         children,
       };
-      const testCase = TestCaseFactory.createFromElement(
-        <ModalStack {...props} />
-      );
+      const testCase = TestCaseFactory.create(ModalStack, props);
       const stackedModals = testCase.find('.stackedModal');
       expect(stackedModals[0].className).toContain('stackedModal--depthMax');
       expect(stackedModals[1].className).toContain('stackedModal--depthMax');
