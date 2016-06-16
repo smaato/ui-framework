@@ -10,20 +10,24 @@ describe('ScrollPosition', () => {
 
   describe('interface', () => {
     describe('constructor', () => {
-      describe('sets previous property', () => {
-        it('to 0', () => {
-          expect(scrollPosition.previous).toBe(0);
-        });
+      it('sets listeners to []', () => {
+        expect(scrollPosition.listeners).toEqual([]);
       });
 
-      describe('sets current property', () => {
-        it('to 0', () => {
-          expect(scrollPosition.current).toBe(0);
-        });
+      it('sets previous property to 0', () => {
+        expect(scrollPosition.previous).toBe(0);
+      });
+
+      it('sets current property to 0', () => {
+        expect(scrollPosition.current).toBe(0);
       });
 
       it('doesn\'t set fromBottom property', () => {
         expect(scrollPosition.fromBottom).not.toBeDefined();
+      });
+
+      it('doesn\'t set element property', () => {
+        expect(scrollPosition.element).not.toBeDefined();
       });
     });
 
@@ -32,6 +36,32 @@ describe('ScrollPosition', () => {
         expect(scrollPosition.eventDispatcher).not.toBeDefined();
         scrollPosition.init();
         expect(scrollPosition.eventDispatcher).toBeDefined();
+      });
+    });
+
+    describe('reset', () => {
+      it('sets element scrollTop to 0 when initalized with element', () => {
+        const mockedElement = {
+          addEventListener: () => undefined,
+          scrollTop: 1,
+        };
+
+        scrollPosition.init(mockedElement);
+        scrollPosition.reset();
+
+        expect(mockedElement.scrollTop).toBe(0);
+      });
+
+      it('sets document scrollTop to 0 when initalized without element', () => {
+        scrollPosition.init();
+
+        document.body.scrollTop = 1;
+        document.documentElement.scrollTop = 1;
+
+        scrollPosition.reset();
+
+        expect(document.body.scrollTop).toBe(0);
+        expect(document.documentElement.scrollTop).toBe(0);
       });
     });
 
