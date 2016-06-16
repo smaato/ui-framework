@@ -73,7 +73,10 @@ export default class MenuExample extends Component {
     // You can compare the distance from the bottom to a threshold to
     // implement lazy-loading.
     if (this.scrollPosition.fromBottom === 0) {
-      window.alert('You\'ve scrolled to the bottom of the menu.'); // eslint-disable-line no-alert
+      window.alert( // eslint-disable-line no-alert
+        'You\'ve scrolled to the bottom of the menu. The scroll will be reset.'
+      );
+      this.scrollPosition.reset();
     }
   }
 

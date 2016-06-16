@@ -40,10 +40,11 @@ export default class SearchBox extends Component {
       <label className="searchBox">
         <input
           className={classes}
-          type="text"
+          defaultValue={this.props.defaultValue}
+          onKeyUp={this.onKeyUp}
           placeholder={this.props.placeholder}
           ref="searchField"
-          onKeyUp={this.onKeyUp}
+          type="text"
         />
         <span className="searchBox__icon icon icon-magnifier"/>
       </label>
@@ -52,8 +53,9 @@ export default class SearchBox extends Component {
 }
 
 SearchBox.propTypes = {
-  onSearch: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
+  defaultValue: PropTypes.string,
   isFullWidth: PropTypes.bool,
   isImmediate: PropTypes.bool,
+  onSearch: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
 };

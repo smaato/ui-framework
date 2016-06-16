@@ -10,6 +10,8 @@ export default class ScrollPosition {
     // don't have any information on the scrolling element yet, so any default
     // value we assign will be incorrect.
     this.fromBottom = undefined;
+    this.element = undefined;
+    this.eventDispatcher = undefined;
   }
 
   init(element) {
@@ -40,6 +42,8 @@ export default class ScrollPosition {
       ) - this.current;
     };
 
+    this.element = element;
+
     // Throttle scroll event handling, in an attempt to improve performance.
     this.eventDispatcher = new ThrottledEventDispatcher(
       'scroll',
@@ -55,6 +59,15 @@ export default class ScrollPosition {
         this.listeners.forEach(listener => listener());
       }
     );
+  }
+
+  reset() {
+    if (this.element) {
+      this.element.scrollTop = 0;
+    } else {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
   }
 
   teardown() {
