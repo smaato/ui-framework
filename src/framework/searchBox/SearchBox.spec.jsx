@@ -4,6 +4,21 @@ import SearchBox from './SearchBox.jsx';
 
 describe('SearchBox', () => {
   describe('Props', () => {
+    describe('isFullWidth', () => {
+      it('applies the appropriate class to the input element', () => {
+        const props = {
+          onSearch: () => undefined,
+          isFullWidth: true,
+        };
+
+        const testCase = TestCaseFactory.createFromClass(SearchBox, props);
+        const input = testCase.first('input');
+        expect(
+          input.getAttribute('class')
+        ).toContain('searchBox__input--fullWidth');
+      });
+    });
+
     describe('onSearch', () => {
       it('is called when the user hits Enter', () => {
         const props = {
@@ -65,18 +80,16 @@ describe('SearchBox', () => {
       });
     });
 
-    describe('isFullWidth', () => {
-      it('applies the appropriate class to the input element', () => {
+    describe('value', () => {
+      it('is applied to input element', () => {
         const props = {
+          defaultValue: 'Default value',
           onSearch: () => undefined,
-          isFullWidth: true,
         };
 
         const testCase = TestCaseFactory.createFromClass(SearchBox, props);
         const input = testCase.first('input');
-        expect(
-          input.getAttribute('class')
-        ).toContain('searchBox__input--fullWidth');
+        expect(input.value).toEqual(props.defaultValue);
       });
     });
   });
