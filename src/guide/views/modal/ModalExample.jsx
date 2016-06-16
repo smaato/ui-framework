@@ -193,9 +193,10 @@ export default class ModalExample extends Component {
         width={this.STACKED_MODAL_WIDTH}
       >
         <ModalHeader
-          title="4th Level Modal"
           onClose={this.removeModalFromStack}
-        />
+        >
+          4th Level Modal
+        </ModalHeader>
         <ModalBody>
           <p>Notice that the first level modal is no longer visible.</p>
         </ModalBody>
