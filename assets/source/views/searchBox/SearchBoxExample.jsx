@@ -91,6 +91,15 @@ export default class SearchBoxExample extends Component {
 
         </Example>
 
+        <Example title="Default value">
+
+          <SearchBox
+            defaultValue="Default value"
+            onSearch={this.onSearch}
+          />
+
+        </Example>
+
       </Page>
     );
   }
