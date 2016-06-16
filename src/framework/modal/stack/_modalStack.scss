@@ -7,35 +7,35 @@
 .modalStack {
   flex: 0 0 auto; /* 1 */
   margin: auto; /* 2 */
-  position: relative;
-
-  .modal {
-    height: inherit;
-  }
+  padding-bottom: 10px;
 }
 
-  .stackedModal {
-    position: absolute;
-    height: inherit;
-    transform-origin: top center;
+  /**
+   * 1. We need to form a stacking context so that the first modal isn't hidden
+   *    behind the other modals.
+   */
+  .stackedModal--depth1 {
+    transform: scale(1, 1); /* 1 */
   }
 
-  /**
-   * 1. Use margin and translate to center the modal horizontally.
-   */
   .stackedModal--depth2 {
-    margin-top: -30px;
-    margin-left: 50%; /* 1 */
-    transform: translateX(-50%) scale(0.9, 0.9); /* 1 */
+    margin-bottom: -15px;
+    transform: scale(0.9, 0.9);
+
+    // Hide content of hidden modals except their header
+    .modal > :not(.modalHeader) {
+      display: none;
+    }
   }
 
-  /**
-   * 1. Use margin and translate to center the modal horizontally.
-   */
   .stackedModal--depth3 {
-    margin-top: -50px;
-    margin-left: 50%; /* 1 */
-    transform: translateX(-50%) scale(0.8, 0.8); /* 1 */
+    margin-bottom: -45px;
+    transform: scale(0.8, 0.8);
+
+    // Hide content of hidden modals except their header
+    .modal > :not(.modalHeader) {
+      display: none;
+    }
   }
 
   .stackedModal--depthMax {
