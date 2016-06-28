@@ -12,7 +12,6 @@ $ctaButtonColor: #35d0a0;
     height: $iconSize;
     width: $iconSize;
     font-size: 10px;
-    opacity: 0.7;
   }
 
   .button__label {
@@ -22,6 +21,19 @@ $ctaButtonColor: #35d0a0;
 
   .button__icon + .button__label {
     margin-left: 5px;
+  }
+
+  .icon-plus-white {
+    opacity: 0.7;
+  }
+
+  .icon-history-blue {
+    height: 15px;
+    width: 15px;
+  }
+
+  .icon-history-blue + .button__label {
+    color: $blue;
   }
 
 .button--hollow {
