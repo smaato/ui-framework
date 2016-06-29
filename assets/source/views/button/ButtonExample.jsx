@@ -28,15 +28,6 @@ export default class ButtonExample extends Component {
   }
 
   render() {
-    const iconButtons = Object.keys(Button.TYPE).map(key =>
-      <PrimaryButton
-        type={Button.TYPE[key]}
-        key={key}
-      >
-        {key}
-      </PrimaryButton>
-    );
-
     return (
       <Page title={this.props.route.name}>
         <Example>
@@ -101,7 +92,12 @@ export default class ButtonExample extends Component {
         </Example>
 
         <Example title="Buttons with icons">
-          {iconButtons}
+          <PrimaryButton type={Button.TYPE.ADD}>
+            ADD
+          </PrimaryButton>
+          <HollowButton type={Button.TYPE.LOG}>
+            LOG
+          </HollowButton>
         </Example>
       </Page>
     );
