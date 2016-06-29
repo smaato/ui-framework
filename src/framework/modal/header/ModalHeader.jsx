@@ -18,6 +18,7 @@ const ModalHeader = props => {
         [ModalHeader.TYPE.EDIT]: 'icon-cog',
         [ModalHeader.TYPE.ENDPOINT]: 'icon-link',
         [ModalHeader.TYPE.LINE_ITEM]: 'icon-asterisk',
+        [ModalHeader.TYPE.LOG]: 'icon-history',
         [ModalHeader.TYPE.SMX_LINE_ITEM]: 'icon-document',
         [ModalHeader.TYPE.TARGETING]: 'icon-target',
       };
@@ -73,6 +74,7 @@ ModalHeader.TYPE = keyMirror({
   EDIT: null,
   ENDPOINT: null,
   LINE_ITEM: null,
+  LOG: null,
   SMX_LINE_ITEM: null,
   TARGETING: null,
 });
