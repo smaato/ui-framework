@@ -30,6 +30,7 @@ const Button = props => {
   if (props.type) {
     const typeToIconClassMap = {
       [Button.TYPE.ADD]: 'icon-plus-white',
+      [Button.TYPE.LOG]: 'icon-history-blue',
     };
 
     const iconClasses = classNames(
@@ -66,6 +67,7 @@ const Button = props => {
 
 Button.TYPE = keyMirror({
   ADD: null,
+  LOG: null,
 });
 
 Button.propTypes = {
