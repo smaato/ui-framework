@@ -7,6 +7,10 @@ import classNames from 'classnames';
 import AccountPicture from './AccountPicture.jsx';
 
 const AccountNav = props => {
+  const accountNavUserClasses = classNames('accountNav__user', {
+    'accountNav__user--highlightOnHover': props.onClick,
+  });
+
   let dropdownArrow;
   if (!props.disableDropdown) {
     const dropdownClass = classNames('appHeaderDropdownArrow', {
@@ -19,7 +23,7 @@ const AccountNav = props => {
   return (
     <div className="accountNav">
       <a
-        className="accountNav__user"
+        className={accountNavUserClasses}
         onClick={props.onClick}
       >
         <AccountPicture
