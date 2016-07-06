@@ -16,6 +16,9 @@ $accountNav_borderRadius: $accountNav_height / 2;
     border-radius: $accountNav_borderRadius;
     font-size: 12px;
     line-height: $lineHeight;
+  }
+
+  .accountNav__user--highlightOnHover {
     cursor: pointer;
 
     &:hover {
@@ -27,7 +30,6 @@ $accountNav_borderRadius: $accountNav_height / 2;
     .accountNav__email {
       display: inline-block;
       margin-left: 4px;
-      cursor: pointer;
 
       @media #{$viewport_normalScreen} {
         display: none;
