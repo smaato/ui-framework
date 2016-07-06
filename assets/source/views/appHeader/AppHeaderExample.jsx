@@ -75,10 +75,8 @@ export default class AppHeaderExample extends Component {
             }
             right={
               <AccountNav
-                email="han.solo@smaato.com"
-                onClick={this.onAccountNavClick}
-                isOpen={this.state.isAccountNavOpen}
                 disableDropdown
+                email="han.solo@smaato.com"
                 right={<AppHeaderButton>Logout</AppHeaderButton>}
               />
             }
