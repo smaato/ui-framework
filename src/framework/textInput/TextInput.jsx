@@ -31,6 +31,7 @@ TextInput.propTypes = {
   dataId: PropTypes.string,
   isError: PropTypes.bool,
   isFullWidth: PropTypes.bool,
+  readOnly: PropTypes.bool,
 };
 
 export default TextInput;
