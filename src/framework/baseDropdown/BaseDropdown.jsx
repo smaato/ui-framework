@@ -196,7 +196,16 @@ export default class BaseDropdown extends Component {
         </div>
       );
     }
-
+    if (this.props.readOnly) {
+      return (
+        <div
+          data-id={this.props.dataId}
+          className={labelClasses}
+        >
+          {label}
+        </div>
+      );
+    }
     return (
       <div
         data-id={this.props.dataId}
@@ -237,6 +246,7 @@ BaseDropdown.propTypes = {
   onSelect: PropTypes.func.isRequired,
   labelProvider: PropTypes.func.isRequired,
   optionLabelProvider: PropTypes.func.isRequired,
+  readOnly: PropTypes.bool,
 };
 
 BaseDropdown.defaultProps = {

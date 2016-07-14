@@ -64,5 +64,16 @@ describe('TextInput', () => {
         }
       );
     });
+
+    describe('readOnly', () => {
+      it('when input is readONly then readOnly attribute is applied', () => {
+        const props = {
+          readOnly: true,
+        };
+
+        const testCase = TestCaseFactory.createFromFunction(TextInput, props);
+        expect(testCase.dom.getAttribute('readOnly')).toBeDefined();
+      });
+    });
   });
 });
