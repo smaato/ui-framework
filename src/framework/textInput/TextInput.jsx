@@ -17,6 +17,7 @@ const TextInput = props => {
   return (
     <input
       data-id={props.dataId}
+      disabled={props.isReadonly}
       {...extendedProps}
     />
   );
@@ -31,6 +32,7 @@ TextInput.propTypes = {
   dataId: PropTypes.string,
   isError: PropTypes.bool,
   isFullWidth: PropTypes.bool,
+  isReadonly: PropTypes.bool,
 };
 
 export default TextInput;

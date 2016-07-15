@@ -131,6 +131,18 @@ describe('BaseDropdown', () => {
         expect(optionList().textContent).toBe('Default option label');
       });
     });
+
+    describe('isReadonly', () => {
+      it('prevents rendering of input and option list', () => {
+        const props = Object.assign({}, basicProps, {
+          isReadonly: true,
+        });
+
+        testCase = TestCaseFactory.create(BaseDropdown, props);
+        expect(input()).not.toBeDefined();
+        expect(optionList()).not.toBeDefined();
+      });
+    });
   });
 
   describe('Behavior', () => {
