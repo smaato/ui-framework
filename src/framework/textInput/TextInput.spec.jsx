@@ -64,5 +64,27 @@ describe('TextInput', () => {
         }
       );
     });
+
+    describe('isReadonly', () => {
+      it('when true, disabled and readonly attributes are applied', () => {
+        const props = {
+          isReadonly: true,
+        };
+
+        const testCase = TestCaseFactory.createFromFunction(TextInput, props);
+        expect(testCase.dom.getAttribute('disabled')).toBeDefined();
+        expect(testCase.dom.getAttribute('readonly')).toBeDefined();
+      });
+
+      it('when false, disabled and readonly attributes aren\'t applied', () => {
+        const props = {
+          isReadonly: false,
+        };
+
+        const testCase = TestCaseFactory.createFromFunction(TextInput, props);
+        expect(testCase.dom.getAttribute('disabled')).toBe(null);
+        expect(testCase.dom.getAttribute('readonly')).toBe(null);
+      });
+    });
   });
 });

@@ -46,6 +46,10 @@ export default class TextInputExample extends Component {
           <TextInput isFullWidth />
         </Example>
 
+        <Example title="Readonly">
+          <TextInput isReadonly />
+        </Example>
+
       </Page>
     );
   }

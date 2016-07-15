@@ -57,6 +57,11 @@
   }
 }
 
+.dropdownLabel--readonly {
+  cursor: default;
+  opacity: 0.7;
+}
+
 /**
  * 1. Move up 1px to share border with the label.
  */
