@@ -132,15 +132,15 @@ describe('BaseDropdown', () => {
       });
     });
 
-    describe('readOnly', () => {
-      it('doesn\'t render an input', () => {
+    describe('isReadonly', () => {
+      it('prevents rendering of input and option list', () => {
         const props = Object.assign({}, basicProps, {
-          readOnly: true,
+          isReadonly: true,
         });
 
         testCase = TestCaseFactory.create(BaseDropdown, props);
-        expect(optionList()).not.toBeDefined();
         expect(input()).not.toBeDefined();
+        expect(optionList()).not.toBeDefined();
       });
     });
   });

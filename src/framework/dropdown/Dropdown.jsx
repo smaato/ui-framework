@@ -2,6 +2,7 @@
 import React, {
   Component,
 } from 'react';
+import classNames from 'classnames';
 
 import BaseDropdown from '../baseDropdown/BaseDropdown.jsx';
 
@@ -18,16 +19,24 @@ export default class Dropdown extends Component {
   }
 
   render() {
+    const labelClasses = classNames(this.props.labelClasses, {
+      'dropdownLabel--readonly': this.props.isReadonly,
+    });
+
+    const extendedProps = Object.assign({}, this.props, {
+      labelClasses,
+    });
+
     return (
       <BaseDropdown
-        {...this.props}
+        {...extendedProps}
       />
     );
   }
 
 }
 
-Dropdown.propTypes = BaseDropdown.propTypes;
+Dropdown.propTypes = Object.assign({}, BaseDropdown.propTypes);
 
 Dropdown.defaultProps = Object.assign({}, BaseDropdown.defaultProps, {
   classes: 'dropdown',

@@ -172,6 +172,21 @@ export default class BaseDropdown extends Component {
 
     const label = this.props.labelProvider(this.props.selectedOption);
 
+    if (this.props.isReadonly) {
+      return (
+        <div
+          data-id={this.props.dataId}
+          className={this.props.classes}
+        >
+          <div
+            className={labelClasses}
+          >
+            {label}
+          </div>
+        </div>
+      );
+    }
+
     let optionList;
 
     if (this.state.isOpen) {
@@ -196,16 +211,7 @@ export default class BaseDropdown extends Component {
         </div>
       );
     }
-    if (this.props.readOnly) {
-      return (
-        <div
-          data-id={this.props.dataId}
-          className={labelClasses}
-        >
-          {label}
-        </div>
-      );
-    }
+
     return (
       <div
         data-id={this.props.dataId}
@@ -246,7 +252,7 @@ BaseDropdown.propTypes = {
   onSelect: PropTypes.func.isRequired,
   labelProvider: PropTypes.func.isRequired,
   optionLabelProvider: PropTypes.func.isRequired,
-  readOnly: PropTypes.bool,
+  isReadonly: PropTypes.bool,
 };
 
 BaseDropdown.defaultProps = {

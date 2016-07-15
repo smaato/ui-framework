@@ -75,6 +75,15 @@ export default class DropdownExample extends Component {
           />
         </Example>
 
+        <Example title="With readonly">
+          <Dropdown
+            labelProvider={this.dropdownLabelProvider}
+            optionLabelProvider={this.dropdownOptionLabelProvider}
+            onSelect={this.onSelectDropdownOption}
+            isReadonly
+          />
+        </Example>
+
       </Page>
     );
   }
