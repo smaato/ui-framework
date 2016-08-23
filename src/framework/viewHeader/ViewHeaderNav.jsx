@@ -28,4 +28,6 @@ ViewHeaderNav.propTypes = {
   links: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
+ViewHeaderNav.ACTIVE_LINK_CLASS_NAME = 'is-view-header-nav-link-selected';
+
 export default ViewHeaderNav;
