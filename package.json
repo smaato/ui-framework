@@ -1,7 +1,7 @@
 {
   "name": "ui-framework",
   "private": true,
-  "version": "0.17.6",
+  "version": "0.17.7",
   "description": "Smaato UI Framework",
   "main": "src/framework/framework.js",
   "browserify": {
