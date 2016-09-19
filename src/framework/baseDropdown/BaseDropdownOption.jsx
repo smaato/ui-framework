@@ -34,6 +34,9 @@ export default class BaseDropdownOption extends Component {
     if (this.props.hasFocus) {
       stateClasses[this.props.focusClasses] = true;
     }
+    if (this.props.isSelected) {
+      stateClasses[this.props.selectedClasses] = true;
+    }
     const classes = classNames(this.props.classes, stateClasses);
 
     return (
@@ -53,11 +56,13 @@ BaseDropdownOption.propTypes = {
   children: PropTypes.any,
   classes: PropTypes.string,
   focusClasses: PropTypes.string,
+  selectedClasses: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   onMouseOver: PropTypes.func.isRequired,
   option: PropTypes.any,
   index: PropTypes.number,
   hasFocus: PropTypes.bool,
+  isSelected: PropTypes.bool,
 };
 
 // These defaults exist for testing purposes. They should never be used in
@@ -67,4 +72,5 @@ BaseDropdownOption.defaultProps = {
   onMouseOver: () => undefined,
   classes: 'option',
   focusClasses: 'is-option-focus',
+  selectedClasses: 'is-option-selected',
 };
