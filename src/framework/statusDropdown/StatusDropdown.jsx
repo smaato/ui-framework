@@ -30,10 +30,26 @@ export default class StatusDropdown extends Component {
       labelClassMap[this.props.status]
     );
 
+    let sortedOptions;
+
+    if (this.props.selectedOption) {
+      sortedOptions = [];
+      this.props.options.forEach(option => {
+        if (option === this.props.selectedOption) {
+          sortedOptions.unshift(option);
+        } else {
+          sortedOptions.push(option);
+        }
+      });
+    } else {
+      sortedOptions = this.props.options;
+    }
+
     return (
       <BaseDropdown
         {...this.props}
         labelClasses={labelClasses}
+        options={sortedOptions}
       />
     );
   }
