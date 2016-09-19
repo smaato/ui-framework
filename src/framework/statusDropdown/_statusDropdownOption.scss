@@ -1,10 +1,16 @@
 
 .statusDropdownOption {
+  border-bottom: 1px solid #e1e1e1;
   cursor: pointer;
   font-size: 12px;
+  line-height: 20px;
   padding: 4px 8px;
 
-  &.is-dropdown-option-focus {
-    background-color: rgba(black, 0.05);
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &.is-status-dropdown-option-selected {
+    filter: grayscale(100%);
   }
 }

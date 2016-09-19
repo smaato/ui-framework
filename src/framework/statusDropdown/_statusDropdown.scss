@@ -80,13 +80,14 @@
  */
 .statusDropdownOptionList {
   @include baseDropdownOptionList;
+  background-color: white;
+  border: 1px solid #e1e1e1;
   box-sizing: content-box;
+  color: $blue;
+  font-weight: 400;
+  left: 0;
   margin-left: -1px;
   min-width: 100%;
+  top: 0;
   white-space: nowrap;
-  left: 0;
-  top: calc(100% - 1px); /* 1 */
-  border: 1px solid #bfbfbf;
-  background-color: white;
-  color: black;
 }
