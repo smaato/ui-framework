@@ -17,6 +17,10 @@ export {
   default as StatusDropdownOption,
 } from './StatusDropdownOption.jsx';
 
+export {
+  default as StatusDropdownOptionIcon,
+} from './icon/StatusDropdownOptionIcon.jsx';
+
 export default class StatusDropdown extends Component {
 
   constructor(props) {

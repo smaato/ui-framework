@@ -11,6 +11,7 @@ import Page, {
 import {
   StatusDot,
   StatusDropdown,
+  StatusDropdownOptionIcon,
 } from '../../../framework/framework';
 
 export default class StatusDropdownExample extends Component {
@@ -108,6 +109,30 @@ export default class StatusDropdownExample extends Component {
 
         <Example title="StatusDot POSITIVE">
           <StatusDot status={StatusDot.STATUS.POSITIVE} />
+        </Example>
+
+        <Example title="StatusDropdownOptionIcon ACTIVATE">
+          <StatusDropdownOptionIcon
+            type={StatusDropdownOptionIcon.TYPE.ACTIVATE}
+          />
+        </Example>
+
+        <Example title="StatusDropdownOptionIcon DEACTIVATE">
+          <StatusDropdownOptionIcon
+            type={StatusDropdownOptionIcon.TYPE.DEACTIVATE}
+          />
+        </Example>
+
+        <Example title="StatusDropdownOptionIcon DELETE">
+          <StatusDropdownOptionIcon
+            type={StatusDropdownOptionIcon.TYPE.DELETE}
+          />
+        </Example>
+
+        <Example title="StatusDropdownOptionIcon SELECTED">
+          <StatusDropdownOptionIcon
+            type={StatusDropdownOptionIcon.TYPE.SELECTED}
+          />
         </Example>
 
       </Page>
