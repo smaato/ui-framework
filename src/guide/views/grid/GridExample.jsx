@@ -29,8 +29,6 @@ import {
   PickedSummary,
   RecycledList,
   SearchBox,
-  StatusDot,
-  StatusDropdown,
   StickyGrid,
 } from '../../../framework/framework';
 
@@ -291,29 +289,7 @@ export default class GridExample extends Component {
       }), item => ({
         children: item.name,
       }), item => ({
-        canOverflow: true,
-        children: (
-          <StatusDropdown
-            options={['Paused', 'Running']}
-            selectedOption={item.status}
-            onSelect={function onSelect() { return undefined; }}
-            labelProvider={function labelProvider(option) {
-              return ([
-                <StatusDot
-                  key={0}
-                  status={StatusDropdown.STATUS.POSITIVE}
-                />,
-                <span key={1}>
-                  {option}
-                </span>,
-              ]);
-            }}
-            optionLabelProvider={function optionLabelProvider(option) {
-              return option;
-            }}
-            status={StatusDropdown.STATUS.POSITIVE}
-          />
-        ),
+        children: item.status,
       }), item => {
         const isAllowed = item.fuelEconomy % 2 === 0;
         return {

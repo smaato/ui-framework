@@ -12,5 +12,14 @@
 
   &.is-status-dropdown-option-selected {
     filter: grayscale(100%);
+
+    .statusDropdownOptionIcon.icon-check {
+      margin-left: 10px;
+      opacity: 0.5;
+    }
+  }
+
+  .statusDropdownOptionIcon {
+    margin-right: 5px;
   }
 }
