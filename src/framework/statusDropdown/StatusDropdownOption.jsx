@@ -13,7 +13,8 @@ StatusDropdownOption.propTypes = BaseDropdownOption.propTypes;
 
 StatusDropdownOption.defaultProps = {
   classes: 'statusDropdownOption',
-  focusClasses: 'is-dropdown-option-focus',
+  focusClasses: 'is-status-dropdown-option-focus',
+  selectedClasses: 'is-status-dropdown-option-selected',
 };
 
 export default StatusDropdownOption;

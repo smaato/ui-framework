@@ -4,38 +4,80 @@ import StatusDropdown from './StatusDropdown.jsx';
 import BaseDropdown from '../baseDropdown/BaseDropdown.jsx';
 
 describe('StatusDropdown', () => {
-  const requiredProps = {
-    onSelect: () => undefined,
-    labelProvider: () => undefined,
-    optionLabelProvider: () => undefined,
-  };
-
   describe('DOM structure', () => {
-    it('is a BaseDropdown', () => {
-      const props = Object.assign({}, requiredProps);
+    it('renders BaseDropdown', () => {
+      const props = {
+        onSelect: () => undefined,
+      };
       const testCase = TestCaseFactory.create(StatusDropdown, props);
       expect(testCase.findComponents(BaseDropdown)).toBeDefined();
     });
   });
 
   describe('Props', () => {
-    describe('status', () => {
-      it('NEGATIVE applies the appropriate label class', () => {
-        const props = Object.assign({}, requiredProps, {
-          status: StatusDropdown.STATUS.NEGATIVE,
-        });
+    describe('onSelect', () => {
+      it('is passed to BaseDropdown', () => {
+        const onSelect = () => undefined;
+        const props = {
+          onSelect,
+        };
         const testCase = TestCaseFactory.create(StatusDropdown, props);
-        const label = testCase.first('.statusDropdownLabel');
-        expect(label.className).toContain('statusDropdownLabel--negative');
+        const baseDropdown = testCase.findComponents(BaseDropdown)[0];
+
+        expect(baseDropdown.props.onSelect).toBe(onSelect);
+      });
+    });
+
+    describe('options', () => {
+      it('is passed to BaseDropdown', () => {
+        const options = [
+          StatusDropdown.OPTIONS.ACTIVATE,
+          StatusDropdown.OPTIONS.DEACTIVATE,
+          StatusDropdown.OPTIONS.DELETE,
+        ];
+        const props = {
+          onSelect: () => undefined,
+          options,
+        };
+        const testCase = TestCaseFactory.create(StatusDropdown, props);
+        const baseDropdown = testCase.findComponents(BaseDropdown)[0];
+
+        expect(baseDropdown.props.options).toBe(options);
+      });
+    });
+
+    describe('selectedOption', () => {
+      it('is moved to first position in options when defined', () => {
+        const selectedOption = StatusDropdown.OPTIONS.DELETE;
+        const props = {
+          onSelect: () => undefined,
+          options: [
+            StatusDropdown.OPTIONS.ACTIVATE,
+            StatusDropdown.OPTIONS.DEACTIVATE,
+            selectedOption,
+          ],
+          selectedOption,
+        };
+        const testCase = TestCaseFactory.create(StatusDropdown, props);
+        const baseDropdown = testCase.findComponents(BaseDropdown)[0];
+
+        expect(baseDropdown.props.options.indexOf(selectedOption)).toBe(0);
       });
 
-      it('POSITIVE applies the appropriate label class', () => {
-        const props = Object.assign({}, requiredProps, {
-          status: StatusDropdown.STATUS.POSITIVE,
-        });
+      it('isn\'t moved inside options when undefined', () => {
+        const selectedOption = StatusDropdown.OPTIONS.DELETE;
+        const props = {
+          onSelect: () => undefined,
+          options: [
+            StatusDropdown.OPTIONS.ACTIVATE,
+            StatusDropdown.OPTIONS.DEACTIVATE,
+            selectedOption,
+          ],
+        };
         const testCase = TestCaseFactory.create(StatusDropdown, props);
-        const label = testCase.first('.statusDropdownLabel');
-        expect(label.className).toContain('statusDropdownLabel--positive');
+        const baseDropdown = testCase.findComponents(BaseDropdown)[0];
+
+        expect(baseDropdown.props.options.indexOf(selectedOption)).toBe(2);
       });
     });
   });
