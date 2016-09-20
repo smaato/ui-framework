@@ -36,7 +36,6 @@ import ProgressExample
   from '../../views/progress/ProgressExample.jsx';
 import SearchBoxExample
   from '../../views/searchBox/SearchBoxExample.jsx';
-import StatusDotExample from '../../views/statusDot/StatusDotExample.jsx';
 import StatusDropdownExample
   from '../../views/statusDropdown/StatusDropdownExample.jsx';
 import SummaryControlExample
@@ -154,10 +153,6 @@ const components = [{
   name: 'SearchBox',
   source: 'views/searchBox/SearchBoxExample.jsx',
   component: SearchBoxExample,
-}, {
-  name: 'StatusDot',
-  source: 'views/statusDropdown/StatusDotExample.jsx',
-  component: StatusDotExample,
 }, {
   name: 'StatusDropdown',
   source: 'views/statusDropdown/StatusDropdownExample.jsx',

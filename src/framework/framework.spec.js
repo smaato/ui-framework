@@ -75,7 +75,6 @@ import {
   ProgressSuccess,
   RecycledList,
   SearchBox,
-  StatusDot,
   StatusDropdown,
   StatusDropdownOption,
   StickyGrid,
@@ -315,9 +314,6 @@ const components = [{
 }, {
   name: 'SearchBox',
   component: SearchBox,
-}, {
-  name: 'StatusDot',
-  component: StatusDot,
 }, {
   name: 'StatusDropdown',
   component: StatusDropdown,

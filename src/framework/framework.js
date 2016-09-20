@@ -78,8 +78,6 @@ export { default as RecycledList } from './recycledList/RecycledList.jsx';
 export * from './searchBox/SearchBox.jsx';
 export { default as SearchBox } from './searchBox/SearchBox.jsx';
 
-export { default as StatusDot } from './statusDot/StatusDot.jsx';
-
 export * from './statusDropdown/StatusDropdown.jsx';
 export { default as StatusDropdown } from './statusDropdown/StatusDropdown.jsx';
 

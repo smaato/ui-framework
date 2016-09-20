@@ -98,6 +98,18 @@ export default class StatusDropdownExample extends Component {
           />
         </Example>
 
+        <Example title="StatusDot without status">
+          <StatusDot />
+        </Example>
+
+        <Example title="StatusDot NEGATIVE">
+          <StatusDot status={StatusDot.STATUS.NEGATIVE} />
+        </Example>
+
+        <Example title="StatusDot POSITIVE">
+          <StatusDot status={StatusDot.STATUS.POSITIVE} />
+        </Example>
+
       </Page>
     );
   }

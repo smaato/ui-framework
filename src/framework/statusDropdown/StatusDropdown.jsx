@@ -10,6 +10,10 @@ import BaseDropdown from '../baseDropdown/BaseDropdown.jsx';
 import StatusDropdownOption from './StatusDropdownOption.jsx';
 
 export {
+  default as StatusDot,
+} from './statusDot/StatusDot.jsx';
+
+export {
   default as StatusDropdownOption,
 } from './StatusDropdownOption.jsx';
 
