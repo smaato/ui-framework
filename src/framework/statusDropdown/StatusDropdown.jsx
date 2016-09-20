@@ -8,7 +8,8 @@ import keyMirror from 'keymirror';
 import BaseDropdown from '../baseDropdown/BaseDropdown.jsx';
 import StatusDot from './statusDot/StatusDot.jsx';
 import StatusDropdownOption from './StatusDropdownOption.jsx';
-import StatusDropdownOptionIcon from './icon/StatusDropdownOptionIcon.jsx';
+import StatusDropdownOptionIcon
+  from './statusDropdownOptionIcon/StatusDropdownOptionIcon.jsx';
 
 export {
   default as StatusDot,
@@ -20,7 +21,7 @@ export {
 
 export {
   default as StatusDropdownOptionIcon,
-} from './icon/StatusDropdownOptionIcon.jsx';
+} from './statusDropdownOptionIcon/StatusDropdownOptionIcon.jsx';
 
 export default class StatusDropdown extends Component {
 
