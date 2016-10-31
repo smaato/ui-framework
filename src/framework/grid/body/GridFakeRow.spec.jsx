@@ -45,7 +45,7 @@ describe('GridFakeRow', () => {
         );
 
         expect(testCase.first('div').getAttribute('style'))
-          .toBe('background-color: red; ');
+          .toBe('background-color: red;');
       });
     });
   });
