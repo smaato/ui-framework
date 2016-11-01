@@ -12,7 +12,7 @@ describe('ViewHeader', () => {
           right: <div className="child child2" />,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(ViewHeader, props);
+        const testCase = TestCaseFactory.create(ViewHeader, props);
         const children = testCase.find('.child');
         expect(children[0].getAttribute('class')).toContain('child1');
       });
@@ -25,7 +25,7 @@ describe('ViewHeader', () => {
           right: <div className="child child2" />,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(ViewHeader, props);
+        const testCase = TestCaseFactory.create(ViewHeader, props);
         const children = testCase.find('.child');
         expect(children[1].getAttribute('class')).toContain('child2');
       });

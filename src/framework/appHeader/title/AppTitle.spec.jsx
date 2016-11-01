@@ -10,7 +10,7 @@ describe('AppTitle', () => {
           text: 'Test',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(AppTitle, props);
+        const testCase = TestCaseFactory.create(AppTitle, props);
 
         expect(testCase.dom.textContent).toBe(props.text);
       });

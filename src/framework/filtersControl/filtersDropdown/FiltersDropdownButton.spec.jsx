@@ -11,7 +11,7 @@ describe('FiltersDropdownButton', () => {
         };
 
         const testCase =
-          TestCaseFactory.createFromFunction(FiltersDropdownButton, props);
+          TestCaseFactory.create(FiltersDropdownButton, props);
 
         expect(props.onClick).not.toHaveBeenCalled();
         testCase.trigger('click');
@@ -26,7 +26,7 @@ describe('FiltersDropdownButton', () => {
         };
 
         const testCase =
-          TestCaseFactory.createFromFunction(FiltersDropdownButton, props);
+          TestCaseFactory.create(FiltersDropdownButton, props);
 
         expect(testCase.dom.className).toContain('is-filters-dropdown-open');
       });
@@ -37,7 +37,7 @@ describe('FiltersDropdownButton', () => {
         };
 
         const testCase =
-          TestCaseFactory.createFromFunction(FiltersDropdownButton, props);
+          TestCaseFactory.create(FiltersDropdownButton, props);
 
         expect(testCase.dom.className)
           .not.toContain('is-filters-dropdown-open');

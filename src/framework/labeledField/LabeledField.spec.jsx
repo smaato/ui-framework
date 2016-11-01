@@ -13,7 +13,7 @@ describe('LabeledField', () => {
         };
 
         const testCase =
-          TestCaseFactory.createFromFunction(LabeledField, props);
+          TestCaseFactory.create(LabeledField, props);
         expect(testCase.first('#test')).toBeDefined();
       });
     });
@@ -25,7 +25,7 @@ describe('LabeledField', () => {
         };
 
         const testCase =
-          TestCaseFactory.createFromFunction(LabeledField, props);
+          TestCaseFactory.create(LabeledField, props);
         expect(testCase.first('label').textContent).toBe(props.label);
       });
     });

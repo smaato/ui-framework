@@ -11,7 +11,7 @@ describe('AppLogo', () => {
           text: 'Test',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(AppLogo, props);
+        const testCase = TestCaseFactory.create(AppLogo, props);
         expect(testCase.dom.tagName).toBe('A');
       });
 
@@ -21,7 +21,7 @@ describe('AppLogo', () => {
           text: 'Test',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(AppLogo, props);
+        const testCase = TestCaseFactory.create(AppLogo, props);
         expect(testCase.dom.getAttribute('href')).toBe(props.href);
       });
 
@@ -30,7 +30,7 @@ describe('AppLogo', () => {
           text: 'Test',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(AppLogo, props);
+        const testCase = TestCaseFactory.create(AppLogo, props);
         expect(testCase.dom.tagName).toBe('SPAN');
       });
     });
@@ -42,7 +42,7 @@ describe('AppLogo', () => {
           text: 'Test',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(AppLogo, props);
+        const testCase = TestCaseFactory.create(AppLogo, props);
         expect(testCase.dom.textContent).toBe(props.text);
       });
 
@@ -51,7 +51,7 @@ describe('AppLogo', () => {
           text: 'Test',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(AppLogo, props);
+        const testCase = TestCaseFactory.create(AppLogo, props);
         expect(testCase.dom.textContent).toBe(props.text);
       });
 
@@ -60,7 +60,7 @@ describe('AppLogo', () => {
           text: 'Test',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(AppLogo, props);
+        const testCase = TestCaseFactory.create(AppLogo, props);
         expect(testCase.dom.getAttribute('title')).toBe(props.text);
       });
     });

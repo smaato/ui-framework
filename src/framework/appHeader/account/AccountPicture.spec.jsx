@@ -9,7 +9,7 @@ describe('AccountPicture', () => {
         const props = {
           url: '/img/testImage.png',
         };
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           AccountPicture,
           props
         );
@@ -18,7 +18,7 @@ describe('AccountPicture', () => {
       });
 
       it('renders an icon when not set', () => {
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           AccountPicture
         );
         expect(testCase.first('img')).not.toBeDefined();
@@ -29,7 +29,7 @@ describe('AccountPicture', () => {
         const props = {
           url: '/img/testImage.png',
         };
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           AccountPicture,
           props
         );
@@ -43,7 +43,7 @@ describe('AccountPicture', () => {
           url: '/img/testImage.png',
           title: 'testTitle',
         };
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           AccountPicture,
           props
         );
@@ -54,7 +54,7 @@ describe('AccountPicture', () => {
         const props = {
           title: 'testTitle',
         };
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           AccountPicture,
           props
         );

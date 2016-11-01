@@ -10,7 +10,7 @@ describe('AccountNav', () => {
         const props = {
           email: 'testEmail',
         };
-        const testCase = TestCaseFactory.createFromFunction(AccountNav, props);
+        const testCase = TestCaseFactory.create(AccountNav, props);
         expect(
           testCase.first('.accountNav__email').textContent
         ).toBe(props.email);
@@ -23,7 +23,7 @@ describe('AccountNav', () => {
           email: '',
           pictureUrl: '/img/testImage.png',
         };
-        const testCase = TestCaseFactory.createFromFunction(AccountNav, props);
+        const testCase = TestCaseFactory.create(AccountNav, props);
         expect(
           testCase.first('img').getAttribute('src')
         ).toBe(props.pictureUrl);
@@ -36,7 +36,7 @@ describe('AccountNav', () => {
           email: '',
           isOpen: true,
         };
-        const testCase = TestCaseFactory.createFromFunction(AccountNav, props);
+        const testCase = TestCaseFactory.create(AccountNav, props);
         const dropdownArrow = testCase.first('.appHeaderDropdownArrow');
         expect(dropdownArrow.className)
           .toContain('is-app-header-dropdown-arrow-open');
@@ -47,7 +47,7 @@ describe('AccountNav', () => {
           email: '',
           isOpen: false,
         };
-        const testCase = TestCaseFactory.createFromFunction(AccountNav, props);
+        const testCase = TestCaseFactory.create(AccountNav, props);
         const dropdownArrow = testCase.first('.appHeaderDropdownArrow');
         expect(dropdownArrow.className)
           .not.toContain('is-app-header-dropdown-arrow-open');
@@ -60,7 +60,7 @@ describe('AccountNav', () => {
           email: '',
           onClick: jasmine.createSpy('onClick'),
         };
-        const testCase = TestCaseFactory.createFromFunction(AccountNav, props);
+        const testCase = TestCaseFactory.create(AccountNav, props);
         expect(props.onClick).not.toHaveBeenCalled();
         testCase.trigger('click', testCase.first('a'));
         expect(props.onClick).toHaveBeenCalled();
@@ -73,7 +73,7 @@ describe('AccountNav', () => {
           email: '',
           disableDropdown: false,
         };
-        const testCase = TestCaseFactory.createFromFunction(AccountNav, props);
+        const testCase = TestCaseFactory.create(AccountNav, props);
         const dropdownArrow = testCase.first('.appHeaderDropdownArrow');
         expect(dropdownArrow).toBeDefined();
       });
@@ -83,7 +83,7 @@ describe('AccountNav', () => {
           email: '',
           disableDropdown: true,
         };
-        const testCase = TestCaseFactory.createFromFunction(AccountNav, props);
+        const testCase = TestCaseFactory.create(AccountNav, props);
         const dropdownArrow = testCase.first('.appHeaderDropdownArrow');
         expect(dropdownArrow).not.toBeDefined();
       });
@@ -95,7 +95,7 @@ describe('AccountNav', () => {
           email: '',
           right: <div id="test">testRight</div>,
         };
-        const testCase = TestCaseFactory.createFromFunction(AccountNav, props);
+        const testCase = TestCaseFactory.create(AccountNav, props);
         expect(testCase.first('#test').textContent).toBe('testRight');
       });
     });

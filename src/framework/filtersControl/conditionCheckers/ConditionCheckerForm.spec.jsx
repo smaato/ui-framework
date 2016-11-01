@@ -19,7 +19,7 @@ describe('ConditionCheckerForm', () => {
         };
 
         const testCase =
-          TestCaseFactory.createFromClass(ConditionCheckerForm, props);
+          TestCaseFactory.create(ConditionCheckerForm, props);
 
         expect(testCase.first('.conditionCheckerForm__filterName').textContent)
           .toContain(props.filterOption.name);
@@ -36,7 +36,7 @@ describe('ConditionCheckerForm', () => {
         };
 
         const testCase =
-          TestCaseFactory.createFromClass(ConditionCheckerForm, props);
+          TestCaseFactory.create(ConditionCheckerForm, props);
 
         expect(testCase.first('.conditionCheckerForm__filterName').textContent)
           .toContain(props.comparisonType);
@@ -59,7 +59,7 @@ describe('ConditionCheckerForm', () => {
           };
 
           const testCase =
-            TestCaseFactory.createFromClass(ConditionCheckerForm, props);
+            TestCaseFactory.create(ConditionCheckerForm, props);
 
           expect(props.onAddConditionChecker).not.toHaveBeenCalled();
           clickAddButton(testCase);
@@ -78,7 +78,7 @@ describe('ConditionCheckerForm', () => {
           };
 
           const testCase =
-            TestCaseFactory.createFromClass(ConditionCheckerForm, props);
+            TestCaseFactory.create(ConditionCheckerForm, props);
 
           expect(props.onAddConditionChecker).not.toHaveBeenCalled();
           testCase.trigger('keyUp', testCase.first('input'), { key: 'Enter' });
@@ -97,7 +97,7 @@ describe('ConditionCheckerForm', () => {
         };
 
         const testCase =
-          TestCaseFactory.createFromClass(ConditionCheckerForm, props);
+          TestCaseFactory.create(ConditionCheckerForm, props);
 
         testCase.first('input').value = 'inputValue';
 
@@ -118,7 +118,7 @@ describe('ConditionCheckerForm', () => {
         };
 
         const testCase =
-          TestCaseFactory.createFromClass(ConditionCheckerForm, props);
+          TestCaseFactory.create(ConditionCheckerForm, props);
 
         testCase.first('input').value = 'inputValue';
 
@@ -138,7 +138,7 @@ describe('ConditionCheckerForm', () => {
           };
 
           const testCase =
-            TestCaseFactory.createFromClass(ConditionCheckerForm, props);
+            TestCaseFactory.create(ConditionCheckerForm, props);
 
           testCase.first('input').value = 'inputValue';
 
@@ -157,7 +157,7 @@ describe('ConditionCheckerForm', () => {
         };
 
         const testCase =
-          TestCaseFactory.createFromClass(ConditionCheckerForm, props);
+          TestCaseFactory.create(ConditionCheckerForm, props);
 
         testCase.first('input').value = 'inputValue';
         clickAddButton(testCase);
@@ -191,7 +191,7 @@ describe('ConditionCheckerForm', () => {
         };
 
         const testCase =
-          TestCaseFactory.createFromClass(ConditionCheckerForm, props);
+          TestCaseFactory.create(ConditionCheckerForm, props);
 
         expect(props.onCancelConditionChecker).not.toHaveBeenCalled();
         clickCancelButton(testCase);

@@ -6,7 +6,7 @@ import TextArea from './TextArea.jsx';
 describe('TextArea', () => {
   describe('DOM structure', () => {
     it('is a textarea element with a textArea class', () => {
-      const testCase = TestCaseFactory.createFromFunction(TextArea);
+      const testCase = TestCaseFactory.create(TextArea);
       expect(testCase.dom.tagName).toBe('TEXTAREA');
       expect(testCase.dom.getAttribute('class')).toBe('textArea');
     });
@@ -21,7 +21,7 @@ describe('TextArea', () => {
           isError: true,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(TextArea, props);
+        const testCase = TestCaseFactory.create(TextArea, props);
         expect(testCase.dom.getAttribute('class'))
           .toContain('is-text-box-error');
       });
@@ -33,7 +33,7 @@ describe('TextArea', () => {
             isError: false,
           };
 
-          const testCase = TestCaseFactory.createFromFunction(TextArea, props);
+          const testCase = TestCaseFactory.create(TextArea, props);
           expect(testCase.dom.getAttribute('class'))
             .not.toContain('is-text-box-error');
         }
@@ -46,7 +46,7 @@ describe('TextArea', () => {
           isFullWidth: true,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(TextArea, props);
+        const testCase = TestCaseFactory.create(TextArea, props);
         expect(testCase.dom.getAttribute('class'))
           .toContain('textArea--fullWidth');
       });
@@ -58,7 +58,7 @@ describe('TextArea', () => {
             isFullWidth: false,
           };
 
-          const testCase = TestCaseFactory.createFromFunction(TextArea, props);
+          const testCase = TestCaseFactory.create(TextArea, props);
           expect(testCase.dom.getAttribute('class'))
             .not.toContain('textArea--fullWidth');
         }
@@ -71,7 +71,7 @@ describe('TextArea', () => {
           isResizable: true,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(TextArea, props);
+        const testCase = TestCaseFactory.create(TextArea, props);
         expect(testCase.dom.getAttribute('class'))
           .toContain('textArea--resizable');
       });
@@ -83,7 +83,7 @@ describe('TextArea', () => {
             isResizable: false,
           };
 
-          const testCase = TestCaseFactory.createFromFunction(TextArea, props);
+          const testCase = TestCaseFactory.create(TextArea, props);
           expect(testCase.dom.getAttribute('class'))
             .not.toContain('textArea--resizable');
         }

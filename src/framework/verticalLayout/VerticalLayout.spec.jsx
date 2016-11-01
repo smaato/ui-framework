@@ -10,7 +10,7 @@ describe('VerticalLayout', () => {
           children: ['Test1', 'Test2'],
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           VerticalLayout, props);
 
         const items = testCase.find('.verticalLayoutItem');
@@ -27,7 +27,7 @@ describe('VerticalLayout', () => {
           children: 'Test',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           VerticalLayout, props);
 
         const items = testCase.find('.verticalLayoutItem');

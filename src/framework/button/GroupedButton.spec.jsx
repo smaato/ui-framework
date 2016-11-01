@@ -5,7 +5,7 @@ import GroupedButton from './GroupedButton.jsx';
 describe('GroupedButton', () => {
   describe('DOM structure', () => {
     it('has the appropriate class', () => {
-      const testCase = TestCaseFactory.createFromFunction(GroupedButton);
+      const testCase = TestCaseFactory.create(GroupedButton);
       expect(testCase.dom.getAttribute('class')).toContain('button--grouped');
     });
   });
@@ -17,7 +17,7 @@ describe('GroupedButton', () => {
           classes: 'testClass',
         };
         const testCase =
-          TestCaseFactory.createFromFunction(GroupedButton, props);
+          TestCaseFactory.create(GroupedButton, props);
         expect(testCase.dom.className).toContain(props.classes);
       });
     });

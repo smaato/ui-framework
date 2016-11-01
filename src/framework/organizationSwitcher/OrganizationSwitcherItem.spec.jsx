@@ -10,7 +10,7 @@ describe('OrganizationSwitcherItem', () => {
           id: 'An unlikely ID value',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           OrganizationSwitcherItem,
           props
         );
@@ -24,7 +24,7 @@ describe('OrganizationSwitcherItem', () => {
           name: 'An unlikely name value',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           OrganizationSwitcherItem,
           props
         );
@@ -38,7 +38,7 @@ describe('OrganizationSwitcherItem', () => {
           onSelect: jasmine.createSpy('onSelect'),
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           OrganizationSwitcherItem,
           props
         );
@@ -55,7 +55,7 @@ describe('OrganizationSwitcherItem', () => {
           onSelect: jasmine.createSpy('onSelect'),
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           OrganizationSwitcherItem,
           props
         );
@@ -73,7 +73,7 @@ describe('OrganizationSwitcherItem', () => {
           message: 'Test message',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           OrganizationSwitcherItem,
           props
         );
@@ -85,7 +85,7 @@ describe('OrganizationSwitcherItem', () => {
           message: 'Test message',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           OrganizationSwitcherItem,
           props
         );
