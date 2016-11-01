@@ -17,6 +17,8 @@ import FieldMessageExample
   from '../../views/fieldMessage/FieldMessageExample.jsx';
 import FormExample from '../../views/form/FormExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
+import HorizontalLineExample
+  from '../../views/horizontalLine/HorizontalLineExample.jsx';
 import HtmlElementsExample
   from '../../views/htmlElements/HtmlElementsExample.jsx';
 import KpiExample from '../../views/kpi/KpiExample.jsx';
@@ -101,6 +103,10 @@ const components = [{
   name: 'Grid',
   source: 'views/grid/GridExample.jsx',
   component: GridExample,
+}, {
+  name: 'HorizontalLine',
+  source: 'views/horizontalLine/HorizontalLineExample.jsx',
+  component: HorizontalLineExample,
 }, {
   name: 'HTML elements',
   source: 'views/htmlElements/htmlElementsExample.jsx',

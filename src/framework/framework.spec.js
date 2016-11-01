@@ -46,6 +46,7 @@ import {
   GroupedButton,
   Heading,
   HollowButton,
+  HorizontalLine,
   Kpi,
   KpiNegative,
   KpiPositive,
@@ -233,6 +234,9 @@ const components = [{
 }, {
   name: 'HollowButton',
   component: HollowButton,
+}, {
+  name: 'HorizontalLine',
+  component: HorizontalLine,
 }, {
   name: 'Kpi',
   component: Kpi,

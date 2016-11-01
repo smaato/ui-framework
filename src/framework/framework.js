@@ -39,6 +39,9 @@ export { default as Form } from './form/Form.jsx';
 export * from './grid/Grid.jsx';
 export { default as Grid } from './grid/Grid.jsx';
 
+export * from './horizontalLine/HorizontalLine.jsx';
+export { default as HorizontalLine } from './horizontalLine/HorizontalLine.jsx';
+
 export * from './kpi/Kpi.jsx';
 export { default as Kpi } from './kpi/Kpi.jsx';
 
