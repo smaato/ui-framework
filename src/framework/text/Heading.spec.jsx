@@ -24,7 +24,7 @@ describe('Heading', () => {
             size: Heading.SIZE.SMALL,
           };
 
-          const testCase = TestCaseFactory.createFromFunction(Heading, props);
+          const testCase = TestCaseFactory.create(Heading, props);
           expect(testCase.dom.className).toContain('heading--small');
         });
       });
@@ -35,7 +35,7 @@ describe('Heading', () => {
             size: Heading.SIZE.LARGE,
           };
 
-          const testCase = TestCaseFactory.createFromFunction(Heading, props);
+          const testCase = TestCaseFactory.create(Heading, props);
           expect(testCase.dom.className).toContain('heading--large');
         });
       });
