@@ -1,6 +1,12 @@
-.heading {
+.heading--large {
   font-size: 30px;
   font-weight: 400;
   color: #2e9ac2;
   letter-spacing: 0.5px;
+}
+
+.heading--small {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.1px;
 }
