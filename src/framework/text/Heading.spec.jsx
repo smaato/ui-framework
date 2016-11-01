@@ -16,5 +16,29 @@ describe('Heading', () => {
         expect(testCase.dom.textContent).toBe(props.children);
       });
     });
+
+    describe('size', () => {
+      describe('SMALL', () => {
+        it('adds the appropriate class', () => {
+          const props = {
+            size: Heading.SIZE.SMALL,
+          };
+
+          const testCase = TestCaseFactory.create(Heading, props);
+          expect(testCase.dom.className).toContain('heading--small');
+        });
+      });
+
+      describe('LARGE', () => {
+        it('adds the appropriate class', () => {
+          const props = {
+            size: Heading.SIZE.LARGE,
+          };
+
+          const testCase = TestCaseFactory.create(Heading, props);
+          expect(testCase.dom.className).toContain('heading--large');
+        });
+      });
+    });
   });
 });

@@ -72,7 +72,7 @@ describe('GridRow', () => {
           wrap(<GridRow {...props} />)
         );
         expect(testCase.first('tr').getAttribute('style'))
-          .toBe(`height: ${props.height}px; `);
+          .toBe(`height: ${props.height}px;`);
       });
     });
 
