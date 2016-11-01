@@ -68,7 +68,6 @@ export default class TextExample extends Component {
           <Heading size={Heading.SIZE.SMALL}>
             This is small heading text.
           </Heading>
-          <Text>With some text underneeth</Text>
         </Example>
 
       </Page>
