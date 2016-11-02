@@ -52,6 +52,7 @@ import {
   KpiPositive,
   Label,
   LabeledField,
+  LeftFixedLayout,
   Link,
   Menu,
   MenuItem,
@@ -252,6 +253,9 @@ const components = [{
 }, {
   name: 'LabeledField',
   component: LabeledField,
+}, {
+  name: 'LeftFixedLayout',
+  component: LeftFixedLayout,
 }, {
   name: 'Link',
   component: Link,

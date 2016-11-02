@@ -49,6 +49,10 @@ export { default as Label } from './label/Label.jsx';
 
 export { default as LabeledField } from './labeledField/LabeledField.jsx';
 
+export {
+  default as LeftFixedLayout,
+} from './leftFixedLayout/LeftFixedLayout.jsx';
+
 export { default as Link } from './link/Link.jsx';
 
 export * from './menu/Menu.jsx';
