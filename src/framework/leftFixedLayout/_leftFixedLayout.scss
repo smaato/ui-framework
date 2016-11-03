@@ -1,0 +1,18 @@
+
+.leftFixedLayout__leftSide {
+  position: fixed;
+  width: 710px;
+
+  @media #{$viewport_bigScreen} {
+    width: 555px;
+  }
+}
+
+.leftFixedLayout__rightSide {
+  margin-left: 710px;
+  padding-left: 10px;
+
+  @media #{$viewport_bigScreen} {
+    margin-left: 555px;
+  }
+}

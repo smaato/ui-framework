@@ -25,6 +25,8 @@ import KpiExample from '../../views/kpi/KpiExample.jsx';
 import LabeledFieldExample
   from '../../views/labeledField/LabeledFieldExample.jsx';
 import LabelExample from '../../views/label/LabelExample.jsx';
+import LeftFixedLayoutExample
+  from '../../views/leftFixedLayout/LeftFixedLayoutExample.jsx';
 import LinkExample from '../../views/link/LinkExample.jsx';
 import MenuExample from '../../views/menu/MenuExample.jsx';
 import ModalExample from '../../views/modal/ModalExample.jsx';
@@ -123,6 +125,10 @@ const components = [{
   name: 'Label',
   source: 'views/label/LabelExample.jsx',
   component: LabelExample,
+}, {
+  name: 'LeftFixedLayout',
+  source: 'views/leftFixedLayout/LeftFixedLayoutExample.jsx',
+  component: LeftFixedLayoutExample,
 }, {
   name: 'Link',
   source: 'views/link/LinkExample.jsx',
