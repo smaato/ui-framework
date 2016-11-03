@@ -9,7 +9,7 @@ describe('SubLabel', () => {
         const props = {
           children: 'Sub-label text',
         };
-        const testCase = TestCaseFactory.createFromFunction(SubLabel, props);
+        const testCase = TestCaseFactory.create(SubLabel, props);
         expect(testCase.dom.textContent).toBe(props.children);
       });
     });

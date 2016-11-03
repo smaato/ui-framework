@@ -12,7 +12,7 @@ describe('FiltersDropdown', () => {
         };
 
         const testCase =
-          TestCaseFactory.createFromFunction(FiltersDropdown, props);
+          TestCaseFactory.create(FiltersDropdown, props);
 
         expect(testCase.first('#test').textContent).toBe('test');
       });

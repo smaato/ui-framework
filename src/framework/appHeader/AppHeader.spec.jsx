@@ -13,7 +13,7 @@ describe('AppHeader', () => {
           right: <div className="testChild">right</div>,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(AppHeader, props);
+        const testCase = TestCaseFactory.create(AppHeader, props);
         expect(testCase.find('.testChild')[0].textContent).toBe('left');
       });
     });
@@ -26,7 +26,7 @@ describe('AppHeader', () => {
           right: <div className="testChild">right</div>,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(AppHeader, props);
+        const testCase = TestCaseFactory.create(AppHeader, props);
         expect(testCase.find('.testChild')[1].textContent).toBe('center');
       });
     });
@@ -39,7 +39,7 @@ describe('AppHeader', () => {
           right: <div className="testChild">right</div>,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(AppHeader, props);
+        const testCase = TestCaseFactory.create(AppHeader, props);
         expect(testCase.find('.testChild')[2].textContent).toBe('right');
       });
     });

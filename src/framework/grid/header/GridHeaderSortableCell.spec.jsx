@@ -11,7 +11,7 @@ describe('GridHeaderSortableCell', () => {
           onClick: () => undefined,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           GridHeaderSortableCell,
           props
         );
@@ -27,7 +27,7 @@ describe('GridHeaderSortableCell', () => {
           index: 1,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           GridHeaderSortableCell,
           props
         );
@@ -45,7 +45,7 @@ describe('GridHeaderSortableCell', () => {
           isSelected: true,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           GridHeaderSortableCell,
           props
         );
@@ -62,7 +62,7 @@ describe('GridHeaderSortableCell', () => {
           isSortDescending: true,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           GridHeaderSortableCell,
           props
         );

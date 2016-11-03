@@ -12,7 +12,7 @@ describe('AppHeaderDivider', () => {
           right: <div className="right"></div>,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           AppHeaderDivider,
           props
         );
@@ -28,7 +28,7 @@ describe('AppHeaderDivider', () => {
           right: <div className="right"></div>,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           AppHeaderDivider,
           props
         );

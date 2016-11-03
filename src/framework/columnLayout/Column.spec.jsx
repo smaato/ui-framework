@@ -12,7 +12,7 @@ describe('Column', () => {
           children: <div id="child" />,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(Column, props);
+        const testCase = TestCaseFactory.create(Column, props);
         expect(testCase.dom.className).toContain('column--1');
       });
     });
@@ -24,7 +24,7 @@ describe('Column', () => {
           children: <div id="child" />,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(Column, props);
+        const testCase = TestCaseFactory.create(Column, props);
         expect(testCase.first('#child')).toBeDefined();
       });
     });

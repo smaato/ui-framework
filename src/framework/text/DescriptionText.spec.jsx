@@ -10,7 +10,7 @@ describe('DescriptionText', () => {
           children: 'Test',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           DescriptionText,
           props
         );

@@ -11,7 +11,7 @@ describe('AppTitleContainer', () => {
           title: 'Title text',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           AppTitleContainer,
           props
         );

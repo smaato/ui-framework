@@ -11,7 +11,7 @@ describe('AppNav', () => {
           linkType: 'a',
           links: [{}],
         };
-        const testCase = TestCaseFactory.createFromFunction(AppNav, props);
+        const testCase = TestCaseFactory.create(AppNav, props);
         const children = testCase.find('a');
         expect(children.length).toBe(1);
       });
@@ -23,7 +23,7 @@ describe('AppNav', () => {
             to: '',
           }],
         };
-        const testCase = TestCaseFactory.createFromFunction(AppNav, props);
+        const testCase = TestCaseFactory.create(AppNav, props);
         const children = testCase.findComponents(Link);
         expect(children.length).toBe(1);
       });
@@ -39,7 +39,7 @@ describe('AppNav', () => {
             className: 'child child2',
           }],
         };
-        const testCase = TestCaseFactory.createFromFunction(AppNav, props);
+        const testCase = TestCaseFactory.create(AppNav, props);
         const children = testCase.find('.child');
         expect(children.length).toBe(2);
         expect(children[0].getAttribute('class')).toContain('child1');

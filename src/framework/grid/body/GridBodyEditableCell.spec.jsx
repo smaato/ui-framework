@@ -11,7 +11,7 @@ describe('GridBodyEditableCell', () => {
           onClick: () => undefined,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           GridBodyEditableCell,
           props
         );
@@ -26,7 +26,7 @@ describe('GridBodyEditableCell', () => {
           onClick: jasmine.createSpy('onClick'),
         };
 
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           GridBodyEditableCell,
           props
         );

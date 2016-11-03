@@ -19,7 +19,7 @@ describe('FilterOptionList', () => {
 
         const iterationSpy = spyOn(props.filterOptions, 'map');
         expect(iterationSpy).not.toHaveBeenCalled();
-        TestCaseFactory.createFromFunction(FilterOptionList, props);
+        TestCaseFactory.create(FilterOptionList, props);
         expect(iterationSpy).toHaveBeenCalled();
       });
 
@@ -41,7 +41,7 @@ describe('FilterOptionList', () => {
           };
 
           const testCase =
-            TestCaseFactory.createFromFunction(FilterOptionList, props);
+            TestCaseFactory.create(FilterOptionList, props);
 
           const items = testCase.find('.filterOptionListItem');
           items.forEach((item, index) => {
@@ -73,7 +73,7 @@ describe('FilterOptionList', () => {
         };
 
         const testCase =
-          TestCaseFactory.createFromFunction(FilterOptionList, props);
+          TestCaseFactory.create(FilterOptionList, props);
         expect(props.onSelectFilterOption).not.toHaveBeenCalled();
 
         const item = testCase.first('.filterOptionListItem');

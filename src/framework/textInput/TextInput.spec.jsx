@@ -6,7 +6,7 @@ import TextInput from './TextInput.jsx';
 describe('TextInput', () => {
   describe('DOM structure', () => {
     it('is an input element with a textInput class', () => {
-      const testCase = TestCaseFactory.createFromFunction(TextInput);
+      const testCase = TestCaseFactory.create(TextInput);
       expect(testCase.dom.tagName).toBe('INPUT');
       expect(testCase.dom.getAttribute('class')).toBe('textInput');
     });
@@ -21,7 +21,7 @@ describe('TextInput', () => {
           isError: true,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(TextInput, props);
+        const testCase = TestCaseFactory.create(TextInput, props);
         expect(testCase.dom.getAttribute('class'))
           .toContain('is-text-input-error');
       });
@@ -33,7 +33,7 @@ describe('TextInput', () => {
             isError: false,
           };
 
-          const testCase = TestCaseFactory.createFromFunction(TextInput, props);
+          const testCase = TestCaseFactory.create(TextInput, props);
           expect(testCase.dom.getAttribute('class'))
             .not.toContain('is-text-input-error');
         }
@@ -46,7 +46,7 @@ describe('TextInput', () => {
           isFullWidth: true,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(TextInput, props);
+        const testCase = TestCaseFactory.create(TextInput, props);
         expect(testCase.dom.getAttribute('class'))
           .toContain('textInput--fullWidth');
       });
@@ -58,7 +58,7 @@ describe('TextInput', () => {
             isFullWidth: false,
           };
 
-          const testCase = TestCaseFactory.createFromFunction(TextInput, props);
+          const testCase = TestCaseFactory.create(TextInput, props);
           expect(testCase.dom.getAttribute('class'))
             .not.toContain('textInput--fullWidth');
         }
@@ -71,7 +71,7 @@ describe('TextInput', () => {
           isReadonly: true,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(TextInput, props);
+        const testCase = TestCaseFactory.create(TextInput, props);
         expect(testCase.dom.getAttribute('disabled')).toBeDefined();
         expect(testCase.dom.getAttribute('readonly')).toBeDefined();
       });
@@ -81,7 +81,7 @@ describe('TextInput', () => {
           isReadonly: false,
         };
 
-        const testCase = TestCaseFactory.createFromFunction(TextInput, props);
+        const testCase = TestCaseFactory.create(TextInput, props);
         expect(testCase.dom.getAttribute('disabled')).toBe(null);
         expect(testCase.dom.getAttribute('readonly')).toBe(null);
       });

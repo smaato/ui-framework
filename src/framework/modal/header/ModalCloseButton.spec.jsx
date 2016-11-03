@@ -11,7 +11,7 @@ describe('ModalCloseButton', () => {
         onClick = jasmine.createSpy('onClick');
 
         const testCase =
-          TestCaseFactory.createFromFunction(ModalCloseButton, { onClick });
+          TestCaseFactory.create(ModalCloseButton, { onClick });
 
         testCase.trigger('click');
       });
