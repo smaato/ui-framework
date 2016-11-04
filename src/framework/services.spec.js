@@ -1,5 +1,6 @@
 
 import {
+  EscapeKeyHandler,
   polyfillCustomEvent,
   ThrottledEventDispatcher,
   CommonAssertions,
@@ -15,6 +16,12 @@ import {
 } from './services';
 
 describe('UI Framework services', () => {
+  describe('EscapeKeyHandler', () => {
+    it('is exported', () => {
+      expect(EscapeKeyHandler).toEqual(jasmine.any(Function));
+    });
+  });
+
   describe('polyfillCustomEvent', () => {
     it('is exported', () => {
       expect(polyfillCustomEvent).toEqual(jasmine.any(Function));
