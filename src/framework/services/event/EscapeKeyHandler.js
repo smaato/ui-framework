@@ -1,4 +1,6 @@
 
+const ESCAPE_KEY_CODE = 27;
+
 export default class EscapeKeyHandler {
 
   constructor(callback) {
@@ -11,7 +13,7 @@ export default class EscapeKeyHandler {
   }
 
   onKeyDown(event) {
-    if (event.keyCode === 27) {
+    if (event.keyCode === ESCAPE_KEY_CODE) {
       this.callback();
     }
   }
