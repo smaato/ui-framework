@@ -31,6 +31,10 @@ import {
   VerticalLayout,
 } from '../../../framework/framework';
 
+import {
+  EscapeKeyHandler,
+} from '../../../framework/services';
+
 export default class ModalExample extends Component {
 
   constructor(props) {
@@ -43,10 +47,19 @@ export default class ModalExample extends Component {
 
     this.STACKED_MODAL_WIDTH = 400;
 
-    this.addModalToStack = this.addModalToStack.bind(this);
-    this.removeModalFromStack = this.removeModalFromStack.bind(this);
     this.onOpenModal = this.onOpenModal.bind(this);
     this.onCloseModal = this.onCloseModal.bind(this);
+    this.onEscapeKey = this.onEscapeKey.bind(this);
+    this.addModalToStack = this.addModalToStack.bind(this);
+    this.removeModalFromStack = this.removeModalFromStack.bind(this);
+  }
+
+  componentDidMount() {
+    this.escapeKeyHandler = new EscapeKeyHandler(this.onEscapeKey);
+  }
+
+  componentWillUnmount() {
+    this.escapeKeyHandler.removeListener();
   }
 
   onOpenModal() {
@@ -59,6 +72,16 @@ export default class ModalExample extends Component {
     this.setState({
       isModalOpen: false,
     });
+  }
+
+  onEscapeKey() {
+    if (this.state.isModalOpen) {
+      this.onCloseModal();
+    }
+
+    if (this.state.isModalStackOpen) {
+      this.removeModalFromStack();
+    }
   }
 
   addModalToStack() {
