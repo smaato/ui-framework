@@ -1,5 +1,5 @@
 
-import classNames from 'classnames';
+import classNames from 'classnames/dedupe';
 import React from 'react';
 
 import BaseBox from '../base/box/BaseBox.jsx';
