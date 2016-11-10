@@ -10,6 +10,7 @@ import Page, {
 
 import {
   Body,
+  BodyMaxWidthLayout,
   BodyPanel,
   BodyPanelItem,
 } from '../../../framework/framework';
@@ -46,6 +47,24 @@ export default class BodyExample extends Component {
                 background color.
               </BodyPanelItem>
             </BodyPanel>
+          </Body>
+        </Example>
+
+        <Example title="BodyMaxWidthLayout" isClear>
+          <Body>
+            <BodyMaxWidthLayout>
+              This is a BodyMaxWidthLayout.
+            </BodyMaxWidthLayout>
+          </Body>
+        </Example>
+
+        <Example title="BodyMaxWidthLayout with BodyPanel" isClear>
+          <Body>
+            <BodyMaxWidthLayout>
+              <BodyPanel>
+                This is a BodyMaxWidthLayout with a BodyPanel.
+              </BodyPanel>
+            </BodyMaxWidthLayout>
           </Body>
         </Example>
 

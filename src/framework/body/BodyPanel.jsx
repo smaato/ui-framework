@@ -1,8 +1,10 @@
 
+import classNames from 'classnames';
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
+
+import BaseBox from '../base/box/BaseBox.jsx';
 
 const BodyPanel = props => {
   const classes = classNames('bodyPanel', {
@@ -10,9 +12,9 @@ const BodyPanel = props => {
   });
 
   return (
-    <div className={classes}>
+    <BaseBox classes={classes}>
       {props.children}
-    </div>
+    </BaseBox>
   );
 };
 

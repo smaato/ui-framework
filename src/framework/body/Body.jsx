@@ -5,6 +5,10 @@ import React, {
 import classNames from 'classnames';
 
 export {
+  default as BodyMaxWidthLayout,
+} from './BodyMaxWidthLayout.jsx';
+
+export {
   default as BodyPanel,
 } from './BodyPanel.jsx';
 
