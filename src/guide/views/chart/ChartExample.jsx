@@ -11,7 +11,7 @@ import Page, {
   Example,
 } from '../../components/page/Page.jsx';
 
-import { Chart } from '../../../framework/framework';
+import { LineChart } from '../../../framework/framework';
 
 import chartExampleData from './chartExampleData.js';
 
@@ -129,7 +129,7 @@ export default class ChartExample extends Component {
           >
             Change height
           </button>
-          <Chart
+          <LineChart
             data={this.state.chartData}
             dateRange={[this.state.minDate, this.state.maxDate]}
             dateFormat={d3.time.months}

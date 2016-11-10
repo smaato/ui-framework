@@ -1,11 +1,12 @@
 
-import React from 'react';
 /* global d3 */
 import 'd3';
+import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
-import Chart from './Chart.jsx';
 
-describe('Chart', () => {
+import LineChart from './LineChart.jsx';
+
+describe('LineChart', () => {
   let testCase;
 
   const data = [{
@@ -89,27 +90,27 @@ describe('Chart', () => {
       height,
     };
 
-    testCase = TestCaseFactory.createFromElement(<Chart {...props} />);
+    testCase = TestCaseFactory.createFromElement(<LineChart {...props} />);
   });
 
   describe('Structure', () => {
     describe('x axis', () => {
       it('is rendered', () => {
-        const xAxis = testCase.find('.chartXAxis');
+        const xAxis = testCase.find('.lineChartXAxis');
         expect(xAxis.length).toBe(1);
       });
     });
 
     describe('y axis', () => {
       it('is rendered', () => {
-        const yAxis = testCase.find('.chartYAxis');
+        const yAxis = testCase.find('.lineChartYAxis');
         expect(yAxis.length).toBe(1);
       });
     });
 
     describe(`${data.length} chart lines`, () => {
       it('are rendered', () => {
-        const lines = testCase.find('.chartLine');
+        const lines = testCase.find('.lineChartLine');
         expect(lines.length).toBe(data.length);
       });
     });
@@ -119,7 +120,7 @@ describe('Chart', () => {
     describe('data', () => {
       describe('color', () => {
         it('is applied to the chart\'s lines', () => {
-          const lines = testCase.find('.chartLine');
+          const lines = testCase.find('.lineChartLine');
           lines.forEach((line, index) => {
             const lineColor = line.getAttribute('style').toLowerCase();
             const specifiedColor = data[index].color.toLowerCase();
@@ -131,28 +132,28 @@ describe('Chart', () => {
 
     describe('dateRange', () => {
       it('defines the number of x axis ticks', () => {
-        const xAxisTicks = testCase.find('.chartXAxisTick__text');
+        const xAxisTicks = testCase.find('.lineChartXAxisTick__text');
         expect(xAxisTicks.length).toBe(1);
       });
     });
 
     describe('dateFormat', () => {
       it('defines the x axis tick mark text', () => {
-        const xAxisTicks = testCase.find('.chartXAxisTick__text');
+        const xAxisTicks = testCase.find('.lineChartXAxisTick__text');
         expect(xAxisTicks[0].textContent).toBe('April');
       });
     });
 
     describe('yAxisRange', () => {
       it('defines the number of y axis ticks', () => {
-        const yAxisTicks = testCase.find('.chartYAxisTick__text');
+        const yAxisTicks = testCase.find('.lineChartYAxisTick__text');
         expect(yAxisTicks.length).toBe(7);
       });
     });
 
     describe('yAxisFormat', () => {
       it('defines the y axis tick mark text', () => {
-        const yAxisTicks = testCase.find('.chartYAxisTick__text');
+        const yAxisTicks = testCase.find('.lineChartYAxisTick__text');
         yAxisTicks.forEach((tick, index) => {
           expect(tick.textContent).toBe(yAxisFormat(undefined, index));
         });
@@ -161,7 +162,7 @@ describe('Chart', () => {
 
     describe('height', () => {
       it('is applied to the SVG', () => {
-        const svg = testCase.first('.chart__svg');
+        const svg = testCase.first('.lineChart__svg');
         expect(svg.getAttribute('height')).toBe(height.toString());
       });
     });

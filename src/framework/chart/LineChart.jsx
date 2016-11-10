@@ -1,13 +1,11 @@
 
 /* global d3 */
 import 'd3';
-
+import $ from 'jquery';
 import React, {
   Component,
   PropTypes,
 } from 'react';
-
-import $ from 'jquery';
 import ReactDOM from 'react-dom';
 
 import ThrottledEventDispatcher
@@ -111,13 +109,13 @@ export default class LineChart extends Component {
     // Style and position X axis elements.
     function styleXAxis(selection) {
       // Add classes for tests.
-      selection.attr('class', 'chartXAxis');
+      selection.attr('class', 'lineChartXAxis');
 
       selection.selectAll('line')
-        .attr('class', 'chartXAxisTick__mark');
+        .attr('class', 'lineChartXAxisTick__mark');
 
       selection.selectAll('text')
-        .attr('class', 'chartXAxisTick__text');
+        .attr('class', 'lineChartXAxisTick__text');
     }
 
     const xAxisTransform = height - marginBottom - marginTop;
@@ -153,18 +151,18 @@ export default class LineChart extends Component {
     // Style and position Y axis elements.
     function styleYAxis(selection) {
       // Add classes for tests.
-      selection.attr('class', 'chartYAxis');
+      selection.attr('class', 'lineChartYAxis');
 
       // These paths are added by d3.axis, but we don't need them.
       selection.selectAll('path')
         .remove();
 
       selection.selectAll('line')
-        .attr('class', 'chartYAxisTick__mark');
+        .attr('class', 'lineChartYAxisTick__mark');
 
       // Move the text to the left side of the SVG.
       selection.selectAll('text')
-        .attr('class', 'chartYAxisTick__text')
+        .attr('class', 'lineChartYAxisTick__text')
         .attr('dx', -(width - marginRight));
 
       // Add small background boxes behind each tick's text.
@@ -173,7 +171,7 @@ export default class LineChart extends Component {
         .remove();
       selection.selectAll('.tick')
         .insert('rect', ':last-child')
-        .attr('class', 'chartYAxisTick__background')
+        .attr('class', 'lineChartYAxisTick__background')
         .attr('x', -marginLeft)
         .attr('y', -8)
         .attr('width', marginLeft)
@@ -217,7 +215,7 @@ export default class LineChart extends Component {
       .y(item => yAxisScale(item.yValue));
 
     // Bind lines to their data sources.
-    const lines = this.container.selectAll('.chartLine')
+    const lines = this.container.selectAll('.lineChartLine')
       .data(data);
 
     // Transition each line from the previous shape to the new shape.
@@ -228,7 +226,7 @@ export default class LineChart extends Component {
     // Add new paths for new data sources, and set styling.
     lines.enter()
       .append('path')
-      .attr('class', 'chartLine')
+      .attr('class', 'lineChartLine')
       .style('stroke', item => item.color);
 
     // Remove obsolete paths that map to removed data sources.
@@ -239,9 +237,9 @@ export default class LineChart extends Component {
   render() {
     // Render will only be called once, after the component mounts.
     return (
-      <div className="chart">
-        <div className="chart__fakeBackgound"></div>
-        <svg className="chart__svg" />
+      <div className="lineChart">
+        <div className="lineChart__fakeBackgound"></div>
+        <svg className="lineChart__svg" />
       </div>
     );
   }
