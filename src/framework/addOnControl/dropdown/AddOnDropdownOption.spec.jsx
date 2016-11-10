@@ -1,7 +1,7 @@
 
 import { TestCaseFactory } from 'react-test-kit';
 import AddOnDropdownOption from './AddOnDropdownOption.jsx';
-import BaseDropdownOption from '../../baseDropdown/BaseDropdownOption.jsx';
+import BaseDropdownOption from '../../base/dropdown/BaseDropdownOption.jsx';
 
 describe('AddOnDropdownOption', () => {
   describe('DOM structure', () => {
