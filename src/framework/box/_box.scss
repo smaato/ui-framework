@@ -1,0 +1,6 @@
+
+.box {
+  @include baseBox;
+  border-radius: 5px;
+  padding: 20px;
+}

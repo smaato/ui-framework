@@ -8,6 +8,8 @@ export { default as AppHeader } from './appHeader/AppHeader.jsx';
 export * from './body/Body.jsx';
 export { default as Body } from './body/Body.jsx';
 
+export { default as Box } from './box/Box.jsx';
+
 export * from './button/Button.jsx';
 export { default as Button } from './button/Button.jsx';
 

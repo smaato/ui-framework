@@ -16,6 +16,7 @@ import {
   Body,
   BodyPanel,
   BodyPanelItem,
+  Box,
   Button,
   ButtonGroup,
   CallOutButton,
@@ -139,6 +140,9 @@ const components = [{
 }, {
   name: 'BodyPanelItem',
   component: BodyPanelItem,
+}, {
+  name: 'Box',
+  component: Box,
 }, {
   name: 'Button',
   component: Button,
