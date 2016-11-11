@@ -131,12 +131,12 @@ export default class ChartExample extends Component {
           </button>
           <LineChart
             data={this.state.chartData}
+            dateFormat={d3.time.weeks}
             dateRange={[this.state.minDate, this.state.maxDate]}
-            dateFormat={d3.time.months}
-            yAxisRange={[this.state.minTemperature, this.state.maxTemperature]}
+            height={this.state.chartHeight}
             yAxisFormat={formatTemperature}
             yAxisLabelWidth={36}
-            height={this.state.chartHeight}
+            yAxisRange={[this.state.minTemperature, this.state.maxTemperature]}
           />
         </Example>
       </Page>

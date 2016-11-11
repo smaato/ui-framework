@@ -1,57 +1,32 @@
 
-.lineChart {
-  position: relative;
-  background: linear-gradient(#fbfcfd, #f4f6f7);
+$lineChartGridColor: #e5e7e8;
+$lineChartLabelColor: #5e707b;
+
+.lineChartLine {
+  fill: none;
+  stroke-width: 2px;
 }
 
-  .lineChart__svg {
-    position: relative;
-    z-index: 1;
-  }
+// X Axis
 
-  .lineChart__fakeBackgound {
-    position: absolute;
-    z-index: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 20px;
-    background-color: #ffffff;
-    border-top: 1px solid #cbd0d3;
-  }
+.lineChartXAxisTick__mark {
+  shape-rendering: crispEdges;
+  stroke: $lineChartGridColor;
+}
 
-  .lineChartLine {
-    fill: none;
-    stroke-width: 1px;
-  }
+.lineChartXAxisTick__text {
+  fill: $lineChartLabelColor;
+  font-size: 11px;
+}
 
-  // X Axis
+// Y Axis
 
-  .lineChartXAxisTick__mark {
-    stroke: #a3a8ab;
-    shape-rendering: crispEdges;
-  }
+.lineChartYAxisTick__mark {
+  shape-rendering: crispEdges;
+  stroke: $lineChartGridColor;
+}
 
-  .lineChartXAxisTick__text {
-    font-size: 12px;
-    font-weight: 400;
-    fill: #4a5459;
-  }
-
-  // Y Axis
-
-  .lineChartYAxisTick__mark {
-    stroke: #e5e7e8;
-    shape-rendering: crispEdges;
-  }
-
-  .lineChartYAxisTick__text {
-    font-size: 11px;
-    font-weight: 700;
-    fill: #ffffff;
-  }
-
-  .lineChartYAxisTick__background {
-    fill: #636d70;
-    stroke: none;
-  }
+.lineChartYAxisTick__text {
+  fill: $lineChartLabelColor;
+  font-size: 11px;
+}
