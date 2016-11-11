@@ -35,5 +35,15 @@ describe('BaseBox', () => {
         expect(testCase.dom.getAttribute('data-id')).toBe(props.dataId);
       });
     });
+
+    describe('roundedCorners', () => {
+      it('contains \'roundedCorners\' class if has roundedCorners prop', () => {
+        const props = {
+          roundedCorners: true,
+        };
+        const testCase = TestCaseFactory.create(BaseBox, props);
+        expect(testCase.dom.className).toContain('roundedCorners');
+      });
+    });
   });
 });
