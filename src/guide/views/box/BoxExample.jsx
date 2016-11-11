@@ -21,8 +21,13 @@ export default class BoxExample extends Component {
   render() {
     return (
       <Page title={this.props.route.name}>
-        <Example>
+        <Example title="Box with plain corners">
           <Box>
+            This is a simple box.
+          </Box>
+        </Example>
+        <Example title="Box with rounded corners">
+          <Box roundedCorners>
             This is a simple box with rounded corners.
           </Box>
         </Example>
