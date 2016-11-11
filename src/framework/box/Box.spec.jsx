@@ -13,12 +13,20 @@ describe('Box', () => {
         expect(testCase.dom.className).toContain(props.classes);
       });
 
-      it('don\'t replace "box" class', () => {
+      it('doesn\'t replace \'box\' class', () => {
         const props = {
           classes: 'testClass',
         };
         const testCase = TestCaseFactory.create(Box, props);
         expect(testCase.dom.className).toContain('box');
+      });
+
+      it('doesn\'t add identical classes multiple times', () => {
+        const props = {
+          classes: 'box box testClass',
+        };
+        const testCase = TestCaseFactory.create(Box, props);
+        expect(testCase.dom.className).toBe('box testClass');
       });
     });
   });

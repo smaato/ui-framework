@@ -37,7 +37,15 @@ describe('BaseBox', () => {
     });
 
     describe('roundedCorners', () => {
-      it('contains \'roundedCorners\' class if has roundedCorners prop', () => {
+      it('when false doesn\'t add \'roundedCorners\' class', () => {
+        const props = {
+          roundedCorners: false,
+        };
+        const testCase = TestCaseFactory.create(BaseBox, props);
+        expect(testCase.dom.className).not.toContain('roundedCorners');
+      });
+
+      it('when true adds \'roundedCorners\' class', () => {
         const props = {
           roundedCorners: true,
         };
