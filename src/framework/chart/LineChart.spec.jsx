@@ -128,14 +128,16 @@ describe('LineChart', () => {
 
     describe('dateFormat', () => {
       it('defines the x axis tick mark text', () => {
-        const xAxisTicks = testCase.find('.lineChartXAxisTick__text');
+        const xAxisTicks =
+          testCase.find('.lineChartXAxis .lineChartAxisTick__text');
         expect(xAxisTicks[0].textContent).toBe('April');
       });
     });
 
     describe('dateRange', () => {
       it('defines the number of x axis ticks', () => {
-        const xAxisTicks = testCase.find('.lineChartXAxisTick__text');
+        const xAxisTicks =
+          testCase.find('.lineChartXAxis .lineChartAxisTick__text');
         expect(xAxisTicks.length).toBe(1);
       });
     });
@@ -149,7 +151,8 @@ describe('LineChart', () => {
 
     describe('yAxisFormat', () => {
       it('defines the y axis tick mark text', () => {
-        const yAxisTicks = testCase.find('.lineChartYAxisTick__text');
+        const yAxisTicks =
+          testCase.find('.lineChartYAxis .lineChartAxisTick__text');
         yAxisTicks.forEach((tick, index) => {
           expect(tick.textContent).toBe(yAxisFormat(undefined, index));
         });
@@ -158,7 +161,8 @@ describe('LineChart', () => {
 
     describe('yAxisRange', () => {
       it('defines the number of y axis ticks', () => {
-        const yAxisTicks = testCase.find('.lineChartYAxisTick__text');
+        const yAxisTicks =
+          testCase.find('.lineChartYAxis .lineChartAxisTick__text');
         expect(yAxisTicks.length).toBe(7);
       });
     });

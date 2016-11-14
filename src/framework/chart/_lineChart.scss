@@ -1,32 +1,15 @@
 
-$lineChartGridColor: #e5e7e8;
-$lineChartLabelColor: #5e707b;
-
 .lineChartLine {
   fill: none;
   stroke-width: 2px;
 }
 
-// X Axis
-
-.lineChartXAxisTick__mark {
+.lineChartAxisTick__mark {
   shape-rendering: crispEdges;
-  stroke: $lineChartGridColor;
+  stroke: #e5e7e8;
 }
 
-.lineChartXAxisTick__text {
-  fill: $lineChartLabelColor;
-  font-size: 11px;
-}
-
-// Y Axis
-
-.lineChartYAxisTick__mark {
-  shape-rendering: crispEdges;
-  stroke: $lineChartGridColor;
-}
-
-.lineChartYAxisTick__text {
-  fill: $lineChartLabelColor;
+.lineChartAxisTick__text {
+  fill: #5e707b;
   font-size: 11px;
 }

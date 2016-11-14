@@ -57,10 +57,8 @@ export default class LineChart extends Component {
     axis.attr('class', `lineChart${orientation}Axis`);
 
     // Add classes for styling.
-    axis.selectAll('line')
-      .attr('class', `lineChart${orientation}AxisTick__mark`);
-    axis.selectAll('text')
-      .attr('class', `lineChart${orientation}AxisTick__text`);
+    axis.selectAll('line').attr('class', `lineChartAxisTick__mark`);
+    axis.selectAll('text').attr('class', `lineChartAxisTick__text`);
 
     // Remove paths added by d3.axis.
     axis.selectAll('path').remove();

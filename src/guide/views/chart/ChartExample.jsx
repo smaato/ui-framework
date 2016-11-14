@@ -57,34 +57,31 @@ export default class ChartExample extends Component {
 
   setData(rawData) {
     const chartData = this.getInitialChartData();
+    const formatDate = d3.time.format('%Y%m%d').parse;
     let minDate = undefined;
     let maxDate = undefined;
     let minTemperature = undefined;
     let maxTemperature = undefined;
 
-    {
-      const formatDate = d3.time.format('%Y%m%d').parse;
+    rawData.forEach(item => {
+      for (const [index, city] of chartData.entries()) {
+        // Format data.
+        const date = formatDate(item.date);
+        const temperature = +item[city.name];
 
-      rawData.forEach(item => {
-        for (const [index, city] of chartData.entries()) {
-          // Format data.
-          const date = formatDate(item.date);
-          const temperature = +item[city.name];
+        // Store formatted data point.
+        chartData[index].values.push({
+          date,
+          yValue: temperature,
+        });
 
-          // Store formatted data point.
-          chartData[index].values.push({
-            date,
-            yValue: temperature,
-          });
-
-          // Derive ranges.
-          minDate = Math.min(minDate || date, date);
-          maxDate = Math.max(maxDate || date, date);
-          minTemperature = Math.min(minTemperature || temperature, temperature);
-          maxTemperature = Math.max(maxTemperature || temperature, temperature);
-        }
-      });
-    }
+        // Derive ranges.
+        minDate = Math.min(minDate || date, date);
+        maxDate = Math.max(maxDate || date, date);
+        minTemperature = Math.min(minTemperature || temperature, temperature);
+        maxTemperature = Math.max(maxTemperature || temperature, temperature);
+      }
+    });
 
     this.setState({
       chartData,
