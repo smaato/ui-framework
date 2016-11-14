@@ -1,7 +1,20 @@
 
+.leftFixedLayout {
+  position: relative;
+}
+
 .leftFixedLayout__leftSide {
-  position: fixed;
+  left: 0;
+  max-height: 100vh;
+  overflow: auto;
+  position: absolute;
+  top: 0;
   width: 710px;
+
+  &.leftFixedLayout__leftSide--sticky {
+    left: auto;
+    position: fixed;
+  }
 
   @media #{$viewport_bigScreen} {
     width: 555px;
