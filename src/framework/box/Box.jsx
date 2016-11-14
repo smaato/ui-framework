@@ -1,27 +1,29 @@
 
-import classNames from 'classnames/dedupe';
-
-import React from 'react';
-
-import BaseBox from '../base/box/BaseBox.jsx';
+import classNames from 'classnames';
+import React, {
+  PropTypes,
+} from 'react';
 
 const Box = props => {
-  const classes = classNames(Box.defaultProps.classes, props.classes);
-  const extendedProps = Object.assign({}, props, {
-    classes,
+  const classes = classNames('box', props.classes, {
+    'box--roundedCorners': props.roundedCorners,
   });
 
   return (
-    <BaseBox
-      {...extendedProps}
-    />
+    <div
+      className={classes}
+      data-id={props.dataId}
+    >
+      {props.children}
+    </div>
   );
 };
 
-Box.propTypes = Object.assign({}, BaseBox.propTypes);
-
-Box.defaultProps = {
-  classes: 'box',
+Box.propTypes = {
+  children: PropTypes.any,
+  classes: PropTypes.string,
+  dataId: PropTypes.string,
+  roundedCorners: PropTypes.bool,
 };
 
 export default Box;

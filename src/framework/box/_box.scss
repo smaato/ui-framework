@@ -1,5 +1,9 @@
 
 .box {
-  @include baseBox;
-  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #d4dadc;
+}
+
+.box--roundedCorners {
+  border-radius: 5px;
 }

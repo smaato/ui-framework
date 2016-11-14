@@ -73,6 +73,12 @@ export default class BodyExample extends Component {
             This is a BodyPanel.
           </BodyPanel>
         </Example>
+
+        <Example title="BodyPanel with rounded corners" isClear>
+          <BodyPanel roundedCorners>
+            This is a BodyPanel with rounded corners.
+          </BodyPanel>
+        </Example>
       </Page>
     );
   }
