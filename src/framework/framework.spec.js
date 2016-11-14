@@ -19,7 +19,6 @@ import {
   Button,
   ButtonGroup,
   CallOutButton,
-  Chart,
   CheckBox,
   Column,
   ColumnLayout,
@@ -53,6 +52,7 @@ import {
   Label,
   LabeledField,
   LeftFixedLayout,
+  LineChart,
   Link,
   Menu,
   MenuItem,
@@ -148,15 +148,6 @@ const components = [{
 }, {
   name: 'CallOutButton',
   component: CallOutButton,
-}, {
-  name: 'Menu',
-  component: Menu,
-}, {
-  name: 'MenuItem',
-  component: MenuItem,
-}, {
-  name: 'Chart',
-  component: Chart,
 }, {
   name: 'CheckBox',
   component: CheckBox,
@@ -257,8 +248,17 @@ const components = [{
   name: 'LeftFixedLayout',
   component: LeftFixedLayout,
 }, {
+  name: 'LineChart',
+  component: LineChart,
+}, {
   name: 'Link',
   component: Link,
+}, {
+  name: 'Menu',
+  component: Menu,
+}, {
+  name: 'MenuItem',
+  component: MenuItem,
 }, {
   name: 'Modal',
   component: Modal,

@@ -13,8 +13,7 @@ export { default as Button } from './button/Button.jsx';
 
 export { default as ButtonGroup } from './buttonGroup/ButtonGroup.jsx';
 
-export * from './chart/Chart.jsx';
-export { default as Chart } from './chart/Chart.jsx';
+export { default as LineChart } from './chart/LineChart.jsx';
 
 export * from './checkBox/CheckBox.jsx';
 export { default as CheckBox } from './checkBox/CheckBox.jsx';
