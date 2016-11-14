@@ -120,7 +120,7 @@ describe('LineChart', () => {
           lines.forEach((line, index) => {
             const lineStyle = line.getAttribute('style').toLowerCase();
             const specifiedColor = data[index].color.toLowerCase();
-            expect(lineStyle.indexOf(specifiedColor)).not.toBe(-1);
+            expect(lineStyle).toContain(`stroke: ${specifiedColor}`);
           });
         });
       });
