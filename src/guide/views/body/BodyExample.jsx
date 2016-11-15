@@ -74,6 +74,12 @@ export default class BodyExample extends Component {
           </BodyPanel>
         </Example>
 
+        <Example title="BodyPanel" isClear>
+          <BodyPanel isTopFlush>
+            This is a BodyPanel with isTopFlush (no border-top).
+          </BodyPanel>
+        </Example>
+
         <Example title="BodyPanel with rounded corners" isClear>
           <BodyPanel roundedCorners>
             This is a BodyPanel with rounded corners.
