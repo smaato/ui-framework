@@ -1,0 +1,35 @@
+
+.chart {
+  padding: 20px;
+}
+
+  .chart__legend {
+    float: right;
+    font-size: 12px;
+    font-weight: 400;
+
+    > span {
+      margin-left: 20px;
+
+      &:first-child {
+        margin-left: auto;
+      }
+    }
+  }
+
+  .chart__lineChart {
+    margin-top: 20px;
+    position: relative;
+
+    &.chart__lineChart--blurred .lineChart {
+      @include backgroundBlur;
+    }
+
+    .progress {
+      left: 50%;
+      margin-right: -50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }

@@ -20,6 +20,7 @@ import {
   Button,
   ButtonGroup,
   CallOutButton,
+  Chart,
   CheckBox,
   Column,
   ColumnLayout,
@@ -152,6 +153,9 @@ const components = [{
 }, {
   name: 'CallOutButton',
   component: CallOutButton,
+}, {
+  name: 'Chart',
+  component: Chart,
 }, {
   name: 'CheckBox',
   component: CheckBox,

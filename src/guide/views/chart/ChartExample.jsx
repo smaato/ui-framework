@@ -11,7 +11,10 @@ import Page, {
   Example,
 } from '../../components/page/Page.jsx';
 
-import { LineChart } from '../../../framework/framework';
+import {
+  Chart,
+  LineChart,
+} from '../../../framework/framework';
 
 import chartExampleData from './chartExampleData.js';
 
@@ -22,16 +25,18 @@ export default class ChartExample extends Component {
 
     this.state = {
       chartData: this.getInitialChartData(),
+      chartHeight: 400,
+      isLoading: false,
       minDate: undefined,
       maxDate: undefined,
       minTemperature: undefined,
       maxTemperature: undefined,
-      chartHeight: 400,
       useBatch1: false,
     };
 
     this.onClickChangeData = this.onClickChangeData.bind(this);
     this.onClickChangeHeight = this.onClickChangeHeight.bind(this);
+    this.onClickToggleIsLoading = this.onClickToggleIsLoading.bind(this);
   }
 
   componentDidMount() {
@@ -52,6 +57,12 @@ export default class ChartExample extends Component {
   onClickChangeHeight() {
     this.setState({
       chartHeight: 300 + Math.round(Math.random() * 300),
+    });
+  }
+
+  onClickToggleIsLoading() {
+    this.setState({
+      isLoading: !this.state.isLoading,
     });
   }
 
@@ -108,6 +119,14 @@ export default class ChartExample extends Component {
     }];
   }
 
+  legendLabelProvider(dataSet) {
+    const dateFormat = d3.time.format('%B %e');
+    const firstDate = new Date(dataSet[0].date);
+    const lastDate = new Date(dataSet[(dataSet.length - 1)].date);
+
+    return `${dateFormat(firstDate)} - ${dateFormat(lastDate)}`;
+  }
+
   render() {
     function formatTemperature(value) {
       return `${value}${String.fromCharCode(176)} F`;
@@ -115,15 +134,64 @@ export default class ChartExample extends Component {
 
     return (
       <Page title={this.props.route.name}>
-        <Example>
-          <button
-            onClick={this.onClickChangeData}
-          >
+        <Example title="Chart">
+          <button onClick={this.onClickToggleIsLoading}>
+            Toggle "isLoading"
+          </button>
+          <Chart
+            data={[[{
+              date: 1460757600000,
+              value: 30,
+            }, {
+              date: 1460844000000,
+              value: 31,
+            }, {
+              date: 1460930400000,
+              value: 33,
+            }, {
+              date: 1461016800000,
+              value: 32,
+            }, {
+              date: 1461103200000,
+              value: 22,
+            }, {
+              date: 1461189600000,
+              value: 30,
+            }, {
+              date: 1461276000000,
+              value: 31,
+            }], [{
+              date: 1460757600000,
+              value: 25,
+            }, {
+              date: 1460844000000,
+              value: 24,
+            }, {
+              date: 1460930400000,
+              value: 28,
+            }, {
+              date: 1461016800000,
+              value: 29,
+            }, {
+              date: 1461103200000,
+              value: 27,
+            }, {
+              date: 1461189600000,
+              value: 25,
+            }, {
+              date: 1461276000000,
+              value: 26,
+            }]]}
+            isLoading={this.state.isLoading}
+            legendLabelProvider={this.legendLabelProvider}
+            title="Title"
+          />
+        </Example>
+        <Example title="LineChart">
+          <button onClick={this.onClickChangeData}>
             Change data
           </button>
-          <button
-            onClick={this.onClickChangeHeight}
-          >
+          <button onClick={this.onClickChangeHeight}>
             Change height
           </button>
           <LineChart
