@@ -10,6 +10,7 @@ import Page, {
 
 import {
   Body,
+  BodyMaxWidthLayout,
   BodyPanel,
   BodyPanelItem,
 } from '../../../framework/framework';
@@ -49,9 +50,33 @@ export default class BodyExample extends Component {
           </Body>
         </Example>
 
+        <Example title="BodyMaxWidthLayout" isClear>
+          <Body>
+            <BodyMaxWidthLayout>
+              This is a BodyMaxWidthLayout.
+            </BodyMaxWidthLayout>
+          </Body>
+        </Example>
+
+        <Example title="BodyMaxWidthLayout with BodyPanel" isClear>
+          <Body>
+            <BodyMaxWidthLayout>
+              <BodyPanel>
+                This is a BodyMaxWidthLayout with a BodyPanel.
+              </BodyPanel>
+            </BodyMaxWidthLayout>
+          </Body>
+        </Example>
+
         <Example title="BodyPanel" isClear>
           <BodyPanel>
             This is a BodyPanel.
+          </BodyPanel>
+        </Example>
+
+        <Example title="BodyPanel with rounded corners" isClear>
+          <BodyPanel roundedCorners>
+            This is a BodyPanel with rounded corners.
           </BodyPanel>
         </Example>
       </Page>

@@ -140,7 +140,7 @@ export default class MenuExample extends Component {
         ref="scrollingMenu"
         style={{
           height: 300,
-          overflow: 'scroll',
+          overflowY: 'scroll',
         }}
       >
         <RecycledList

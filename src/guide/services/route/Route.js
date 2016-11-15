@@ -6,6 +6,7 @@ import AddOnControlExample
   from '../../views/addOnControl/AddOnControlExample.jsx';
 import AppHeaderExample from '../../views/appHeader/AppHeaderExample.jsx';
 import BodyExample from '../../views/body/BodyExample.jsx';
+import BoxExample from '../../views/box/BoxExample.jsx';
 import ButtonExample from '../../views/button/ButtonExample.jsx';
 import ButtonGroupExample from '../../views/buttonGroup/ButtonGroupExample.jsx';
 import ChartExample from '../../views/chart/ChartExample.jsx';
@@ -69,6 +70,10 @@ const components = [{
   name: 'Body',
   source: 'views/body/BodyExample.jsx',
   component: BodyExample,
+}, {
+  name: 'Box',
+  source: 'views/box/BoxExample.jsx',
+  component: BoxExample,
 }, {
   name: 'Button',
   source: 'views/button/ButtonExample.jsx',

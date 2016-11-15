@@ -1,7 +1,7 @@
 
 import { TestCaseFactory } from 'react-test-kit';
 import StatusDropdown from './StatusDropdown.jsx';
-import BaseDropdown from '../baseDropdown/BaseDropdown.jsx';
+import BaseDropdown from '../base/dropdown/BaseDropdown.jsx';
 
 describe('StatusDropdown', () => {
   describe('DOM structure', () => {

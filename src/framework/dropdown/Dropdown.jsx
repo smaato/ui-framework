@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
-import BaseDropdown from '../baseDropdown/BaseDropdown.jsx';
+import BaseDropdown from '../base/dropdown/BaseDropdown.jsx';
 
 import DropdownOption from './DropdownOption.jsx';
 

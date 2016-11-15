@@ -5,7 +5,7 @@ import React, {
 import classNames from 'classnames';
 import keyMirror from 'keymirror';
 
-import BaseDropdown from '../baseDropdown/BaseDropdown.jsx';
+import BaseDropdown from '../base/dropdown/BaseDropdown.jsx';
 import StatusDot from './statusDot/StatusDot.jsx';
 import StatusDropdownOption from './StatusDropdownOption.jsx';
 import StatusDropdownOptionIcon
