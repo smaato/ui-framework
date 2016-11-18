@@ -103,7 +103,7 @@ export default class LineChart extends Component {
 
     // Create X axis.
     const xAxis = d3.svg.axis().scale(xAxisScale).ticks(dateFormat)
-      .tickSize(availableHeight, 0);
+      .tickSize(availableHeight);
 
     if (!this.xAxis) {
       // Create the X axis if it doesn't exist.
