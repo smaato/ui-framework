@@ -1,6 +1,5 @@
 
-/* global d3 */
-import 'd3';
+import d3 from 'd3';
 
 import React, {
   Component,
@@ -141,46 +140,46 @@ export default class ChartExample extends Component {
           <Chart
             data={[[{
               date: 1460757600000,
-              value: 30,
+              value: 733325005,
             }, {
               date: 1460844000000,
-              value: 31,
+              value: 742834570,
             }, {
               date: 1460930400000,
-              value: 33,
+              value: 785232401,
             }, {
               date: 1461016800000,
-              value: 32,
+              value: 792343357,
             }, {
               date: 1461103200000,
-              value: 22,
+              value: 739486125,
             }, {
               date: 1461189600000,
-              value: 30,
+              value: 645349329,
             }, {
               date: 1461276000000,
-              value: 31,
+              value: 649106631,
             }], [{
               date: 1460757600000,
-              value: 25,
+              value: 581075302,
             }, {
               date: 1460844000000,
-              value: 24,
+              value: 536493660,
             }, {
               date: 1460930400000,
-              value: 28,
+              value: 553197315,
             }, {
               date: 1461016800000,
-              value: 29,
+              value: 597245812,
             }, {
               date: 1461103200000,
-              value: 27,
+              value: 675124444,
             }, {
               date: 1461189600000,
-              value: 25,
+              value: 751889856,
             }, {
               date: 1461276000000,
-              value: 26,
+              value: 790893300,
             }]]}
             isLoading={this.state.isLoading}
             legendLabelProvider={this.legendLabelProvider}

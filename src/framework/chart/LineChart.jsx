@@ -1,6 +1,5 @@
 
-/* global d3 */
-import 'd3';
+import d3 from 'd3';
 import $ from 'jquery';
 import React, {
   Component,
@@ -77,7 +76,7 @@ export default class LineChart extends Component {
     } = props;
 
     const duration = updateImmediately ? 0 : transitionDuration;
-    const marginBottom = 20;
+    const marginBottom = 14;
     const marginRight = yAxisLabelWidth;
     const width = this.$lineChart.width();
     const availableWidth = width - marginRight;
