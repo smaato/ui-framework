@@ -9,10 +9,10 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
-  StatusDot,
+  Box,
 } from '../../../framework/framework';
 
-export default class StatusDotExample extends Component {
+export default class BoxExample extends Component {
 
   constructor(props) {
     super(props);
@@ -21,21 +21,22 @@ export default class StatusDotExample extends Component {
   render() {
     return (
       <Page title={this.props.route.name}>
-
-        <Example title="Negative">
-          <StatusDot status={StatusDot.STATUS.NEGATIVE} />
+        <Example title="Box with plain corners">
+          <Box>
+            This is a simple box.
+          </Box>
         </Example>
-
-        <Example title="Positive">
-          <StatusDot status={StatusDot.STATUS.POSITIVE} />
+        <Example title="Box with rounded corners">
+          <Box roundedCorners>
+            This is a simple box with rounded corners.
+          </Box>
         </Example>
-
       </Page>
     );
   }
 
 }
 
-StatusDotExample.propTypes = {
+BoxExample.propTypes = {
   route: PropTypes.object.isRequired,
 };

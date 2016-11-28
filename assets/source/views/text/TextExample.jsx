@@ -60,8 +60,14 @@ export default class TextExample extends Component {
           {rhythms}
         </Example>
 
-        <Example title="Heading">
+        <Example title="Heading large">
           <Heading>This is heading text.</Heading>
+        </Example>
+
+        <Example title="Heading small">
+          <Heading size={Heading.SIZE.SMALL}>
+            This is small heading text.
+          </Heading>
         </Example>
 
       </Page>

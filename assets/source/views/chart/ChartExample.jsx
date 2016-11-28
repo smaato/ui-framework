@@ -1,6 +1,5 @@
 
-/* global d3 */
-import 'd3';
+import d3 from 'd3';
 
 import React, {
   Component,
@@ -11,7 +10,10 @@ import Page, {
   Example,
 } from '../../components/page/Page.jsx';
 
-import { Chart } from '../../../framework/framework';
+import {
+  Chart,
+  LineChart,
+} from '../../../framework/framework';
 
 import chartExampleData from './chartExampleData.js';
 
@@ -22,16 +24,18 @@ export default class ChartExample extends Component {
 
     this.state = {
       chartData: this.getInitialChartData(),
+      chartHeight: 400,
+      isLoading: false,
       minDate: undefined,
       maxDate: undefined,
       minTemperature: undefined,
       maxTemperature: undefined,
-      chartHeight: 400,
       useBatch1: false,
     };
 
     this.onClickChangeData = this.onClickChangeData.bind(this);
     this.onClickChangeHeight = this.onClickChangeHeight.bind(this);
+    this.onClickToggleIsLoading = this.onClickToggleIsLoading.bind(this);
   }
 
   componentDidMount() {
@@ -55,36 +59,39 @@ export default class ChartExample extends Component {
     });
   }
 
+  onClickToggleIsLoading() {
+    this.setState({
+      isLoading: !this.state.isLoading,
+    });
+  }
+
   setData(rawData) {
     const chartData = this.getInitialChartData();
+    const formatDate = d3.time.format('%Y%m%d').parse;
     let minDate = undefined;
     let maxDate = undefined;
     let minTemperature = undefined;
     let maxTemperature = undefined;
 
-    {
-      const formatDate = d3.time.format('%Y%m%d').parse;
+    rawData.forEach(item => {
+      for (const [index, city] of chartData.entries()) {
+        // Format data.
+        const date = formatDate(item.date);
+        const temperature = +item[city.name];
 
-      rawData.forEach(item => {
-        for (const [index, city] of chartData.entries()) {
-          // Format data.
-          const date = formatDate(item.date);
-          const temperature = +item[city.name];
+        // Store formatted data point.
+        chartData[index].values.push({
+          date,
+          yValue: temperature,
+        });
 
-          // Store formatted data point.
-          chartData[index].values.push({
-            date,
-            yValue: temperature,
-          });
-
-          // Derive ranges.
-          minDate = Math.min(minDate || date, date);
-          maxDate = Math.max(maxDate || date, date);
-          minTemperature = Math.min(minTemperature || temperature, temperature);
-          maxTemperature = Math.max(maxTemperature || temperature, temperature);
-        }
-      });
-    }
+        // Derive ranges.
+        minDate = Math.min(minDate || date, date);
+        maxDate = Math.max(maxDate || date, date);
+        minTemperature = Math.min(minTemperature || temperature, temperature);
+        maxTemperature = Math.max(maxTemperature || temperature, temperature);
+      }
+    });
 
     this.setState({
       chartData,
@@ -111,6 +118,14 @@ export default class ChartExample extends Component {
     }];
   }
 
+  legendLabelProvider(dataSet) {
+    const dateFormat = d3.time.format('%B %e');
+    const firstDate = new Date(dataSet[0].date);
+    const lastDate = new Date(dataSet[(dataSet.length - 1)].date);
+
+    return `${dateFormat(firstDate)} - ${dateFormat(lastDate)}`;
+  }
+
   render() {
     function formatTemperature(value) {
       return `${value}${String.fromCharCode(176)} F`;
@@ -118,25 +133,74 @@ export default class ChartExample extends Component {
 
     return (
       <Page title={this.props.route.name}>
-        <Example>
-          <button
-            onClick={this.onClickChangeData}
-          >
-            Change data
-          </button>
-          <button
-            onClick={this.onClickChangeHeight}
-          >
-            Change height
+        <Example title="Chart">
+          <button onClick={this.onClickToggleIsLoading}>
+            Toggle "isLoading"
           </button>
           <Chart
+            data={[[{
+              date: 1460757600000,
+              value: 733325005,
+            }, {
+              date: 1460844000000,
+              value: 742834570,
+            }, {
+              date: 1460930400000,
+              value: 785232401,
+            }, {
+              date: 1461016800000,
+              value: 792343357,
+            }, {
+              date: 1461103200000,
+              value: 739486125,
+            }, {
+              date: 1461189600000,
+              value: 645349329,
+            }, {
+              date: 1461276000000,
+              value: 649106631,
+            }], [{
+              date: 1460757600000,
+              value: 581075302,
+            }, {
+              date: 1460844000000,
+              value: 536493660,
+            }, {
+              date: 1460930400000,
+              value: 553197315,
+            }, {
+              date: 1461016800000,
+              value: 597245812,
+            }, {
+              date: 1461103200000,
+              value: 675124444,
+            }, {
+              date: 1461189600000,
+              value: 751889856,
+            }, {
+              date: 1461276000000,
+              value: 790893300,
+            }]]}
+            isLoading={this.state.isLoading}
+            legendLabelProvider={this.legendLabelProvider}
+            title="Title"
+          />
+        </Example>
+        <Example title="LineChart">
+          <button onClick={this.onClickChangeData}>
+            Change data
+          </button>
+          <button onClick={this.onClickChangeHeight}>
+            Change height
+          </button>
+          <LineChart
             data={this.state.chartData}
+            dateFormat={d3.time.weeks}
             dateRange={[this.state.minDate, this.state.maxDate]}
-            dateFormat={d3.time.months}
-            yAxisRange={[this.state.minTemperature, this.state.maxTemperature]}
+            height={this.state.chartHeight}
             yAxisFormat={formatTemperature}
             yAxisLabelWidth={36}
-            height={this.state.chartHeight}
+            yAxisRange={[this.state.minTemperature, this.state.maxTemperature]}
           />
         </Example>
       </Page>
