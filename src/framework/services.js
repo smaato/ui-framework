@@ -37,6 +37,12 @@ export {
   default as GridStencil,
 } from './services/grid/GridStencil';
 
+// Number
+
+export {
+  default as Number,
+} from './services/number/Number';
+
 // Scroll
 
 export {

@@ -1,6 +1,5 @@
 
-/* global d3 */
-import 'd3';
+import d3 from 'd3';
 import { TestCaseFactory } from 'react-test-kit';
 
 import LineChart from './LineChart.jsx';

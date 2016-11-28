@@ -1,11 +1,12 @@
 
 import classNames from 'classnames';
-/* global d3 */
-import 'd3';
+import d3 from 'd3';
 import React, {
   Component,
   PropTypes,
 } from 'react';
+
+import { Number } from '../services';
 
 import Box from '../box/Box.jsx';
 import ChartDot from './chartDot/ChartDot.jsx';
@@ -92,6 +93,8 @@ export default class Chart extends Component {
           dateFormat={d3.time.days}
           dateRange={[this.minDate, this.maxDate]}
           height={this.HEIGHT}
+          yAxisFormat={Number.formatBigNumber}
+          yAxisLabelWidth={32}
           yAxisRange={[this.minY, this.maxY]}
         />
         {progress}

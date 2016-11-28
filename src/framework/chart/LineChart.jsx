@@ -1,6 +1,5 @@
 
-/* global d3 */
-import 'd3';
+import d3 from 'd3';
 import $ from 'jquery';
 import React, {
   Component,
@@ -77,7 +76,7 @@ export default class LineChart extends Component {
     } = props;
 
     const duration = updateImmediately ? 0 : transitionDuration;
-    const marginBottom = 20;
+    const marginBottom = 14;
     const marginRight = yAxisLabelWidth;
     const width = this.$lineChart.width();
     const availableWidth = width - marginRight;
@@ -154,16 +153,16 @@ export default class LineChart extends Component {
     // Bind lines to their data sources.
     const lines = this.container.selectAll('.lineChartLine').data(data);
 
-    // Transition each line from the previous shape to the new shape.
-    lines.transition().duration(duration)
-      .attr('d', item => lineGenerator(item.values));
+    // Remove obsolete paths that map to removed data sources.
+    lines.exit().remove();
 
     // Add new paths for new data sources, add class for styling and set color.
     lines.enter().append('path').attr('class', 'lineChartLine')
       .style('stroke', item => item.color);
 
-    // Remove obsolete paths that map to removed data sources.
-    lines.exit().remove();
+    // Transition each line from the previous shape to the new shape.
+    lines.transition().duration(duration)
+      .attr('d', item => lineGenerator(item.values));
   }
 
   render() {
