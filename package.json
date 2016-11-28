@@ -1,7 +1,7 @@
 {
   "name": "ui-framework",
   "private": true,
-  "version": "0.17.7",
+  "version": "0.18.0",
   "description": "Smaato UI Framework",
   "main": "src/framework/framework.js",
   "browserify": {
@@ -20,7 +20,7 @@
     "history": "2.1.1",
     "jquery": "2.1.4",
     "keymirror": "0.1.1",
-    "react-portal": "git@github.com:cjcenizal/react-portal.git#609050d495e772d215a3f0ddc645464cb0a0f277",
+    "react-portal": "2.2.1",
     "react-redux": "4.4.5",
     "react-router": "2.0.0",
     "react-router-redux": "4.0.4",
