@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import BaseDropdownOption from '../baseDropdown/BaseDropdownOption.jsx';
+import BaseDropdownOption from '../base/dropdown/BaseDropdownOption.jsx';
 
 const DropdownOption = props => (
   <BaseDropdownOption

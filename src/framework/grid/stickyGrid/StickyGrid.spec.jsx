@@ -13,7 +13,7 @@ describe('StickyGrid', () => {
         };
 
         const testCase =
-          TestCaseFactory.createFromFunction(StickyGrid, props);
+          TestCaseFactory.create(StickyGrid, props);
 
         expect(testCase.dom.getAttribute('id')).toBe(props.id);
       });
@@ -33,7 +33,7 @@ describe('StickyGrid', () => {
         expect(cellPropsProvider1).not.toHaveBeenCalled();
         expect(cellPropsProvider2).not.toHaveBeenCalled();
 
-        TestCaseFactory.createFromFunction(StickyGrid, props);
+        TestCaseFactory.create(StickyGrid, props);
 
         expect(cellPropsProvider1).toHaveBeenCalledWith(0);
         expect(cellPropsProvider2).toHaveBeenCalledWith(1);
@@ -48,7 +48,7 @@ describe('StickyGrid', () => {
         };
 
         const testCase =
-          TestCaseFactory.createFromFunction(StickyGrid, props);
+          TestCaseFactory.create(StickyGrid, props);
 
         expect(testCase.first('.test')).toBeDefined();
       });

@@ -30,10 +30,10 @@ export default class BaseDropdownOption extends Component {
   }
 
   render() {
-    const stateClasses = {};
-    if (this.props.hasFocus) {
-      stateClasses[this.props.focusClasses] = true;
-    }
+    const stateClasses = {
+      [this.props.focusClasses]: this.props.hasFocus,
+      [this.props.selectedClasses]: this.props.isSelected,
+    };
     const classes = classNames(this.props.classes, stateClasses);
 
     return (
@@ -53,18 +53,17 @@ BaseDropdownOption.propTypes = {
   children: PropTypes.any,
   classes: PropTypes.string,
   focusClasses: PropTypes.string,
+  hasFocus: PropTypes.bool,
+  index: PropTypes.number,
+  isSelected: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   onMouseOver: PropTypes.func.isRequired,
   option: PropTypes.any,
-  index: PropTypes.number,
-  hasFocus: PropTypes.bool,
+  selectedClasses: PropTypes.string,
 };
 
-// These defaults exist for testing purposes. They should never be used in
-// production.
 BaseDropdownOption.defaultProps = {
-  onClick: () => undefined,
-  onMouseOver: () => undefined,
   classes: 'option',
   focusClasses: 'is-option-focus',
+  selectedClasses: 'is-option-selected',
 };

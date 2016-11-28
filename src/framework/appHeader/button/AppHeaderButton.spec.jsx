@@ -5,13 +5,13 @@ import AppHeaderButton from './AppHeaderButton.jsx';
 describe('AppHeaderButton', () => {
   describe('DOM structure', () => {
     it('has the appropriate class', () => {
-      const testCase = TestCaseFactory.createFromFunction(AppHeaderButton);
+      const testCase = TestCaseFactory.create(AppHeaderButton);
       expect(testCase.dom.getAttribute('class')).toContain('appHeaderButton');
     });
 
     it('is a Button', () => {
       const testCase =
-        TestCaseFactory.createFromFunction(AppHeaderButton);
+        TestCaseFactory.create(AppHeaderButton);
       expect(testCase.dom.className).toContain('button');
     });
   });
@@ -22,7 +22,7 @@ describe('AppHeaderButton', () => {
         const props = {
           classes: 'test-class',
         };
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           AppHeaderButton,
           props
         );

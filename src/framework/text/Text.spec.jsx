@@ -10,7 +10,7 @@ describe('Text', () => {
           children: 'Test',
         };
 
-        const testCase = TestCaseFactory.createFromFunction(Text, props);
+        const testCase = TestCaseFactory.create(Text, props);
         expect(testCase.dom.textContent).toBe(props.children);
       });
     });
@@ -22,7 +22,7 @@ describe('Text', () => {
             rhythm: Text.RHYTHM.XSMALL,
           };
 
-          const testCase = TestCaseFactory.createFromFunction(Text, props);
+          const testCase = TestCaseFactory.create(Text, props);
           expect(testCase.dom.className).toContain('text--xSmallRhythm');
         });
       });
@@ -33,7 +33,7 @@ describe('Text', () => {
             rhythm: Text.RHYTHM.SMALL,
           };
 
-          const testCase = TestCaseFactory.createFromFunction(Text, props);
+          const testCase = TestCaseFactory.create(Text, props);
           expect(testCase.dom.className).toContain('text--smallRhythm');
         });
       });

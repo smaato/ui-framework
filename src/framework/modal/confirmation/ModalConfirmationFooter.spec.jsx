@@ -14,7 +14,7 @@ describe('ModalConfirmationFooter', () => {
           ],
         };
         const testCase =
-          TestCaseFactory.createFromFunction(ModalConfirmationFooter, props);
+          TestCaseFactory.create(ModalConfirmationFooter, props);
         expect(testCase.dom.children[0].textContent).toBe('item1');
         expect(testCase.dom.children[1].textContent).toBe('item2');
       });
@@ -24,7 +24,7 @@ describe('ModalConfirmationFooter', () => {
           children: <div>item1</div>,
         };
         const testCase =
-          TestCaseFactory.createFromFunction(ModalConfirmationFooter, props);
+          TestCaseFactory.create(ModalConfirmationFooter, props);
         expect(testCase.dom.children[0].textContent).toBe('item1');
       });
     });

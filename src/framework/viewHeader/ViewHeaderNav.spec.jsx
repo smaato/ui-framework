@@ -11,7 +11,7 @@ describe('ViewHeaderNav', () => {
           linkType: 'a',
           links: [{}],
         };
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           ViewHeaderNav,
           props
         );
@@ -26,7 +26,7 @@ describe('ViewHeaderNav', () => {
             to: '',
           }],
         };
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           ViewHeaderNav,
           props
         );
@@ -45,7 +45,7 @@ describe('ViewHeaderNav', () => {
             className: 'child child2',
           }],
         };
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           ViewHeaderNav,
           props
         );

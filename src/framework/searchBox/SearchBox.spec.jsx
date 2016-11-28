@@ -11,7 +11,7 @@ describe('SearchBox', () => {
           isFullWidth: true,
         };
 
-        const testCase = TestCaseFactory.createFromClass(SearchBox, props);
+        const testCase = TestCaseFactory.create(SearchBox, props);
         const input = testCase.first('input');
         expect(
           input.getAttribute('class')
@@ -25,7 +25,7 @@ describe('SearchBox', () => {
           onSearch: jasmine.createSpy('onSearch'),
         };
 
-        const testCase = TestCaseFactory.createFromClass(SearchBox, props);
+        const testCase = TestCaseFactory.create(SearchBox, props);
         expect(props.onSearch).not.toHaveBeenCalled();
 
         const input = testCase.first('input');
@@ -40,7 +40,7 @@ describe('SearchBox', () => {
             onSearch: jasmine.createSpy('onSearch'),
           };
 
-          const testCase = TestCaseFactory.createFromClass(SearchBox, props);
+          const testCase = TestCaseFactory.create(SearchBox, props);
           expect(props.onSearch).not.toHaveBeenCalled();
 
           const input = testCase.first('input');
@@ -57,7 +57,7 @@ describe('SearchBox', () => {
             isImmediate: true,
           };
 
-          const testCase = TestCaseFactory.createFromClass(SearchBox, props);
+          const testCase = TestCaseFactory.create(SearchBox, props);
           expect(props.onSearch).not.toHaveBeenCalled();
 
           const input = testCase.first('input');
@@ -74,7 +74,7 @@ describe('SearchBox', () => {
           placeholder: 'Placeholder text',
         };
 
-        const testCase = TestCaseFactory.createFromClass(SearchBox, props);
+        const testCase = TestCaseFactory.create(SearchBox, props);
         const input = testCase.first('input');
         expect(input.getAttribute('placeholder')).toEqual(props.placeholder);
       });
@@ -87,7 +87,7 @@ describe('SearchBox', () => {
           onSearch: () => undefined,
         };
 
-        const testCase = TestCaseFactory.createFromClass(SearchBox, props);
+        const testCase = TestCaseFactory.create(SearchBox, props);
         const input = testCase.first('input');
         expect(input.value).toEqual(props.defaultValue);
       });

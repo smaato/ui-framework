@@ -11,6 +11,7 @@ import Page, {
 import {
   StatusDot,
   StatusDropdown,
+  StatusDropdownOptionIcon,
 } from '../../../framework/framework';
 
 export default class StatusDropdownExample extends Component {
@@ -19,82 +20,69 @@ export default class StatusDropdownExample extends Component {
     super(props);
 
     this.state = {
-      selectedDropdownOption: undefined,
+      selectedOption: undefined,
     };
 
-    this.dropdownItems = [{
-      value: 0,
-      name: 'Paused',
-    }, {
-      value: 1,
-      name: 'Running',
-    }];
+    this.onSelectOption = this.onSelectOption.bind(this);
 
-    this.dropdownLabelProvider = option => {
-      const valueToStatusMap = {
-        0: StatusDot.STATUS.NEGATIVE,
-        1: StatusDot.STATUS.POSITIVE,
-      };
-
-      let status;
-      let value;
-
-      if (option) {
-        status = valueToStatusMap[this.state.selectedDropdownOption.value];
-        value = option.name;
-      } else {
-        value = 'No status';
-      }
-
-      return [
-        <StatusDot
-          key={0}
-          status={status}
-        />,
-        <span key={1}>
-          {value}
-        </span>,
-      ];
-    };
-
-    this.dropdownOptionLabelProvider = option => {
-      if (option) {
-        return option.name;
-      }
-
-      return undefined;
-    };
-
-    this.onSelectDropdownOption = this.onSelectDropdownOption.bind(this);
+    this.options = [
+      StatusDropdown.OPTIONS.ACTIVATE,
+      StatusDropdown.OPTIONS.DEACTIVATE,
+      StatusDropdown.OPTIONS.DELETE,
+    ];
   }
 
-  onSelectDropdownOption(option) {
+  onSelectOption(option) {
     this.setState({
-      selectedDropdownOption: option,
+      selectedOption: option,
     });
   }
 
   render() {
-    const valueToStatusMap = {
-      0: StatusDropdown.STATUS.NEGATIVE,
-      1: StatusDropdown.STATUS.POSITIVE,
-    };
-
-    const status = this.state.selectedDropdownOption
-      ? valueToStatusMap[this.state.selectedDropdownOption.value]
-      : undefined;
-
     return (
       <Page title={this.props.route.name}>
 
         <Example>
           <StatusDropdown
-            options={this.dropdownItems}
-            selectedOption={this.state.selectedDropdownOption}
-            onSelect={this.onSelectDropdownOption}
-            labelProvider={this.dropdownLabelProvider}
-            optionLabelProvider={this.dropdownOptionLabelProvider}
-            status={status}
+            onSelect={this.onSelectOption}
+            options={this.options}
+            selectedOption={this.state.selectedOption}
+          />
+        </Example>
+
+        <Example title="StatusDot without status">
+          <StatusDot />
+        </Example>
+
+        <Example title="StatusDot NEGATIVE">
+          <StatusDot status={StatusDot.STATUS.NEGATIVE} />
+        </Example>
+
+        <Example title="StatusDot POSITIVE">
+          <StatusDot status={StatusDot.STATUS.POSITIVE} />
+        </Example>
+
+        <Example title="StatusDropdownOptionIcon ACTIVATE">
+          <StatusDropdownOptionIcon
+            type={StatusDropdownOptionIcon.TYPE.ACTIVATE}
+          />
+        </Example>
+
+        <Example title="StatusDropdownOptionIcon DEACTIVATE">
+          <StatusDropdownOptionIcon
+            type={StatusDropdownOptionIcon.TYPE.DEACTIVATE}
+          />
+        </Example>
+
+        <Example title="StatusDropdownOptionIcon DELETE">
+          <StatusDropdownOptionIcon
+            type={StatusDropdownOptionIcon.TYPE.DELETE}
+          />
+        </Example>
+
+        <Example title="StatusDropdownOptionIcon SELECTED">
+          <StatusDropdownOptionIcon
+            type={StatusDropdownOptionIcon.TYPE.SELECTED}
           />
         </Example>
 

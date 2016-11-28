@@ -6,6 +6,7 @@ import AddOnControlExample
   from '../../views/addOnControl/AddOnControlExample.jsx';
 import AppHeaderExample from '../../views/appHeader/AppHeaderExample.jsx';
 import BodyExample from '../../views/body/BodyExample.jsx';
+import BoxExample from '../../views/box/BoxExample.jsx';
 import ButtonExample from '../../views/button/ButtonExample.jsx';
 import ButtonGroupExample from '../../views/buttonGroup/ButtonGroupExample.jsx';
 import ChartExample from '../../views/chart/ChartExample.jsx';
@@ -17,12 +18,16 @@ import FieldMessageExample
   from '../../views/fieldMessage/FieldMessageExample.jsx';
 import FormExample from '../../views/form/FormExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
+import HorizontalLineExample
+  from '../../views/horizontalLine/HorizontalLineExample.jsx';
 import HtmlElementsExample
   from '../../views/htmlElements/HtmlElementsExample.jsx';
 import KpiExample from '../../views/kpi/KpiExample.jsx';
 import LabeledFieldExample
   from '../../views/labeledField/LabeledFieldExample.jsx';
 import LabelExample from '../../views/label/LabelExample.jsx';
+import LeftFixedLayoutExample
+  from '../../views/leftFixedLayout/LeftFixedLayoutExample.jsx';
 import LinkExample from '../../views/link/LinkExample.jsx';
 import MenuExample from '../../views/menu/MenuExample.jsx';
 import ModalExample from '../../views/modal/ModalExample.jsx';
@@ -36,7 +41,6 @@ import ProgressExample
   from '../../views/progress/ProgressExample.jsx';
 import SearchBoxExample
   from '../../views/searchBox/SearchBoxExample.jsx';
-import StatusDotExample from '../../views/statusDot/StatusDotExample.jsx';
 import StatusDropdownExample
   from '../../views/statusDropdown/StatusDropdownExample.jsx';
 import SummaryControlExample
@@ -66,6 +70,10 @@ const components = [{
   name: 'Body',
   source: 'views/body/BodyExample.jsx',
   component: BodyExample,
+}, {
+  name: 'Box',
+  source: 'views/box/BoxExample.jsx',
+  component: BoxExample,
 }, {
   name: 'Button',
   source: 'views/button/ButtonExample.jsx',
@@ -103,6 +111,10 @@ const components = [{
   source: 'views/grid/GridExample.jsx',
   component: GridExample,
 }, {
+  name: 'HorizontalLine',
+  source: 'views/horizontalLine/HorizontalLineExample.jsx',
+  component: HorizontalLineExample,
+}, {
   name: 'HTML elements',
   source: 'views/htmlElements/htmlElementsExample.jsx',
   component: HtmlElementsExample,
@@ -118,6 +130,10 @@ const components = [{
   name: 'Label',
   source: 'views/label/LabelExample.jsx',
   component: LabelExample,
+}, {
+  name: 'LeftFixedLayout',
+  source: 'views/leftFixedLayout/LeftFixedLayoutExample.jsx',
+  component: LeftFixedLayoutExample,
 }, {
   name: 'Link',
   source: 'views/link/LinkExample.jsx',
@@ -154,10 +170,6 @@ const components = [{
   name: 'SearchBox',
   source: 'views/searchBox/SearchBoxExample.jsx',
   component: SearchBoxExample,
-}, {
-  name: 'StatusDot',
-  source: 'views/statusDropdown/StatusDotExample.jsx',
-  component: StatusDotExample,
 }, {
   name: 'StatusDropdown',
   source: 'views/statusDropdown/StatusDropdownExample.jsx',

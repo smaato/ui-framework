@@ -59,5 +59,19 @@ describe('BaseDropdownOption', () => {
           .toContain(BaseDropdownOption.defaultProps.focusClasses);
       });
     });
+
+    describe('isSelected', () => {
+      it('applies the appropriate class', () => {
+        const props = {
+          isSelected: true,
+          onClick: () => undefined,
+          onMouseOver: () => undefined,
+        };
+
+        const testCase = TestCaseFactory.create(BaseDropdownOption, props);
+        expect(testCase.dom.className)
+          .toContain(BaseDropdownOption.defaultProps.selectedClasses);
+      });
+    });
   });
 });

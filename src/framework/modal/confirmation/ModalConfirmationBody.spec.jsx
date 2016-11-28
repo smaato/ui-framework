@@ -10,7 +10,7 @@ describe('ModalConfirmationBody', () => {
           children: 'testChildren',
         };
         const testCase =
-          TestCaseFactory.createFromFunction(ModalConfirmationBody, props);
+          TestCaseFactory.create(ModalConfirmationBody, props);
         expect(testCase.dom.textContent).toBe(props.children);
       });
     });

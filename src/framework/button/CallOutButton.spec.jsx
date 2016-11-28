@@ -5,7 +5,7 @@ import CallOutButton from './CallOutButton.jsx';
 describe('CallOutButton', () => {
   describe('DOM structure', () => {
     it('has the appropriate class', () => {
-      const testCase = TestCaseFactory.createFromFunction(CallOutButton);
+      const testCase = TestCaseFactory.create(CallOutButton);
       expect(testCase.dom.getAttribute('class')).toContain('button--callOut');
     });
   });
@@ -17,7 +17,7 @@ describe('CallOutButton', () => {
         const props = {
           classes,
         };
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           CallOutButton,
           props
         );

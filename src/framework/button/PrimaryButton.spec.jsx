@@ -5,7 +5,7 @@ import PrimaryButton from './PrimaryButton.jsx';
 describe('PrimaryButton', () => {
   describe('DOM structure', () => {
     it('has the appropriate class', () => {
-      const testCase = TestCaseFactory.createFromFunction(PrimaryButton);
+      const testCase = TestCaseFactory.create(PrimaryButton);
       expect(testCase.dom.getAttribute('class')).toContain('button--primary');
     });
   });
@@ -17,7 +17,7 @@ describe('PrimaryButton', () => {
         const props = {
           classes,
         };
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           PrimaryButton,
           props
         );

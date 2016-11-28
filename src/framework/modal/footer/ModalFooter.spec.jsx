@@ -13,7 +13,7 @@ describe('ModalFooter', () => {
             <div className="right" key="2">item2</div>,
           ],
         };
-        const testCase = TestCaseFactory.createFromFunction(ModalFooter, props);
+        const testCase = TestCaseFactory.create(ModalFooter, props);
         const right = testCase.find('.right');
         expect(right[0].textContent).toBe('item1');
         expect(right[1].textContent).toBe('item2');
@@ -23,7 +23,7 @@ describe('ModalFooter', () => {
         const props = {
           right: [<div className="right" key="1">item1</div>],
         };
-        const testCase = TestCaseFactory.createFromFunction(ModalFooter, props);
+        const testCase = TestCaseFactory.create(ModalFooter, props);
         const right = testCase.find('.right');
         expect(right[0].textContent).toBe('item1');
       });
@@ -38,7 +38,7 @@ describe('ModalFooter', () => {
           ],
           right: [<div key="3"></div>],
         };
-        const testCase = TestCaseFactory.createFromFunction(ModalFooter, props);
+        const testCase = TestCaseFactory.create(ModalFooter, props);
         const left = testCase.find('.left');
         expect(left[0].textContent).toBe('item1');
         expect(left[1].textContent).toBe('item2');
@@ -49,7 +49,7 @@ describe('ModalFooter', () => {
           left: [<div className="left" key="1">item1</div>],
           right: [<div key="2"></div>],
         };
-        const testCase = TestCaseFactory.createFromFunction(ModalFooter, props);
+        const testCase = TestCaseFactory.create(ModalFooter, props);
         const left = testCase.find('.left');
         expect(left[0].textContent).toBe('item1');
       });

@@ -13,7 +13,7 @@ describe('ModalBody', () => {
             <div key="2">item2</div>,
           ],
         };
-        const testCase = TestCaseFactory.createFromFunction(ModalBody, props);
+        const testCase = TestCaseFactory.create(ModalBody, props);
         expect(testCase.dom.children[0].textContent).toBe('item1');
         expect(testCase.dom.children[1].textContent).toBe('item2');
       });
@@ -22,7 +22,7 @@ describe('ModalBody', () => {
         const props = {
           children: <div>item1</div>,
         };
-        const testCase = TestCaseFactory.createFromFunction(ModalBody, props);
+        const testCase = TestCaseFactory.create(ModalBody, props);
         expect(testCase.dom.children[0].textContent).toBe('item1');
       });
     });

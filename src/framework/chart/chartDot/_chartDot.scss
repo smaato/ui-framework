@@ -1,0 +1,9 @@
+
+$chartDotSize: 10px;
+
+.chartDot {
+  border-radius: $chartDotSize / 2;
+  display: inline-block;
+  height: $chartDotSize;
+  width: $chartDotSize;
+}

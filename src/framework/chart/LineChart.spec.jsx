@@ -1,11 +1,10 @@
 
-import React from 'react';
-/* global d3 */
-import 'd3';
+import d3 from 'd3';
 import { TestCaseFactory } from 'react-test-kit';
-import Chart from './Chart.jsx';
 
-describe('Chart', () => {
+import LineChart from './LineChart.jsx';
+
+describe('LineChart', () => {
   let testCase;
 
   const data = [{
@@ -66,13 +65,11 @@ describe('Chart', () => {
       yValue: 77.3,
     }],
   }];
-
+  const height = 400;
   const minDate = 1333090800000;
   const maxDate = 1333436400000;
   const minTemperature = 42.2;
   const maxTemperature = 77.3;
-  const yAxisLabelWidth = 36;
-  const height = 400;
 
   function yAxisFormat(value, index) {
     return `yAxis${index}`;
@@ -81,35 +78,34 @@ describe('Chart', () => {
   beforeEach(() => {
     const props = {
       data,
-      dateRange: [minDate, maxDate],
       dateFormat: d3.time.months,
-      yAxisRange: [minTemperature, maxTemperature],
-      yAxisFormat,
-      yAxisLabelWidth,
+      dateRange: [minDate, maxDate],
       height,
+      yAxisFormat,
+      yAxisRange: [minTemperature, maxTemperature],
     };
 
-    testCase = TestCaseFactory.createFromElement(<Chart {...props} />);
+    testCase = TestCaseFactory.create(LineChart, props);
   });
 
   describe('Structure', () => {
     describe('x axis', () => {
       it('is rendered', () => {
-        const xAxis = testCase.find('.chartXAxis');
+        const xAxis = testCase.find('.lineChartXAxis');
         expect(xAxis.length).toBe(1);
       });
     });
 
     describe('y axis', () => {
       it('is rendered', () => {
-        const yAxis = testCase.find('.chartYAxis');
+        const yAxis = testCase.find('.lineChartYAxis');
         expect(yAxis.length).toBe(1);
       });
     });
 
     describe(`${data.length} chart lines`, () => {
       it('are rendered', () => {
-        const lines = testCase.find('.chartLine');
+        const lines = testCase.find('.lineChartLine');
         expect(lines.length).toBe(data.length);
       });
     });
@@ -119,50 +115,54 @@ describe('Chart', () => {
     describe('data', () => {
       describe('color', () => {
         it('is applied to the chart\'s lines', () => {
-          const lines = testCase.find('.chartLine');
+          const lines = testCase.find('.lineChartLine');
           lines.forEach((line, index) => {
-            const lineColor = line.getAttribute('style').toLowerCase();
+            const lineStyle = line.getAttribute('style').toLowerCase();
             const specifiedColor = data[index].color.toLowerCase();
-            expect(lineColor.indexOf(specifiedColor) !== -1).toBe(true);
+            expect(lineStyle).toContain(`stroke: ${specifiedColor}`);
           });
         });
       });
     });
 
-    describe('dateRange', () => {
-      it('defines the number of x axis ticks', () => {
-        const xAxisTicks = testCase.find('.chartXAxisTick__text');
-        expect(xAxisTicks.length).toBe(1);
-      });
-    });
-
     describe('dateFormat', () => {
       it('defines the x axis tick mark text', () => {
-        const xAxisTicks = testCase.find('.chartXAxisTick__text');
+        const xAxisTicks =
+          testCase.find('.lineChartXAxis .lineChartAxisTick__text');
         expect(xAxisTicks[0].textContent).toBe('April');
       });
     });
 
-    describe('yAxisRange', () => {
-      it('defines the number of y axis ticks', () => {
-        const yAxisTicks = testCase.find('.chartYAxisTick__text');
-        expect(yAxisTicks.length).toBe(7);
+    describe('dateRange', () => {
+      it('defines the number of x axis ticks', () => {
+        const xAxisTicks =
+          testCase.find('.lineChartXAxis .lineChartAxisTick__text');
+        expect(xAxisTicks.length).toBe(1);
+      });
+    });
+
+    describe('height', () => {
+      it('is applied to the SVG', () => {
+        const svg = testCase.first('.lineChart__svg');
+        expect(svg.getAttribute('height')).toBe(height.toString());
       });
     });
 
     describe('yAxisFormat', () => {
       it('defines the y axis tick mark text', () => {
-        const yAxisTicks = testCase.find('.chartYAxisTick__text');
+        const yAxisTicks =
+          testCase.find('.lineChartYAxis .lineChartAxisTick__text');
         yAxisTicks.forEach((tick, index) => {
           expect(tick.textContent).toBe(yAxisFormat(undefined, index));
         });
       });
     });
 
-    describe('height', () => {
-      it('is applied to the SVG', () => {
-        const svg = testCase.first('.chart__svg');
-        expect(svg.getAttribute('height')).toBe(height.toString());
+    describe('yAxisRange', () => {
+      it('defines the number of y axis ticks', () => {
+        const yAxisTicks =
+          testCase.find('.lineChartYAxis .lineChartAxisTick__text');
+        expect(yAxisTicks.length).toBe(7);
       });
     });
   });

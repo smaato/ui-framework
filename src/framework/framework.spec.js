@@ -16,6 +16,7 @@ import {
   Body,
   BodyPanel,
   BodyPanelItem,
+  Box,
   Button,
   ButtonGroup,
   CallOutButton,
@@ -46,11 +47,14 @@ import {
   GroupedButton,
   Heading,
   HollowButton,
+  HorizontalLine,
   Kpi,
   KpiNegative,
   KpiPositive,
   Label,
   LabeledField,
+  LeftFixedLayout,
+  LineChart,
   Link,
   Menu,
   MenuItem,
@@ -75,7 +79,6 @@ import {
   ProgressSuccess,
   RecycledList,
   SearchBox,
-  StatusDot,
   StatusDropdown,
   StatusDropdownOption,
   StickyGrid,
@@ -139,6 +142,9 @@ const components = [{
   name: 'BodyPanelItem',
   component: BodyPanelItem,
 }, {
+  name: 'Box',
+  component: Box,
+}, {
   name: 'Button',
   component: Button,
 }, {
@@ -147,12 +153,6 @@ const components = [{
 }, {
   name: 'CallOutButton',
   component: CallOutButton,
-}, {
-  name: 'Menu',
-  component: Menu,
-}, {
-  name: 'MenuItem',
-  component: MenuItem,
 }, {
   name: 'Chart',
   component: Chart,
@@ -235,6 +235,9 @@ const components = [{
   name: 'HollowButton',
   component: HollowButton,
 }, {
+  name: 'HorizontalLine',
+  component: HorizontalLine,
+}, {
   name: 'Kpi',
   component: Kpi,
 }, {
@@ -250,8 +253,20 @@ const components = [{
   name: 'LabeledField',
   component: LabeledField,
 }, {
+  name: 'LeftFixedLayout',
+  component: LeftFixedLayout,
+}, {
+  name: 'LineChart',
+  component: LineChart,
+}, {
   name: 'Link',
   component: Link,
+}, {
+  name: 'Menu',
+  component: Menu,
+}, {
+  name: 'MenuItem',
+  component: MenuItem,
 }, {
   name: 'Modal',
   component: Modal,
@@ -315,9 +330,6 @@ const components = [{
 }, {
   name: 'SearchBox',
   component: SearchBox,
-}, {
-  name: 'StatusDot',
-  component: StatusDot,
 }, {
   name: 'StatusDropdown',
   component: StatusDropdown,

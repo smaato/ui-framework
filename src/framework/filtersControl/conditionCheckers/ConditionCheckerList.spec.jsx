@@ -19,7 +19,7 @@ describe('ConditionCheckerList', () => {
 
         const iterationSpy = spyOn(props.conditionCheckers, 'map');
         expect(iterationSpy).not.toHaveBeenCalled();
-        TestCaseFactory.createFromFunction(ConditionCheckerList, props);
+        TestCaseFactory.create(ConditionCheckerList, props);
         expect(iterationSpy).toHaveBeenCalled();
       });
     });
@@ -39,7 +39,7 @@ describe('ConditionCheckerList', () => {
         };
 
         const testCase =
-          TestCaseFactory.createFromFunction(ConditionCheckerList, props);
+          TestCaseFactory.create(ConditionCheckerList, props);
 
         const removeButton =
           testCase.first('.conditionCheckerListItem__removeButton');

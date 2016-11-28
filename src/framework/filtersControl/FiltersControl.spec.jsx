@@ -22,7 +22,7 @@ describe('FiltersControl', () => {
         const iterationSpy = spyOn(props.conditionCheckers, 'map');
 
         expect(iterationSpy).not.toHaveBeenCalled();
-        TestCaseFactory.createFromClass(FiltersControl, props);
+        TestCaseFactory.create(FiltersControl, props);
         expect(iterationSpy).toHaveBeenCalled();
       });
     });
@@ -44,7 +44,7 @@ describe('FiltersControl', () => {
         };
 
         const testCase =
-          TestCaseFactory.createFromClass(FiltersControl, props);
+          TestCaseFactory.create(FiltersControl, props);
 
         const removeButton =
           testCase.first('.conditionCheckerListItem__removeButton');

@@ -10,7 +10,7 @@ describe('AddOnControl', () => {
         const props = {
           children: <div id="test">test</div>,
         };
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           AddOnControl,
           props
         );

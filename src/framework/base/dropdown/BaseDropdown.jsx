@@ -196,6 +196,7 @@ export default class BaseDropdown extends Component {
           option,
           index,
           hasFocus: this.state.focusedOptionIndex === index,
+          isSelected: this.props.selectedOption === option,
           onMouseOver: this.onMouseOverOption,
           onClick: this.onSelectOption,
           children: this.props.optionLabelProvider(option),

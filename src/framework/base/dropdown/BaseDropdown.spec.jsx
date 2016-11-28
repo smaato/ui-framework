@@ -1,6 +1,6 @@
 
 import { TestCaseFactory } from 'react-test-kit';
-import { CommonAssertions } from '../services';
+import { CommonAssertions } from '../../services';
 import BaseDropdown from './BaseDropdown.jsx';
 import BaseDropdownOption from './BaseDropdownOption.jsx';
 

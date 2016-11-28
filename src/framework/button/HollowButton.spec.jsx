@@ -5,7 +5,7 @@ import HollowButton from './HollowButton.jsx';
 describe('HollowButton', () => {
   describe('DOM structure', () => {
     it('has the appropriate class', () => {
-      const testCase = TestCaseFactory.createFromFunction(HollowButton);
+      const testCase = TestCaseFactory.create(HollowButton);
       expect(testCase.dom.getAttribute('class')).toContain('button--hollow');
     });
   });
@@ -17,7 +17,7 @@ describe('HollowButton', () => {
         const props = {
           classes,
         };
-        const testCase = TestCaseFactory.createFromFunction(
+        const testCase = TestCaseFactory.create(
           HollowButton,
           props
         );

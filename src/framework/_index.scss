@@ -6,12 +6,13 @@
 @import 'global/index';
 
 // Base components
-@import 'baseDropdown/index';
+@import 'base/index';
 
 // Components
 @import 'addOnControl/index';
 @import 'appHeader/index';
 @import 'body/index';
+@import 'box/index';
 @import 'button/index';
 @import 'buttonGroup/index';
 @import 'menu/index';
@@ -24,9 +25,11 @@
 @import 'filtersControl/index';
 @import 'form/index';
 @import 'grid/index';
+@import 'horizontalLine/index';
 @import 'kpi/index';
 @import 'label/index';
 @import 'labeledField/index';
+@import 'leftFixedLayout/index';
 @import 'link/index';
 @import 'modal/index';
 @import 'organizationSwitcher/index';
@@ -35,7 +38,6 @@
 @import 'pickedSummary/index';
 @import 'progress/index';
 @import 'searchBox/index';
-@import 'statusDot/index';
 @import 'statusDropdown/index';
 @import 'summaryControl/index';
 @import 'text/index';

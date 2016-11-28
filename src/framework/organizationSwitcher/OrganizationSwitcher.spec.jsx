@@ -22,7 +22,7 @@ describe('OrganizationSwitcher', () => {
           title: 'Title text',
         };
 
-        testCase = TestCaseFactory.createFromClass(OrganizationSwitcher, props);
+        testCase = TestCaseFactory.create(OrganizationSwitcher, props);
         const titleEl = testCase.first('.organizationSwitcher__title');
         expect(titleEl.textContent).toContain(props.title);
       });
@@ -35,7 +35,7 @@ describe('OrganizationSwitcher', () => {
           searchPrompt: 'Search placeholder',
         };
 
-        testCase = TestCaseFactory.createFromClass(OrganizationSwitcher, props);
+        testCase = TestCaseFactory.create(OrganizationSwitcher, props);
         const inputEl = testCase.first('input');
         expect(inputEl.getAttribute('placeholder')).toBe(props.searchPrompt);
       });
@@ -47,7 +47,7 @@ describe('OrganizationSwitcher', () => {
           onClose: jasmine.createSpy('onClose'),
         };
 
-        testCase = TestCaseFactory.createFromClass(OrganizationSwitcher, props);
+        testCase = TestCaseFactory.create(OrganizationSwitcher, props);
         expect(props.onClose).not.toHaveBeenCalled();
         const closeButtonEl = testCase
           .first('.organizationSwitcher__closeButton');
@@ -62,13 +62,13 @@ describe('OrganizationSwitcher', () => {
           onSearch: () => undefined,
         };
 
-        testCase = TestCaseFactory.createFromClass(OrganizationSwitcher, props);
+        testCase = TestCaseFactory.create(OrganizationSwitcher, props);
         const searchBox = testCase.findComponents(SearchBox);
         expect(searchBox.length).toBe(1);
       });
 
       it('doesn\'t create a SearchBox component when not present', () => {
-        testCase = TestCaseFactory.createFromClass(OrganizationSwitcher);
+        testCase = TestCaseFactory.create(OrganizationSwitcher);
         const searchBox = testCase.findComponents(SearchBox);
         expect(searchBox.length).toBe(0);
       });
@@ -77,13 +77,13 @@ describe('OrganizationSwitcher', () => {
 
   describe('is-organization-switcher-open class', () => {
     it('is added on body when mounted', () => {
-      testCase = TestCaseFactory.createFromClass(OrganizationSwitcher);
+      testCase = TestCaseFactory.create(OrganizationSwitcher);
       expect(document.body.getAttribute('class'))
         .toContain('is-organization-switcher-open');
     });
 
     it('is removed from body when unmounted', () => {
-      testCase = TestCaseFactory.createFromClass(OrganizationSwitcher);
+      testCase = TestCaseFactory.create(OrganizationSwitcher);
       ReactDOM.unmountComponentAtNode(testCase.dom.parentNode);
       expect(document.body.getAttribute('class'))
         .not.toContain('is-organization-switcher-open');

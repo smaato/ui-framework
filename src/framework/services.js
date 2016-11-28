@@ -2,6 +2,10 @@
 // Event
 
 export {
+  default as EscapeKeyHandler,
+} from './services/event/EscapeKeyHandler';
+
+export {
   default as polyfillCustomEvent,
 } from './services/event/polyfillCustomEvent';
 
@@ -32,6 +36,12 @@ export {
 export {
   default as GridStencil,
 } from './services/grid/GridStencil';
+
+// Number
+
+export {
+  default as Number,
+} from './services/number/Number';
 
 // Scroll
 
