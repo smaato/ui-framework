@@ -93,6 +93,7 @@ export default class Chart extends Component {
           dateFormat={d3.time.days}
           dateRange={[this.minDate, this.maxDate]}
           height={this.HEIGHT}
+          tooltipProvider={this.props.tooltipProvider}
           yAxisFormat={Number.formatBigNumber}
           yAxisLabelWidth={32}
           yAxisRange={[this.minY, this.maxY]}
@@ -121,4 +122,5 @@ Chart.propTypes = {
   isLoading: PropTypes.bool,
   legendLabelProvider: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  tooltipProvider: LineChart.propTypes.tooltipProvider,
 };
