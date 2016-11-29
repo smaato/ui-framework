@@ -190,15 +190,33 @@ export default class LineChart extends Component {
           const dot = d3.select(d3.event.target);
           dot.transition().style('opacity', 1);
 
+          this.lineChartTooltip.style.display = 'block';
+          this.lineChartTooltip.style.left = '0px';
+          this.lineChartTooltip.style.top = '0px';
+
           ReactDOM.render(
             this.props.tooltipProvider(item),
             this.lineChartTooltip
           );
-          this.lineChartTooltip.style.display = 'block';
-          this.lineChartTooltip.style.left =
-            `${xAxisScale(item.date) + this.DOT_RADIUS}px`;
-          this.lineChartTooltip.style.top =
-            `${yAxisScale(item.yValue) + this.DOT_RADIUS}px`;
+
+          const dotX = parseInt(dot.attr('cx'), 10);
+          const dotY = parseInt(dot.attr('cy'), 10);
+          const tooltipHeight = this.lineChartTooltip.offsetHeight;
+          const tooltipWidth = this.lineChartTooltip.offsetWidth;
+
+          let tooltipX = dotX + this.DOT_RADIUS;
+          if (availableWidth < (tooltipX + tooltipWidth)) {
+            tooltipX = tooltipX - (2 * this.DOT_RADIUS) - tooltipWidth;
+          }
+
+          let tooltipY = dotY + this.DOT_RADIUS;
+          if (availableHeight < (tooltipY + tooltipHeight)) {
+            tooltipY = tooltipY - (2 * this.DOT_RADIUS) - tooltipHeight;
+          }
+
+          this.lineChartTooltip.style.left = `${tooltipX}px`;
+          this.lineChartTooltip.style.top = `${tooltipY}px`;
+          this.lineChartTooltip.style.opacity = 1;
         });
 
         dataSetDots.on('mouseout', () => {
@@ -206,6 +224,7 @@ export default class LineChart extends Component {
           dot.transition().style('opacity', 0);
 
           this.lineChartTooltip.style.display = 'none';
+          this.lineChartTooltip.style.opacity = 0;
         });
       });
     }
