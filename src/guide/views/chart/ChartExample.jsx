@@ -217,6 +217,7 @@ export default class ChartExample extends Component {
               date: 1461276000000,
               value: 790893300,
             }]]}
+            description="Description"
             isLoading={this.state.isLoading}
             legendLabelProvider={this.legendLabelProvider}
             title="Title"
