@@ -75,16 +75,17 @@ describe('LineChart', () => {
     return `yAxis${index}`;
   }
 
-  beforeEach(() => {
-    const props = {
-      data,
-      dateFormat: d3.time.months,
-      dateRange: [minDate, maxDate],
-      height,
-      yAxisFormat,
-      yAxisRange: [minTemperature, maxTemperature],
-    };
+  const props = {
+    data,
+    dateFormat: d3.time.months,
+    dateRange: [minDate, maxDate],
+    height,
+    tooltipProvider: item => item,
+    yAxisFormat,
+    yAxisRange: [minTemperature, maxTemperature],
+  };
 
+  beforeEach(() => {
     testCase = TestCaseFactory.create(LineChart, props);
   });
 
@@ -145,6 +146,30 @@ describe('LineChart', () => {
       it('is applied to the SVG', () => {
         const svg = testCase.first('.lineChart__svg');
         expect(svg.getAttribute('height')).toBe(height.toString());
+      });
+    });
+
+    describe('tooltipProvider', () => {
+      it('when set dots are rendered', () => {
+        const dots = testCase.find('.lineChartDot');
+        const valueCount = data.reduce((count, dataSet) => (
+          count + dataSet.values.length
+        ), 0);
+
+        expect(dots.length).toBe(valueCount);
+      });
+
+      it('when not set dots aren\'t rendered', () => {
+        const propsWithoutTooltipProvider = Object.assign({}, props, {
+          tooltipProvider: undefined,
+        });
+
+        testCase =
+          TestCaseFactory.create(LineChart, propsWithoutTooltipProvider);
+
+        const dots = testCase.find('.lineChartDot');
+
+        expect(dots.length).toBe(0);
       });
     });
 

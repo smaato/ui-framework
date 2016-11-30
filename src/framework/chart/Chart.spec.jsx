@@ -72,6 +72,18 @@ describe('Chart', () => {
       });
     });
 
+    describe('description', () => {
+      it('is rendered', () => {
+        const props = Object.assign({}, requiredProps, {
+          data: [[]],
+          description: 'description',
+        });
+
+        const testCase = TestCaseFactory.create(Chart, props);
+        expect(testCase.dom.textContent).toContain(props.description);
+      });
+    });
+
     describe('isLoading', () => {
       const progressSelector = '.progress';
 

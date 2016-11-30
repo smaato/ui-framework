@@ -1,15 +1,25 @@
 
-.lineChartLine {
-  fill: none;
-  stroke-width: 2px;
+.lineChart {
+  position: relative;
 }
 
-.lineChartAxisTick__mark {
-  shape-rendering: crispEdges;
-  stroke: #e5e7e8;
-}
+  .lineChartAxisTick__mark {
+    shape-rendering: crispEdges;
+    stroke: #e5e7e8;
+  }
 
-.lineChartAxisTick__text {
-  fill: #5e707b;
-  font-size: 11px;
-}
+  .lineChartAxisTick__text {
+    fill: #5e707b;
+    font-size: 11px;
+  }
+
+  .lineChartLine {
+    fill: none;
+    stroke-width: 2px;
+  }
+
+  .lineChart__tooltip {
+    display: none;
+    position: absolute;
+    opacity: 0;
+  }

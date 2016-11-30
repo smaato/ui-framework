@@ -5,6 +5,7 @@ import React, {
   Component,
   PropTypes,
 } from 'react';
+import ReactDOM from 'react-dom';
 
 import ThrottledEventDispatcher
   from '../services/event/ThrottledEventDispatcher';
@@ -13,6 +14,8 @@ export default class LineChart extends Component {
 
   constructor(props) {
     super(props);
+
+    this.DOT_RADIUS = 5;
 
     this.onResize = this.onResize.bind(this);
   }
@@ -26,6 +29,8 @@ export default class LineChart extends Component {
     this.$lineChart = $(this.refs.lineChart);
 
     this.lineChartSvg = d3.select(this.refs.lineChartSvg);
+
+    this.lineChartTooltip = this.refs.lineChartTooltip;
 
     // Add a 'group' element to the SVG, which will contain our chart.
     this.container = this.lineChartSvg.append('g');
@@ -92,11 +97,11 @@ export default class LineChart extends Component {
 
     // Create time scale for X axis, mapping date range to chart width.
     const xAxisScale = d3.time.scale().domain(dateRange)
-      .range([0, availableWidth]);
+      .range([5, availableWidth]);
 
     // Create linear scale for Y axis, mapping data range to chart height.
     const yAxisScale = d3.scale.linear().domain(yAxisRange)
-      .range([availableHeight, 0]);
+      .range([availableHeight, 5]);
 
     // X AXIS //////////////////////////////////////////////////////////////////
 
@@ -146,7 +151,7 @@ export default class LineChart extends Component {
 
     // Create a line generator for mapping date to x position, and input
     // data to y position.
-    const lineGenerator = d3.svg.line().interpolate('basis')
+    const lineGenerator = d3.svg.line().interpolate('monotone')
       .x(item => xAxisScale(item.date))
       .y(item => yAxisScale(item.yValue));
 
@@ -163,6 +168,66 @@ export default class LineChart extends Component {
     // Transition each line from the previous shape to the new shape.
     lines.transition().duration(duration)
       .attr('d', item => lineGenerator(item.values));
+
+    // TOOLTIP /////////////////////////////////////////////////////////////////
+
+    if (this.props.tooltipProvider) {
+      this.container.selectAll('.lineChartDot').remove();
+
+      data.forEach((dataSet, index) => {
+        const dataSetDots = this.container.selectAll(`.lineChartDot${index}`)
+          .data(dataSet.values);
+
+        dataSetDots.enter().append('circle')
+          .attr('class', `lineChartDot lineChartDot${index}`)
+          .attr('cx', item => xAxisScale(item.date))
+          .attr('cy', item => yAxisScale(item.yValue))
+          .attr('fill', dataSet.color)
+          .attr('r', this.DOT_RADIUS)
+          .style('opacity', 0);
+
+        dataSetDots.on('mouseover', item => {
+          const dot = d3.select(d3.event.target);
+          dot.transition().style('opacity', 1);
+
+          this.lineChartTooltip.style.display = 'block';
+          this.lineChartTooltip.style.left = '0px';
+          this.lineChartTooltip.style.top = '0px';
+
+          ReactDOM.render(
+            this.props.tooltipProvider(item),
+            this.lineChartTooltip
+          );
+
+          const dotX = parseInt(dot.attr('cx'), 10);
+          const dotY = parseInt(dot.attr('cy'), 10);
+          const tooltipHeight = this.lineChartTooltip.offsetHeight;
+          const tooltipWidth = this.lineChartTooltip.offsetWidth;
+
+          let tooltipX = dotX + this.DOT_RADIUS;
+          if (availableWidth < (tooltipX + tooltipWidth)) {
+            tooltipX = tooltipX - (2 * this.DOT_RADIUS) - tooltipWidth;
+          }
+
+          let tooltipY = dotY + this.DOT_RADIUS;
+          if (availableHeight < (tooltipY + tooltipHeight)) {
+            tooltipY = tooltipY - (2 * this.DOT_RADIUS) - tooltipHeight;
+          }
+
+          this.lineChartTooltip.style.left = `${tooltipX}px`;
+          this.lineChartTooltip.style.top = `${tooltipY}px`;
+          this.lineChartTooltip.style.opacity = 1;
+        });
+
+        dataSetDots.on('mouseout', () => {
+          const dot = d3.select(d3.event.target);
+          dot.transition().style('opacity', 0);
+
+          this.lineChartTooltip.style.display = 'none';
+          this.lineChartTooltip.style.opacity = 0;
+        });
+      });
+    }
   }
 
   render() {
@@ -176,6 +241,10 @@ export default class LineChart extends Component {
           className="lineChart__svg"
           ref="lineChartSvg"
         />
+        <div
+          className="lineChart__tooltip"
+          ref="lineChartTooltip"
+        />
       </div>
     );
   }
@@ -187,6 +256,7 @@ LineChart.propTypes = {
   dateFormat: PropTypes.func,
   dateRange: PropTypes.array.isRequired,
   height: PropTypes.number.isRequired,
+  tooltipProvider: PropTypes.func,
   transitionDuration: PropTypes.number,
   yAxisFormat: PropTypes.func,
   yAxisLabelWidth: PropTypes.number,

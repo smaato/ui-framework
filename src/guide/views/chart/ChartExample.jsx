@@ -11,9 +11,15 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
+  Box,
   Chart,
   LineChart,
+  Text,
 } from '../../../framework/framework';
+
+import {
+  Number,
+} from '../../../framework/services';
 
 import chartExampleData from './chartExampleData.js';
 
@@ -21,6 +27,8 @@ export default class ChartExample extends Component {
 
   constructor(props) {
     super(props);
+
+    this.formatDate = d3.time.format('%B %e');
 
     this.state = {
       chartData: this.getInitialChartData(),
@@ -33,9 +41,12 @@ export default class ChartExample extends Component {
       useBatch1: false,
     };
 
+    this.legendLabelProvider = this.legendLabelProvider.bind(this);
     this.onClickChangeData = this.onClickChangeData.bind(this);
     this.onClickChangeHeight = this.onClickChangeHeight.bind(this);
     this.onClickToggleIsLoading = this.onClickToggleIsLoading.bind(this);
+    this.tooltipProviderChart = this.tooltipProviderChart.bind(this);
+    this.tooltipProviderLineChart = this.tooltipProviderLineChart.bind(this);
   }
 
   componentDidMount() {
@@ -118,19 +129,44 @@ export default class ChartExample extends Component {
     }];
   }
 
+  formatTemperature(value) {
+    return `${value}${String.fromCharCode(176)} F`;
+  }
+
   legendLabelProvider(dataSet) {
-    const dateFormat = d3.time.format('%B %e');
     const firstDate = new Date(dataSet[0].date);
     const lastDate = new Date(dataSet[(dataSet.length - 1)].date);
 
-    return `${dateFormat(firstDate)} - ${dateFormat(lastDate)}`;
+    return `${this.formatDate(firstDate)} - ${this.formatDate(lastDate)}`;
+  }
+
+  tooltipProviderChart(item) {
+    const date = new Date(item.date);
+
+    return (
+      <Box roundedCorners>
+        <div style={{ padding: 5 }}>
+          <Text>
+            {this.formatDate(date)}: {Number.formatBigNumber(item.yValue)}
+          </Text>
+        </div>
+      </Box>
+    );
+  }
+
+  tooltipProviderLineChart(item) {
+    return (
+      <Box roundedCorners>
+        <div style={{ padding: 5 }}>
+          <Text>
+            {this.formatDate(item.date)}: {this.formatTemperature(item.yValue)}
+          </Text>
+        </div>
+      </Box>
+    );
   }
 
   render() {
-    function formatTemperature(value) {
-      return `${value}${String.fromCharCode(176)} F`;
-    }
-
     return (
       <Page title={this.props.route.name}>
         <Example title="Chart">
@@ -181,9 +217,11 @@ export default class ChartExample extends Component {
               date: 1461276000000,
               value: 790893300,
             }]]}
+            description="Description"
             isLoading={this.state.isLoading}
             legendLabelProvider={this.legendLabelProvider}
             title="Title"
+            tooltipProvider={this.tooltipProviderChart}
           />
         </Example>
         <Example title="LineChart">
@@ -198,7 +236,8 @@ export default class ChartExample extends Component {
             dateFormat={d3.time.weeks}
             dateRange={[this.state.minDate, this.state.maxDate]}
             height={this.state.chartHeight}
-            yAxisFormat={formatTemperature}
+            tooltipProvider={this.tooltipProviderLineChart}
+            yAxisFormat={this.formatTemperature}
             yAxisLabelWidth={36}
             yAxisRange={[this.state.minTemperature, this.state.maxTemperature]}
           />

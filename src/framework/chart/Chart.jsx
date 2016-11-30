@@ -10,6 +10,7 @@ import { Number } from '../services';
 
 import Box from '../box/Box.jsx';
 import ChartDot from './chartDot/ChartDot.jsx';
+import DescriptionText from '../text/DescriptionText.jsx';
 import Heading from '../text/Heading.jsx';
 import HorizontalLine from '../horizontalLine/HorizontalLine.jsx';
 import LineChart from './LineChart.jsx';
@@ -93,6 +94,7 @@ export default class Chart extends Component {
           dateFormat={d3.time.days}
           dateRange={[this.minDate, this.maxDate]}
           height={this.HEIGHT}
+          tooltipProvider={this.props.tooltipProvider}
           yAxisFormat={Number.formatBigNumber}
           yAxisLabelWidth={32}
           yAxisRange={[this.minY, this.maxY]}
@@ -103,12 +105,23 @@ export default class Chart extends Component {
   }
 
   render() {
+    let description;
+
+    if (this.props.description) {
+      description = (
+        <DescriptionText>
+          {this.props.description}
+        </DescriptionText>
+      );
+    }
+
     return (
       <Box classes="chart" roundedCorners>
         <Heading size={Heading.SIZE.SMALL}>
           {this.props.title}{this.renderLegend()}
         </Heading>
         <HorizontalLine />
+        {description}
         {this.renderLineChart()}
       </Box>
     );
@@ -118,7 +131,9 @@ export default class Chart extends Component {
 
 Chart.propTypes = {
   data: PropTypes.array.isRequired,
+  description: PropTypes.string,
   isLoading: PropTypes.bool,
   legendLabelProvider: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  tooltipProvider: LineChart.propTypes.tooltipProvider,
 };
