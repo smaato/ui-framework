@@ -12,6 +12,7 @@ export default class SearchBox extends Component {
     super(props);
 
     this.onKeyUp = this.onKeyUp.bind(this);
+    this.search = this.search.bind(this);
   }
 
   onKeyUp(event) {
@@ -22,7 +23,11 @@ export default class SearchBox extends Component {
 
     // Otherwise, allow searching if isImmediate.
     if (this.props.isImmediate) {
-      return this.search();
+      if (this.searchTimeout) {
+        clearTimeout(this.searchTimeout);
+      }
+
+      this.searchTimeout = setTimeout(this.search, this.props.timeout);
     }
   }
 
@@ -58,4 +63,9 @@ SearchBox.propTypes = {
   isImmediate: PropTypes.bool,
   onSearch: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
+  timeout: PropTypes.number,
+};
+
+SearchBox.defaultProps = {
+  timeout: 500,
 };
