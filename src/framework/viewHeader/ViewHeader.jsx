@@ -5,7 +5,7 @@ import React, {
 
 export {
   default as ViewHeaderNav,
-} from './ViewHeaderNav.jsx';
+} from './nav/ViewHeaderNav.jsx';
 
 const ViewHeader = props => (
   <div className="viewHeader">

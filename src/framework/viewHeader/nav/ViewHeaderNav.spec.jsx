@@ -1,7 +1,8 @@
 
-import { TestCaseFactory } from 'react-test-kit';
-import ViewHeaderNav from './ViewHeaderNav.jsx';
 import { Link } from 'react-router';
+import { TestCaseFactory } from 'react-test-kit';
+
+import ViewHeaderNav from './ViewHeaderNav.jsx';
 
 describe('ViewHeaderNav', () => {
   describe('Props', () => {
