@@ -1,0 +1,46 @@
+
+.dateRange {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 12px;
+  position: relative;
+}
+
+  .dateRange__range {
+    border: 1px solid transparent;
+    border-radius: 2px;
+    color: $viewHeaderNav_textColor;
+    cursor: pointer;
+    font-weight: 400;
+    padding: 5px 10px;
+
+    &:hover,
+    &.dateRange__range--active {
+      background-color: rgba(black, 0.05);
+      border: 1px solid rgba(white, 0.2);
+    }
+
+    .icon-calendar-white {
+      display: inline-block;
+      margin-right: 4px;
+      height: 12px;
+      vertical-align: text-top;
+      width: 12px;
+    }
+  }
+
+  .dateRange__arrow {
+    border-bottom: 5px solid #ffffff;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    height: 0;
+    margin: 3px auto -8px;
+    width: 0;
+  }
+
+  .dateRange__picker {
+    margin-top: 8px;
+    position: absolute;
+    width: 560px;
+    z-index: 1;
+  }

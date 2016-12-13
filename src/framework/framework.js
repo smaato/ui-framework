@@ -23,8 +23,6 @@ export { default as CheckBox } from './checkBox/CheckBox.jsx';
 export * from './columnLayout/ColumnLayout.jsx';
 export { default as ColumnLayout } from './columnLayout/ColumnLayout.jsx';
 
-export { default as DateRange } from './dateRange/DateRange.jsx';
-
 export * from './dropdown/Dropdown.jsx';
 export { default as Dropdown } from './dropdown/Dropdown.jsx';
 

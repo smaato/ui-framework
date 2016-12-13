@@ -7,6 +7,10 @@ export {
   default as ViewHeaderNav,
 } from './nav/ViewHeaderNav.jsx';
 
+export {
+  default as DateRange,
+} from './dateRange/DateRange.jsx';
+
 const ViewHeader = props => (
   <div className="viewHeader">
     <div className="viewHeader__liner">
