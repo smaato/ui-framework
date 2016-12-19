@@ -1,0 +1,71 @@
+
+.dateRange {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 12px;
+  position: relative;
+}
+
+  .dateRange__range {
+    border: 1px solid transparent;
+    border-radius: 2px;
+    color: $viewHeaderNav_textColor;
+    cursor: pointer;
+    font-weight: 400;
+    padding: 5px 10px;
+
+    &:hover,
+    &.dateRange__range--active {
+      background-color: rgba(black, 0.05);
+      border: 1px solid rgba(white, 0.2);
+    }
+
+    .icon-calendar-white {
+      display: inline-block;
+      margin-right: 4px;
+      height: 12px;
+      vertical-align: text-top;
+      width: 12px;
+    }
+  }
+
+  .dateRange__arrow {
+    border-bottom: 5px solid #ffffff;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    height: 0;
+    margin: 3px auto -8px;
+    width: 0;
+  }
+
+  .dateRange__picker {
+    margin-top: 8px;
+    position: absolute;
+    width: 562px;
+    z-index: 1;
+  }
+
+    .rdr-MonthAndYear-button {
+      cursor: pointer;
+    }
+
+    // Fixes for Firefox
+    .rdr-Calendar {
+      // scss-lint:disable ImportantRule
+      width: 281px !important;
+    }
+
+      .rdr-MonthAndYear-button i {
+        // scss-lint:disable ImportantRule
+        display: inline-block !important;
+      }
+
+      .rdr-MonthAndYear-button.next i {
+        // scss-lint:disable ImportantRule
+        margin: 0 0 0 6px !important;
+      }
+
+      .rdr-MonthAndYear-button.prev i {
+        // scss-lint:disable ImportantRule
+        margin: 0 6px 0 0 !important;
+      }
