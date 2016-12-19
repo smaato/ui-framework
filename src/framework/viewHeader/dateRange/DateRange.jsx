@@ -89,7 +89,11 @@ export default class DateRange extends Component {
     if (this.state.endDate && this.state.startDate) {
       const formattedEndDate = this.state.endDate.format(this.DATE_FORMAT);
       const formattedStartDate = this.state.startDate.format(this.DATE_FORMAT);
-      dateRange = `${formattedStartDate} - ${formattedEndDate}`;
+      if (formattedEndDate === formattedStartDate) {
+        dateRange = `${formattedEndDate}`;
+      } else {
+        dateRange = `${formattedStartDate} - ${formattedEndDate}`;
+      }
     }
 
     if (this.state.isOpen) {
@@ -116,7 +120,7 @@ export default class DateRange extends Component {
         />
       );
       dateRangePickerStyle = {
-        [this.props.isDateRangePickerToRight ? 'left' : 'right']: 0,
+        [this.props.isLeft ? 'left' : 'right']: 0,
       };
     }
 
@@ -127,7 +131,8 @@ export default class DateRange extends Component {
           onClick={this.onClick}
           ref="dateRangeRange"
         >
-          <span className="icon icon-calendar-white" />{dateRange}
+          <span className="icon icon-calendar-white" />
+          {dateRange}
         </div>
         {dateRangeArrow}
         <div
@@ -145,7 +150,7 @@ export default class DateRange extends Component {
 
 DateRange.propTypes = {
   endDate: PropTypes.object,
-  isDateRangePickerToRight: PropTypes.bool,
+  isLeft: PropTypes.bool,
   onChange: PropTypes.func,
   startDate: PropTypes.object,
 };

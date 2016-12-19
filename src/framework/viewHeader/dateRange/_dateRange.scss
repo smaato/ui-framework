@@ -41,6 +41,31 @@
   .dateRange__picker {
     margin-top: 8px;
     position: absolute;
-    width: 560px;
+    width: 562px;
     z-index: 1;
   }
+
+    .rdr-MonthAndYear-button {
+      cursor: pointer;
+    }
+
+    // Fixes for Firefox
+    .rdr-Calendar {
+      // scss-lint:disable ImportantRule
+      width: 281px !important;
+    }
+
+      .rdr-MonthAndYear-button i {
+        // scss-lint:disable ImportantRule
+        display: inline-block !important;
+      }
+
+      .rdr-MonthAndYear-button.next i {
+        // scss-lint:disable ImportantRule
+        margin: 0 0 0 6px !important;
+      }
+
+      .rdr-MonthAndYear-button.prev i {
+        // scss-lint:disable ImportantRule
+        margin: 0 6px 0 0 !important;
+      }
