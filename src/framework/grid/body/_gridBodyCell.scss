@@ -7,6 +7,10 @@
   max-width: 250px;
 }
 
+.gridBodyCell--lastRow {
+  border-bottom: 0;
+}
+
   /*
    * 1. Truncate text with ellipsis.
    * 2. Line-height makes sure 'g' isn't cut off at the bottom.

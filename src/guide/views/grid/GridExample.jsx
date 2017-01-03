@@ -1,10 +1,11 @@
 
+import $ from 'jquery';
+import numeral from 'numeral';
 import React, {
   Component,
   PropTypes,
 } from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
 
 import Page, {
   Example,
@@ -19,6 +20,7 @@ import {
   GridControls,
   GridEmptyRow,
   GridFakeRow,
+  GridFooter,
   GridHeader,
   GridHeaderSortableCell,
   GridIcon,
@@ -41,8 +43,6 @@ import {
   SortState,
   ThrottledEventDispatcher,
 } from '../../../framework/services';
-
-import numeral from 'numeral';
 
 import gridExampleFilterOptions from './gridExampleFilterOptions';
 import createRows from './createRows';
@@ -72,15 +72,24 @@ export default class GridExample extends Component {
 
     this.hasColumnWidths = false;
 
+    this.lazyLoadBodyRows = this.lazyLoadBodyRows.bind(this);
+    this.onAddConditionChecker = this.onAddConditionChecker.bind(this);
+    this.onClickRow = this.onClickRow.bind(this);
+    this.onRemoveConditionChecker = this.onRemoveConditionChecker.bind(this);
     this.onResize = this.onResize.bind(this);
     this.onScroll = this.onScroll.bind(this);
+    this.onSearch = this.onSearch.bind(this);
+    this.onSort = this.onSort.bind(this);
+    this.toggleAllRowsSelected = this.toggleAllRowsSelected.bind(this);
+    this.toggleEmptyRows = this.toggleEmptyRows.bind(this);
+    this.toggleRowSelected = this.toggleRowSelected.bind(this);
 
-    this.GRID_ID = 'gridExample';
-    this.STICKY_THRESHOLD = 327;
-    this.ROW_HEIGHT = 34;
     this.BODY_HEIGHT = 500;
     this.COLUMNS_COUNT = 11;
+    this.GRID_ID = 'gridExample';
+    this.ROW_HEIGHT = 34;
     this.ROWS_PER_PAGE = 200;
+    this.STICKY_THRESHOLD = 330;
 
     // Prioritize the order in which our columns should disappear, ascending.
     this.COLUMN_PRIORITIES = [
@@ -387,16 +396,6 @@ export default class GridExample extends Component {
         /* eslint-ensable react/jsx-no-bind */
       }),
     ];
-
-    this.toggleEmptyRows = this.toggleEmptyRows.bind(this);
-    this.onRemoveConditionChecker = this.onRemoveConditionChecker.bind(this);
-    this.onAddConditionChecker = this.onAddConditionChecker.bind(this);
-    this.onSort = this.onSort.bind(this);
-    this.onSearch = this.onSearch.bind(this);
-    this.lazyLoadBodyRows = this.lazyLoadBodyRows.bind(this);
-    this.onClickRow = this.onClickRow.bind(this);
-    this.toggleAllRowsSelected = this.toggleAllRowsSelected.bind(this);
-    this.toggleRowSelected = this.toggleRowSelected.bind(this);
   }
 
   componentDidMount() {
@@ -409,13 +408,14 @@ export default class GridExample extends Component {
     );
 
     // Cache references to DOM elements.
-    this.gridElement = $(`#${this.GRID_ID}`);
-    this.refreshHeaderColumnElementReferences();
+    this.$window = $(window);
+    this.$grid = $(`#${this.GRID_ID}`);
+    this.$gridHeaderColumns = this.$grid.find('thead th');
+    this.$stickyHeaderColumns = this.$grid.find('.stickyGridHeaderCell');
+    this.$gridFooter = this.$grid.find('.grid__footer');
+    this.$gridFooterColumns = this.$gridFooter.find('.grid__footer__cell');
 
-    // Update the sticky header with column widths.
-    this.updateStickyHeaderColumnWidths();
-
-    // Load initial data.
+    this.updateStickyElements();
     this.lazyLoadBodyRows();
   }
 
@@ -433,10 +433,7 @@ export default class GridExample extends Component {
   }
 
   componentDidUpdate() {
-    // New props may have caused the table to re-render, so we need to refresh
-    // our references to DOM elements.
-    this.refreshHeaderColumnElementReferences();
-    this.updateStickyHeaderColumnWidths();
+    this.updateStickyElements();
   }
 
   componentWillUnmount() {
@@ -452,22 +449,11 @@ export default class GridExample extends Component {
   }
 
   onResize() {
-    this.updateStickyHeaderColumnWidths();
+    this.updateStickyElements();
   }
 
   onScroll() {
-    this.updateStickyHeaderColumnWidths();
-
-    // Set header's fixed state manually, for better performance.
-    const isHeaderFixed = this.scrollPosition.current >= this.STICKY_THRESHOLD;
-    if (isHeaderFixed !== this.isHeaderFixed) {
-      this.isHeaderFixed = isHeaderFixed;
-      if (isHeaderFixed) {
-        this.gridElement.addClass('is-grid-header-stuck');
-      } else {
-        this.gridElement.removeClass('is-grid-header-stuck');
-      }
-    }
+    this.updateStickyElements();
 
     // Lazy-load more rows if scroll position is near the bottom.
     if (this.scrollPosition.fromBottom <= 1000) {
@@ -555,23 +541,51 @@ export default class GridExample extends Component {
     );
   }
 
-  refreshHeaderColumnElementReferences() {
-    // Cache references to DOM elements.
-    this.headerColumnElements = $(`#${this.GRID_ID} thead th`);
-    this.stickyHeaderColumnElements =
-      $(`#${this.GRID_ID} .stickyGridHeaderCell`);
-  }
-
-  updateStickyHeaderColumnWidths() {
+  updateStickyColumnWidths() {
     // Set sticky header column widths to match whatever they currently are
     // in the real table.
-    const columnWidths = this.headerColumnElements.map((index, column) => (
+    const columnWidths = this.$gridHeaderColumns.map((index, column) => (
       $(column).innerWidth()
     ));
+    const stickyColumnsList = [
+      this.$stickyHeaderColumns,
+      this.$gridFooterColumns,
+    ];
 
-    this.stickyHeaderColumnElements.each((index, element) => {
-      $(element).css('width', `${columnWidths[index]}px`);
+    stickyColumnsList.forEach($elements => {
+      $elements.each((index, element) => {
+        $(element).css('width', `${columnWidths[index]}px`);
+      });
     });
+  }
+
+  updateStickyElements() {
+    // Set header's fixed state manually, for better performance.
+    const isHeaderFixed = this.scrollPosition.current >= this.STICKY_THRESHOLD;
+    if (isHeaderFixed !== this.isHeaderFixed) {
+      this.isHeaderFixed = isHeaderFixed;
+      if (isHeaderFixed) {
+        this.$grid.addClass('is-grid-header-stuck');
+      } else {
+        this.$grid.removeClass('is-grid-header-stuck');
+      }
+    }
+
+    const isFooterFixed =
+      this.$grid.position().top + this.$grid.outerHeight() >
+      this.scrollPosition.current + this.$window.height();
+    if (isFooterFixed !== this.isFooterFixed) {
+      this.isFooterFixed = isFooterFixed;
+      if (isFooterFixed) {
+        this.$grid.css('padding-bottom', `${this.$gridFooter.outerHeight()}px`);
+        this.$gridFooter.addClass('grid__footer--sticky');
+      } else {
+        this.$gridFooter.removeClass('grid__footer--sticky');
+        this.$grid.css('padding-bottom', 0);
+      }
+    }
+
+    this.updateStickyColumnWidths();
   }
 
   measureColumnWidths(items) {
@@ -758,6 +772,18 @@ export default class GridExample extends Component {
     }
   }
 
+  renderGridFooter() {
+    return (
+      <GridFooter footerCellPropsProviders={this.footerCellPropsProviders} />
+    );
+  }
+
+  renderGridHeader() {
+    return (
+      <GridHeader headerCellPropsProviders={this.headerCellPropsProviders} />
+    );
+  }
+
   renderLoadingRow() {
     if (
       this.state.isLoadingBodyRows &&
@@ -766,14 +792,6 @@ export default class GridExample extends Component {
     ) {
       return <GridLoadingRow columnsCount={this.COLUMNS_COUNT} />;
     }
-  }
-
-  renderGridHeader() {
-    return (
-      <GridHeader
-        headerCellPropsProviders={this.headerCellPropsProviders}
-      />
-    );
   }
 
   renderGrid() {
@@ -785,6 +803,10 @@ export default class GridExample extends Component {
 
       // Add items, in order.
       const stripedClass = (i % 2 === 0) ? 'gridRow--even' : 'gridRow--odd';
+      let classBodyCell;
+      if (i === items.length - 1) {
+        classBodyCell = 'gridBodyCell--lastRow';
+      }
       rows.push(
         <GridRow
           key={item.id}
@@ -793,36 +815,35 @@ export default class GridExample extends Component {
           onClick={this.onClickRow}
           height={this.ROW_HEIGHT}
           classBodyRow={stripedClass}
+          classBodyCell={classBodyCell}
         />
       );
     }
 
     return (
       <StickyGrid
-        id={this.GRID_ID}
         headerCellPropsProviders={this.headerCellPropsProviders}
+        id={this.GRID_ID}
       >
-        <Grid header={this.renderGridHeader()}>
+        <Grid
+          footer={this.renderGridFooter()}
+          header={this.renderGridHeader()}
+        >
           <RecycledList
-            rootElement={
-              <GridBody
-                // Initial loading state
-                initialLoadingRow={this.renderInitialLoadingRow()}
-                // Loading state
-                loadingRow={this.renderLoadingRow()}
-                // Empty state
-                emptyRow={this.renderEmptyRow()}
-              />
-            }
             fakeItemElement={
-              <GridFakeRow
-                columnsCount={this.COLUMNS_COUNT}
-              />
+              <GridFakeRow columnsCount={this.COLUMNS_COUNT} />
             }
+            itemHeightProvider={item => item ? item.props.height : undefined}
             items={rows}
             overflowDistance={1300}
             recycledItemsCount={120}
-            itemHeightProvider={item => item ? item.props.height : undefined}
+            rootElement={
+              <GridBody
+                emptyRow={this.renderEmptyRow()}
+                initialLoadingRow={this.renderInitialLoadingRow()}
+                loadingRow={this.renderLoadingRow()}
+              />
+            }
             scrollPosition={this.scrollPosition}
           />
         </Grid>

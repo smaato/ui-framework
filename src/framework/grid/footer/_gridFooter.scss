@@ -1,0 +1,27 @@
+
+.grid__footer--sticky {
+  bottom: 0;
+  position: fixed;
+}
+
+  .grid__footer__cell {
+    @include gridCellPadding;
+    background: $componentBackgroundColor;
+    border-top: 1px solid $componentStrokeColor;
+    height: 31px;
+    vertical-align: middle;
+  }
+
+  .grid__footer__cell--divider {
+    border-right: 1px solid $componentStrokeColor;
+  }
+
+  .grid__footer__cell--firstDivider {
+    border-left: 1px solid $componentStrokeColor;
+  }
+
+    .grid__footer__cell__liner {
+      align-items: center;
+      display: flex;
+      height: 100%;
+    }

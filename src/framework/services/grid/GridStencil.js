@@ -97,10 +97,10 @@ export default class GridStencil {
       // will truncate the content, allowing for text with ellipsis.
       const columnWidth = $(cell).outerWidth();
       return (
-        `#${this.gridId} td:nth-child(${childNumber}) {
+        `#${this.gridId} thead th:nth-child(${childNumber}) {
           max-width: ${columnWidth}px;
         }
-        #${this.gridId} th:nth-child(${childNumber}) {
+        #${this.gridId} tbody td:nth-child(${childNumber}) {
           max-width: ${columnWidth}px;
         }`
       );
@@ -124,7 +124,10 @@ export default class GridStencil {
           #${gridId} thead th:nth-child(${childNumber}) {
             display: none !important;
           }
-          #${gridId} tr td:nth-child(${childNumber}) {
+          #${gridId} tbody td:nth-child(${childNumber}) {
+            display: none !important;
+          }
+          #${gridId} tfoot th:nth-child(${childNumber}) {
             display: none !important;
           }
         }`

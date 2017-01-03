@@ -11,31 +11,33 @@
    */
   .stickyGridHeader {
     @include gridBaseStyles;
-    display: none;
-    position: fixed;
-    top: 0;
-    z-index: 100;
-    height: 34px;
+    background: $componentBackgroundColor;
     border: $gridContainerBorder;
     border-bottom: 1px solid $componentStrokeColor;
     border-top: 0;
-    background: $componentBackgroundColor;
+    display: none;
+    height: 31px;
+    line-height: 30px;
     overflow: hidden; /* 1 */
+    position: fixed;
+    top: 0;
+    z-index: 100;
 
     /**
      * We stick the header with display instead of position, to avoid incurring
      * a reflow and repaint.
      */
     .is-grid-header-stuck > & {
-      display: flex;
       align-items: center;
+      display: flex;
       justify-content: space-between;
     }
   }
 
     .stickyGridHeaderCell {
       @include gridCellPadding;
-      white-space: nowrap;
+      height: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
+      white-space: nowrap;
     }

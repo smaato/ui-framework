@@ -12,8 +12,7 @@ describe('StickyGrid', () => {
           headerCellPropsProviders: [],
         };
 
-        const testCase =
-          TestCaseFactory.create(StickyGrid, props);
+        const testCase = TestCaseFactory.create(StickyGrid, props);
 
         expect(testCase.dom.getAttribute('id')).toBe(props.id);
       });
@@ -47,8 +46,7 @@ describe('StickyGrid', () => {
           children: <div className="test" />,
         };
 
-        const testCase =
-          TestCaseFactory.create(StickyGrid, props);
+        const testCase = TestCaseFactory.create(StickyGrid, props);
 
         expect(testCase.first('.test')).toBeDefined();
       });
