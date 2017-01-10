@@ -16,16 +16,14 @@ export default class LineChart extends Component {
     super(props);
 
     this.DOT_RADIUS = 5;
+    this.DOT_SELECTOR = '.lineChartDot';
 
+    this.onMouseleave = this.onMouseleave.bind(this);
+    this.onMousemove = this.onMousemove.bind(this);
     this.onResize = this.onResize.bind(this);
   }
 
   componentDidMount() {
-    // Throttle resize event handling, in an attempt to improve performance.
-    this.resizeEventDispatcher = new ThrottledEventDispatcher(
-      'resize', `lineChartResize${new Date()}`, window, this.onResize
-    );
-
     this.$lineChart = $(this.refs.lineChart);
 
     this.lineChartSvg = d3.select(this.refs.lineChartSvg);
@@ -36,6 +34,13 @@ export default class LineChart extends Component {
     this.container = this.lineChartSvg.append('g');
 
     this.renderChart(this.props, true);
+
+    this.lineChartSvg.on('mouseleave', this.onMouseleave);
+    this.lineChartSvg.on('mousemove', this.onMousemove);
+    // Throttle resize event handling, in an attempt to improve performance.
+    this.resizeEventDispatcher = new ThrottledEventDispatcher(
+      'resize', `lineChartResize${new Date()}`, window, this.onResize
+    );
   }
 
   shouldComponentUpdate(nextProps) {
@@ -50,6 +55,40 @@ export default class LineChart extends Component {
 
   componentWillUnmount() {
     this.resizeEventDispatcher.teardown();
+  }
+
+  onMouseleave() {
+    this.lineChartSvg.selectAll(this.DOT_SELECTOR).style('opacity', 0);
+  }
+
+  onMousemove() {
+    const $dataSetDots = this.$lineChart.find(this.DOT_SELECTOR);
+    const mouseX = d3.mouse(this.refs.lineChartSvg)[0];
+
+    let closestDots = [];
+    let minDistance;
+    let preferredDotX;
+
+    $dataSetDots.each((index, dot) => {
+      const dotX = parseInt(dot.getAttribute('cx'), 10);
+      const distance = Math.abs(mouseX - dotX);
+      if (isNaN(minDistance) || (distance < minDistance)) {
+        minDistance = distance;
+        preferredDotX = undefined;
+      }
+      if (distance === minDistance) {
+        if (isNaN(preferredDotX) || dotX < preferredDotX) {
+          closestDots = [];
+          preferredDotX = dotX;
+        }
+        if (dotX === preferredDotX) {
+          closestDots.push(dot);
+        }
+      }
+      d3.select(dot).style('opacity', 0);
+    });
+
+    d3.selectAll(closestDots).style('opacity', 1);
   }
 
   onResize() {
@@ -184,10 +223,10 @@ export default class LineChart extends Component {
     // TOOLTIP /////////////////////////////////////////////////////////////////
 
     if (props.tooltipProvider) {
-      this.container.selectAll('.lineChartDot').remove();
+      this.container.selectAll(this.DOT_SELECTOR).remove();
 
       data.forEach((dataSet, index) => {
-        const dataSetDots = this.container.selectAll(`.lineChartDot${index}`)
+        const dataSetDots = this.container.selectAll(this.DOT_SELECTOR + index)
           .data(dataSet.values);
 
         dataSetDots.enter().append('circle')
@@ -199,9 +238,6 @@ export default class LineChart extends Component {
           .style('opacity', 0);
 
         dataSetDots.on('mouseover', item => {
-          const dot = d3.select(d3.event.target);
-          dot.transition().style('opacity', 1);
-
           this.lineChartTooltip.style.display = 'block';
           this.lineChartTooltip.style.left = '0px';
           this.lineChartTooltip.style.top = '0px';
@@ -211,6 +247,7 @@ export default class LineChart extends Component {
             this.lineChartTooltip
           );
 
+          const dot = d3.select(d3.event.target);
           const dotX = parseInt(dot.attr('cx'), 10);
           const dotY = parseInt(dot.attr('cy'), 10);
           const tooltipHeight = this.lineChartTooltip.offsetHeight;
@@ -232,9 +269,6 @@ export default class LineChart extends Component {
         });
 
         dataSetDots.on('mouseout', () => {
-          const dot = d3.select(d3.event.target);
-          dot.transition().style('opacity', 0);
-
           this.lineChartTooltip.style.display = 'none';
           this.lineChartTooltip.style.opacity = 0;
         });
