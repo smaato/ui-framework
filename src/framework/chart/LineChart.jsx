@@ -114,16 +114,16 @@ export default class LineChart extends Component {
       dateRange,
       height,
       transitionDuration,
+      xAxisLabelHeight,
       yAxisFormat,
       yAxisLabelWidth,
       yAxisRange,
     } = props;
 
     const duration = updateImmediately ? 0 : transitionDuration;
-    const marginBottom = 14;
     const marginTop = 5;
     const width = this.$lineChart.width();
-    const yAxisMax = height - marginBottom;
+    const yAxisMax = height - xAxisLabelHeight;
     const yAxisTickSize = width - yAxisLabelWidth;
 
     let marginLeft = 5;
@@ -305,6 +305,7 @@ LineChart.propTypes = {
   isYAxisLeft: PropTypes.bool,
   tooltipProvider: PropTypes.func,
   transitionDuration: PropTypes.number,
+  xAxisLabelHeight: PropTypes.number,
   yAxisFormat: PropTypes.func,
   yAxisLabelWidth: PropTypes.number,
   yAxisRange: PropTypes.array.isRequired,
@@ -312,5 +313,6 @@ LineChart.propTypes = {
 
 LineChart.defaultProps = {
   transitionDuration: 1000,
+  xAxisLabelHeight: 14,
   yAxisLabelWidth: 20,
 };
