@@ -30,43 +30,49 @@ export default class ChartExample extends Component {
 
     this.formatDate = d3.time.format('%B %e');
 
-    this.state = {
-      chartData: this.getInitialChartData(),
+    this.state = Object.assign({
+      chartData: undefined,
       chartHeight: 400,
+      isBatch1: true,
       isLoading: false,
-      minDate: undefined,
+      isYAxisLeft: false,
       maxDate: undefined,
-      minTemperature: undefined,
       maxTemperature: undefined,
-      useBatch1: false,
-    };
+      minDate: undefined,
+      minTemperature: undefined,
+    }, this.computeChartState(chartExampleData.batch1));
 
     this.legendLabelProvider = this.legendLabelProvider.bind(this);
     this.onClickChangeData = this.onClickChangeData.bind(this);
     this.onClickChangeHeight = this.onClickChangeHeight.bind(this);
     this.onClickToggleIsLoading = this.onClickToggleIsLoading.bind(this);
+    this.onClickChangeYAxisOrientation =
+      this.onClickChangeYAxisOrientation.bind(this);
     this.tooltipProviderChart = this.tooltipProviderChart.bind(this);
     this.tooltipProviderLineChart = this.tooltipProviderLineChart.bind(this);
   }
 
-  componentDidMount() {
-    this.setData(chartExampleData.batch1);
-  }
-
   onClickChangeData() {
-    this.setState({
-      useBatch1: !this.state.useBatch1,
-    });
-    if (this.state.useBatch1) {
-      this.setData(chartExampleData.batch1);
-    } else {
-      this.setData(chartExampleData.batch2);
-    }
+    const batch =
+      this.state.isBatch1 ? chartExampleData.batch2 : chartExampleData.batch1;
+
+    this.setState(Object.assign(
+      {
+        isBatch1: !this.state.isBatch1,
+      },
+      this.computeChartState(batch)
+    ));
   }
 
   onClickChangeHeight() {
     this.setState({
       chartHeight: 300 + Math.round(Math.random() * 300),
+    });
+  }
+
+  onClickChangeYAxisOrientation() {
+    this.setState({
+      isYAxisLeft: !this.state.isYAxisLeft,
     });
   }
 
@@ -76,8 +82,20 @@ export default class ChartExample extends Component {
     });
   }
 
-  setData(rawData) {
-    const chartData = this.getInitialChartData();
+  computeChartState(rawData) {
+    const chartData = [{
+      name: 'newYork',
+      color: '#1192ca',
+      values: [],
+    }, {
+      name: 'sanFrancisco',
+      color: '#F07171',
+      values: [],
+    }, {
+      name: 'austin',
+      color: '#60C04F',
+      values: [],
+    }];
     const formatDate = d3.time.format('%Y%m%d').parse;
     let minDate = undefined;
     let maxDate = undefined;
@@ -104,29 +122,13 @@ export default class ChartExample extends Component {
       }
     });
 
-    this.setState({
+    return {
       chartData,
       minDate,
       maxDate,
       minTemperature,
       maxTemperature,
-    });
-  }
-
-  getInitialChartData() {
-    return [{
-      name: 'newYork',
-      color: '#1192ca',
-      values: [],
-    }, {
-      name: 'sanFrancisco',
-      color: '#F07171',
-      values: [],
-    }, {
-      name: 'austin',
-      color: '#60C04F',
-      values: [],
-    }];
+    };
   }
 
   formatTemperature(value) {
@@ -231,11 +233,15 @@ export default class ChartExample extends Component {
           <button onClick={this.onClickChangeHeight}>
             Change height
           </button>
+          <button onClick={this.onClickChangeYAxisOrientation}>
+            Change y axis orientation
+          </button>
           <LineChart
             data={this.state.chartData}
             dateFormat={d3.time.weeks}
             dateRange={[this.state.minDate, this.state.maxDate]}
             height={this.state.chartHeight}
+            isYAxisLeft={this.state.isYAxisLeft}
             tooltipProvider={this.tooltipProviderLineChart}
             yAxisFormat={this.formatTemperature}
             yAxisLabelWidth={36}

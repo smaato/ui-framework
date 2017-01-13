@@ -16,16 +16,14 @@ export default class LineChart extends Component {
     super(props);
 
     this.DOT_RADIUS = 5;
+    this.DOT_SELECTOR = '.lineChartDot';
 
+    this.onMouseleave = this.onMouseleave.bind(this);
+    this.onMousemove = this.onMousemove.bind(this);
     this.onResize = this.onResize.bind(this);
   }
 
   componentDidMount() {
-    // Throttle resize event handling, in an attempt to improve performance.
-    this.resizeEventDispatcher = new ThrottledEventDispatcher(
-      'resize', `lineChartResize${new Date()}`, window, this.onResize
-    );
-
     this.$lineChart = $(this.refs.lineChart);
 
     this.lineChartSvg = d3.select(this.refs.lineChartSvg);
@@ -36,6 +34,13 @@ export default class LineChart extends Component {
     this.container = this.lineChartSvg.append('g');
 
     this.renderChart(this.props, true);
+
+    this.lineChartSvg.on('mouseleave', this.onMouseleave);
+    this.lineChartSvg.on('mousemove', this.onMousemove);
+    // Throttle resize event handling, in an attempt to improve performance.
+    this.resizeEventDispatcher = new ThrottledEventDispatcher(
+      'resize', `lineChartResize${new Date()}`, window, this.onResize
+    );
   }
 
   shouldComponentUpdate(nextProps) {
@@ -50,6 +55,40 @@ export default class LineChart extends Component {
 
   componentWillUnmount() {
     this.resizeEventDispatcher.teardown();
+  }
+
+  onMouseleave() {
+    this.lineChartSvg.selectAll(this.DOT_SELECTOR).style('opacity', 0);
+  }
+
+  onMousemove() {
+    const $dataSetDots = this.$lineChart.find(this.DOT_SELECTOR);
+    const mouseX = d3.mouse(this.refs.lineChartSvg)[0];
+
+    let closestDots = [];
+    let minDistance;
+    let preferredDotX;
+
+    $dataSetDots.each((index, dot) => {
+      const dotX = parseInt(dot.getAttribute('cx'), 10);
+      const distance = Math.abs(mouseX - dotX);
+      if (isNaN(minDistance) || (distance < minDistance)) {
+        minDistance = distance;
+        preferredDotX = undefined;
+      }
+      if (distance === minDistance) {
+        if (isNaN(preferredDotX) || dotX < preferredDotX) {
+          closestDots = [];
+          preferredDotX = dotX;
+        }
+        if (dotX === preferredDotX) {
+          closestDots.push(dot);
+        }
+      }
+      d3.select(dot).style('opacity', 0);
+    });
+
+    d3.selectAll(closestDots).style('opacity', 1);
   }
 
   onResize() {
@@ -75,17 +114,27 @@ export default class LineChart extends Component {
       dateRange,
       height,
       transitionDuration,
+      xAxisLabelHeight,
       yAxisFormat,
       yAxisLabelWidth,
       yAxisRange,
     } = props;
 
     const duration = updateImmediately ? 0 : transitionDuration;
-    const marginBottom = 14;
-    const marginRight = yAxisLabelWidth;
+    const marginTop = 5;
     const width = this.$lineChart.width();
-    const availableWidth = width - marginRight;
-    const availableHeight = height - marginBottom;
+    const yAxisMax = height - xAxisLabelHeight;
+    const yAxisTickSize = width - yAxisLabelWidth;
+
+    let marginLeft = 5;
+    let marginRight = yAxisLabelWidth;
+
+    if (props.isYAxisLeft) {
+      marginLeft = yAxisLabelWidth;
+      marginRight = 5;
+    }
+
+    const xAxisMax = width - marginRight;
 
     // Set the correct dimensions.
     this.$lineChart.css('height', height);
@@ -97,55 +146,57 @@ export default class LineChart extends Component {
 
     // Create time scale for X axis, mapping date range to chart width.
     const xAxisScale = d3.time.scale().domain(dateRange)
-      .range([5, availableWidth]);
+      .range([marginLeft, xAxisMax]);
 
     // Create linear scale for Y axis, mapping data range to chart height.
     const yAxisScale = d3.scale.linear().domain(yAxisRange)
-      .range([availableHeight, 5]);
+      .range([yAxisMax, marginTop]);
 
     // X AXIS //////////////////////////////////////////////////////////////////
 
     // Create X axis.
     const xAxis = d3.svg.axis().scale(xAxisScale).ticks(dateFormat)
-      .tickSize(availableHeight);
+      .tickSize(yAxisMax);
 
     if (!this.xAxis) {
       // Create the X axis if it doesn't exist.
-      this.xAxis = this.container.append('g').call(xAxis)
-        .call(this.styleAxis, 'X');
-    } else {
-      if (updateImmediately) {
-        // Update the X axis without an animation.
-        this.xAxis.call(xAxis);
-      } else {
-        // Update the X axis and animate the change.
-        this.xAxis.transition().duration(duration).call(xAxis);
-      }
-
-      this.xAxis.call(this.styleAxis, 'X');
+      this.xAxis = this.container.append('g');
     }
+
+    if (updateImmediately) {
+      // Update the X axis without an animation.
+      this.xAxis.call(xAxis);
+    } else {
+      // Update the X axis and animate the change.
+      this.xAxis.transition().duration(duration).call(xAxis);
+    }
+
+    this.xAxis.call(this.styleAxis, 'X');
 
     // Y AXIS //////////////////////////////////////////////////////////////////
 
     // Create Y axis.
-    const yAxis = d3.svg.axis().scale(yAxisScale).tickFormat(yAxisFormat)
-      .tickSize(availableWidth).orient('right');
+    const yAxis = d3.svg.axis().orient((props.isYAxisLeft ? 'left' : 'right'))
+      .scale(yAxisScale).tickFormat(yAxisFormat).tickSize(yAxisTickSize);
 
     if (!this.yAxis) {
       // Create the Y axis if it doesn't exist.
-      this.yAxis = this.container.append('g').call(yAxis)
-        .call(this.styleAxis, 'Y');
-    } else {
-      if (updateImmediately) {
-        // Update the Y axis without an animation.
-        this.yAxis.call(yAxis);
-      } else {
-        // Update the Y axis and animate the change.
-        this.yAxis.transition().duration(duration).call(yAxis);
-      }
-
-      this.yAxis.call(this.styleAxis, 'Y');
+      this.yAxis = this.container.append('g');
     }
+
+    const yAxisOrientationTransform =
+      `translate(${props.isYAxisLeft ? width : 0},0)`;
+
+    if (updateImmediately) {
+      // Update the Y axis without an animation.
+      this.yAxis.attr('transform', yAxisOrientationTransform).call(yAxis);
+    } else {
+      // Update the Y axis and animate the change.
+      this.yAxis.transition().duration(duration)
+        .attr('transform', yAxisOrientationTransform).call(yAxis);
+    }
+
+    this.yAxis.call(this.styleAxis, 'Y');
 
     // LINES ///////////////////////////////////////////////////////////////////
 
@@ -171,11 +222,11 @@ export default class LineChart extends Component {
 
     // TOOLTIP /////////////////////////////////////////////////////////////////
 
-    if (this.props.tooltipProvider) {
-      this.container.selectAll('.lineChartDot').remove();
+    if (props.tooltipProvider) {
+      this.container.selectAll(this.DOT_SELECTOR).remove();
 
       data.forEach((dataSet, index) => {
-        const dataSetDots = this.container.selectAll(`.lineChartDot${index}`)
+        const dataSetDots = this.container.selectAll(this.DOT_SELECTOR + index)
           .data(dataSet.values);
 
         dataSetDots.enter().append('circle')
@@ -187,30 +238,28 @@ export default class LineChart extends Component {
           .style('opacity', 0);
 
         dataSetDots.on('mouseover', item => {
-          const dot = d3.select(d3.event.target);
-          dot.transition().style('opacity', 1);
-
           this.lineChartTooltip.style.display = 'block';
           this.lineChartTooltip.style.left = '0px';
           this.lineChartTooltip.style.top = '0px';
 
           ReactDOM.render(
-            this.props.tooltipProvider(item),
+            props.tooltipProvider(item),
             this.lineChartTooltip
           );
 
+          const dot = d3.select(d3.event.target);
           const dotX = parseInt(dot.attr('cx'), 10);
           const dotY = parseInt(dot.attr('cy'), 10);
           const tooltipHeight = this.lineChartTooltip.offsetHeight;
           const tooltipWidth = this.lineChartTooltip.offsetWidth;
 
           let tooltipX = dotX + this.DOT_RADIUS;
-          if (availableWidth < (tooltipX + tooltipWidth)) {
+          if (xAxisMax < (tooltipX + tooltipWidth)) {
             tooltipX = tooltipX - (2 * this.DOT_RADIUS) - tooltipWidth;
           }
 
           let tooltipY = dotY + this.DOT_RADIUS;
-          if (availableHeight < (tooltipY + tooltipHeight)) {
+          if (yAxisMax < (tooltipY + tooltipHeight)) {
             tooltipY = tooltipY - (2 * this.DOT_RADIUS) - tooltipHeight;
           }
 
@@ -220,9 +269,6 @@ export default class LineChart extends Component {
         });
 
         dataSetDots.on('mouseout', () => {
-          const dot = d3.select(d3.event.target);
-          dot.transition().style('opacity', 0);
-
           this.lineChartTooltip.style.display = 'none';
           this.lineChartTooltip.style.opacity = 0;
         });
@@ -256,8 +302,10 @@ LineChart.propTypes = {
   dateFormat: PropTypes.func,
   dateRange: PropTypes.array.isRequired,
   height: PropTypes.number.isRequired,
+  isYAxisLeft: PropTypes.bool,
   tooltipProvider: PropTypes.func,
   transitionDuration: PropTypes.number,
+  xAxisLabelHeight: PropTypes.number,
   yAxisFormat: PropTypes.func,
   yAxisLabelWidth: PropTypes.number,
   yAxisRange: PropTypes.array.isRequired,
@@ -265,5 +313,6 @@ LineChart.propTypes = {
 
 LineChart.defaultProps = {
   transitionDuration: 1000,
+  xAxisLabelHeight: 14,
   yAxisLabelWidth: 20,
 };
