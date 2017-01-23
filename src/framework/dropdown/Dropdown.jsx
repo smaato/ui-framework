@@ -1,6 +1,7 @@
 
 import React, {
   Component,
+  PropTypes,
 } from 'react';
 import classNames from 'classnames';
 
@@ -20,6 +21,7 @@ export default class Dropdown extends Component {
 
   render() {
     const labelClasses = classNames(this.props.labelClasses, {
+      'dropdownLabel--borderless': this.props.isBorderless,
       'dropdownLabel--readonly': this.props.isReadonly,
     });
 
@@ -36,7 +38,9 @@ export default class Dropdown extends Component {
 
 }
 
-Dropdown.propTypes = Object.assign({}, BaseDropdown.propTypes);
+Dropdown.propTypes = Object.assign({}, BaseDropdown.propTypes, {
+  isBorderless: PropTypes.bool,
+});
 
 Dropdown.defaultProps = Object.assign({}, BaseDropdown.defaultProps, {
   classes: 'dropdown',

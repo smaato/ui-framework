@@ -17,31 +17,31 @@
  */
 .dropdownLabel {
   @include baseDropdownLabel;
-  text-overflow: ellipsis; /* 1 */
-  overflow: hidden; /* 1 */
-  font-size: 12px;
-  line-height: $lineHeight;
-  font-weight: 400;
-  border: 1px solid #c8cfd5;
   background-color: #f6fafc;
-  padding: 8px 30px 8px 8px;
-  white-space: nowrap;
-  cursor: pointer;
+  border: 1px solid #c8cfd5;
   border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: $lineHeight;
+  overflow: hidden; /* 1 */
+  padding: 8px 30px 8px 8px;
+  text-overflow: ellipsis; /* 1 */
+  white-space: nowrap;
 
   &:before,
   &:after {
     $dropdownArrow_width: 1px;
     $dropdownArrow_height: 5px;
-    content: '';
-    width: $dropdownArrow_width;
-    height: $dropdownArrow_height;
     background-color: #517582;
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    margin-top: -$dropdownArrow_height / 2;
+    content: '';
+    height: $dropdownArrow_height;
     margin-left: -$dropdownArrow_width / 2;
+    margin-top: -$dropdownArrow_height / 2;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: $dropdownArrow_width;
   }
 
   &:before {
@@ -55,6 +55,13 @@
   &.is-dropdown-label-focus {
     @include fieldFocus;
   }
+}
+
+.dropdownLabel--borderless {
+  background-color: transparent;
+  border: 0;
+  color: $textColor;
+  padding-right: 20px;
 }
 
 .dropdownLabel--readonly {
