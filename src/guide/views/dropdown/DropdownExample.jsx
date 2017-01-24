@@ -96,6 +96,18 @@ export default class DropdownExample extends Component {
           />
         </Example>
 
+        <Example title="Borderless with dot">
+          <Dropdown
+            dotColor={DropdownDot.COLOR.BLUE}
+            isBorderless
+            labelProvider={this.dropdownLabelProvider}
+            onSelect={this.onSelectDropdownOption}
+            options={this.dropdownItems}
+            optionLabelProvider={this.dropdownOptionLabelProvider}
+            selectedOption={this.state.selectedDropdownOption}
+          />
+        </Example>
+
         <Example title="DropdownDot BLUE">
           <DropdownDot color={DropdownDot.COLOR.BLUE} />
         </Example>

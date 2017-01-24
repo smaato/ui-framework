@@ -1,30 +1,30 @@
 
 .dropdownDot {
   $dropdownDotSize: 10px;
-  display: inline-block;
-  width: $dropdownDotSize;
-  height: $dropdownDotSize;
+  background-color: $dropdownDotGreyFill;
   border-radius: 100%;
   border: 1px solid $dropdownDotGreyLine;
-  background-color: $dropdownDotGreyFill;
+  display: inline-block;
+  height: $dropdownDotSize;
+  width: $dropdownDotSize;
 }
 
 .dropdownDot--blue {
-  border: 1px solid $dropdownDotBlueLine;
   background-color: $dropdownDotBlueFill;
+  border: 1px solid $dropdownDotBlueLine;
 }
 
 .dropdownDot--green {
-  border: 1px solid $dropdownDotGreenLine;
   background-color: $dropdownDotGreenFill;
+  border: 1px solid $dropdownDotGreenLine;
 }
 
 .dropdownDot--grey {
-  border: 1px solid $dropdownDotGreyLine;
   background-color: $dropdownDotGreyFill;
+  border: 1px solid $dropdownDotGreyLine;
 }
 
 .dropdownDot--red {
-  border: 1px solid $dropdownDotRedLine;
   background-color: $dropdownDotRedFill;
+  border: 1px solid $dropdownDotRedLine;
 }

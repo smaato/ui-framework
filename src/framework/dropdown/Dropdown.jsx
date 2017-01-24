@@ -6,7 +6,7 @@ import React, {
 import classNames from 'classnames';
 
 import BaseDropdown from '../base/dropdown/BaseDropdown.jsx';
-
+import DropdownDot from './dropdownDot/DropdownDot.jsx';
 import DropdownOption from './DropdownOption.jsx';
 
 export {
@@ -21,6 +21,36 @@ export default class Dropdown extends Component {
 
   constructor(props) {
     super(props);
+
+    this.labelProvider = this.labelProvider.bind(this);
+
+    this.dropdownDotColorToClassesMap = {
+      [DropdownDot.COLOR.BLUE]: 'dropdownLabel--blue',
+      [DropdownDot.COLOR.GREEN]: 'dropdownLabel--green',
+      [DropdownDot.COLOR.GREY]: 'dropdownLabel--grey',
+      [DropdownDot.COLOR.RED]: 'dropdownLabel--red',
+    };
+  }
+
+  labelProvider(option) {
+    let label = this.props.labelProvider(option);
+
+    if (this.props.dotColor) {
+      label = [
+        <DropdownDot
+          color={this.props.dotColor}
+          key={0}
+        />,
+        <span
+          className={this.dropdownDotColorToClassesMap[this.props.dotColor]}
+          key={1}
+        >
+          {label}
+        </span>,
+      ];
+    }
+
+    return label;
   }
 
   render() {
@@ -31,6 +61,7 @@ export default class Dropdown extends Component {
 
     const extendedProps = Object.assign({}, this.props, {
       labelClasses,
+      labelProvider: this.labelProvider,
     });
 
     return (
@@ -43,6 +74,7 @@ export default class Dropdown extends Component {
 }
 
 Dropdown.propTypes = Object.assign({}, BaseDropdown.propTypes, {
+  dotColor: DropdownDot.propTypes.color,
   isBorderless: PropTypes.bool,
 });
 
