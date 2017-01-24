@@ -10,6 +10,7 @@ import Page, {
 
 import {
   Dropdown,
+  DropdownDot,
 } from '../../../framework/framework';
 
 export default class DropdownExample extends Component {
@@ -93,6 +94,22 @@ export default class DropdownExample extends Component {
             optionLabelProvider={this.dropdownOptionLabelProvider}
             selectedOption={this.state.selectedDropdownOption}
           />
+        </Example>
+
+        <Example title="DropdownDot BLUE">
+          <DropdownDot color={DropdownDot.COLOR.BLUE} />
+        </Example>
+
+        <Example title="DropdownDot GREEN">
+          <DropdownDot color={DropdownDot.COLOR.GREEN} />
+        </Example>
+
+        <Example title="DropdownDot GREY">
+          <DropdownDot color={DropdownDot.COLOR.GREY} />
+        </Example>
+
+        <Example title="DropdownDot RED">
+          <DropdownDot color={DropdownDot.COLOR.RED} />
         </Example>
 
       </Page>

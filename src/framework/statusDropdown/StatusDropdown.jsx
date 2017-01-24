@@ -1,19 +1,15 @@
 
+import classNames from 'classnames';
+import keyMirror from 'keymirror';
 import React, {
   Component,
 } from 'react';
-import classNames from 'classnames';
-import keyMirror from 'keymirror';
 
 import BaseDropdown from '../base/dropdown/BaseDropdown.jsx';
-import StatusDot from './statusDot/StatusDot.jsx';
+import DropdownDot from '../dropdown/dropdownDot/DropdownDot.jsx';
 import StatusDropdownOption from './StatusDropdownOption.jsx';
 import StatusDropdownOptionIcon
   from './statusDropdownOptionIcon/StatusDropdownOptionIcon.jsx';
-
-export {
-  default as StatusDot,
-} from './statusDot/StatusDot.jsx';
 
 export {
   default as StatusDropdownOption,
@@ -56,13 +52,13 @@ export default class StatusDropdown extends Component {
     };
 
     this.optionToStatusMap = {
-      [StatusDropdown.OPTIONS.ACTIVATE]: StatusDot.STATUS.POSITIVE,
-      [StatusDropdown.OPTIONS.DEACTIVATE]: StatusDot.STATUS.NEGATIVE,
+      [StatusDropdown.OPTIONS.ACTIVATE]: DropdownDot.COLOR.GREEN,
+      [StatusDropdown.OPTIONS.DEACTIVATE]: DropdownDot.COLOR.RED,
     };
   }
 
   labelProvider(option) {
-    const status = this.optionToStatusMap[option];
+    const color = this.optionToStatusMap[option];
 
     let name;
 
@@ -73,9 +69,9 @@ export default class StatusDropdown extends Component {
     }
 
     return [
-      <StatusDot
+      <DropdownDot
         key={0}
-        status={status}
+        color={color}
       />,
       <span key={1}>{name}</span>,
     ];

@@ -55,6 +55,10 @@
   &.is-dropdown-label-focus {
     @include fieldFocus;
   }
+
+  .dropdownDot {
+    margin-right: 3px;
+  }
 }
 
 .dropdownLabel--borderless {

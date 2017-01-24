@@ -22,7 +22,7 @@
   white-space: nowrap;
   cursor: pointer;
   text-transform: uppercase;
-  color: $statusDefaultLineColor;
+  color: $dropdownDotGreyLine;
 
   &:before,
   &:after {
@@ -36,7 +36,7 @@
     right: 10px;
     margin-top: -$dropdownArrow_height / 2;
     margin-left: -$dropdownArrow_width / 2;
-    background-color: $statusDefaultLineColor;
+    background-color: $dropdownDotGreyLine;
   }
 
   &:before {
@@ -51,27 +51,26 @@
     @include fieldFocus;
   }
 
-  .statusDot {
+  .dropdownDot {
     margin-right: 3px;
   }
 }
 
 .statusDropdownLabel--negative {
-  color: $statusNegativeLineColor;
+  color: $dropdownDotRedLine;
 
   &:before,
   &:after {
-    background-color: $statusNegativeLineColor;
+    background-color: $dropdownDotRedLine;
   }
 }
 
-
 .statusDropdownLabel--positive {
-  color: $statusPositiveLineColor;
+  color: $dropdownDotGreenLine;
 
   &:before,
   &:after {
-    background-color: $statusPositiveLineColor;
+    background-color: $dropdownDotGreenLine;
   }
 }
 

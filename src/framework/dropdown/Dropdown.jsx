@@ -10,6 +10,10 @@ import BaseDropdown from '../base/dropdown/BaseDropdown.jsx';
 import DropdownOption from './DropdownOption.jsx';
 
 export {
+  default as DropdownDot,
+} from './dropdownDot/DropdownDot.jsx';
+
+export {
   default as DropdownOption,
 } from './DropdownOption.jsx';
 

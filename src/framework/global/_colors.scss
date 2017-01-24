@@ -30,18 +30,20 @@ $appHeaderNav_backgroundColor: $darkGrey;
 $appHeaderNav_selectedColor: $viewHeaderNav_backgroundColor;
 
 /**
- * Status
+ * Dots
  */
 
 // Line (border, font)
-$statusDefaultLineColor: rgba(black, 0.3);
-$statusNegativeLineColor: #e1472e;
-$statusPositiveLineColor: #41b586;
+$dropdownDotBlueLine: #1092ca;
+$dropdownDotGreenLine: #41b586;
+$dropdownDotGreyLine: rgba(black, 0.3);
+$dropdownDotRedLine: #e1472e;
 
 // Fill (background)
-$statusDefaultFillColor: rgba(black, 0.1);
-$statusNegativeFillColor: #ff8875;
-$statusPositiveFillColor: #48cda4;
+$dropdownDotBlueFill: rgba(16, 146, 202, 0.5);
+$dropdownDotGreenFill: rgba(65, 181, 134, 0.5);
+$dropdownDotGreyFill: rgba(black, 0.1);
+$dropdownDotRedFill: rgba(255, 71, 46, 0.5);
 
 // Text
 $textColor: #5e707b;
