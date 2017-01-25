@@ -81,4 +81,34 @@ describe('StatusDropdown', () => {
       });
     });
   });
+
+  describe('Option mapping', () => {
+    const options = [
+      StatusDropdown.OPTIONS.ACTIVATE,
+      StatusDropdown.OPTIONS.DEACTIVATE,
+      StatusDropdown.OPTIONS.DELETE,
+    ];
+
+    it('ACTIVATE renders a green DropdownDot and green label', () => {
+      const props = {
+        onSelect: () => undefined,
+        options,
+        selectedOption: StatusDropdown.OPTIONS.ACTIVATE,
+      };
+      const testCase = TestCaseFactory.create(StatusDropdown, props);
+      expect(testCase.first('.dropdownDot--green')).toBeDefined();
+      expect(testCase.first('.statusDropdownLabel--green')).toBeDefined();
+    });
+
+    it('DEACTIVATE renders a red DropdownDot and red label', () => {
+      const props = {
+        onSelect: () => undefined,
+        options,
+        selectedOption: StatusDropdown.OPTIONS.DEACTIVATE,
+      };
+      const testCase = TestCaseFactory.create(StatusDropdown, props);
+      expect(testCase.first('.dropdownDot--red')).toBeDefined();
+      expect(testCase.first('.statusDropdownLabel--red')).toBeDefined();
+    });
+  });
 });

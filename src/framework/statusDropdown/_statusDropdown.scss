@@ -56,7 +56,7 @@
   }
 }
 
-.statusDropdownLabel--negative {
+.statusDropdownLabel--red {
   color: $dropdownDotRedLine;
 
   &:before,
@@ -65,7 +65,7 @@
   }
 }
 
-.statusDropdownLabel--positive {
+.statusDropdownLabel--green {
   color: $dropdownDotGreenLine;
 
   &:before,

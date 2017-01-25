@@ -35,8 +35,8 @@ export default class StatusDropdown extends Component {
     };
 
     this.optionToLabelClassesMap = {
-      [StatusDropdown.OPTIONS.ACTIVATE]: 'statusDropdownLabel--positive',
-      [StatusDropdown.OPTIONS.DEACTIVATE]: 'statusDropdownLabel--negative',
+      [StatusDropdown.OPTIONS.ACTIVATE]: 'statusDropdownLabel--green',
+      [StatusDropdown.OPTIONS.DEACTIVATE]: 'statusDropdownLabel--red',
     };
 
     this.optionToNameMap = {
