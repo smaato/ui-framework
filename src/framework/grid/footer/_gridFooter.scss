@@ -1,7 +1,11 @@
 
 .grid__footer--sticky {
   bottom: 0;
+  border-left: 1px solid $componentStrokeColor;
+  border-right: 1px solid $componentStrokeColor;
+  margin-left: -1px;
   position: fixed;
+  z-index: 10;
 }
 
   .grid__footer__cell {

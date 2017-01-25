@@ -21,7 +21,7 @@
     overflow: hidden; /* 1 */
     position: fixed;
     top: 0;
-    z-index: 100;
+    z-index: 10;
 
     /**
      * We stick the header with display instead of position, to avoid incurring
