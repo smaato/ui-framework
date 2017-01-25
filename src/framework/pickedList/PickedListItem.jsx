@@ -19,11 +19,21 @@ const PickedListItem = props => {
     };
 
     const iconClasses = classNames(
-      'pickedListItemIcon icon',
+      'pickedListItem__icon icon',
       typeToIconClassMap[props.type]
     );
 
     icon = <div className={iconClasses} />;
+  }
+
+  let meta;
+
+  if (props.meta) {
+    meta = (
+      <div className="pickedListItem__meta">
+        {props.meta}
+      </div>
+    );
   }
 
   let removeButton;
@@ -43,6 +53,7 @@ const PickedListItem = props => {
       <div className="pickedListItem__label">
         {props.children}
       </div>
+      {meta}
       {removeButton}
     </div>
   );
@@ -56,8 +67,9 @@ PickedListItem.TYPE = keyMirror({
 PickedListItem.propTypes = {
   children: PropTypes.any,
   data: PropTypes.any,
-  type: PropTypes.string,
+  meta: PropTypes.any,
   onRemove: PropTypes.func,
+  type: PropTypes.string,
 };
 
 export default PickedListItem;
