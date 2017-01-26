@@ -9,7 +9,6 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
-  StatusDot,
   StatusDropdown,
   StatusDropdownOptionIcon,
 } from '../../../framework/framework';
@@ -48,18 +47,6 @@ export default class StatusDropdownExample extends Component {
             options={this.options}
             selectedOption={this.state.selectedOption}
           />
-        </Example>
-
-        <Example title="StatusDot without status">
-          <StatusDot />
-        </Example>
-
-        <Example title="StatusDot NEGATIVE">
-          <StatusDot status={StatusDot.STATUS.NEGATIVE} />
-        </Example>
-
-        <Example title="StatusDot POSITIVE">
-          <StatusDot status={StatusDot.STATUS.POSITIVE} />
         </Example>
 
         <Example title="StatusDropdownOptionIcon ACTIVATE">

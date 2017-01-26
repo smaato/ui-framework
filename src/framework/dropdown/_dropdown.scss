@@ -17,31 +17,31 @@
  */
 .dropdownLabel {
   @include baseDropdownLabel;
-  text-overflow: ellipsis; /* 1 */
-  overflow: hidden; /* 1 */
-  font-size: 12px;
-  line-height: $lineHeight;
-  font-weight: 400;
-  border: 1px solid #c8cfd5;
   background-color: #f6fafc;
-  padding: 8px 30px 8px 8px;
-  white-space: nowrap;
-  cursor: pointer;
+  border: 1px solid #c8cfd5;
   border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: $lineHeight;
+  overflow: hidden; /* 1 */
+  padding: 8px 30px 8px 8px;
+  text-overflow: ellipsis; /* 1 */
+  white-space: nowrap;
 
   &:before,
   &:after {
     $dropdownArrow_width: 1px;
     $dropdownArrow_height: 5px;
-    content: '';
-    width: $dropdownArrow_width;
-    height: $dropdownArrow_height;
     background-color: #517582;
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    margin-top: -$dropdownArrow_height / 2;
+    content: '';
+    height: $dropdownArrow_height;
     margin-left: -$dropdownArrow_width / 2;
+    margin-top: -$dropdownArrow_height / 2;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: $dropdownArrow_width;
   }
 
   &:before {
@@ -52,15 +52,62 @@
     transform: rotate(45deg);
   }
 
-  &.is-dropdown-label-focus {
+  &:not(.dropdownLabel--borderless).is-dropdown-label-focus {
     @include fieldFocus;
+  }
+
+  .dropdownDot {
+    margin-right: 3px;
   }
 }
 
-.dropdownLabel--readonly {
-  cursor: default;
-  opacity: 0.7;
-}
+  .dropdownLabel--borderless {
+    background-color: transparent;
+    border: 0;
+    color: $textColor;
+    padding-right: 20px;
+  }
+
+  .dropdownLabel--readonly {
+    cursor: default;
+    opacity: 0.7;
+  }
+
+  .dropdownLabel--blue {
+    color: $dropdownDotBlueLine;
+
+    &:before,
+    &:after {
+      background-color: $dropdownDotBlueLine;
+    }
+  }
+
+  .dropdownLabel--green {
+    color: $dropdownDotGreenLine;
+
+    &:before,
+    &:after {
+      background-color: $dropdownDotGreenLine;
+    }
+  }
+
+  .dropdownLabel--grey {
+    color: $dropdownDotGreyLine;
+
+    &:before,
+    &:after {
+      background-color: $dropdownDotGreyLine;
+    }
+  }
+
+  .dropdownLabel--red {
+    color: $dropdownDotRedLine;
+
+    &:before,
+    &:after {
+      background-color: $dropdownDotRedLine;
+    }
+  }
 
 /**
  * 1. Move up 1px to share border with the label.
