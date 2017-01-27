@@ -103,6 +103,8 @@ export default class DateRange extends Component {
       dateRangePicker = (
         <ReactDateRange
           endDate={this.state.endDate}
+          maxDate={this.props.maxDate}
+          minDate={this.props.minDate}
           onChange={this.onChange}
           startDate={this.state.startDate}
           theme={{
@@ -151,6 +153,8 @@ export default class DateRange extends Component {
 DateRange.propTypes = {
   endDate: PropTypes.object,
   isLeft: PropTypes.bool,
+  maxDate: PropTypes.object,
+  minDate: PropTypes.object,
   onChange: PropTypes.func,
   startDate: PropTypes.object,
 };
