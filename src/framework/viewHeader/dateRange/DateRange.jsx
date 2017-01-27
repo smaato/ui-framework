@@ -155,7 +155,9 @@ DateRange.propTypes = {
   startDate: PropTypes.object,
 };
 
+const endDate = moment.utc();
+
 DateRange.defaultProps = {
-  endDate: moment.utc(),
-  startDate: moment.utc(),
+  endDate,
+  startDate: endDate.clone(),
 };
