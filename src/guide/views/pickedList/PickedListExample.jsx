@@ -22,15 +22,19 @@ export default class PickedListExample extends Component {
       name: 'Countries',
       items: [{
         name: 'Australia',
+        parent: 'Australia',
         type: PickedListItem.TYPE.ALLOWED,
       }, {
         name: 'North Korea',
+        parent: 'Asia',
         type: PickedListItem.TYPE.NOT_ALLOWED,
       }, {
         name: 'Pakistan',
+        parent: 'Asia',
         type: PickedListItem.TYPE.ALLOWED,
       }, {
         name: 'Venezuela',
+        parent: 'South America',
         type: PickedListItem.TYPE.ALLOWED,
       }],
     }, {
@@ -39,7 +43,8 @@ export default class PickedListExample extends Component {
         name: 'Chinese',
         type: PickedListItem.TYPE.ALLOWED,
       }, {
-        name: 'Esperanto',
+        name: 'Esperanto (constructed language)',
+        parent: 'Spoken everywhere and nowhere',
         type: PickedListItem.TYPE.ALLOWED,
       }],
     }];
@@ -61,10 +66,11 @@ export default class PickedListExample extends Component {
 
         return (
           <PickedListItem
-            key={itemIndex}
-            type={item.type}
             data={data}
+            key={itemIndex}
+            meta={item.parent}
             onRemove={this.onRemoveItem}
+            type={item.type}
           >
             {item.name}
           </PickedListItem>
