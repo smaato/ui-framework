@@ -88,6 +88,7 @@ import {
   TextArea,
   TextInput,
   TitleBar,
+  Toggle,
   VerticalLayout,
   ViewHeader,
   ViewHeaderNav,
@@ -357,6 +358,9 @@ const components = [{
 }, {
   name: 'TitleBar',
   component: TitleBar,
+}, {
+  name: 'Toggle',
+  component: Toggle,
 }, {
   name: 'VerticalLayout',
   component: VerticalLayout,
