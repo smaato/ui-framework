@@ -94,6 +94,8 @@ export { default as TextInput } from './textInput/TextInput.jsx';
 
 export { default as TitleBar } from './titleBar/TitleBar.jsx';
 
+export { default as Toggle } from './toggle/Toggle.jsx';
+
 export { default as VerticalLayout } from './verticalLayout/VerticalLayout.jsx';
 
 export * from './viewHeader/ViewHeader.jsx';
