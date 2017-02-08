@@ -130,7 +130,7 @@ describe('Button', () => {
     });
 
     describe('type', () => {
-      Object.keys(Button.TYPE).forEach(type => {
+      Object.keys(Button.TYPE).forEach((type) => {
         describe(`${type}`, () => {
           it('adds an icon', () => {
             const props = {

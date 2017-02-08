@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
-const FiltersDropdownButton = props => {
+const FiltersDropdownButton = (props) => {
   const classes = classNames('filtersDropdownButton', {
     'is-filters-dropdown-open': props.isOpen,
   });

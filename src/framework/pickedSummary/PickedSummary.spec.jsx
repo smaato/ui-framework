@@ -15,7 +15,7 @@ describe('PickedSummary', () => {
     });
 
     describe('type', () => {
-      Object.keys(PickedSummary.TYPE).forEach(type => {
+      Object.keys(PickedSummary.TYPE).forEach((type) => {
         describe(`${type}`, () => {
           it('renders an icon', () => {
             const props = {

@@ -1,19 +1,17 @@
 
+import classNames from 'classnames';
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
 
-const AddOnLabel = props => {
+const AddOnLabel = (props) => {
   const classes = classNames('addOnLabel', {
     'addOnLabel--left': props.isLeftSide,
     'addOnLabel--right': props.isRightSide,
   });
 
   return (
-    <div
-      className={classes}
-    >
+    <div className={classes}>
       {props.children}
     </div>
   );

@@ -10,9 +10,10 @@ const NavItem = (props) => {
     return (
       <a
         className="examplesNavItem"
-        target="_blank"
         href={props.href}
         onClick={props.onClick}
+        rel="noopener noreferrer"
+        target="_blank"
       >
         {props.children}
       </a>

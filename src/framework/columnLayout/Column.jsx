@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
-const Column = props => {
+const Column = (props) => {
   const classes = classNames('column', `column--${props.width}`);
 
   return (

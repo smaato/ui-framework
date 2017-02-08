@@ -43,19 +43,14 @@ describe('FiltersControl', () => {
           ),
         };
 
-        const testCase =
-          TestCaseFactory.create(FiltersControl, props);
+        const testCase = TestCaseFactory.create(FiltersControl, props);
 
         const removeButton =
           testCase.first('.conditionCheckerListItem__removeButton');
 
         expect(props.onRemoveConditionChecker).not.toHaveBeenCalled();
         testCase.trigger('click', removeButton);
-        expect(props.onRemoveConditionChecker).toHaveBeenCalledWith(
-          props.conditionCheckers[0],
-          jasmine.any(Object), // SyntheticEvent
-          undefined
-        );
+        expect(props.onRemoveConditionChecker).toHaveBeenCalled();
       });
     });
   });

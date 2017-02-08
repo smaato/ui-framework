@@ -22,7 +22,7 @@ describe('GridIcon', () => {
     });
 
     describe('type', () => {
-      Object.keys(GridIcon.TYPE).forEach(type => {
+      Object.keys(GridIcon.TYPE).forEach((type) => {
         describe(`${type}`, () => {
           it('renders an icon', () => {
             const props = {

@@ -97,16 +97,17 @@ export default class ChartExample extends Component {
       values: [],
     }];
     const formatDate = d3.time.format('%Y%m%d').parse;
-    let minDate = undefined;
-    let maxDate = undefined;
-    let minTemperature = undefined;
-    let maxTemperature = undefined;
 
-    rawData.forEach(item => {
-      for (const [index, city] of chartData.entries()) {
+    let minDate;
+    let maxDate;
+    let minTemperature;
+    let maxTemperature;
+
+    rawData.forEach((item) => {
+      chartData.forEach((chartDataPoint, index) => {
         // Format data.
         const date = formatDate(item.date);
-        const temperature = +item[city.name];
+        const temperature = +item[chartDataPoint.name];
 
         // Store formatted data point.
         chartData[index].values.push({
@@ -119,7 +120,7 @@ export default class ChartExample extends Component {
         maxDate = Math.max(maxDate || date, date);
         minTemperature = Math.min(minTemperature || temperature, temperature);
         maxTemperature = Math.max(maxTemperature || temperature, temperature);
-      }
+      });
     });
 
     return {
@@ -173,7 +174,7 @@ export default class ChartExample extends Component {
       <Page title={this.props.route.name}>
         <Example title="Chart">
           <button onClick={this.onClickToggleIsLoading}>
-            Toggle "isLoading"
+            Toggle &quot;isLoading&quot;
           </button>
           <Chart
             data={[[{

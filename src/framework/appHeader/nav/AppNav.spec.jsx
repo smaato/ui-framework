@@ -1,7 +1,7 @@
 
+import { Link } from 'react-router';
 import { TestCaseFactory } from 'react-test-kit';
 import AppNav from './AppNav.jsx';
-import { Link } from 'react-router';
 
 describe('AppNav', () => {
   describe('Props', () => {

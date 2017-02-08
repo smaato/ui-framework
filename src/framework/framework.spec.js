@@ -369,7 +369,7 @@ const components = [{
 }];
 
 describe('UI Framework components', () => {
-  for (let i = 0, length = components.length; i < length; i++) {
+  for (let i = 0, length = components.length; i < length; i += 1) {
     const component = components[i];
     describe(component.name, () => { // eslint-disable-line no-loop-func
       it('is exported', () => {

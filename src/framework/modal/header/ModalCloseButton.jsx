@@ -7,8 +7,7 @@ const ModalCloseButton = props => (
   <div
     className="modalHeader__closeButton"
     onClick={props.onClick}
-  >
-  </div>
+  />
 );
 
 ModalCloseButton.propTypes = {

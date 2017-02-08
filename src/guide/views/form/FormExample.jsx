@@ -40,10 +40,10 @@ export default class FormExample extends Component {
       name: 'Blue',
     }];
 
-    this.dropdownLabelProvider = option => option ? option.name : 'Click me';
+    this.dropdownLabelProvider = option => (option ? option.name : 'Click me');
 
     this.dropdownOptionLabelProvider =
-      option => option ? option.name : undefined;
+      option => (option ? option.name : undefined);
 
     this.onCancel = this.onCancel.bind(this);
     this.onSelectDropdownOption = this.onSelectDropdownOption.bind(this);

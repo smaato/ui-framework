@@ -32,10 +32,10 @@ export default class AddOnControlExample extends Component {
       name: 'Chippewa',
     }];
 
-    this.dropdownLabelProvider = option => option ? option.name : 'Click me';
+    this.dropdownLabelProvider = option => (option ? option.name : 'Click me');
 
     this.dropdownOptionLabelProvider =
-      option => option ? option.name : undefined;
+      option => (option ? option.name : undefined);
 
     this.onSelectDropdownOption = this.onSelectDropdownOption.bind(this);
   }

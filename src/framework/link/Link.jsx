@@ -3,7 +3,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-const Link = props => {
+const Link = (props) => {
   function onClick() {
     if (props.onClick) {
       props.onClick(props.data);

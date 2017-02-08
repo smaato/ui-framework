@@ -16,7 +16,7 @@ export {
   default as BodyPanelItem,
 } from './BodyPanelItem.jsx';
 
-const Body = props => {
+const Body = (props) => {
   const classes = classNames('body', {
     'body--dark': props.isDark,
   });

@@ -5,7 +5,7 @@ import React, {
 import classNames from 'classnames';
 import keyMirror from 'keymirror';
 
-const GridIcon = props => {
+const GridIcon = (props) => {
   const typeToIconClassMap = {
     [GridIcon.TYPE.EDIT]: 'icon-cog',
     [GridIcon.TYPE.OPTIONS]: 'icon-ellipsis',

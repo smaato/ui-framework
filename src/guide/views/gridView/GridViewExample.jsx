@@ -235,7 +235,7 @@ export default class GridViewExample extends Component {
             links={links}
           />
         }
-        right={<DateRange/>}
+        right={<DateRange />}
       />
     );
   }

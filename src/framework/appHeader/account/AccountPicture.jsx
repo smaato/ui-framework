@@ -3,16 +3,20 @@ import React, {
   PropTypes,
 } from 'react';
 
-const AccountPicture = props => {
+const AccountPicture = (props) => {
   const picture = props.url ?
-    <img
-      src={props.url}
-      title={props.title}
-    /> :
+    (
+      <img
+        alt={props.title}
+        src={props.url}
+        title={props.title}
+      />
+  ) : (
     <span
       className="icon icon-user-white accountPicture__icon"
       title={props.title}
-    />;
+    />
+  );
 
   return (
     <span className="accountPicture">

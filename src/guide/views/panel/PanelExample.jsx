@@ -64,7 +64,7 @@ export default class PanelExample extends Component {
   renderMenu(limit = this.items.length) {
     const items = [];
 
-    for (let i = 0; i < limit; i++) {
+    for (let i = 0; i < limit; i += 1) {
       const item = this.items[i];
       items.push(
         <MenuItem
@@ -109,7 +109,7 @@ export default class PanelExample extends Component {
           <Panel
             title="Searchable"
             actions={
-              <SearchBox onSearch={ this.onSearch } />
+              <SearchBox onSearch={this.onSearch} />
             }
           >
             Content
@@ -179,7 +179,7 @@ export default class PanelExample extends Component {
         </Example>
 
         <Example title="Full Width Panels won't shrink">
-          isFullWidth isn't set on left panel:
+          isFullWidth isn$apos;t set on left panel:
           <PanelLayout>
             <Panel title="Left panel">
               <Menu>

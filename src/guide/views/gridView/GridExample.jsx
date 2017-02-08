@@ -1,4 +1,5 @@
 
+import numeral from 'numeral';
 import React, {
   Component,
 } from 'react';
@@ -32,8 +33,6 @@ import {
   GridStencil,
   ThrottledEventDispatcher,
 } from '../../../framework/services';
-
-import numeral from 'numeral';
 
 import createRows from '../grid/createRows';
 
@@ -120,7 +119,7 @@ export default class GridExample extends Component {
       },
       ordinal: (number) => {
         const b = number % 10;
-        return (~~ (number % 100 / 10) === 1) ? 'th' : // eslint-disable-line no-nested-ternary
+        return (~~ ((number % 100) / 10) === 1) ? 'th' : // eslint-disable-line
           (b === 1) ? 'st' : // eslint-disable-line no-nested-ternary
           (b === 2) ? 'nd' : // eslint-disable-line no-nested-ternary
           (b === 3) ? 'rd' : 'th';
@@ -285,7 +284,7 @@ export default class GridExample extends Component {
       }), item => ({
         children: (
           <GridBodyEditableCell
-            onClick={event => { // eslint-disable-line react/jsx-no-bind
+            onClick={(event) => { // eslint-disable-line react/jsx-no-bind
               // Block click from reaching the entire row.
               event.stopPropagation();
               // Block click from changing the location.
@@ -561,7 +560,7 @@ export default class GridExample extends Component {
       columnPriorities: this.COLUMN_PRIORITIES,
       spaceToBothSidesOfGrid: 0,
     });
-    const node = ReactDOM.findDOMNode(this);
+    const node = ReactDOM.findDOMNode(this); // eslint-disable-line react/no-find-dom-node
     const {
       mediaQueries,
       columnWidths,
@@ -598,7 +597,7 @@ export default class GridExample extends Component {
       // Update selection state
       const selectionMap = Object.assign({}, this.state.selectionMap);
       if (this.state.areAllRowsSelected) {
-        newRows.forEach(row => {
+        newRows.forEach((row) => {
           selectionMap[row.id] = true;
         });
       }
@@ -634,7 +633,7 @@ export default class GridExample extends Component {
     const normalizedTerm = term.trim().toLowerCase();
     return rows.filter(row => (
       // It will return true when 1st match is found, otherwise false
-      this.cellValueProviders.some(provider => {
+      this.cellValueProviders.some((provider) => {
         const cellValue = provider(row);
         if (cellValue === undefined || cellValue === null) {
           return false;
@@ -665,7 +664,7 @@ export default class GridExample extends Component {
   toggleAllRowsSelected(areAllRowsSelected) {
     const selectionMap = {};
 
-    this.state.bodyRows.forEach(item => {
+    this.state.bodyRows.forEach((item) => {
       selectionMap[item.id] = areAllRowsSelected;
     });
 
@@ -723,7 +722,7 @@ export default class GridExample extends Component {
     const rows = [];
     const items = this.getBodyRows();
 
-    for (let i = 0; i < items.length; i++) {
+    for (let i = 0; i < items.length; i += 1) {
       const item = items[i];
 
       // Add items, in order.

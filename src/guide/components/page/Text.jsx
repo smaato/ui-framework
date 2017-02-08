@@ -1,24 +1,13 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
-export default class Text extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div className="examplePageText">
-        {this.props.children}
-      </div>
-    );
-  }
-
-}
+const Text = props => (
+  <div className="examplePageText">
+    {props.children}
+  </div>
+);
 
 Text.propTypes = {
   children: PropTypes.oneOfType([
@@ -27,3 +16,5 @@ Text.propTypes = {
     PropTypes.string,
   ]).isRequired,
 };
+
+export default Text;

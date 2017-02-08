@@ -1,28 +1,29 @@
 
+import classNames from 'classnames';
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
 
-const GridBodyCell = props => {
-  // Cell classes.
+const GridBodyCell = (props) => {
+  const {
+    canOverflow,
+    ...innerCellProps
+  } = props.innerCellProps;
+
   const classes = classNames('gridBodyCell', props.classBodyCell);
-
-  // We want to add on our own classes to the inner cell, without destroying
-  // any classes that have been provided.
-  const decoratedInnerCellProps = Object.assign({}, props.innerCellProps, {
+  const decoratedInnerCellProps = Object.assign({}, innerCellProps, {
     className: classNames(
       'gridBodyCellLiner',
-      props.innerCellProps.className,
+      innerCellProps.className,
       {
-        'gridBodyCellLiner--overflow': props.innerCellProps.canOverflow,
+        'gridBodyCellLiner--overflow': canOverflow,
       }
     ),
   });
 
   return (
     <td className={classes}>
-      <div {...decoratedInnerCellProps}></div>
+      <div {...decoratedInnerCellProps} />
     </td>
   );
 };

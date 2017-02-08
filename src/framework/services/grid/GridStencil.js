@@ -58,7 +58,7 @@ export default class GridStencil {
     // Now let's build our temporary non-React grid.
     const rows = [];
 
-    for (let i = 0; i < this.sampleCount; i++) {
+    for (let i = 0; i < this.sampleCount; i += 1) {
       const item = this.items[i];
 
       // Add rows, in order.
@@ -140,7 +140,7 @@ export default class GridStencil {
     // Now we iterate through our columns, in the order in which they'll be hidden,
     // and measure the width at which the grid requires the column to be hidden.
     const mediaQueries = [];
-    for (let i = 0; i < columnsByPriority.length; i++) {
+    for (let i = 0; i < columnsByPriority.length; i += 1) {
       // We care about browser width, not grid width, so we need to take into
       // account the space between the grid and the browser's left and right sides.
       const browserWidth = $grid.width() + this.spaceToBothSidesOfGrid;
@@ -154,7 +154,7 @@ export default class GridStencil {
           workingNode.querySelectorAll(`thead th:nth-child(${childNumber})`)
         );
 
-      hiddenHeaderCells.forEach(headerCell => { // eslint-disable-line no-loop-func
+      hiddenHeaderCells.forEach((headerCell) => { // eslint-disable-line no-loop-func
         $(headerCell).hide();
       });
 
@@ -164,7 +164,7 @@ export default class GridStencil {
           workingNode.querySelectorAll(`tr td:nth-child(${childNumber})`)
         );
 
-      hiddenRowCells.forEach(rowCell => { // eslint-disable-line no-loop-func
+      hiddenRowCells.forEach((rowCell) => { // eslint-disable-line no-loop-func
         $(rowCell).hide();
       });
 

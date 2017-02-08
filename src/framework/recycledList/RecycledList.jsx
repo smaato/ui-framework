@@ -105,7 +105,7 @@ export default class RecycledList extends Component {
         ) {
           const item = items[firstItemIndex];
           itemDistanceScrolled += this.props.itemHeightProvider(item);
-          firstItemIndex ++;
+          firstItemIndex += 1;
         }
 
         firstItemOffset += itemDistanceScrolled;
@@ -127,7 +127,7 @@ export default class RecycledList extends Component {
         ) {
           const item = items[firstItemIndex - 1];
           itemDistanceScrolled -= this.props.itemHeightProvider(item);
-          firstItemIndex --;
+          firstItemIndex -= 1;
         }
 
         firstItemOffset += itemDistanceScrolled;
@@ -155,7 +155,7 @@ export default class RecycledList extends Component {
     );
 
     let lastItemOffset = 0;
-    for (let i = lastItemIndex; i < itemsCount; i++) {
+    for (let i = lastItemIndex; i < itemsCount; i += 1) {
       const item = items[i];
       lastItemOffset += this.props.itemHeightProvider(item);
     }
@@ -208,7 +208,7 @@ export default class RecycledList extends Component {
     for (
       let index = this.state.firstItemIndex;
       index <= this.state.lastItemIndex && index < itemsCount;
-      index++
+      index += 1
     ) {
       visibleItems.push(this.props.renderItem(items[index], index));
     }

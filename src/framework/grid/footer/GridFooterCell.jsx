@@ -4,7 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-const GridFooterCell = props => {
+const GridFooterCell = (props) => {
   const classes = classNames('grid__footer__cell', props.classFooterCell, {
     'grid__footer__cell--divider': props.innerCellProps.children,
     'grid__footer__cell--firstDivider': props.isFirstCellWithChildren,
@@ -18,7 +18,7 @@ const GridFooterCell = props => {
 
   return (
     <th className={classes}>
-      <div {...decoratedInnerCellProps} ></div>
+      <div {...decoratedInnerCellProps} />
     </th>
   );
 };

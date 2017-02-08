@@ -1,4 +1,3 @@
-let Sorter;
 
 /**
  * Use the item's property to get a sort value.
@@ -159,7 +158,7 @@ function sortBy(
   propertyNameOrValueProvider,
   isDescending
 ) {
-  return Sorter.sort(
+  return this.sort(
     originalItems,
     propertyNameOrValueProvider,
     undefined,
@@ -167,10 +166,8 @@ function sortBy(
   );
 }
 
-Sorter = {
+export default {
   normalizeValue,
   sort,
   sortBy,
 };
-
-export default Sorter;

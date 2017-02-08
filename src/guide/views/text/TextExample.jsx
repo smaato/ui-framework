@@ -1,6 +1,5 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
@@ -14,68 +13,60 @@ import {
   Heading,
 } from '../../../framework/framework';
 
-export default class TextExample extends Component {
+const TextExample = (props) => {
+  const rhythms = Object.keys(Text.RHYTHM).map(key => (
+    <div
+      key={key}
+      style={{
+        backgroundColor: '#f0f0f0',
+        marginBottom: 10,
+      }}
+    >
+      <Text rhythm={Text.RHYTHM[key]}>
+        &apos;{key.toLowerCase()}&apos; rhythm
+      </Text>
+      <DescriptionText>
+        This text shows you the space between the lines.
+      </DescriptionText>
+    </div>
+  ));
 
-  constructor(props) {
-    super(props);
-  }
+  return (
+    <Page title={props.route.name}>
 
-  render() {
-    const rhythms = Object.keys(Text.RHYTHM).map(key => (
-      <div
-        style={{
-          backgroundColor: '#f0f0f0',
-          marginBottom: 10,
-        }}
-      >
-        <Text
-          key={key}
-          rhythm={Text.RHYTHM[key]}
-        >
-          '{key.toLowerCase()}' rhythm
-        </Text>
-        <DescriptionText>
-          This text shows you the space between the lines.
-        </DescriptionText>
-      </div>
-    ));
+      <Example>
+        <Text rhythm={Text.RHYTHM.XSMALL}>A title</Text>
+        <DescriptionText>Descriptive information goes below</DescriptionText>
+      </Example>
 
-    return (
-      <Page title={this.props.route.name}>
+      <Example title="Text">
+        <Text>This is some text.</Text>
+      </Example>
 
-        <Example>
-          <Text rhythm={Text.RHYTHM.XSMALL}>A title</Text>
-          <DescriptionText>Descriptive information goes below</DescriptionText>
-        </Example>
+      <Example title="DescriptionText">
+        <DescriptionText>This is description text.</DescriptionText>
+      </Example>
 
-        <Example title="Text">
-          <Text>This is some text.</Text>
-        </Example>
+      <Example title="Rhythms">
+        {rhythms}
+      </Example>
 
-        <Example title="DescriptionText">
-          <DescriptionText>This is description text.</DescriptionText>
-        </Example>
+      <Example title="Heading large">
+        <Heading>This is heading text.</Heading>
+      </Example>
 
-        <Example title="Rhythms">
-          {rhythms}
-        </Example>
+      <Example title="Heading small">
+        <Heading size={Heading.SIZE.SMALL}>
+          This is small heading text.
+        </Heading>
+      </Example>
 
-        <Example title="Heading large">
-          <Heading>This is heading text.</Heading>
-        </Example>
-
-        <Example title="Heading small">
-          <Heading size={Heading.SIZE.SMALL}>
-            This is small heading text.
-          </Heading>
-        </Example>
-
-      </Page>
-    );
-  }
-
-}
+    </Page>
+  );
+};
 
 TextExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
+
+export default TextExample;

@@ -4,20 +4,21 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
-const TextArea = props => {
+const TextArea = (props) => {
+  const { dataId, isError, isFullWidth, isResizable, ...reducedProps } = props;
   const classes = classNames('textArea', props.className, {
-    'textArea--fullWidth': props.isFullWidth,
-    'textArea--resizable': props.isResizable,
-    'is-text-box-error': props.isError,
+    'is-text-box-error': isError,
+    'textArea--fullWidth': isFullWidth,
+    'textArea--resizable': isResizable,
   });
 
-  const extendedProps = Object.assign({}, props, {
+  const extendedProps = Object.assign({}, reducedProps, {
     className: classes,
   });
 
   return (
     <textarea
-      data-id={props.dataId}
+      data-id={dataId}
       {...extendedProps}
     />
   );

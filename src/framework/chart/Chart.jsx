@@ -47,11 +47,12 @@ export default class Chart extends Component {
     data.forEach((dataSet, index) => {
       this.data.push({
         color: this.COLORS[index],
+        id: index,
         name: this.props.legendLabelProvider(dataSet),
         values: [],
       });
 
-      dataSet.forEach(dataPoint => {
+      dataSet.forEach((dataPoint) => {
         const date = dataPoint.date;
         const yValue = dataPoint.value;
 
@@ -68,8 +69,8 @@ export default class Chart extends Component {
   }
 
   renderLegend() {
-    const legendItems = this.data.map((item, index) => (
-      <span key={index}><ChartDot color={item.color} /> {item.name}</span>
+    const legendItems = this.data.map(item => (
+      <span key={item.id}><ChartDot color={item.color} /> {item.name}</span>
     ));
 
     return (

@@ -9,10 +9,6 @@ import Portal from '../../../../node_modules/react-portal/lib/portal';
 
 export default class ModalOverlay extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
     this.updateBackgroundBlur();
   }

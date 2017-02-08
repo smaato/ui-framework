@@ -14,6 +14,7 @@ describe('AddOnDropdown', () => {
     onSelect: () => undefined,
     labelProvider: () => undefined,
     optionLabelProvider: () => undefined,
+    ...AddOnDropdown.defaultProps,
   };
 
   describe('DOM structure', () => {

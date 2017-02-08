@@ -1,6 +1,5 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
@@ -13,36 +12,28 @@ import {
   TitleBar,
 } from '../../../framework/framework';
 
-export default class TitleBarExample extends Component {
+const TitleBarExample = props => (
+  <Page title={props.route.name}>
 
-  constructor(props) {
-    super(props);
-  }
+    <Example isClear>
+      <TitleBar
+        label="Title bar example"
+        buttons={[
+          <CallOutButton id="firstButton" type={CallOutButton.TYPE.ADD}>
+            Add something
+          </CallOutButton>,
+          <CallOutButton id="secondButton" type={CallOutButton.TYPE.ADD}>
+            Add something else
+          </CallOutButton>,
+        ]}
+      />
+    </Example>
 
-  render() {
-    return (
-      <Page title={this.props.route.name}>
-
-        <Example isClear>
-          <TitleBar
-            label="Title bar example"
-            buttons={[
-              <CallOutButton type={CallOutButton.TYPE.ADD}>
-                Add something
-              </CallOutButton>,
-              <CallOutButton type={CallOutButton.TYPE.ADD}>
-                Add something else
-              </CallOutButton>,
-            ]}
-          />
-        </Example>
-
-      </Page>
-    );
-  }
-
-}
+  </Page>
+);
 
 TitleBarExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
+
+export default TitleBarExample;

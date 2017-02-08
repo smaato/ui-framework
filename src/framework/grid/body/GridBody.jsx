@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
-const GridBody = props => {
+const GridBody = (props) => {
   const {
     initialLoadingRow,
     loadingRow,

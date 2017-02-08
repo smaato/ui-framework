@@ -6,17 +6,18 @@ import React, {
 
 import Box from '../box/Box.jsx';
 
-const BodyPanel = props => {
+const BodyPanel = (props) => {
   const classes = classNames('bodyPanel', {
     'bodyPanel--topFlush': props.isTopFlush,
   });
 
   return (
     <Box
-      children={props.children}
       classes={classes}
       roundedCorners={props.roundedCorners}
-    />
+    >
+      {props.children}
+    </Box>
   );
 };
 

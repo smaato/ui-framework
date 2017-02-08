@@ -36,7 +36,7 @@ describe('FormFooter', () => {
             <div className="left" key="1">item1</div>,
             <div className="left" key="2">item2</div>,
           ],
-          right: [<div key="3"></div>],
+          right: [<div key="3" />],
         };
         const testCase = TestCaseFactory.create(FormFooter, props);
         const left = testCase.find('.left');
@@ -47,7 +47,7 @@ describe('FormFooter', () => {
       it('is rendered when a single element', () => {
         const props = {
           left: [<div className="left" key="1">item1</div>],
-          right: [<div key="2"></div>],
+          right: [<div key="2" />],
         };
         const testCase = TestCaseFactory.create(FormFooter, props);
         const left = testCase.find('.left');

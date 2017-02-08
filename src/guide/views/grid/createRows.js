@@ -2,12 +2,12 @@
 export default function createRows(indexStart, newRowsCount) {
   // Returns a random integer between min (inclusive) and max (inclusive)
   function getRandomInteger(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * ((max - min) + 1)) + min;
   }
 
   const newRows = [];
   const indexEnd = indexStart + newRowsCount;
-  for (let i = indexStart; i < indexEnd; i++) {
+  for (let i = indexStart; i < indexEnd; i += 1) {
     newRows.push({
       id: i,
       name: `Ford F-${getRandomInteger(0, 50000)}`,

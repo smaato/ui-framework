@@ -3,7 +3,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-const ModalFooter = props => {
+const ModalFooter = (props) => {
   let left;
 
   if (props.left) {

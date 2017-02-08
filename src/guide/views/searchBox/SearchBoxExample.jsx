@@ -35,7 +35,7 @@ export default class SearchBoxExample extends Component {
       return items;
     }
     const normalizedTerm = term.trim().toLowerCase();
-    return items.filter(item => {
+    return items.filter((item) => {
       // It will return true when 1st match is found, otherwise false
       const normalizedItemValue = item.trim().toLowerCase();
       return normalizedItemValue.indexOf(normalizedTerm) !== -1; // eslint-disable-line consistent-return

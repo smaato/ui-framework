@@ -5,7 +5,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-const DropdownDot = props => {
+const DropdownDot = (props) => {
   const classMap = {
     [DropdownDot.COLOR.BLUE]: 'dropdownDot--blue',
     [DropdownDot.COLOR.GREEN]: 'dropdownDot--green',

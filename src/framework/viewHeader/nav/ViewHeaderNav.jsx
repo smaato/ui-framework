@@ -5,7 +5,7 @@ import React, {
 
 import classNames from 'classnames';
 
-const ViewHeaderNav = props => {
+const ViewHeaderNav = (props) => {
   const links = props.links.map((link, index) => (
     React.createElement(props.linkType, Object.assign({}, link, {
       className: classNames('viewHeaderNav__link', link.className),

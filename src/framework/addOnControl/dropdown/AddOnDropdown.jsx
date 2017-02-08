@@ -1,35 +1,25 @@
 
+import classNames from 'classnames';
 import React, {
-  Component,
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
 
 import BaseDropdown from '../../base/dropdown/BaseDropdown.jsx';
-
 import AddOnDropdownOption from './AddOnDropdownOption.jsx';
 
-export default class AddOnDropdown extends Component {
+const AddOnDropdown = (props) => {
+  const labelClasses = classNames(props.labelClasses, {
+    'addOnDropdownLabel--left': props.isLeftSide,
+    'addOnDropdownLabel--right': props.isRightSide,
+  });
 
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const labelClasses = classNames(this.props.labelClasses, {
-      'addOnDropdownLabel--left': this.props.isLeftSide,
-      'addOnDropdownLabel--right': this.props.isRightSide,
-    });
-
-    return (
-      <BaseDropdown
-        {...this.props}
-        labelClasses={labelClasses}
-      />
-    );
-  }
-
-}
+  return (
+    <BaseDropdown
+      {...props}
+      labelClasses={labelClasses}
+    />
+  );
+};
 
 AddOnDropdown.propTypes = Object.assign({}, BaseDropdown.propTypes, {
   isLeftSide: PropTypes.bool,
@@ -44,3 +34,5 @@ AddOnDropdown.defaultProps = Object.assign({}, BaseDropdown.defaultProps, {
   optionListClasses: 'addOnDropdownOptionList',
   optionType: AddOnDropdownOption,
 });
+
+export default AddOnDropdown;
