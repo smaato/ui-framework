@@ -5,7 +5,7 @@ import React, {
 import classNames from 'classnames';
 import keyMirror from 'keymirror';
 
-const Progress = props => {
+const Progress = (props) => {
   const sizeToClassMap = {
     [Progress.SIZE.SMALL]: 'progress--small',
   };

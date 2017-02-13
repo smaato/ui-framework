@@ -4,7 +4,7 @@ import React, {
 import classNames from 'classnames';
 import keyMirror from 'keymirror';
 
-const Heading = props => {
+const Heading = (props) => {
   const sizeClassMap = {
     [Heading.SIZE.LARGE]: 'heading--large',
     [Heading.SIZE.SMALL]: 'heading--small',

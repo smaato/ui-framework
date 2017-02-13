@@ -100,8 +100,8 @@ export default class LineChart extends Component {
     axis.attr('class', `lineChart${orientation}Axis`);
 
     // Add classes for styling.
-    axis.selectAll('line').attr('class', `lineChartAxisTick__mark`);
-    axis.selectAll('text').attr('class', `lineChartAxisTick__text`);
+    axis.selectAll('line').attr('class', 'lineChartAxisTick__mark');
+    axis.selectAll('text').attr('class', 'lineChartAxisTick__text');
 
     // Remove paths added by d3.axis.
     axis.selectAll('path').remove();
@@ -177,7 +177,8 @@ export default class LineChart extends Component {
 
     // Create Y axis.
     const yAxis = d3.svg.axis().orient((props.isYAxisLeft ? 'left' : 'right'))
-      .scale(yAxisScale).tickFormat(yAxisFormat).tickSize(yAxisTickSize);
+      .scale(yAxisScale).tickFormat(yAxisFormat)
+      .tickSize(yAxisTickSize);
 
     if (!this.yAxis) {
       // Create the Y axis if it doesn't exist.
@@ -237,7 +238,7 @@ export default class LineChart extends Component {
           .attr('r', this.DOT_RADIUS)
           .style('opacity', 0);
 
-        dataSetDots.on('mouseover', item => {
+        dataSetDots.on('mouseover', (item) => {
           this.lineChartTooltip.style.display = 'block';
           this.lineChartTooltip.style.left = '0px';
           this.lineChartTooltip.style.top = '0px';
@@ -298,17 +299,17 @@ export default class LineChart extends Component {
 }
 
 LineChart.propTypes = {
-  data: PropTypes.array.isRequired,
-  dateFormat: PropTypes.func,
-  dateRange: PropTypes.array.isRequired,
+  data: PropTypes.array.isRequired, // eslint-disable-line react/no-unused-prop-types
+  dateFormat: PropTypes.func, // eslint-disable-line react/no-unused-prop-types
+  dateRange: PropTypes.array.isRequired, // eslint-disable-line react/no-unused-prop-types
   height: PropTypes.number.isRequired,
-  isYAxisLeft: PropTypes.bool,
-  tooltipProvider: PropTypes.func,
-  transitionDuration: PropTypes.number,
-  xAxisLabelHeight: PropTypes.number,
-  yAxisFormat: PropTypes.func,
-  yAxisLabelWidth: PropTypes.number,
-  yAxisRange: PropTypes.array.isRequired,
+  isYAxisLeft: PropTypes.bool, // eslint-disable-line react/no-unused-prop-types
+  tooltipProvider: PropTypes.func, // eslint-disable-line react/no-unused-prop-types
+  transitionDuration: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+  xAxisLabelHeight: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+  yAxisFormat: PropTypes.func, // eslint-disable-line react/no-unused-prop-types
+  yAxisLabelWidth: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+  yAxisRange: PropTypes.array.isRequired, // eslint-disable-line react/no-unused-prop-types
 };
 
 LineChart.defaultProps = {

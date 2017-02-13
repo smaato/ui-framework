@@ -11,7 +11,7 @@ export {
   default as FormFooter,
 } from './footer/FormFooter.jsx';
 
-const Form = props => {
+const Form = (props) => {
   let submitInput;
 
   if (props.onSubmit) {

@@ -1,6 +1,5 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
@@ -15,42 +14,34 @@ import {
   TextInput,
 } from '../../../framework/framework';
 
-export default class LabeledFieldExample extends Component {
+const LabeledFieldExample = props => (
+  <Page title={props.route.name}>
 
-  constructor(props) {
-    super(props);
-  }
+    <Example title="With TextInput">
+      <LabeledField
+        label="Request"
+      >
+        <TextInput />
+      </LabeledField>
+    </Example>
 
-  render() {
-    return (
-      <Page title={this.props.route.name}>
+    <Example title="With AddOnControl">
+      <LabeledField
+        label="Price"
+      >
+        <AddOnControl>
+          <AddOnLabel isLeftSide>$</AddOnLabel>
+          <TextInput isFullWidth />
+          <AddOnLabel isRightSide>USD</AddOnLabel>
+        </AddOnControl>
+      </LabeledField>
+    </Example>
 
-        <Example title="With TextInput">
-          <LabeledField
-            label="Request"
-          >
-            <TextInput />
-          </LabeledField>
-        </Example>
-
-        <Example title="With AddOnControl">
-          <LabeledField
-            label="Price"
-          >
-            <AddOnControl>
-              <AddOnLabel isLeftSide>$</AddOnLabel>
-              <TextInput isFullWidth />
-              <AddOnLabel isRightSide>USD</AddOnLabel>
-            </AddOnControl>
-          </LabeledField>
-        </Example>
-
-      </Page>
-    );
-  }
-
-}
+  </Page>
+);
 
 LabeledFieldExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
+
+export default LabeledFieldExample;

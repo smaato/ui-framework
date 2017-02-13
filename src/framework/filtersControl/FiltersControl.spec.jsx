@@ -4,7 +4,6 @@ import FiltersControl from './FiltersControl.jsx';
 import {
   ConditionChecker,
 } from '../services';
-import TestUtils from '../../services/TestUtils';
 
 describe('FiltersControl', () => {
   describe('Props', () => {
@@ -28,35 +27,31 @@ describe('FiltersControl', () => {
     });
 
     describe('onRemoveConditionChecker', () => {
-      it(TestUtils.cleanString(
-        `is passed to ConditionCheckerList and called with a conditionChecker
-        when a remove button is clicked`
-      ), () => {
-        const props = {
-          conditionCheckers: [
-            new ConditionChecker({}),
-          ],
-          filterOptions: [],
-          onAddConditionChecker: () => undefined,
-          onRemoveConditionChecker: jasmine.createSpy(
-            'onRemoveConditionChecker'
-          ),
-        };
+      it(
+        'is passed to ConditionCheckerList and called with a ' +
+        'conditionChecker when a remove button is clicked',
+        () => {
+          const props = {
+            conditionCheckers: [
+              new ConditionChecker({}),
+            ],
+            filterOptions: [],
+            onAddConditionChecker: () => undefined,
+            onRemoveConditionChecker: jasmine.createSpy(
+              'onRemoveConditionChecker'
+            ),
+          };
 
-        const testCase =
-          TestCaseFactory.create(FiltersControl, props);
+          const testCase = TestCaseFactory.create(FiltersControl, props);
 
-        const removeButton =
-          testCase.first('.conditionCheckerListItem__removeButton');
+          const removeButton =
+            testCase.first('.conditionCheckerListItem__removeButton');
 
-        expect(props.onRemoveConditionChecker).not.toHaveBeenCalled();
-        testCase.trigger('click', removeButton);
-        expect(props.onRemoveConditionChecker).toHaveBeenCalledWith(
-          props.conditionCheckers[0],
-          jasmine.any(Object), // SyntheticEvent
-          undefined
-        );
-      });
+          expect(props.onRemoveConditionChecker).not.toHaveBeenCalled();
+          testCase.trigger('click', removeButton);
+          expect(props.onRemoveConditionChecker).toHaveBeenCalled();
+        }
+      );
     });
   });
 });

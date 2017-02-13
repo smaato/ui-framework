@@ -8,8 +8,8 @@ describe('AppHeaderDivider', () => {
     describe('left', () => {
       it('is rendered left of the divider', () => {
         const props = {
-          left: <div className="left"></div>,
-          right: <div className="right"></div>,
+          left: <div className="left" />,
+          right: <div className="right" />,
         };
 
         const testCase = TestCaseFactory.create(
@@ -24,8 +24,8 @@ describe('AppHeaderDivider', () => {
     describe('right', () => {
       it('is rendered right of the divider', () => {
         const props = {
-          left: <div className="left"></div>,
-          right: <div className="right"></div>,
+          left: <div className="left" />,
+          right: <div className="right" />,
         };
 
         const testCase = TestCaseFactory.create(

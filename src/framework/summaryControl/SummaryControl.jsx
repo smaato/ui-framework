@@ -5,7 +5,7 @@ import React, {
 import classNames from 'classnames';
 import keyMirror from 'keymirror';
 
-const SummaryControl = props => {
+const SummaryControl = (props) => {
   let icon;
 
   if (props.type) {

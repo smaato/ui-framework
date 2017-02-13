@@ -124,5 +124,3 @@ FiltersControl.propTypes = {
   onRemoveConditionChecker:
     ConditionCheckerList.propTypes.onRemoveConditionChecker,
 };
-
-export default FiltersControl;

@@ -6,7 +6,7 @@ import React, {
 
 import GridFooterCell from './GridFooterCell.jsx';
 
-const GridFooter = props => {
+const GridFooter = (props) => {
   const sectionClass = classNames('grid__footer', props.classFooter);
   const rowClass = classNames('grid__footer__row', props.classFooterRow);
 
@@ -15,15 +15,16 @@ const GridFooter = props => {
     .map((getPropsForIndex, index) => {
       const innerCellProps = getPropsForIndex(index) || {};
       if (innerCellProps.children) {
-        cellsWithChildren++;
+        cellsWithChildren += 1;
       }
 
       return (
         <GridFooterCell
           classFooterCell={props.classFooterCell}
           innerCellProps={innerCellProps}
-          isFirstCellWithChildren=
-            {innerCellProps.children && cellsWithChildren === 1}
+          isFirstCellWithChildren={
+            innerCellProps.children && cellsWithChildren === 1
+          }
           key={index}
         />
       );

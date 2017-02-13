@@ -3,7 +3,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-const NavTitle = (props) => (
+const NavTitle = props => (
   <div
     className="examplesNavMenuTitle"
   >

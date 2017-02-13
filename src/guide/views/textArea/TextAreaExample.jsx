@@ -1,6 +1,5 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
@@ -12,46 +11,38 @@ import {
   TextArea,
 } from '../../../framework/framework';
 
-export default class TextAreaExample extends Component {
+const TextAreaExample = props => (
+  <Page title={props.route.name}>
 
-  constructor(props) {
-    super(props);
-  }
+    <Example>
+      <TextArea defaultValue="Default value" />
+    </Example>
 
-  render() {
-    return (
-      <Page title={this.props.route.name}>
+    <Example title="With placeholder text">
+      <TextArea placeholder="Placeholder copy" />
+    </Example>
 
-        <Example>
-          <TextArea defaultValue="Default value" />
-        </Example>
+    <Example title="With autoFocus">
+      <TextArea autoFocus />
+    </Example>
 
-        <Example title="With placeholder text">
-          <TextArea placeholder="Placeholder copy" />
-        </Example>
+    <Example title="Error state">
+      <TextArea isError />
+    </Example>
 
-        <Example title="With autoFocus">
-          <TextArea autoFocus />
-        </Example>
+    <Example title="Full width">
+      <TextArea isFullWidth />
+    </Example>
 
-        <Example title="Error state">
-          <TextArea isError />
-        </Example>
+    <Example title="Resizable">
+      <TextArea isResizable dataId="asd" />
+    </Example>
 
-        <Example title="Full width">
-          <TextArea isFullWidth />
-        </Example>
-
-        <Example title="Resizable">
-          <TextArea isResizable />
-        </Example>
-
-      </Page>
-    );
-  }
-
-}
+  </Page>
+);
 
 TextAreaExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
+
+export default TextAreaExample;

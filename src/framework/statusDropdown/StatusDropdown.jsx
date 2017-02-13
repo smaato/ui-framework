@@ -115,7 +115,7 @@ export default class StatusDropdown extends Component {
 
     if (this.props.selectedOption) {
       sortedOptions = [];
-      this.props.options.forEach(option => {
+      this.props.options.forEach((option) => {
         if (option === this.props.selectedOption) {
           sortedOptions.unshift(option);
         } else {

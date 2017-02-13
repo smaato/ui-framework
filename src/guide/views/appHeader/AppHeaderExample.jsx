@@ -113,7 +113,7 @@ export default class AppHeaderExample extends Component {
 
         <Example title="AppNav" isDark>
           <Text>Allows the user to add a navigation to the AppHeader.</Text>
-          <Text>Accepts an array of anchor tags or react-router's
+          <Text>Accepts an array of anchor tags or react-router&apos;s
             Link components.</Text>
           <AppNav
             linkType={linkType}

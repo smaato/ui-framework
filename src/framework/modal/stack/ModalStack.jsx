@@ -5,7 +5,7 @@ import React, {
 
 import classNames from 'classnames';
 
-const ModalStack = props => {
+const ModalStack = (props) => {
   const modalCount = props.children.length;
   const stackedModals = props.children.map((modal, index) => {
     const depth = modalCount - index;

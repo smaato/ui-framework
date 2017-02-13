@@ -12,7 +12,7 @@ export {
   default as PanelProgress,
 } from './progress/PanelProgress.jsx';
 
-const Panel = props => {
+const Panel = (props) => {
   const classes = classNames('panel', {
     'panel--fullWidth': props.isFullWidth,
   });

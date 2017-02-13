@@ -1,5 +1,6 @@
 
 // Import exports from various modules.
+import classNames from 'classnames';
 import React, {
   Component,
   PropTypes,
@@ -8,14 +9,8 @@ import React, {
 import NavItem from './NavItem.jsx';
 import NavTitle from './NavTitle.jsx';
 
-import classNames from 'classnames';
-
 // Define the component class and provide it as an export.
 export default class Navigation extends Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   renderNavMenu(name, routeItems) {
     // Add items.

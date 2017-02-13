@@ -4,7 +4,6 @@ import FilterOptionList from './FilterOptionList.jsx';
 import {
   FilterOption,
 } from '../../services';
-import TestUtils from '../../../services/TestUtils';
 
 describe('FilterOptionList', () => {
   describe('Props', () => {
@@ -54,36 +53,37 @@ describe('FilterOptionList', () => {
     });
 
     describe('onSelectFilterOption', () => {
-      it(TestUtils.cleanString(
-        `is called and receives filterOption and comparisonType when an item
-        is clicked`
-      ), () => {
-        const filterOption = new FilterOption({
-          name: 'testFilterOption',
-          comparisonTypes: [
-            'test1',
-          ],
-        });
+      it(
+        'is called and receives filterOption and comparisonType when an item ' +
+        'is clicked',
+        () => {
+          const filterOption = new FilterOption({
+            name: 'testFilterOption',
+            comparisonTypes: [
+              'test1',
+            ],
+          });
 
-        const props = {
-          filterOptions: [
+          const props = {
+            filterOptions: [
+              filterOption,
+            ],
+            onSelectFilterOption: jasmine.createSpy('onSelectFilterOption'),
+          };
+
+          const testCase =
+            TestCaseFactory.create(FilterOptionList, props);
+          expect(props.onSelectFilterOption).not.toHaveBeenCalled();
+
+          const item = testCase.first('.filterOptionListItem');
+          testCase.trigger('click', item);
+
+          expect(props.onSelectFilterOption).toHaveBeenCalledWith(
             filterOption,
-          ],
-          onSelectFilterOption: jasmine.createSpy('onSelectFilterOption'),
-        };
-
-        const testCase =
-          TestCaseFactory.create(FilterOptionList, props);
-        expect(props.onSelectFilterOption).not.toHaveBeenCalled();
-
-        const item = testCase.first('.filterOptionListItem');
-        testCase.trigger('click', item);
-
-        expect(props.onSelectFilterOption).toHaveBeenCalledWith(
-          filterOption,
-          filterOption.comparisonTypes[0]
-        );
-      });
+            filterOption.comparisonTypes[0]
+          );
+        }
+      );
     });
   });
 });

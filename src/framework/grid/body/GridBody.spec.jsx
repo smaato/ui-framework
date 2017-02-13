@@ -17,7 +17,7 @@ describe('GridBody', () => {
     describe('children', () => {
       it('are rendered', () => {
         const props = {
-          children: <tr><td></td></tr>,
+          children: <tr><td /></tr>,
         };
 
         const testCase = TestCaseFactory.createFromElement(
@@ -35,7 +35,7 @@ describe('GridBody', () => {
           columnsCount: 2,
           firstRecycledRowOffset: 1,
           lastRecycledRowOffset: 2,
-          initialLoadingRow: <tr className="initialLoadingRow"><td></td></tr>,
+          initialLoadingRow: <tr className="initialLoadingRow"><td /></tr>,
         };
 
         const testCase = TestCaseFactory.createFromElement(
@@ -52,7 +52,7 @@ describe('GridBody', () => {
           columnsCount: 2,
           firstRecycledRowOffset: 1,
           lastRecycledRowOffset: 2,
-          emptyRow: <tr className="emptyRow"><td></td></tr>,
+          emptyRow: <tr className="emptyRow"><td /></tr>,
         };
 
         const testCase = TestCaseFactory.createFromElement(
@@ -69,7 +69,7 @@ describe('GridBody', () => {
           columnsCount: 2,
           firstRecycledRowOffset: 1,
           lastRecycledRowOffset: 2,
-          loadingRow: <tr className="loadingRow"><td></td></tr>,
+          loadingRow: <tr className="loadingRow"><td /></tr>,
         };
 
         const testCase = TestCaseFactory.createFromElement(

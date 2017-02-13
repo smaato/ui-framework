@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import Button from './Button.jsx';
 
-const BasicButton = props => {
+const BasicButton = (props) => {
   const classes = classNames('button--basic', props.classes);
 
   const extendedProps = Object.assign({}, props, {

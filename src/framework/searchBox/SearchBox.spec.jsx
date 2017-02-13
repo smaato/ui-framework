@@ -48,7 +48,7 @@ describe('SearchBox', () => {
           expect(props.onSearch).toHaveBeenCalled();
         });
 
-        it('is not called when the user hits any key but Enter', done => {
+        it('is not called when the user hits any key but Enter', (done) => {
           const props = {
             isImmediate: false,
             onSearch: jasmine.createSpy('onSearch'),
@@ -68,7 +68,7 @@ describe('SearchBox', () => {
       });
 
       describe('when isImmediate is true', () => {
-        it('is called when the user hits any key', done => {
+        it('is called when the user hits any key', (done) => {
           const props = {
             isImmediate: true,
             onSearch: jasmine.createSpy('onSearch'),
@@ -102,7 +102,7 @@ describe('SearchBox', () => {
     });
 
     describe('timeout', () => {
-      it('throttles execution of onSearch', done => {
+      it('throttles execution of onSearch', (done) => {
         const props = {
           isImmediate: true,
           onSearch: jasmine.createSpy('onSearch'),

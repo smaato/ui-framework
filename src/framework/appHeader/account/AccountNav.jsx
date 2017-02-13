@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 import AccountPicture from './AccountPicture.jsx';
 
-const AccountNav = props => {
+const AccountNav = (props) => {
   const accountNavUserClasses = classNames('accountNav__user', {
     'accountNav__user--highlightOnHover': props.onClick,
   });

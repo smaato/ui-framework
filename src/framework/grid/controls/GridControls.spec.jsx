@@ -11,9 +11,7 @@ describe('GridControls', () => {
           children: <div className="test" />,
         };
 
-        const testCase = TestCaseFactory.createFromElement(
-          <GridControls {...props} />
-        );
+        const testCase = TestCaseFactory.create(GridControls, props);
         expect(testCase.first('.test')).toBeDefined();
       });
     });

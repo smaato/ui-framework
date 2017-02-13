@@ -42,7 +42,7 @@ export default class OrganizationSwitcherExample extends Component {
       return items;
     }
     const normalizedTerm = term.trim().toLowerCase();
-    return items.filter(item => {
+    return items.filter((item) => {
       // It will return true when 1st match is found, otherwise false
       const normalizeNameValue = item.name.trim().toLowerCase();
       const nameIndex = normalizeNameValue.indexOf(normalizedTerm);

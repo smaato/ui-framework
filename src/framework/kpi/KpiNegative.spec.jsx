@@ -10,9 +10,7 @@ describe('KpiNegative', () => {
         const props = {
           title: 'test',
         };
-        const testCase = TestCaseFactory.createFromElement(
-          <KpiNegative {...props} />
-        );
+        const testCase = TestCaseFactory.create(KpiNegative, props);
         expect(testCase.dom.getAttribute('title')).toContain(props.title);
       });
     });
@@ -22,9 +20,7 @@ describe('KpiNegative', () => {
         const props = {
           children: <div id="test" />,
         };
-        const testCase = TestCaseFactory.createFromElement(
-          <KpiNegative {...props} />
-        );
+        const testCase = TestCaseFactory.create(KpiNegative, props);
         expect(testCase.first('#test')).toBeDefined();
       });
     });

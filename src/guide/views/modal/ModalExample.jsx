@@ -118,9 +118,9 @@ export default class ModalExample extends Component {
         <ModalBody>
           <div>
             <Text rhythm={Text.RHYTHM.SMALL}>
-              This dropdown demonstrates two things: 1) it isn't
-              cropped when it's open, 2) it isn't cropped when it's wider than
-              the modal.
+              This dropdown demonstrates two things: 1) it isn&apos;t
+              cropped when it&apos;s open, 2) it isn&apos;t cropped when
+              it&apos;s wider than the modal.
             </Text>
           </div>
           <ColumnLayout>
@@ -233,7 +233,7 @@ export default class ModalExample extends Component {
 
     const stackedModals = [];
 
-    for (let i = 0; i < this.state.stackedModalCount; i++) {
+    for (let i = 0; i < this.state.stackedModalCount; i += 1) {
       stackedModals.push(modalStackSequence[i]);
     }
 
@@ -329,7 +329,7 @@ export default class ModalExample extends Component {
                 Modal Title
               </ModalHeader>
               <ModalBody>
-                <div style={{ height: 400 }}></div>
+                <div style={{ height: 400 }} />
               </ModalBody>
               <ModalFooter
                 right={[

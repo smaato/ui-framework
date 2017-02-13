@@ -1,23 +1,31 @@
 
+import classNames from 'classnames';
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
 
-const TextInput = props => {
+const TextInput = (props) => {
+  const {
+    dataId,
+    isError,
+    isFullWidth,
+    isReadonly,
+    ...reducedProps
+  } = props;
+
   const classes = classNames('textInput', props.className, {
-    'textInput--fullWidth': props.isFullWidth,
-    'is-text-input-error': props.isError,
+    'textInput--fullWidth': isFullWidth,
+    'is-text-input-error': isError,
   });
 
-  const extendedProps = Object.assign({}, props, {
+  const extendedProps = Object.assign({}, reducedProps, {
     className: classes,
   });
 
   return (
     <input
-      data-id={props.dataId}
-      disabled={props.isReadonly}
+      data-id={dataId}
+      disabled={isReadonly}
       {...extendedProps}
     />
   );

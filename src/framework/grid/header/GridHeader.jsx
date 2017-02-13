@@ -6,19 +6,20 @@ import classNames from 'classnames';
 
 import GridHeaderCell from './GridHeaderCell.jsx';
 
-const GridHeader = props => {
+const GridHeader = (props) => {
   const sectionClass = classNames('grid__header', props.classHeader);
   const rowClass = classNames('grid__header__row', props.classHeaderRow);
 
    // Create cells.
-  const headerCells = props.headerCellPropsProviders
-  .map((cellPropsProvider, index) => (
-    <GridHeaderCell
-      classHeaderCell={props.classHeaderCell}
-      innerCellProps={cellPropsProvider(index)}
-      key={index}
-    />
-  ));
+  const headerCells =
+    props.headerCellPropsProviders.map((cellPropsProvider, index) => (
+      <GridHeaderCell
+        classHeaderCell={props.classHeaderCell}
+        innerCellProps={cellPropsProvider(index)}
+        key={index}
+      />
+    )
+  );
 
   return (
     <thead className={sectionClass}>

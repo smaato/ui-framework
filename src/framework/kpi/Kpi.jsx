@@ -1,38 +1,29 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
 
-export default class Kpi extends Component {
+const Kpi = (props) => {
+  const className = classNames('kpi', props.className);
 
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const className = classNames(
-      'kpi',
-      this.props.className
-    );
-
-    return (
-      <span
-        className={className}
-        title={this.props.title}
-      >
-        {this.props.children}
-      </span>
-    );
-  }
-}
+  return (
+    <span
+      className={className}
+      title={props.title}
+    >
+      {props.children}
+    </span>
+  );
+};
 
 Kpi.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
   title: PropTypes.string,
 };
+
+export default Kpi;
 
 export {
   default as KpiPositive,

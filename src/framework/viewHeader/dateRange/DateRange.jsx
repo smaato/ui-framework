@@ -98,7 +98,7 @@ export default class DateRange extends Component {
 
     if (this.state.isOpen) {
       dateRangeArrow = (
-        <div className="dateRange__arrow"></div>
+        <div className="dateRange__arrow" />
       );
       dateRangePicker = (
         <ReactDateRange

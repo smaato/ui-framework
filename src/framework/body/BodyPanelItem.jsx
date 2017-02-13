@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
-const BodyPanelItem = props => {
+const BodyPanelItem = (props) => {
   const rhythmClassMap = {
     [BodyPanelItem.RHYTHM.LARGE]: 'bodyPanelItem--largeRhythm',
   };

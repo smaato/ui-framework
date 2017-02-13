@@ -42,7 +42,7 @@ export default class SearchBox extends Component {
     });
 
     return (
-      <label className="searchBox">
+      <span className="searchBox">
         <input
           className={classes}
           defaultValue={this.props.defaultValue}
@@ -51,8 +51,8 @@ export default class SearchBox extends Component {
           ref="searchField"
           type="text"
         />
-        <span className="searchBox__icon icon icon-magnifier"/>
-      </label>
+        <span className="searchBox__icon icon icon-magnifier" />
+      </span>
     );
   }
 }

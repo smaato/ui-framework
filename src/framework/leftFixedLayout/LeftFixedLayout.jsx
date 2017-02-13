@@ -65,5 +65,3 @@ LeftFixedLayout.propTypes = {
   left: PropTypes.any,
   right: PropTypes.any,
 };
-
-export default LeftFixedLayout;

@@ -1,27 +1,27 @@
 
 import ConditionChecker from './ConditionChecker';
 import ComparisonTypes from './ComparisonTypes';
-import TestUtils from '../../../services/TestUtils';
 
 describe('ConditionChecker', () => {
   describe('interface', () => {
     describe('constructor method', () => {
-      it(TestUtils.cleanString(
-        `accepts filter, comparisonType, and comparisonValue params,
-        and surfaces them`
-      ), () => {
-        const filter = {};
-        const comparisonType = 'comparisonType';
-        const comparisonValue = 'comparisonValue';
-        const conditionChecker = new ConditionChecker(
-          filter,
-          comparisonType,
-          comparisonValue
-        );
-        expect(conditionChecker.filter).toBe(filter);
-        expect(conditionChecker.comparisonType).toBe(comparisonType);
-        expect(conditionChecker.comparisonValue).toBe(comparisonValue);
-      });
+      it(
+        'accepts filter, comparisonType, and comparisonValue params, ' +
+        'and surfaces them',
+        () => {
+          const filter = {};
+          const comparisonType = 'comparisonType';
+          const comparisonValue = 'comparisonValue';
+          const conditionChecker = new ConditionChecker(
+            filter,
+            comparisonType,
+            comparisonValue
+          );
+          expect(conditionChecker.filter).toBe(filter);
+          expect(conditionChecker.comparisonType).toBe(comparisonType);
+          expect(conditionChecker.comparisonValue).toBe(comparisonValue);
+        }
+      );
     });
 
     describe('doesValuePass method', () => {

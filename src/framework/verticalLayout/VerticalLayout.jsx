@@ -3,7 +3,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-const VerticalLayout = props => {
+const VerticalLayout = (props) => {
   function wrap(item, index) {
     return (
       <div

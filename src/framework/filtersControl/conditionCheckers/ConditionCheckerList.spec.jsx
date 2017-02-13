@@ -4,7 +4,6 @@ import ConditionCheckerList from './ConditionCheckerList.jsx';
 import {
   ConditionChecker,
 } from '../../services';
-import TestUtils from '../../../services/TestUtils';
 
 describe('ConditionCheckerList', () => {
   describe('Props', () => {
@@ -25,33 +24,29 @@ describe('ConditionCheckerList', () => {
     });
 
     describe('onRemoveConditionChecker', () => {
-      it(TestUtils.cleanString(
-        `is called and receives conditionChecker when a remove button
-        is clicked`
-      ), () => {
-        const props = {
-          conditionCheckers: [
-            new ConditionChecker({}),
-          ],
-          onRemoveConditionChecker: jasmine.createSpy(
-            'onRemoveConditionChecker'
-          ),
-        };
+      it(
+        'is called and receives conditionChecker when a remove button is ' +
+        'clicked',
+        () => {
+          const props = {
+            conditionCheckers: [
+              new ConditionChecker({}),
+            ],
+            onRemoveConditionChecker: jasmine.createSpy(
+              'onRemoveConditionChecker'
+            ),
+          };
 
-        const testCase =
-          TestCaseFactory.create(ConditionCheckerList, props);
+          const testCase = TestCaseFactory.create(ConditionCheckerList, props);
 
-        const removeButton =
-          testCase.first('.conditionCheckerListItem__removeButton');
+          const removeButton =
+            testCase.first('.conditionCheckerListItem__removeButton');
 
-        expect(props.onRemoveConditionChecker).not.toHaveBeenCalled();
-        testCase.trigger('click', removeButton);
-        expect(props.onRemoveConditionChecker).toHaveBeenCalledWith(
-          props.conditionCheckers[0],
-          jasmine.any(Object), // SyntheticEvent
-          undefined
-        );
-      });
+          expect(props.onRemoveConditionChecker).not.toHaveBeenCalled();
+          testCase.trigger('click', removeButton);
+          expect(props.onRemoveConditionChecker).toHaveBeenCalled();
+        }
+      );
     });
   });
 });

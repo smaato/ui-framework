@@ -1,25 +1,16 @@
 
-import React, {
-  Component,
-} from 'react';
+import React from 'react';
 import Kpi from './Kpi.jsx';
 
-export default class KpiPositive extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <Kpi
-        className="kpi--positive"
-        title={this.props.title}
-      >
-        {this.props.children}
-      </Kpi>
-    );
-  }
-}
+const KpiPositive = props => (
+  <Kpi
+    className="kpi--positive"
+    title={props.title}
+  >
+    {props.children}
+  </Kpi>
+);
 
 KpiPositive.propTypes = Object.assign({}, Kpi.propTypes);
+
+export default KpiPositive;

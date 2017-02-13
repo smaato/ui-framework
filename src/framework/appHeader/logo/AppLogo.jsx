@@ -3,7 +3,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-const AppLogo = props => {
+const AppLogo = (props) => {
   const attributes = {
     className: 'appLogo',
     title: props.text,

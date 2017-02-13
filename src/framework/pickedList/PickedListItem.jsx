@@ -5,7 +5,7 @@ import React, {
 import classNames from 'classnames';
 import keyMirror from 'keymirror';
 
-const PickedListItem = props => {
+const PickedListItem = (props) => {
   function onClickRemove() {
     props.onRemove(props.data);
   }

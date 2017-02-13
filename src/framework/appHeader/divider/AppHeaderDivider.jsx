@@ -6,7 +6,7 @@ import React, {
 const AppHeaderDivider = props => (
   <div className="appHeaderDivider">
     {props.left}
-    <div className="appHeaderDivider__divider"></div>
+    <div className="appHeaderDivider__divider" />
     {props.right}
   </div>
 );

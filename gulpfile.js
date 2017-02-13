@@ -43,7 +43,7 @@ gulp.task('deployToGitHubPages', () => (
     .pipe(ghPages())
 ));
 
-gulp.task('deploy', done => {
+gulp.task('deploy', (done) => {
   runSequence(
     'production',
     'deployToGitHubPages',
@@ -134,7 +134,7 @@ gulp.task('clean', done => (
   ], done)
 ));
 
-gulp.task('production', done => {
+gulp.task('production', (done) => {
   process.env.NODE_ENV = 'production';
 
   runSequence(

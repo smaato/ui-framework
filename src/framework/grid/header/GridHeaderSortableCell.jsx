@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
-const GridHeaderSortableCell = props => {
+const GridHeaderSortableCell = (props) => {
   const classes = classNames('gridHeaderSortableCell', {
     'is-grid-header-sortable-cell-selected': props.isSelected,
     'is-grid-header-sort-descending': props.isSortDescending,
@@ -25,11 +25,11 @@ const GridHeaderSortableCell = props => {
 
       <div className="gridHeaderSortableCell__arrow">
         <div className="gridHeaderSortableCell__arrowUp arrowUp">
-          <div className="arrowUp__centerLine"></div>
+          <div className="arrowUp__centerLine" />
         </div>
 
         <div className="gridHeaderSortableCell__arrowDown arrowDown">
-          <div className="arrowDown__centerLine"></div>
+          <div className="arrowDown__centerLine" />
         </div>
       </div>
 

@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 import Progress from '../../progress/Progress.jsx';
 
-const GridLoadingRow = props => {
+const GridLoadingRow = (props) => {
   const className = classNames(
     'gridLoadingRow',
     props.isInitial ? 'gridLoadingRow--initial' : null

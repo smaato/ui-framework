@@ -3,7 +3,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-const OrganizationSwitcherItem = props => {
+const OrganizationSwitcherItem = (props) => {
   if (props.message) {
     return (
       <div className="organizationSwitcherItem">

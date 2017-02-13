@@ -5,7 +5,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-const StatusDropdownOptionIcon = props => {
+const StatusDropdownOptionIcon = (props) => {
   const classMap = {
     [StatusDropdownOptionIcon.TYPE.ACTIVATE]: 'icon-play-blue',
     [StatusDropdownOptionIcon.TYPE.DEACTIVATE]: 'icon-pause-blue',

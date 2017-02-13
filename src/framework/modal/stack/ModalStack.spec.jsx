@@ -4,11 +4,11 @@ import { TestCaseFactory } from 'react-test-kit';
 import ModalStack from './ModalStack.jsx';
 
 const children = [
-  <div className="modal1" key="0"></div>,
-  <div className="modal2" key="1"></div>,
-  <div className="modal3" key="2"></div>,
-  <div className="modal4" key="3"></div>,
-  <div className="modal5" key="4"></div>,
+  <div className="modal1" key="0" />,
+  <div className="modal2" key="1" />,
+  <div className="modal3" key="2" />,
+  <div className="modal4" key="3" />,
+  <div className="modal5" key="4" />,
 ];
 
 describe('ModalStack', () => {

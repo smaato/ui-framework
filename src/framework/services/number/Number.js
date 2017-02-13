@@ -12,7 +12,7 @@ function formatBigNumber(number) {
   const label = POWER_TO_LABEL_MAP[power];
 
   if (label) {
-    return `${Math.round(number / Math.pow(1000, power))}${label}`;
+    return `${Math.round(number / (1000 ** power))}${label}`;
   }
   return `${Math.round(number)}`;
 }

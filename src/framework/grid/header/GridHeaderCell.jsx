@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
-const GridHeaderCell = props => {
+const GridHeaderCell = (props) => {
   // Cell classes.
   const classes = classNames('grid__header__cell', props.classHeaderCell);
 
@@ -19,7 +19,7 @@ const GridHeaderCell = props => {
 
   return (
     <th className={classes}>
-      <div {...decoratedInnerCellProps} ></div>
+      <div {...decoratedInnerCellProps} />
     </th>
   );
 };
