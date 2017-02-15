@@ -65,5 +65,16 @@ describe('Panel', () => {
         expect(paddedEl).toBeDefined();
       });
     });
+
+    describe('isUppercase', () => {
+      it('applies the appropriate class', () => {
+        const props = {
+          isUppercase: true,
+        };
+        const testCase = TestCaseFactory.create(Panel, props);
+        const paddedEl = testCase.first('.panel__titleLabel--uppercase');
+        expect(paddedEl).toBeDefined();
+      });
+    });
   });
 });
