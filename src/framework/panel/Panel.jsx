@@ -15,6 +15,7 @@ export {
 const Panel = (props) => {
   const classes = classNames('panel', {
     'panel--fullWidth': props.isFullWidth,
+    'panel--compactWidth': props.isCompactWidth,
   });
 
   const labelClasses = classNames('panel__titleLabel', {
@@ -48,6 +49,7 @@ Panel.propTypes = {
   actions: PropTypes.any,
   children: PropTypes.any,
   isCentered: PropTypes.bool,
+  isCompactWidth: PropTypes.bool,
   isFullWidth: PropTypes.bool,
   isPadded: PropTypes.bool,
   isTitleUppercase: PropTypes.bool,

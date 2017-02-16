@@ -16,6 +16,10 @@
     &.panel--fullWidth {
       flex-shrink: 0; /* 1 */
     }
+
+    &.panel--compactWidth {
+      flex-grow: 0; /* 1 */
+    }
   }
 
   .panel + .panel {
