@@ -66,10 +66,10 @@ describe('Panel', () => {
       });
     });
 
-    describe('isUppercase', () => {
+    describe('isTitleUppercase', () => {
       it('applies the appropriate class', () => {
         const props = {
-          isUppercase: true,
+          isTitleUppercase: true,
         };
         const testCase = TestCaseFactory.create(Panel, props);
         const paddedEl = testCase.first('.panel__titleLabel--uppercase');

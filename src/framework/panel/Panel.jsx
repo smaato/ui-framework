@@ -17,9 +17,8 @@ const Panel = (props) => {
     'panel--fullWidth': props.isFullWidth,
   });
 
-  const labelClasses = classNames({
-    panel__titleLabel: !props.isUppercase,
-    'panel__titleLabel--uppercase': props.isUppercase,
+  const labelClasses = classNames('panel__titleLabel', {
+    'panel__titleLabel--uppercase': props.isTitleUppercase,
   });
 
   const contentClasses = classNames('panel__content', {
@@ -46,13 +45,13 @@ const Panel = (props) => {
 };
 
 Panel.propTypes = {
-  title: PropTypes.string,
-  children: PropTypes.any,
   actions: PropTypes.any,
+  children: PropTypes.any,
+  isCentered: PropTypes.bool,
   isFullWidth: PropTypes.bool,
   isPadded: PropTypes.bool,
-  isCentered: PropTypes.bool,
-  isUppercase: PropTypes.bool,
+  isTitleUppercase: PropTypes.bool,
+  title: PropTypes.string,
 };
 
 export default Panel;

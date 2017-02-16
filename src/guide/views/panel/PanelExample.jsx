@@ -94,6 +94,17 @@ export default class PanelExample extends Component {
           </div>
         </Example>
 
+        <Example title="With uppercase title">
+          <div style={{ height: 300 }}>
+            <Panel
+              title="Letters"
+              isTitleUppercase
+            >
+              {this.renderMenu(3)}
+            </Panel>
+          </div>
+        </Example>
+
         <Example title="Scrollable, with PanelProgress">
           <div style={{ height: 300 }}>
             <Panel
