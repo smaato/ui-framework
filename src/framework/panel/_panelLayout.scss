@@ -19,6 +19,7 @@
 
     &.panel--compactWidth {
       flex-grow: 0; /* 1 */
+      flex-shrink: 0;
     }
   }
 
