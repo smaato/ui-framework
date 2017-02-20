@@ -7,7 +7,8 @@ import React, {
 import Box from '../box/Box.jsx';
 
 const BodyPanel = (props) => {
-  const classes = classNames('bodyPanel', {
+  const classes = classNames('bodyPanel', props.panelClasses, {
+    'bodyPanel--bottomFlush': props.isBottomFlush,
     'bodyPanel--topFlush': props.isTopFlush,
   });
 
@@ -23,7 +24,9 @@ const BodyPanel = (props) => {
 
 BodyPanel.propTypes = {
   children: Box.propTypes.children,
+  isBottomFlush: PropTypes.bool,
   isTopFlush: PropTypes.bool,
+  panelClasses: PropTypes.string,
   roundedCorners: Box.propTypes.roundedCorners,
 };
 
