@@ -67,6 +67,12 @@ const BodyExample = props => (
     </Example>
 
     <Example title="BodyPanel" isClear>
+      <BodyPanel isBottomFlush>
+        This is a BodyPanel with isBottomFlush (no border-bottom).
+      </BodyPanel>
+    </Example>
+
+    <Example title="BodyPanel" isClear>
       <BodyPanel isTopFlush>
         This is a BodyPanel with isTopFlush (no border-top).
       </BodyPanel>
