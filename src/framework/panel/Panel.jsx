@@ -14,8 +14,8 @@ export {
 
 const Panel = (props) => {
   const classes = classNames('panel', {
-    'panel--fullWidth': props.isFullWidth,
     'panel--compactWidth': props.isCompactWidth,
+    'panel--fullWidth': props.isFullWidth,
   });
 
   const labelClasses = classNames('panel__titleLabel', {

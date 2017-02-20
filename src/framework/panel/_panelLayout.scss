@@ -10,6 +10,11 @@
   .panel {
     flex: 1 1 auto;
 
+    &.panel--compactWidth {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+
     /**
     * 1. Prevent shrinking.
     */
@@ -17,10 +22,6 @@
       flex-shrink: 0; /* 1 */
     }
 
-    &.panel--compactWidth {
-      flex-grow: 0; /* 1 */
-      flex-shrink: 0;
-    }
   }
 
   .panel + .panel {
