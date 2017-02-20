@@ -15,14 +15,18 @@
     height: 36px;
     font-size: 13px;
     line-height: $lineHeight;
-    background-color: #f6fafc;
+    background-color: #e9f2f7;
     border-bottom: 1px solid #d4d8db;
     flex: 0 0 auto;
   }
 
     .panel__titleLabel {
       color: #526770;
-      font-weight: 300;
+      font-weight: 500;
+    }
+
+    .panel__titleLabel--uppercase {
+      text-transform: uppercase;
     }
 
     /**

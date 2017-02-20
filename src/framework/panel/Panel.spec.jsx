@@ -34,6 +34,16 @@ describe('Panel', () => {
       });
     });
 
+    describe('isCompactWidth', () => {
+      it('applies the appropriate class', () => {
+        const props = {
+          isCompactWidth: true,
+        };
+        const testCase = TestCaseFactory.create(Panel, props);
+        expect(testCase.dom.className).toContain('panel--compactWidth');
+      });
+    });
+
     describe('isFullWidth', () => {
       it('applies the appropriate class', () => {
         const props = {
@@ -63,6 +73,16 @@ describe('Panel', () => {
         const testCase = TestCaseFactory.create(Panel, props);
         const paddedEl = testCase.first('.panel__content--centered');
         expect(paddedEl).toBeDefined();
+      });
+    });
+
+    describe('isTitleUppercase', () => {
+      it('applies the appropriate class', () => {
+        const props = {
+          isTitleUppercase: true,
+        };
+        const testCase = TestCaseFactory.create(Panel, props);
+        expect(testCase.first('.panel__titleLabel--uppercase')).toBeDefined();
       });
     });
   });
