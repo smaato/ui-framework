@@ -1,12 +1,14 @@
 
 import {
   FilterOption,
+  FilterTypes,
   ComparisonTypes,
 } from '../../../framework/services.js';
 
 export default [
   new FilterOption({
     name: 'ID',
+    type: FilterTypes.EQUALITY,
     getValue: item => item.id,
     comparisonTypes: [
       ComparisonTypes.CONTAINS,
@@ -16,6 +18,7 @@ export default [
   }),
   new FilterOption({
     name: 'Name',
+    type: FilterTypes.CONTAINS,
     getValue: item => item.name,
     comparisonTypes: [
       ComparisonTypes.CONTAINS,
@@ -23,6 +26,10 @@ export default [
   }),
   new FilterOption({
     name: 'Status',
+    type: FilterTypes.MULTIPLE_SELECT,
+    options: [
+      'Active', 'Stopped', 'Archived',
+    ],
     getValue: item => item.status,
     comparisonTypes: [
       ComparisonTypes.CONTAINS,

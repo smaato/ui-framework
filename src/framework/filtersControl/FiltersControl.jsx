@@ -9,6 +9,8 @@ import FiltersDropdownButton from './filtersDropdown/FiltersDropdownButton.jsx';
 import FilterOptionList from './filterOptions/FilterOptionList.jsx';
 import ConditionCheckerForm from './conditionCheckers/ConditionCheckerForm.jsx';
 import ConditionCheckerList from './conditionCheckers/ConditionCheckerList.jsx';
+import MultipleSelectFilterForm from './forms/MultipleSelectFilterForm.jsx';
+import FilterTypes from '../services/filter/FilterTypes.js';
 
 export default class FiltersControl extends Component {
 
@@ -78,29 +80,66 @@ export default class FiltersControl extends Component {
       if (this.state.selectedFilterOption) {
         // If we have a selected filter, then we can create a filter matcher
         // from it.
-        dropdownContent = (
-          <ConditionCheckerForm
-            filterOption={this.state.selectedFilterOption}
-            comparisonType={this.state.selectedComparisonType}
-            onAddConditionChecker={this.onAddConditionChecker}
-            onCancelConditionChecker={this.onCancelConditionChecker}
-          />
-        );
+        if (
+          this.state.selectedFilterOption.type === FilterTypes.MULTIPLE_SELECT
+        ) {
+          dropdownContent = (
+            <div>
+              <div className="filtersDropdown__header">
+                <span
+                  onClick={this.onCancelConditionChecker}
+                >
+                  &lt;
+                </span>
+                {this.state.selectedFilterOption.name}
+              </div>
+              <MultipleSelectFilterForm
+                filterOption={this.state.selectedFilterOption}
+                onAddConditionChecker={this.onAddConditionChecker}
+              />
+            </div>
+          );
+        } else {
+          dropdownContent = (
+            <div>
+              <div className="filtersDropdown__header">
+                <span
+                  onClick={this.onCancelConditionChecker}
+                >
+                  &lt;
+                </span>
+                {this.state.selectedFilterOption.name}
+              </div>
+              <ConditionCheckerForm
+                filterOption={this.state.selectedFilterOption}
+                comparisonType={this.state.selectedComparisonType}
+                onAddConditionChecker={this.onAddConditionChecker}
+              />
+            </div>
+          );
+        }
       } else {
         // If we don't have a selected filter yet, then we're in the process
         // of selecting one.
         dropdownContent = (
-          <FilterOptionList
-            filterOptions={this.props.filterOptions}
-            onSelectFilterOption={this.onSelectFilterOption}
-          />
+          <div>
+            <div className="filtersDropdown__header">
+              Add a Filter
+              <span
+                className="icon icon-remove"
+                onClick={this.onClose}
+              />
+            </div>
+            <FilterOptionList
+              filterOptions={this.props.filterOptions}
+              onSelectFilterOption={this.onSelectFilterOption}
+            />
+          </div>
         );
       }
 
       dropdown = (
-        <FiltersDropdown
-          onClose={this.onDropdownClose}
-        >
+        <FiltersDropdown>
           {dropdownContent}
         </FiltersDropdown>
       );

@@ -1,13 +1,27 @@
-.conditionCheckerForm__filterName {
-  font-weight: 400;
+
+.filterForm {
+  padding: 10px 5px;
 }
 
-.conditionCheckerForm__filterName,
-.conditionCheckerForm__filterValueWrapper {
-  margin-bottom: $addedFilter_paddingHorizontal / 2;
-}
+  .conditionCheckerForm__filterName {
+    font-weight: 400;
+  }
 
-.conditionCheckerForm__buttons {
-  display: flex;
-  justify-content: space-between;
+  .conditionCheckerForm__filterName,
+  .conditionCheckerForm__filterValueWrapper {
+    margin-bottom: $addedFilter_paddingHorizontal / 2;
+  }
+
+  .filterForm__buttons {
+    margin-top: 5px;
+  }
+
+    .filterForm__buttons button {
+      white-space: nowrap;
+    }
+
+.multipleSelectFilterForm__checkbox {
+  white-space: nowrap;
+  padding-bottom: 5px;
+  padding-right: 25px;
 }

@@ -56,9 +56,6 @@ export default class ConditionCheckerForm extends Component {
           />
         </div>
         <div className="conditionCheckerForm__buttons">
-          <button onClick={this.props.onCancelConditionChecker}>
-            &lt; Back
-          </button>
           <button onClick={this.onClickAddButton}>
             + Add
           </button>
@@ -72,5 +69,4 @@ ConditionCheckerForm.propTypes = {
   filterOption: PropTypes.instanceOf(FilterOption),
   comparisonType: PropTypes.string.isRequired,
   onAddConditionChecker: PropTypes.func.isRequired,
-  onCancelConditionChecker: PropTypes.func.isRequired,
 };
