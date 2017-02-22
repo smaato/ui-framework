@@ -25,6 +25,7 @@ export default class FiltersControl extends Component {
     this.onCancelConditionChecker = this.onCancelConditionChecker.bind(this);
     this.onSelectFilterOption = this.onSelectFilterOption.bind(this);
     this.onToggleClick = this.onToggleClick.bind(this);
+    this.onDropdownClose = this.onDropdownClose.bind(this);
   }
 
   onToggleClick() {
@@ -60,6 +61,14 @@ export default class FiltersControl extends Component {
     });
   }
 
+  onDropdownClose() {
+    this.setState({
+      isDropdownOpen: false,
+      selectedFilterOption: null,
+      selectedComparisonType: null,
+    });
+  }
+
   render() {
     let dropdown;
 
@@ -89,7 +98,9 @@ export default class FiltersControl extends Component {
       }
 
       dropdown = (
-        <FiltersDropdown>
+        <FiltersDropdown
+          onClose={this.onDropdownClose}
+        >
           {dropdownContent}
         </FiltersDropdown>
       );

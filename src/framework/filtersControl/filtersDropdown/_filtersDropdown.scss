@@ -31,11 +31,32 @@
 
   .filtersDropdown {
     position: absolute;
-    top: 100%;
+    top: 0;
     z-index: 1;
-    padding: $addedFilter_paddingHorizontal;
-    background: $addedFilter_backgroundColor;
+    background: white;
     font-size: $addedFilter_fontSize;
     border: 1px solid $addedFilter_borderColor;
     border-radius: 0 $addedFilter_borderRadius $addedFilter_borderRadius;
+    color: #474b4e;
   }
+
+    .filtersList {
+      box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .filtersDropdown__header {
+      background: $componentBackgroundColor;
+      border-bottom: 1px solid #d4d8db;
+      padding: 10px 6px;
+      font-weight: 500;
+    }
+
+      .filtersDropdown__header .icon {
+        height: 10px;
+        width: 10px;
+        display: inline-block;
+        float: right;
+        margin-right: 3px;
+        opacity: 0.5;
+        cursor: pointer;
+      }
