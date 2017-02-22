@@ -40,7 +40,8 @@ describe('ConditionCheckerList', () => {
           const testCase = TestCaseFactory.create(ConditionCheckerList, props);
 
           const removeButton =
-            testCase.first('.conditionCheckerListItem__removeButton');
+            testCase.first(
+              '.conditionCheckerListItem__removeButtonContainer .icon');
 
           expect(props.onRemoveConditionChecker).not.toHaveBeenCalled();
           testCase.trigger('click', removeButton);

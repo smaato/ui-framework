@@ -23,20 +23,18 @@ const ConditionCheckerList = (props) => {
             title={title}
           >
             <strong className="conditionCheckerListItem__name">
-              {`${filterName} (${conditionChecker.comparisonType})`}:
+              {filterName}:
             </strong>
             {Entity.nbsp}
-            {conditionChecker.comparisonValue}
+            {conditionChecker.humanizeComparisonValue()}
           </span>
 
-          <span
-            className="
-              icon
-              icon-remove
-              conditionCheckerListItem__removeButton
-            "
-            onClick={onRemoveConditionChecker}
-          />
+          <div className="conditionCheckerListItem__removeButtonContainer">
+            <span
+              className="icon icon-remove"
+              onClick={onRemoveConditionChecker}
+            />
+          </div>
         </div>
       );
     }

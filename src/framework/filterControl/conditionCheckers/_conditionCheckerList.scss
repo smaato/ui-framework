@@ -7,29 +7,44 @@
     @include filterButton;
 
     &:hover {
-      .conditionCheckerListItem__removeButton {
-        opacity: 0.8;
+      .conditionCheckerListItem__removeButtonContainer {
+        box-shadow: -5px 0 15px 5px $addedFilter_backgroundColor;
+        opacity: 1;
       }
     }
   }
 
     .conditionCheckerListItem__label {
-      max-width: 115px;
+      max-width: 200px;
       overflow: hidden;
-      white-space: nowrap;
       text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
       .conditionCheckerListItem__name {
         font-weight: 400;
       }
 
-  .conditionCheckerListItem__removeButton {
-    display: flex;
-    margin-left: 2px;
-    width: 10px;
-    background-color: shade(scale-saturation($componentBackgroundColor, 60%), 3%);
-    box-shadow: -10px 0 5px shade(scale-saturation($componentBackgroundColor, 60%), 3%);
-    opacity: 0.6;
-    cursor: pointer;
+  .conditionCheckerListItem__removeButtonContainer {
+    background: $addedFilter_backgroundColor;
+    display: inline-flex;
+    height: 15px;
+    margin-left: -15px;
+    opacity: 0;
+    width: 15px;
   }
+
+    .conditionCheckerListItem__removeButtonContainer .icon {
+      cursor: pointer;
+      display: inline-flex;
+      height: 10px;
+      margin-left: 5px;
+      margin-top: 3px;
+      opacity: 0.3;
+      width: 15px;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+

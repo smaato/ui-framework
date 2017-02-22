@@ -4,8 +4,11 @@ import React, {
   PropTypes,
 } from 'react';
 
-import FilterOption from '../../services/filter/FilterOption';
-import ConditionChecker from '../../services/filter/ConditionChecker';
+import {
+  ConditionChecker,
+  ComparisonTypes,
+  FilterOption,
+} from '../../services.js';
 
 export default class MultipleSelectFilterForm extends Component {
 
@@ -24,10 +27,11 @@ export default class MultipleSelectFilterForm extends Component {
 
   onClickAddButton() {
     const selectedOptionNames = this.options.filter(
-      (value, index) => !this.state.selectedOptions[index]
+      (value, index) => this.state.selectedOptions[index]
     );
     const conditionChecker = new ConditionChecker(
       this.props.filterOption,
+      ComparisonTypes.ONE_OF,
       selectedOptionNames
     );
     this.props.onAddConditionChecker(conditionChecker);

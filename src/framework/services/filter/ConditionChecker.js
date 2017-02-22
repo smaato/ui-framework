@@ -9,6 +9,13 @@ export default class ConditionChecker {
     this.comparisonValue = comparisonValue;
   }
 
+  humanizeComparisonValue() {
+    if (this.comparisonType === ComparisonTypes.ONE_OF) {
+      return this.comparisonValue.join(', ');
+    }
+    return this.comparisonValue;
+  }
+
   doesValuePass(itemValue) {
     function normalizeString(value) {
       return value.toString().trim().toLowerCase();
@@ -34,6 +41,9 @@ export default class ConditionChecker {
         const normalizedItemValue = normalizeString(itemValue);
         const index = normalizedItemValue.indexOf(normalizedComparisonValue);
         return index !== -1;
+      }
+      case ComparisonTypes.ONE_OF: {
+        return this.comparisonValue.indexOf(itemValue) !== -1;
       }
       default: {
         throw new Error(
