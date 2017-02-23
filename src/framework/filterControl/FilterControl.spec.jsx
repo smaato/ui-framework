@@ -1,11 +1,11 @@
 
 import { TestCaseFactory } from 'react-test-kit';
-import FiltersControl from './FiltersControl.jsx';
+import FilterControl from './FilterControl.jsx';
 import {
   ConditionChecker,
 } from '../services';
 
-describe('FiltersControl', () => {
+describe('FilterControl', () => {
   describe('Props', () => {
     describe('conditionCheckers', () => {
       it('are passed to ConditionCheckerList and iterated over', () => {
@@ -21,7 +21,7 @@ describe('FiltersControl', () => {
         const iterationSpy = spyOn(props.conditionCheckers, 'map');
 
         expect(iterationSpy).not.toHaveBeenCalled();
-        TestCaseFactory.create(FiltersControl, props);
+        TestCaseFactory.create(FilterControl, props);
         expect(iterationSpy).toHaveBeenCalled();
       });
     });
@@ -42,7 +42,7 @@ describe('FiltersControl', () => {
             ),
           };
 
-          const testCase = TestCaseFactory.create(FiltersControl, props);
+          const testCase = TestCaseFactory.create(FilterControl, props);
 
           const removeButton =
             testCase.first('.conditionCheckerListItem__removeButton');

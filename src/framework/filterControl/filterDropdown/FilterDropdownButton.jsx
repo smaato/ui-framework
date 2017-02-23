@@ -4,9 +4,9 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
-const FiltersDropdownButton = (props) => {
-  const classes = classNames('filtersDropdownButton', {
-    'is-filters-dropdown-open': props.isOpen,
+const FilterDropdownButton = (props) => {
+  const classes = classNames('filterDropdownButton', {
+    'is-filter-dropdown-open': props.isOpen,
   });
 
   return (
@@ -19,9 +19,9 @@ const FiltersDropdownButton = (props) => {
   );
 };
 
-FiltersDropdownButton.propTypes = {
+FilterDropdownButton.propTypes = {
   onClick: PropTypes.func,
   isOpen: PropTypes.bool,
 };
 
-export default FiltersDropdownButton;
+export default FilterDropdownButton;

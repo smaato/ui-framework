@@ -29,7 +29,7 @@ const FilterOptionsList = (props) => {
   );
 
   return (
-    <div className="filtersList">
+    <div className="filterList">
       {filterOptionListItems}
     </div>
   );

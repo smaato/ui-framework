@@ -4,15 +4,13 @@ import React, {
   PropTypes,
 } from 'react';
 
-import FiltersDropdown from './filtersDropdown/FiltersDropdown.jsx';
-import FiltersDropdownButton from './filtersDropdown/FiltersDropdownButton.jsx';
+import FilterDropdown from './filterDropdown/FilterDropdown.jsx';
+import FilterDropdownButton from './filterDropdown/FilterDropdownButton.jsx';
 import FilterOptionList from './filterOptions/FilterOptionList.jsx';
-import ConditionCheckerForm from './conditionCheckers/ConditionCheckerForm.jsx';
 import ConditionCheckerList from './conditionCheckers/ConditionCheckerList.jsx';
 import MultipleSelectFilterForm from './forms/MultipleSelectFilterForm.jsx';
-import FilterTypes from '../services/filter/FilterTypes.js';
 
-export default class FiltersControl extends Component {
+export default class FilterControl extends Component {
 
   constructor(props) {
     super(props);
@@ -80,50 +78,29 @@ export default class FiltersControl extends Component {
       if (this.state.selectedFilterOption) {
         // If we have a selected filter, then we can create a filter matcher
         // from it.
-        if (
-          this.state.selectedFilterOption.type === FilterTypes.MULTIPLE_SELECT
-        ) {
-          dropdownContent = (
-            <div>
-              <div className="filtersDropdown__header">
-                <span
-                  onClick={this.onCancelConditionChecker}
-                >
-                  &lt;
-                </span>
-                {this.state.selectedFilterOption.name}
-              </div>
-              <MultipleSelectFilterForm
-                filterOption={this.state.selectedFilterOption}
-                onAddConditionChecker={this.onAddConditionChecker}
-              />
+        dropdownContent = (
+          <div>
+            <div className="filterDropdown__header">
+              <span
+                onClick={this.onCancelConditionChecker}
+              >
+                &lt;
+              </span>
+              {this.state.selectedFilterOption.name}
             </div>
-          );
-        } else {
-          dropdownContent = (
-            <div>
-              <div className="filtersDropdown__header">
-                <span
-                  onClick={this.onCancelConditionChecker}
-                >
-                  &lt;
-                </span>
-                {this.state.selectedFilterOption.name}
-              </div>
-              <ConditionCheckerForm
-                filterOption={this.state.selectedFilterOption}
-                comparisonType={this.state.selectedComparisonType}
-                onAddConditionChecker={this.onAddConditionChecker}
-              />
-            </div>
-          );
-        }
+            <MultipleSelectFilterForm
+              comparisonType={this.state.selectedComparisonType}
+              filterOption={this.state.selectedFilterOption}
+              onAddConditionChecker={this.onAddConditionChecker}
+            />
+          </div>
+        );
       } else {
         // If we don't have a selected filter yet, then we're in the process
         // of selecting one.
         dropdownContent = (
           <div>
-            <div className="filtersDropdown__header">
+            <div className="filterDropdown__header">
               Add a Filter
               <span
                 className="icon icon-remove"
@@ -139,22 +116,22 @@ export default class FiltersControl extends Component {
       }
 
       dropdown = (
-        <FiltersDropdown>
+        <FilterDropdown>
           {dropdownContent}
-        </FiltersDropdown>
+        </FilterDropdown>
       );
     }
 
     return (
-      <div className="filtersControl">
+      <div className="filterControl">
 
         <ConditionCheckerList
           conditionCheckers={this.props.conditionCheckers}
           onRemoveConditionChecker={this.props.onRemoveConditionChecker}
         />
 
-        <div className="filtersDropdownContainer">
-          <FiltersDropdownButton
+        <div className="filterDropdownContainer">
+          <FilterDropdownButton
             onClick={this.onToggleClick}
             isOpen={this.state.isDropdownOpen}
           />
@@ -167,7 +144,7 @@ export default class FiltersControl extends Component {
 
 }
 
-FiltersControl.propTypes = {
+FilterControl.propTypes = {
   conditionCheckers: ConditionCheckerList.propTypes.conditionCheckers,
   filterOptions: FilterOptionList.propTypes.filterOptions,
   onAddConditionChecker: PropTypes.func.isRequired,

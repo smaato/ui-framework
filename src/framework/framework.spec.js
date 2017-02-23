@@ -29,7 +29,7 @@ import {
   Dropdown,
   DropdownOption,
   FieldMessage,
-  FiltersControl,
+  FilterControl,
   Form,
   FormFooter,
   FormPanel,
@@ -182,8 +182,8 @@ const components = [{
   name: 'FieldMessage',
   component: FieldMessage,
 }, {
-  name: 'FiltersControl',
-  component: FiltersControl,
+  name: 'FilterControl',
+  component: FilterControl,
 }, {
   name: 'Form',
   component: Form,

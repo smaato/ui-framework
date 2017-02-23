@@ -4,7 +4,7 @@
 }
 
   .conditionCheckerListItem {
-    @include filtersButton;
+    @include filterButton;
 
     &:hover {
       .conditionCheckerListItem__removeButton {

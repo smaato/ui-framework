@@ -1,17 +1,17 @@
-.filtersDropdownContainer {
+.filterDropdownContainer {
   position: relative;
 }
 
   /**
-   * 1. Place on top of filtersDropdown in z-space.
+   * 1. Place on top of filterDropdown in z-space.
    */
-  .filtersDropdownButton {
-    @include filtersButton;
+  .filterDropdownButton {
+    @include filterButton;
     position: relative; /* 1 */
     font-size: 16px;
     cursor: pointer;
 
-    &.is-filters-dropdown-open {
+    &.is-filter-dropdown-open {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
       border-bottom: 0;
@@ -29,7 +29,7 @@
     }
   }
 
-  .filtersDropdown {
+  .filterDropdown {
     position: absolute;
     top: 0;
     z-index: 1;
@@ -40,18 +40,18 @@
     color: #474b4e;
   }
 
-    .filtersList {
+    .filterList {
       box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
     }
 
-    .filtersDropdown__header {
+    .filterDropdown__header {
       background: $componentBackgroundColor;
       border-bottom: 1px solid #d4d8db;
       padding: 10px 6px;
       font-weight: 500;
     }
 
-      .filtersDropdown__header .icon {
+      .filterDropdown__header .icon {
         height: 10px;
         width: 10px;
         display: inline-block;
@@ -61,7 +61,7 @@
         cursor: pointer;
       }
 
-      .filtersDropdown__header span {
+      .filterDropdown__header span {
         display: inline-block;
         margin-right: 3px;
         cursor: pointer;

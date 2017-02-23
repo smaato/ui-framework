@@ -53,7 +53,7 @@ import {
   DropdownDot,
   DropdownOption,
   FieldMessage,
-  FiltersControl,
+  FilterControl,
   Form,
   FormFooter,
   FormPanel,

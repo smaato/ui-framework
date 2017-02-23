@@ -13,7 +13,7 @@ import Page, {
 
 import {
   CheckBox,
-  FiltersControl,
+  FilterControl,
   Grid,
   GridBody,
   GridBodyEditableCell,
@@ -749,7 +749,7 @@ export default class GridExample extends Component {
   renderGridControls() {
     return (
       <GridControls>
-        <FiltersControl
+        <FilterControl
           conditionCheckers={this.state.conditionCheckers}
           filterOptions={gridExampleFilterOptions}
           onRemoveConditionChecker={this.onRemoveConditionChecker}
