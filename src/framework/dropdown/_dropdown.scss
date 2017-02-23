@@ -18,7 +18,7 @@
 .dropdownLabel {
   @include baseDropdownLabel;
   background-color: #f6fafc;
-  border: 1px solid #c8cfd5;
+  border: 1px solid $componentStrokeColor;
   border-radius: 4px;
   cursor: pointer;
   font-size: 12px;
@@ -114,13 +114,14 @@
  */
 .dropdownOptionList {
   @include baseDropdownOptionList;
+  background-color: white;
+  border: 1px solid $componentStrokeColor;
+  border-radius: 4px;
   box-sizing: content-box;
+  color: black;
+  left: 0;
   margin-left: -1px;
   min-width: 100%;
-  white-space: nowrap;
-  left: 0;
   top: calc(100% - 1px); /* 1 */
-  border: 1px solid #bfbfbf;
-  background-color: white;
-  color: black;
+  white-space: nowrap;
 }
