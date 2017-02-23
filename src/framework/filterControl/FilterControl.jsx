@@ -4,11 +4,11 @@ import React, {
   PropTypes,
 } from 'react';
 
+import FilterForm from './forms/FilterForm.jsx';
 import FilterDropdown from './filterDropdown/FilterDropdown.jsx';
 import FilterDropdownButton from './filterDropdown/FilterDropdownButton.jsx';
 import FilterOptionList from './filterOptions/FilterOptionList.jsx';
 import ConditionCheckerList from './conditionCheckers/ConditionCheckerList.jsx';
-import MultipleSelectFilterForm from './forms/MultipleSelectFilterForm.jsx';
 
 export default class FilterControl extends Component {
 
@@ -88,7 +88,7 @@ export default class FilterControl extends Component {
               </span>
               {this.state.selectedFilterOption.name}
             </div>
-            <MultipleSelectFilterForm
+            <FilterForm
               comparisonType={this.state.selectedComparisonType}
               filterOption={this.state.selectedFilterOption}
               onAddConditionChecker={this.onAddConditionChecker}
@@ -104,7 +104,7 @@ export default class FilterControl extends Component {
               Add a Filter
               <span
                 className="icon icon-remove"
-                onClick={this.onClose}
+                onClick={this.onDropdownClose}
               />
             </div>
             <FilterOptionList

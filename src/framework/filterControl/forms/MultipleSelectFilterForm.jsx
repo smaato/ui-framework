@@ -15,18 +15,15 @@ export default class MultipleSelectFilterForm extends Component {
     this.onKeyUp = this.onKeyUp.bind(this);
     this.onClickAddButton = this.onClickAddButton.bind(this);
     this.onCheckboxChange = this.onCheckboxChange.bind(this);
+    this.options = this.props.filterOption.comparisonParameters.oneOfOptions;
 
     this.state = {
-      selectedOptions: Array.apply(false, props.filterOption.options),
+      selectedOptions: (new Array(this.options.length)).fill(false),
     };
-
-    this.props.filterOption.options.forEach((optionName) => {
-      this.state.selectedOptions[optionName] = false;
-    });
   }
 
   onClickAddButton() {
-    const selectedOptionNames = this.props.filterOption.options.filter(
+    const selectedOptionNames = this.options.filter(
       (value, index) => !this.state.selectedOptions[index]
     );
     const conditionChecker = new ConditionChecker(
@@ -42,7 +39,7 @@ export default class MultipleSelectFilterForm extends Component {
   }
 
   onCheckboxChange(index) {
-    const selectedOptions = Object.assign({}, this.state.selectedOptions);
+    const selectedOptions = this.state.selectedOptions.slice();
     selectedOptions[index] = !selectedOptions[index];
     this.setState({
       selectedOptions,
@@ -50,8 +47,8 @@ export default class MultipleSelectFilterForm extends Component {
   }
 
   render() {
-    const options = this.props.filterOption.options.map((option, index) => (
-      <div className="multipleSelectFilterForm__checkbox" key={index}>
+    const options = this.options.map((option, index) => (
+      <div className="filterForm--multiSelect__checkbox" key={index}>
         <input
           type="checkbox"
           name="option_checkbox"
@@ -63,7 +60,7 @@ export default class MultipleSelectFilterForm extends Component {
     ));
 
     return (
-      <div className="filterForm multipleSelectFilterForm">
+      <div className="filterForm filterForm--multiSelect">
         {options}
         <div className="filterForm__buttons">
           <button

@@ -31,10 +31,6 @@ export {
   default as FilterableItems,
 } from './services/filter/FilterableItems';
 
-export {
-  default as FilterTypes,
-} from './services/filter/FilterTypes';
-
 // Grid
 
 export {
