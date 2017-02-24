@@ -31,7 +31,7 @@ const ConditionCheckerList = (props) => {
 
           <div className="conditionCheckerListItem__removeButtonContainer">
             <span
-              className="icon icon-remove"
+              className="css-icon cross"
               onClick={onRemoveConditionChecker}
             />
           </div>

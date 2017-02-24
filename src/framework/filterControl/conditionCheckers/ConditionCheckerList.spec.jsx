@@ -41,7 +41,7 @@ describe('ConditionCheckerList', () => {
 
           const removeButton =
             testCase.first(
-              '.conditionCheckerListItem__removeButtonContainer .icon');
+              '.conditionCheckerListItem__removeButtonContainer .css-icon');
 
           expect(props.onRemoveConditionChecker).not.toHaveBeenCalled();
           testCase.trigger('click', removeButton);

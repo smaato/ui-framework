@@ -51,18 +51,14 @@
       padding: 10px 6px;
     }
 
-      .filterDropdown__header .icon {
+      .filterDropdown__header .css-icon.cross {
         cursor: pointer;
-        display: inline-block;
         float: right;
-        height: 10px;
-        margin-right: 3px;
-        opacity: 0.5;
-        width: 10px;
       }
 
-      .filterDropdown__header span {
+      .filterDropdown__header .css-icon.back {
         cursor: pointer;
         display: inline-block;
-        margin-right: 3px;
+        margin-right: 2px;
+        top: -1px;
       }

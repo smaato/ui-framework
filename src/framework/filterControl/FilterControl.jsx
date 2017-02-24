@@ -82,10 +82,9 @@ export default class FilterControl extends Component {
           <div>
             <div className="filterDropdown__header">
               <span
+                className="css-icon back"
                 onClick={this.onCancelConditionChecker}
-              >
-                &lt;
-              </span>
+              />
               {this.state.selectedFilterOption.name}
             </div>
             <FilterForm
@@ -103,7 +102,7 @@ export default class FilterControl extends Component {
             <div className="filterDropdown__header">
               Add a Filter
               <span
-                className="icon icon-remove"
+                className="css-icon cross"
                 onClick={this.onDropdownClose}
               />
             </div>
