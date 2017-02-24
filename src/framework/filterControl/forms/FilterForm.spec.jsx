@@ -1,20 +1,21 @@
 
 import { TestCaseFactory } from 'react-test-kit';
-import ConditionCheckerForm
-from '../conditionCheckers/ConditionCheckerForm.jsx';
-import FilterForm from './FilterForm.jsx';
-import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
 import {
   ComparisonTypes,
   FilterOption,
 } from '../../services';
 
+import ConditionCheckerForm
+from '../conditionCheckers/ConditionCheckerForm.jsx';
+import FilterForm from './FilterForm.jsx';
+import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
+
 describe('FilterForm', () => {
   describe('render for', () => {
     it('"contains" comparision', () => {
       const props = {
-        filterOption: new FilterOption({}),
         comparisonType: ComparisonTypes.CONTAINS,
+        filterOption: new FilterOption({}),
         onAddConditionChecker: () => undefined,
       };
 
@@ -33,8 +34,8 @@ describe('FilterForm', () => {
 
     it('"max" comparision', () => {
       const props = {
-        filterOption: new FilterOption({}),
         comparisonType: ComparisonTypes.MAX,
+        filterOption: new FilterOption({}),
         onAddConditionChecker: () => undefined,
       };
 
@@ -53,8 +54,8 @@ describe('FilterForm', () => {
 
     it('"min" comparision', () => {
       const props = {
-        filterOption: new FilterOption({}),
         comparisonType: ComparisonTypes.MIN,
+        filterOption: new FilterOption({}),
         onAddConditionChecker: () => undefined,
       };
 
@@ -73,12 +74,12 @@ describe('FilterForm', () => {
 
     it('"one of" comparision', () => {
       const props = {
+        comparisonType: ComparisonTypes.ONE_OF,
         filterOption: new FilterOption({
           comparisonParameters: {
             oneOfOptions: [],
           },
         }),
-        comparisonType: ComparisonTypes.ONE_OF,
         onAddConditionChecker: () => undefined,
       };
 

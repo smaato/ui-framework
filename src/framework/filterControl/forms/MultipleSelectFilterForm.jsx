@@ -15,9 +15,9 @@ export default class MultipleSelectFilterForm extends Component {
   constructor(props) {
     super(props);
 
-    this.onKeyUp = this.onKeyUp.bind(this);
-    this.onClickAddButton = this.onClickAddButton.bind(this);
     this.onCheckboxChange = this.onCheckboxChange.bind(this);
+    this.onClickAddButton = this.onClickAddButton.bind(this);
+    this.onKeyUp = this.onKeyUp.bind(this);
     this.options = this.props.filterOption.comparisonParameters.oneOfOptions;
 
     this.state = {
@@ -54,10 +54,10 @@ export default class MultipleSelectFilterForm extends Component {
     const options = this.options.map((option, index) => (
       <div className="filterForm--multiSelect__checkbox" key={index}>
         <input
-          type="checkbox"
-          name="option_checkbox"
           key={index}
+          name="option_checkbox"
           onChange={() => this.onCheckboxChange(index)}
+          type="checkbox"
         />
         {option}
       </div>
@@ -68,8 +68,8 @@ export default class MultipleSelectFilterForm extends Component {
         {options}
         <div className="filterForm__buttons">
           <button
-            onClick={this.onClickAddButton}
             className="button button--primary"
+            onClick={this.onClickAddButton}
           >
             Update Results
           </button>

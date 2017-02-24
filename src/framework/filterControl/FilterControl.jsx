@@ -4,11 +4,11 @@ import React, {
   PropTypes,
 } from 'react';
 
-import FilterForm from './forms/FilterForm.jsx';
+import ConditionCheckerList from './conditionCheckers/ConditionCheckerList.jsx';
 import FilterDropdown from './filterDropdown/FilterDropdown.jsx';
 import FilterDropdownButton from './filterDropdown/FilterDropdownButton.jsx';
+import FilterForm from './forms/FilterForm.jsx';
 import FilterOptionList from './filterOptions/FilterOptionList.jsx';
-import ConditionCheckerList from './conditionCheckers/ConditionCheckerList.jsx';
 
 export default class FilterControl extends Component {
 
@@ -64,8 +64,8 @@ export default class FilterControl extends Component {
   onDropdownClose() {
     this.setState({
       isDropdownOpen: false,
-      selectedFilterOption: null,
       selectedComparisonType: null,
+      selectedFilterOption: null,
     });
   }
 
