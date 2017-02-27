@@ -6,7 +6,7 @@ import {
 } from '../../services';
 
 import ConditionCheckerForm
-from '../conditionCheckers/ConditionCheckerForm.jsx';
+from '../filterSelections/ConditionCheckerForm.jsx';
 import FilterForm from './FilterForm.jsx';
 import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
 

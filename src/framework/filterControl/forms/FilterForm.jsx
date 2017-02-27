@@ -10,7 +10,7 @@ import {
 } from '../../services.js';
 
 import ConditionCheckerForm
-from '../conditionCheckers/ConditionCheckerForm.jsx';
+from '../filterSelections/ConditionCheckerForm.jsx';
 import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
 
 export default class FilterForm extends Component {

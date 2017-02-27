@@ -4,7 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-import ConditionCheckerList from './conditionCheckers/ConditionCheckerList.jsx';
+import ConditionCheckerList from './filterSelections/ConditionCheckerList.jsx';
 import FilterDropdown from './filterDropdown/FilterDropdown.jsx';
 import FilterDropdownButton from './filterDropdown/FilterDropdownButton.jsx';
 import FilterForm from './forms/FilterForm.jsx';
