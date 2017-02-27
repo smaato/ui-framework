@@ -5,8 +5,8 @@ import {
   FilterOption,
 } from '../../services';
 
-import ConditionCheckerForm
-from '../filterSelections/ConditionCheckerForm.jsx';
+import SingleSelectFilterForm
+from '../filterSelections/SingleSelectFilterForm.jsx';
 import FilterForm from './FilterForm.jsx';
 import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
 
@@ -22,10 +22,10 @@ describe('FilterForm', () => {
       const testCase =
         TestCaseFactory.create(FilterForm, props);
 
-      expect(testCase.findComponents(ConditionCheckerForm));
+      expect(testCase.findComponents(SingleSelectFilterForm));
 
       const checkerFormProps =
-        testCase.firstComponent(ConditionCheckerForm).props;
+        testCase.firstComponent(SingleSelectFilterForm).props;
       expect(checkerFormProps.comparisonType).toBe(ComparisonTypes.CONTAINS);
       expect(checkerFormProps.filterOption).toBe(props.filterOption);
       expect(checkerFormProps.onAddConditionChecker).toBe(
@@ -42,10 +42,10 @@ describe('FilterForm', () => {
       const testCase =
         TestCaseFactory.create(FilterForm, props);
 
-      expect(testCase.findComponents(ConditionCheckerForm));
+      expect(testCase.findComponents(SingleSelectFilterForm));
 
       const checkerFormProps =
-        testCase.firstComponent(ConditionCheckerForm).props;
+        testCase.firstComponent(SingleSelectFilterForm).props;
       expect(checkerFormProps.comparisonType).toBe(ComparisonTypes.MAX);
       expect(checkerFormProps.filterOption).toBe(props.filterOption);
       expect(checkerFormProps.onAddConditionChecker).toBe(
@@ -62,10 +62,10 @@ describe('FilterForm', () => {
       const testCase =
         TestCaseFactory.create(FilterForm, props);
 
-      expect(testCase.findComponents(ConditionCheckerForm));
+      expect(testCase.findComponents(SingleSelectFilterForm));
 
       const checkerFormProps =
-        testCase.firstComponent(ConditionCheckerForm).props;
+        testCase.firstComponent(SingleSelectFilterForm).props;
       expect(checkerFormProps.comparisonType).toBe(ComparisonTypes.MIN);
       expect(checkerFormProps.filterOption).toBe(props.filterOption);
       expect(checkerFormProps.onAddConditionChecker).toBe(

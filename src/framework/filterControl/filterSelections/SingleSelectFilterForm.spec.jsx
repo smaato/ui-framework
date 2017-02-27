@@ -1,12 +1,12 @@
 
 import { TestCaseFactory } from 'react-test-kit';
-import ConditionCheckerForm from './ConditionCheckerForm.jsx';
+import SingleSelectFilterForm from './SingleSelectFilterForm.jsx';
 import {
   ConditionChecker,
   FilterOption,
 } from '../../services';
 
-describe('ConditionCheckerForm', () => {
+describe('SingleSelectFilterForm', () => {
   describe('Props', () => {
     describe('filterOption', () => {
       it('name is rendered', () => {
@@ -17,7 +17,7 @@ describe('ConditionCheckerForm', () => {
         };
 
         const testCase =
-          TestCaseFactory.create(ConditionCheckerForm, props);
+          TestCaseFactory.create(SingleSelectFilterForm, props);
 
         expect(testCase.first('.conditionCheckerForm__filterName').textContent)
           .toContain(props.filterOption.name);
@@ -33,7 +33,7 @@ describe('ConditionCheckerForm', () => {
         };
 
         const testCase =
-          TestCaseFactory.create(ConditionCheckerForm, props);
+          TestCaseFactory.create(SingleSelectFilterForm, props);
 
         expect(testCase.first('.conditionCheckerForm__filterName').textContent)
           .toContain(props.comparisonType);
@@ -55,7 +55,7 @@ describe('ConditionCheckerForm', () => {
           };
 
           const testCase =
-            TestCaseFactory.create(ConditionCheckerForm, props);
+            TestCaseFactory.create(SingleSelectFilterForm, props);
 
           expect(props.onAddConditionChecker).not.toHaveBeenCalled();
           clickAddButton(testCase);
@@ -73,7 +73,7 @@ describe('ConditionCheckerForm', () => {
           };
 
           const testCase =
-            TestCaseFactory.create(ConditionCheckerForm, props);
+            TestCaseFactory.create(SingleSelectFilterForm, props);
 
           expect(props.onAddConditionChecker).not.toHaveBeenCalled();
           testCase.trigger('keyUp', testCase.first('input'), { key: 'Enter' });
@@ -91,7 +91,7 @@ describe('ConditionCheckerForm', () => {
           };
 
           const testCase =
-            TestCaseFactory.create(ConditionCheckerForm, props);
+            TestCaseFactory.create(SingleSelectFilterForm, props);
 
           testCase.first('input').value = 'inputValue';
 
@@ -112,7 +112,7 @@ describe('ConditionCheckerForm', () => {
           };
 
           const testCase =
-            TestCaseFactory.create(ConditionCheckerForm, props);
+            TestCaseFactory.create(SingleSelectFilterForm, props);
 
           testCase.first('input').value = 'inputValue';
 
@@ -132,7 +132,7 @@ describe('ConditionCheckerForm', () => {
           };
 
           const testCase =
-            TestCaseFactory.create(ConditionCheckerForm, props);
+            TestCaseFactory.create(SingleSelectFilterForm, props);
 
           testCase.first('input').value = 'inputValue';
 
@@ -150,7 +150,7 @@ describe('ConditionCheckerForm', () => {
         };
 
         const testCase =
-          TestCaseFactory.create(ConditionCheckerForm, props);
+          TestCaseFactory.create(SingleSelectFilterForm, props);
 
         testCase.first('input').value = 'inputValue';
         clickAddButton(testCase);

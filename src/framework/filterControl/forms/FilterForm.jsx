@@ -9,17 +9,17 @@ import {
   FilterOption,
 } from '../../services.js';
 
-import ConditionCheckerForm
-from '../filterSelections/ConditionCheckerForm.jsx';
+import SingleSelectFilterForm
+from '../filterSelections/SingleSelectFilterForm.jsx';
 import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
 
 export default class FilterForm extends Component {
   constructor(props) {
     super(props);
     const COMPARISON_TYPE_TO_FORM_MAP = {
-      [ComparisonTypes.CONTAINS]: ConditionCheckerForm,
-      [ComparisonTypes.MAX]: ConditionCheckerForm,
-      [ComparisonTypes.MIN]: ConditionCheckerForm,
+      [ComparisonTypes.CONTAINS]: SingleSelectFilterForm,
+      [ComparisonTypes.MAX]: SingleSelectFilterForm,
+      [ComparisonTypes.MIN]: SingleSelectFilterForm,
       [ComparisonTypes.ONE_OF]: MultipleSelectFilterForm,
     };
     this.formClass = COMPARISON_TYPE_TO_FORM_MAP[this.props.comparisonType];

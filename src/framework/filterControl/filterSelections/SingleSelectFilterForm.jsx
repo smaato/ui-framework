@@ -7,7 +7,7 @@ import React, {
 import FilterOption from '../../services/filter/FilterOption';
 import ConditionChecker from '../../services/filter/ConditionChecker';
 
-export default class ConditionCheckerForm extends Component {
+export default class SingleSelectFilterForm extends Component {
 
   constructor(props) {
     super(props);
@@ -65,7 +65,7 @@ export default class ConditionCheckerForm extends Component {
   }
 }
 
-ConditionCheckerForm.propTypes = {
+SingleSelectFilterForm.propTypes = {
   filterOption: PropTypes.instanceOf(FilterOption),
   comparisonType: PropTypes.string.isRequired,
   onAddConditionChecker: PropTypes.func.isRequired,
