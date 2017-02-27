@@ -10,7 +10,7 @@ import {
 } from '../../services.js';
 
 import SingleSelectFilterForm
-from '../filterSelections/SingleSelectFilterForm.jsx';
+from './SingleSelectFilterForm.jsx';
 import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
 
 export default class FilterForm extends Component {

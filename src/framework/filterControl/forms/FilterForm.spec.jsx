@@ -6,7 +6,7 @@ import {
 } from '../../services';
 
 import SingleSelectFilterForm
-from '../filterSelections/SingleSelectFilterForm.jsx';
+from './SingleSelectFilterForm.jsx';
 import FilterForm from './FilterForm.jsx';
 import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
 
