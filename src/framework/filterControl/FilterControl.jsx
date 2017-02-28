@@ -4,12 +4,12 @@ import React, {
   PropTypes,
 } from 'react';
 
-import SelectedFilterList from './filterSelections/SelectedFilterList.jsx';
 import FilterDropdown from './filterDropdown/FilterDropdown.jsx';
 import FilterDropdownButton from './filterDropdown/FilterDropdownButton.jsx';
 import FilterForm from './filterSelections/forms/FilterForm.jsx';
-import FilterOptionList from
-              './filterDropdown/filterOptions/FilterOptionList.jsx';
+import FilterOptionList
+  from './filterDropdown/filterOptions/FilterOptionList.jsx';
+import SelectedFilterList from './filterSelections/SelectedFilterList.jsx';
 
 export default class FilterControl extends Component {
 
@@ -22,14 +22,23 @@ export default class FilterControl extends Component {
       selectedFilterOption: null,
     };
 
-    this.onAddConditionChecker = this.onAddConditionChecker.bind(this);
-    this.onCancelConditionChecker = this.onCancelConditionChecker.bind(this);
+    this.onAddFilter = this.onAddFilter.bind(this);
+    this.onCancelFilter = this.onCancelFilter.bind(this);
     this.onDropdownClose = this.onDropdownClose.bind(this);
     this.onSelectFilterOption = this.onSelectFilterOption.bind(this);
     this.onToggleClick = this.onToggleClick.bind(this);
   }
 
-  onCancelConditionChecker() {
+  onAddFilter(filter) {
+    this.props.onAddFilter(filter);
+    this.setState({
+      isDropdownOpen: false,
+      selectedComparisonType: null,
+      selectedFilterOption: null,
+    });
+  }
+
+  onCancelFilter() {
     this.setState({
       isDropdownOpen: true,
       selectedComparisonType: null,
@@ -56,15 +65,6 @@ export default class FilterControl extends Component {
   onToggleClick() {
     this.setState({
       isDropdownOpen: !this.state.isDropdownOpen,
-      selectedComparisonType: null,
-      selectedFilterOption: null,
-    });
-  }
-
-  onAddConditionChecker(conditionChecker) {
-    this.props.onAddConditionChecker(conditionChecker);
-    this.setState({
-      isDropdownOpen: false,
       selectedComparisonType: null,
       selectedFilterOption: null,
     });
@@ -98,14 +98,14 @@ export default class FilterControl extends Component {
         <div className="filterDropdown__header">
           <span
             className="css-icon back"
-            onClick={this.onCancelConditionChecker}
+            onClick={this.onCancelFilter}
           />
           {this.state.selectedFilterOption.name}
         </div>
         <FilterForm
           comparisonType={this.state.selectedComparisonType}
           filterOption={this.state.selectedFilterOption}
-          onAddConditionChecker={this.onAddConditionChecker}
+          onAddFilter={this.onAddFilter}
         />
       </div>
     );
@@ -126,7 +126,7 @@ export default class FilterControl extends Component {
       <div className="filterControl">
 
         <SelectedFilterList
-          conditionCheckers={this.props.conditionCheckers}
+          filters={this.props.filters}
           onRemoveSelectedFilter={this.props.onRemoveSelectedFilter}
         />
 
@@ -145,9 +145,9 @@ export default class FilterControl extends Component {
 }
 
 FilterControl.propTypes = {
-  conditionCheckers: SelectedFilterList.propTypes.conditionCheckers,
+  filters: SelectedFilterList.propTypes.filters,
   filterOptions: FilterOptionList.propTypes.filterOptions,
-  onAddConditionChecker: PropTypes.func.isRequired,
+  onAddFilter: PropTypes.func.isRequired,
   onRemoveSelectedFilter:
     SelectedFilterList.propTypes.onRemoveSelectedFilter,
 };

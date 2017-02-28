@@ -26,7 +26,6 @@ import {
 
 import {
   Entity,
-  FilterableItems,
   ScrollPosition,
   Sorter,
   SortState,
@@ -50,8 +49,6 @@ const defaultState = {
   // Selection state
   selectionMap: {},
   areAllRowsSelected: false,
-  // Filters
-  conditionCheckers: [],
 };
 
 export default class GridExample extends Component {
@@ -367,8 +364,6 @@ export default class GridExample extends Component {
     ];
 
     this.toggleEmptyRows = this.toggleEmptyRows.bind(this);
-    this.onRemoveConditionChecker = this.onRemoveConditionChecker.bind(this);
-    this.onAddConditionChecker = this.onAddConditionChecker.bind(this);
     this.onSearch = this.onSearch.bind(this);
     this.onSort = this.onSort.bind(this);
     this.lazyLoadBodyRows = this.lazyLoadBodyRows.bind(this);
@@ -492,34 +487,12 @@ export default class GridExample extends Component {
     this.setState(this.sortState.getState());
   }
 
-  onRemoveConditionChecker(conditionCheckerToRemove) {
-    const conditionCheckers = this.state.conditionCheckers
-      .filter(conditionChecker => (
-        conditionChecker !== conditionCheckerToRemove
-      ));
-
-    this.setState({
-      conditionCheckers,
-    });
-  }
-
-  onAddConditionChecker(conditionChecker) {
-    const conditionCheckers = this.state.conditionCheckers.slice();
-    conditionCheckers.push(conditionChecker);
-    this.setState({
-      conditionCheckers,
-    });
-  }
-
   getBodyRows() {
-    function filterRows(rows, filters) {
-      return new FilterableItems(rows).applyFilters(filters);
-    }
+    const foundBodyRows = this.search(
+      this.state.bodyRows,
+      this.state.searchTerm
+    );
 
-    const filteredBodyRows =
-      filterRows(this.state.bodyRows, this.state.conditionCheckers);
-
-    const foundBodyRows = this.search(filteredBodyRows, this.state.searchTerm);
     return Sorter.sort(
       foundBodyRows,
       this.cellValueProviders,

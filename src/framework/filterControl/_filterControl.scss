@@ -16,8 +16,7 @@ $addedFilter_fontSize: 12px;
   font-size: 12px;
   height: 26px;
   margin-right: 2px;
-  padding-left: $addedFilter_paddingHorizontal;
-  padding-right: $addedFilter_paddingHorizontal;
+  padding: 0 $addedFilter_paddingHorizontal;
 }
 
 .filterControl {

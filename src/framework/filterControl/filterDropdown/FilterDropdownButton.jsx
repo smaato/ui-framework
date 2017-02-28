@@ -1,8 +1,8 @@
 
+import classNames from 'classnames';
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
 
 const FilterDropdownButton = (props) => {
   const classes = classNames('filterDropdownButton', {

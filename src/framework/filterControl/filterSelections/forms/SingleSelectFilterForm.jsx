@@ -5,15 +5,15 @@ import React, {
 } from 'react';
 
 import FilterOption from '../../../services/filter/FilterOption';
-import ConditionChecker from '../../../services/filter/ConditionChecker';
+import Filter from '../../../services/filter/Filter';
 
 export default class SingleSelectFilterForm extends Component {
 
   constructor(props) {
     super(props);
 
-    this.onKeyUp = this.onKeyUp.bind(this);
     this.onClickAddButton = this.onClickAddButton.bind(this);
+    this.onKeyUp = this.onKeyUp.bind(this);
   }
 
   componentDidMount() {
@@ -26,14 +26,14 @@ export default class SingleSelectFilterForm extends Component {
       return;
     }
 
-    const conditionChecker =
-      new ConditionChecker(
+    const filter =
+      new Filter(
         this.props.filterOption,
         this.props.comparisonType,
         enteredValue
       );
 
-    this.props.onAddConditionChecker(conditionChecker);
+    this.props.onAddFilter(filter);
   }
 
   onKeyUp(event) {
@@ -68,5 +68,5 @@ export default class SingleSelectFilterForm extends Component {
 SingleSelectFilterForm.propTypes = {
   filterOption: PropTypes.instanceOf(FilterOption),
   comparisonType: PropTypes.string.isRequired,
-  onAddConditionChecker: PropTypes.func.isRequired,
+  onAddFilter: PropTypes.func.isRequired,
 };

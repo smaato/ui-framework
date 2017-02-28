@@ -126,9 +126,9 @@ import {
 
 import {
   ComparisonTypes,
-  ConditionChecker,
   Entity,
   EscapeKeyHandler,
+  Filter,
   FilterableItems,
   FilterOption,
   GridStencil,

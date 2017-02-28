@@ -2,7 +2,7 @@
 import { TestCaseFactory } from 'react-test-kit';
 import SingleSelectFilterForm from './SingleSelectFilterForm.jsx';
 import {
-  ConditionChecker,
+  Filter,
   FilterOption,
 } from '../../../services';
 
@@ -13,7 +13,7 @@ describe('SingleSelectFilterForm', () => {
         const props = {
           filterOption: new FilterOption({ name: 'testFilterOption' }),
           comparisonType: '',
-          onAddConditionChecker: () => undefined,
+          onAddFilter: () => undefined,
         };
 
         const testCase =
@@ -29,7 +29,7 @@ describe('SingleSelectFilterForm', () => {
         const props = {
           filterOption: new FilterOption({}),
           comparisonType: 'testComparisonType',
-          onAddConditionChecker: () => undefined,
+          onAddFilter: () => undefined,
         };
 
         const testCase =
@@ -40,7 +40,7 @@ describe('SingleSelectFilterForm', () => {
       });
     });
 
-    describe('onAddConditionChecker', () => {
+    describe('onAddFilter', () => {
       function clickAddButton(testCase) {
         testCase.trigger('click', testCase.find('button')[0]);
       }
@@ -51,15 +51,15 @@ describe('SingleSelectFilterForm', () => {
           const props = {
             filterOption: new FilterOption({}),
             comparisonType: 'testComparisonType',
-            onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
+            onAddFilter: jasmine.createSpy('onAddFilter'),
           };
 
           const testCase =
             TestCaseFactory.create(SingleSelectFilterForm, props);
 
-          expect(props.onAddConditionChecker).not.toHaveBeenCalled();
+          expect(props.onAddFilter).not.toHaveBeenCalled();
           clickAddButton(testCase);
-          expect(props.onAddConditionChecker).not.toHaveBeenCalled();
+          expect(props.onAddFilter).not.toHaveBeenCalled();
         }
       );
 
@@ -69,15 +69,15 @@ describe('SingleSelectFilterForm', () => {
           const props = {
             filterOption: new FilterOption({}),
             comparisonType: 'testComparisonType',
-            onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
+            onAddFilter: jasmine.createSpy('onAddFilter'),
           };
 
           const testCase =
             TestCaseFactory.create(SingleSelectFilterForm, props);
 
-          expect(props.onAddConditionChecker).not.toHaveBeenCalled();
+          expect(props.onAddFilter).not.toHaveBeenCalled();
           testCase.trigger('keyUp', testCase.first('input'), { key: 'Enter' });
-          expect(props.onAddConditionChecker).not.toHaveBeenCalled();
+          expect(props.onAddFilter).not.toHaveBeenCalled();
         }
       );
 
@@ -87,7 +87,7 @@ describe('SingleSelectFilterForm', () => {
           const props = {
             filterOption: new FilterOption({}),
             comparisonType: 'testComparisonType',
-            onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
+            onAddFilter: jasmine.createSpy('onAddFilter'),
           };
 
           const testCase =
@@ -95,20 +95,20 @@ describe('SingleSelectFilterForm', () => {
 
           testCase.first('input').value = 'inputValue';
 
-          expect(props.onAddConditionChecker).not.toHaveBeenCalled();
+          expect(props.onAddFilter).not.toHaveBeenCalled();
           testCase.trigger('keyUp', testCase.first('input'), { key: '' });
-          expect(props.onAddConditionChecker).not.toHaveBeenCalled();
+          expect(props.onAddFilter).not.toHaveBeenCalled();
         }
       );
 
       it(
         'is called when the add button is clicked and the input isn\'t ' +
-        'empty, and receives a conditionChecker',
+        'empty, and receives a filter',
         () => {
           const props = {
             filterOption: new FilterOption({}),
             comparisonType: 'testComparisonType',
-            onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
+            onAddFilter: jasmine.createSpy('onAddFilter'),
           };
 
           const testCase =
@@ -116,9 +116,9 @@ describe('SingleSelectFilterForm', () => {
 
           testCase.first('input').value = 'inputValue';
 
-          expect(props.onAddConditionChecker).not.toHaveBeenCalled();
+          expect(props.onAddFilter).not.toHaveBeenCalled();
           clickAddButton(testCase);
-          expect(props.onAddConditionChecker).toHaveBeenCalled();
+          expect(props.onAddFilter).toHaveBeenCalled();
         }
       );
 
@@ -128,7 +128,7 @@ describe('SingleSelectFilterForm', () => {
           const props = {
             filterOption: new FilterOption({}),
             comparisonType: 'testComparisonType',
-            onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
+            onAddFilter: jasmine.createSpy('onAddFilter'),
           };
 
           const testCase =
@@ -136,17 +136,17 @@ describe('SingleSelectFilterForm', () => {
 
           testCase.first('input').value = 'inputValue';
 
-          expect(props.onAddConditionChecker).not.toHaveBeenCalled();
+          expect(props.onAddFilter).not.toHaveBeenCalled();
           testCase.trigger('keyUp', testCase.first('input'), { key: 'Enter' });
-          expect(props.onAddConditionChecker).toHaveBeenCalled();
+          expect(props.onAddFilter).toHaveBeenCalled();
         }
       );
 
-      it('receives a conditionChecker when it\'s called', () => {
+      it('receives a filter when it\'s called', () => {
         const props = {
           filterOption: new FilterOption({}),
           comparisonType: 'testComparisonType',
-          onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
+          onAddFilter: jasmine.createSpy('onAddFilter'),
         };
 
         const testCase =
@@ -155,14 +155,14 @@ describe('SingleSelectFilterForm', () => {
         testCase.first('input').value = 'inputValue';
         clickAddButton(testCase);
 
-        const conditionChecker =
-          props.onAddConditionChecker.calls.argsFor(0)[0];
-        expect(conditionChecker instanceof ConditionChecker).toBe(true);
+        const filter = props.onAddFilter.calls.argsFor(0)[0];
+        expect(filter instanceof Filter).toBe(true);
+        expect(filter instanceof Filter).toBe(true);
 
-        // Assert that conditionChecker is built with info from the props.
-        expect(conditionChecker.filter).toBe(props.filterOption);
-        expect(conditionChecker.comparisonType).toBe(props.comparisonType);
-        expect(conditionChecker.comparisonValue).toBe(
+        // Assert that filter is built with info from the props.
+        expect(filter.filterOption).toBe(props.filterOption);
+        expect(filter.comparisonType).toBe(props.comparisonType);
+        expect(filter.comparisonValue).toBe(
           testCase.first('input').value
         );
       });

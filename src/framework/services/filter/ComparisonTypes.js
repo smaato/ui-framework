@@ -1,7 +1,7 @@
 
 export default {
-  MIN: 'min',
-  MAX: 'max',
   CONTAINS: 'contains',
+  MAX: 'max',
+  MIN: 'min',
   ONE_OF: 'one of',
 };

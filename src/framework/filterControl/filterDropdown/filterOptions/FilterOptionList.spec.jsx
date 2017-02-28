@@ -39,8 +39,7 @@ describe('FilterOptionList', () => {
             onSelectFilterOption: () => undefined,
           };
 
-          const testCase =
-            TestCaseFactory.create(FilterOptionList, props);
+          const testCase = TestCaseFactory.create(FilterOptionList, props);
 
           const items = testCase.find('.filterOptionListItem');
           items.forEach((item, index) => {
@@ -71,13 +70,11 @@ describe('FilterOptionList', () => {
             onSelectFilterOption: jasmine.createSpy('onSelectFilterOption'),
           };
 
-          const testCase =
-            TestCaseFactory.create(FilterOptionList, props);
-          expect(props.onSelectFilterOption).not.toHaveBeenCalled();
+          const testCase = TestCaseFactory.create(FilterOptionList, props);
 
+          expect(props.onSelectFilterOption).not.toHaveBeenCalled();
           const item = testCase.first('.filterOptionListItem');
           testCase.trigger('click', item);
-
           expect(props.onSelectFilterOption).toHaveBeenCalledWith(
             filterOption,
             filterOption.comparisonTypes[0]
