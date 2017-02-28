@@ -8,7 +8,7 @@ import {
   ConditionChecker,
   ComparisonTypes,
   FilterOption,
-} from '../../services.js';
+} from '../../../services.js';
 
 export default class MultipleSelectFilterForm extends Component {
 

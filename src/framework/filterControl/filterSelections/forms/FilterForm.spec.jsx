@@ -3,7 +3,7 @@ import { TestCaseFactory } from 'react-test-kit';
 import {
   ComparisonTypes,
   FilterOption,
-} from '../../services';
+} from '../../../services';
 
 import SingleSelectFilterForm
 from './SingleSelectFilterForm.jsx';

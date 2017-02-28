@@ -5,7 +5,7 @@ import {
   ComparisonTypes,
   ConditionChecker,
   FilterOption,
-} from '../../services';
+} from '../../../services';
 
 describe('MultipleSelectFilterForm', () => {
   const options = ['Active', 'Archived', 'Stopped'];

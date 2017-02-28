@@ -7,7 +7,7 @@ import React, {
 import {
   ComparisonTypes,
   FilterOption,
-} from '../../services.js';
+} from '../../../services.js';
 
 import SingleSelectFilterForm
 from './SingleSelectFilterForm.jsx';

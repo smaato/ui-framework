@@ -7,7 +7,7 @@ import React, {
 import ConditionCheckerList from './filterSelections/ConditionCheckerList.jsx';
 import FilterDropdown from './filterDropdown/FilterDropdown.jsx';
 import FilterDropdownButton from './filterDropdown/FilterDropdownButton.jsx';
-import FilterForm from './forms/FilterForm.jsx';
+import FilterForm from './filterSelections/forms/FilterForm.jsx';
 import FilterOptionList from './filterOptions/FilterOptionList.jsx';
 
 export default class FilterControl extends Component {
