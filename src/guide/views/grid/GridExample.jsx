@@ -75,7 +75,7 @@ export default class GridExample extends Component {
     this.lazyLoadBodyRows = this.lazyLoadBodyRows.bind(this);
     this.onAddConditionChecker = this.onAddConditionChecker.bind(this);
     this.onClickRow = this.onClickRow.bind(this);
-    this.onRemoveConditionChecker = this.onRemoveConditionChecker.bind(this);
+    this.onRemoveSelectedFilter = this.onRemoveSelectedFilter.bind(this);
     this.onResize = this.onResize.bind(this);
     this.onScroll = this.onScroll.bind(this);
     this.onSearch = this.onSearch.bind(this);
@@ -507,7 +507,7 @@ export default class GridExample extends Component {
     this.setState(this.sortState.getState());
   }
 
-  onRemoveConditionChecker(conditionCheckerToRemove) {
+  onRemoveSelectedFilter(conditionCheckerToRemove) {
     const conditionCheckers = this.state.conditionCheckers
       .filter(conditionChecker => (
         conditionChecker !== conditionCheckerToRemove
@@ -752,7 +752,7 @@ export default class GridExample extends Component {
         <FilterControl
           conditionCheckers={this.state.conditionCheckers}
           filterOptions={gridExampleFilterOptions}
-          onRemoveConditionChecker={this.onRemoveConditionChecker}
+          onRemoveSelectedFilter={this.onRemoveSelectedFilter}
           onAddConditionChecker={this.onAddConditionChecker}
         />
         <SearchBox

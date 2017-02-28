@@ -15,7 +15,7 @@ describe('FilterControl', () => {
           ],
           filterOptions: [],
           onAddConditionChecker: () => undefined,
-          onRemoveConditionChecker: () => undefined,
+          onRemoveSelectedFilter: () => undefined,
         };
 
         const iterationSpy = spyOn(props.conditionCheckers, 'map');
@@ -26,7 +26,7 @@ describe('FilterControl', () => {
       });
     });
 
-    describe('onRemoveConditionChecker', () => {
+    describe('onRemoveSelectedFilter', () => {
       it(
         'is passed to ConditionCheckerList and called with a ' +
         'conditionChecker when a remove button is clicked',
@@ -37,8 +37,8 @@ describe('FilterControl', () => {
             ],
             filterOptions: [],
             onAddConditionChecker: () => undefined,
-            onRemoveConditionChecker: jasmine.createSpy(
-              'onRemoveConditionChecker'
+            onRemoveSelectedFilter: jasmine.createSpy(
+              'onRemoveSelectedFilter'
             ),
           };
 
@@ -48,9 +48,9 @@ describe('FilterControl', () => {
             testCase.first(
               '.conditionCheckerListItem__removeButtonContainer .css-icon');
 
-          expect(props.onRemoveConditionChecker).not.toHaveBeenCalled();
+          expect(props.onRemoveSelectedFilter).not.toHaveBeenCalled();
           testCase.trigger('click', removeButton);
-          expect(props.onRemoveConditionChecker).toHaveBeenCalled();
+          expect(props.onRemoveSelectedFilter).toHaveBeenCalled();
         }
       );
     });

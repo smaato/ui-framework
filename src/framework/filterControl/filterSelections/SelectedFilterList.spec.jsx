@@ -1,11 +1,11 @@
 
 import { TestCaseFactory } from 'react-test-kit';
-import ConditionCheckerList from './ConditionCheckerList.jsx';
+import SelectedFilterList from './SelectedFilterList.jsx';
 import {
   ConditionChecker,
 } from '../../services';
 
-describe('ConditionCheckerList', () => {
+describe('SelectedFilterList', () => {
   describe('Props', () => {
     describe('conditionCheckers', () => {
       it('are iterated over', () => {
@@ -13,17 +13,17 @@ describe('ConditionCheckerList', () => {
           conditionCheckers: [
             new ConditionChecker({}),
           ],
-          onRemoveConditionChecker: () => undefined,
+          onRemoveSelectedFilter: () => undefined,
         };
 
         const iterationSpy = spyOn(props.conditionCheckers, 'map');
         expect(iterationSpy).not.toHaveBeenCalled();
-        TestCaseFactory.create(ConditionCheckerList, props);
+        TestCaseFactory.create(SelectedFilterList, props);
         expect(iterationSpy).toHaveBeenCalled();
       });
     });
 
-    describe('onRemoveConditionChecker', () => {
+    describe('onRemoveSelectedFilter', () => {
       it(
         'is called and receives conditionChecker when a remove button is ' +
         'clicked',
@@ -32,20 +32,20 @@ describe('ConditionCheckerList', () => {
             conditionCheckers: [
               new ConditionChecker({}),
             ],
-            onRemoveConditionChecker: jasmine.createSpy(
-              'onRemoveConditionChecker'
+            onRemoveSelectedFilter: jasmine.createSpy(
+              'onRemoveSelectedFilter'
             ),
           };
 
-          const testCase = TestCaseFactory.create(ConditionCheckerList, props);
+          const testCase = TestCaseFactory.create(SelectedFilterList, props);
 
           const removeButton =
             testCase.first(
               '.conditionCheckerListItem__removeButtonContainer .css-icon');
 
-          expect(props.onRemoveConditionChecker).not.toHaveBeenCalled();
+          expect(props.onRemoveSelectedFilter).not.toHaveBeenCalled();
           testCase.trigger('click', removeButton);
-          expect(props.onRemoveConditionChecker).toHaveBeenCalled();
+          expect(props.onRemoveSelectedFilter).toHaveBeenCalled();
         }
       );
     });

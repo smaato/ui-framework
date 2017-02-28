@@ -4,7 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-import ConditionCheckerList from './filterSelections/ConditionCheckerList.jsx';
+import SelectedFilterList from './filterSelections/SelectedFilterList.jsx';
 import FilterDropdown from './filterDropdown/FilterDropdown.jsx';
 import FilterDropdownButton from './filterDropdown/FilterDropdownButton.jsx';
 import FilterForm from './filterSelections/forms/FilterForm.jsx';
@@ -125,9 +125,9 @@ export default class FilterControl extends Component {
     return (
       <div className="filterControl">
 
-        <ConditionCheckerList
+        <SelectedFilterList
           conditionCheckers={this.props.conditionCheckers}
-          onRemoveConditionChecker={this.props.onRemoveConditionChecker}
+          onRemoveSelectedFilter={this.props.onRemoveSelectedFilter}
         />
 
         <div className="filterDropdownContainer">
@@ -145,9 +145,9 @@ export default class FilterControl extends Component {
 }
 
 FilterControl.propTypes = {
-  conditionCheckers: ConditionCheckerList.propTypes.conditionCheckers,
+  conditionCheckers: SelectedFilterList.propTypes.conditionCheckers,
   filterOptions: FilterOptionList.propTypes.filterOptions,
   onAddConditionChecker: PropTypes.func.isRequired,
-  onRemoveConditionChecker:
-    ConditionCheckerList.propTypes.onRemoveConditionChecker,
+  onRemoveSelectedFilter:
+    SelectedFilterList.propTypes.onRemoveSelectedFilter,
 };

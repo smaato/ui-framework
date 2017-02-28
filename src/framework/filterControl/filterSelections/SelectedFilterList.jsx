@@ -6,15 +6,15 @@ import React, {
 import Entity from '../../services/string/Entity.js';
 import ConditionChecker from '../../services/filter/ConditionChecker';
 
-const ConditionCheckerList = (props) => {
+const SelectedFilterList = (props) => {
   const conditionCheckerItems =
     props.conditionCheckers.map((conditionChecker, index) => {
       const filterName = conditionChecker.filter.name;
       const title =
         `${filterName} (${conditionChecker.comparisonType}):` +
         `${conditionChecker.comparisonValue}`;
-      const onRemoveConditionChecker =
-        props.onRemoveConditionChecker.bind(null, conditionChecker);
+      const onRemoveSelectedFilter =
+        props.onRemoveSelectedFilter.bind(null, conditionChecker);
 
       return (
         <div className="conditionCheckerListItem" key={index}>
@@ -32,7 +32,7 @@ const ConditionCheckerList = (props) => {
           <div className="conditionCheckerListItem__removeButtonContainer">
             <span
               className="css-icon cross"
-              onClick={onRemoveConditionChecker}
+              onClick={onRemoveSelectedFilter}
             />
           </div>
         </div>
@@ -47,11 +47,11 @@ const ConditionCheckerList = (props) => {
   );
 };
 
-ConditionCheckerList.propTypes = {
+SelectedFilterList.propTypes = {
   conditionCheckers: PropTypes.arrayOf(
     PropTypes.instanceOf(ConditionChecker)
   ).isRequired,
-  onRemoveConditionChecker: PropTypes.func.isRequired,
+  onRemoveSelectedFilter: PropTypes.func.isRequired,
 };
 
-export default ConditionCheckerList;
+export default SelectedFilterList;
