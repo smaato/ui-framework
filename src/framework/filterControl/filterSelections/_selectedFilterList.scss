@@ -1,31 +1,31 @@
 
-.conditionCheckerList {
+.selectedFilterList {
   display: flex;
 }
 
-  .conditionCheckerListItem {
+  .selectedFilterListItem {
     @include filterButton;
 
     &:hover {
-      .conditionCheckerListItem__removeButtonContainer {
+      .selectedFilterListItem__removeButtonContainer {
         box-shadow: -5px 0 15px 5px $addedFilter_backgroundColor;
         opacity: 1;
       }
     }
   }
 
-    .conditionCheckerListItem__label {
+    .selectedFilterListItem__label {
       max-width: 200px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
-      .conditionCheckerListItem__name {
+      .selectedFilterListItem__name {
         font-weight: 400;
       }
 
-  .conditionCheckerListItem__removeButtonContainer {
+  .selectedFilterListItem__removeButtonContainer {
     background: $addedFilter_backgroundColor;
     display: inline-flex;
     height: 12px;
@@ -34,7 +34,7 @@
     width: 15px;
   }
 
-    .conditionCheckerListItem__removeButtonContainer .css-icon {
+    .selectedFilterListItem__removeButtonContainer .css-icon {
       cursor: pointer;
       display: inline-flex;
       left: 5px;

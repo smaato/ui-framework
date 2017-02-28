@@ -17,19 +17,19 @@ const SelectedFilterList = (props) => {
         props.onRemoveSelectedFilter.bind(null, conditionChecker);
 
       return (
-        <div className="conditionCheckerListItem" key={index}>
+        <div className="selectedFilterListItem" key={index}>
           <span
-            className="conditionCheckerListItem__label"
+            className="selectedFilterListItem__label"
             title={title}
           >
-            <strong className="conditionCheckerListItem__name">
+            <strong className="selectedFilterListItem__name">
               {filterName}:
             </strong>
             {Entity.nbsp}
             {conditionChecker.humanizeComparisonValue()}
           </span>
 
-          <div className="conditionCheckerListItem__removeButtonContainer">
+          <div className="selectedFilterListItem__removeButtonContainer">
             <span
               className="css-icon cross"
               onClick={onRemoveSelectedFilter}
@@ -41,7 +41,7 @@ const SelectedFilterList = (props) => {
   );
 
   return (
-    <div className="conditionCheckerList">
+    <div className="selectedFilterList">
       {conditionCheckerItems}
     </div>
   );

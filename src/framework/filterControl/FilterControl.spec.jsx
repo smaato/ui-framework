@@ -46,7 +46,7 @@ describe('FilterControl', () => {
 
           const removeButton =
             testCase.first(
-              '.conditionCheckerListItem__removeButtonContainer .css-icon');
+              '.selectedFilterListItem__removeButtonContainer .css-icon');
 
           expect(props.onRemoveSelectedFilter).not.toHaveBeenCalled();
           testCase.trigger('click', removeButton);
