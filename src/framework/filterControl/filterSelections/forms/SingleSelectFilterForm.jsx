@@ -17,12 +17,12 @@ export default class SingleSelectFilterForm extends Component {
   }
 
   componentDidMount() {
-    this.refs.doesValuePass.focus();
+    this.refs.enteredValue.focus();
   }
 
   onClickAddButton() {
-    const doesValuePass = this.refs.doesValuePass.value;
-    if (!doesValuePass.trim()) {
+    const enteredValue = this.refs.enteredValue.value;
+    if (!enteredValue.trim()) {
       return;
     }
 
@@ -30,7 +30,7 @@ export default class SingleSelectFilterForm extends Component {
       new ConditionChecker(
         this.props.filterOption,
         this.props.comparisonType,
-        doesValuePass
+        enteredValue
       );
 
     this.props.onAddConditionChecker(conditionChecker);
@@ -49,9 +49,9 @@ export default class SingleSelectFilterForm extends Component {
         </div>
         <div className="singleSelectionForm__filterValueWrapper">
           <input
-            ref="doesValuePass"
+            ref="enteredValue"
             type="text"
-            className="singleSelectionForm__doesValuePass"
+            className="singleSelectionForm__enteredValue"
             onKeyUp={this.onKeyUp}
           />
         </div>
