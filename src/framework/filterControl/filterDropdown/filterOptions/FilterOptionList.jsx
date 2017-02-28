@@ -2,6 +2,7 @@
 import React, {
   PropTypes,
 } from 'react';
+
 import FilterOption from '../../../services/filter/FilterOption';
 
 const FilterOptionsList = (props) => {

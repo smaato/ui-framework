@@ -1,10 +1,10 @@
 
 import ComparisonTypes from './ComparisonTypes';
 
-export default class ConditionChecker {
+export default class Filter {
 
-  constructor(filter, comparisonType, comparisonValue) {
-    this.filter = filter;
+  constructor(filterOption, comparisonType, comparisonValue) {
+    this.filterOption = filterOption;
     this.comparisonType = comparisonType;
     this.comparisonValue = comparisonValue;
   }
@@ -54,9 +54,8 @@ export default class ConditionChecker {
   }
 
   doesItemPass(item) {
-    const itemValue = this.filter.getValue(item);
-    const isMatch = this.doesValuePass(itemValue);
-    return isMatch;
+    const itemValue = this.filterOption.getValue(item);
+    return this.doesValuePass(itemValue);
   }
 
 }

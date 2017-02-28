@@ -1,8 +1,11 @@
+
 export default class FilterOption {
+
   constructor(config) {
-    this.name = config.name;
-    this.getValue = config.getValue;
-    this.comparisonTypes = config.comparisonTypes;
     this.comparisonParameters = config.comparisonParameters;
+    this.comparisonTypes = config.comparisonTypes;
+    this.getValue = config.getValue;
+    this.name = config.name;
   }
+
 }

@@ -3,7 +3,7 @@ import { TestCaseFactory } from 'react-test-kit';
 import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
 import {
   ComparisonTypes,
-  ConditionChecker,
+  Filter,
   FilterOption,
 } from '../../../services';
 
@@ -21,7 +21,7 @@ describe('MultipleSelectFilterForm', () => {
       it('options are rendered', () => {
         const props = {
           filterOption,
-          onAddConditionChecker: () => undefined,
+          onAddFilter: () => undefined,
         };
 
         const testCase =
@@ -40,26 +40,25 @@ describe('MultipleSelectFilterForm', () => {
         });
       });
     });
-    describe('onAddConditionChecker', () => {
+    describe('onAddFilter', () => {
       it('is called when "Update Results" button is clicked', () => {
         const props = {
           filterOption,
-          onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
+          onAddFilter: jasmine.createSpy('onAddFilter'),
         };
 
-        expect(props.onAddConditionChecker).not.toHaveBeenCalled();
+        expect(props.onAddFilter).not.toHaveBeenCalled();
         const testCase =
           TestCaseFactory.create(MultipleSelectFilterForm, props);
         testCase.trigger('click', testCase.find('button')[0]);
-        expect(props.onAddConditionChecker).toHaveBeenCalled();
+        expect(props.onAddFilter).toHaveBeenCalled();
 
-        const conditionChecker =
-          props.onAddConditionChecker.calls.argsFor(0)[0];
-        expect(conditionChecker instanceof ConditionChecker).toBe(true);
+        const filter = props.onAddFilter.calls.argsFor(0)[0];
+        expect(filter instanceof Filter).toBe(true);
 
-        expect(conditionChecker.filter).toBe(props.filterOption);
-        expect(conditionChecker.comparisonType).toBe(ComparisonTypes.ONE_OF);
-        expect(conditionChecker.comparisonValue.length).toBe(0);
+        expect(filter.filterOption).toBe(props.filterOption);
+        expect(filter.comparisonType).toBe(ComparisonTypes.ONE_OF);
+        expect(filter.comparisonValue.length).toBe(0);
       });
     });
   });
@@ -67,7 +66,7 @@ describe('MultipleSelectFilterForm', () => {
     it('has options unselected', () => {
       const props = {
         filterOption,
-        onAddConditionChecker: () => undefined,
+        onAddFilter: () => undefined,
       };
 
       const testCase =
@@ -83,7 +82,7 @@ describe('MultipleSelectFilterForm', () => {
     it('are changed when a checkbox is clicked', () => {
       const props = {
         filterOption,
-        onAddConditionChecker: () => undefined,
+        onAddFilter: () => undefined,
       };
 
       const testCase =
@@ -97,10 +96,10 @@ describe('MultipleSelectFilterForm', () => {
         }
       });
     });
-    it('are correctly passed to ConditionChecker', () => {
+    it('are correctly passed to Filter', () => {
       const props = {
         filterOption,
-        onAddConditionChecker: jasmine.createSpy('onAddConditionChecker'),
+        onAddFilter: jasmine.createSpy('onAddFilter'),
       };
 
       const testCase =
@@ -109,12 +108,12 @@ describe('MultipleSelectFilterForm', () => {
       testCase.trigger('change', testCase.find('input[type=checkbox]')[1]);
       testCase.trigger('click', testCase.find('button')[0]);
 
-      const conditionChecker =
-        props.onAddConditionChecker.calls.argsFor(0)[0];
+      const filter =
+        props.onAddFilter.calls.argsFor(0)[0];
 
-      expect(conditionChecker.comparisonValue.length).toBe(2);
-      expect(conditionChecker.comparisonValue.indexOf('Active')).not.toBe(-1);
-      expect(conditionChecker.comparisonValue.indexOf('Archived')).not.toBe(-1);
+      expect(filter.comparisonValue.length).toBe(2);
+      expect(filter.comparisonValue.indexOf('Active')).not.toBe(-1);
+      expect(filter.comparisonValue.indexOf('Archived')).not.toBe(-1);
     });
   });
 });

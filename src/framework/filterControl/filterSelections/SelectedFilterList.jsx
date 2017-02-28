@@ -3,53 +3,51 @@ import React, {
   PropTypes,
 } from 'react';
 
-import Entity from '../../services/string/Entity.js';
-import ConditionChecker from '../../services/filter/ConditionChecker';
+import Entity from '../../services/string/Entity';
+import Filter from '../../services/filter/Filter';
 
 const SelectedFilterList = (props) => {
-  const conditionCheckerItems =
-    props.conditionCheckers.map((conditionChecker, index) => {
-      const filterName = conditionChecker.filter.name;
-      const title =
-        `${filterName} (${conditionChecker.comparisonType}):` +
-        `${conditionChecker.comparisonValue}`;
-      const onRemoveSelectedFilter =
-        props.onRemoveSelectedFilter.bind(null, conditionChecker);
+  const filterItems = props.filters.map((filter, index) => {
+    const filterName = filter.filterOption.name;
+    const title =
+      `${filterName} (${filter.comparisonType}): ` +
+      `${filter.comparisonValue}`;
+    const onRemoveSelectedFilter =
+      props.onRemoveSelectedFilter.bind(null, filter);
 
-      return (
-        <div className="selectedFilterListItem" key={index}>
+    return (
+      <div className="selectedFilterListItem" key={index}>
+        <span
+          className="selectedFilterListItem__label"
+          title={title}
+        >
+          <strong className="selectedFilterListItem__name">
+            {filterName}:
+          </strong>
+          {Entity.nbsp}
+          {filter.humanizeComparisonValue()}
+        </span>
+
+        <div className="selectedFilterListItem__removeButtonContainer">
           <span
-            className="selectedFilterListItem__label"
-            title={title}
-          >
-            <strong className="selectedFilterListItem__name">
-              {filterName}:
-            </strong>
-            {Entity.nbsp}
-            {conditionChecker.humanizeComparisonValue()}
-          </span>
-
-          <div className="selectedFilterListItem__removeButtonContainer">
-            <span
-              className="css-icon cross"
-              onClick={onRemoveSelectedFilter}
-            />
-          </div>
+            className="css-icon cross"
+            onClick={onRemoveSelectedFilter}
+          />
         </div>
-      );
-    }
-  );
+      </div>
+    );
+  });
 
   return (
     <div className="selectedFilterList">
-      {conditionCheckerItems}
+      {filterItems}
     </div>
   );
 };
 
 SelectedFilterList.propTypes = {
-  conditionCheckers: PropTypes.arrayOf(
-    PropTypes.instanceOf(ConditionChecker)
+  filters: PropTypes.arrayOf(
+    PropTypes.instanceOf(Filter)
   ).isRequired,
   onRemoveSelectedFilter: PropTypes.func.isRequired,
 };

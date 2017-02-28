@@ -1,12 +1,9 @@
 
-.filterForm {
-  padding: 10px 5px;
+.filterForm__buttons {
+  padding: 6px;
+  text-align: center;
 }
 
-  .filterForm__buttons {
-    margin-top: 5px;
+  .filterForm__buttons button {
+    white-space: nowrap;
   }
-
-    .filterForm__buttons button {
-      white-space: nowrap;
-    }
