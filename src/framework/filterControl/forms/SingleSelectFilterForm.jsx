@@ -43,19 +43,19 @@ export default class SingleSelectFilterForm extends Component {
 
   render() {
     return (
-      <div className="conditionCheckerForm">
-        <div className="conditionCheckerForm__filterName">
+      <div className="singleSelectionForm">
+        <div className="singleSelectionForm__filterName">
           {`${this.props.filterOption.name} (${this.props.comparisonType})`}
         </div>
-        <div className="conditionCheckerForm__filterValueWrapper">
+        <div className="singleSelectionForm__filterValueWrapper">
           <input
             ref="doesValuePass"
             type="text"
-            className="conditionCheckerForm__doesValuePass"
+            className="singleSelectionForm__doesValuePass"
             onKeyUp={this.onKeyUp}
           />
         </div>
-        <div className="conditionCheckerForm__buttons">
+        <div className="singleSelectionForm__buttons">
           <button onClick={this.onClickAddButton}>
             + Add
           </button>

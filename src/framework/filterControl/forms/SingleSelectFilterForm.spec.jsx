@@ -19,7 +19,7 @@ describe('SingleSelectFilterForm', () => {
         const testCase =
           TestCaseFactory.create(SingleSelectFilterForm, props);
 
-        expect(testCase.first('.conditionCheckerForm__filterName').textContent)
+        expect(testCase.first('.singleSelectionForm__filterName').textContent)
           .toContain(props.filterOption.name);
       });
     });
@@ -35,7 +35,7 @@ describe('SingleSelectFilterForm', () => {
         const testCase =
           TestCaseFactory.create(SingleSelectFilterForm, props);
 
-        expect(testCase.first('.conditionCheckerForm__filterName').textContent)
+        expect(testCase.first('.singleSelectionForm__filterName').textContent)
           .toContain(props.comparisonType);
       });
     });
