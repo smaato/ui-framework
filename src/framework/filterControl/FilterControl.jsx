@@ -8,7 +8,8 @@ import ConditionCheckerList from './filterSelections/ConditionCheckerList.jsx';
 import FilterDropdown from './filterDropdown/FilterDropdown.jsx';
 import FilterDropdownButton from './filterDropdown/FilterDropdownButton.jsx';
 import FilterForm from './filterSelections/forms/FilterForm.jsx';
-import FilterOptionList from './filterOptions/FilterOptionList.jsx';
+import FilterOptionList from
+              './filterDropdown/filterOptions/FilterOptionList.jsx';
 
 export default class FilterControl extends Component {
 

@@ -3,7 +3,7 @@ import { TestCaseFactory } from 'react-test-kit';
 import FilterOptionList from './FilterOptionList.jsx';
 import {
   FilterOption,
-} from '../../services';
+} from '../../../services';
 
 describe('FilterOptionList', () => {
   describe('Props', () => {
