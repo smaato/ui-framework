@@ -13,7 +13,7 @@ import Page, {
 
 import {
   CheckBox,
-  FiltersControl,
+  FilterControl,
   Grid,
   GridBody,
   GridBodyEditableCell,
@@ -62,7 +62,7 @@ const defaultState = {
   selectionMap: {},
   areAllRowsSelected: false,
   // Filters
-  conditionCheckers: [],
+  selectedFilters: [],
 };
 
 export default class GridExample extends Component {
@@ -73,9 +73,9 @@ export default class GridExample extends Component {
     this.hasColumnWidths = false;
 
     this.lazyLoadBodyRows = this.lazyLoadBodyRows.bind(this);
-    this.onAddConditionChecker = this.onAddConditionChecker.bind(this);
+    this.onAddFilter = this.onAddFilter.bind(this);
     this.onClickRow = this.onClickRow.bind(this);
-    this.onRemoveConditionChecker = this.onRemoveConditionChecker.bind(this);
+    this.onRemoveSelectedFilter = this.onRemoveSelectedFilter.bind(this);
     this.onResize = this.onResize.bind(this);
     this.onScroll = this.onScroll.bind(this);
     this.onSearch = this.onSearch.bind(this);
@@ -507,22 +507,21 @@ export default class GridExample extends Component {
     this.setState(this.sortState.getState());
   }
 
-  onRemoveConditionChecker(conditionCheckerToRemove) {
-    const conditionCheckers = this.state.conditionCheckers
-      .filter(conditionChecker => (
-        conditionChecker !== conditionCheckerToRemove
-      ));
+  onRemoveSelectedFilter(filterToRemove) {
+    const selectedFilters = this.state.selectedFilters.filter(filter => (
+      filter !== filterToRemove
+    ));
 
     this.setState({
-      conditionCheckers,
+      selectedFilters,
     });
   }
 
-  onAddConditionChecker(conditionChecker) {
-    const conditionCheckers = this.state.conditionCheckers.slice();
-    conditionCheckers.push(conditionChecker);
+  onAddFilter(filter) {
+    const selectedFilters = this.state.selectedFilters.slice();
+    selectedFilters.push(filter);
     this.setState({
-      conditionCheckers,
+      selectedFilters,
     });
   }
 
@@ -532,7 +531,7 @@ export default class GridExample extends Component {
     }
 
     const filteredBodyRows =
-      filterRows(this.state.bodyRows, this.state.conditionCheckers);
+      filterRows(this.state.bodyRows, this.state.selectedFilters);
 
     const foundBodyRows = this.search(filteredBodyRows, this.state.searchTerm);
     return Sorter.sort(
@@ -749,15 +748,13 @@ export default class GridExample extends Component {
   renderGridControls() {
     return (
       <GridControls>
-        <FiltersControl
-          conditionCheckers={this.state.conditionCheckers}
+        <FilterControl
           filterOptions={gridExampleFilterOptions}
-          onRemoveConditionChecker={this.onRemoveConditionChecker}
-          onAddConditionChecker={this.onAddConditionChecker}
+          onAddFilter={this.onAddFilter}
+          onRemoveSelectedFilter={this.onRemoveSelectedFilter}
+          selectedFilters={this.state.selectedFilters}
         />
-        <SearchBox
-          onSearch={this.onSearch}
-        />
+        <SearchBox onSearch={this.onSearch} />
       </GridControls>
     );
   }

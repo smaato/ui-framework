@@ -1,9 +1,9 @@
 
 import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
-import FiltersDropdown from './FiltersDropdown.jsx';
+import FilterDropdown from './FilterDropdown.jsx';
 
-describe('FiltersDropdown', () => {
+describe('FilterDropdown', () => {
   describe('Props', () => {
     describe('children', () => {
       it('are rendered', () => {
@@ -11,8 +11,7 @@ describe('FiltersDropdown', () => {
           children: <div id="test">test</div>,
         };
 
-        const testCase =
-          TestCaseFactory.create(FiltersDropdown, props);
+        const testCase = TestCaseFactory.create(FilterDropdown, props);
 
         expect(testCase.first('#test').textContent).toBe('test');
       });

@@ -2,7 +2,8 @@
 import React, {
   PropTypes,
 } from 'react';
-import FilterOption from '../../services/filter/FilterOption';
+
+import FilterOption from '../../../services/filter/FilterOption';
 
 const FilterOptionsList = (props) => {
   const filterOptionListItems =
@@ -29,7 +30,7 @@ const FilterOptionsList = (props) => {
   );
 
   return (
-    <div className="filtersList">
+    <div className="filterList">
       {filterOptionListItems}
     </div>
   );

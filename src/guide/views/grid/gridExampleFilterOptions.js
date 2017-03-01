@@ -25,8 +25,11 @@ export default [
     name: 'Status',
     getValue: item => item.status,
     comparisonTypes: [
-      ComparisonTypes.CONTAINS,
+      ComparisonTypes.ONE_OF,
     ],
+    comparisonParameters: {
+      oneOfOptions: ['Active', 'Stopped', 'Archived'],
+    },
   }),
   new FilterOption({
     name: 'Fuel',

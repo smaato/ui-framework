@@ -1,8 +1,8 @@
 
 import { TestCaseFactory } from 'react-test-kit';
-import FiltersDropdownButton from './FiltersDropdownButton.jsx';
+import FilterDropdownButton from './FilterDropdownButton.jsx';
 
-describe('FiltersDropdownButton', () => {
+describe('FilterDropdownButton', () => {
   describe('Props', () => {
     describe('onClick', () => {
       it('is called when element is clicked', () => {
@@ -10,8 +10,7 @@ describe('FiltersDropdownButton', () => {
           onClick: jasmine.createSpy('onClick'),
         };
 
-        const testCase =
-          TestCaseFactory.create(FiltersDropdownButton, props);
+        const testCase = TestCaseFactory.create(FilterDropdownButton, props);
 
         expect(props.onClick).not.toHaveBeenCalled();
         testCase.trigger('click');
@@ -25,10 +24,9 @@ describe('FiltersDropdownButton', () => {
           isOpen: true,
         };
 
-        const testCase =
-          TestCaseFactory.create(FiltersDropdownButton, props);
+        const testCase = TestCaseFactory.create(FilterDropdownButton, props);
 
-        expect(testCase.dom.className).toContain('is-filters-dropdown-open');
+        expect(testCase.dom.className).toContain('is-filter-dropdown-open');
       });
 
       it('doesn\'t apply a state class to the root element when false', () => {
@@ -36,11 +34,9 @@ describe('FiltersDropdownButton', () => {
           isOpen: false,
         };
 
-        const testCase =
-          TestCaseFactory.create(FiltersDropdownButton, props);
+        const testCase = TestCaseFactory.create(FilterDropdownButton, props);
 
-        expect(testCase.dom.className)
-          .not.toContain('is-filters-dropdown-open');
+        expect(testCase.dom.className).not.toContain('is-filter-dropdown-open');
       });
     });
   });
