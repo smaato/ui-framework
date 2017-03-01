@@ -13,14 +13,14 @@ describe('FilterControl', () => {
         'button is clicked',
         () => {
           const props = {
-            filters: [
-              new Filter({}),
-            ],
             filterOptions: [],
             onAddFilter: () => undefined,
             onRemoveSelectedFilter: jasmine.createSpy(
               'onRemoveSelectedFilter'
             ),
+            selectedFilters: [
+              new Filter({}),
+            ],
           };
 
           const testCase = TestCaseFactory.create(FilterControl, props);
@@ -39,15 +39,15 @@ describe('FilterControl', () => {
     describe('selectedFilters', () => {
       it('are passed to FilterList and iterated over', () => {
         const props = {
-          filters: [
-            new Filter({}),
-          ],
           filterOptions: [],
           onAddFilter: () => undefined,
           onRemoveSelectedFilter: () => undefined,
+          selectedFilters: [
+            new Filter({}),
+          ],
         };
 
-        const iterationSpy = spyOn(props.filters, 'map');
+        const iterationSpy = spyOn(props.selectedFilters, 'map');
 
         expect(iterationSpy).not.toHaveBeenCalled();
         TestCaseFactory.create(FilterControl, props);

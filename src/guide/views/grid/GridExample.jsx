@@ -62,7 +62,7 @@ const defaultState = {
   selectionMap: {},
   areAllRowsSelected: false,
   // Filters
-  filters: [],
+  selectedFilters: [],
 };
 
 export default class GridExample extends Component {
@@ -508,20 +508,20 @@ export default class GridExample extends Component {
   }
 
   onRemoveSelectedFilter(filterToRemove) {
-    const filters = this.state.filters.filter(filter => (
+    const selectedFilters = this.state.selectedFilters.filter(filter => (
       filter !== filterToRemove
     ));
 
     this.setState({
-      filters,
+      selectedFilters,
     });
   }
 
   onAddFilter(filter) {
-    const filters = this.state.filters.slice();
-    filters.push(filter);
+    const selectedFilters = this.state.selectedFilters.slice();
+    selectedFilters.push(filter);
     this.setState({
-      filters,
+      selectedFilters,
     });
   }
 
@@ -531,7 +531,7 @@ export default class GridExample extends Component {
     }
 
     const filteredBodyRows =
-      filterRows(this.state.bodyRows, this.state.filters);
+      filterRows(this.state.bodyRows, this.state.selectedFilters);
 
     const foundBodyRows = this.search(filteredBodyRows, this.state.searchTerm);
     return Sorter.sort(
@@ -749,10 +749,10 @@ export default class GridExample extends Component {
     return (
       <GridControls>
         <FilterControl
-          filters={this.state.filters}
           filterOptions={gridExampleFilterOptions}
           onAddFilter={this.onAddFilter}
           onRemoveSelectedFilter={this.onRemoveSelectedFilter}
+          selectedFilters={this.state.selectedFilters}
         />
         <SearchBox onSearch={this.onSearch} />
       </GridControls>

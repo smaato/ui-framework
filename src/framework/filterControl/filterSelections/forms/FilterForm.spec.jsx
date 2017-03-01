@@ -26,8 +26,7 @@ describe('FilterForm', () => {
         testCase.firstComponent(SingleSelectFilterForm).props;
       expect(checkerFormProps.comparisonType).toBe(ComparisonTypes.CONTAINS);
       expect(checkerFormProps.filterOption).toBe(props.filterOption);
-      expect(checkerFormProps.onAddFilter)
-        .toBe(props.onAddFilter);
+      expect(checkerFormProps.onAddFilter).toBe(props.onAddFilter);
     });
 
     it('"max" comparison', () => {
@@ -45,8 +44,7 @@ describe('FilterForm', () => {
         testCase.firstComponent(SingleSelectFilterForm).props;
       expect(checkerFormProps.comparisonType).toBe(ComparisonTypes.MAX);
       expect(checkerFormProps.filterOption).toBe(props.filterOption);
-      expect(checkerFormProps.onAddFilter)
-        .toBe(props.onAddFilter);
+      expect(checkerFormProps.onAddFilter).toBe(props.onAddFilter);
     });
 
     it('"min" comparison', () => {
@@ -64,8 +62,7 @@ describe('FilterForm', () => {
         testCase.firstComponent(SingleSelectFilterForm).props;
       expect(checkerFormProps.comparisonType).toBe(ComparisonTypes.MIN);
       expect(checkerFormProps.filterOption).toBe(props.filterOption);
-      expect(checkerFormProps.onAddFilter)
-        .toBe(props.onAddFilter);
+      expect(checkerFormProps.onAddFilter).toBe(props.onAddFilter);
     });
 
     it('"one of" comparison', () => {
@@ -87,8 +84,7 @@ describe('FilterForm', () => {
         testCase.firstComponent(MultipleSelectFilterForm).props;
       expect(checkerFormProps.comparisonType).toBe(ComparisonTypes.ONE_OF);
       expect(checkerFormProps.filterOption).toBe(props.filterOption);
-      expect(checkerFormProps.onAddFilter)
-        .toBe(props.onAddFilter);
+      expect(checkerFormProps.onAddFilter).toBe(props.onAddFilter);
     });
   });
 });

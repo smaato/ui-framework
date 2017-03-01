@@ -4,8 +4,10 @@ import React, {
   PropTypes,
 } from 'react';
 
-import FilterOption from '../../../services/filter/FilterOption';
-import Filter from '../../../services/filter/Filter';
+import {
+  Filter,
+  FilterOption,
+} from '../../../services';
 
 export default class SingleSelectFilterForm extends Component {
 

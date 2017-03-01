@@ -5,8 +5,8 @@ import React, {
 } from 'react';
 
 import {
-  Filter,
   ComparisonTypes,
+  Filter,
   FilterOption,
 } from '../../../services';
 

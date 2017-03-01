@@ -7,16 +7,16 @@ import {
 
 describe('SelectedFilterList', () => {
   describe('Props', () => {
-    describe('filters', () => {
+    describe('selectedFilters', () => {
       it('are iterated over', () => {
         const props = {
-          filters: [
+          onRemoveSelectedFilter: () => undefined,
+          selectedFilters: [
             new Filter({}),
           ],
-          onRemoveSelectedFilter: () => undefined,
         };
 
-        const iterationSpy = spyOn(props.filters, 'map');
+        const iterationSpy = spyOn(props.selectedFilters, 'map');
         expect(iterationSpy).not.toHaveBeenCalled();
         TestCaseFactory.create(SelectedFilterList, props);
         expect(iterationSpy).toHaveBeenCalled();
@@ -29,12 +29,12 @@ describe('SelectedFilterList', () => {
         'clicked',
         () => {
           const props = {
-            filters: [
-              new Filter({}),
-            ],
             onRemoveSelectedFilter: jasmine.createSpy(
               'onRemoveSelectedFilter'
             ),
+            selectedFilters: [
+              new Filter({}),
+            ],
           };
 
           const testCase = TestCaseFactory.create(SelectedFilterList, props);

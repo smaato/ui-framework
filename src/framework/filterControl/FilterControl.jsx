@@ -31,6 +31,7 @@ export default class FilterControl extends Component {
 
   onAddFilter(filter) {
     this.props.onAddFilter(filter);
+
     this.setState({
       isDropdownOpen: false,
       selectedComparisonType: null,
@@ -126,8 +127,8 @@ export default class FilterControl extends Component {
       <div className="filterControl">
 
         <SelectedFilterList
-          filters={this.props.filters}
           onRemoveSelectedFilter={this.props.onRemoveSelectedFilter}
+          selectedFilters={this.props.selectedFilters}
         />
 
         <div className="filterDropdownContainer">
@@ -145,9 +146,9 @@ export default class FilterControl extends Component {
 }
 
 FilterControl.propTypes = {
-  filters: SelectedFilterList.propTypes.filters,
   filterOptions: FilterOptionList.propTypes.filterOptions,
   onAddFilter: PropTypes.func.isRequired,
   onRemoveSelectedFilter:
     SelectedFilterList.propTypes.onRemoveSelectedFilter,
+  selectedFilters: SelectedFilterList.propTypes.selectedFilters,
 };

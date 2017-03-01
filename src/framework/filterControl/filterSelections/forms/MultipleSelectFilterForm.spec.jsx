@@ -26,8 +26,9 @@ describe('MultipleSelectFilterForm', () => {
 
         const testCase =
           TestCaseFactory.create(MultipleSelectFilterForm, props);
-        expect(testCase.dom.className).toBe(
-          'filterForm filterForm--multiSelect');
+        expect(
+          testCase.dom.className
+        ).toBe('filterForm filterForm--multiSelect');
 
         expect(
           testCase.find('.filterForm--multiSelect__checkbox').length
@@ -69,8 +70,7 @@ describe('MultipleSelectFilterForm', () => {
         onAddFilter: () => undefined,
       };
 
-      const testCase =
-        TestCaseFactory.create(MultipleSelectFilterForm, props);
+      const testCase = TestCaseFactory.create(MultipleSelectFilterForm, props);
 
       expect(testCase.element.options).toBe(options);
       testCase.element.state.selectedOptions.forEach((value) => {
@@ -85,8 +85,7 @@ describe('MultipleSelectFilterForm', () => {
         onAddFilter: () => undefined,
       };
 
-      const testCase =
-        TestCaseFactory.create(MultipleSelectFilterForm, props);
+      const testCase = TestCaseFactory.create(MultipleSelectFilterForm, props);
       testCase.trigger('change', testCase.find('input[type=checkbox]')[1]);
       testCase.element.state.selectedOptions.forEach((value, index) => {
         if (index === 1) {
@@ -102,14 +101,12 @@ describe('MultipleSelectFilterForm', () => {
         onAddFilter: jasmine.createSpy('onAddFilter'),
       };
 
-      const testCase =
-        TestCaseFactory.create(MultipleSelectFilterForm, props);
+      const testCase = TestCaseFactory.create(MultipleSelectFilterForm, props);
       testCase.trigger('change', testCase.find('input[type=checkbox]')[0]);
       testCase.trigger('change', testCase.find('input[type=checkbox]')[1]);
       testCase.trigger('click', testCase.find('button')[0]);
 
-      const filter =
-        props.onAddFilter.calls.argsFor(0)[0];
+      const filter = props.onAddFilter.calls.argsFor(0)[0];
 
       expect(filter.comparisonValue.length).toBe(2);
       expect(filter.comparisonValue.indexOf('Active')).not.toBe(-1);

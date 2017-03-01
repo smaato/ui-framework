@@ -11,8 +11,8 @@ describe('SingleSelectFilterForm', () => {
     describe('filterOption', () => {
       it('name is rendered', () => {
         const props = {
-          filterOption: new FilterOption({ name: 'testFilterOption' }),
           comparisonType: '',
+          filterOption: new FilterOption({ name: 'testFilterOption' }),
           onAddFilter: () => undefined,
         };
 
@@ -27,8 +27,8 @@ describe('SingleSelectFilterForm', () => {
     describe('comparisonType', () => {
       it('is rendered', () => {
         const props = {
-          filterOption: new FilterOption({}),
           comparisonType: 'testComparisonType',
+          filterOption: new FilterOption({}),
           onAddFilter: () => undefined,
         };
 
@@ -49,8 +49,8 @@ describe('SingleSelectFilterForm', () => {
         'isn\'t called when the add button is clicked and the input is empty',
         () => {
           const props = {
-            filterOption: new FilterOption({}),
             comparisonType: 'testComparisonType',
+            filterOption: new FilterOption({}),
             onAddFilter: jasmine.createSpy('onAddFilter'),
           };
 
@@ -67,8 +67,8 @@ describe('SingleSelectFilterForm', () => {
         'isn\'t called when the Enter key is hit and the input is empty',
         () => {
           const props = {
-            filterOption: new FilterOption({}),
             comparisonType: 'testComparisonType',
+            filterOption: new FilterOption({}),
             onAddFilter: jasmine.createSpy('onAddFilter'),
           };
 
@@ -85,8 +85,8 @@ describe('SingleSelectFilterForm', () => {
         'isn\'t called when a non-Enter key is hit and the input isn\'t empty',
         () => {
           const props = {
-            filterOption: new FilterOption({}),
             comparisonType: 'testComparisonType',
+            filterOption: new FilterOption({}),
             onAddFilter: jasmine.createSpy('onAddFilter'),
           };
 
@@ -106,8 +106,8 @@ describe('SingleSelectFilterForm', () => {
         'empty, and receives a filter',
         () => {
           const props = {
-            filterOption: new FilterOption({}),
             comparisonType: 'testComparisonType',
+            filterOption: new FilterOption({}),
             onAddFilter: jasmine.createSpy('onAddFilter'),
           };
 
@@ -126,8 +126,8 @@ describe('SingleSelectFilterForm', () => {
         'is called when the Enter key is hit and the input isn\'t empty',
         () => {
           const props = {
-            filterOption: new FilterOption({}),
             comparisonType: 'testComparisonType',
+            filterOption: new FilterOption({}),
             onAddFilter: jasmine.createSpy('onAddFilter'),
           };
 
@@ -144,8 +144,8 @@ describe('SingleSelectFilterForm', () => {
 
       it('receives a filter when it\'s called', () => {
         const props = {
-          filterOption: new FilterOption({}),
           comparisonType: 'testComparisonType',
+          filterOption: new FilterOption({}),
           onAddFilter: jasmine.createSpy('onAddFilter'),
         };
 

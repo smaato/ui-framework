@@ -7,11 +7,10 @@ import Entity from '../../services/string/Entity';
 import Filter from '../../services/filter/Filter';
 
 const SelectedFilterList = (props) => {
-  const filterItems = props.filters.map((filter, index) => {
+  const filterItems = props.selectedFilters.map((filter, index) => {
     const filterName = filter.filterOption.name;
     const title =
-      `${filterName} (${filter.comparisonType}): ` +
-      `${filter.comparisonValue}`;
+      `${filterName} (${filter.comparisonType}): ${filter.comparisonValue}`;
     const onRemoveSelectedFilter =
       props.onRemoveSelectedFilter.bind(null, filter);
 
@@ -46,10 +45,10 @@ const SelectedFilterList = (props) => {
 };
 
 SelectedFilterList.propTypes = {
-  filters: PropTypes.arrayOf(
+  onRemoveSelectedFilter: PropTypes.func.isRequired,
+  selectedFilters: PropTypes.arrayOf(
     PropTypes.instanceOf(Filter)
   ).isRequired,
-  onRemoveSelectedFilter: PropTypes.func.isRequired,
 };
 
 export default SelectedFilterList;
