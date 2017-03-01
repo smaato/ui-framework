@@ -1,3 +1,4 @@
+
 .filterDropdownContainer {
   position: relative;
 }
@@ -31,7 +32,7 @@
 
   .filterDropdown {
     background: white;
-    border-radius: 0 $addedFilter_borderRadius $addedFilter_borderRadius;
+    border-radius: $addedFilter_borderRadius;
     border: 1px solid $addedFilter_borderColor;
     color: #474b4e;
     font-size: $addedFilter_fontSize;
@@ -47,8 +48,10 @@
     .filterDropdown__header {
       background: $componentBackgroundColor;
       border-bottom: 1px solid #d4d8db;
-      font-weight: 500;
-      padding: 10px 6px;
+      font-weight: 400;
+      min-width: 100px;
+      padding: 6px;
+      white-space: nowrap;
     }
 
       .filterDropdown__header .css-icon.cross {

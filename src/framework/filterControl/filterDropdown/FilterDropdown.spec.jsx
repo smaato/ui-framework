@@ -11,8 +11,7 @@ describe('FilterDropdown', () => {
           children: <div id="test">test</div>,
         };
 
-        const testCase =
-          TestCaseFactory.create(FilterDropdown, props);
+        const testCase = TestCaseFactory.create(FilterDropdown, props);
 
         expect(testCase.first('#test').textContent).toBe('test');
       });

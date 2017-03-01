@@ -1,8 +1,8 @@
 
 .filterOptionListItem {
-  white-space: nowrap;
   cursor: pointer;
-  padding: 8px 6px;
+  padding: 6px;
+  white-space: nowrap;
 
   &:hover {
     background: $lightGrey;

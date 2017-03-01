@@ -2,57 +2,57 @@
 import { TestCaseFactory } from 'react-test-kit';
 import FilterControl from './FilterControl.jsx';
 import {
-  ConditionChecker,
+  Filter,
 } from '../services';
 
 describe('FilterControl', () => {
   describe('Props', () => {
-    describe('conditionCheckers', () => {
-      it('are passed to ConditionCheckerList and iterated over', () => {
+    describe('onRemoveSelectedFilter', () => {
+      it(
+        'is passed to FilterList and called with a filter when a remove ' +
+        'button is clicked',
+        () => {
+          const props = {
+            filterOptions: [],
+            onAddFilter: () => undefined,
+            onRemoveSelectedFilter: jasmine.createSpy(
+              'onRemoveSelectedFilter'
+            ),
+            selectedFilters: [
+              new Filter({}),
+            ],
+          };
+
+          const testCase = TestCaseFactory.create(FilterControl, props);
+
+          const removeButton = testCase.first(
+            '.selectedFilterListItem__removeButtonContainer .cross'
+          );
+
+          expect(props.onRemoveSelectedFilter).not.toHaveBeenCalled();
+          testCase.trigger('click', removeButton);
+          expect(props.onRemoveSelectedFilter).toHaveBeenCalled();
+        }
+      );
+    });
+
+    describe('selectedFilters', () => {
+      it('are passed to FilterList and iterated over', () => {
         const props = {
-          conditionCheckers: [
-            new ConditionChecker({}),
-          ],
           filterOptions: [],
-          onAddConditionChecker: () => undefined,
-          onRemoveConditionChecker: () => undefined,
+          onAddFilter: () => undefined,
+          onRemoveSelectedFilter: () => undefined,
+          selectedFilters: [
+            new Filter({}),
+          ],
         };
 
-        const iterationSpy = spyOn(props.conditionCheckers, 'map');
+        const iterationSpy = spyOn(props.selectedFilters, 'map');
 
         expect(iterationSpy).not.toHaveBeenCalled();
         TestCaseFactory.create(FilterControl, props);
         expect(iterationSpy).toHaveBeenCalled();
       });
-    });
-
-    describe('onRemoveConditionChecker', () => {
-      it(
-        'is passed to ConditionCheckerList and called with a ' +
-        'conditionChecker when a remove button is clicked',
-        () => {
-          const props = {
-            conditionCheckers: [
-              new ConditionChecker({}),
-            ],
-            filterOptions: [],
-            onAddConditionChecker: () => undefined,
-            onRemoveConditionChecker: jasmine.createSpy(
-              'onRemoveConditionChecker'
-            ),
-          };
-
-          const testCase = TestCaseFactory.create(FilterControl, props);
-
-          const removeButton =
-            testCase.first(
-              '.conditionCheckerListItem__removeButtonContainer .css-icon');
-
-          expect(props.onRemoveConditionChecker).not.toHaveBeenCalled();
-          testCase.trigger('click', removeButton);
-          expect(props.onRemoveConditionChecker).toHaveBeenCalled();
-        }
-      );
     });
   });
 });

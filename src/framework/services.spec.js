@@ -5,7 +5,7 @@ import {
   ThrottledEventDispatcher,
   CommonAssertions,
   ComparisonTypes,
-  ConditionChecker,
+  Filter,
   FilterOption,
   FilterableItems,
   GridStencil,
@@ -46,9 +46,9 @@ describe('UI Framework services', () => {
     });
   });
 
-  describe('ConditionChecker', () => {
+  describe('Filter', () => {
     it('is exported', () => {
-      expect(ConditionChecker).toEqual(jasmine.any(Function));
+      expect(Filter).toEqual(jasmine.any(Function));
     });
   });
 
