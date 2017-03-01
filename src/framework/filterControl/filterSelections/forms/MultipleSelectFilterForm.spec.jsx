@@ -16,6 +16,46 @@ describe('MultipleSelectFilterForm', () => {
     },
   });
 
+  describe('initial state', () => {
+    it('has options unselected', () => {
+      const props = {
+        filterOption,
+        onAddFilter: () => undefined,
+      };
+
+      const testCase = TestCaseFactory.create(MultipleSelectFilterForm, props);
+
+      expect(testCase.element.options).toBe(options);
+      testCase.element.state.selectedOptions.forEach((value) => {
+        expect(value).toBe(false);
+      });
+    });
+
+    it('renders a button', () => {
+      const props = {
+        filterOption,
+        onAddFilter: () => undefined,
+      };
+
+      const testCase = TestCaseFactory.create(MultipleSelectFilterForm, props);
+
+      expect(testCase.find('button')[0]).toBeDefined();
+    });
+
+    it('button is disabled', () => {
+      const props = {
+        filterOption,
+        onAddFilter: () => undefined,
+      };
+
+      const testCase = TestCaseFactory.create(MultipleSelectFilterForm, props);
+
+      expect(
+        testCase.find('button')[0].className
+      ).toContain('is-button-disabled');
+    });
+  });
+
   describe('Props', () => {
     describe('filterOption', () => {
       it('options are rendered', () => {
@@ -26,6 +66,7 @@ describe('MultipleSelectFilterForm', () => {
 
         const testCase =
           TestCaseFactory.create(MultipleSelectFilterForm, props);
+
         expect(
           testCase.dom.className
         ).toBe('filterForm filterForm--multiSelect');
@@ -41,6 +82,7 @@ describe('MultipleSelectFilterForm', () => {
         });
       });
     });
+
     describe('onAddFilter', () => {
       it('is called when "Update Results" button is clicked', () => {
         const props = {
@@ -48,9 +90,11 @@ describe('MultipleSelectFilterForm', () => {
           onAddFilter: jasmine.createSpy('onAddFilter'),
         };
 
-        expect(props.onAddFilter).not.toHaveBeenCalled();
         const testCase =
           TestCaseFactory.create(MultipleSelectFilterForm, props);
+
+        expect(props.onAddFilter).not.toHaveBeenCalled();
+        testCase.trigger('change', testCase.find('input[type=checkbox]')[0]);
         testCase.trigger('click', testCase.find('button')[0]);
         expect(props.onAddFilter).toHaveBeenCalled();
 
@@ -59,25 +103,11 @@ describe('MultipleSelectFilterForm', () => {
 
         expect(filter.filterOption).toBe(props.filterOption);
         expect(filter.comparisonType).toBe(ComparisonTypes.ONE_OF);
-        expect(filter.comparisonValue.length).toBe(0);
+        expect(filter.comparisonValue.length).toBe(1);
       });
     });
   });
-  describe('initial state', () => {
-    it('has options unselected', () => {
-      const props = {
-        filterOption,
-        onAddFilter: () => undefined,
-      };
 
-      const testCase = TestCaseFactory.create(MultipleSelectFilterForm, props);
-
-      expect(testCase.element.options).toBe(options);
-      testCase.element.state.selectedOptions.forEach((value) => {
-        expect(value).toBe(false);
-      });
-    });
-  });
   describe('selected options', () => {
     it('are changed when a checkbox is clicked', () => {
       const props = {

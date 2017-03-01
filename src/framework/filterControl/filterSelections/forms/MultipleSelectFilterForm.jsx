@@ -71,7 +71,10 @@ export default class MultipleSelectFilterForm extends Component {
       <div className="filterForm filterForm--multiSelect">
         {options}
         <div className="filterForm__buttons">
-          <PrimaryButton onClick={this.onClickAddButton}>
+          <PrimaryButton
+            disabled={this.state.selectedOptions.indexOf(true) === -1}
+            onClick={this.onClickAddButton}
+          >
             Update Results
           </PrimaryButton>
         </div>
