@@ -1,12 +1,19 @@
 
 import ComparisonTypes from './ComparisonTypes';
 
-export default class ConditionChecker {
+export default class Filter {
 
-  constructor(filter, comparisonType, comparisonValue) {
-    this.filter = filter;
+  constructor(filterOption, comparisonType, comparisonValue) {
+    this.filterOption = filterOption;
     this.comparisonType = comparisonType;
     this.comparisonValue = comparisonValue;
+  }
+
+  humanizeComparisonValue() {
+    if (this.comparisonType === ComparisonTypes.ONE_OF) {
+      return this.comparisonValue.join(', ');
+    }
+    return this.comparisonValue;
   }
 
   doesValuePass(itemValue) {
@@ -35,6 +42,9 @@ export default class ConditionChecker {
         const index = normalizedItemValue.indexOf(normalizedComparisonValue);
         return index !== -1;
       }
+      case ComparisonTypes.ONE_OF: {
+        return this.comparisonValue.indexOf(itemValue) !== -1;
+      }
       default: {
         throw new Error(
           `Matching method doesn't exist: ${this.comparisonType}`
@@ -44,9 +54,8 @@ export default class ConditionChecker {
   }
 
   doesItemPass(item) {
-    const itemValue = this.filter.getValue(item);
-    const isMatch = this.doesValuePass(itemValue);
-    return isMatch;
+    const itemValue = this.filterOption.getValue(item);
+    return this.doesValuePass(itemValue);
   }
 
 }

@@ -6,12 +6,13 @@ export default function createRows(indexStart, newRowsCount) {
   }
 
   const newRows = [];
+  const statuses = ['Active', 'Stopped', 'Archived'];
   const indexEnd = indexStart + newRowsCount;
   for (let i = indexStart; i < indexEnd; i += 1) {
     newRows.push({
       id: i,
       name: `Ford F-${getRandomInteger(0, 50000)}`,
-      status: 'In Production',
+      status: statuses[getRandomInteger(0, 2)],
       fuel: 'Diesel, Unleaded',
       passengers: getRandomInteger(0, 100),
       cylinders: getRandomInteger(0, 8),

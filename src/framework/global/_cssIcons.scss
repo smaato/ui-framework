@@ -1,0 +1,62 @@
+
+.css-icon {
+  position: relative;
+
+  &:before,
+  &:after {
+    background-color: $componentTextColor;
+    content: '';
+    position: absolute;
+  }
+}
+
+/* Plus (+) */
+.plus {
+  height: 9px;
+  transform: rotate(180deg);
+  width: 9px;
+
+  &:before {
+    height: 100%;
+    left: 4px;
+    right: 4px;
+    top: 0;
+  }
+
+  &:after {
+    bottom: 4px;
+    left: 0;
+    top: 4px;
+    width: 100%;
+  }
+}
+
+/* Cross (X) */
+.cross {
+  height: 11px;
+  transform: rotate(-45deg);
+  width: 11px;
+
+  &:before {
+    height: 100%;
+    left: 5px;
+    right: 5px;
+    top: 0;
+  }
+
+  &:after {
+    bottom: 5px;
+    left: 0;
+    top: 5px;
+    width: 100%;
+  }
+}
+
+/* Back (<) */
+.back {
+  border-bottom: 1px solid $componentTextColor;
+  border-left: 1px solid $componentTextColor;
+  height: 7px;
+  transform: rotate(45deg);
+  width: 7px;
+}

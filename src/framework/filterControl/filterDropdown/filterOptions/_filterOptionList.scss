@@ -1,0 +1,10 @@
+
+.filterOptionListItem {
+  cursor: pointer;
+  padding: 6px;
+  white-space: nowrap;
+
+  &:hover {
+    background: $lightGrey;
+  }
+}

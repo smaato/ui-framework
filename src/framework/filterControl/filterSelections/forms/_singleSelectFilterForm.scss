@@ -1,0 +1,9 @@
+
+.singleSelectionForm__filterName {
+  font-weight: 400;
+}
+
+.singleSelectionForm__filterName,
+.singleSelectionForm__filterValueWrapper {
+  margin-bottom: $addedFilter_paddingHorizontal / 2;
+}

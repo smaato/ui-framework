@@ -53,7 +53,7 @@ import {
   DropdownDot,
   DropdownOption,
   FieldMessage,
-  FiltersControl,
+  FilterControl,
   Form,
   FormFooter,
   FormPanel,
@@ -126,9 +126,9 @@ import {
 
 import {
   ComparisonTypes,
-  ConditionChecker,
   Entity,
   EscapeKeyHandler,
+  Filter,
   FilterableItems,
   FilterOption,
   GridStencil,
