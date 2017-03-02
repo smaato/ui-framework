@@ -37,6 +37,14 @@ export default class ToggleExample extends Component {
             onChange={this.onChange}
           />
         </Example>
+
+        <Example title="With labels">
+          <Toggle
+            isLabel
+            isDefaultChecked
+            onChange={this.onChange}
+          />
+        </Example>
       </Page>
     );
   }
