@@ -1,6 +1,6 @@
 
 $toggle__backgroundColor: #edf2f4;
-$toggle__borderColor--checked: rgba(66, 94, 103, 0.35);
+$toggle__borderColor--checked: rgba(#425e67, 0.35);
 $toggle__thumbColor--checked: #c9e6f0;
 
 .react-toggle {
@@ -33,10 +33,13 @@ $toggle__thumbColor--checked: #c9e6f0;
   background-color: $toggle__backgroundColor;
   border: 1px solid $componentStrokeColor;
   border-radius: 3px;
+  color: $blue;
+  font-size: 10px;
+  font-weight: 600;
   height: 18px;
   padding: 0;
   transition: all 0.2s ease;
-  width: 40px;
+  width: 43px;
 }
 
 .react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
@@ -48,17 +51,12 @@ $toggle__thumbColor--checked: #c9e6f0;
 }
 
 .react-toggle-track-check {
-  bottom: 0;
-  height: 10px;
-  left: 8px;
-  line-height: 0;
-  margin-top: auto;
-  margin-bottom: auto;
+  left: 5px;
+  line-height: initial;
   opacity: 0;
   position: absolute;
-  top: 0;
+  top: 3px;
   transition: opacity 0.25s ease;
-  width: 14px;
 }
 
 .react-toggle--checked .react-toggle-track-check {
@@ -67,17 +65,13 @@ $toggle__thumbColor--checked: #c9e6f0;
 }
 
 .react-toggle-track-x {
-  bottom: 0;
-  height: 10px;
-  line-height: 0;
-  margin-top: auto;
-  margin-bottom: auto;
+  color: #7d9caf;
+  line-height: initial;
   opacity: 1;
   position: absolute;
-  right: 10px;
-  top: 0;
+  right: 3px;
+  top: 3px;
   transition: opacity 0.25s ease;
-  width: 10px;
 }
 
 .react-toggle--checked .react-toggle-track-x {
@@ -100,5 +94,5 @@ $toggle__thumbColor--checked: #c9e6f0;
 .react-toggle--checked .react-toggle-thumb {
   background-color: $toggle__thumbColor--checked;
   border-color: $toggle__borderColor--checked;
-  left: 20px;
+  left: 23px;
 }

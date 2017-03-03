@@ -197,7 +197,7 @@ const components = [{
   component: TitleBarExample,
 }, {
   name: 'Toggle',
-  source: 'views/toogle/ToggleExample.jsx',
+  source: 'views/toggle/ToggleExample.jsx',
   component: ToggleExample,
 }, {
   name: 'VerticalLayout',
