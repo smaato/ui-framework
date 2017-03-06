@@ -78,9 +78,11 @@ export default class FilterControl extends Component {
       return (
         <div>
           <div className="filterDropdown__header">
-            Add a Filter
+            <div className="filterDropdown__header__title">
+              Add a Filter
+            </div>
             <span
-              className="css-icon cross"
+              className="filterDropdown__header__closeButton"
               onClick={this.onDropdownClose}
             />
           </div>
@@ -98,10 +100,12 @@ export default class FilterControl extends Component {
       <div>
         <div className="filterDropdown__header">
           <span
-            className="css-icon back"
+            className="filterDropdown__header__backButton"
             onClick={this.onCancelFilter}
           />
-          {this.state.selectedFilterOption.name}
+          <div className="filterDropdown__header__title">
+            {this.state.selectedFilterOption.name}
+          </div>
         </div>
         <FilterForm
           comparisonType={this.state.selectedComparisonType}

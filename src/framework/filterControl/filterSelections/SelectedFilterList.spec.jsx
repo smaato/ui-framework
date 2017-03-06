@@ -40,7 +40,7 @@ describe('SelectedFilterList', () => {
           const testCase = TestCaseFactory.create(SelectedFilterList, props);
 
           const removeButton = testCase.first(
-            '.selectedFilterListItem__removeButtonContainer .cross'
+            '.selectedFilterListItem__removeButton'
           );
 
           expect(props.onRemoveSelectedFilter).not.toHaveBeenCalled();

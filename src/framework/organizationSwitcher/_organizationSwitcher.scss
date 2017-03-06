@@ -31,35 +31,12 @@ body {
   }
 
     .organizationSwitcher__closeButton {
+      @include crossIcon($marginTop: 5px, $marginLeft: 10px);
+
       $closeButtonSide: 20px;
-      position: relative;
-      width: $closeButtonSide;
-      height: $closeButtonSide;
       color: #517582;
-      cursor: pointer;
-
-      &:before,
-      &:after {
-        $closeButtonLine_width: 1px;
-        $closeButtonLine_height: 10px;
-        content: '';
-        width: $closeButtonLine_width;
-        height: $closeButtonLine_height;
-        background-color: #517582;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-top: -$closeButtonLine_height / 2;
-        margin-left: -$closeButtonLine_width / 2;
-      }
-
-      &:before {
-        transform: rotate(45deg);
-      }
-
-      &:after {
-        transform: rotate(-45deg);
-      }
+      height: $closeButtonSide;
+      width: $closeButtonSide;
 
       &:hover {
         opacity: 1;

@@ -1,5 +1,6 @@
 
-.css-icon {
+@mixin cssIcon {
+  cursor: pointer;
   position: relative;
 
   &:before,
@@ -10,50 +11,35 @@
   }
 }
 
-/* Plus (+) */
-.plus {
-  height: 9px;
-  transform: rotate(180deg);
-  width: 9px;
-
-  &:before {
-    height: 100%;
-    left: 4px;
-    right: 4px;
-    top: 0;
-  }
-
-  &:after {
-    bottom: 4px;
-    left: 0;
-    top: 4px;
-    width: 100%;
-  }
-}
-
 /* Cross (X) */
-.cross {
-  height: 11px;
-  transform: rotate(-45deg);
-  width: 11px;
+@mixin crossIcon($marginTop: 0, $marginLeft: 0) {
+  @include cssIcon;
+
+  &:before,
+  &:after {
+    $closeButtonLine_width: 1px;
+    $closeButtonLine_height: 10px;
+    content: '';
+    width: $closeButtonLine_width;
+    height: $closeButtonLine_height;
+    position: absolute;
+    margin-top: $marginTop;
+    margin-left: $marginLeft;
+  }
 
   &:before {
-    height: 100%;
-    left: 5px;
-    right: 5px;
-    top: 0;
+    transform: rotate(45deg);
   }
 
   &:after {
-    bottom: 5px;
-    left: 0;
-    top: 5px;
-    width: 100%;
+    transform: rotate(-45deg);
   }
 }
 
 /* Back (<) */
-.back {
+@mixin backIcon {
+  @include cssIcon;
+
   border-bottom: 1px solid $componentTextColor;
   border-left: 1px solid $componentTextColor;
   height: 7px;
