@@ -30,6 +30,10 @@
     }
   }
 
+    .filterDropdownButton__addButton {
+      @include plusIcon;
+    }
+
   .filterDropdown {
     background: white;
     border-radius: $addedFilter_borderRadius;

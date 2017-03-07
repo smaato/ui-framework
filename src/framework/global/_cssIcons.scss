@@ -11,6 +11,29 @@
   }
 }
 
+/* Plus (+) */
+@mixin plusIcon {
+  @include cssIcon;
+
+  height: 9px;
+  transform: rotate(180deg);
+  width: 9px;
+
+  &:before {
+    height: 100%;
+    left: 4px;
+    right: 4px;
+    top: 0;
+  }
+
+  &:after {
+    bottom: 4px;
+    left: 0;
+    top: 4px;
+    width: 100%;
+  }
+}
+
 /* Cross (X) */
 @mixin crossIcon($marginTop: 0, $marginLeft: 0) {
   @include cssIcon;
