@@ -8,9 +8,6 @@ import Filter from '../../services/filter/Filter';
 
 const SelectedFilterList = (props) => {
   const filterItems = props.selectedFilters.map((filter, index) => {
-    const filterName = filter.filterOption.name;
-    const title =
-      `${filterName} (${filter.comparisonType}): ${filter.comparisonValue}`;
     const onRemoveSelectedFilter =
       props.onRemoveSelectedFilter.bind(null, filter);
 
@@ -18,10 +15,10 @@ const SelectedFilterList = (props) => {
       <div className="selectedFilterListItem" key={index}>
         <span
           className="selectedFilterListItem__label"
-          title={title}
+          title={filter.filterOption.name}
         >
           <strong className="selectedFilterListItem__name">
-            {filterName}:
+            {filter.filterOption.name}:
           </strong>
           {Entity.nbsp}
           {filter.humanizeComparisonValue()}
