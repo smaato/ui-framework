@@ -29,7 +29,7 @@ const SelectedFilterList = (props) => {
 
         <div className="selectedFilterListItem__removeButtonContainer">
           <span
-            className="css-icon cross"
+            className="selectedFilterListItem__removeButton"
             onClick={onRemoveSelectedFilter}
           />
         </div>

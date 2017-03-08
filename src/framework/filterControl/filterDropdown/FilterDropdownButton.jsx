@@ -14,7 +14,7 @@ const FilterDropdownButton = (props) => {
       className={classes}
       onClick={props.onClick}
     >
-      <div className="css-icon plus" />
+      <div className="filterDropdownButton__addButton" />
     </div>
   );
 };
