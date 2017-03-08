@@ -121,7 +121,7 @@ export default class FilterControl extends Component {
     }
 
     let addButton;
-    if (this.props.filterOptions.length > this.props.selectedFilters.length) {
+    if (this.props.filterOptions.length > 0) {
       addButton = (
         <div className="filterDropdownContainer">
           <FilterDropdownButton

@@ -44,7 +44,7 @@ import {
   ThrottledEventDispatcher,
 } from '../../../framework/services';
 
-import gridExampleFilterOptions from './gridExampleFilterOptions';
+import GridExampleFilterOptions from './gridExampleFilterOptions';
 import createRows from './createRows';
 
 const defaultState = {
@@ -62,6 +62,7 @@ const defaultState = {
   selectionMap: {},
   areAllRowsSelected: false,
   // Filters
+  filterOptions: GridExampleFilterOptions,
   selectedFilters: [],
 };
 
@@ -511,8 +512,15 @@ export default class GridExample extends Component {
     const selectedFilters = this.state.selectedFilters.filter(filter => (
       filter !== filterToRemove
     ));
+    const selectedFilterOptions = selectedFilters.map(selectedFilter => (
+      selectedFilter.filterOption
+    ));
+    const filterOptions = GridExampleFilterOptions.filter(filterOption => (
+      selectedFilterOptions.indexOf(filterOption) === -1
+    ));
 
     this.setState({
+      filterOptions,
       selectedFilters,
     });
   }
@@ -520,7 +528,15 @@ export default class GridExample extends Component {
   onAddFilter(filter) {
     const selectedFilters = this.state.selectedFilters.slice();
     selectedFilters.push(filter);
+    const selectedFilterOptions = selectedFilters.map(selectedFilter => (
+      selectedFilter.filterOption
+    ));
+    const filterOptions = GridExampleFilterOptions.filter(filterOption => (
+      selectedFilterOptions.indexOf(filterOption) === -1
+    ));
+
     this.setState({
+      filterOptions,
       selectedFilters,
     });
   }
@@ -749,7 +765,7 @@ export default class GridExample extends Component {
     return (
       <GridControls>
         <FilterControl
-          filterOptions={gridExampleFilterOptions}
+          filterOptions={this.state.filterOptions}
           onAddFilter={this.onAddFilter}
           onRemoveSelectedFilter={this.onRemoveSelectedFilter}
           selectedFilters={this.state.selectedFilters}

@@ -58,13 +58,12 @@ describe('FilterControl', () => {
   });
 
   describe('add button', () => {
-    it('is hidden if the number of selected filters equals' +
-       'the number of filterOptions', () => {
+    it('is hidden if filterOptions is empty', () => {
       const props = {
         filterOptions: [],
         onAddFilter: () => undefined,
         onRemoveSelectedFilter: () => undefined,
-        selectedFilters: [],
+        selectedFilters: [new Filter({})],
       };
 
       const filterControl = TestCaseFactory.create(FilterControl, props);
@@ -73,8 +72,7 @@ describe('FilterControl', () => {
       ).toBe(0);
     });
 
-    it('is shown if the number of selected filters is less' +
-       'than the number of filterOptions', () => {
+    it('is shown if filterOptions is not empty', () => {
       const props = {
         filterOptions: [new FilterOption({})],
         onAddFilter: () => undefined,
