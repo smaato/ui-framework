@@ -120,14 +120,9 @@ export default class FilterControl extends Component {
       );
     }
 
-    return (
-      <div className="filterControl">
-
-        <SelectedFilterList
-          onRemoveSelectedFilter={this.props.onRemoveSelectedFilter}
-          selectedFilters={this.props.selectedFilters}
-        />
-
+    let addButton;
+    if (this.props.filterOptions.length > this.props.selectedFilters.length) {
+      addButton = (
         <div className="filterDropdownContainer">
           <FilterDropdownButton
             onClick={this.onToggleClick}
@@ -135,7 +130,15 @@ export default class FilterControl extends Component {
           />
           {dropdown}
         </div>
-
+      );
+    }
+    return (
+      <div className="filterControl">
+        <SelectedFilterList
+          onRemoveSelectedFilter={this.props.onRemoveSelectedFilter}
+          selectedFilters={this.props.selectedFilters}
+        />
+        {addButton}
       </div>
     );
   }
