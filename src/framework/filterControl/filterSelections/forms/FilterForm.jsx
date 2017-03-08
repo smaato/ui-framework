@@ -24,7 +24,8 @@ export default class FilterForm extends Component {
       [ComparisonTypes.ONE_OF]: MultipleSelectFilterForm,
     };
 
-    this.formClass = COMPARISON_TYPE_TO_FORM_MAP[this.props.comparisonType];
+    this.formClass =
+      COMPARISON_TYPE_TO_FORM_MAP[this.props.filterOption.comparisonType];
   }
 
   render() {
@@ -32,7 +33,6 @@ export default class FilterForm extends Component {
 
     return (
       <FormClass
-        comparisonType={this.props.comparisonType}
         filterOption={this.props.filterOption}
         onAddFilter={this.props.onAddFilter}
       />
@@ -41,7 +41,6 @@ export default class FilterForm extends Component {
 }
 
 FilterForm.propTypes = {
-  comparisonType: PropTypes.string.isRequired,
   filterOption: PropTypes.instanceOf(FilterOption),
   onAddFilter: PropTypes.func.isRequired,
 };

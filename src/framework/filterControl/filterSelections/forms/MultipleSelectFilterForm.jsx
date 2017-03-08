@@ -5,7 +5,6 @@ import React, {
 } from 'react';
 
 import {
-  ComparisonTypes,
   Filter,
   FilterOption,
 } from '../../../services';
@@ -42,7 +41,6 @@ export default class MultipleSelectFilterForm extends Component {
     );
     const filter = new Filter(
       this.props.filterOption,
-      ComparisonTypes.ONE_OF,
       selectedOptionNames
     );
     this.props.onAddFilter(filter);

@@ -3,6 +3,7 @@ import { TestCaseFactory } from 'react-test-kit';
 import SelectedFilterList from './SelectedFilterList.jsx';
 import {
   Filter,
+  FilterOption,
 } from '../../services';
 
 describe('SelectedFilterList', () => {
@@ -20,6 +21,42 @@ describe('SelectedFilterList', () => {
         expect(iterationSpy).not.toHaveBeenCalled();
         TestCaseFactory.create(SelectedFilterList, props);
         expect(iterationSpy).toHaveBeenCalled();
+      });
+    });
+
+    describe('render', () => {
+      const filter = new Filter(
+        new FilterOption({
+          comparisonType: 'comparison type',
+          name: 'filter name',
+        }),
+        'comparison value'
+      );
+      const props = {
+        onRemoveSelectedFilter: () => undefined,
+        selectedFilters: [filter],
+      };
+
+      it('shows filter name', () => {
+        const testCase = TestCaseFactory.create(SelectedFilterList, props);
+
+        expect(
+          testCase.first('.selectedFilterListItem__name').textContent
+        ).toContain(filter.filterOption.name);
+      });
+
+      it('shows humanized comparison value', () => {
+        const humanizeComparisonValueSpy = spyOn(
+          filter, 'humanizeComparisonValue'
+        ).and.returnValue('humanized comparison value');
+
+        expect(humanizeComparisonValueSpy).not.toHaveBeenCalled();
+        const testCase = TestCaseFactory.create(SelectedFilterList, props);
+        expect(humanizeComparisonValueSpy).toHaveBeenCalled();
+
+        expect(
+          testCase.first('.selectedFilterListItem__label').textContent
+        ).toContain('humanized comparison value');
       });
     });
 

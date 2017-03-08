@@ -11,8 +11,10 @@ describe('SingleSelectFilterForm', () => {
     describe('filterOption', () => {
       it('name is rendered', () => {
         const props = {
-          comparisonType: '',
-          filterOption: new FilterOption({ name: 'testFilterOption' }),
+          filterOption: new FilterOption({
+            comparisonType: '',
+            name: 'testFilterOption',
+          }),
           onAddFilter: () => undefined,
         };
 
@@ -21,22 +23,6 @@ describe('SingleSelectFilterForm', () => {
 
         expect(testCase.first('.singleSelectionForm__filterName').textContent)
           .toContain(props.filterOption.name);
-      });
-    });
-
-    describe('comparisonType', () => {
-      it('is rendered', () => {
-        const props = {
-          comparisonType: 'testComparisonType',
-          filterOption: new FilterOption({}),
-          onAddFilter: () => undefined,
-        };
-
-        const testCase =
-          TestCaseFactory.create(SingleSelectFilterForm, props);
-
-        expect(testCase.first('.singleSelectionForm__filterName').textContent)
-          .toContain(props.comparisonType);
       });
     });
 
@@ -49,8 +35,9 @@ describe('SingleSelectFilterForm', () => {
         'isn\'t called when the add button is clicked and the input is empty',
         () => {
           const props = {
-            comparisonType: 'testComparisonType',
-            filterOption: new FilterOption({}),
+            filterOption: new FilterOption({
+              comparisonType: 'testComparisonType',
+            }),
             onAddFilter: jasmine.createSpy('onAddFilter'),
           };
 
@@ -67,8 +54,9 @@ describe('SingleSelectFilterForm', () => {
         'isn\'t called when the Enter key is hit and the input is empty',
         () => {
           const props = {
-            comparisonType: 'testComparisonType',
-            filterOption: new FilterOption({}),
+            filterOption: new FilterOption({
+              comparisonType: 'testComparisonType',
+            }),
             onAddFilter: jasmine.createSpy('onAddFilter'),
           };
 
@@ -85,8 +73,9 @@ describe('SingleSelectFilterForm', () => {
         'isn\'t called when a non-Enter key is hit and the input isn\'t empty',
         () => {
           const props = {
-            comparisonType: 'testComparisonType',
-            filterOption: new FilterOption({}),
+            filterOption: new FilterOption({
+              comparisonType: 'testComparisonType',
+            }),
             onAddFilter: jasmine.createSpy('onAddFilter'),
           };
 
@@ -106,8 +95,9 @@ describe('SingleSelectFilterForm', () => {
         'empty, and receives a filter',
         () => {
           const props = {
-            comparisonType: 'testComparisonType',
-            filterOption: new FilterOption({}),
+            filterOption: new FilterOption({
+              comparisonType: 'testComparisonType',
+            }),
             onAddFilter: jasmine.createSpy('onAddFilter'),
           };
 
@@ -126,8 +116,9 @@ describe('SingleSelectFilterForm', () => {
         'is called when the Enter key is hit and the input isn\'t empty',
         () => {
           const props = {
-            comparisonType: 'testComparisonType',
-            filterOption: new FilterOption({}),
+            filterOption: new FilterOption({
+              comparisonType: 'testComparisonType',
+            }),
             onAddFilter: jasmine.createSpy('onAddFilter'),
           };
 
@@ -144,8 +135,9 @@ describe('SingleSelectFilterForm', () => {
 
       it('receives a filter when it\'s called', () => {
         const props = {
-          comparisonType: 'testComparisonType',
-          filterOption: new FilterOption({}),
+          filterOption: new FilterOption({
+            comparisonType: 'testComparisonType',
+          }),
           onAddFilter: jasmine.createSpy('onAddFilter'),
         };
 
@@ -161,7 +153,6 @@ describe('SingleSelectFilterForm', () => {
 
         // Assert that filter is built with info from the props.
         expect(filter.filterOption).toBe(props.filterOption);
-        expect(filter.comparisonType).toBe(props.comparisonType);
         expect(filter.comparisonValue).toBe(
           testCase.first('input').value
         );

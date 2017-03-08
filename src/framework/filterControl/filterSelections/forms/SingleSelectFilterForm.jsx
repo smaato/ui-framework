@@ -31,7 +31,6 @@ export default class SingleSelectFilterForm extends Component {
     const filter =
       new Filter(
         this.props.filterOption,
-        this.props.comparisonType,
         enteredValue
       );
 
@@ -47,7 +46,7 @@ export default class SingleSelectFilterForm extends Component {
     return (
       <div className="singleSelectionForm">
         <div className="singleSelectionForm__filterName">
-          {`${this.props.filterOption.name} (${this.props.comparisonType})`}
+          {this.props.filterOption.name}
         </div>
         <div className="singleSelectionForm__filterValueWrapper">
           <input
@@ -69,6 +68,5 @@ export default class SingleSelectFilterForm extends Component {
 
 SingleSelectFilterForm.propTypes = {
   filterOption: PropTypes.instanceOf(FilterOption),
-  comparisonType: PropTypes.string.isRequired,
   onAddFilter: PropTypes.func.isRequired,
 };

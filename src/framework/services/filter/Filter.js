@@ -3,14 +3,13 @@ import ComparisonTypes from './ComparisonTypes';
 
 export default class Filter {
 
-  constructor(filterOption, comparisonType, comparisonValue) {
+  constructor(filterOption, comparisonValue) {
     this.filterOption = filterOption;
-    this.comparisonType = comparisonType;
     this.comparisonValue = comparisonValue;
   }
 
   humanizeComparisonValue() {
-    if (this.comparisonType === ComparisonTypes.ONE_OF) {
+    if (this.filterOption.comparisonType === ComparisonTypes.ONE_OF) {
       return this.comparisonValue.join(', ');
     }
     return this.comparisonValue;
@@ -25,7 +24,7 @@ export default class Filter {
       return parseInt(value, 10);
     }
 
-    switch (this.comparisonType) {
+    switch (this.filterOption.comparisonType) {
       case ComparisonTypes.MIN: {
         const normalizedComparisonValue = normalizeInt(this.comparisonValue);
         const normalizedItemValue = normalizeInt(itemValue);
@@ -47,7 +46,7 @@ export default class Filter {
       }
       default: {
         throw new Error(
-          `Matching method doesn't exist: ${this.comparisonType}`
+          `Matching method doesn't exist: ${this.filterOption.comparisonType}`
         );
       }
     }
