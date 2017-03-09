@@ -81,16 +81,20 @@ export default class FilterItem extends Component {
   }
 
   render() {
+    const filterName = this.state.filter.filterOption.name;
+    const title =
+      `${filterName}: ${this.state.filter.humanizeComparisonValue()}`;
+
     return (
       <div className=" filterItemContainer">
         <div className="filterItem">
           <span
             className="filterItem__label"
             onClick={this.onEditFilter}
-            title={this.state.filter.filterOption.name}
+            title={title}
           >
             <strong className="filterItem__name">
-              {this.state.filter.filterOption.name}:
+              {filterName}:
             </strong>
             {Entity.nbsp}
             {this.state.filter.humanizeComparisonValue()}

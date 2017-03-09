@@ -10,7 +10,7 @@ describe('FilterControl', () => {
   describe('Props', () => {
     describe('onRemoveSelectedFilter', () => {
       it(
-        'is passed to FilterList and called with a filter when a remove ' +
+        'is passed to FilterItem and called with a filter when a remove ' +
         'button is clicked',
         () => {
           const props = {
@@ -38,7 +38,7 @@ describe('FilterControl', () => {
     });
 
     describe('selectedFilters', () => {
-      it('are passed to FilterList and iterated over', () => {
+      it('are iterated over', () => {
         const props = {
           filterOptions: [],
           onAddFilter: () => undefined,

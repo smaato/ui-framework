@@ -4,12 +4,13 @@ import React, {
   PropTypes,
 } from 'react';
 
+import Filter from '../services/filter/Filter';
 import FilterDropdown from './filterDropdown/FilterDropdown.jsx';
 import FilterDropdownButton from './filterDropdown/FilterDropdownButton.jsx';
+import FilterItem from './FilterItem.jsx';
 import FilterForm from './forms/FilterForm.jsx';
 import FilterOptionList
   from './filterDropdown/filterOptions/FilterOptionList.jsx';
-import FilterItemList from './FilterItemList.jsx';
 
 export default class FilterControl extends Component {
 
@@ -109,6 +110,27 @@ export default class FilterControl extends Component {
     );
   }
 
+  renderFilterItems() {
+    const filterItems = this.props.selectedFilters.map((filter, index) => {
+      const onRemoveSelectedFilter =
+        this.props.onRemoveSelectedFilter.bind(null, filter);
+
+      return (
+        <FilterItem
+          key={index}
+          filter={filter}
+          onRemoveSelectedFilter={onRemoveSelectedFilter}
+        />
+      );
+    });
+
+    return (
+      <div className="filterItemList">
+        {filterItems}
+      </div>
+    );
+  }
+
   render() {
     let addButton;
     if (this.props.filterOptions.length > 0) {
@@ -135,10 +157,7 @@ export default class FilterControl extends Component {
 
     return (
       <div className="filterControl">
-        <FilterItemList
-          onRemoveSelectedFilter={this.props.onRemoveSelectedFilter}
-          selectedFilters={this.props.selectedFilters}
-        />
+        {this.renderFilterItems()}
         {addButton}
       </div>
     );
@@ -149,6 +168,6 @@ export default class FilterControl extends Component {
 FilterControl.propTypes = {
   filterOptions: FilterOptionList.propTypes.filterOptions,
   onAddFilter: PropTypes.func.isRequired,
-  onRemoveSelectedFilter: FilterItemList.propTypes.onRemoveSelectedFilter,
-  selectedFilters: FilterItemList.propTypes.selectedFilters,
+  onRemoveSelectedFilter: FilterItem.propTypes.onRemoveSelectedFilter,
+  selectedFilters: PropTypes.arrayOf(PropTypes.instanceOf(Filter)).isRequired,
 };
