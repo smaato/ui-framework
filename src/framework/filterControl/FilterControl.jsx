@@ -6,10 +6,10 @@ import React, {
 
 import FilterDropdown from './filterDropdown/FilterDropdown.jsx';
 import FilterDropdownButton from './filterDropdown/FilterDropdownButton.jsx';
-import FilterForm from './filterSelections/forms/FilterForm.jsx';
+import FilterForm from './forms/FilterForm.jsx';
 import FilterOptionList
   from './filterDropdown/filterOptions/FilterOptionList.jsx';
-import SelectedFilterList from './filterSelections/SelectedFilterList.jsx';
+import FilterItemList from './FilterItemList.jsx';
 
 export default class FilterControl extends Component {
 
@@ -135,7 +135,7 @@ export default class FilterControl extends Component {
 
     return (
       <div className="filterControl">
-        <SelectedFilterList
+        <FilterItemList
           onRemoveSelectedFilter={this.props.onRemoveSelectedFilter}
           selectedFilters={this.props.selectedFilters}
         />
@@ -149,7 +149,6 @@ export default class FilterControl extends Component {
 FilterControl.propTypes = {
   filterOptions: FilterOptionList.propTypes.filterOptions,
   onAddFilter: PropTypes.func.isRequired,
-  onRemoveSelectedFilter:
-    SelectedFilterList.propTypes.onRemoveSelectedFilter,
-  selectedFilters: SelectedFilterList.propTypes.selectedFilters,
+  onRemoveSelectedFilter: FilterItemList.propTypes.onRemoveSelectedFilter,
+  selectedFilters: FilterItemList.propTypes.selectedFilters,
 };

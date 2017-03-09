@@ -1,31 +1,31 @@
 
-.selectedFilterList {
+.filterItemList {
   display: flex;
 }
 
-  .selectedFilterListItem {
+  .filterItem {
     @include filterButton;
 
     &:hover {
-      .selectedFilterListItem__removeButtonContainer {
+      .filterItem__removeButtonContainer {
         box-shadow: -5px 0 15px 5px $addedFilter_backgroundColor;
         opacity: 1;
       }
     }
   }
 
-    .selectedFilterListItem__label {
+    .filterItem__label {
       max-width: 200px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
-      .selectedFilterListItem__name {
+      .filterItem__name {
         font-weight: 400;
       }
 
-  .selectedFilterListItem__removeButtonContainer {
+  .filterItem__removeButtonContainer {
     background: $addedFilter_backgroundColor;
     display: inline-flex;
     height: 12px;
@@ -34,7 +34,7 @@
     width: 15px;
   }
 
-    .selectedFilterListItem__removeButton {
+    .filterItem__removeButton {
       @include crossIcon($marginLeft: 12px, $marginTop: 1px);
 
       height: 15px;

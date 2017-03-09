@@ -7,10 +7,10 @@ import React, {
 import {
   Filter,
   FilterOption,
-} from '../../../services';
+} from '../../services';
 
-import CheckBox from '../../../checkBox/CheckBox.jsx';
-import PrimaryButton from '../../../button/PrimaryButton.jsx';
+import CheckBox from '../../checkBox/CheckBox.jsx';
+import PrimaryButton from '../../button/PrimaryButton.jsx';
 
 export default class MultipleSelectFilterForm extends Component {
 

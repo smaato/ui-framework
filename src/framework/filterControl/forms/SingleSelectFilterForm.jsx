@@ -7,7 +7,7 @@ import React, {
 import {
   Filter,
   FilterOption,
-} from '../../../services';
+} from '../../services';
 
 export default class SingleSelectFilterForm extends Component {
 

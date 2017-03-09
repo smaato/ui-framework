@@ -4,7 +4,7 @@ import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
 import {
   Filter,
   FilterOption,
-} from '../../../services';
+} from '../../services';
 
 describe('MultipleSelectFilterForm', () => {
   const options = ['Active', 'Archived', 'Stopped'];
