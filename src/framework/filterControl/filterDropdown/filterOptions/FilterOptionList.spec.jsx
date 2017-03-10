@@ -11,7 +11,7 @@ describe('FilterOptionList', () => {
       it('are iterated over', () => {
         const props = {
           filterOptions: [
-            new FilterOption({ comparisonTypes: [] }),
+            new FilterOption({ comparisonType: '' }),
           ],
           onSelectFilterOption: () => undefined,
         };
@@ -22,14 +22,10 @@ describe('FilterOptionList', () => {
         expect(iterationSpy).toHaveBeenCalled();
       });
 
-      describe('comparisonTypes', () => {
-        it('are rendered with the filterOption name', () => {
+      describe('name', () => {
+        it('is rendered', () => {
           const filterOption = new FilterOption({
             name: 'testFilterOption',
-            comparisonTypes: [
-              'test1',
-              'test2',
-            ],
           });
 
           const props = {
@@ -42,31 +38,23 @@ describe('FilterOptionList', () => {
           const testCase = TestCaseFactory.create(FilterOptionList, props);
 
           const items = testCase.find('.filterOptionListItem');
-          items.forEach((item, index) => {
-            expect(item.textContent).toContain(filterOption.name);
-            expect(item.textContent)
-              .toContain(filterOption.comparisonTypes[index]);
-          });
+          expect(items.length).toBe(1);
+          expect(items[0].textContent).toContain(filterOption.name);
         });
       });
     });
 
     describe('onSelectFilterOption', () => {
       it(
-        'is called and receives filterOption and comparisonType when an item ' +
-        'is clicked',
+        'is called and receives filterOption when an item is clicked',
         () => {
           const filterOption = new FilterOption({
             name: 'testFilterOption',
-            comparisonTypes: [
-              'test1',
-            ],
+            comparisonType: 'testComparisonType',
           });
 
           const props = {
-            filterOptions: [
-              filterOption,
-            ],
+            filterOptions: [filterOption],
             onSelectFilterOption: jasmine.createSpy('onSelectFilterOption'),
           };
 
@@ -75,10 +63,7 @@ describe('FilterOptionList', () => {
           expect(props.onSelectFilterOption).not.toHaveBeenCalled();
           const item = testCase.first('.filterOptionListItem');
           testCase.trigger('click', item);
-          expect(props.onSelectFilterOption).toHaveBeenCalledWith(
-            filterOption,
-            filterOption.comparisonTypes[0]
-          );
+          expect(props.onSelectFilterOption).toHaveBeenCalledWith(filterOption);
         }
       );
     });

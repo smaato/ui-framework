@@ -2,7 +2,6 @@
 import { TestCaseFactory } from 'react-test-kit';
 import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
 import {
-  ComparisonTypes,
   Filter,
   FilterOption,
 } from '../../../services';
@@ -102,7 +101,6 @@ describe('MultipleSelectFilterForm', () => {
         expect(filter instanceof Filter).toBe(true);
 
         expect(filter.filterOption).toBe(props.filterOption);
-        expect(filter.comparisonType).toBe(ComparisonTypes.ONE_OF);
         expect(filter.comparisonValue.length).toBe(1);
       });
     });

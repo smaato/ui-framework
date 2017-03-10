@@ -7,26 +7,20 @@ import FilterOption from '../../../services/filter/FilterOption';
 
 const FilterOptionsList = (props) => {
   const filterOptionListItems =
-    props.filterOptions.map((filterOption, index) => (
-      filterOption.comparisonTypes
-        .map((comparisonType, comparisonTypeIndex) => {
-          const onSelectFilterOption =
-            () => props.onSelectFilterOption(filterOption, comparisonType);
+    props.filterOptions.map((filterOption, index) => {
+      const onSelectFilterOption = () =>
+        props.onSelectFilterOption(filterOption);
 
-          return (
-            <div
-              className="filterOptionListItem"
-              key={`${index}:${comparisonTypeIndex}`}
-              onClick={onSelectFilterOption}
-            >
-              {filterOption.comparisonTypes.length === 1
-                ? filterOption.name
-                : `${filterOption.name} (${comparisonType})`}
-            </div>
-          );
-        }
-      )
-    )
+      return (
+        <div
+          className="filterOptionListItem"
+          key={index}
+          onClick={onSelectFilterOption}
+        >
+          {filterOption.name}
+        </div>
+      );
+    }
   );
 
   return (

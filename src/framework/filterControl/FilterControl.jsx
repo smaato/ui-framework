@@ -18,7 +18,6 @@ export default class FilterControl extends Component {
 
     this.state = {
       isDropdownOpen: false,
-      selectedComparisonType: null,
       selectedFilterOption: null,
     };
 
@@ -34,7 +33,6 @@ export default class FilterControl extends Component {
 
     this.setState({
       isDropdownOpen: false,
-      selectedComparisonType: null,
       selectedFilterOption: null,
     });
   }
@@ -42,7 +40,6 @@ export default class FilterControl extends Component {
   onCancelFilter() {
     this.setState({
       isDropdownOpen: true,
-      selectedComparisonType: null,
       selectedFilterOption: null,
     });
   }
@@ -50,15 +47,13 @@ export default class FilterControl extends Component {
   onDropdownClose() {
     this.setState({
       isDropdownOpen: false,
-      selectedComparisonType: null,
       selectedFilterOption: null,
     });
   }
 
-  onSelectFilterOption(filter, method) {
+  onSelectFilterOption(filter) {
     this.setState({
       isDropdownOpen: true,
-      selectedComparisonType: method,
       selectedFilterOption: filter,
     });
   }
@@ -66,7 +61,6 @@ export default class FilterControl extends Component {
   onToggleClick() {
     this.setState({
       isDropdownOpen: !this.state.isDropdownOpen,
-      selectedComparisonType: null,
       selectedFilterOption: null,
     });
   }
@@ -108,7 +102,6 @@ export default class FilterControl extends Component {
           </div>
         </div>
         <FilterForm
-          comparisonType={this.state.selectedComparisonType}
           filterOption={this.state.selectedFilterOption}
           onAddFilter={this.onAddFilter}
         />
@@ -117,24 +110,19 @@ export default class FilterControl extends Component {
   }
 
   render() {
-    let dropdown;
+    let addButton;
+    if (this.props.filterOptions.length > 0) {
+      let dropdown;
 
-    if (this.state.isDropdownOpen) {
-      dropdown = (
-        <FilterDropdown>
-          {this.renderDropdownContent()}
-        </FilterDropdown>
-      );
-    }
+      if (this.state.isDropdownOpen) {
+        dropdown = (
+          <FilterDropdown>
+            {this.renderDropdownContent()}
+          </FilterDropdown>
+        );
+      }
 
-    return (
-      <div className="filterControl">
-
-        <SelectedFilterList
-          onRemoveSelectedFilter={this.props.onRemoveSelectedFilter}
-          selectedFilters={this.props.selectedFilters}
-        />
-
+      addButton = (
         <div className="filterDropdownContainer">
           <FilterDropdownButton
             onClick={this.onToggleClick}
@@ -142,7 +130,16 @@ export default class FilterControl extends Component {
           />
           {dropdown}
         </div>
+      );
+    }
 
+    return (
+      <div className="filterControl">
+        <SelectedFilterList
+          onRemoveSelectedFilter={this.props.onRemoveSelectedFilter}
+          selectedFilters={this.props.selectedFilters}
+        />
+        {addButton}
       </div>
     );
   }
