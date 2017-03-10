@@ -110,18 +110,18 @@ export default class FilterControl extends Component {
   }
 
   render() {
-    let dropdown;
-
-    if (this.state.isDropdownOpen) {
-      dropdown = (
-        <FilterDropdown>
-          {this.renderDropdownContent()}
-        </FilterDropdown>
-      );
-    }
-
     let addButton;
     if (this.props.filterOptions.length > 0) {
+      let dropdown;
+
+      if (this.state.isDropdownOpen) {
+        dropdown = (
+          <FilterDropdown>
+            {this.renderDropdownContent()}
+          </FilterDropdown>
+        );
+      }
+
       addButton = (
         <div className="filterDropdownContainer">
           <FilterDropdownButton
@@ -132,6 +132,7 @@ export default class FilterControl extends Component {
         </div>
       );
     }
+
     return (
       <div className="filterControl">
         <SelectedFilterList

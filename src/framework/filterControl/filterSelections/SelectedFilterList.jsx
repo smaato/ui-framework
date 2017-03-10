@@ -11,14 +11,17 @@ const SelectedFilterList = (props) => {
     const onRemoveSelectedFilter =
       props.onRemoveSelectedFilter.bind(null, filter);
 
+    const filterName = filter.filterOption.name;
+    const title = `${filterName}: ${filter.humanizeComparisonValue()}`;
+
     return (
       <div className="selectedFilterListItem" key={index}>
         <span
           className="selectedFilterListItem__label"
-          title={filter.filterOption.name}
+          title={title}
         >
           <strong className="selectedFilterListItem__name">
-            {filter.filterOption.name}:
+            {filterName}:
           </strong>
           {Entity.nbsp}
           {filter.humanizeComparisonValue()}

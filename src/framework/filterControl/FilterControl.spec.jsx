@@ -57,7 +57,7 @@ describe('FilterControl', () => {
     });
   });
 
-  describe('add button', () => {
+  describe('Add button', () => {
     it('is hidden if filterOptions is empty', () => {
       const props = {
         filterOptions: [],
@@ -68,8 +68,8 @@ describe('FilterControl', () => {
 
       const filterControl = TestCaseFactory.create(FilterControl, props);
       expect(
-        filterControl.find('.filterDropdownButton__addButton').length
-      ).toBe(0);
+        filterControl.first('.filterDropdownButton__addButton')
+      ).not.toBeDefined();
     });
 
     it('is shown if filterOptions is not empty', () => {
@@ -82,8 +82,8 @@ describe('FilterControl', () => {
 
       const filterControl = TestCaseFactory.create(FilterControl, props);
       expect(
-        filterControl.find('.filterDropdownButton__addButton').length
-      ).toBe(1);
+        filterControl.first('.filterDropdownButton__addButton')
+      ).toBeDefined();
     });
   });
 });
