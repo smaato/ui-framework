@@ -22,8 +22,18 @@ export default class MultipleSelectFilterForm extends Component {
     this.onKeyUp = this.onKeyUp.bind(this);
     this.options = this.props.filterOption.comparisonParameters.oneOfOptions;
 
+    let selectedOptions;
+
+    if (this.props.comparisonValue === undefined) {
+      selectedOptions = (new Array(this.options.length)).fill(false);
+    } else {
+      selectedOptions = this.options.map(option => (
+        this.props.comparisonValue.indexOf(option) !== -1
+      ));
+    }
+
     this.state = {
-      selectedOptions: (new Array(this.options.length)).fill(false),
+      selectedOptions,
     };
   }
 
@@ -55,6 +65,7 @@ export default class MultipleSelectFilterForm extends Component {
     const options = this.options.map((option, index) => (
       <div className="filterForm--multiSelect__checkbox" key={index}>
         <CheckBox
+          checked={this.state.selectedOptions[index]}
           id={index}
           key={index}
           name="option_checkbox"
@@ -82,6 +93,7 @@ export default class MultipleSelectFilterForm extends Component {
 }
 
 MultipleSelectFilterForm.propTypes = {
+  comparisonValue: PropTypes.array,
   filterOption: PropTypes.instanceOf(FilterOption),
   onAddFilter: PropTypes.func.isRequired,
 };

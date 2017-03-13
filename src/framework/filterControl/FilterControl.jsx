@@ -8,9 +8,9 @@ import Filter from '../services/filter/Filter';
 import FilterDropdown from './filterDropdown/FilterDropdown.jsx';
 import FilterDropdownButton from './filterDropdown/FilterDropdownButton.jsx';
 import FilterItem from './FilterItem.jsx';
-import FilterForm from './forms/FilterForm.jsx';
 import FilterOptionList
   from './filterDropdown/filterOptions/FilterOptionList.jsx';
+import NewFilterFormDropdown from './forms/NewFilterFormDropdown.jsx';
 
 export default class FilterControl extends Component {
 
@@ -19,14 +19,14 @@ export default class FilterControl extends Component {
 
     this.state = {
       isDropdownOpen: false,
-      selectedFilterOption: null,
+      openedFilterOption: null,
     };
 
+    this.onAddButtonClick = this.onAddButtonClick.bind(this);
     this.onAddFilter = this.onAddFilter.bind(this);
-    this.onCancelFilter = this.onCancelFilter.bind(this);
+    this.onBackButtonClick = this.onBackButtonClick.bind(this);
     this.onDropdownClose = this.onDropdownClose.bind(this);
     this.onSelectFilterOption = this.onSelectFilterOption.bind(this);
-    this.onToggleClick = this.onToggleClick.bind(this);
   }
 
   onAddFilter(filter) {
@@ -34,99 +34,78 @@ export default class FilterControl extends Component {
 
     this.setState({
       isDropdownOpen: false,
-      selectedFilterOption: null,
+      openedFilterOption: null,
     });
   }
 
-  onCancelFilter() {
+  onBackButtonClick() {
     this.setState({
-      isDropdownOpen: true,
-      selectedFilterOption: null,
+      openedFilterOption: null,
     });
   }
 
   onDropdownClose() {
     this.setState({
       isDropdownOpen: false,
-      selectedFilterOption: null,
+      openedFilterOption: null,
     });
   }
 
-  onSelectFilterOption(filter) {
+  onSelectFilterOption(filterOption) {
+    this.setState({
+      openedFilterOption: filterOption,
+    });
+  }
+
+  onAddButtonClick() {
     this.setState({
       isDropdownOpen: true,
-      selectedFilterOption: filter,
-    });
-  }
-
-  onToggleClick() {
-    this.setState({
-      isDropdownOpen: !this.state.isDropdownOpen,
-      selectedFilterOption: null,
+      openedFilterOption: null,
     });
   }
 
   renderDropdownContent() {
-    // If we don't have a selected filter yet, then we're in the process
-    // of selecting one.
-    if (!this.state.selectedFilterOption) {
-      return (
-        <div>
-          <div className="filterDropdown__header">
-            <div className="filterDropdown__header__title">
-              Add a Filter
-            </div>
-            <span
-              className="filterDropdown__header__closeButton"
-              onClick={this.onDropdownClose}
-            />
-          </div>
-          <FilterOptionList
-            filterOptions={this.props.filterOptions}
-            onSelectFilterOption={this.onSelectFilterOption}
-          />
-        </div>
-      );
-    }
-
-    // If we have a selected filter, then we can create a filter matcher
-    // from it.
     return (
       <div>
         <div className="filterDropdown__header">
-          <span
-            className="filterDropdown__header__backButton"
-            onClick={this.onCancelFilter}
-          />
           <div className="filterDropdown__header__title">
-            {this.state.selectedFilterOption.name}
+            Add a Filter
           </div>
+          <span
+            className="filterDropdown__header__closeButton"
+            onClick={this.onDropdownClose}
+          />
         </div>
-        <FilterForm
-          filterOption={this.state.selectedFilterOption}
-          onAddFilter={this.onAddFilter}
+        <FilterOptionList
+          filterOptions={this.props.filterOptions}
+          onSelectFilterOption={this.onSelectFilterOption}
         />
       </div>
     );
   }
 
   renderFilterItems() {
-    const filterItems = this.props.selectedFilters.map((filter, index) => {
-      const onRemoveSelectedFilter =
-        this.props.onRemoveSelectedFilter.bind(null, filter);
-
-      return (
+    const filterItems = this.props.selectedFilters.map(filter => (
+      (
         <FilterItem
-          key={index}
           filter={filter}
-          onRemoveSelectedFilter={onRemoveSelectedFilter}
+          key={filter.filterOption.name}
+          onRemoveSelectedFilter={this.props.onRemoveSelectedFilter}
+          onReplaceFilter={this.props.onReplaceFilter}
         />
-      );
-    });
+      )
+    ));
 
     return (
       <div className="filterItemList">
         {filterItems}
+        {this.state.openedFilterOption !== null &&
+          <NewFilterFormDropdown
+            filterOption={this.state.openedFilterOption}
+            onAddFilter={this.onAddFilter}
+            onBackButtonClick={this.onBackButtonClick}
+          />
+        }
       </div>
     );
   }
@@ -147,10 +126,14 @@ export default class FilterControl extends Component {
       addButton = (
         <div className="filterDropdownContainer">
           <FilterDropdownButton
-            onClick={this.onToggleClick}
+            onClick={this.onAddButtonClick}
             isOpen={this.state.isDropdownOpen}
           />
-          {dropdown}
+          {this.state.isDropdownOpen && !this.state.openedFilterOption &&
+            <FilterDropdown>
+              {this.renderDropdownContent()}
+            </FilterDropdown>
+          }
         </div>
       );
     }
@@ -169,5 +152,6 @@ FilterControl.propTypes = {
   filterOptions: FilterOptionList.propTypes.filterOptions,
   onAddFilter: PropTypes.func.isRequired,
   onRemoveSelectedFilter: FilterItem.propTypes.onRemoveSelectedFilter,
+  onReplaceFilter: PropTypes.func.isRequired,
   selectedFilters: PropTypes.arrayOf(PropTypes.instanceOf(Filter)).isRequired,
 };

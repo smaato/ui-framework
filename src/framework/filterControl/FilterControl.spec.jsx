@@ -1,6 +1,7 @@
 
 import { TestCaseFactory } from 'react-test-kit';
 import FilterControl from './FilterControl.jsx';
+
 import {
   Filter,
   FilterOption,
@@ -9,32 +10,28 @@ import {
 describe('FilterControl', () => {
   describe('Props', () => {
     describe('onRemoveSelectedFilter', () => {
-      it(
-        'is passed to FilterItem and called with a filter when a remove ' +
-        'button is clicked',
-        () => {
-          const props = {
-            filterOptions: [],
-            onAddFilter: () => undefined,
-            onRemoveSelectedFilter: jasmine.createSpy(
-              'onRemoveSelectedFilter'
-            ),
-            selectedFilters: [
-              new Filter({}),
-            ],
-          };
+      const filter = new Filter(new FilterOption({
+        name: 'filter option name',
+      }), undefined);
 
-          const testCase = TestCaseFactory.create(FilterControl, props);
+      it('is passed to FilterItem', () => {
+        const props = {
+          filterOptions: [],
+          onAddFilter: () => undefined,
+          onRemoveSelectedFilter: jasmine.createSpy(
+            'onRemoveSelectedFilter'
+          ),
+          onReplaceFilter: () => undefined,
+          selectedFilters: [filter],
+        };
 
-          const removeButton = testCase.first(
-            '.filterItem__removeButton'
-          );
+        const testCase = TestCaseFactory.create(FilterControl, props);
+        expect(props.onRemoveSelectedFilter).not.toHaveBeenCalled();
 
-          expect(props.onRemoveSelectedFilter).not.toHaveBeenCalled();
-          testCase.trigger('click', removeButton);
-          expect(props.onRemoveSelectedFilter).toHaveBeenCalled();
-        }
-      );
+        const removeButton = testCase.first('.filterItem__removeButton');
+        testCase.trigger('click', removeButton);
+        expect(props.onRemoveSelectedFilter).toHaveBeenCalled();
+      });
     });
 
     describe('selectedFilters', () => {
@@ -43,12 +40,13 @@ describe('FilterControl', () => {
           filterOptions: [],
           onAddFilter: () => undefined,
           onRemoveSelectedFilter: () => undefined,
-          selectedFilters: [
-            new Filter({}),
-          ],
+          onReplaceFilter: () => undefined,
+          selectedFilters: [],
         };
 
-        const iterationSpy = spyOn(props.selectedFilters, 'map');
+        const iterationSpy = spyOn(
+          props.selectedFilters, 'map'
+        ).and.callThrough();
 
         expect(iterationSpy).not.toHaveBeenCalled();
         TestCaseFactory.create(FilterControl, props);
@@ -63,7 +61,8 @@ describe('FilterControl', () => {
         filterOptions: [],
         onAddFilter: () => undefined,
         onRemoveSelectedFilter: () => undefined,
-        selectedFilters: [new Filter({})],
+        onReplaceFilter: () => undefined,
+        selectedFilters: [],
       };
 
       const filterControl = TestCaseFactory.create(FilterControl, props);
@@ -73,9 +72,14 @@ describe('FilterControl', () => {
     });
 
     it('is shown if filterOptions is not empty', () => {
+      const filterOption = new FilterOption({
+        name: 'filter option name',
+      });
+
       const props = {
-        filterOptions: [new FilterOption({})],
+        filterOptions: [filterOption],
         onAddFilter: () => undefined,
+        onReplaceFilter: () => undefined,
         onRemoveSelectedFilter: () => undefined,
         selectedFilters: [],
       };

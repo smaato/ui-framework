@@ -77,6 +77,7 @@ export default class GridExample extends Component {
     this.onAddFilter = this.onAddFilter.bind(this);
     this.onClickRow = this.onClickRow.bind(this);
     this.onRemoveSelectedFilter = this.onRemoveSelectedFilter.bind(this);
+    this.onReplaceFilter = this.onReplaceFilter.bind(this);
     this.onResize = this.onResize.bind(this);
     this.onScroll = this.onScroll.bind(this);
     this.onSearch = this.onSearch.bind(this);
@@ -541,6 +542,22 @@ export default class GridExample extends Component {
     });
   }
 
+  onReplaceFilter(oldFilter, filter) {
+    const selectedFilters = this.state.selectedFilters.slice();
+    selectedFilters[selectedFilters.indexOf(oldFilter)] = filter;
+
+    const selectedFilterOptions = selectedFilters.map(selectedFilter => (
+      selectedFilter.filterOption
+    ));
+    const filterOptions = GridExampleFilterOptions.filter(filterOption => (
+      selectedFilterOptions.indexOf(filterOption) === -1
+    ));
+    this.setState({
+      filterOptions,
+      selectedFilters,
+    });
+  }
+
   getBodyRows() {
     function filterRows(rows, filters) {
       return new FilterableItems(rows).applyFilters(filters);
@@ -768,6 +785,7 @@ export default class GridExample extends Component {
           filterOptions={this.state.filterOptions}
           onAddFilter={this.onAddFilter}
           onRemoveSelectedFilter={this.onRemoveSelectedFilter}
+          onReplaceFilter={this.onReplaceFilter}
           selectedFilters={this.state.selectedFilters}
         />
         <SearchBox onSearch={this.onSearch} />

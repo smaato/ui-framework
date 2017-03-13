@@ -2,44 +2,29 @@
 import { TestCaseFactory } from 'react-test-kit';
 import FilterItem from './FilterItem.jsx';
 import {
-  Filter,
   FilterOption,
 } from '../services';
+import Filter from '../services/filter/Filter';
 
 describe('FitlerItem', () => {
+  const filterOption = new FilterOption({
+    comparisonType: 'comparison type',
+    name: 'filter name',
+  });
+  const filter = new Filter(filterOption);
+
   describe('render', () => {
-    const filter = new Filter(
-      new FilterOption({
-        comparisonType: 'comparison type',
-        name: 'filter name',
-      }),
-      'comparison value'
-    );
     const props = {
       filter,
       onRemoveSelectedFilter: () => undefined,
+      onReplaceFilter: () => undefined,
     };
 
     it('shows filter name', () => {
       const testCase = TestCaseFactory.create(FilterItem, props);
-
       expect(
         testCase.first('.filterItem__name').textContent
-      ).toContain(filter.filterOption.name);
-    });
-
-    it('shows humanized comparison value', () => {
-      const humanizeComparisonValueSpy = spyOn(
-        filter, 'humanizeComparisonValue'
-      ).and.returnValue('humanized comparison value');
-
-      expect(humanizeComparisonValueSpy).not.toHaveBeenCalled();
-      const testCase = TestCaseFactory.create(FilterItem, props);
-      expect(humanizeComparisonValueSpy).toHaveBeenCalled();
-
-      expect(
-        testCase.first('.filterItem__label').textContent
-      ).toContain('humanized comparison value');
+      ).toContain(filterOption.name);
     });
   });
 
@@ -49,14 +34,12 @@ describe('FitlerItem', () => {
       'clicked',
       () => {
         const props = {
-          filter: new Filter({}),
-          onRemoveSelectedFilter: jasmine.createSpy(
-            'onRemoveSelectedFilter'
-          ),
+          filter,
+          onRemoveSelectedFilter: jasmine.createSpy('onRemoveSelectedFilter'),
+          onReplaceFilter: () => undefined,
         };
 
         const testCase = TestCaseFactory.create(FilterItem, props);
-
         const removeButton = testCase.first(
           '.filterItem__removeButton'
         );

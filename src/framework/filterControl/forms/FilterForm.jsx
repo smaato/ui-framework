@@ -33,6 +33,7 @@ export default class FilterForm extends Component {
 
     return (
       <FormClass
+        comparisonValue={this.props.comparisonValue}
         filterOption={this.props.filterOption}
         onAddFilter={this.props.onAddFilter}
       />
@@ -41,6 +42,9 @@ export default class FilterForm extends Component {
 }
 
 FilterForm.propTypes = {
+  comparisonValue: PropTypes.oneOfType([
+    PropTypes.string, PropTypes.number, React.PropTypes.array,
+  ]),
   filterOption: PropTypes.instanceOf(FilterOption),
   onAddFilter: PropTypes.func.isRequired,
 };
