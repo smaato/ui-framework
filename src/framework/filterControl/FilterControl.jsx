@@ -4,14 +4,14 @@ import React, {
   PropTypes,
 } from 'react';
 
+import CreateFilterFormDropdown
+  from './filterDropdown/CreateFilterFormDropdown.jsx';
 import Filter from '../services/filter/Filter';
 import FilterDropdown from './filterDropdown/FilterDropdown.jsx';
 import FilterDropdownButton from './filterDropdown/FilterDropdownButton.jsx';
 import FilterItem from './FilterItem.jsx';
 import FilterOptionList
   from './filterDropdown/filterOptions/FilterOptionList.jsx';
-import CreateFilterFormDropdown
-  from './filterDropdown/CreateFilterFormDropdown.jsx';
 
 export default class FilterControl extends Component {
 
@@ -20,7 +20,7 @@ export default class FilterControl extends Component {
 
     this.state = {
       isDropdownOpen: false,
-      openedFilterOption: null,
+      selectedFilterOption: null,
     };
 
     this.onAddButtonClick = this.onAddButtonClick.bind(this);
@@ -35,33 +35,33 @@ export default class FilterControl extends Component {
 
     this.setState({
       isDropdownOpen: false,
-      openedFilterOption: null,
+      selectedFilterOption: null,
     });
   }
 
   onBackButtonClick() {
     this.setState({
-      openedFilterOption: null,
+      selectedFilterOption: null,
     });
   }
 
   onDropdownClose() {
     this.setState({
       isDropdownOpen: false,
-      openedFilterOption: null,
+      selectedFilterOption: null,
     });
   }
 
   onSelectFilterOption(filterOption) {
     this.setState({
-      openedFilterOption: filterOption,
+      selectedFilterOption: filterOption,
     });
   }
 
   onAddButtonClick() {
     this.setState({
       isDropdownOpen: true,
-      openedFilterOption: null,
+      selectedFilterOption: null,
     });
   }
 
@@ -100,9 +100,9 @@ export default class FilterControl extends Component {
     return (
       <div className="filterItemList">
         {filterItems}
-        {this.state.openedFilterOption !== null &&
+        {this.state.selectedFilterOption !== null &&
           <CreateFilterFormDropdown
-            filterOption={this.state.openedFilterOption}
+            filterOption={this.state.selectedFilterOption}
             onAddFilter={this.onAddFilter}
             onBackButtonClick={this.onBackButtonClick}
           />
@@ -120,7 +120,7 @@ export default class FilterControl extends Component {
             onClick={this.onAddButtonClick}
             isOpen={this.state.isDropdownOpen}
           />
-          {this.state.isDropdownOpen && !this.state.openedFilterOption &&
+          {this.state.isDropdownOpen && !this.state.selectedFilterOption &&
             <FilterDropdown>
               {this.renderDropdownContent()}
             </FilterDropdown>

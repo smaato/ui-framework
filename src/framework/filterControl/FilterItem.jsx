@@ -21,7 +21,7 @@ export default class FilterItem extends Component {
     };
     this.onCancelEditing = this.onCancelEditing.bind(this);
     this.onEditFilter = this.onEditFilter.bind(this);
-    this.onFinishEditing = this.onFinishEditing.bind(this);
+    this.onUpdateFilter = this.onUpdateFilter.bind(this);
     this.onRemoveSelectedFilter = this.onRemoveSelectedFilter.bind(this);
   }
 
@@ -41,7 +41,7 @@ export default class FilterItem extends Component {
     this.props.onRemoveSelectedFilter(this.state.filter);
   }
 
-  onFinishEditing(oldFilter, filter) {
+  onUpdateFilter(oldFilter, filter) {
     this.props.onReplaceFilter(oldFilter, filter);
     this.setState({
       filter,
@@ -50,13 +50,13 @@ export default class FilterItem extends Component {
   }
 
   renderFilterForm() {
-    const onFinishEditing = filter =>
-      this.onFinishEditing(this.state.filter, filter);
+    const onUpdateFilter = filter =>
+      this.onUpdateFilter(this.state.filter, filter);
     return (
       <FilterForm
         filterOption={this.state.filter.filterOption}
         comparisonValue={this.state.filter.comparisonValue}
-        onAddFilter={onFinishEditing}
+        onAddFilter={onUpdateFilter}
       />
     );
   }
