@@ -6,6 +6,8 @@
   .filterItem {
     @include filterButton;
 
+    cursor: pointer;
+
     &:hover {
       .filterItem__removeButtonContainer {
         box-shadow: -5px 0 15px 5px $addedFilter_backgroundColor;

@@ -87,7 +87,7 @@ export default class FilterItem extends Component {
 
     return (
       <div className="filterItemContainer">
-        <div className="filterItem">
+        <div className="filterItem button">
           <span
             className="filterItem__label"
             onClick={this.onEditFilter}
