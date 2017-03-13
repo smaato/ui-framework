@@ -10,7 +10,8 @@ import FilterDropdownButton from './filterDropdown/FilterDropdownButton.jsx';
 import FilterItem from './FilterItem.jsx';
 import FilterOptionList
   from './filterDropdown/filterOptions/FilterOptionList.jsx';
-import NewFilterFormDropdown from './forms/NewFilterFormDropdown.jsx';
+import CreateFilterFormDropdown
+  from './filterDropdown/CreateFilterFormDropdown.jsx';
 
 export default class FilterControl extends Component {
 
@@ -100,7 +101,7 @@ export default class FilterControl extends Component {
       <div className="filterItemList">
         {filterItems}
         {this.state.openedFilterOption !== null &&
-          <NewFilterFormDropdown
+          <CreateFilterFormDropdown
             filterOption={this.state.openedFilterOption}
             onAddFilter={this.onAddFilter}
             onBackButtonClick={this.onBackButtonClick}
