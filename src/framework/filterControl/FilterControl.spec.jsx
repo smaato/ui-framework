@@ -1,11 +1,12 @@
 
 import { TestCaseFactory } from 'react-test-kit';
-import FilterControl from './FilterControl.jsx';
 
 import {
   Filter,
   FilterOption,
 } from '../services';
+
+import FilterControl from './FilterControl.jsx';
 
 describe('FilterControl', () => {
   describe('Props', () => {

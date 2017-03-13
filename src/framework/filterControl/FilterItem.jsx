@@ -86,7 +86,7 @@ export default class FilterItem extends Component {
       `${filterName}: ${this.state.filter.humanizeComparisonValue()}`;
 
     return (
-      <div className=" filterItemContainer">
+      <div className="filterItemContainer">
         <div className="filterItem">
           <span
             className="filterItem__label"

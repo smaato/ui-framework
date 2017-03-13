@@ -72,6 +72,6 @@ SingleSelectFilterForm.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]),
-  filterOption: PropTypes.instanceOf(FilterOption),
+  filterOption: PropTypes.instanceOf(FilterOption).isRequired,
   onAddFilter: PropTypes.func.isRequired,
 };
