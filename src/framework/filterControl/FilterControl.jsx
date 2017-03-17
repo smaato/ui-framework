@@ -25,8 +25,17 @@ export default class FilterControl extends Component {
     this.onAddButtonClick = this.onAddButtonClick.bind(this);
     this.onAddFilter = this.onAddFilter.bind(this);
     this.onBackButtonClick = this.onBackButtonClick.bind(this);
+    this.onClickAnywhere = this.onClickAnywhere.bind(this);
     this.onDropdownClose = this.onDropdownClose.bind(this);
     this.onSelectFilterOption = this.onSelectFilterOption.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('click', this.onClickAnywhere);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.onClickAnywhere);
   }
 
   onAddFilter(filter) {
@@ -42,6 +51,24 @@ export default class FilterControl extends Component {
     this.setState({
       selectedFilterOption: null,
     });
+  }
+
+  onClickAnywhere(event) {
+    if (
+      this.state.isDropdownOpen &&
+      !this.dropdown.contains(event.target)
+    ) {
+      this.setState({
+        isDropdownOpen: false,
+      });
+    } else if (
+      this.state.selectedFilterOption !== null &&
+      !this.formDropdown.contains(event.target)
+    ) {
+      this.setState({
+        selectedFilterOption: null,
+      });
+    }
   }
 
   onDropdownClose() {
@@ -108,7 +135,9 @@ export default class FilterControl extends Component {
     return (
       <div className="filterItemList">
         {filterItems}
-        {formDropdown}
+        <div ref={(div) => { this.formDropdown = div; }}>
+          {formDropdown}
+        </div>
       </div>
     );
   }
@@ -126,7 +155,10 @@ export default class FilterControl extends Component {
       }
 
       addButton = (
-        <div className="filterDropdownContainer">
+        <div
+          className="filterDropdownContainer"
+          ref={(div) => { this.dropdown = div; }}
+        >
           <FilterDropdownButton
             isOpen={this.state.isDropdownOpen}
             onClick={this.onAddButtonClick}

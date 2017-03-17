@@ -21,15 +21,36 @@ export default class FilterItem extends Component {
     };
 
     this.onCancelEditing = this.onCancelEditing.bind(this);
+    this.onClickAnywhere = this.onClickAnywhere.bind(this);
     this.onEditFilter = this.onEditFilter.bind(this);
     this.onRemoveSelectedFilter = this.onRemoveSelectedFilter.bind(this);
     this.onUpdateFilter = this.onUpdateFilter.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('click', this.onClickAnywhere);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.onClickAnywhere);
   }
 
   onCancelEditing() {
     this.setState({
       isFormOpen: false,
     });
+  }
+
+  onClickAnywhere(event) {
+    if (
+      this.state.isFormOpen &&
+      !this.filterFormDropdown.contains(event.target) &&
+      !this.filterItemDiv.contains(event.target)
+    ) {
+      this.setState({
+        isFormOpen: false,
+      });
+    }
   }
 
   onEditFilter() {
@@ -68,7 +89,10 @@ export default class FilterItem extends Component {
     }
 
     return (
-      <div className="filterFormDropdown filterFormDropdown--editing">
+      <div
+        className="filterFormDropdown filterFormDropdown--editing"
+        ref={(div) => { this.filterFormDropdown = div; }}
+      >
         <div className="filterFormDropdown__form">
           <div className="filterFormDropdown__form__header">
             <div className="filterFormDropdown__form__header__title">
@@ -91,7 +115,10 @@ export default class FilterItem extends Component {
       `${filterName}: ${this.props.filter.humanizeComparisonValue()}`;
 
     return (
-      <div className="filterItem button">
+      <div
+        className="filterItem button"
+        ref={(div) => { this.filterItemDiv = div; }}
+      >
         <span
           className="filterItem__label"
           onClick={this.onEditFilter}
