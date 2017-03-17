@@ -87,26 +87,29 @@ export default class FilterControl extends Component {
 
   renderFilterItems() {
     const filterItems = this.props.selectedFilters.map(filter => (
-      (
-        <FilterItem
-          filter={filter}
-          key={filter.filterOption.name}
-          onRemoveSelectedFilter={this.props.onRemoveSelectedFilter}
-          onReplaceFilter={this.props.onReplaceFilter}
-        />
-      )
+      <FilterItem
+        filter={filter}
+        key={filter.filterOption.name}
+        onRemoveSelectedFilter={this.props.onRemoveSelectedFilter}
+        onReplaceFilter={this.props.onReplaceFilter}
+      />
     ));
+
+    let formDropdown;
+    if (this.state.selectedFilterOption !== null) {
+      formDropdown = (
+        <CreateFilterFormDropdown
+          filterOption={this.state.selectedFilterOption}
+          onAddFilter={this.onAddFilter}
+          onBackButtonClick={this.onBackButtonClick}
+        />
+      );
+    }
 
     return (
       <div className="filterItemList">
         {filterItems}
-        {this.state.selectedFilterOption !== null &&
-          <CreateFilterFormDropdown
-            filterOption={this.state.selectedFilterOption}
-            onAddFilter={this.onAddFilter}
-            onBackButtonClick={this.onBackButtonClick}
-          />
-        }
+        {formDropdown}
       </div>
     );
   }
@@ -114,17 +117,22 @@ export default class FilterControl extends Component {
   render() {
     let addButton;
     if (this.props.filterOptions.length > 0) {
+      let filterDropdown;
+      if (this.state.isDropdownOpen && !this.state.selectedFilterOption) {
+        filterDropdown = (
+          <FilterDropdown>
+            {this.renderDropdownContent()}
+          </FilterDropdown>
+        );
+      }
+
       addButton = (
         <div className="filterDropdownContainer">
           <FilterDropdownButton
-            onClick={this.onAddButtonClick}
             isOpen={this.state.isDropdownOpen}
+            onClick={this.onAddButtonClick}
           />
-          {this.state.isDropdownOpen && !this.state.selectedFilterOption &&
-            <FilterDropdown>
-              {this.renderDropdownContent()}
-            </FilterDropdown>
-          }
+          {filterDropdown}
         </div>
       );
     }

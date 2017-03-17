@@ -2,9 +2,9 @@
 import { TestCaseFactory } from 'react-test-kit';
 import {
   ComparisonTypes,
+  Filter,
   FilterOption,
 } from '../services';
-import Filter from '../services/filter/Filter';
 
 import FilterItem from './FilterItem.jsx';
 

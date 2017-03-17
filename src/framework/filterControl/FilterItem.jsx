@@ -12,28 +12,30 @@ import Entity from '../services/string/Entity';
 import FilterForm from './forms/FilterForm.jsx';
 
 export default class FilterItem extends Component {
+
   constructor(props) {
     super(props);
 
     this.state = {
       filter: this.props.filter,
-      isFormOpened: false,
+      isFormOpen: false,
     };
+
     this.onCancelEditing = this.onCancelEditing.bind(this);
     this.onEditFilter = this.onEditFilter.bind(this);
-    this.onUpdateFilter = this.onUpdateFilter.bind(this);
     this.onRemoveSelectedFilter = this.onRemoveSelectedFilter.bind(this);
+    this.onUpdateFilter = this.onUpdateFilter.bind(this);
   }
 
   onCancelEditing() {
     this.setState({
-      isFormOpened: false,
+      isFormOpen: false,
     });
   }
 
   onEditFilter() {
     this.setState({
-      isFormOpened: true,
+      isFormOpen: true,
     });
   }
 
@@ -45,23 +47,28 @@ export default class FilterItem extends Component {
     this.props.onReplaceFilter(oldFilter, filter);
     this.setState({
       filter,
-      isFormOpened: false,
+      isFormOpen: false,
     });
   }
 
   renderFilterForm() {
-    const onUpdateFilter = filter =>
-      this.onUpdateFilter(this.state.filter, filter);
+    const onUpdateFilter =
+      filter => this.onUpdateFilter(this.state.filter, filter);
+
     return (
       <FilterForm
-        filterOption={this.state.filter.filterOption}
         comparisonValue={this.state.filter.comparisonValue}
+        filterOption={this.state.filter.filterOption}
         onAddFilter={onUpdateFilter}
       />
     );
   }
 
   renderForm() {
+    if (!this.state.isFormOpen) {
+      return undefined;
+    }
+
     return (
       <div className="filterFormDropdown filterFormDropdown--editing">
         <div className="filterFormDropdown__form">
@@ -80,36 +87,40 @@ export default class FilterItem extends Component {
     );
   }
 
-  render() {
+  renderFilterItem() {
     const filterName = this.state.filter.filterOption.name;
     const title =
       `${filterName}: ${this.state.filter.humanizeComparisonValue()}`;
 
     return (
-      <div className="filterItemContainer">
-        <div className="filterItem button">
-          <span
-            className="filterItem__label"
-            onClick={this.onEditFilter}
-            title={title}
-          >
-            <strong className="filterItem__name">
-              {filterName}:
-            </strong>
-            {Entity.nbsp}
-            {this.state.filter.humanizeComparisonValue()}
-          </span>
+      <div className="filterItem button">
+        <span
+          className="filterItem__label"
+          onClick={this.onEditFilter}
+          title={title}
+        >
+          <strong className="filterItem__name">
+            {filterName}:
+          </strong>
+          {Entity.nbsp}
+          {this.state.filter.humanizeComparisonValue()}
+        </span>
 
-          <div className="filterItem__removeButtonContainer">
-            <span
-              className="filterItem__removeButton"
-              onClick={this.onRemoveSelectedFilter}
-            />
-          </div>
+        <div className="filterItem__removeButtonContainer">
+          <span
+            className="filterItem__removeButton"
+            onClick={this.onRemoveSelectedFilter}
+          />
         </div>
-        {this.state.isFormOpened &&
-          this.renderForm()
-        }
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <div className="filterItemContainer">
+        {this.renderFilterItem()}
+        {this.renderForm()}
       </div>
     );
   }
