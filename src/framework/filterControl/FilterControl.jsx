@@ -4,8 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-import CreateFilterFormDropdown
-  from './filterDropdown/CreateFilterFormDropdown.jsx';
+import FilterFormDropdown from './filterDropdown/FilterFormDropdown.jsx';
 import Filter from '../services/filter/Filter';
 import FilterDropdown from './filterDropdown/FilterDropdown.jsx';
 import FilterDropdownButton from './filterDropdown/FilterDropdownButton.jsx';
@@ -98,7 +97,7 @@ export default class FilterControl extends Component {
     let formDropdown;
     if (this.state.selectedFilterOption !== null) {
       formDropdown = (
-        <CreateFilterFormDropdown
+        <FilterFormDropdown
           filterOption={this.state.selectedFilterOption}
           onAddFilter={this.onAddFilter}
           onBackButtonClick={this.onBackButtonClick}

@@ -17,7 +17,6 @@ export default class FilterItem extends Component {
     super(props);
 
     this.state = {
-      filter: this.props.filter,
       isFormOpen: false,
     };
 
@@ -40,25 +39,24 @@ export default class FilterItem extends Component {
   }
 
   onRemoveSelectedFilter() {
-    this.props.onRemoveSelectedFilter(this.state.filter);
+    this.props.onRemoveSelectedFilter(this.props.filter);
   }
 
   onUpdateFilter(oldFilter, filter) {
     this.props.onReplaceFilter(oldFilter, filter);
     this.setState({
-      filter,
       isFormOpen: false,
     });
   }
 
   renderFilterForm() {
     const onUpdateFilter =
-      filter => this.onUpdateFilter(this.state.filter, filter);
+      filter => this.onUpdateFilter(this.props.filter, filter);
 
     return (
       <FilterForm
-        comparisonValue={this.state.filter.comparisonValue}
-        filterOption={this.state.filter.filterOption}
+        comparisonValue={this.props.filter.comparisonValue}
+        filterOption={this.props.filter.filterOption}
         onAddFilter={onUpdateFilter}
       />
     );
@@ -74,7 +72,7 @@ export default class FilterItem extends Component {
         <div className="filterFormDropdown__form">
           <div className="filterFormDropdown__form__header">
             <div className="filterFormDropdown__form__header__title">
-              {this.state.filter.filterOption.name}
+              {this.props.filter.filterOption.name}
             </div>
             <span
               className="filterFormDropdown__form__header__closeButton"
@@ -88,9 +86,9 @@ export default class FilterItem extends Component {
   }
 
   renderFilterItem() {
-    const filterName = this.state.filter.filterOption.name;
+    const filterName = this.props.filter.filterOption.name;
     const title =
-      `${filterName}: ${this.state.filter.humanizeComparisonValue()}`;
+      `${filterName}: ${this.props.filter.humanizeComparisonValue()}`;
 
     return (
       <div className="filterItem button">
@@ -103,7 +101,7 @@ export default class FilterItem extends Component {
             {filterName}:
           </strong>
           {Entity.nbsp}
-          {this.state.filter.humanizeComparisonValue()}
+          {this.props.filter.humanizeComparisonValue()}
         </span>
 
         <div className="filterItem__removeButtonContainer">

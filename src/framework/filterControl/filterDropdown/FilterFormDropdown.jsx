@@ -10,8 +10,7 @@ import {
 
 import FilterForm from '../forms/FilterForm.jsx';
 
-export default class FilterCreateFormDropdown extends Component {
-
+export default class FilterFormDropdown extends Component {
   renderFilterForm() {
     return (
       <FilterForm
@@ -41,7 +40,7 @@ export default class FilterCreateFormDropdown extends Component {
   }
 }
 
-FilterCreateFormDropdown.propTypes = {
+FilterFormDropdown.propTypes = {
   filterOption: PropTypes.instanceOf(FilterOption),
   onAddFilter: PropTypes.func.isRequired,
   onBackButtonClick: PropTypes.func.isRequired,

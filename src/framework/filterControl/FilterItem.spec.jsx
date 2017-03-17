@@ -56,7 +56,7 @@ describe('FitlerItem', () => {
   });
 
   describe('editing', () => {
-    it('calls onReplaceFitler and updates the filter', () => {
+    it('calls onReplaceFitler', () => {
       const props = {
         filter,
         onRemoveSelectedFilter: () => undefined,
@@ -79,10 +79,6 @@ describe('FitlerItem', () => {
         'click', testCase.first('.singleSelectionForm__buttons button')
       );
       expect(props.onReplaceFilter).toHaveBeenCalled();
-
-      expect(
-        testCase.element.state.filter.comparisonValue
-      ).toBe(newComparisonValue);
     });
 
     it('closes form when cancelled', () => {

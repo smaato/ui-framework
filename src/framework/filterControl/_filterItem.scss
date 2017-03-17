@@ -51,3 +51,7 @@
 .filterFormDropdown--editing {
   top: -26px;
 }
+
+  .filterFormDropdown--editing .filterFormDropdown__form {
+    width: calc(100% - 2px);
+  }
