@@ -1,0 +1,23 @@
+
+.alert {
+  color: $white;
+  padding: 12px;
+  text-align: center;
+  width: 100%;
+
+  &.alert--error {
+    background-color: $lightRed;
+  }
+
+  &.alert--info {
+    background-color: $blue;
+  }
+
+  &.alert--success {
+    background-color: $green;
+  }
+
+  &.alert--warning {
+    background-color: $yellow;
+  }
+}

@@ -6,6 +6,7 @@ import {
   AddOnDropdown,
   AddOnDropdownOption,
   AddOnLabel,
+  Alert,
   AppHeader,
   AppHeaderDivider,
   AppLogo,
@@ -112,6 +113,9 @@ const components = [{
 }, {
   name: 'AddOnLabel',
   component: AddOnLabel,
+}, {
+  name: 'Alert',
+  component: Alert,
 }, {
   name: 'AppHeader',
   component: AppHeader,
