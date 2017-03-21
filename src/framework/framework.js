@@ -2,6 +2,8 @@
 export * from './addOnControl/AddOnControl.jsx';
 export { default as AddOnControl } from './addOnControl/AddOnControl.jsx';
 
+export { default as Alert } from './alert/Alert.jsx';
+
 export * from './appHeader/AppHeader.jsx';
 export { default as AppHeader } from './appHeader/AppHeader.jsx';
 

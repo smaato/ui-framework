@@ -4,6 +4,7 @@ import { slugifyEach } from '../string/Slug';
 // Components
 import AddOnControlExample
   from '../../views/addOnControl/AddOnControlExample.jsx';
+import AlertExample from '../../views/alert/AlertExample.jsx';
 import AppHeaderExample from '../../views/appHeader/AppHeaderExample.jsx';
 import BodyExample from '../../views/body/BodyExample.jsx';
 import BoxExample from '../../views/box/BoxExample.jsx';
@@ -63,6 +64,10 @@ const components = [{
   name: 'AddOnControl',
   source: 'views/addOnControl/AddOnControlExample.jsx',
   component: AddOnControlExample,
+}, {
+  name: 'Alert',
+  source: 'views/alert/AlertExample.jsx',
+  component: AlertExample,
 }, {
   name: 'AppHeader',
   source: 'views/appHeader/AppHeaderExample.jsx',
