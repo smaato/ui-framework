@@ -11,6 +11,7 @@ import {
 import FilterForm from '../forms/FilterForm.jsx';
 
 export default class FilterFormDropdown extends Component {
+
   renderFilterForm() {
     return (
       <FilterForm

@@ -37,6 +37,7 @@ describe('FilterItem', () => {
         }
       );
     });
+
     describe('filter', () => {
       it('name is displayed', () => {
         const props = {
@@ -70,9 +71,8 @@ describe('FilterItem', () => {
     it('opens a form with the current state', () => {
       const testCase = TestCaseFactory.create(FilterItem, props);
       testCase.trigger('click', testCase.first('.filterItem__label'));
-      expect(
-        testCase.first(
-          `.singleSelectionForm__enteredValue[value=${filter.comparisonValue}]`
+      expect(testCase.first(
+        `.singleSelectionForm__enteredValue[value=${filter.comparisonValue}]`
       )).toBeDefined();
     });
   });
