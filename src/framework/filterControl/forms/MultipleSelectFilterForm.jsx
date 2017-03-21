@@ -19,7 +19,6 @@ export default class MultipleSelectFilterForm extends Component {
 
     this.onCheckBoxClick = this.onCheckBoxClick.bind(this);
     this.onClickAddButton = this.onClickAddButton.bind(this);
-    this.onKeyUp = this.onKeyUp.bind(this);
     this.options = this.props.filterOption.comparisonParameters.oneOfOptions;
 
     let selectedOptions;
@@ -54,11 +53,6 @@ export default class MultipleSelectFilterForm extends Component {
       selectedOptionNames
     );
     this.props.onAddFilter(filter);
-  }
-
-  onKeyUp(event) {
-    if (event.key !== 'Enter') return;
-    this.onClickAddButton();
   }
 
   render() {

@@ -9,7 +9,7 @@ import {
 
 import FilterForm from '../forms/FilterForm.jsx';
 
-fdescribe('FilterFormDropdown', () => {
+describe('FilterFormDropdown', () => {
   const defaultProps = {
     filterOption: new FilterOption({
       name: 'Test filter option name',
@@ -65,7 +65,8 @@ fdescribe('FilterFormDropdown', () => {
 
         expect(props.onBackButtonClick).not.toHaveBeenCalled();
         const backButton = testCase.first(
-          '.filterFormDropdown__form__header__backButton');
+          '.filterFormDropdown__form__header__backButton'
+        );
         testCase.trigger('click', backButton);
         expect(props.onBackButtonClick).toHaveBeenCalled();
       });

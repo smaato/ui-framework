@@ -4,10 +4,13 @@ import React, {
   PropTypes,
 } from 'react';
 
-import FilterFormDropdown from './filterDropdown/FilterFormDropdown.jsx';
-import Filter from '../services/filter/Filter';
+import {
+  Filter,
+} from '../services/';
+
 import FilterDropdown from './filterDropdown/FilterDropdown.jsx';
 import FilterDropdownButton from './filterDropdown/FilterDropdownButton.jsx';
+import FilterFormDropdown from './filterDropdown/FilterFormDropdown.jsx';
 import FilterItem from './FilterItem.jsx';
 import FilterOptionList
   from './filterDropdown/filterOptions/FilterOptionList.jsx';

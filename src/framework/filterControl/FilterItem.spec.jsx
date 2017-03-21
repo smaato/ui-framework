@@ -8,25 +8,48 @@ import {
 
 import FilterItem from './FilterItem.jsx';
 
-describe('FitlerItem', () => {
+describe('FilterItem', () => {
   const filterOption = new FilterOption({
     comparisonType: ComparisonTypes.CONTAINS,
     name: 'filter name',
   });
   const filter = new Filter(filterOption, 'comparison_value');
 
-  describe('render', () => {
-    const props = {
-      filter,
-      onRemoveSelectedFilter: () => undefined,
-      onReplaceFilter: () => undefined,
-    };
+  describe('props', () => {
+    describe('onRemoveSelectedFilter', () => {
+      it(
+        'is called and receives filter when a remove button is clicked',
+        () => {
+          const props = {
+            filter,
+            onRemoveSelectedFilter: jasmine.createSpy('onRemoveSelectedFilter'),
+            onReplaceFilter: () => undefined,
+          };
 
-    it('shows filter name', () => {
-      const testCase = TestCaseFactory.create(FilterItem, props);
-      expect(
-        testCase.first('.filterItem__name').textContent
-      ).toContain(filterOption.name);
+          const testCase = TestCaseFactory.create(FilterItem, props);
+          const removeButton = testCase.first(
+            '.filterItem__removeButton'
+          );
+
+          expect(props.onRemoveSelectedFilter).not.toHaveBeenCalled();
+          testCase.trigger('click', removeButton);
+          expect(props.onRemoveSelectedFilter).toHaveBeenCalled();
+        }
+      );
+    });
+    describe('filter', () => {
+      it('name is displayed', () => {
+        const props = {
+          filter,
+          onRemoveSelectedFilter: () => undefined,
+          onReplaceFilter: () => undefined,
+        };
+
+        const testCase = TestCaseFactory.create(FilterItem, props);
+        expect(
+          testCase.first('.filterItem__name').textContent
+        ).toContain(filterOption.name);
+      });
     });
   });
 
@@ -49,14 +72,13 @@ describe('FitlerItem', () => {
       testCase.trigger('click', testCase.first('.filterItem__label'));
       expect(
         testCase.first(
-          `.singleSelectionForm__enteredValue[value=${filter.comparisonValue}]
-        `)
-      ).toBeDefined();
+          `.singleSelectionForm__enteredValue[value=${filter.comparisonValue}]`
+      )).toBeDefined();
     });
   });
 
   describe('editing', () => {
-    it('calls onReplaceFitler', () => {
+    it('calls onReplaceFilter', () => {
       const props = {
         filter,
         onRemoveSelectedFilter: () => undefined,
@@ -96,28 +118,5 @@ describe('FitlerItem', () => {
       );
       expect(testCase.first('.filterFormDropdown')).not.toBeDefined();
     });
-  });
-
-  describe('onRemoveSelectedFilter', () => {
-    it(
-      'is called and receives filter when a remove button is ' +
-      'clicked',
-      () => {
-        const props = {
-          filter,
-          onRemoveSelectedFilter: jasmine.createSpy('onRemoveSelectedFilter'),
-          onReplaceFilter: () => undefined,
-        };
-
-        const testCase = TestCaseFactory.create(FilterItem, props);
-        const removeButton = testCase.first(
-          '.filterItem__removeButton'
-        );
-
-        expect(props.onRemoveSelectedFilter).not.toHaveBeenCalled();
-        testCase.trigger('click', removeButton);
-        expect(props.onRemoveSelectedFilter).toHaveBeenCalled();
-      }
-    );
   });
 });

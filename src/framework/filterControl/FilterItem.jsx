@@ -8,7 +8,6 @@ import {
   Filter,
 } from '../services';
 
-import Entity from '../services/string/Entity';
 import FilterForm from './forms/FilterForm.jsx';
 
 export default class FilterItem extends Component {
@@ -127,7 +126,7 @@ export default class FilterItem extends Component {
           <strong className="filterItem__name">
             {filterName}:
           </strong>
-          {Entity.nbsp}
+          {' '}
           {this.props.filter.humanizeComparisonValue()}
         </span>
 
