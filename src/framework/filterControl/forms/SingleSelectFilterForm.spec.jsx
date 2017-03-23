@@ -4,7 +4,7 @@ import SingleSelectFilterForm from './SingleSelectFilterForm.jsx';
 import {
   Filter,
   FilterOption,
-} from '../../../services';
+} from '../../services';
 
 describe('SingleSelectFilterForm', () => {
   describe('Props', () => {

@@ -7,7 +7,7 @@ import React, {
 import {
   Filter,
   FilterOption,
-} from '../../../services';
+} from '../../services';
 
 export default class SingleSelectFilterForm extends Component {
 
@@ -50,10 +50,11 @@ export default class SingleSelectFilterForm extends Component {
         </div>
         <div className="singleSelectionForm__filterValueWrapper">
           <input
+            className="singleSelectionForm__enteredValue"
+            defaultValue={this.props.comparisonValue}
+            onKeyUp={this.onKeyUp}
             ref="enteredValue"
             type="text"
-            className="singleSelectionForm__enteredValue"
-            onKeyUp={this.onKeyUp}
           />
         </div>
         <div className="singleSelectionForm__buttons">
@@ -67,6 +68,10 @@ export default class SingleSelectFilterForm extends Component {
 }
 
 SingleSelectFilterForm.propTypes = {
-  filterOption: PropTypes.instanceOf(FilterOption),
+  comparisonValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  filterOption: PropTypes.instanceOf(FilterOption).isRequired,
   onAddFilter: PropTypes.func.isRequired,
 };
