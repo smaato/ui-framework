@@ -4,10 +4,15 @@ import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
 import {
   Filter,
   FilterOption,
+  OneOfOption,
 } from '../../services';
 
-describe('MultipleSelectFilterForm', () => {
-  const options = ['Active', 'Archived', 'Stopped'];
+fdescribe('MultipleSelectFilterForm', () => {
+  const options = [
+    new OneOfOption('Active'),
+    new OneOfOption('Archived'),
+    new OneOfOption('Stopped'),
+  ];
   const filterOption = new FilterOption({
     name: 'testFilterOption',
     comparisonParameters: {
@@ -76,9 +81,34 @@ describe('MultipleSelectFilterForm', () => {
 
         options.forEach((option) => {
           expect(testCase.find(
-            `.filterForm--multiSelect__checkbox:contains(${option})`).length
-          ).toBe(1);
+            `.filterForm--multiSelect__checkbox:contains(${option.value})`
+          ).length).toBe(1);
         });
+      });
+    });
+
+    it('options has different value and label ', () => {
+      const optionsLabel = [
+        new OneOfOption('Active', 'Running'),
+        new OneOfOption('Stopped', 'Paused'),
+      ];
+      const filterOptionLabel = new FilterOption({
+        name: 'testFilterOptionLabel',
+        comparisonParameters: {
+          oneOfOptions: optionsLabel,
+        },
+      });
+      const propsLabel = {
+        filterOption: filterOptionLabel,
+        onAddFilter: () => undefined,
+      };
+
+      const testCase =
+        TestCaseFactory.create(MultipleSelectFilterForm, propsLabel);
+
+      optionsLabel.forEach((option) => {
+        expect(testCase.dom.textContent).not.toContain(option.value);
+        expect(testCase.dom.textContent).toContain(option.label);
       });
     });
 
@@ -137,8 +167,10 @@ describe('MultipleSelectFilterForm', () => {
       const filter = props.onAddFilter.calls.argsFor(0)[0];
 
       expect(filter.comparisonValue.length).toBe(2);
-      expect(filter.comparisonValue.indexOf('Active')).not.toBe(-1);
-      expect(filter.comparisonValue.indexOf('Archived')).not.toBe(-1);
+      expect(filter.comparisonValue.filter(e => e.name === 'Active').length
+        ).not.toBe(-1);
+      expect(filter.comparisonValue.filter(e => e.name === 'Archived').length
+        ).not.toBe(-1);
     });
   });
 });

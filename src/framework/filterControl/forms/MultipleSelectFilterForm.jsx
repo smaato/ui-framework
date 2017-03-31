@@ -66,7 +66,7 @@ export default class MultipleSelectFilterForm extends Component {
           onClick={() => this.onCheckBoxClick(index)}
           type="checkbox"
         />
-        {option}
+        {option.label}
       </div>
     ));
 

@@ -31,6 +31,10 @@ export {
   default as FilterableItems,
 } from './services/filter/FilterableItems';
 
+export {
+  default as OneOfOption,
+} from './services/filter/OneOfOption';
+
 // Grid
 
 export {
