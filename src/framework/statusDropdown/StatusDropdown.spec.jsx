@@ -33,7 +33,7 @@ describe('StatusDropdown', () => {
         const options = [
           StatusDropdown.OPTIONS.ACTIVATE,
           StatusDropdown.OPTIONS.DEACTIVATE,
-          StatusDropdown.OPTIONS.DELETE,
+          StatusDropdown.OPTIONS.ARCHIVE,
         ];
         const props = {
           onSelect: () => undefined,
@@ -48,7 +48,7 @@ describe('StatusDropdown', () => {
 
     describe('selectedOption', () => {
       it('is moved to first position in options when defined', () => {
-        const selectedOption = StatusDropdown.OPTIONS.DELETE;
+        const selectedOption = StatusDropdown.OPTIONS.ARCHIVE;
         const props = {
           onSelect: () => undefined,
           options: [
@@ -65,7 +65,7 @@ describe('StatusDropdown', () => {
       });
 
       it('isn\'t moved inside options when undefined', () => {
-        const selectedOption = StatusDropdown.OPTIONS.DELETE;
+        const selectedOption = StatusDropdown.OPTIONS.ARCHIVE;
         const props = {
           onSelect: () => undefined,
           options: [
@@ -86,7 +86,7 @@ describe('StatusDropdown', () => {
     const options = [
       StatusDropdown.OPTIONS.ACTIVATE,
       StatusDropdown.OPTIONS.DEACTIVATE,
-      StatusDropdown.OPTIONS.DELETE,
+      StatusDropdown.OPTIONS.ARCHIVE,
     ];
 
     it('ACTIVATE renders a green DropdownDot and green label', () => {

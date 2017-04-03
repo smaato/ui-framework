@@ -24,9 +24,9 @@ describe('StatusDropdownOptionIcon', () => {
         expect(testCase.dom.className).toContain('icon-pause-blue');
       });
 
-      it('DELETE applies the appropriate class', () => {
+      it('ARCHIVE applies the appropriate class', () => {
         const props = {
-          type: StatusDropdownOptionIcon.TYPE.DELETE,
+          type: StatusDropdownOptionIcon.TYPE.ARCHIVE,
         };
         const testCase =
           TestCaseFactory.create(StatusDropdownOptionIcon, props);

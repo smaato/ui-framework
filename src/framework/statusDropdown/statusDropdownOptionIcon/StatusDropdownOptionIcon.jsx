@@ -9,7 +9,7 @@ const StatusDropdownOptionIcon = (props) => {
   const classMap = {
     [StatusDropdownOptionIcon.TYPE.ACTIVATE]: 'icon-play-blue',
     [StatusDropdownOptionIcon.TYPE.DEACTIVATE]: 'icon-pause-blue',
-    [StatusDropdownOptionIcon.TYPE.DELETE]: 'icon-remove-circle-blue',
+    [StatusDropdownOptionIcon.TYPE.ARCHIVE]: 'icon-remove-circle-blue',
     [StatusDropdownOptionIcon.TYPE.SELECTED]: 'icon-check',
   };
 
@@ -26,7 +26,7 @@ const StatusDropdownOptionIcon = (props) => {
 StatusDropdownOptionIcon.TYPE = keyMirror({
   ACTIVATE: null,
   DEACTIVATE: null,
-  DELETE: null,
+  ARCHIVE: null,
   SELECTED: null,
 });
 
