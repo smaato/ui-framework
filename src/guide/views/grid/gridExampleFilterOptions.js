@@ -2,6 +2,7 @@
 import {
   FilterOption,
   ComparisonTypes,
+  OneOfOption,
 } from '../../../framework/services.js';
 
 export default [
@@ -25,7 +26,11 @@ export default [
     getValue: item => item.status,
     comparisonType: ComparisonTypes.ONE_OF,
     comparisonParameters: {
-      oneOfOptions: ['Active', 'Stopped', 'Archived'],
+      oneOfOptions: [
+        new OneOfOption('Active'),
+        new OneOfOption('Stopped'),
+        new OneOfOption('Archived'),
+      ],
     },
   }),
   new FilterOption({
