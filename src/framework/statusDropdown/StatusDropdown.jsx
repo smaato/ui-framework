@@ -29,9 +29,9 @@ export default class StatusDropdown extends Component {
 
     this.optionToIconTypeMap = {
       [StatusDropdown.OPTIONS.ACTIVATE]: StatusDropdownOptionIcon.TYPE.ACTIVATE,
+      [StatusDropdown.OPTIONS.ARCHIVE]: StatusDropdownOptionIcon.TYPE.ARCHIVE,
       [StatusDropdown.OPTIONS.DEACTIVATE]:
         StatusDropdownOptionIcon.TYPE.DEACTIVATE,
-      [StatusDropdown.OPTIONS.DELETE]: StatusDropdownOptionIcon.TYPE.DELETE,
     };
 
     this.optionToLabelClassesMap = {
@@ -41,18 +41,19 @@ export default class StatusDropdown extends Component {
 
     this.optionToNameMap = {
       [StatusDropdown.OPTIONS.ACTIVATE]: 'Start',
+      [StatusDropdown.OPTIONS.ARCHIVE]: 'Archive',
       [StatusDropdown.OPTIONS.DEACTIVATE]: 'Pause',
-      [StatusDropdown.OPTIONS.DELETE]: 'Delete',
     };
 
     this.optionToSelectedNameMap = {
       [StatusDropdown.OPTIONS.ACTIVATE]: 'Running',
+      [StatusDropdown.OPTIONS.ARCHIVE]: 'Archived',
       [StatusDropdown.OPTIONS.DEACTIVATE]: 'Paused',
-      [StatusDropdown.OPTIONS.DELETE]: 'Deleted',
     };
 
     this.optionToStatusMap = {
       [StatusDropdown.OPTIONS.ACTIVATE]: DropdownDot.COLOR.GREEN,
+      [StatusDropdown.OPTIONS.ARCHIVE]: DropdownDot.COLOR.GREY,
       [StatusDropdown.OPTIONS.DEACTIVATE]: DropdownDot.COLOR.RED,
     };
   }
@@ -147,8 +148,8 @@ export default class StatusDropdown extends Component {
 
 StatusDropdown.OPTIONS = keyMirror({
   ACTIVATE: null,
+  ARCHIVE: null,
   DEACTIVATE: null,
-  DELETE: null,
 });
 
 StatusDropdown.propTypes = {
