@@ -44,7 +44,7 @@
     "browserify-istanbul": "0.2.1",
     "del": "1.2.1",
     "envify": "3.4.0",
-    "eslint": "3.18.0",
+    "eslint": "3.19.0",
     "eslint-config-airbnb": "14.1.0",
     "eslint-config-smaato": "git@github.com:Smaato/eslint-config-smaato.git#v0.1.0",
     "eslint-plugin-import": "2.2.0",
