@@ -19,16 +19,17 @@ export default class MultipleSelectFilterForm extends Component {
 
     this.onCheckBoxClick = this.onCheckBoxClick.bind(this);
     this.onClickAddButton = this.onClickAddButton.bind(this);
-    this.options = this.props.filterOption.comparisonParameters.oneOfOptions;
+    this.options = props.filterOption.comparisonParameters.oneOfOptions;
 
     let selectedOptions;
-
     if (this.props.comparisonValue === undefined) {
       selectedOptions = (new Array(this.options.length)).fill(false);
     } else {
-      selectedOptions = this.options.map(option => (
-        this.props.comparisonValue.indexOf(option) !== -1
-      ));
+      selectedOptions = this.options.map(option =>
+        props.comparisonValue.reduce(
+          (previous, element) =>
+            element.value === option.value || previous, false)
+      );
     }
 
     this.state = {

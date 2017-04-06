@@ -35,9 +35,13 @@ import {
 } from '../../../framework/framework';
 
 import {
+  ComparisonTypes,
   Entity,
+  Filter,
   FilterableItems,
+  FilterOption,
   GridStencil,
+  OneOfOption,
   ScrollPosition,
   Sorter,
   SortState,
@@ -63,7 +67,26 @@ const defaultState = {
   areAllRowsSelected: false,
   // Filters
   filterOptions: GridExampleFilterOptions,
-  selectedFilters: [],
+  selectedFilters: [
+    new Filter(
+      new FilterOption({
+        name: 'Status',
+        getValue: item => item.status,
+        isRemovable: false,
+        comparisonType: ComparisonTypes.ONE_OF,
+        comparisonParameters: {
+          oneOfOptions: [
+            new OneOfOption('Active'),
+            new OneOfOption('Stopped'),
+            new OneOfOption('Archived'),
+          ],
+        },
+      }),
+      [
+        new OneOfOption('Active'),
+        new OneOfOption('Stopped'),
+      ]
+    )],
 };
 
 export default class GridExample extends Component {

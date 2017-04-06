@@ -2,6 +2,10 @@
 import Filter from './Filter';
 import ComparisonTypes from './ComparisonTypes';
 
+import {
+  OneOfOption,
+} from '../../services';
+
 describe('Filter', () => {
   describe('interface', () => {
     describe('constructor method', () => {
@@ -52,8 +56,9 @@ describe('Filter', () => {
         const filterOption = {
           comparisonType: ComparisonTypes.ONE_OF,
         };
-        const comparisonValue = [5, 6];
-        const filter = new Filter(filterOption, comparisonValue);
+        const normalizedComparisonValues =
+          [new OneOfOption(5), new OneOfOption(6)];
+        const filter = new Filter(filterOption, normalizedComparisonValues);
         expect(filter.humanizeComparisonValue()).toBe('5, 6');
       });
     });

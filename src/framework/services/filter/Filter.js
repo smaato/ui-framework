@@ -42,9 +42,9 @@ export default class Filter {
         return index !== -1;
       }
       case ComparisonTypes.ONE_OF: {
-        const comparisonTypeValue =
+        const normalizedComparisonValues =
           this.comparisonValue.map(option => option.value);
-        return comparisonTypeValue.indexOf(itemValue) !== -1;
+        return normalizedComparisonValues.indexOf(itemValue) !== -1;
       }
       default: {
         throw new Error(
