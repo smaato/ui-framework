@@ -26,8 +26,8 @@ export default class StatusDropdownExample extends Component {
 
     this.options = [
       StatusDropdown.OPTIONS.ACTIVATE,
-      StatusDropdown.OPTIONS.ARCHIVE,
       StatusDropdown.OPTIONS.DEACTIVATE,
+      StatusDropdown.OPTIONS.ARCHIVE,
     ];
   }
 
@@ -55,15 +55,15 @@ export default class StatusDropdownExample extends Component {
           />
         </Example>
 
-        <Example title="StatusDropdownOptionIcon DEACTIVATE">
-          <StatusDropdownOptionIcon
-            type={StatusDropdownOptionIcon.TYPE.DEACTIVATE}
-          />
-        </Example>
-
         <Example title="StatusDropdownOptionIcon ARCHIVE">
           <StatusDropdownOptionIcon
             type={StatusDropdownOptionIcon.TYPE.ARCHIVE}
+          />
+        </Example>
+
+        <Example title="StatusDropdownOptionIcon DEACTIVATE">
+          <StatusDropdownOptionIcon
+            type={StatusDropdownOptionIcon.TYPE.DEACTIVATE}
           />
         </Example>
 

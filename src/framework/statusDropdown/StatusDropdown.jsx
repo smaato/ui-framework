@@ -27,44 +27,46 @@ export default class StatusDropdown extends Component {
     this.labelProvider = this.labelProvider.bind(this);
     this.optionLabelProvider = this.optionLabelProvider.bind(this);
 
-    this.optionToIconTypeMap = {
-      [StatusDropdown.OPTIONS.ACTIVATE]: StatusDropdownOptionIcon.TYPE.ACTIVATE,
-      [StatusDropdown.OPTIONS.ARCHIVE]: StatusDropdownOptionIcon.TYPE.ARCHIVE,
-      [StatusDropdown.OPTIONS.DEACTIVATE]:
-        StatusDropdownOptionIcon.TYPE.DEACTIVATE,
-    };
-
-    this.optionToLabelClassesMap = {
-      [StatusDropdown.OPTIONS.ACTIVATE]: 'statusDropdownLabel--green',
-      [StatusDropdown.OPTIONS.DEACTIVATE]: 'statusDropdownLabel--red',
-    };
-
-    this.optionToNameMap = {
-      [StatusDropdown.OPTIONS.ACTIVATE]: 'Start',
-      [StatusDropdown.OPTIONS.ARCHIVE]: 'Archive',
-      [StatusDropdown.OPTIONS.DEACTIVATE]: 'Pause',
-    };
-
-    this.optionToSelectedNameMap = {
-      [StatusDropdown.OPTIONS.ACTIVATE]: 'Running',
-      [StatusDropdown.OPTIONS.ARCHIVE]: 'Archived',
-      [StatusDropdown.OPTIONS.DEACTIVATE]: 'Paused',
-    };
-
-    this.optionToStatusMap = {
-      [StatusDropdown.OPTIONS.ACTIVATE]: DropdownDot.COLOR.GREEN,
-      [StatusDropdown.OPTIONS.ARCHIVE]: DropdownDot.COLOR.GREY,
-      [StatusDropdown.OPTIONS.DEACTIVATE]: DropdownDot.COLOR.RED,
+    this.optionToMetaDataMap = {
+      [StatusDropdown.OPTIONS.ACTIVATE]: {
+        dropdownDotColor: DropdownDot.COLOR.GREEN,
+        iconType: StatusDropdownOptionIcon.TYPE.ACTIVATE,
+        labelClass: 'statusDropdownLabel--green',
+        name: {
+          active: 'Running',
+          inactive: 'Start',
+        },
+      },
+      [StatusDropdown.OPTIONS.ARCHIVE]: {
+        dropdownDotColor: DropdownDot.COLOR.GREY,
+        iconType: StatusDropdownOptionIcon.TYPE.ARCHIVE,
+        labelClass: 'statusDropdownLabel--grey',
+        name: {
+          active: 'Archived',
+          inactive: 'Archive',
+        },
+      },
+      [StatusDropdown.OPTIONS.DEACTIVATE]: {
+        dropdownDotColor: DropdownDot.COLOR.RED,
+        iconType: StatusDropdownOptionIcon.TYPE.DEACTIVATE,
+        labelClass: 'statusDropdownLabel--red',
+        name: {
+          active: 'Paused',
+          inactive: 'Pause',
+        },
+      },
     };
   }
 
   labelProvider(option) {
-    const color = this.optionToStatusMap[option];
+    const dropdownDotColor =
+      this.optionToMetaDataMap[option] &&
+      this.optionToMetaDataMap[option].dropdownDotColor;
 
     let name;
 
     if (option) {
-      name = this.optionToSelectedNameMap[option];
+      name = this.optionToMetaDataMap[option].name.active;
     } else {
       name = 'No Status';
     }
@@ -72,28 +74,28 @@ export default class StatusDropdown extends Component {
     return [
       <DropdownDot
         key={0}
-        color={color}
+        color={dropdownDotColor}
       />,
       <span key={1}>{name}</span>,
     ];
   }
 
   optionLabelProvider(option) {
-    const type = this.optionToIconTypeMap[option];
+    const type = this.optionToMetaDataMap[option].iconType;
 
     let name;
     let selectedIcon;
 
     if (option === this.props.selectedOption) {
-      name = this.optionToSelectedNameMap[option];
+      name = this.optionToMetaDataMap[option].name.active;
       selectedIcon = (
         <StatusDropdownOptionIcon
-          key={3}
+          key={2}
           type={StatusDropdownOptionIcon.TYPE.SELECTED}
         />
       );
     } else {
-      name = this.optionToNameMap[option];
+      name = this.optionToMetaDataMap[option].name.inactive;
     }
 
     return [
@@ -107,10 +109,12 @@ export default class StatusDropdown extends Component {
   }
 
   render() {
-    const labelClasses = classNames(
-      'statusDropdownLabel',
-      this.optionToLabelClassesMap[this.props.selectedOption]
-    );
+    const additionalLabelClass =
+      this.props.selectedOption &&
+      this.optionToMetaDataMap[this.props.selectedOption].labelClass;
+    const labelClasses = classNames('statusDropdownLabel', {
+      [additionalLabelClass]: additionalLabelClass,
+    });
 
     let sortedOptions;
 
