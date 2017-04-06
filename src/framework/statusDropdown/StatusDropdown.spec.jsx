@@ -32,8 +32,8 @@ describe('StatusDropdown', () => {
       it('is passed to BaseDropdown', () => {
         const options = [
           StatusDropdown.OPTIONS.ACTIVATE,
-          StatusDropdown.OPTIONS.DEACTIVATE,
           StatusDropdown.OPTIONS.ARCHIVE,
+          StatusDropdown.OPTIONS.DEACTIVATE,
         ];
         const props = {
           onSelect: () => undefined,
@@ -85,8 +85,8 @@ describe('StatusDropdown', () => {
   describe('Option mapping', () => {
     const options = [
       StatusDropdown.OPTIONS.ACTIVATE,
-      StatusDropdown.OPTIONS.DEACTIVATE,
       StatusDropdown.OPTIONS.ARCHIVE,
+      StatusDropdown.OPTIONS.DEACTIVATE,
     ];
 
     it('ACTIVATE renders a green DropdownDot and green label', () => {
