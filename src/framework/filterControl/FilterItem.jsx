@@ -157,6 +157,6 @@ export default class FilterItem extends Component {
 
 FilterItem.propTypes = {
   filter: PropTypes.instanceOf(Filter).isRequired,
-  onRemoveSelectedFilter: PropTypes.func.isRequired,
+  onRemoveSelectedFilter: PropTypes.func,
   onReplaceFilter: PropTypes.func.isRequired,
 };

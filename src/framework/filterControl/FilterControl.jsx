@@ -183,7 +183,7 @@ export default class FilterControl extends Component {
 
 FilterControl.propTypes = {
   filterOptions: FilterOptionList.propTypes.filterOptions,
-  onAddFilter: PropTypes.func.isRequired,
+  onAddFilter: PropTypes.func,
   onRemoveSelectedFilter: FilterItem.propTypes.onRemoveSelectedFilter,
   onReplaceFilter: PropTypes.func.isRequired,
   selectedFilters: PropTypes.arrayOf(PropTypes.instanceOf(Filter)).isRequired,
