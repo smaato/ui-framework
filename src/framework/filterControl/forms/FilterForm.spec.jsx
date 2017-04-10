@@ -6,8 +6,8 @@ import {
 } from '../../services';
 
 import FilterForm from './FilterForm.jsx';
+import InputFilterForm from './InputFilterForm.jsx';
 import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
-import SingleSelectFilterForm from './SingleSelectFilterForm.jsx';
 
 describe('FilterForm', () => {
   describe('render for', () => {
@@ -21,10 +21,10 @@ describe('FilterForm', () => {
 
       const testCase = TestCaseFactory.create(FilterForm, props);
 
-      expect(testCase.findComponents(SingleSelectFilterForm));
+      expect(testCase.findComponents(InputFilterForm));
 
       const checkerFormProps =
-        testCase.firstComponent(SingleSelectFilterForm).props;
+        testCase.firstComponent(InputFilterForm).props;
       expect(checkerFormProps.filterOption).toBe(props.filterOption);
       expect(checkerFormProps.onAddFilter).toBe(props.onAddFilter);
     });
@@ -39,10 +39,10 @@ describe('FilterForm', () => {
 
       const testCase = TestCaseFactory.create(FilterForm, props);
 
-      expect(testCase.findComponents(SingleSelectFilterForm));
+      expect(testCase.findComponents(InputFilterForm));
 
       const checkerFormProps =
-        testCase.firstComponent(SingleSelectFilterForm).props;
+        testCase.firstComponent(InputFilterForm).props;
       expect(checkerFormProps.filterOption).toBe(props.filterOption);
       expect(checkerFormProps.onAddFilter).toBe(props.onAddFilter);
     });
@@ -57,10 +57,10 @@ describe('FilterForm', () => {
 
       const testCase = TestCaseFactory.create(FilterForm, props);
 
-      expect(testCase.findComponents(SingleSelectFilterForm));
+      expect(testCase.findComponents(InputFilterForm));
 
       const checkerFormProps =
-        testCase.firstComponent(SingleSelectFilterForm).props;
+        testCase.firstComponent(InputFilterForm).props;
       expect(checkerFormProps.filterOption).toBe(props.filterOption);
       expect(checkerFormProps.onAddFilter).toBe(props.onAddFilter);
     });

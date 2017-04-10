@@ -9,8 +9,8 @@ import {
   FilterOption,
 } from '../../services';
 
+import InputFilterForm from './InputFilterForm.jsx';
 import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
-import SingleSelectFilterForm from './SingleSelectFilterForm.jsx';
 
 export default class FilterForm extends Component {
 
@@ -18,9 +18,9 @@ export default class FilterForm extends Component {
     super(props);
 
     const COMPARISON_TYPE_TO_FORM_MAP = {
-      [ComparisonTypes.CONTAINS]: SingleSelectFilterForm,
-      [ComparisonTypes.MAX]: SingleSelectFilterForm,
-      [ComparisonTypes.MIN]: SingleSelectFilterForm,
+      [ComparisonTypes.CONTAINS]: InputFilterForm,
+      [ComparisonTypes.MAX]: InputFilterForm,
+      [ComparisonTypes.MIN]: InputFilterForm,
       [ComparisonTypes.ONE_OF]: MultipleSelectFilterForm,
     };
 

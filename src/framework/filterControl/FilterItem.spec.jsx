@@ -72,7 +72,7 @@ describe('FilterItem', () => {
       const testCase = TestCaseFactory.create(FilterItem, props);
       testCase.trigger('click', testCase.first('.filterItem__label'));
       expect(testCase.first(
-        `.singleSelectionForm__enteredValue[value=${filter.comparisonValue}]`
+        `.inputFilterForm__enteredValue[value=${filter.comparisonValue}]`
       )).toBeDefined();
     });
   });
@@ -89,7 +89,7 @@ describe('FilterItem', () => {
       const testCase = TestCaseFactory.create(FilterItem, props);
       testCase.trigger('click', testCase.first('.filterItem__label'));
 
-      const input = testCase.first('.singleSelectionForm__enteredValue');
+      const input = testCase.first('.inputFilterForm__enteredValue');
       input.value = newComparisonValue;
       testCase.trigger('change', input);
       testCase.trigger('keyDown', input, {
@@ -98,7 +98,7 @@ describe('FilterItem', () => {
 
       expect(props.onReplaceFilter).not.toHaveBeenCalled();
       testCase.trigger(
-        'click', testCase.first('.singleSelectionForm__buttons button')
+        'click', testCase.first('.inputFilterForm__buttons button')
       );
       expect(props.onReplaceFilter).toHaveBeenCalled();
     });

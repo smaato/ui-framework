@@ -1,12 +1,12 @@
 
 import { TestCaseFactory } from 'react-test-kit';
-import SingleSelectFilterForm from './SingleSelectFilterForm.jsx';
+import InputFilterForm from './InputFilterForm.jsx';
 import {
   Filter,
   FilterOption,
 } from '../../services';
 
-describe('SingleSelectFilterForm', () => {
+describe('InputFilterForm', () => {
   describe('Props', () => {
     describe('filterOption', () => {
       it('name is rendered', () => {
@@ -19,9 +19,9 @@ describe('SingleSelectFilterForm', () => {
         };
 
         const testCase =
-          TestCaseFactory.create(SingleSelectFilterForm, props);
+          TestCaseFactory.create(InputFilterForm, props);
 
-        expect(testCase.first('.singleSelectionForm__filterName').textContent)
+        expect(testCase.first('.inputFilterForm__filterName').textContent)
           .toContain(props.filterOption.name);
       });
     });
@@ -42,7 +42,7 @@ describe('SingleSelectFilterForm', () => {
           };
 
           const testCase =
-            TestCaseFactory.create(SingleSelectFilterForm, props);
+            TestCaseFactory.create(InputFilterForm, props);
 
           expect(props.onAddFilter).not.toHaveBeenCalled();
           clickAddButton(testCase);
@@ -61,7 +61,7 @@ describe('SingleSelectFilterForm', () => {
           };
 
           const testCase =
-            TestCaseFactory.create(SingleSelectFilterForm, props);
+            TestCaseFactory.create(InputFilterForm, props);
 
           expect(props.onAddFilter).not.toHaveBeenCalled();
           testCase.trigger('keyUp', testCase.first('input'), { key: 'Enter' });
@@ -80,7 +80,7 @@ describe('SingleSelectFilterForm', () => {
           };
 
           const testCase =
-            TestCaseFactory.create(SingleSelectFilterForm, props);
+            TestCaseFactory.create(InputFilterForm, props);
 
           testCase.first('input').value = 'inputValue';
 
@@ -102,7 +102,7 @@ describe('SingleSelectFilterForm', () => {
           };
 
           const testCase =
-            TestCaseFactory.create(SingleSelectFilterForm, props);
+            TestCaseFactory.create(InputFilterForm, props);
 
           testCase.first('input').value = 'inputValue';
 
@@ -123,7 +123,7 @@ describe('SingleSelectFilterForm', () => {
           };
 
           const testCase =
-            TestCaseFactory.create(SingleSelectFilterForm, props);
+            TestCaseFactory.create(InputFilterForm, props);
 
           testCase.first('input').value = 'inputValue';
 
@@ -142,7 +142,7 @@ describe('SingleSelectFilterForm', () => {
         };
 
         const testCase =
-          TestCaseFactory.create(SingleSelectFilterForm, props);
+          TestCaseFactory.create(InputFilterForm, props);
 
         testCase.first('input').value = 'inputValue';
         clickAddButton(testCase);
