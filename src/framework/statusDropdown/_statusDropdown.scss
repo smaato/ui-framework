@@ -56,23 +56,32 @@
   }
 }
 
-.statusDropdownLabel--red {
-  color: $dropdownDotRedLine;
+  .statusDropdownLabel--green {
+    color: $dropdownDotGreenLine;
 
-  &:before,
-  &:after {
-    background-color: $dropdownDotRedLine;
+    &:before,
+    &:after {
+      background-color: $dropdownDotGreenLine;
+    }
   }
-}
 
-.statusDropdownLabel--green {
-  color: $dropdownDotGreenLine;
+  .statusDropdownLabel--grey {
+    color: $dropdownDotGreyLine;
 
-  &:before,
-  &:after {
-    background-color: $dropdownDotGreenLine;
+    &:before,
+    &:after {
+      background-color: $dropdownDotGreyLine;
+    }
   }
-}
+
+  .statusDropdownLabel--red {
+    color: $dropdownDotRedLine;
+
+    &:before,
+    &:after {
+      background-color: $dropdownDotRedLine;
+    }
+  }
 
 /**
  * 1. Move up 1px to share border with the label.

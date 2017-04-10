@@ -15,6 +15,15 @@ describe('StatusDropdownOptionIcon', () => {
         expect(testCase.dom.className).toContain('icon-play-blue');
       });
 
+      it('ARCHIVE applies the appropriate class', () => {
+        const props = {
+          type: StatusDropdownOptionIcon.TYPE.ARCHIVE,
+        };
+        const testCase =
+          TestCaseFactory.create(StatusDropdownOptionIcon, props);
+        expect(testCase.dom.className).toContain('icon-remove-circle-blue');
+      });
+
       it('DEACTIVATE applies the appropriate class', () => {
         const props = {
           type: StatusDropdownOptionIcon.TYPE.DEACTIVATE,
@@ -22,15 +31,6 @@ describe('StatusDropdownOptionIcon', () => {
         const testCase =
           TestCaseFactory.create(StatusDropdownOptionIcon, props);
         expect(testCase.dom.className).toContain('icon-pause-blue');
-      });
-
-      it('DELETE applies the appropriate class', () => {
-        const props = {
-          type: StatusDropdownOptionIcon.TYPE.DELETE,
-        };
-        const testCase =
-          TestCaseFactory.create(StatusDropdownOptionIcon, props);
-        expect(testCase.dom.className).toContain('icon-remove-circle-blue');
       });
 
       it('SELECTED applies the appropriate class', () => {
