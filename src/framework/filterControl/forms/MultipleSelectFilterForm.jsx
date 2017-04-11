@@ -26,9 +26,9 @@ export default class MultipleSelectFilterForm extends Component {
       selectedOptions = (new Array(this.options.length)).fill(false);
     } else {
       selectedOptions = this.options.map(option =>
-        props.comparisonValue.reduce(
-          (previous, element) =>
-            element.value === option.value || previous, false)
+        Boolean(props.comparisonValue.find(
+          element => element.value === option.value)
+        )
       );
     }
 

@@ -1,10 +1,7 @@
 
-import Filter from './Filter';
 import ComparisonTypes from './ComparisonTypes';
-
-import {
-  OneOfOption,
-} from '../../services';
+import Filter from './Filter';
+import OneOfOption from './OneOfOption';
 
 describe('Filter', () => {
   describe('interface', () => {
