@@ -51,6 +51,12 @@ import {
 import GridExampleFilterOptions from './gridExampleFilterOptions';
 import createRows from './createRows';
 
+const oneOptions = {
+  active: new OneOfOption('Active'),
+  stopped: new OneOfOption('Stopped'),
+  archived: new OneOfOption('Archived'),
+};
+
 const defaultState = {
   bodyRows: [],
   isEmptyStateDemonstration: false,
@@ -76,15 +82,15 @@ const defaultState = {
         comparisonType: ComparisonTypes.ONE_OF,
         comparisonParameters: {
           oneOfOptions: [
-            new OneOfOption('Active'),
-            new OneOfOption('Stopped'),
-            new OneOfOption('Archived'),
+            oneOptions.active,
+            oneOptions.stopped,
+            oneOptions.archived,
           ],
         },
       }),
       [
-        new OneOfOption('Active'),
-        new OneOfOption('Stopped'),
+        oneOptions.active,
+        oneOptions.stopped,
       ]
     )],
 };

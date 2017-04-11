@@ -19,6 +19,20 @@ describe('FilterOption', () => {
           expect(filter.isRemovable).toBe(true);
         }
       );
+      it('isRemovable is false', () => {
+        const config = {
+          isRemovable: false,
+        };
+        const filter = new FilterOption(config);
+        expect(filter.isRemovable).toBe(false);
+      });
+      it('isRemovable is true', () => {
+        const config = {
+          isRemovable: true,
+        };
+        const filter = new FilterOption(config);
+        expect(filter.isRemovable).toBe(true);
+      });
     });
   });
 });
