@@ -1,7 +1,7 @@
 
 import {
-  FilterOption,
   ComparisonTypes,
+  FilterOption,
 } from '../../../framework/services.js';
 
 export default [
@@ -19,14 +19,6 @@ export default [
     name: 'Name',
     getValue: item => item.name,
     comparisonType: ComparisonTypes.CONTAINS,
-  }),
-  new FilterOption({
-    name: 'Status',
-    getValue: item => item.status,
-    comparisonType: ComparisonTypes.ONE_OF,
-    comparisonParameters: {
-      oneOfOptions: ['Active', 'Stopped', 'Archived'],
-    },
   }),
   new FilterOption({
     name: 'Fuel',

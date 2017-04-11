@@ -4,10 +4,15 @@ import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
 import {
   Filter,
   FilterOption,
+  OneOfOption,
 } from '../../services';
 
 describe('MultipleSelectFilterForm', () => {
-  const options = ['Active', 'Archived', 'Stopped'];
+  const options = [
+    new OneOfOption('Active', 'Running'),
+    new OneOfOption('Stopped', 'Paused'),
+    new OneOfOption('Archived', 'Archive'),
+  ];
   const filterOption = new FilterOption({
     name: 'testFilterOption',
     comparisonParameters: {
@@ -76,8 +81,11 @@ describe('MultipleSelectFilterForm', () => {
 
         options.forEach((option) => {
           expect(testCase.find(
-            `.filterForm--multiSelect__checkbox:contains(${option})`).length
-          ).toBe(1);
+            `.filterForm--multiSelect__checkbox:contains(${option.value})`
+          ).length).toBe(0);
+          expect(testCase.find(
+            `.filterForm--multiSelect__checkbox:contains(${option.label})`
+          ).length).toBe(1);
         });
       });
     });
@@ -137,8 +145,11 @@ describe('MultipleSelectFilterForm', () => {
       const filter = props.onAddFilter.calls.argsFor(0)[0];
 
       expect(filter.comparisonValue.length).toBe(2);
-      expect(filter.comparisonValue.indexOf('Active')).not.toBe(-1);
-      expect(filter.comparisonValue.indexOf('Archived')).not.toBe(-1);
+      filter.comparisonValue.forEach((comparisonValueItem, index) => {
+        expect(
+          filter.comparisonValue[index]
+        ).toBe(filterOption.comparisonParameters.oneOfOptions[index]);
+      });
     });
   });
 });

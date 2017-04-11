@@ -6,6 +6,7 @@ export default class FilterOption {
     this.comparisonType = config.comparisonType;
     this.getValue = config.getValue;
     this.name = config.name;
+    this.isRemovable = config.isRemovable !== false;
   }
 
 }

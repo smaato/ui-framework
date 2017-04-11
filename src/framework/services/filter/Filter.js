@@ -10,7 +10,7 @@ export default class Filter {
 
   humanizeComparisonValue() {
     if (this.filterOption.comparisonType === ComparisonTypes.ONE_OF) {
-      return this.comparisonValue.join(', ');
+      return this.comparisonValue.map(option => option.label).join(', ');
     }
     return this.comparisonValue;
   }
@@ -42,7 +42,9 @@ export default class Filter {
         return index !== -1;
       }
       case ComparisonTypes.ONE_OF: {
-        return this.comparisonValue.indexOf(itemValue) !== -1;
+        const normalizedComparisonValues =
+          this.comparisonValue.map(option => option.value);
+        return normalizedComparisonValues.indexOf(itemValue) !== -1;
       }
       default: {
         throw new Error(

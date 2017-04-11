@@ -112,6 +112,17 @@ export default class FilterItem extends Component {
     const filterName = this.props.filter.filterOption.name;
     const title =
       `${filterName}: ${this.props.filter.humanizeComparisonValue()}`;
+    let closeButton;
+    if (this.props.filter.filterOption.isRemovable) {
+      closeButton = (
+        <div className="filterItem__removeButtonContainer">
+          <span
+            className="filterItem__removeButton"
+            onClick={this.onRemoveSelectedFilter}
+          />
+        </div>
+      );
+    }
 
     return (
       <div
@@ -129,13 +140,7 @@ export default class FilterItem extends Component {
           {' '}
           {this.props.filter.humanizeComparisonValue()}
         </span>
-
-        <div className="filterItem__removeButtonContainer">
-          <span
-            className="filterItem__removeButton"
-            onClick={this.onRemoveSelectedFilter}
-          />
-        </div>
+        {closeButton}
       </div>
     );
   }
@@ -152,6 +157,6 @@ export default class FilterItem extends Component {
 
 FilterItem.propTypes = {
   filter: PropTypes.instanceOf(Filter).isRequired,
-  onRemoveSelectedFilter: PropTypes.func.isRequired,
+  onRemoveSelectedFilter: PropTypes.func,
   onReplaceFilter: PropTypes.func.isRequired,
 };
