@@ -9,7 +9,9 @@ import {
   FilterOption,
 } from '../../services';
 
-export default class SingleSelectFilterForm extends Component {
+import PrimaryButton from '../../button/PrimaryButton.jsx';
+
+export default class InputFilterForm extends Component {
 
   constructor(props) {
     super(props);
@@ -44,30 +46,34 @@ export default class SingleSelectFilterForm extends Component {
 
   render() {
     return (
-      <div className="singleSelectionForm">
-        <div className="singleSelectionForm__filterName">
+      <div className="inputFilterForm">
+        <div className="inputFilterForm__filterName">
           {this.props.filterOption.name}
         </div>
-        <div className="singleSelectionForm__filterValueWrapper">
+        <div className="inputFilterForm__filterValueWrapper">
           <input
-            className="singleSelectionForm__enteredValue"
+            className="inputFilterForm__enteredValue"
             defaultValue={this.props.comparisonValue}
             onKeyUp={this.onKeyUp}
             ref="enteredValue"
             type="text"
           />
         </div>
-        <div className="singleSelectionForm__buttons">
-          <button onClick={this.onClickAddButton}>
-            + Add
-          </button>
+        <div className="inputFilterForm__buttons">
+          <div className="filterForm__buttons">
+            <PrimaryButton
+              onClick={this.onClickAddButton}
+            >
+              Update Results
+            </PrimaryButton>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-SingleSelectFilterForm.propTypes = {
+InputFilterForm.propTypes = {
   comparisonValue: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
