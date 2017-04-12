@@ -12,9 +12,14 @@ export {
   default as PanelProgress,
 } from './progress/PanelProgress.jsx';
 
-const Panel = props => {
+const Panel = (props) => {
   const classes = classNames('panel', {
+    'panel--compactWidth': props.isCompactWidth,
     'panel--fullWidth': props.isFullWidth,
+  });
+
+  const labelClasses = classNames('panel__titleLabel', {
+    'panel__titleLabel--uppercase': props.isTitleUppercase,
   });
 
   const contentClasses = classNames('panel__content', {
@@ -25,7 +30,7 @@ const Panel = props => {
   return (
     <div className={classes}>
       <div className="panel__title">
-        <div className="panel__titleLabel">
+        <div className={labelClasses}>
           {props.title}
         </div>
         <div className="panel__actions">
@@ -41,12 +46,14 @@ const Panel = props => {
 };
 
 Panel.propTypes = {
-  title: PropTypes.string,
-  children: PropTypes.any,
   actions: PropTypes.any,
+  children: PropTypes.any,
+  isCentered: PropTypes.bool,
+  isCompactWidth: PropTypes.bool,
   isFullWidth: PropTypes.bool,
   isPadded: PropTypes.bool,
-  isCentered: PropTypes.bool,
+  isTitleUppercase: PropTypes.bool,
+  title: PropTypes.string,
 };
 
 export default Panel;

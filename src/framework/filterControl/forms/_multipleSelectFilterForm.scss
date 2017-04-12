@@ -1,0 +1,14 @@
+
+.filterForm--multiSelect__checkbox {
+  padding: 6px;
+  white-space: nowrap;
+
+  &:hover {
+    background: $lightGrey;
+  }
+
+  .checkBox {
+    margin-top: -2px;
+    padding-right: 6px;
+  }
+}

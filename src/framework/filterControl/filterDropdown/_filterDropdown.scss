@@ -1,0 +1,79 @@
+
+.filterDropdownContainer {
+  position: relative;
+}
+
+  /**
+   * 1. Place on top of filterDropdown in z-space.
+   */
+  .filterDropdownButton {
+    @include filterButton;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative; /* 1 */
+
+    &.is-filter-dropdown-open {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom: 0;
+
+      &:after {
+        background: $addedFilter_backgroundColor;
+        content: '';
+        height: 1px;
+        left: 0;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        z-index: 2;
+      }
+    }
+  }
+
+    .filterDropdownButton__addButton {
+      @include plusIcon;
+    }
+
+  .filterDropdown {
+    background: white;
+    border-radius: $addedFilter_borderRadius;
+    border: 1px solid $addedFilter_borderColor;
+    color: #474b4e;
+    font-size: $addedFilter_fontSize;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
+
+    .filterList {
+      box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .filterDropdown__header {
+      background: $componentBackgroundColor;
+      border-bottom: 1px solid #d4d8db;
+      display: flex;
+      font-weight: 400;
+      justify-content: space-between;
+      min-width: 100px;
+      padding: 6px;
+      white-space: nowrap;
+    }
+
+      .filterDropdown__header__title {
+        width: 100%;
+      }
+
+      .filterDropdown__header__closeButton {
+        @include crossIcon($marginTop: 1px, $marginLeft: 5px);
+
+        height: 10px;
+        width: 10px;
+      }
+
+      .filterDropdown__header__backButton {
+        @include backIcon;
+
+        margin-right: 2px;
+        top: 2px;
+      }

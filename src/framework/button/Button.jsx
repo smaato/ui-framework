@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import keyMirror from 'keymirror';
 
 // Define stateless functional component.
-const Button = props => {
+const Button = (props) => {
   function onClick() {
     // onClick is optional, so exit early if it doesn't exist.
     if (!props.onClick) {
@@ -53,16 +53,17 @@ const Button = props => {
 
   const linkType = props.href ? 'a' : 'button';
 
-  return React.createElement(linkType, {
-    'data-id': props.dataId,
-    className: classes,
-    href: props.href,
-    onClick,
-    children: [
-      icon,
-      children,
-    ],
-  });
+  return React.createElement(
+    linkType,
+    {
+      'data-id': props.dataId,
+      className: classes,
+      href: props.href,
+      onClick,
+    },
+    icon,
+    children
+  );
 };
 
 Button.TYPE = keyMirror({

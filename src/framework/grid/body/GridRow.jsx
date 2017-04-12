@@ -6,16 +6,17 @@ import classNames from 'classnames';
 
 import GridBodyCell from './GridBodyCell.jsx';
 
-const GridRow = props => {
+const GridRow = (props) => {
   // Create cells.
-  const rowCells = props.rowCellPropsProviders
-  .map((cellPropsProvider, index) => (
-    <GridBodyCell
-      classBodyCell={props.classBodyCell}
-      innerCellProps={cellPropsProvider(props.data)}
-      key={index}
-    />
-  ));
+  const rowCells =
+    props.rowCellPropsProviders.map((cellPropsProvider, index) => (
+      <GridBodyCell
+        classBodyCell={props.classBodyCell}
+        innerCellProps={cellPropsProvider(props.data)}
+        key={index}
+      />
+    )
+  );
 
   const classes = classNames('gridRow', props.classBodyRow);
 
@@ -31,10 +32,10 @@ const GridRow = props => {
 
   return (
     <tr
-      data-id={props.dataId}
       className={classes}
-      style= {style}
+      data-id={props.dataId}
       onClick={onClick}
+      style={style}
     >
       {rowCells}
     </tr>
@@ -42,14 +43,13 @@ const GridRow = props => {
 };
 
 GridRow.propTypes = {
-  dataId: PropTypes.string,
+  classBodyCell: GridBodyCell.propTypes.classBodyCell, // eslint-disable-line react/no-unused-prop-types
+  classBodyRow: PropTypes.string,
   data: PropTypes.object.isRequired,
-  rowCellPropsProviders: PropTypes.array.isRequired,
+  dataId: PropTypes.string,
   height: PropTypes.number.isRequired,
   onClick: PropTypes.func,
-  // Classes
-  classBodyRow: PropTypes.string,
-  classBodyCell: GridBodyCell.propTypes.classBodyCell,
+  rowCellPropsProviders: PropTypes.array.isRequired,
 };
 
 export default GridRow;

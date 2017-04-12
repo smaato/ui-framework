@@ -6,6 +6,7 @@ import {
   AddOnDropdown,
   AddOnDropdownOption,
   AddOnLabel,
+  Alert,
   AppHeader,
   AppHeaderDivider,
   AppLogo,
@@ -29,7 +30,7 @@ import {
   Dropdown,
   DropdownOption,
   FieldMessage,
-  FiltersControl,
+  FilterControl,
   Form,
   FormFooter,
   FormPanel,
@@ -88,6 +89,7 @@ import {
   TextArea,
   TextInput,
   TitleBar,
+  Toggle,
   VerticalLayout,
   ViewHeader,
   ViewHeaderNav,
@@ -111,6 +113,9 @@ const components = [{
 }, {
   name: 'AddOnLabel',
   component: AddOnLabel,
+}, {
+  name: 'Alert',
+  component: Alert,
 }, {
   name: 'AppHeader',
   component: AppHeader,
@@ -181,8 +186,8 @@ const components = [{
   name: 'FieldMessage',
   component: FieldMessage,
 }, {
-  name: 'FiltersControl',
-  component: FiltersControl,
+  name: 'FilterControl',
+  component: FilterControl,
 }, {
   name: 'Form',
   component: Form,
@@ -358,6 +363,9 @@ const components = [{
   name: 'TitleBar',
   component: TitleBar,
 }, {
+  name: 'Toggle',
+  component: Toggle,
+}, {
   name: 'VerticalLayout',
   component: VerticalLayout,
 }, {
@@ -369,7 +377,7 @@ const components = [{
 }];
 
 describe('UI Framework components', () => {
-  for (let i = 0, length = components.length; i < length; i++) {
+  for (let i = 0, length = components.length; i < length; i += 1) {
     const component = components[i];
     describe(component.name, () => { // eslint-disable-line no-loop-func
       it('is exported', () => {

@@ -20,8 +20,8 @@ export {
 } from './services/filter/ComparisonTypes';
 
 export {
-  default as ConditionChecker,
-} from './services/filter/ConditionChecker';
+  default as Filter,
+} from './services/filter/Filter';
 
 export {
   default as FilterOption,
@@ -30,6 +30,10 @@ export {
 export {
   default as FilterableItems,
 } from './services/filter/FilterableItems';
+
+export {
+  default as OneOfOption,
+} from './services/filter/OneOfOption';
 
 // Grid
 

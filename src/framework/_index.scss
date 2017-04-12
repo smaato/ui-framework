@@ -10,6 +10,7 @@
 
 // Components
 @import 'addOnControl/index';
+@import 'alert/index';
 @import 'appHeader/index';
 @import 'body/index';
 @import 'box/index';
@@ -19,10 +20,9 @@
 @import 'chart/index';
 @import 'checkBox/index';
 @import 'columnLayout/index';
-@import 'dateRange/index';
 @import 'dropdown/index';
 @import 'fieldMessage/index';
-@import 'filtersControl/index';
+@import 'filterControl/index';
 @import 'form/index';
 @import 'grid/index';
 @import 'horizontalLine/index';
@@ -44,5 +44,6 @@
 @import 'textArea/index';
 @import 'textInput/index';
 @import 'titleBar/index';
+@import 'toggle/index';
 @import 'verticalLayout/index';
 @import 'viewHeader/index';

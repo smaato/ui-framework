@@ -4,6 +4,7 @@ import { slugifyEach } from '../string/Slug';
 // Components
 import AddOnControlExample
   from '../../views/addOnControl/AddOnControlExample.jsx';
+import AlertExample from '../../views/alert/AlertExample.jsx';
 import AppHeaderExample from '../../views/appHeader/AppHeaderExample.jsx';
 import BodyExample from '../../views/body/BodyExample.jsx';
 import BoxExample from '../../views/box/BoxExample.jsx';
@@ -49,6 +50,7 @@ import TextExample from '../../views/text/TextExample.jsx';
 import TextAreaExample from '../../views/textArea/TextAreaExample.jsx';
 import TextInputExample from '../../views/textInput/TextInputExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
+import ToggleExample from '../../views/toggle/ToggleExample.jsx';
 import VerticalLayoutExample
   from '../../views/verticalLayout/VerticalLayoutExample.jsx';
 import ViewHeaderExample from '../../views/viewHeader/ViewHeaderExample.jsx';
@@ -62,6 +64,10 @@ const components = [{
   name: 'AddOnControl',
   source: 'views/addOnControl/AddOnControlExample.jsx',
   component: AddOnControlExample,
+}, {
+  name: 'Alert',
+  source: 'views/alert/AlertExample.jsx',
+  component: AlertExample,
 }, {
   name: 'AppHeader',
   source: 'views/appHeader/AppHeaderExample.jsx',
@@ -194,6 +200,10 @@ const components = [{
   name: 'TitleBar',
   source: 'views/titleBar/TitleBarExample.jsx',
   component: TitleBarExample,
+}, {
+  name: 'Toggle',
+  source: 'views/toggle/ToggleExample.jsx',
+  component: ToggleExample,
 }, {
   name: 'VerticalLayout',
   source: 'views/verticalLayout/VerticalLayoutExample.jsx',

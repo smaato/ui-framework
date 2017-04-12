@@ -13,7 +13,7 @@ export {
   default as Heading,
 } from './Heading.jsx';
 
-const Text = props => {
+const Text = (props) => {
   const rhythmClassMap = {
     [Text.RHYTHM.XSMALL]: 'text--xSmallRhythm',
     [Text.RHYTHM.SMALL]: 'text--smallRhythm',

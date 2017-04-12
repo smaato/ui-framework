@@ -127,7 +127,7 @@ export default class MenuExample extends Component {
   renderMenuWithRecycledList() {
     const count = 1000;
     const menuItems = [];
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < count; i += 1) {
       menuItems.push(
         <MenuItem
           key={i}

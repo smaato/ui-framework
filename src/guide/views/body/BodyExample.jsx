@@ -1,6 +1,5 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
@@ -15,82 +14,80 @@ import {
   BodyPanelItem,
 } from '../../../framework/framework';
 
-export default class BodyExample extends Component {
+const BodyExample = props => (
+  <Page title={props.route.name}>
+    <Example>
+      <Body>
+        <BodyPanel>
+          <BodyPanelItem rhythm={BodyPanelItem.RHYTHM.LARGE}>
+            This Body component has a minimum height equal to that of
+            the viewport.
+          </BodyPanelItem>
 
-  constructor(props) {
-    super(props);
-  }
+          <BodyPanelItem rhythm={BodyPanelItem.RHYTHM.LARGE}>
+            These paragraphs are spaced apart by BodyPanelItem components.
+          </BodyPanelItem>
+        </BodyPanel>
+      </Body>
+    </Example>
 
-  render() {
-    return (
-      <Page title={this.props.route.name}>
-        <Example>
-          <Body>
-            <BodyPanel>
-              <BodyPanelItem rhythm={BodyPanelItem.RHYTHM.LARGE}>
-                This Body component has a minimum height equal to that of
-                the viewport.
-              </BodyPanelItem>
+    <Example>
+      <Body isDark>
+        <BodyPanel>
+          <BodyPanelItem rhythm={BodyPanelItem.RHYTHM.LARGE}>
+            This body component has isDark set and therefore has a dark
+            background color.
+          </BodyPanelItem>
+        </BodyPanel>
+      </Body>
+    </Example>
 
-              <BodyPanelItem rhythm={BodyPanelItem.RHYTHM.LARGE}>
-                These paragraphs are spaced apart by BodyPanelItem components.
-              </BodyPanelItem>
-            </BodyPanel>
-          </Body>
-        </Example>
+    <Example title="BodyMaxWidthLayout" isClear>
+      <Body>
+        <BodyMaxWidthLayout>
+          This is a BodyMaxWidthLayout.
+        </BodyMaxWidthLayout>
+      </Body>
+    </Example>
 
-        <Example>
-          <Body isDark>
-            <BodyPanel>
-              <BodyPanelItem rhythm={BodyPanelItem.RHYTHM.LARGE}>
-                This body component has isDark set and therefore has a dark
-                background color.
-              </BodyPanelItem>
-            </BodyPanel>
-          </Body>
-        </Example>
-
-        <Example title="BodyMaxWidthLayout" isClear>
-          <Body>
-            <BodyMaxWidthLayout>
-              This is a BodyMaxWidthLayout.
-            </BodyMaxWidthLayout>
-          </Body>
-        </Example>
-
-        <Example title="BodyMaxWidthLayout with BodyPanel" isClear>
-          <Body>
-            <BodyMaxWidthLayout>
-              <BodyPanel>
-                This is a BodyMaxWidthLayout with a BodyPanel.
-              </BodyPanel>
-            </BodyMaxWidthLayout>
-          </Body>
-        </Example>
-
-        <Example title="BodyPanel" isClear>
+    <Example title="BodyMaxWidthLayout with BodyPanel" isClear>
+      <Body>
+        <BodyMaxWidthLayout>
           <BodyPanel>
-            This is a BodyPanel.
+            This is a BodyMaxWidthLayout with a BodyPanel.
           </BodyPanel>
-        </Example>
+        </BodyMaxWidthLayout>
+      </Body>
+    </Example>
 
-        <Example title="BodyPanel" isClear>
-          <BodyPanel isTopFlush>
-            This is a BodyPanel with isTopFlush (no border-top).
-          </BodyPanel>
-        </Example>
+    <Example title="BodyPanel" isClear>
+      <BodyPanel>
+        This is a BodyPanel.
+      </BodyPanel>
+    </Example>
 
-        <Example title="BodyPanel with rounded corners" isClear>
-          <BodyPanel roundedCorners>
-            This is a BodyPanel with rounded corners.
-          </BodyPanel>
-        </Example>
-      </Page>
-    );
-  }
+    <Example title="BodyPanel" isClear>
+      <BodyPanel isBottomFlush>
+        This is a BodyPanel with isBottomFlush (no border-bottom).
+      </BodyPanel>
+    </Example>
 
-}
+    <Example title="BodyPanel" isClear>
+      <BodyPanel isTopFlush>
+        This is a BodyPanel with isTopFlush (no border-top).
+      </BodyPanel>
+    </Example>
+
+    <Example title="BodyPanel with rounded corners" isClear>
+      <BodyPanel roundedCorners>
+        This is a BodyPanel with rounded corners.
+      </BodyPanel>
+    </Example>
+  </Page>
+);
 
 BodyExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
+
+export default BodyExample;

@@ -5,7 +5,8 @@ export default class ScrollPosition {
 
   constructor() {
     this.listeners = [];
-    this.previous = this.current = 0;
+    this.previous = 0;
+    this.current = 0;
     // NOTE: We don't set a default value for fromBottom, since we
     // don't have any information on the scrolling element yet, so any default
     // value we assign will be incorrect.

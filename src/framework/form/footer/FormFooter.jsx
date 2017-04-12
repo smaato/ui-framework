@@ -3,7 +3,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-const FormFooter = props => {
+const FormFooter = (props) => {
   let left;
 
   if (props.left) {

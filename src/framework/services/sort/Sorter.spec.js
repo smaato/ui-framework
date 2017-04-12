@@ -1,5 +1,5 @@
+
 import Sorter from './Sorter';
-import TestUtils from '../../../services/TestUtils';
 
 describe('Sorter', () => {
   describe('interface', () => {
@@ -184,33 +184,34 @@ describe('Sorter', () => {
         });
 
         describe('when true', () => {
-          it(TestUtils.cleanString(
-            `sorts items in order of undefined, null,
-            strings, numbers when true`
-          ), () => {
-            const sortedItems =
-              Sorter.sort(items, valueProvidersArray, 0, true);
+          it(
+            'sorts items in order of undefined, null, strings, numbers when ' +
+            'true',
+            () => {
+              const sortedItems =
+                Sorter.sort(items, valueProvidersArray, 0, true);
 
-            expect(sortedItems).toEqual([{
-              a: undefined,
-              b: undefined,
-            }, {
-              a: null,
-              b: null,
-            }, {
-              a: 'TestB1',
-              b: 'TestA2',
-            }, {
-              a: 'TestA1',
-              b: 'TestB2',
-            }, {
-              a: 2,
-              b: 1,
-            }, {
-              a: 1,
-              b: 2,
-            }]);
-          });
+              expect(sortedItems).toEqual([{
+                a: undefined,
+                b: undefined,
+              }, {
+                a: null,
+                b: null,
+              }, {
+                a: 'TestB1',
+                b: 'TestA2',
+              }, {
+                a: 'TestA1',
+                b: 'TestB2',
+              }, {
+                a: 2,
+                b: 1,
+              }, {
+                a: 1,
+                b: 2,
+              }]);
+            }
+          );
         });
       });
 

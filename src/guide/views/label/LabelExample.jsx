@@ -1,6 +1,5 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
@@ -14,36 +13,28 @@ import {
   SubLabel,
 } from '../../../framework/framework';
 
-export default class LabelExample extends Component {
+const LabelExample = props => (
+  <Page title={props.route.name}>
+    <Example>
+      <Label>Label</Label>
+    </Example>
 
-  constructor(props) {
-    super(props);
-  }
+    <Example title="Clickable Label">
+      <div>
+        <Label htmlFor="checkboxExample">Label</Label>
+      </div>
+      <CheckBox id="checkboxExample" />
+    </Example>
 
-  render() {
-    return (
-      <Page title={this.props.route.name}>
-        <Example>
-          <Label>Label</Label>
-        </Example>
-
-        <Example title="Clickable Label">
-          <div>
-            <Label htmlFor="checkboxExample">Label</Label>
-          </div>
-          <CheckBox id="checkboxExample" />
-        </Example>
-
-        <Example title="SubLabel">
-          <Label>Label</Label>
-          <SubLabel>Sub-label</SubLabel>
-        </Example>
-      </Page>
-    );
-  }
-
-}
+    <Example title="SubLabel">
+      <Label>Label</Label>
+      <SubLabel>Sub-label</SubLabel>
+    </Example>
+  </Page>
+);
 
 LabelExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
+
+export default LabelExample;

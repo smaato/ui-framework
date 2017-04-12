@@ -7,7 +7,7 @@ import keyMirror from 'keymirror';
 
 import ModalCloseButton from './ModalCloseButton.jsx';
 
-const ModalHeader = props => {
+const ModalHeader = (props) => {
   let title;
 
   if (props.children || props.type) {

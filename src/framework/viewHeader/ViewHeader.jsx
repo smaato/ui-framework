@@ -5,7 +5,11 @@ import React, {
 
 export {
   default as ViewHeaderNav,
-} from './ViewHeaderNav.jsx';
+} from './nav/ViewHeaderNav.jsx';
+
+export {
+  default as DateRange,
+} from './dateRange/DateRange.jsx';
 
 const ViewHeader = props => (
   <div className="viewHeader">

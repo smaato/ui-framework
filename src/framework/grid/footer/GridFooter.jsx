@@ -1,54 +1,63 @@
 
+import classNames from 'classnames';
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
 
-const GridFooter = props => {
+import GridFooterCell from './GridFooterCell.jsx';
+
+const GridFooter = (props) => {
   const sectionClass = classNames('grid__footer', props.classFooter);
   const rowClass = classNames('grid__footer__row', props.classFooterRow);
 
-   // Create cells.
+  let cellsWithChildren = 0;
   const footerCells = props.footerCellPropsProviders
-  .map((getPropsForIndex, index) => {
-    // Cell classes.
-    const classes = classNames('grid__footer__cell', props.classFooterCell);
+    .map((getPropsForIndex, index) => {
+      const innerCellProps = getPropsForIndex(index) || {};
+      if (innerCellProps.children) {
+        cellsWithChildren += 1;
+      }
 
-    // Get properties for the inner cell.
-    const innerCellProps = getPropsForIndex(index) || {};
+      return (
+        <GridFooterCell
+          classFooterCell={props.classFooterCell}
+          innerCellProps={innerCellProps}
+          isFirstCellWithChildren={
+            innerCellProps.children && cellsWithChildren === 1
+          }
+          key={index}
+        />
+      );
+    }
+  );
 
-    // We want to add on our own classes to the inner cell, without destroying
-    // any classes that have been provided.
-    const decoratedInnerCellProps = Object.assign({}, innerCellProps, {
-      className: classNames(
-        'grid__footer__cellLiner',
-        innerCellProps.className
-      ),
-    });
-    return (
-      <th
-        key={index}
-        className={classes}
-      >
-        <div {...decoratedInnerCellProps} ></div>
-      </th>
+  let children;
+  if (props.children) {
+    children = (
+      <tr>
+        <td colSpan={props.footerCellPropsProviders.length}>
+          {props.children}
+        </td>
+      </tr>
     );
-  });
+  }
 
   return (
     <tfoot className={sectionClass}>
       <tr className={rowClass}>
         {footerCells}
       </tr>
+      {children}
     </tfoot>
   );
 };
 
 GridFooter.propTypes = {
-  footerCellPropsProviders: PropTypes.array.isRequired,
+  children: PropTypes.any,
   classFooter: PropTypes.string,
+  classFooterCell: GridFooterCell.propTypes.classFooterCell,
   classFooterRow: PropTypes.string,
-  classFooterCell: PropTypes.string,
+  footerCellPropsProviders: PropTypes.array.isRequired,
 };
 
 export default GridFooter;

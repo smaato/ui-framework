@@ -2,6 +2,8 @@
 export * from './addOnControl/AddOnControl.jsx';
 export { default as AddOnControl } from './addOnControl/AddOnControl.jsx';
 
+export { default as Alert } from './alert/Alert.jsx';
+
 export * from './appHeader/AppHeader.jsx';
 export { default as AppHeader } from './appHeader/AppHeader.jsx';
 
@@ -23,14 +25,12 @@ export { default as CheckBox } from './checkBox/CheckBox.jsx';
 export * from './columnLayout/ColumnLayout.jsx';
 export { default as ColumnLayout } from './columnLayout/ColumnLayout.jsx';
 
-export { default as DateRange } from './dateRange/DateRange.jsx';
-
 export * from './dropdown/Dropdown.jsx';
 export { default as Dropdown } from './dropdown/Dropdown.jsx';
 
 export { default as FieldMessage } from './fieldMessage/FieldMessage.jsx';
 
-export { default as FiltersControl } from './filtersControl/FiltersControl.jsx';
+export { default as FilterControl } from './filterControl/FilterControl.jsx';
 
 export * from './form/Form.jsx';
 export { default as Form } from './form/Form.jsx';
@@ -95,6 +95,8 @@ export { default as TextArea } from './textArea/TextArea.jsx';
 export { default as TextInput } from './textInput/TextInput.jsx';
 
 export { default as TitleBar } from './titleBar/TitleBar.jsx';
+
+export { default as Toggle } from './toggle/Toggle.jsx';
 
 export { default as VerticalLayout } from './verticalLayout/VerticalLayout.jsx';
 

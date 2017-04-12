@@ -9,7 +9,6 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
-  StatusDot,
   StatusDropdown,
   StatusDropdownOptionIcon,
 } from '../../../framework/framework';
@@ -28,7 +27,7 @@ export default class StatusDropdownExample extends Component {
     this.options = [
       StatusDropdown.OPTIONS.ACTIVATE,
       StatusDropdown.OPTIONS.DEACTIVATE,
-      StatusDropdown.OPTIONS.DELETE,
+      StatusDropdown.OPTIONS.ARCHIVE,
     ];
   }
 
@@ -50,33 +49,21 @@ export default class StatusDropdownExample extends Component {
           />
         </Example>
 
-        <Example title="StatusDot without status">
-          <StatusDot />
-        </Example>
-
-        <Example title="StatusDot NEGATIVE">
-          <StatusDot status={StatusDot.STATUS.NEGATIVE} />
-        </Example>
-
-        <Example title="StatusDot POSITIVE">
-          <StatusDot status={StatusDot.STATUS.POSITIVE} />
-        </Example>
-
         <Example title="StatusDropdownOptionIcon ACTIVATE">
           <StatusDropdownOptionIcon
             type={StatusDropdownOptionIcon.TYPE.ACTIVATE}
           />
         </Example>
 
-        <Example title="StatusDropdownOptionIcon DEACTIVATE">
+        <Example title="StatusDropdownOptionIcon ARCHIVE">
           <StatusDropdownOptionIcon
-            type={StatusDropdownOptionIcon.TYPE.DEACTIVATE}
+            type={StatusDropdownOptionIcon.TYPE.ARCHIVE}
           />
         </Example>
 
-        <Example title="StatusDropdownOptionIcon DELETE">
+        <Example title="StatusDropdownOptionIcon DEACTIVATE">
           <StatusDropdownOptionIcon
-            type={StatusDropdownOptionIcon.TYPE.DELETE}
+            type={StatusDropdownOptionIcon.TYPE.DEACTIVATE}
           />
         </Example>
 

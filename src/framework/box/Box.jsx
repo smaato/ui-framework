@@ -4,7 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-const Box = props => {
+const Box = (props) => {
   const classes = classNames('box', props.classes, {
     'box--roundedCorners': props.roundedCorners,
   });

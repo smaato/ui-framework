@@ -10,9 +10,7 @@ describe('Kpi', () => {
         const props = {
           className: 'test',
         };
-        const testCase = TestCaseFactory.createFromElement(
-          <Kpi {...props} />
-        );
+        const testCase = TestCaseFactory.create(Kpi, props);
         expect(testCase.dom.getAttribute('class')).toContain(props.className);
       });
     });
@@ -22,9 +20,7 @@ describe('Kpi', () => {
         const props = {
           title: 'test',
         };
-        const testCase = TestCaseFactory.createFromElement(
-          <Kpi {...props} />
-        );
+        const testCase = TestCaseFactory.create(Kpi, props);
         expect(testCase.dom.getAttribute('title')).toContain(props.title);
       });
     });
@@ -34,9 +30,7 @@ describe('Kpi', () => {
         const props = {
           children: <div id="test" />,
         };
-        const testCase = TestCaseFactory.createFromElement(
-          <Kpi {...props} />
-        );
+        const testCase = TestCaseFactory.create(Kpi, props);
         expect(testCase.first('#test')).toBeDefined();
       });
     });

@@ -5,11 +5,11 @@ import React, {
   PropTypes,
 } from 'react';
 
-const StatusDropdownOptionIcon = props => {
+const StatusDropdownOptionIcon = (props) => {
   const classMap = {
     [StatusDropdownOptionIcon.TYPE.ACTIVATE]: 'icon-play-blue',
+    [StatusDropdownOptionIcon.TYPE.ARCHIVE]: 'icon-remove-circle-blue',
     [StatusDropdownOptionIcon.TYPE.DEACTIVATE]: 'icon-pause-blue',
-    [StatusDropdownOptionIcon.TYPE.DELETE]: 'icon-remove-circle-blue',
     [StatusDropdownOptionIcon.TYPE.SELECTED]: 'icon-check',
   };
 
@@ -25,8 +25,8 @@ const StatusDropdownOptionIcon = props => {
 
 StatusDropdownOptionIcon.TYPE = keyMirror({
   ACTIVATE: null,
+  ARCHIVE: null,
   DEACTIVATE: null,
-  DELETE: null,
   SELECTED: null,
 });
 

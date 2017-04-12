@@ -17,9 +17,17 @@
     }
   }
 
+  .descriptionText {
+    margin-top: 10px;
+  }
+
   .chart__lineChart {
     margin-top: 20px;
     position: relative;
+
+    .descriptionText + & {
+      margin-top: 10px;
+    }
 
     &.chart__lineChart--blurred .lineChart {
       @include backgroundBlur;

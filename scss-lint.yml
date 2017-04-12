@@ -153,7 +153,7 @@ linters:
     convention: strict_BEM # or 'hyphenated_BEM', or 'hyphenated_lowercase', or 'snake_case', or 'camel_case', or a regex pattern
 
   Shorthand:
-    enabled: true
+    enabled: false
     allowed_shorthands: [1, 2, 3]
 
   SingleLinePerProperty:

@@ -22,6 +22,7 @@ import Route from './services/route/Route';
 
 // Polyfills
 import { polyfillCustomEvent } from '../framework/services';
+
 polyfillCustomEvent();
 
 const store = configureStore();
@@ -48,16 +49,16 @@ const routes = [{
 }];
 
 // Update document title with route name.
-const onRouteEnter = route => {
+const onRouteEnter = (route) => {
   const leafRoute = route.routes[route.routes.length - 1];
   document.title = leafRoute.name ?
     `Smaato UI Framework - ${leafRoute.name}` :
     'Smaato UI Framework';
 };
 
-const syncTitleWithRoutes = routesList => {
+const syncTitleWithRoutes = (routesList) => {
   if (!routesList) return;
-  routesList.forEach(route => {
+  routesList.forEach((route) => {
     route.onEnter = onRouteEnter; // eslint-disable-line no-param-reassign
     if (route.indexRoute) {
       // Index routes have a weird relationship with their "parent" routes,

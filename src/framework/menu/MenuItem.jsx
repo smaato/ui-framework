@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
-const MenuItem = props => {
+const MenuItem = (props) => {
   function onClick() {
     if (props.onClick) {
       props.onClick(props.data);

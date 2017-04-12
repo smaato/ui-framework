@@ -16,9 +16,9 @@ const TitleBar = (props) => {
 
   return (
     <div className="titleBar">
-      <label className="titleBar__title">
+      <span className="titleBar__title">
         {props.label}
-      </label>
+      </span>
       <div className="titleBar__buttonContainer">
         {buttons}
       </div>

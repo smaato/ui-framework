@@ -34,6 +34,7 @@ export {
 } from './stack/ModalStack.jsx';
 
 export default class Modal extends Component {
+
   constructor(props) {
     super(props);
 
@@ -78,16 +79,16 @@ export default class Modal extends Component {
     });
   }
 
-  isModalStacked(props = this.props) {
-    return props.index < props.stackCount - 1;
+  isModalStacked() {
+    return this.props.index < this.props.stackCount - 1;
   }
 
-  isNextInStack(props = this.props) {
-    return props.index === props.stackCount - 2;
+  isNextInStack() {
+    return this.props.index === this.props.stackCount - 2;
   }
 
-  isBuriedInStack(props = this.props) {
-    return props.index < props.stackCount - 2;
+  isBuriedInStack() {
+    return this.props.index < this.props.stackCount - 2;
   }
 
   render() {
@@ -100,11 +101,11 @@ export default class Modal extends Component {
 
     return (
       <div
-        data-id={this.props.dataId}
         className={classes}
+        data-id={this.props.dataId}
         onClick={this.onClick}
-        onMouseOver={this.onMouseOver}
         onMouseOut={this.onMouseOut}
+        onMouseOver={this.onMouseOver}
         style={{ width: this.props.width }}
       >
         {this.props.children}

@@ -1,6 +1,5 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
@@ -12,33 +11,27 @@ import {
   PickedSummary,
 } from '../../../framework/framework';
 
-export default class PickedListExample extends Component {
+const PickedListExample = (props) => {
+  const examples = Object.keys(PickedSummary.TYPE).map(key =>
+    <Example
+      title={key}
+      key={key}
+    >
+      <PickedSummary type={PickedSummary.TYPE[key]}>
+        {key}
+      </PickedSummary>
+    </Example>
+  );
 
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const examples = Object.keys(PickedSummary.TYPE).map(key =>
-      <Example
-        title={key}
-        key={key}
-      >
-        <PickedSummary type={PickedSummary.TYPE[key]}>
-          {key}
-        </PickedSummary>
-      </Example>
-    );
-
-    return (
-      <Page title={this.props.route.name}>
-        {examples}
-      </Page>
-    );
-  }
-
-}
+  return (
+    <Page title={props.route.name}>
+      {examples}
+    </Page>
+  );
+};
 
 PickedListExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
+
+export default PickedListExample;

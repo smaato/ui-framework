@@ -17,7 +17,7 @@ describe('Grid', () => {
           header: <thead />,
         };
 
-        const testCase = TestCaseFactory.createFromElement(<Grid {...props} />);
+        const testCase = TestCaseFactory.create(Grid, props);
         expect(testCase.first('thead')).toBeDefined();
       });
     });
@@ -29,7 +29,7 @@ describe('Grid', () => {
           footer: <tfoot />,
         };
 
-        const testCase = TestCaseFactory.createFromElement(<Grid {...props} />);
+        const testCase = TestCaseFactory.create(Grid, props);
         expect(testCase.first('tfoot')).toBeDefined();
       });
     });
@@ -41,7 +41,7 @@ describe('Grid', () => {
           children: <tbody />,
         };
 
-        const testCase = TestCaseFactory.createFromElement(<Grid {...props} />);
+        const testCase = TestCaseFactory.create(Grid, props);
         expect(testCase.first('tbody')).toBeDefined();
       });
     });
@@ -53,7 +53,7 @@ describe('Grid', () => {
           classContainer: 'test',
         };
 
-        const testCase = TestCaseFactory.createFromElement(<Grid {...props} />);
+        const testCase = TestCaseFactory.create(Grid, props);
         expect(testCase.dom.getAttribute('class')
           .indexOf(props.classContainer) !== -1).toBe(true);
       });
@@ -66,7 +66,7 @@ describe('Grid', () => {
           classTable: 'test',
         };
 
-        const testCase = TestCaseFactory.createFromElement(<Grid {...props} />);
+        const testCase = TestCaseFactory.create(Grid, props);
         expect(testCase.first('table').className).toContain(props.classTable);
       });
     });

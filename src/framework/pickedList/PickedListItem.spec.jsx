@@ -15,6 +15,16 @@ describe('PickedListItem', () => {
       });
     });
 
+    describe('meta', () => {
+      it('is rendered', () => {
+        const props = {
+          meta: 'test',
+        };
+        const testCase = TestCaseFactory.create(PickedListItem, props);
+        expect(testCase.dom.textContent).toContain(props.meta);
+      });
+    });
+
     describe('onRemove', () => {
       it('doesn\'t render remove button when not defined', () => {
         const props = {
@@ -48,7 +58,7 @@ describe('PickedListItem', () => {
     });
 
     describe('type', () => {
-      Object.keys(PickedListItem.TYPE).forEach(type => {
+      Object.keys(PickedListItem.TYPE).forEach((type) => {
         describe(`${type}`, () => {
           it('renders an icon', () => {
             const props = {

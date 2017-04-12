@@ -6,7 +6,7 @@ import React, {
 import classNames from 'classnames';
 
 // Define stateless functional component.
-const StickyGrid = props => {
+const StickyGrid = (props) => {
   // Create cells.
   const headerCells = props.headerCellPropsProviders
   .map((cellPropsProvider, index) => {
@@ -21,8 +21,7 @@ const StickyGrid = props => {
       <div
         key={index}
         {...decoratedInnerCellProps}
-      >
-      </div>
+      />
     );
   });
 

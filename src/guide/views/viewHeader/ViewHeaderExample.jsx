@@ -1,6 +1,5 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
@@ -15,102 +14,96 @@ import {
   ViewHeaderNav,
 } from '../../../framework/framework';
 
-export default class ViewHeaderExample extends Component {
+const ViewHeaderExample = (props) => {
+  const links = [{
+    className: 'is-view-header-nav-link-selected',
+    href: '#',
+    children: (
+      <span>
+        <span className="viewHeaderNav__link__icon icon icon-document" />
+        Automobile
+      </span>
+    ),
+  }, {
+    href: '#',
+    children: (
+      <span>
+        <span className="viewHeaderNav__link__icon icon icon-document" />
+        Train
+      </span>
+    ),
+  }, {
+    href: '#',
+    children: (
+      <span>
+        <span
+          className="viewHeaderNav__link__icon icon icon-document"
+        />
+        Airplane
+      </span>
+    ),
+  }, {
+    href: '#',
+    children: (
+      <span>
+        <span className="viewHeaderNav__link__icon icon icon-document" />
+        Bicycle
+      </span>
+    ),
+  }, {
+    href: '#',
+    children: (
+      <span>
+        <span
+          className="viewHeaderNav__link__icon icon icon-document"
+        />
+        Walking
+      </span>
+    ),
+  }, {
+    href: '#',
+    children: (
+      <span className="viewHeaderNav__ellipsis icon icon-ellipsis" />
+    ),
+  }];
 
-  constructor(props) {
-    super(props);
-  }
+  // react-router's Link component can also be used instead of anchor tag.
+  const linkType = 'a';
 
-  render() {
-    const links = [{
-      className: 'is-view-header-nav-link-selected',
-      href: '#',
-      children: (
-        <span>
-          <span className="viewHeaderNav__link__icon icon icon-document" />
-          Automobile
-        </span>
-      ),
-    }, {
-      href: '#',
-      children: (
-        <span>
-          <span className="viewHeaderNav__link__icon icon icon-document" />
-          Train
-        </span>
-      ),
-    }, {
-      href: '#',
-      children: (
-        <span>
-          <span
-            className="viewHeaderNav__link__icon icon icon-document"
-          />
-          Airplane
-        </span>
-      ),
-    }, {
-      href: '#',
-      children: (
-        <span>
-          <span className="viewHeaderNav__link__icon icon icon-document" />
-          Bicycle
-        </span>
-      ),
-    }, {
-      href: '#',
-      children: (
-        <span>
-          <span
-            className="viewHeaderNav__link__icon icon icon-document"
-          />
-          Walking
-        </span>
-      ),
-    }, {
-      href: '#',
-      children: (
-        <span className="viewHeaderNav__ellipsis icon icon-ellipsis" />
-      ),
-    }];
+  return (
+    <Page title={props.route.name}>
 
-    // react-router's Link component can also be used instead of anchor tag.
-    const linkType = 'a';
+      <Example>
+        <ViewHeader
+          left={
+            <ViewHeaderNav
+              linkType={linkType}
+              links={links}
+            />
+          }
+          right={<DateRange />}
+        />
+      </Example>
 
-    return (
-      <Page title={this.props.route.name}>
+      <Example title="ViewHeaderNav" isDark>
+        <Text>Allows the user to add a navigation to the ViewHeader.</Text>
+        <ViewHeaderNav
+          linkType={linkType}
+          links={links}
+        />
+      </Example>
 
-        <Example>
-          <ViewHeader
-            left={
-              <ViewHeaderNav
-                linkType={linkType}
-                links={links}
-              />
-            }
-            right={<DateRange/>}
-          />
-        </Example>
+      <Example title="DateRange" isDark>
+        <Text>Allows the user to select a date range.</Text>
+        <DateRange isLeft />
+      </Example>
 
-        <Example title="ViewHeaderNav" isDark>
-          <Text>Allows the user to add a navigation to the ViewHeader.</Text>
-          <ViewHeaderNav
-            linkType={linkType}
-            links={links}
-          />
-        </Example>
-
-        <Example title="DateRange" isDark>
-          <Text>Allows the user to select a date range.</Text>
-          <DateRange/>
-        </Example>
-
-      </Page>
-    );
-  }
-
-}
+    </Page>
+  );
+};
 
 ViewHeaderExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
+
+export default ViewHeaderExample;

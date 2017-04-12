@@ -1,6 +1,5 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
@@ -12,50 +11,42 @@ import {
   TextInput,
 } from '../../../framework/framework';
 
-export default class TextInputExample extends Component {
+const TextInputExample = props => (
+  <Page title={props.route.name}>
 
-  constructor(props) {
-    super(props);
-  }
+    <Example>
+      <TextInput defaultValue="Default value" />
+    </Example>
 
-  render() {
-    return (
-      <Page title={this.props.route.name}>
+    <Example title="With placeholder text">
+      <TextInput placeholder="Placeholder copy" />
+    </Example>
 
-        <Example>
-          <TextInput defaultValue="Default value" />
-        </Example>
+    <Example title="With autoFocus">
+      <TextInput autoFocus />
+    </Example>
 
-        <Example title="With placeholder text">
-          <TextInput placeholder="Placeholder copy" />
-        </Example>
+    <Example title="Error state">
+      <TextInput isError />
+    </Example>
 
-        <Example title="With autoFocus">
-          <TextInput autoFocus />
-        </Example>
+    <Example title="As password">
+      <TextInput type="password" defaultValue="Default value" />
+    </Example>
 
-        <Example title="Error state">
-          <TextInput isError />
-        </Example>
+    <Example title="Full width">
+      <TextInput isFullWidth />
+    </Example>
 
-        <Example title="As password">
-          <TextInput type="password" defaultValue="Default value"/>
-        </Example>
+    <Example title="Readonly">
+      <TextInput isReadonly />
+    </Example>
 
-        <Example title="Full width">
-          <TextInput isFullWidth />
-        </Example>
-
-        <Example title="Readonly">
-          <TextInput isReadonly />
-        </Example>
-
-      </Page>
-    );
-  }
-
-}
+  </Page>
+);
 
 TextInputExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
+
+export default TextInputExample;

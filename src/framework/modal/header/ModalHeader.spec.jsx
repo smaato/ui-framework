@@ -42,7 +42,7 @@ describe('ModalHeader', () => {
     });
 
     describe('type', () => {
-      Object.keys(ModalHeader.TYPE).forEach(type => {
+      Object.keys(ModalHeader.TYPE).forEach((type) => {
         describe(`${type}`, () => {
           it('renders an icon', () => {
             const props = {

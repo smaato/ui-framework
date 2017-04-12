@@ -14,10 +14,6 @@ export {
 
 class OrganizationSwitcher extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
     $('body').addClass('is-organization-switcher-open');
   }

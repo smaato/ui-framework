@@ -12,6 +12,7 @@ export default class SearchBox extends Component {
     super(props);
 
     this.onKeyUp = this.onKeyUp.bind(this);
+    this.search = this.search.bind(this);
   }
 
   onKeyUp(event) {
@@ -22,7 +23,11 @@ export default class SearchBox extends Component {
 
     // Otherwise, allow searching if isImmediate.
     if (this.props.isImmediate) {
-      return this.search();
+      if (this.searchTimeout) {
+        clearTimeout(this.searchTimeout);
+      }
+
+      this.searchTimeout = setTimeout(this.search, this.props.timeout);
     }
   }
 
@@ -37,7 +42,7 @@ export default class SearchBox extends Component {
     });
 
     return (
-      <label className="searchBox">
+      <span className="searchBox">
         <input
           className={classes}
           defaultValue={this.props.defaultValue}
@@ -46,8 +51,8 @@ export default class SearchBox extends Component {
           ref="searchField"
           type="text"
         />
-        <span className="searchBox__icon icon icon-magnifier"/>
-      </label>
+        <span className="searchBox__icon icon icon-magnifier" />
+      </span>
     );
   }
 }
@@ -58,4 +63,9 @@ SearchBox.propTypes = {
   isImmediate: PropTypes.bool,
   onSearch: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
+  timeout: PropTypes.number,
+};
+
+SearchBox.defaultProps = {
+  timeout: 500,
 };

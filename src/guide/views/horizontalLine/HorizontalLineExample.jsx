@@ -1,6 +1,5 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
@@ -12,22 +11,18 @@ import {
   HorizontalLine,
 } from '../../../framework/framework';
 
-export default class HorizontalLineExample extends Component {
+const HorizontalLineExample = props => (
+  <Page title={props.route.name}>
 
-  render() {
-    return (
-      <Page title={this.props.route.name}>
+    <Example>
+      <HorizontalLine />
+    </Example>
 
-        <Example>
-          <HorizontalLine />
-        </Example>
-
-      </Page>
-    );
-  }
-
-}
+  </Page>
+);
 
 HorizontalLineExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
+
+export default HorizontalLineExample;

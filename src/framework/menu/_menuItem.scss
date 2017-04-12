@@ -57,9 +57,11 @@
   cursor: pointer;
 
   &.is-menu-item-selected {
+    background-color: $lightGrey;
     cursor: default;
 
     .menuItem__label {
+      color: $blue;
       font-weight: 500;
     }
   }

@@ -5,7 +5,7 @@ import React, {
 import classNames from 'classnames';
 import keyMirror from 'keymirror';
 
-const PickedSummary = props => {
+const PickedSummary = (props) => {
   let icon;
 
   if (props.type) {

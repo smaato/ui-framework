@@ -1,0 +1,57 @@
+
+.filterItemList {
+  display: flex;
+}
+
+  .filterItem {
+    @include filterButton;
+
+    cursor: pointer;
+
+    &:hover {
+      .filterItem__removeButtonContainer {
+        box-shadow: -5px 0 15px 5px $addedFilter_backgroundColor;
+        opacity: 1;
+      }
+    }
+  }
+
+    .filterItem__label {
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+      .filterItem__name {
+        font-weight: 400;
+      }
+
+  .filterItem__removeButtonContainer {
+    background: $addedFilter_backgroundColor;
+    display: inline-flex;
+    height: 12px;
+    margin-left: -15px;
+    opacity: 0;
+    width: 15px;
+  }
+
+    .filterItem__removeButton {
+      @include crossIcon($marginLeft: 12px, $marginTop: 1px);
+
+      height: 15px;
+      opacity: 0.7;
+      width: 15px;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+.filterFormDropdown--editing {
+  top: -26px;
+}
+
+  .filterFormDropdown--editing .filterFormDropdown__form {
+    min-width: calc(100% - 2px);
+  }

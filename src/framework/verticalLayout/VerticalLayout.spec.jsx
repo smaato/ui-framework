@@ -16,7 +16,7 @@ describe('VerticalLayout', () => {
         const items = testCase.find('.verticalLayoutItem');
         expect(items.length).toBe(2);
 
-        for (let i = 0; i < items.length; i++) {
+        for (let i = 0; i < items.length; i += 1) {
           const item = items[i];
           expect(item.textContent).toBe(props.children[i]);
         }

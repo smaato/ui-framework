@@ -3,13 +3,12 @@ import React, {
   PropTypes,
 } from 'react';
 
-const GridBodyEditableCell = props => {
+const GridBodyEditableCell = (props) => {
   const onClick = props.onClick.bind(this);
 
   return (
     <a
       className="gridBodyEditableCell"
-      href="#"
       onClick={onClick}
     >
       <span className="gridBodyEditableCell__content">

@@ -191,16 +191,19 @@ export default class BaseDropdown extends Component {
 
     if (this.state.isOpen) {
       const options = this.props.options.map((option, index) => (
-        React.createElement(this.props.optionType, {
-          key: index,
-          option,
-          index,
-          hasFocus: this.state.focusedOptionIndex === index,
-          isSelected: this.props.selectedOption === option,
-          onMouseOver: this.onMouseOverOption,
-          onClick: this.onSelectOption,
-          children: this.props.optionLabelProvider(option),
-        })
+        React.createElement(
+          this.props.optionType,
+          {
+            hasFocus: this.state.focusedOptionIndex === index,
+            index,
+            isSelected: this.props.selectedOption === option,
+            key: index,
+            onMouseOver: this.onMouseOverOption,
+            onClick: this.onSelectOption,
+            option,
+          },
+          this.props.optionLabelProvider(option)
+        )
       ));
 
       optionList = (

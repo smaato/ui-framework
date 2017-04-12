@@ -4,11 +4,24 @@ import SearchBox from './SearchBox.jsx';
 
 describe('SearchBox', () => {
   describe('Props', () => {
+    describe('defaultValue', () => {
+      it('is applied to input element', () => {
+        const props = {
+          defaultValue: 'Default value',
+          onSearch: () => undefined,
+        };
+
+        const testCase = TestCaseFactory.create(SearchBox, props);
+        const input = testCase.first('input');
+        expect(input.value).toEqual(props.defaultValue);
+      });
+    });
+
     describe('isFullWidth', () => {
       it('applies the appropriate class to the input element', () => {
         const props = {
-          onSearch: () => undefined,
           isFullWidth: true,
+          onSearch: () => undefined,
         };
 
         const testCase = TestCaseFactory.create(SearchBox, props);
@@ -20,41 +33,46 @@ describe('SearchBox', () => {
     });
 
     describe('onSearch', () => {
-      it('is called when the user hits Enter', () => {
-        const props = {
-          onSearch: jasmine.createSpy('onSearch'),
-        };
+      describe('when isImmediate is false', () => {
+        it('is called when the user hits Enter', () => {
+          const props = {
+            isImmediate: false,
+            onSearch: jasmine.createSpy('onSearch'),
+          };
 
-        const testCase = TestCaseFactory.create(SearchBox, props);
-        expect(props.onSearch).not.toHaveBeenCalled();
+          const testCase = TestCaseFactory.create(SearchBox, props);
+          expect(props.onSearch).not.toHaveBeenCalled();
 
-        const input = testCase.first('input');
-        testCase.trigger('keyUp', input, { key: 'Enter' });
-        expect(props.onSearch).toHaveBeenCalled();
+          const input = testCase.first('input');
+          testCase.trigger('keyUp', input, { key: 'Enter' });
+          expect(props.onSearch).toHaveBeenCalled();
+        });
+
+        it('is not called when the user hits any key but Enter', (done) => {
+          const props = {
+            isImmediate: false,
+            onSearch: jasmine.createSpy('onSearch'),
+            timeout: 0,
+          };
+
+          const testCase = TestCaseFactory.create(SearchBox, props);
+          expect(props.onSearch).not.toHaveBeenCalled();
+
+          const input = testCase.first('input');
+          testCase.trigger('keyUp', input, { key: '' });
+          setTimeout(() => {
+            expect(props.onSearch).not.toHaveBeenCalled();
+            done();
+          }, props.timeout);
+        });
       });
 
-      it(
-        'is not called when the user hits non-Enter and isImmediate is false',
-        () => {
+      describe('when isImmediate is true', () => {
+        it('is called when the user hits any key', (done) => {
           const props = {
-            onSearch: jasmine.createSpy('onSearch'),
-          };
-
-          const testCase = TestCaseFactory.create(SearchBox, props);
-          expect(props.onSearch).not.toHaveBeenCalled();
-
-          const input = testCase.first('input');
-          testCase.trigger('keyUp', input, { key: '' });
-          expect(props.onSearch).not.toHaveBeenCalled();
-        }
-      );
-
-      it(
-        'is called when the user hits non-Enter and isImmediate is true',
-        () => {
-          const props = {
-            onSearch: jasmine.createSpy('onSearch'),
             isImmediate: true,
+            onSearch: jasmine.createSpy('onSearch'),
+            timeout: 0,
           };
 
           const testCase = TestCaseFactory.create(SearchBox, props);
@@ -62,9 +80,12 @@ describe('SearchBox', () => {
 
           const input = testCase.first('input');
           testCase.trigger('keyUp', input, { key: '' });
-          expect(props.onSearch).toHaveBeenCalled();
-        }
-      );
+          setTimeout(() => {
+            expect(props.onSearch).toHaveBeenCalled();
+            done();
+          }, props.timeout);
+        });
+      });
     });
 
     describe('placeholder', () => {
@@ -80,16 +101,25 @@ describe('SearchBox', () => {
       });
     });
 
-    describe('value', () => {
-      it('is applied to input element', () => {
+    describe('timeout', () => {
+      it('throttles execution of onSearch', (done) => {
         const props = {
-          defaultValue: 'Default value',
-          onSearch: () => undefined,
+          isImmediate: true,
+          onSearch: jasmine.createSpy('onSearch'),
+          timeout: 100,
         };
 
         const testCase = TestCaseFactory.create(SearchBox, props);
+        expect(props.onSearch).not.toHaveBeenCalled();
+
         const input = testCase.first('input');
-        expect(input.value).toEqual(props.defaultValue);
+        testCase.trigger('keyUp', input, { key: '' });
+        testCase.trigger('keyUp', input, { key: '' });
+        testCase.trigger('keyUp', input, { key: '' });
+        setTimeout(() => {
+          expect(props.onSearch.calls.count()).toBe(1);
+          done();
+        }, props.timeout);
       });
     });
   });

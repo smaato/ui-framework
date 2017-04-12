@@ -1,6 +1,5 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
@@ -53,39 +52,30 @@ export {
   default as StickyGrid,
 } from './stickyGrid/StickyGrid.jsx';
 
-export default class Grid extends Component {
+const Grid = (props) => {
+  const containerClass = classNames(
+    'grid__container',
+    props.classContainer
+  );
+  const tableClass = classNames('grid__table', props.classTable);
 
-  constructor(props) {
-    super(props);
-  }
+  return (
+    <div
+      data-id={props.dataId}
+      className={containerClass}
+    >
+      <table className={tableClass}>
 
-  render() {
-    // Style classes
-    const containerClass = classNames(
-      'grid__container',
-      this.props.classContainer
-    );
-    const tableClass = classNames('grid__table', this.props.classTable);
+        {props.header}
 
-    return (
-      <div
-        data-id={this.props.dataId}
-        className={containerClass}
-      >
-        <table className={tableClass}>
+        {props.children}
 
-          {this.props.header}
+        {props.footer}
 
-          {this.props.children}
-
-          {this.props.footer}
-
-        </table>
-      </div>
-    );
-  }
-
-}
+      </table>
+    </div>
+  );
+};
 
 Grid.propTypes = {
   dataId: PropTypes.string,
@@ -96,3 +86,5 @@ Grid.propTypes = {
   classContainer: PropTypes.string,
   classTable: PropTypes.string,
 };
+
+export default Grid;

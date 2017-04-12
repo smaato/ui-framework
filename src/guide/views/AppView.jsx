@@ -35,7 +35,7 @@ export default class AppView extends Component {
 
   componentDidMount() {
     const self = this;
-    $(document).keypress(event => {
+    $(document).keypress((event) => {
       // Toggle source code viewer with ~, or ALT/OPTION + 1.
       if ((event.charCode === 96) || (event.altKey && event.charCode === 161)) {
         self.onToggleSourceCodeViewer();

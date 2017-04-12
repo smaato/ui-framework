@@ -7,7 +7,7 @@ import keyMirror from 'keymirror';
 import Progress from './Progress.jsx';
 import ProgressSuccess from './ProgressSuccess.jsx';
 
-const ProgressModal = props => {
+const ProgressModal = (props) => {
   let content;
 
   switch (props.type) {
