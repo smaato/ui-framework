@@ -11,9 +11,15 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
+  Box,
   Chart,
   LineChart,
+  Text,
 } from '../../../framework/framework';
+
+import {
+  Number,
+} from '../../../framework/services';
 
 import chartExampleData from './chartExampleData.js';
 
@@ -22,40 +28,51 @@ export default class ChartExample extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      chartData: this.getInitialChartData(),
-      chartHeight: 400,
-      isLoading: false,
-      minDate: undefined,
-      maxDate: undefined,
-      minTemperature: undefined,
-      maxTemperature: undefined,
-      useBatch1: false,
-    };
+    this.formatDate = d3.time.format('%B %e');
 
+    this.state = Object.assign({
+      chartData: undefined,
+      chartHeight: 400,
+      isBatch1: true,
+      isLoading: false,
+      isYAxisLeft: false,
+      maxDate: undefined,
+      maxTemperature: undefined,
+      minDate: undefined,
+      minTemperature: undefined,
+    }, this.computeChartState(chartExampleData.batch1));
+
+    this.legendLabelProvider = this.legendLabelProvider.bind(this);
     this.onClickChangeData = this.onClickChangeData.bind(this);
     this.onClickChangeHeight = this.onClickChangeHeight.bind(this);
     this.onClickToggleIsLoading = this.onClickToggleIsLoading.bind(this);
-  }
-
-  componentDidMount() {
-    this.setData(chartExampleData.batch1);
+    this.onClickChangeYAxisOrientation =
+      this.onClickChangeYAxisOrientation.bind(this);
+    this.tooltipProviderChart = this.tooltipProviderChart.bind(this);
+    this.tooltipProviderLineChart = this.tooltipProviderLineChart.bind(this);
   }
 
   onClickChangeData() {
-    this.setState({
-      useBatch1: !this.state.useBatch1,
-    });
-    if (this.state.useBatch1) {
-      this.setData(chartExampleData.batch1);
-    } else {
-      this.setData(chartExampleData.batch2);
-    }
+    const batch =
+      this.state.isBatch1 ? chartExampleData.batch2 : chartExampleData.batch1;
+
+    this.setState(Object.assign(
+      {
+        isBatch1: !this.state.isBatch1,
+      },
+      this.computeChartState(batch)
+    ));
   }
 
   onClickChangeHeight() {
     this.setState({
       chartHeight: 300 + Math.round(Math.random() * 300),
+    });
+  }
+
+  onClickChangeYAxisOrientation() {
+    this.setState({
+      isYAxisLeft: !this.state.isYAxisLeft,
     });
   }
 
@@ -65,45 +82,8 @@ export default class ChartExample extends Component {
     });
   }
 
-  setData(rawData) {
-    const chartData = this.getInitialChartData();
-    const formatDate = d3.time.format('%Y%m%d').parse;
-    let minDate = undefined;
-    let maxDate = undefined;
-    let minTemperature = undefined;
-    let maxTemperature = undefined;
-
-    rawData.forEach(item => {
-      for (const [index, city] of chartData.entries()) {
-        // Format data.
-        const date = formatDate(item.date);
-        const temperature = +item[city.name];
-
-        // Store formatted data point.
-        chartData[index].values.push({
-          date,
-          yValue: temperature,
-        });
-
-        // Derive ranges.
-        minDate = Math.min(minDate || date, date);
-        maxDate = Math.max(maxDate || date, date);
-        minTemperature = Math.min(minTemperature || temperature, temperature);
-        maxTemperature = Math.max(maxTemperature || temperature, temperature);
-      }
-    });
-
-    this.setState({
-      chartData,
-      minDate,
-      maxDate,
-      minTemperature,
-      maxTemperature,
-    });
-  }
-
-  getInitialChartData() {
-    return [{
+  computeChartState(rawData) {
+    const chartData = [{
       name: 'newYork',
       color: '#1192ca',
       values: [],
@@ -116,26 +96,85 @@ export default class ChartExample extends Component {
       color: '#60C04F',
       values: [],
     }];
+    const formatDate = d3.time.format('%Y%m%d').parse;
+
+    let minDate;
+    let maxDate;
+    let minTemperature;
+    let maxTemperature;
+
+    rawData.forEach((item) => {
+      chartData.forEach((chartDataPoint, index) => {
+        // Format data.
+        const date = formatDate(item.date);
+        const temperature = +item[chartDataPoint.name];
+
+        // Store formatted data point.
+        chartData[index].values.push({
+          date,
+          yValue: temperature,
+        });
+
+        // Derive ranges.
+        minDate = Math.min(minDate || date, date);
+        maxDate = Math.max(maxDate || date, date);
+        minTemperature = Math.min(minTemperature || temperature, temperature);
+        maxTemperature = Math.max(maxTemperature || temperature, temperature);
+      });
+    });
+
+    return {
+      chartData,
+      minDate,
+      maxDate,
+      minTemperature,
+      maxTemperature,
+    };
+  }
+
+  formatTemperature(value) {
+    return `${value}${String.fromCharCode(176)} F`;
   }
 
   legendLabelProvider(dataSet) {
-    const dateFormat = d3.time.format('%B %e');
     const firstDate = new Date(dataSet[0].date);
     const lastDate = new Date(dataSet[(dataSet.length - 1)].date);
 
-    return `${dateFormat(firstDate)} - ${dateFormat(lastDate)}`;
+    return `${this.formatDate(firstDate)} - ${this.formatDate(lastDate)}`;
+  }
+
+  tooltipProviderChart(item) {
+    const date = new Date(item.date);
+
+    return (
+      <Box roundedCorners>
+        <div style={{ padding: 5 }}>
+          <Text>
+            {this.formatDate(date)}: {Number.formatBigNumber(item.yValue)}
+          </Text>
+        </div>
+      </Box>
+    );
+  }
+
+  tooltipProviderLineChart(item) {
+    return (
+      <Box roundedCorners>
+        <div style={{ padding: 5 }}>
+          <Text>
+            {this.formatDate(item.date)}: {this.formatTemperature(item.yValue)}
+          </Text>
+        </div>
+      </Box>
+    );
   }
 
   render() {
-    function formatTemperature(value) {
-      return `${value}${String.fromCharCode(176)} F`;
-    }
-
     return (
       <Page title={this.props.route.name}>
         <Example title="Chart">
           <button onClick={this.onClickToggleIsLoading}>
-            Toggle "isLoading"
+            Toggle &quot;isLoading&quot;
           </button>
           <Chart
             data={[[{
@@ -181,9 +220,11 @@ export default class ChartExample extends Component {
               date: 1461276000000,
               value: 790893300,
             }]]}
+            description="Description"
             isLoading={this.state.isLoading}
             legendLabelProvider={this.legendLabelProvider}
             title="Title"
+            tooltipProvider={this.tooltipProviderChart}
           />
         </Example>
         <Example title="LineChart">
@@ -193,12 +234,17 @@ export default class ChartExample extends Component {
           <button onClick={this.onClickChangeHeight}>
             Change height
           </button>
+          <button onClick={this.onClickChangeYAxisOrientation}>
+            Change y axis orientation
+          </button>
           <LineChart
             data={this.state.chartData}
             dateFormat={d3.time.weeks}
             dateRange={[this.state.minDate, this.state.maxDate]}
             height={this.state.chartHeight}
-            yAxisFormat={formatTemperature}
+            isYAxisLeft={this.state.isYAxisLeft}
+            tooltipProvider={this.tooltipProviderLineChart}
+            yAxisFormat={this.formatTemperature}
             yAxisLabelWidth={36}
             yAxisRange={[this.state.minTemperature, this.state.maxTemperature]}
           />

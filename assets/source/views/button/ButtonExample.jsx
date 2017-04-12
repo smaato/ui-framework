@@ -19,10 +19,6 @@ import {
 
 export default class ButtonExample extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   onClick(data) {
     window.alert(data); // eslint-disable-line no-alert
   }
@@ -41,7 +37,8 @@ export default class ButtonExample extends Component {
 
         <Example title="HollowButton">
           <Text>
-            This button lets the user perform a standard action, like "Cancel".
+            This button lets the user perform a standard action, like
+            &quot;Cancel&quot;.
           </Text>
           <HollowButton>
             Cancel
@@ -51,8 +48,8 @@ export default class ButtonExample extends Component {
         <Example title="BasicButton">
           <Text>
             This button lets the user perform a special, but potentially
-            regrettable action, like "Delete". It's higher in the UI
-            hierarchy than the HollowButton.
+            regrettable action, like &quot;Delete&quot;. It&apos;s higher in the
+            UI hierarchy than the HollowButton.
           </Text>
           <BasicButton>
             Delete
@@ -73,8 +70,9 @@ export default class ButtonExample extends Component {
 
         <Example title="PrimaryButton">
           <Text>
-            This button lets the user perform a special action, like "Save".
-            It's higher in the UI hierarchy than the BasicButton.
+            This button lets the user perform a special action, like
+            &quot;Save&quot;. It&apos;s higher in the UI hierarchy than the
+            BasicButton.
           </Text>
           <PrimaryButton>
             Save

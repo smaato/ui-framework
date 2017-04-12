@@ -107,7 +107,7 @@ export default class TitledViewExample extends Component {
 
     const rows = [];
 
-    for (let i = 0, l = endpoints.length; i < l; i++) {
+    for (let i = 0, l = endpoints.length; i < l; i += 1) {
       rows.push(
         <GridRow
           data={endpoints[i]}
