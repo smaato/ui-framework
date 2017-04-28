@@ -1,23 +1,26 @@
 
-// Import exports from various modules.
+import classNames from 'classnames';
+import keyMirror from 'keymirror';
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
-import keyMirror from 'keymirror';
 
-// Define stateless functional component.
 const Button = (props) => {
-  function onClick() {
+  function onClick(event) {
     // onClick is optional, so exit early if it doesn't exist.
     if (!props.onClick) {
       return;
     }
+
     // Don't even trigger the onClick handler if we're disabled.
     if (props.disabled) {
       return;
     }
+
     props.onClick(props.data);
+
+    // Prevent other behaviour that props.onClick to be executed.
+    event.preventDefault();
   }
 
   const classes = classNames('button', props.classes, {
@@ -30,6 +33,8 @@ const Button = (props) => {
   if (props.type) {
     const typeToIconClassMap = {
       [Button.TYPE.ADD]: 'icon-plus-white',
+      [Button.TYPE.EXCHANGE]: 'icon-exchange-grey',
+      [Button.TYPE.EXCHANGE_SETTINGS]: 'icon-exchange-settings-grey',
       [Button.TYPE.LOG]: 'icon-history-blue',
     };
 
@@ -68,6 +73,8 @@ const Button = (props) => {
 
 Button.TYPE = keyMirror({
   ADD: null,
+  EXCHANGE: null,
+  EXCHANGE_SETTINGS: null,
   LOG: null,
 });
 
