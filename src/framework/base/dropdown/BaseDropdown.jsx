@@ -12,6 +12,7 @@
  * 7. Press enter (if focused) to CLOSE.
  */
 
+import $ from 'jquery';
 import React, {
   Component,
   PropTypes,
@@ -36,6 +37,14 @@ export default class BaseDropdown extends Component {
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onSelectOption = this.onSelectOption.bind(this);
     this.onMouseOverOption = this.onMouseOverOption.bind(this);
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if (this.state.isOpen && !nextState.isOpen) {
+      this.enableScrolling();
+    } else if (!this.state.isOpen && nextState.isOpen) {
+      this.disableScrolling();
+    }
   }
 
   onBlur() {
@@ -139,6 +148,19 @@ export default class BaseDropdown extends Component {
     this.setState({
       isOpen: false,
     });
+  }
+
+  enableScrolling() {
+    if ($(document).height() > $(window).height()) {
+      const scrollTop = parseInt($('html').css('top'), 10);
+      $('html').removeClass('noscroll');
+      $('html,body').scrollTop(-scrollTop);
+    }
+  }
+
+  disableScrolling() {
+    const scrollTop = $('html').scrollTop() || $('body').scrollTop();
+    $('html').addClass('noscroll').css('top', -scrollTop);
   }
 
   focusNextOption() {

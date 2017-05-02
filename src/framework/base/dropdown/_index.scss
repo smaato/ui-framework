@@ -39,3 +39,9 @@
   max-height: 300px;
   overflow-y: auto;
 }
+
+.noscroll {
+  position: fixed;
+  overflow-y: scroll;
+  width: 100%;
+}
