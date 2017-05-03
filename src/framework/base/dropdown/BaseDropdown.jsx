@@ -47,6 +47,20 @@ export default class BaseDropdown extends Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const $input = $(this.refs.input);
+    const $optionList = $(this.refs.optionList);
+    if (
+      !prevState.isOpen && this.state.isOpen &&
+      $input.offset().top + $optionList.height() > $(window).height()
+    ) {
+      $optionList.css({
+        top: 'inherit',
+        bottom: 'calc(100% - 1px)',
+      });
+    }
+  }
+
   onBlur() {
     this.setState({
       hasFocus: false,
