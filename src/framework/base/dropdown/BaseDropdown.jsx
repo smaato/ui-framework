@@ -167,14 +167,14 @@ export default class BaseDropdown extends Component {
   enableScrolling() {
     if ($(document).height() > $(window).height()) {
       const scrollTop = parseInt($('html').css('top'), 10);
-      $('html').removeClass('noscroll');
+      $('html').removeClass('html--noscroll');
       $('html,body').scrollTop(-scrollTop);
     }
   }
 
   disableScrolling() {
     const scrollTop = $('html').scrollTop() || $('body').scrollTop();
-    $('html').addClass('noscroll').css('top', -scrollTop);
+    $('html').addClass('html--noscroll').css('top', -scrollTop);
   }
 
   focusNextOption() {
