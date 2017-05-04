@@ -1,3 +1,10 @@
+
+.html--noscroll {
+  position: fixed;
+  overflow-y: scroll;
+  width: 100%;
+}
+
 /**
  * 1. Ensure body element is at least as tall as the window.
  */
