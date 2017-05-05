@@ -12,6 +12,21 @@ $ctaButtonColor: #35d0a0;
     height: $iconSize;
     width: $iconSize;
     font-size: 10px;
+
+    &.icon-deal {
+      margin-right: 4px;
+      transform: scale(2.7);
+    }
+
+    &.icon-exchange {
+      margin-right: 2px;
+      transform: scale(1.5);
+    }
+
+    &.icon-private-deal {
+      margin-right: 4px;
+      transform: scale(2.7);
+    }
   }
 
   .button__label {
@@ -84,5 +99,13 @@ $ctaButtonColor: #35d0a0;
   &.is-button-selected {
     background: #e9f0f4;
     color: #8d9aa6;
+
+    .icon {
+      opacity: 0.4;
+    }
+  }
+
+  .icon {
+    opacity: 0.75;
   }
 }

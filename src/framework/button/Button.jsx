@@ -33,9 +33,10 @@ const Button = (props) => {
   if (props.type) {
     const typeToIconClassMap = {
       [Button.TYPE.ADD]: 'icon-plus-white',
-      [Button.TYPE.EXCHANGE]: 'icon-exchange-grey',
-      [Button.TYPE.EXCHANGE_SETTINGS]: 'icon-exchange-settings-grey',
+      [Button.TYPE.DEAL]: 'icon-deal',
+      [Button.TYPE.EXCHANGE]: 'icon-exchange',
       [Button.TYPE.LOG]: 'icon-history-blue',
+      [Button.TYPE.PRIVATE_DEAL]: 'icon-private-deal',
     };
 
     const iconClasses = classNames(
@@ -73,9 +74,10 @@ const Button = (props) => {
 
 Button.TYPE = keyMirror({
   ADD: null,
+  DEAL: null,
   EXCHANGE: null,
-  EXCHANGE_SETTINGS: null,
   LOG: null,
+  PRIVATE_DEAL: null,
 });
 
 Button.propTypes = {
