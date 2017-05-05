@@ -1,8 +1,6 @@
 
-.html--noscroll {
-  position: fixed;
-  overflow-y: scroll;
-  width: 100%;
+.body--noscroll {
+  overflow: hidden;
 }
 
 /**
