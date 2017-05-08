@@ -16,6 +16,7 @@ $ctaButtonColor: #35d0a0;
     &.icon-deal {
       margin-right: 4px;
       transform: scale(2.7);
+      backface-visibility: hidden;
     }
 
     &.icon-exchange {
