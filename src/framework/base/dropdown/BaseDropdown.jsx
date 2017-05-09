@@ -48,16 +48,8 @@ export default class BaseDropdown extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const $input = $(this.refs.input);
-    const $optionList = $(this.refs.optionList);
-    if (
-      !prevState.isOpen && this.state.isOpen &&
-      $input.offset().top + $optionList.height() > $(window).height()
-    ) {
-      $optionList.css({
-        top: 'inherit',
-        bottom: 'calc(100% - 1px)',
-      });
+    if (!prevState.isOpen && this.state.isOpen) {
+      this.chooseOpeningDirection();
     }
   }
 
@@ -164,17 +156,43 @@ export default class BaseDropdown extends Component {
     });
   }
 
-  enableScrolling() {
-    if ($(document).height() > $(window).height()) {
-      const scrollTop = parseInt($('html').css('top'), 10);
-      $('html').removeClass('html--noscroll');
-      $('html,body').scrollTop(-scrollTop);
+  chooseOpeningDirection() {
+    const EXTRA_SPACE = 10;
+    const $input = $(this.refs.input);
+
+    if (!$input.offset()) {
+      return;
+    }
+
+    const $optionList = $(this.refs.optionList);
+
+    const roomBelow =
+      (
+        $(window).height() - $input.offset().top - $input.parent().outerHeight()
+      ) + $(window).scrollTop();
+
+    if (roomBelow < $optionList.outerHeight()) {
+      const roomAbove = $input.offset().top - $(window).scrollTop();
+      if (roomBelow < roomAbove) {
+        $optionList.css({
+          top: 'inherit',
+          bottom: 'calc(100% - 1px)',
+          'max-height': roomAbove - EXTRA_SPACE,
+        });
+      } else {
+        $optionList.css({
+          'max-height': roomBelow - EXTRA_SPACE,
+        });
+      }
     }
   }
 
+  enableScrolling() {
+    $('body').removeClass('body--noscroll');
+  }
+
   disableScrolling() {
-    const scrollTop = $('html').scrollTop() || $('body').scrollTop();
-    $('html').addClass('html--noscroll').css('top', -scrollTop);
+    $('body').addClass('body--noscroll');
   }
 
   focusNextOption() {
