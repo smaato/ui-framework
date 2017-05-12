@@ -88,10 +88,11 @@ $ctaButtonColor: #35d0a0;
  *    state doesn't looks strange.
  */
 .button--grouped {
-  position: relative; /* 1 */
   background: #fafcfd;
-  color: #434749;
   border-color: #cad4da;
+  color: #434749;
+  margin: 0;
+  position: relative; /* 1 */
 
   &:focus {
     z-index: 1; /* 1 */
@@ -100,6 +101,7 @@ $ctaButtonColor: #35d0a0;
   &.is-button-selected {
     background: #e9f0f4;
     color: #8d9aa6;
+    pointer-events: none;
 
     .icon {
       opacity: 0.4;
