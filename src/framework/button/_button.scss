@@ -93,6 +93,7 @@ $ctaButtonColor: #35d0a0;
   color: #434749;
   margin: 0;
   position: relative; /* 1 */
+  vertical-align: middle;
 
   &:focus {
     z-index: 1; /* 1 */
