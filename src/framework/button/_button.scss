@@ -12,6 +12,22 @@ $ctaButtonColor: #35d0a0;
     height: $iconSize;
     width: $iconSize;
     font-size: 10px;
+
+    &.icon-deal {
+      margin-right: 4px;
+      transform: scale(2.7);
+      backface-visibility: hidden;
+    }
+
+    &.icon-exchange {
+      margin-right: 2px;
+      transform: scale(1.5);
+    }
+
+    &.icon-private-deal {
+      margin-right: 4px;
+      transform: scale(2.7);
+    }
   }
 
   .button__label {
@@ -72,10 +88,12 @@ $ctaButtonColor: #35d0a0;
  *    state doesn't looks strange.
  */
 .button--grouped {
-  position: relative; /* 1 */
   background: #fafcfd;
-  color: #434749;
   border-color: #cad4da;
+  color: #434749;
+  margin: 0;
+  position: relative; /* 1 */
+  vertical-align: middle;
 
   &:focus {
     z-index: 1; /* 1 */
@@ -84,5 +102,14 @@ $ctaButtonColor: #35d0a0;
   &.is-button-selected {
     background: #e9f0f4;
     color: #8d9aa6;
+    pointer-events: none;
+
+    .icon {
+      opacity: 0.4;
+    }
+  }
+
+  .icon {
+    opacity: 0.75;
   }
 }

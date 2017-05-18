@@ -42,20 +42,20 @@ export default class ButtonGroupExample extends Component {
           </Text>
           <ButtonGroup>
             <GroupedButton
-              selected={this.isButtonSelected(0)}
               onClick={() => this.setButtonSelected(0)} // eslint-disable-line react/jsx-no-bind
+              selected={this.isButtonSelected(0)}
             >
               First
             </GroupedButton>
             <GroupedButton
-              selected={this.isButtonSelected(1)}
               onClick={() => this.setButtonSelected(1)} // eslint-disable-line react/jsx-no-bind
+              selected={this.isButtonSelected(1)}
             >
               Second
             </GroupedButton>
             <GroupedButton
-              selected={this.isButtonSelected(2)}
               onClick={() => this.setButtonSelected(2)} // eslint-disable-line react/jsx-no-bind
+              selected={this.isButtonSelected(2)}
             >
               Third
             </GroupedButton>
