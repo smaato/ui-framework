@@ -24,8 +24,12 @@
   text-transform: uppercase;
   color: $dropdownDotGreyLine;
 
-  &:before,
-  &:after {
+  &--disabled {
+    cursor: default;
+  }
+
+  &:not(&--disabled):before,
+  &:not(&--disabled):after {
     $dropdownArrow_width: 1px;
     $dropdownArrow_height: 5px;
     content: '';
@@ -39,11 +43,11 @@
     background-color: $dropdownDotGreyLine;
   }
 
-  &:before {
+  &:not(&--disabled):before {
     transform: rotate(-45deg) translate(-2.5px, -2.5px);
   }
 
-  &:after {
+  &:not(&--disabled):after {
     transform: rotate(45deg);
   }
 
