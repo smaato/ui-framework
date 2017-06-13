@@ -28,27 +28,29 @@
     cursor: default;
   }
 
-  &:not(&--disabled):before,
-  &:not(&--disabled):after {
-    $dropdownArrow_width: 1px;
-    $dropdownArrow_height: 5px;
-    content: '';
-    width: $dropdownArrow_width;
-    height: $dropdownArrow_height;
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    margin-top: -$dropdownArrow_height / 2;
-    margin-left: -$dropdownArrow_width / 2;
-    background-color: $dropdownDotGreyLine;
-  }
+  &:not(&--disabled) {
+    &:before,
+    &:after {
+      $dropdownArrow_width: 1px;
+      $dropdownArrow_height: 5px;
+      content: '';
+      width: $dropdownArrow_width;
+      height: $dropdownArrow_height;
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      margin-top: -$dropdownArrow_height / 2;
+      margin-left: -$dropdownArrow_width / 2;
+      background-color: $dropdownDotGreyLine;
+    }
 
-  &:not(&--disabled):before {
-    transform: rotate(-45deg) translate(-2.5px, -2.5px);
-  }
+    &:before {
+      transform: rotate(-45deg) translate(-2.5px, -2.5px);
+    }
 
-  &:not(&--disabled):after {
-    transform: rotate(45deg);
+    &:after {
+      transform: rotate(45deg);
+    }
   }
 
   &.is-statusDropdown-label-focus {

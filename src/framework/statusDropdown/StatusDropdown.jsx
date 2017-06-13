@@ -119,16 +119,14 @@ export default class StatusDropdown extends Component {
     const additionalLabelClass =
       this.props.selectedOption &&
       this.optionToMetaDataMap[this.props.selectedOption].labelClass;
-    const labelClasses = classNames('statusDropdownLabel', {
-      [additionalLabelClass]: additionalLabelClass,
-      'statusDropdownLabel--disabled':
-        this.props.selectedOption === StatusDropdown.OPTIONS.DISABLED,
-    });
     const isReadonly =
       this.props.selectedOption === StatusDropdown.OPTIONS.DISABLED;
+    const labelClasses = classNames('statusDropdownLabel', {
+      [additionalLabelClass]: additionalLabelClass,
+      'statusDropdownLabel--disabled': isReadonly,
+    });
 
     let sortedOptions;
-
     if (this.props.selectedOption) {
       sortedOptions = [];
       this.props.options.forEach((option) => {
