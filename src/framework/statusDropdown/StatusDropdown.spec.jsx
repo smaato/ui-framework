@@ -93,6 +93,17 @@ describe('StatusDropdown', () => {
         expect(testCase.first('.dropdownDot--red')).toBeDefined();
         expect(testCase.first('.statusDropdownLabel--red')).toBeDefined();
       });
+
+      it('when DISABLED renders a grey DropdownDot and grey label', () => {
+        const props = Object.assign({}, defaultProps, {
+          selectedOption: StatusDropdown.OPTIONS.DISABLED,
+        });
+
+        const testCase = TestCaseFactory.create(StatusDropdown, props);
+
+        expect(testCase.first('.dropdownDot--grey')).toBeDefined();
+        expect(testCase.first('.statusDropdownLabel--grey')).toBeDefined();
+      });
     });
   });
 });

@@ -49,6 +49,14 @@ export default class StatusDropdownExample extends Component {
           />
         </Example>
 
+        <Example title="DISABLED">
+          <StatusDropdown
+            onSelect={this.onSelectOption}
+            options={this.options}
+            selectedOption={StatusDropdown.OPTIONS.DISABLED}
+          />
+        </Example>
+
         <Example title="StatusDropdownOptionIcon ACTIVATE">
           <StatusDropdownOptionIcon
             type={StatusDropdownOptionIcon.TYPE.ACTIVATE}
