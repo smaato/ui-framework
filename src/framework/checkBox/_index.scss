@@ -21,6 +21,9 @@ $checkBoxSize: 12px;
     background: tint($componentBackgroundColor, 90%);
     box-shadow: inset 0 1px 0 tint($componentStrokeColor, 50%);
 
+    &:hover {
+      box-shadow: 0 1px 1px rgba(black, 0.2);
+    }
 
     &--error {
       @include fieldError;
@@ -33,14 +36,10 @@ $checkBoxSize: 12px;
       border-color: $componentStrokeColor;
       box-shadow: inset 0 1px 0 tint($componentStrokeColor, 40%);
       cursor: default;
-    }
 
-    &:hover {
-      box-shadow: 0 1px 1px rgba(black, 0.2);
-    }
-
-    &--readonly:hover {
-      box-shadow: inset 0 1px 0 tint($componentStrokeColor, 25%);
+      &:hover {
+        box-shadow: inset 0 1px 0 tint($componentStrokeColor, 25%);
+      }
     }
 
     .checkBox__input:checked + & {
