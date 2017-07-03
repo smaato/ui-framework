@@ -1,4 +1,5 @@
 
+import classNames from 'classnames';
 import React, {
   Component,
   PropTypes,
@@ -25,28 +26,34 @@ export default class CheckBox extends Component {
   }
 
   onChange(event) {
-    if (this.props.onClick) {
+    if (!this.props.isReadonly && this.props.onClick) {
       this.props.onClick(event.target.checked, this.props.id, this.props.data);
     }
   }
 
   render() {
+    const labelClasses = classNames('checkBox__label', {
+      'checkBox__label--error': this.props.isError,
+      'checkBox__label--readonly': this.props.isReadonly,
+    });
+
     return (
       <span
         className="checkBox"
         onClick={this.onClick}
       >
         <input
-          type="checkbox"
-          name={this.props.id}
-          id={this.props.id}
-          className="checkBox__input"
-          onChange={this.onChange}
           checked={this.props.checked}
+          className="checkBox__input"
+          disabled={this.props.isReadonly}
+          id={this.props.id}
+          name={this.props.id}
+          onChange={this.onChange}
+          type="checkbox"
         />
         <label
           htmlFor={this.props.id}
-          className="checkBox__label"
+          className={labelClasses}
         >
           <span className="checkBox__icon icon icon-check-white" />
         </label>
@@ -57,11 +64,13 @@ export default class CheckBox extends Component {
 }
 
 CheckBox.propTypes = {
+  checked: PropTypes.bool,
+  data: PropTypes.any,
   id: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]).isRequired,
+  isError: PropTypes.bool,
+  isReadonly: PropTypes.bool,
   onClick: PropTypes.func,
-  checked: PropTypes.bool,
-  data: PropTypes.any,
 };

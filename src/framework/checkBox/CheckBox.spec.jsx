@@ -51,6 +51,37 @@ describe('CheckBox', () => {
       });
     });
 
+    describe('isReadonly', () => {
+      describe('when not set', () => {
+        it('input is not disabled', () => {
+          const testCase = TestCaseFactory.createFromElement(
+            <CheckBox id="id" />
+          );
+          expect(testCase.first('input').disabled).toBe(false);
+        });
+      });
+
+      describe('when set', () => {
+        const props = {
+          id: 'id',
+          data: {},
+          isReadonly: true,
+          onClick: jasmine.createSpy('onClick'),
+        };
+        const testCase = TestCaseFactory.create(CheckBox, props);
+
+        it('input is disabled', () => {
+          expect(testCase.first('input').disabled).toBe(true);
+        });
+
+        it('doesn\'t call onClick', () => {
+          const input = testCase.first('input');
+          testCase.trigger('change', input);
+          expect(props.onClick).not.toHaveBeenCalled();
+        });
+      });
+    });
+
     describe('onClick', () => {
       let props;
 
