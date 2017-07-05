@@ -59,6 +59,16 @@ export default class CheckBoxExample extends Component {
             onClick={this.onClickCheckBox}
           />
         </Example>
+
+        <Example title="Using icons">
+          <CheckBox
+            checked={this.state.isChecked}
+            data="Checkbox Data"
+            id="checkboxIdIcon"
+            onClick={this.onClickCheckBox}
+            useIcons
+          />
+        </Example>
       </Page>
     );
   }

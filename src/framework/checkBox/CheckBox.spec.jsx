@@ -112,4 +112,26 @@ describe('CheckBox', () => {
       });
     });
   });
+
+  describe('useIcons', () => {
+    describe('when not set', () => {
+      it('renders a check box with a tick', () => {
+        const props = {
+          useIcons: false,
+        };
+        const testCase = TestCaseFactory.create(CheckBox, props);
+        expect(testCase.dom.className).toContain('checkBox--tick');
+      });
+    });
+
+    describe('when set', () => {
+      it('renders a check box with an icon', () => {
+        const props = {
+          useIcons: true,
+        };
+        const testCase = TestCaseFactory.create(CheckBox, props);
+        expect(testCase.dom.className).toContain('checkBox--icon');
+      });
+    });
+  });
 });
