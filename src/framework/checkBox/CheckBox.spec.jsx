@@ -51,6 +51,32 @@ describe('CheckBox', () => {
       });
     });
 
+    describe('isError', () => {
+      describe('when not set', () => {
+        it('doesn\'t add the appropriate class', () => {
+          const props = {
+            isError: false,
+          };
+          const testCase = TestCaseFactory.create(CheckBox, props);
+          expect(
+            testCase.first('label').className
+          ).not.toContain('checkBox__label--error');
+        });
+      });
+
+      describe('when set', () => {
+        it('adds the appropriate class', () => {
+          const props = {
+            isError: true,
+          };
+          const testCase = TestCaseFactory.create(CheckBox, props);
+          expect(
+            testCase.first('label').className
+          ).toContain('checkBox__label--error');
+        });
+      });
+    });
+
     describe('isReadonly', () => {
       describe('when not set', () => {
         it('input is not disabled', () => {
@@ -109,6 +135,28 @@ describe('CheckBox', () => {
           props.id,
           props.data
         );
+      });
+    });
+  });
+
+  describe('useIcons', () => {
+    describe('when not set', () => {
+      it('renders a check box with a tick', () => {
+        const props = {
+          useIcons: false,
+        };
+        const testCase = TestCaseFactory.create(CheckBox, props);
+        expect(testCase.dom.className).toContain('checkBox--tick');
+      });
+    });
+
+    describe('when set', () => {
+      it('renders a check box with an icon', () => {
+        const props = {
+          useIcons: true,
+        };
+        const testCase = TestCaseFactory.create(CheckBox, props);
+        expect(testCase.dom.className).toContain('checkBox--icon');
       });
     });
   });
