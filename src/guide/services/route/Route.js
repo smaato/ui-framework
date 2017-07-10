@@ -51,6 +51,7 @@ import TextAreaExample from '../../views/textArea/TextAreaExample.jsx';
 import TextInputExample from '../../views/textInput/TextInputExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
 import ToggleExample from '../../views/toggle/ToggleExample.jsx';
+import TooltipExample from '../../views/tooltip/TooltipExample.jsx';
 import VerticalLayoutExample
   from '../../views/verticalLayout/VerticalLayoutExample.jsx';
 import ViewHeaderExample from '../../views/viewHeader/ViewHeaderExample.jsx';
@@ -204,6 +205,10 @@ const components = [{
   name: 'Toggle',
   source: 'views/toggle/ToggleExample.jsx',
   component: ToggleExample,
+}, {
+  name: 'Tooltip',
+  source: 'views/tooltip/TooltipExample.jsx',
+  component: TooltipExample,
 }, {
   name: 'VerticalLayout',
   source: 'views/verticalLayout/VerticalLayoutExample.jsx',

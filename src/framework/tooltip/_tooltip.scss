@@ -1,0 +1,35 @@
+
+$fieldMessage_borderColor: #e5ebed;
+$fieldMessage_bgColor: #fafdfe;
+$fieldMessage_arrowSide: 6px;
+
+.tooltipPosition {
+  position: absolute;
+  opacity: 0;
+  display: none;
+
+  &:after {
+    content: '';
+    display: block;
+    width: $fieldMessage_arrowSide;
+    height: $fieldMessage_arrowSide;
+    border: solid $fieldMessage_borderColor;
+    background-color: $fieldMessage_bgColor;
+    border-width: 1px 0 0 1px;
+    position: absolute;
+    right: 20px;
+    top: 0;
+    margin-left: -$fieldMessage_arrowSide;
+    margin-top: -4px;
+    transform: rotate(45deg);
+  }
+}
+
+.tooltip {
+  padding: 4px;
+}
+
+.tooltipParent {
+  position: relative;
+  display: inline-block;
+}
