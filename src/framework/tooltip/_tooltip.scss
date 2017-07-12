@@ -1,5 +1,5 @@
 
-$fieldMessage_borderColor: #e5ebed;
+$fieldMessage_borderColor: #dbe2e3;
 $fieldMessage_bgColor: #fafdfe;
 $fieldMessage_arrowSide: 6px;
 
@@ -14,6 +14,7 @@ $fieldMessage_arrowSide: 6px;
     width: $fieldMessage_arrowSide;
     height: $fieldMessage_arrowSide;
     border: solid $fieldMessage_borderColor;
+    border-radius: 3px;
     background-color: $fieldMessage_bgColor;
     border-width: 1px 0 0 1px;
     position: absolute;
@@ -23,10 +24,24 @@ $fieldMessage_arrowSide: 6px;
     margin-top: -4px;
     transform: rotate(45deg);
   }
+
+  &.tooltipTop:after {
+    border-width: 0 1px 1px 0;
+    top: initial;
+  }
+
+  &.tooltipLeft:after {
+    left: 20px;
+  }
+
+  .box {
+    box-shadow: 0 2px 4px 0 rgba(189, 189, 189, 0.5);
+  }
+
 }
 
 .tooltip {
-  padding: 4px;
+  padding: 15px 13px;
 }
 
 .tooltipParent {

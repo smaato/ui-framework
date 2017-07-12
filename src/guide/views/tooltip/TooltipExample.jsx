@@ -13,13 +13,11 @@ const TooltipExample = props => (
   <Page title={props.route.name}>
 
     <Example>
-      hi LALALALALALAALALALALAALALALALAALALALAALALALAL
-      <div> lelelelele</div>
       <Tooltip
         width="200px"
-        message="lelele lalalal lolo I just want to have a super long text"
+        message="This is a text to display in the tooltip"
       >
-      Paco!
+      Hover me
       </Tooltip>
     </Example>
 

@@ -26,9 +26,7 @@ export default class Tooltip extends Component {
   }
 
   onMouseEnter(item) {
-    const domNode = ReactDOM.findDOMNode(this.tooltip); // eslint-disable-line
-    const position = domNode.getBoundingClientRect();
-    this.renderTooltip(position, item);
+    this.renderTooltip(item);
   }
 
   onMouseLeave() {
@@ -68,10 +66,13 @@ export default class Tooltip extends Component {
     );
   }
 
-  renderTooltip(position, item) {
+  renderTooltip(item) {
     this.tooltip.style.display = 'inline-block';
     this.tooltip.style.left = '0px';
     this.tooltip.style.top = '0px';
+    this.tooltip.style.width = this.props.width;
+    this.tooltip.style.height = this.props.height;
+    let styles = 'tooltipPosition ';
 
     const windowLimits = {
       width: window.innerWidth,
@@ -84,11 +85,11 @@ export default class Tooltip extends Component {
     );
 
     const tooltipDimension = this.getTooltipDimension();
-
     let tooltipX = (document.getElementById('tooltipParent').clientWidth / 2) -
       (tooltipDimension.width - 15);
     if (tooltipDimension.posX - tooltipDimension.width < 0) {
-      tooltipX = position.width;
+      tooltipX = 0;
+      styles += ' tooltipLeft';
     }
 
     let tooltipY = document.getElementById('tooltipParent').clientHeight;
@@ -96,12 +97,13 @@ export default class Tooltip extends Component {
       windowLimits.height < tooltipDimension.height +
       (tooltipDimension.posY + 20)
     ) {
-      tooltipY = position.height - tooltipDimension.height;
+      tooltipY = -tooltipDimension.height;
+      styles += ' tooltipTop';
     }
 
+    document.getElementById('tooltipPosition').className = styles;
     this.tooltip.style.left = `${tooltipX}px`;
     this.tooltip.style.top = `${tooltipY}px`;
-    this.tooltip.style.width = this.props.width;
     this.tooltip.style.opacity = 1;
   }
 
@@ -116,7 +118,8 @@ export default class Tooltip extends Component {
       >
         {this.children}
         <div
-          className="tooltipPosition"
+          id="tooltipPosition"
+          className="tooltipPosition "
           ref="tooltipPosition"
         />
       </div>
@@ -125,7 +128,8 @@ export default class Tooltip extends Component {
 }
 
 Tooltip.propTypes = {
-  message: PropTypes.string,
   children: PropTypes.any,
+  height: PropTypes.string,
+  message: PropTypes.string,
   width: PropTypes.string,
 };
