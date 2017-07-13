@@ -14,7 +14,6 @@ export default class Tooltip extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
     this.content = this.props.message;
     this.children = this.props.children;
     this.onMouseEnter = this.onMouseEnter.bind(this);
@@ -48,9 +47,9 @@ export default class Tooltip extends Component {
 
     return {
       height: tooltip.clientHeight,
-      width: tooltip.clientWidth,
       posX: lx,
       posY: ly,
+      width: tooltip.clientWidth,
     };
   }
 
@@ -70,13 +69,13 @@ export default class Tooltip extends Component {
     this.tooltip.style.display = 'inline-block';
     this.tooltip.style.left = '0px';
     this.tooltip.style.top = '0px';
-    this.tooltip.style.width = this.props.width;
     this.tooltip.style.height = this.props.height;
+    this.tooltip.style.width = this.props.width;
     let styles = 'tooltipPosition ';
 
     const windowLimits = {
-      width: window.innerWidth,
       height: window.innerHeight,
+      width: window.innerWidth,
     };
 
     ReactDOM.render(

@@ -1,28 +1,37 @@
 
-$fieldMessage_borderColor: #dbe2e3;
-$fieldMessage_bgColor: #fafdfe;
 $fieldMessage_arrowSide: 6px;
+$fieldMessage_bgColor: #fafdfe;
+$fieldMessage_borderColor: #dbe2e3;
+
+.tooltip {
+  padding: 15px 13px;
+}
+
+.tooltipParent {
+  display: inline-block;
+  position: relative;
+}
 
 .tooltipPosition {
-  position: absolute;
-  opacity: 0;
   display: none;
+  opacity: 0;
+  position: absolute;
 
   &:after {
-    content: '';
-    display: block;
-    width: $fieldMessage_arrowSide;
-    height: $fieldMessage_arrowSide;
+    background-color: $fieldMessage_bgColor;
     border: solid $fieldMessage_borderColor;
     border-radius: 3px;
-    background-color: $fieldMessage_bgColor;
     border-width: 1px 0 0 1px;
+    content: '';
+    display: block;
+    height: $fieldMessage_arrowSide;
     position: absolute;
-    right: 20px;
-    top: 0;
     margin-left: -$fieldMessage_arrowSide;
     margin-top: -4px;
     transform: rotate(45deg);
+    top: 0;
+    right: 20px;
+    width: $fieldMessage_arrowSide;
   }
 
   &.tooltipTop:after {
@@ -38,13 +47,4 @@ $fieldMessage_arrowSide: 6px;
     box-shadow: 0 2px 4px 0 rgba(189, 189, 189, 0.5);
   }
 
-}
-
-.tooltip {
-  padding: 15px 13px;
-}
-
-.tooltipParent {
-  position: relative;
-  display: inline-block;
 }
