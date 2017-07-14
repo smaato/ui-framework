@@ -2,16 +2,16 @@
 import { TestCaseFactory } from 'react-test-kit';
 import Tooltip from './Tooltip.jsx';
 
-fdescribe('Tooltip', () => {
+describe('Tooltip', () => {
   describe('Props', () => {
-    describe('tooltip wrapper is created', () => {
-      it('children is displayed', () => {
+    describe('childen', () => {
+      it('is rendered', () => {
         const props = {
           children: 'hi',
         };
 
         const testCase = TestCaseFactory.create(Tooltip, props);
-        expect(testCase.dom.textContent).toContain('hi');
+        expect(testCase.dom.textContent).toContain(props.children);
       });
     });
   });

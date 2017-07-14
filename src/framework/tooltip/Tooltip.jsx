@@ -1,3 +1,4 @@
+
 import React, {
   Component,
   PropTypes,
@@ -14,23 +15,21 @@ export default class Tooltip extends Component {
   constructor(props) {
     super(props);
 
-    this.content = this.props.message;
-    this.children = this.props.children;
     this.onMouseEnter = this.onMouseEnter.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
   }
 
   componentDidMount() {
-    this.tooltip = this.refs.tooltipPosition;
+    this.tooltipContainer = this.refs.tooltipContainer;
   }
 
-  onMouseEnter(item) {
-    this.renderTooltip(item);
+  onMouseEnter() {
+    this.renderTooltip();
   }
 
   onMouseLeave() {
-    this.tooltip.style.display = 'none';
-    this.tooltip.style.opacity = 1;
+    this.tooltipContainer.style.display = 'none';
+    this.tooltipContainer.style.opacity = 1;
   }
 
   getTooltipDimension() {
@@ -58,20 +57,20 @@ export default class Tooltip extends Component {
       <Box roundedCorners>
         <div id="tooltip" className="tooltip">
           <Text>
-            {this.content}
+            {this.props.message}
           </Text>
         </div>
       </Box>
     );
   }
 
-  renderTooltip(item) {
-    this.tooltip.style.display = 'inline-block';
-    this.tooltip.style.left = '0px';
-    this.tooltip.style.top = '0px';
-    this.tooltip.style.height = this.props.height;
-    this.tooltip.style.width = this.props.width;
-    let styles = 'tooltipPosition ';
+  renderTooltip() {
+    this.tooltipContainer.style.display = 'inline-block';
+    this.tooltipContainer.style.left = '0px';
+    this.tooltipContainer.style.top = '0px';
+    this.tooltipContainer.style.height = this.props.height;
+    this.tooltipContainer.style.width = this.props.width;
+    let styles = 'tooltipContainer';
 
     const windowLimits = {
       height: window.innerHeight,
@@ -79,47 +78,46 @@ export default class Tooltip extends Component {
     };
 
     ReactDOM.render(
-      this.renderTooltipLabel(item),
-      this.tooltip
+      this.renderTooltipLabel(),
+      this.tooltipContainer
     );
 
     const tooltipDimension = this.getTooltipDimension();
-    let tooltipX = (document.getElementById('tooltipParent').clientWidth / 2) -
+    let tooltipX = (document.getElementById('tooltipWrapper').clientWidth / 2) -
       (tooltipDimension.width - 15);
     if (tooltipDimension.posX - tooltipDimension.width < 0) {
       tooltipX = 0;
       styles += ' tooltipLeft';
     }
 
-    let tooltipY = document.getElementById('tooltipParent').clientHeight;
+    let tooltipY = document.getElementById('tooltipWrapper').clientHeight;
     if (
       windowLimits.height < tooltipDimension.height +
-      (tooltipDimension.posY + 20)
+      tooltipDimension.posY + 20
     ) {
       tooltipY = -tooltipDimension.height;
       styles += ' tooltipTop';
     }
 
-    document.getElementById('tooltipPosition').className = styles;
-    this.tooltip.style.left = `${tooltipX}px`;
-    this.tooltip.style.top = `${tooltipY}px`;
-    this.tooltip.style.opacity = 1;
+    document.getElementById('tooltipContainer').className = styles;
+    this.tooltipContainer.style.left = `${tooltipX}px`;
+    this.tooltipContainer.style.top = `${tooltipY}px`;
+    this.tooltipContainer.style.opacity = 1;
   }
 
   render() {
     return (
       <div
-        className="tooltipParent"
-        ref="tooltipParent"
-        id="tooltipParent"
+        className="tooltipWrapper"
+        id="tooltipWrapper"
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
       >
-        {this.children}
+        {this.props.children}
         <div
-          id="tooltipPosition"
-          className="tooltipPosition "
-          ref="tooltipPosition"
+          id="tooltipContainer"
+          className="tooltipContainer "
+          ref="tooltipContainer"
         />
       </div>
     );
