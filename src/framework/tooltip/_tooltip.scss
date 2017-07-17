@@ -16,6 +16,7 @@ $borderColor: #dbe2e3;
   display: none;
   opacity: 0;
   position: absolute;
+  z-index: 10;
 
   &:after {
     background-color: $bgColor;
