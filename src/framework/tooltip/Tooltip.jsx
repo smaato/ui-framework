@@ -20,7 +20,6 @@ export default class Tooltip extends Component {
 
   componentDidUpdate() {
     if (this.state && this.state.hover) {
-      this.tooltipContainer = this.refs.tooltipContainer;
       this.tooltipContainer.style.display = 'inline-block';
       this.tooltipContainer.style.left = '0px';
       this.tooltipContainer.style.top = '0px';
@@ -36,14 +35,14 @@ export default class Tooltip extends Component {
 
       const tooltipDimension = this.getTooltipDimension();
       let tooltipX = (
-          document.getElementById('tooltipWrapper').clientWidth / 2
+          this.tooltipWrapper.clientWidth / 2
         ) - (tooltipDimension.width - 15);
       if (tooltipDimension.posX - tooltipDimension.width < 0) {
         tooltipX = 0;
         this.styles += ' tooltipLeft';
       }
 
-      let tooltipY = document.getElementById('tooltipWrapper').clientHeight;
+      let tooltipY = this.tooltipWrapper.clientHeight;
       if (
         this.windowLimits.height < tooltipDimension.height +
         tooltipDimension.posY + 20
@@ -52,7 +51,7 @@ export default class Tooltip extends Component {
         this.styles += ' tooltipTop';
       }
 
-      document.getElementById('tooltipContainer').className = this.styles;
+      this.tooltipContainer.className = this.styles;
       this.tooltipContainer.style.left = `${tooltipX}px`;
       this.tooltipContainer.style.top = `${tooltipY}px`;
       this.tooltipContainer.style.opacity = 1;
@@ -68,11 +67,9 @@ export default class Tooltip extends Component {
   }
 
   getTooltipDimension() {
-    const tooltip = document.getElementById('tooltip');
-
     let lx;
     let ly;
-    let element = tooltip;
+    let element = this.tooltip;
     for (lx = 0, ly = 0;
       element != null;
       lx += element.offsetLeft,
@@ -80,22 +77,24 @@ export default class Tooltip extends Component {
       element = element.offsetParent);
 
     return {
-      height: tooltip.clientHeight,
+      height: this.tooltip.clientHeight,
       posX: lx,
       posY: ly,
-      width: tooltip.clientWidth,
+      width: this.tooltip.clientWidth,
     };
   }
 
   renderTooltipLabel() {
     return (
       <div
-        id="tooltipContainer"
         className="tooltipContainer "
-        ref="tooltipContainer"
+        ref={(div) => { this.tooltipContainer = div; }}
       >
         <Box roundedCorners>
-          <div id="tooltip" className="tooltip">
+          <div
+            className="tooltip"
+            ref={(div) => { this.tooltip = div; }}
+          >
             <Text>
               {this.props.message}
             </Text>
@@ -117,9 +116,9 @@ export default class Tooltip extends Component {
     return (
       <div
         className="tooltipWrapper"
-        id="tooltipWrapper"
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
+        ref={(div) => { this.tooltipWrapper = div; }}
       >
         {this.props.children}
         {tooltipContainter}
