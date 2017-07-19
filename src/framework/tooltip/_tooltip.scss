@@ -3,12 +3,12 @@ $arrowSide: 6px;
 $bgColor: $white;
 $borderColor: $componentStrokeColor;
 
-.tooltipWrapper {
+.tooltip {
   display: inline-block;
   position: relative;
-}
+  line-height: 0;
 
-  .tooltipContainer {
+  &__container {
     display: inline-block;
     opacity: 0;
     position: absolute;
@@ -43,10 +43,11 @@ $borderColor: $componentStrokeColor;
       box-shadow: 0 2px 4px 0 rgba(189, 189, 189, 0.5);
     }
 
-  }
-
-    .tooltip {
+    &__content {
       height: 100%;
       padding: 15px 13px;
       width: 100%;
     }
+  }
+
+}

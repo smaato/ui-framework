@@ -17,8 +17,9 @@ const TooltipExample = props => (
         width="200px"
         message="This is a text to display in the tooltip"
       >
-      Hover me
+        hover me.
       </Tooltip>
+
     </Example>
   </Page>
 );

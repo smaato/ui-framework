@@ -20,8 +20,8 @@ export default class Tooltip extends Component {
 
   componentDidUpdate() {
     if (this.state.hover) {
-      this.tooltip.style.width = this.props.width;
-      this.styles = 'tooltipContainer';
+      this.content.style.width = this.props.width;
+      this.styles = ['tooltip__container'];
 
       this.windowLimits = {
         height: window.innerHeight,
@@ -30,25 +30,25 @@ export default class Tooltip extends Component {
 
       const tooltipDimension = this.getTooltipDimension();
       let tooltipX =
-        (this.tooltipWrapper.clientWidth / 2) - (tooltipDimension.width - 15);
+        (this.tooltip.clientWidth / 2) - (tooltipDimension.width - 21);
       if (tooltipDimension.posX - tooltipDimension.width < 0) {
-        tooltipX = 0;
-        this.styles += ' tooltipLeft';
+        tooltipX = (this.tooltip.clientWidth / 2) - 18;
+        this.styles.push('tooltipLeft');
       }
 
-      let tooltipY = this.tooltipWrapper.clientHeight;
+      let tooltipY = this.tooltip.clientHeight + 15;
       if (
         this.windowLimits.height < tooltipDimension.height +
         tooltipDimension.posY + 20
       ) {
-        tooltipY = -tooltipDimension.height;
-        this.styles += ' tooltipTop';
+        tooltipY = -tooltipDimension.height - 19;
+        this.styles.push('tooltipTop');
       }
 
-      this.tooltipContainer.className = this.styles;
-      this.tooltipContainer.style.left = `${tooltipX}px`;
-      this.tooltipContainer.style.top = `${tooltipY}px`;
-      this.tooltipContainer.style.opacity = 1;
+      this.container.className = this.styles.join(' ');
+      this.container.style.left = `${tooltipX}px`;
+      this.container.style.top = `${tooltipY}px`;
+      this.container.style.opacity = 1;
     }
   }
 
@@ -63,7 +63,7 @@ export default class Tooltip extends Component {
   getTooltipDimension() {
     let posX;
     let posY;
-    let element = this.tooltip;
+    let element = this.content;
     for (posX = 0, posY = 0;
       element != null;
       posX += element.offsetLeft,
@@ -71,23 +71,23 @@ export default class Tooltip extends Component {
       element = element.offsetParent);
 
     return {
-      height: this.tooltip.clientHeight,
+      height: this.content.clientHeight,
       posX,
       posY,
-      width: this.tooltip.clientWidth,
+      width: this.content.clientWidth,
     };
   }
 
   renderTooltip() {
     return (
       <div
-        className="tooltipContainer"
-        ref={(div) => { this.tooltipContainer = div; }}
+        className="tooltip__container"
+        ref={(div) => { this.container = div; }}
       >
         <Box roundedCorners>
           <div
-            className="tooltip"
-            ref={(div) => { this.tooltip = div; }}
+            className="tooltip__container__content"
+            ref={(div) => { this.content = div; }}
           >
             <Text>
               {this.props.message}
@@ -107,10 +107,10 @@ export default class Tooltip extends Component {
 
     return (
       <div
-        className="tooltipWrapper"
+        className="tooltip"
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
-        ref={(div) => { this.tooltipWrapper = div; }}
+        ref={(div) => { this.tooltip = div; }}
       >
         {this.props.children}
         {tooltipContainter}
