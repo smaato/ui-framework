@@ -1,50 +1,52 @@
 
 $arrowSide: 6px;
-$bgColor: #fafdfe;
-$borderColor: #dbe2e3;
-
-.tooltip {
-  padding: 15px 13px;
-}
+$bgColor: $white;
+$borderColor: $componentStrokeColor;
 
 .tooltipWrapper {
   display: inline-block;
   position: relative;
 }
 
-.tooltipContainer {
-  display: none;
-  opacity: 0;
-  position: absolute;
-  z-index: 10;
-
-  &:after {
-    background-color: $bgColor;
-    border: solid $borderColor;
-    border-width: 1px 0 0 1px;
-    content: '';
-    display: block;
-    height: $arrowSide;
+  .tooltipContainer {
+    display: inline-block;
+    opacity: 0;
     position: absolute;
-    margin-left: -$arrowSide;
-    margin-top: -4px;
-    right: 20px;
-    transform: rotate(45deg);
-    top: 0;
-    width: $arrowSide;
+    z-index: 10;
+
+    &:after {
+      background-color: $bgColor;
+      border: solid $borderColor;
+      border-width: 1px 0 0 1px;
+      content: '';
+      display: block;
+      height: $arrowSide;
+      position: absolute;
+      margin-left: -$arrowSide;
+      margin-top: -3px;
+      right: 20px;
+      transform: rotate(45deg);
+      top: 0;
+      width: $arrowSide;
+    }
+
+    &.tooltipTop:after {
+      border-width: 0 1px 1px 0;
+      top: initial;
+    }
+
+    &.tooltipLeft:after {
+      left: 20px;
+    }
+
+    .box {
+      box-shadow: 0 2px 4px 0 rgba(189, 189, 189, 0.5);
+    }
+
   }
 
-  &.tooltipTop:after {
-    border-width: 0 1px 1px 0;
-    top: initial;
-  }
-
-  &.tooltipLeft:after {
-    left: 20px;
-  }
-
-  .box {
-    box-shadow: 0 2px 4px 0 rgba(189, 189, 189, 0.5);
-  }
-
-}
+    .tooltip {
+      height: 100%;
+      padding: 15px 13px;
+      width: 100%;
+    }
