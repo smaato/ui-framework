@@ -1,7 +1,5 @@
 
 $arrowSide: 6px;
-$bgColor: $white;
-$borderColor: $componentStrokeColor;
 
 .tooltip {
   display: inline-block;
@@ -15,8 +13,8 @@ $borderColor: $componentStrokeColor;
     z-index: 10;
 
     &:after {
-      background-color: $bgColor;
-      border: solid $borderColor;
+      background-color: $white;
+      border: solid $componentStrokeColor;
       border-width: 1px 0 0 1px;
       content: '';
       display: block;

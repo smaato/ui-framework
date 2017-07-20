@@ -61,14 +61,16 @@ export default class Tooltip extends Component {
   }
 
   getTooltipDimension() {
-    let posX;
-    let posY;
+    let posX = 0;
+    let posY = 0;
     let element = this.content;
-    for (posX = 0, posY = 0;
+    for (
+      ;
       element != null;
       posX += element.offsetLeft,
       posY += element.offsetTop,
-      element = element.offsetParent);
+      element = element.offsetParent
+    );
 
     return {
       height: this.content.clientHeight,
