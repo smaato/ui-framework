@@ -21,7 +21,7 @@ export default class Tooltip extends Component {
   componentDidUpdate() {
     if (this.state.hover) {
       this.content.style.width = this.props.width;
-      this.styles = ['tooltip__container'];
+      const styles = ['tooltip__container'];
 
       this.windowLimits = {
         height: window.innerHeight,
@@ -33,7 +33,7 @@ export default class Tooltip extends Component {
         (this.tooltip.clientWidth / 2) - (tooltipDimension.width - 21);
       if (tooltipDimension.posX - tooltipDimension.width < 0) {
         tooltipX = (this.tooltip.clientWidth / 2) - 18;
-        this.styles.push('tooltipLeft');
+        styles.push('tooltipLeft');
       }
 
       let tooltipY = this.tooltip.clientHeight + 15;
@@ -42,13 +42,12 @@ export default class Tooltip extends Component {
         tooltipDimension.posY + 20
       ) {
         tooltipY = -tooltipDimension.height - 19;
-        this.styles.push('tooltipTop');
+        styles.push('tooltipTop');
       }
 
-      this.container.className = this.styles.join(' ');
+      this.container.className = styles.join(' ');
       this.container.style.left = `${tooltipX}px`;
       this.container.style.top = `${tooltipY}px`;
-      this.container.style.opacity = 1;
     }
   }
 
@@ -61,21 +60,10 @@ export default class Tooltip extends Component {
   }
 
   getTooltipDimension() {
-    let posX = 0;
-    let posY = 0;
-    let element = this.content;
-    for (
-      ;
-      element != null;
-      posX += element.offsetLeft,
-      posY += element.offsetTop,
-      element = element.offsetParent
-    );
-
     return {
       height: this.content.clientHeight,
-      posX,
-      posY,
+      posX: this.container.getBoundingClientRect().left,
+      posY: this.container.getBoundingClientRect().top,
       width: this.content.clientWidth,
     };
   }

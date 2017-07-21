@@ -3,12 +3,11 @@ $arrowSide: 6px;
 
 .tooltip {
   display: inline-block;
-  position: relative;
   line-height: 0;
+  position: relative;
 
   &__container {
     display: inline-block;
-    opacity: 0;
     position: absolute;
     z-index: 10;
 
