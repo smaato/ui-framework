@@ -28,12 +28,16 @@ export default class Tooltip extends Component {
         width: window.innerWidth,
       };
 
+      let isPosXSet = false;
+      let isPosYSet = false;
+
       const tooltipDimension = this.getTooltipDimension();
       let tooltipX =
         (this.tooltip.clientWidth / 2) - (tooltipDimension.width - 21);
       if (tooltipDimension.posX - tooltipDimension.width < 0) {
         tooltipX = (this.tooltip.clientWidth / 2) - 18;
         styles.push('tooltipLeft');
+        isPosXSet = true;
       }
 
       let tooltipY = this.tooltip.clientHeight + 15;
@@ -43,11 +47,44 @@ export default class Tooltip extends Component {
       ) {
         tooltipY = -tooltipDimension.height - 19;
         styles.push('tooltipTop');
+        isPosYSet = true;
+      }
+
+      this.container.style.left = `${tooltipX}px`;
+      this.container.style.top = `${tooltipY}px`;
+
+      // reajust tooltip taking into account if it is visible
+      const containerBounds = this.container.getBoundingClientRect();
+      const elementTooltip = document.elementFromPoint(
+        containerBounds.left,
+        containerBounds.top + containerBounds.height + 23
+      );
+
+      // if it is not already positioned adove reposition it if needed
+      if (!isPosYSet && !this.container.contains(elementTooltip)) {
+        isPosYSet = true;
+        tooltipY = -tooltipDimension.height - 19;
+        this.container.style.top = `${tooltipY}px`;
+        styles.push('tooltipTop');
+      }
+
+      // recalculate from actual position after reposition
+      const elementTooltipX = document.elementFromPoint(
+        (containerBounds.left - containerBounds.width) + 22,
+        (isPosYSet === true) ?
+          containerBounds.top - containerBounds.height :
+          containerBounds.top + 29
+      );
+
+      // update position to right if needed
+      if (!isPosXSet && !this.container.contains(elementTooltipX)) {
+        tooltipX = (this.tooltip.clientWidth / 2) - 18;
+        this.container.style.left = `${tooltipX}px`;
+        styles.push('tooltipLeft');
       }
 
       this.container.className = styles.join(' ');
-      this.container.style.left = `${tooltipX}px`;
-      this.container.style.top = `${tooltipY}px`;
+      this.container.style.opacity = 1;
     }
   }
 
