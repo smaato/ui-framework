@@ -64,7 +64,7 @@ export default class Tooltip extends Component {
       // if it is not already positioned adove reposition it if needed
       if (!isPosYSet && !this.container.contains(elementTooltip)) {
         isPosYSet = true;
-        heightTooltip -= containerBounds.height;
+        heightTooltip -= (containerBounds.height + 1);
         tooltipY = -tooltipDimension.height - 19;
         this.container.style.top = `${tooltipY}px`;
         styles.push('tooltipTop');
