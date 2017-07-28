@@ -56,13 +56,15 @@ export default class Tooltip extends Component {
       // reajust tooltip taking into account if it is visible
       const containerBounds = this.container.getBoundingClientRect();
       const elementTooltip = document.elementFromPoint(
-        containerBounds.left,
-        containerBounds.top + containerBounds.height + 23
+        containerBounds.left + 2,
+        (containerBounds.top + containerBounds.height) - 2
       );
+      let heightTooltip = containerBounds.top;
 
       // if it is not already positioned adove reposition it if needed
       if (!isPosYSet && !this.container.contains(elementTooltip)) {
         isPosYSet = true;
+        heightTooltip -= containerBounds.height;
         tooltipY = -tooltipDimension.height - 19;
         this.container.style.top = `${tooltipY}px`;
         styles.push('tooltipTop');
@@ -70,10 +72,10 @@ export default class Tooltip extends Component {
 
       // recalculate from actual position after reposition
       const elementTooltipX = document.elementFromPoint(
-        (containerBounds.left - containerBounds.width) + 22,
+        containerBounds.left + 2,
         (isPosYSet === true) ?
-          containerBounds.top - containerBounds.height :
-          containerBounds.top + 29
+          heightTooltip :
+          (containerBounds.top + containerBounds.height) - 2
       );
 
       // update position to right if needed
