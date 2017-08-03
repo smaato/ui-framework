@@ -23,11 +23,6 @@ export default class Tooltip extends Component {
       this.content.style.width = this.props.width;
       const styles = ['tooltip__container'];
 
-      this.windowLimits = {
-        height: window.innerHeight,
-        width: window.innerWidth,
-      };
-
       let isPosXSet = false;
       let isPosYSet = false;
 
@@ -36,13 +31,13 @@ export default class Tooltip extends Component {
         (this.tooltip.clientWidth / 2) - (tooltipDimension.width - 21);
       if (tooltipDimension.posX - tooltipDimension.width < 0) {
         tooltipX = (this.tooltip.clientWidth / 2) - 18;
-        styles.push('tooltipLeft');
+        styles.push('tooltipRight');
         isPosXSet = true;
       }
 
       let tooltipY = this.tooltip.clientHeight + 15;
       if (
-        this.windowLimits.height < tooltipDimension.height +
+        window.innerHeight < tooltipDimension.height +
         tooltipDimension.posY + 20
       ) {
         tooltipY = -tooltipDimension.height - 19;
@@ -73,7 +68,7 @@ export default class Tooltip extends Component {
       // recalculate from actual position after reposition
       const elementTooltipX = document.elementFromPoint(
         containerBounds.left + 2,
-        (isPosYSet === true) ?
+        isPosYSet ?
           heightTooltip :
           (containerBounds.top + containerBounds.height) - 2
       );
@@ -82,7 +77,7 @@ export default class Tooltip extends Component {
       if (!isPosXSet && !this.container.contains(elementTooltipX)) {
         tooltipX = (this.tooltip.clientWidth / 2) - 18;
         this.container.style.left = `${tooltipX}px`;
-        styles.push('tooltipLeft');
+        styles.push('tooltipRight');
       }
 
       this.container.className = styles.join(' ');
