@@ -10,11 +10,13 @@ import {
 } from '../../framework/framework';
 
 export default class Tooltip extends Component {
+
   constructor(props) {
     super(props);
 
     this.onMouseEnter = this.onMouseEnter.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
+
     this.state = { hover: false };
   }
 
@@ -23,31 +25,53 @@ export default class Tooltip extends Component {
       this.content.style.width = this.props.width;
       const styles = ['tooltip__container'];
 
-      this.windowLimits = {
-        height: window.innerHeight,
-        width: window.innerWidth,
-      };
+      let isRenderedToRight = false;
+      let isRenderedToTop = false;
 
-      const tooltipDimension = this.getTooltipDimension();
-      let tooltipX =
-        (this.tooltip.clientWidth / 2) - (tooltipDimension.width - 21);
-      if (tooltipDimension.posX - tooltipDimension.width < 0) {
-        tooltipX = (this.tooltip.clientWidth / 2) - 18;
-        styles.push('tooltipLeft');
+      // Adjust position to the right if window requires.
+      this.setPosX(this.getTooltipXToLeft());
+      if (this.container.getBoundingClientRect().left < 0) {
+        this.setPosX(this.getTooltipXToRight());
+        isRenderedToRight = true;
       }
 
-      let tooltipY = this.tooltip.clientHeight + 15;
+      // Adjust position to the top if window requires.
+      this.setPosY(this.getTooltipYToBottom());
+      if (window.innerHeight < this.container.getBoundingClientRect().bottom) {
+        this.setPosY(this.getTooltipYToTop());
+        isRenderedToTop = true;
+      }
+
+      // Reajust position to the top if container edge is not visible.
       if (
-        this.windowLimits.height < tooltipDimension.height +
-        tooltipDimension.posY + 20
+        !isRenderedToTop &&
+        !this.container.contains(
+          this.getElementFromContainerEdge(isRenderedToRight, true)
+        )
       ) {
-        tooltipY = -tooltipDimension.height - 19;
+        this.setPosY(this.getTooltipYToTop());
+        isRenderedToTop = true;
+      }
+
+      // Reajust position to the right if container edge is not visible.
+      if (
+        !isRenderedToRight &&
+        !this.container.contains(
+          this.getElementFromContainerEdge(true, isRenderedToTop)
+        )
+      ) {
+        this.setPosX(this.getTooltipXToRight());
+        isRenderedToRight = true;
+      }
+
+      if (isRenderedToRight) {
+        styles.push('tooltipRight');
+      }
+      if (isRenderedToTop) {
         styles.push('tooltipTop');
       }
 
       this.container.className = styles.join(' ');
-      this.container.style.left = `${tooltipX}px`;
-      this.container.style.top = `${tooltipY}px`;
     }
   }
 
@@ -59,13 +83,40 @@ export default class Tooltip extends Component {
     this.setState({ hover: false });
   }
 
-  getTooltipDimension() {
-    return {
-      height: this.content.clientHeight,
-      posX: this.container.getBoundingClientRect().left,
-      posY: this.container.getBoundingClientRect().top,
-      width: this.content.clientWidth,
-    };
+  getElementFromContainerEdge(isRenderedToRight, isRenderedToTop) {
+    const containerBounding = this.container.getBoundingClientRect();
+    const x = isRenderedToRight ?
+      containerBounding.left + 1 :
+      containerBounding.right - 1;
+    const y = isRenderedToTop ?
+      containerBounding.bottom - 1 :
+      containerBounding.top + 1;
+
+    return document.elementFromPoint(x, y);
+  }
+
+  getTooltipXToLeft() {
+    return ((this.tooltip.clientWidth / 2) + 23) - this.container.clientWidth;
+  }
+
+  getTooltipXToRight() {
+    return (this.tooltip.clientWidth / 2) - 18;
+  }
+
+  getTooltipYToBottom() {
+    return this.tooltip.clientHeight + 15;
+  }
+
+  getTooltipYToTop() {
+    return -this.container.clientHeight - 19;
+  }
+
+  setPosX(leftValue) {
+    this.container.style.left = `${leftValue}px`;
+  }
+
+  setPosY(topValue) {
+    this.container.style.top = `${topValue}px`;
   }
 
   renderTooltip() {
@@ -98,11 +149,15 @@ export default class Tooltip extends Component {
     return (
       <div
         className="tooltip"
-        onMouseEnter={this.onMouseEnter}
-        onMouseLeave={this.onMouseLeave}
         ref={(div) => { this.tooltip = div; }}
       >
-        {this.props.children}
+        <span
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}
+        >
+          {this.props.children}
+        </span>
+
         {tooltipContainter}
       </div>
     );
