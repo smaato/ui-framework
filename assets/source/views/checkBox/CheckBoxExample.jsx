@@ -34,10 +34,39 @@ export default class CheckBoxExample extends Component {
       <Page title={this.props.route.name}>
         <Example>
           <CheckBox
-            id="checkboxId"
-            onClick={this.onClickCheckBox}
             checked={this.state.isChecked}
             data="Checkbox Data"
+            id="checkboxId"
+            onClick={this.onClickCheckBox}
+          />
+        </Example>
+
+        <Example title="With readonly">
+          <CheckBox
+            checked={this.state.isChecked}
+            data="Checkbox Data"
+            id="checkboxIdReadonly"
+            isReadonly
+            onClick={this.onClickCheckBox}
+          />
+        </Example>
+
+        <Example title="Error state">
+          <CheckBox
+            data="Checkbox Data"
+            id="checkboxIdError"
+            isError
+            onClick={this.onClickCheckBox}
+          />
+        </Example>
+
+        <Example title="Using icons">
+          <CheckBox
+            checked={this.state.isChecked}
+            data="Checkbox Data"
+            id="checkboxIdIcon"
+            onClick={this.onClickCheckBox}
+            useIcons
           />
         </Example>
       </Page>
