@@ -1,4 +1,5 @@
 
+import classNames from 'classnames';
 import React, {
   Component,
   PropTypes,
@@ -9,8 +10,14 @@ export default class CheckBox extends Component {
   constructor(props) {
     super(props);
 
-    this.onClick = this.onClick.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onChange(event) {
+    if (!this.props.isReadonly && this.props.onClick) {
+      this.props.onClick(event.target.checked, this.props.id, this.props.data);
+    }
   }
 
   onClick(event) {
@@ -24,32 +31,66 @@ export default class CheckBox extends Component {
     event.stopPropagation();
   }
 
-  onChange(event) {
-    if (this.props.onClick) {
-      this.props.onClick(event.target.checked, this.props.id, this.props.data);
-    }
+  renderIconContent() {
+    const iconClasses = classNames('checkBox__icon', 'icon', {
+      'icon-check-circled-green': this.props.checked,
+      'icon-check-circled': !this.props.checked,
+    });
+    const labelClasses = classNames('checkBox__label', {
+      'checkBox__label--readonly': this.props.isReadonly,
+    });
+
+    return (
+      <label
+        className={labelClasses}
+        htmlFor={this.props.id}
+      >
+        <span className={iconClasses} />
+      </label>
+    );
+  }
+
+  renderTickContent() {
+    const labelClasses = classNames('checkBox__label', {
+      'checkBox__label--error': this.props.isError,
+      'checkBox__label--readonly': this.props.isReadonly,
+    });
+
+    return (
+      <label
+        className={labelClasses}
+        htmlFor={this.props.id}
+      >
+        <span className="checkBox__icon icon icon-check-white" />
+      </label>
+    );
   }
 
   render() {
+    const content = this.props.useIcons ?
+      this.renderIconContent() :
+      this.renderTickContent();
+
+    const wrapperClasses = classNames('checkBox', {
+      'checkBox--icon': this.props.useIcons,
+      'checkBox--tick': !this.props.useIcons,
+    });
+
     return (
       <span
-        className="checkBox"
+        className={wrapperClasses}
         onClick={this.onClick}
       >
         <input
-          type="checkbox"
-          name={this.props.id}
-          id={this.props.id}
-          className="checkBox__input"
-          onChange={this.onChange}
           checked={this.props.checked}
+          className="checkBox__input"
+          disabled={this.props.isReadonly}
+          id={this.props.id}
+          name={this.props.id}
+          onChange={this.onChange}
+          type="checkbox"
         />
-        <label
-          htmlFor={this.props.id}
-          className="checkBox__label"
-        >
-          <span className="checkBox__icon icon icon-check-white" />
-        </label>
+        {content}
       </span>
     );
   }
@@ -57,11 +98,14 @@ export default class CheckBox extends Component {
 }
 
 CheckBox.propTypes = {
+  checked: PropTypes.bool,
+  data: PropTypes.any,
   id: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]).isRequired,
+  isError: PropTypes.bool,
+  isReadonly: PropTypes.bool,
   onClick: PropTypes.func,
-  checked: PropTypes.bool,
-  data: PropTypes.any,
+  useIcons: PropTypes.bool,
 };

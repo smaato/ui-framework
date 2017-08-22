@@ -93,9 +93,22 @@ export default class ButtonExample extends Component {
           <PrimaryButton type={Button.TYPE.ADD}>
             ADD
           </PrimaryButton>
+          {' '}
+          <BasicButton type={Button.TYPE.DEAL}>
+            DEAL
+          </BasicButton>
+          {' '}
+          <BasicButton type={Button.TYPE.EXCHANGE}>
+            EXCHANGE
+          </BasicButton>
+          {' '}
           <HollowButton type={Button.TYPE.LOG}>
             LOG
           </HollowButton>
+          {' '}
+          <BasicButton type={Button.TYPE.PRIVATE_DEAL}>
+            PRIVATE_DEAL
+          </BasicButton>
         </Example>
       </Page>
     );

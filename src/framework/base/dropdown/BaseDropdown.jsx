@@ -12,6 +12,7 @@
  * 7. Press enter (if focused) to CLOSE.
  */
 
+import $ from 'jquery';
 import React, {
   Component,
   PropTypes,
@@ -36,6 +37,20 @@ export default class BaseDropdown extends Component {
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onSelectOption = this.onSelectOption.bind(this);
     this.onMouseOverOption = this.onMouseOverOption.bind(this);
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if (this.state.isOpen && !nextState.isOpen) {
+      this.enableScrolling();
+    } else if (!this.state.isOpen && nextState.isOpen) {
+      this.disableScrolling();
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (!prevState.isOpen && this.state.isOpen) {
+      this.chooseOpeningDirection();
+    }
   }
 
   onBlur() {
@@ -139,6 +154,45 @@ export default class BaseDropdown extends Component {
     this.setState({
       isOpen: false,
     });
+  }
+
+  chooseOpeningDirection() {
+    const EXTRA_SPACE = 10;
+    const $input = $(this.refs.input);
+
+    if (!$input.offset()) {
+      return;
+    }
+
+    const $optionList = $(this.refs.optionList);
+
+    const roomBelow =
+      (
+        $(window).height() - $input.offset().top - $input.parent().outerHeight()
+      ) + $(window).scrollTop();
+
+    if (roomBelow < $optionList.outerHeight()) {
+      const roomAbove = $input.offset().top - $(window).scrollTop();
+      if (roomBelow < roomAbove) {
+        $optionList.css({
+          top: 'inherit',
+          bottom: 'calc(100% - 1px)',
+          'max-height': roomAbove - EXTRA_SPACE,
+        });
+      } else {
+        $optionList.css({
+          'max-height': roomBelow - EXTRA_SPACE,
+        });
+      }
+    }
+  }
+
+  enableScrolling() {
+    $('body').removeClass('body--noscroll');
+  }
+
+  disableScrolling() {
+    $('body').addClass('body--noscroll');
   }
 
   focusNextOption() {

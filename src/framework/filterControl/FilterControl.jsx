@@ -6,7 +6,7 @@ import React, {
 
 import {
   Filter,
-} from '../services/';
+} from '../services';
 
 import FilterDropdown from './filterDropdown/FilterDropdown.jsx';
 import FilterDropdownButton from './filterDropdown/FilterDropdownButton.jsx';

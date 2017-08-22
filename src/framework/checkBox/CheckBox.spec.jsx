@@ -51,6 +51,63 @@ describe('CheckBox', () => {
       });
     });
 
+    describe('isError', () => {
+      describe('when not set', () => {
+        it('doesn\'t add the appropriate class', () => {
+          const props = {
+            isError: false,
+          };
+          const testCase = TestCaseFactory.create(CheckBox, props);
+          expect(
+            testCase.first('label').className
+          ).not.toContain('checkBox__label--error');
+        });
+      });
+
+      describe('when set', () => {
+        it('adds the appropriate class', () => {
+          const props = {
+            isError: true,
+          };
+          const testCase = TestCaseFactory.create(CheckBox, props);
+          expect(
+            testCase.first('label').className
+          ).toContain('checkBox__label--error');
+        });
+      });
+    });
+
+    describe('isReadonly', () => {
+      describe('when not set', () => {
+        it('input is not disabled', () => {
+          const testCase = TestCaseFactory.createFromElement(
+            <CheckBox id="id" />
+          );
+          expect(testCase.first('input').disabled).toBe(false);
+        });
+      });
+
+      describe('when set', () => {
+        const props = {
+          id: 'id',
+          data: {},
+          isReadonly: true,
+          onClick: jasmine.createSpy('onClick'),
+        };
+        const testCase = TestCaseFactory.create(CheckBox, props);
+
+        it('input is disabled', () => {
+          expect(testCase.first('input').disabled).toBe(true);
+        });
+
+        it('doesn\'t call onClick', () => {
+          const input = testCase.first('input');
+          testCase.trigger('change', input);
+          expect(props.onClick).not.toHaveBeenCalled();
+        });
+      });
+    });
+
     describe('onClick', () => {
       let props;
 
@@ -78,6 +135,28 @@ describe('CheckBox', () => {
           props.id,
           props.data
         );
+      });
+    });
+  });
+
+  describe('useIcons', () => {
+    describe('when not set', () => {
+      it('renders a check box with a tick', () => {
+        const props = {
+          useIcons: false,
+        };
+        const testCase = TestCaseFactory.create(CheckBox, props);
+        expect(testCase.dom.className).toContain('checkBox--tick');
+      });
+    });
+
+    describe('when set', () => {
+      it('renders a check box with an icon', () => {
+        const props = {
+          useIcons: true,
+        };
+        const testCase = TestCaseFactory.create(CheckBox, props);
+        expect(testCase.dom.className).toContain('checkBox--icon');
       });
     });
   });

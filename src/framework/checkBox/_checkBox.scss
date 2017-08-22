@@ -1,0 +1,97 @@
+
+@mixin checkBox__label($checkBoxSize) {
+  cursor: pointer;
+  display: block;
+  height: $checkBoxSize;
+  line-height: $checkBoxSize;
+  position: relative;
+  width: $checkBoxSize;
+
+  &--readonly {
+    cursor: default;
+  }
+}
+
+@mixin checkBox__icon($checkBoxIconSize) {
+  display: block;
+  height: $checkBoxIconSize;
+  left: 1px;
+  position: absolute;
+  top: 1px;
+  width: $checkBoxIconSize;
+}
+
+
+.checkBox {
+  display: inline-block;
+  vertical-align: middle;
+
+  &__input {
+    display: none;
+  }
+
+  &--icon {
+    .checkBox__label {
+      @include checkBox__label(17px);
+    }
+
+    .checkBox__icon {
+      @include checkBox__icon(14px);
+    }
+
+    .icon-check-circled {
+      opacity: 0.3;
+    }
+  }
+
+  &--tick {
+    .checkBox__input:checked + .checkBox__label {
+      $checkedColor: tint(scale-saturation($blue, 30%), 5%);
+      background: $checkedColor;
+      border-color: $checkedColor;
+      box-shadow: 0 0 0 transparent;
+
+      .checkBox__icon {
+        display: block;
+      }
+
+      &--readonly {
+        background: shade($componentBackgroundColor, 15%);
+        border-color: shade($componentBackgroundColor, 15%);
+      }
+    }
+
+    .checkBox__label {
+      @include checkBox__label(12px);
+      background: tint($componentBackgroundColor, 90%);
+      border-radius: 2px;
+      border: 1px solid shade($componentStrokeColor, 7%);
+      box-shadow: inset 0 1px 0 tint($componentStrokeColor, 50%);
+
+      &:hover {
+        box-shadow: 0 1px 1px rgba(black, 0.2);
+      }
+
+      &--error {
+        @include fieldError;
+        background-color: $yellow;
+        box-shadow: 0 0 0 transparent;
+      }
+
+      &--readonly {
+        background: shade($componentBackgroundColor, 5%);
+        border-color: $componentStrokeColor;
+        box-shadow: inset 0 1px 0 tint($componentStrokeColor, 40%);
+
+        &:hover {
+          box-shadow: 0 0 0 transparent;
+        }
+      }
+    }
+
+      .checkBox__icon {
+        @include checkBox__icon(8px);
+        display: none;
+      }
+  }
+}

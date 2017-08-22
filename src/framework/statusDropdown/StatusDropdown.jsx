@@ -55,6 +55,13 @@ export default class StatusDropdown extends Component {
           inactive: 'Pause',
         },
       },
+      [StatusDropdown.OPTIONS.DISABLED]: {
+        dropdownDotColor: DropdownDot.COLOR.GREY,
+        labelClass: 'statusDropdownLabel--grey',
+        name: {
+          active: 'Disabled',
+        },
+      },
     };
   }
 
@@ -112,12 +119,14 @@ export default class StatusDropdown extends Component {
     const additionalLabelClass =
       this.props.selectedOption &&
       this.optionToMetaDataMap[this.props.selectedOption].labelClass;
+    const isReadonly =
+      this.props.selectedOption === StatusDropdown.OPTIONS.DISABLED;
     const labelClasses = classNames('statusDropdownLabel', {
       [additionalLabelClass]: additionalLabelClass,
+      'statusDropdownLabel--disabled': isReadonly,
     });
 
     let sortedOptions;
-
     if (this.props.selectedOption) {
       sortedOptions = [];
       this.props.options.forEach((option) => {
@@ -138,6 +147,7 @@ export default class StatusDropdown extends Component {
         labelClasses={labelClasses}
         labelFocusClasses="is-status-dropdown-label-focus"
         labelProvider={this.labelProvider}
+        isReadonly={isReadonly}
         onSelect={this.props.onSelect}
         optionLabelProvider={this.optionLabelProvider}
         optionListClasses="statusDropdownOptionList"
@@ -154,6 +164,7 @@ StatusDropdown.OPTIONS = keyMirror({
   ACTIVATE: null,
   ARCHIVE: null,
   DEACTIVATE: null,
+  DISABLED: null,
 });
 
 StatusDropdown.propTypes = {
