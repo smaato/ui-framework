@@ -830,7 +830,12 @@ export default class GridExample extends Component {
 
   renderEmptyRow() {
     if (this.state.isEmpty) {
-      return <GridEmptyRow columnsCount={this.COLUMNS_COUNT} />;
+      return (
+        <GridEmptyRow
+          columnsCount={this.COLUMNS_COUNT}
+          height={this.ROW_HEIGHT}
+        />
+      );
     }
   }
 
