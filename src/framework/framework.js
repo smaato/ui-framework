@@ -28,6 +28,8 @@ export { default as ColumnLayout } from './columnLayout/ColumnLayout.jsx';
 export * from './dropdown/Dropdown.jsx';
 export { default as Dropdown } from './dropdown/Dropdown.jsx';
 
+export { default as DropdownGroup } from './dropdown/DropdownGroup.jsx';
+
 export { default as FieldMessage } from './fieldMessage/FieldMessage.jsx';
 
 export { default as FilterControl } from './filterControl/FilterControl.jsx';

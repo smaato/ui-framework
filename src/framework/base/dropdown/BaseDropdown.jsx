@@ -255,6 +255,7 @@ export default class BaseDropdown extends Component {
             onMouseOver: this.onMouseOverOption,
             onClick: this.onSelectOption,
             option,
+            classes: option.class,
           },
           this.props.optionLabelProvider(option)
         )
