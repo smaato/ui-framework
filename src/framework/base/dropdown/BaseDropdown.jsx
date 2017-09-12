@@ -248,6 +248,7 @@ export default class BaseDropdown extends Component {
         React.createElement(
           this.props.optionType,
           {
+            classes: option.class,
             hasFocus: this.state.focusedOptionIndex === index,
             index,
             isSelected: this.props.selectedOption === option,
@@ -255,7 +256,6 @@ export default class BaseDropdown extends Component {
             onMouseOver: this.onMouseOverOption,
             onClick: this.onSelectOption,
             option,
-            classes: option.class,
           },
           this.props.optionLabelProvider(option)
         )
