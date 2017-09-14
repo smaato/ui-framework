@@ -1,7 +1,7 @@
 
+import classNames from 'classnames';
 import React from 'react';
 
-import classNames from 'classnames';
 import BaseDropdownOption from '../base/dropdown/BaseDropdownOption.jsx';
 
 const DropdownOption = (props) => {

@@ -1,18 +1,18 @@
 
+import classNames from 'classnames';
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
 
 import Dropdown from './Dropdown.jsx';
 
 const DropdownGroup = (props) => {
-  const optionToList = props.options.reduce(
+  const options = props.options.reduce(
     (accumulator, optionList, currentIndex) => (
       accumulator.concat(optionList.map((option, index) => (
         Object.assign({}, option, {
-          class: classNames(props.optionsClass[currentIndex], {
-            dropdownGroupFirst: (accumulator.length > 0 && index === 0),
+          classes: classNames(props.optionGroupClasses[currentIndex], {
+            'dropdownGroup--first': (accumulator.length > 0 && index === 0),
           }),
         })
       )))
@@ -20,7 +20,7 @@ const DropdownGroup = (props) => {
   []);
 
   const extendedProps = Object.assign({}, props, {
-    options: optionToList,
+    options,
   });
 
   return (
@@ -31,7 +31,7 @@ const DropdownGroup = (props) => {
 };
 
 DropdownGroup.propTypes = Object.assign({}, Dropdown.propTypes, {
-  optionsClass: PropTypes.array,
+  optionGroupClasses: PropTypes.array,
 });
 
 DropdownGroup.defaultProps = Object.assign({}, Dropdown.defaultProps, {

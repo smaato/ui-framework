@@ -61,8 +61,7 @@ export default class DropdownExample extends Component {
       name: 'Elephant',
     }];
 
-    this.dropdownItemsGroup =
-      [this.dropdownItems, this.dropdownItemsAnimals];
+    this.dropdownItemsGroup = [this.dropdownItems, this.dropdownItemsAnimals];
 
     this.dropdownItemsClass = ['', 'dropdownLabel--red'];
 
@@ -97,10 +96,11 @@ export default class DropdownExample extends Component {
         <Example title="With group">
           <DropdownGroup
             labelProvider={this.dropdownLabelProvider}
-            options={this.dropdownItemsGroup}
-            optionsClass={this.dropdownItemsClass}
             onSelect={this.onSelectDropdownOption}
+            options={this.dropdownItemsGroup}
+            optionGroupClasses={this.dropdownItemsClass}
             optionLabelProvider={this.dropdownOptionLabelProvider}
+            selectedOption={this.state.selectedDropdownOption}
           />
         </Example>
 
