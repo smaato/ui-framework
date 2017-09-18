@@ -11,6 +11,7 @@ import Page, {
 import {
   Dropdown,
   DropdownDot,
+  DropdownGroup,
 } from '../../../framework/framework';
 
 export default class DropdownExample extends Component {
@@ -48,6 +49,22 @@ export default class DropdownExample extends Component {
       name: 'Lemon',
     }];
 
+    this.dropdownItemsAnimals = [{
+      name: 'Anaconda',
+    }, {
+      name: 'Bear',
+    }, {
+      name: 'Cat',
+    }, {
+      name: 'Dog',
+    }, {
+      name: 'Elephant',
+    }];
+
+    this.dropdownItemsGroup = [this.dropdownItems, this.dropdownItemsAnimals];
+
+    this.dropdownItemsClass = ['', 'dropdownLabel--red'];
+
     this.dropdownLabelProvider = option => (option ? option.name : 'Click me');
 
     this.dropdownOptionLabelProvider =
@@ -71,6 +88,17 @@ export default class DropdownExample extends Component {
             labelProvider={this.dropdownLabelProvider}
             onSelect={this.onSelectDropdownOption}
             options={this.dropdownItems}
+            optionLabelProvider={this.dropdownOptionLabelProvider}
+            selectedOption={this.state.selectedDropdownOption}
+          />
+        </Example>
+
+        <Example title="With group">
+          <DropdownGroup
+            labelProvider={this.dropdownLabelProvider}
+            onSelect={this.onSelectDropdownOption}
+            options={this.dropdownItemsGroup}
+            optionGroupClasses={this.dropdownItemsClass}
             optionLabelProvider={this.dropdownOptionLabelProvider}
             selectedOption={this.state.selectedDropdownOption}
           />
