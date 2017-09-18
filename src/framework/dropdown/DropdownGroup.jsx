@@ -8,15 +8,24 @@ import Dropdown from './Dropdown.jsx';
 
 const DropdownGroup = (props) => {
   const options = props.options.reduce(
-    (accumulator, optionList, currentIndex) => (
-      accumulator.concat(optionList.map((option, index) => (
-        Object.assign({}, option, {
-          classes: classNames(props.optionGroupClasses[currentIndex], {
-            'dropdownGroup--first': (accumulator.length > 0 && index === 0),
-          }),
-        })
-      )))
-    ),
+    (accumulator, optionList, currentIndex) => {
+      let currentList = optionList;
+
+      if (props.optionGroupClasses) {
+        currentList = optionList.map(option => (
+          Object.assign({}, option, {
+            classes: props.optionGroupClasses[currentIndex],
+          })
+        ));
+      }
+
+      if (accumulator.length > 0) {
+        Object.assign(currentList[0], {
+          classes: classNames(currentList[0].classes, 'dropdownGroup--first'),
+        });
+      }
+      return accumulator.concat(currentList);
+    },
   []);
 
   const extendedProps = Object.assign({}, props, {

@@ -20,7 +20,6 @@ const DropdownOption = (props) => {
 DropdownOption.propTypes = BaseDropdownOption.propTypes;
 
 DropdownOption.defaultProps = {
-  classes: 'dropdownOption',
   focusClasses: 'is-dropdown-option-focus',
 };
 
