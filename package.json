@@ -18,6 +18,7 @@
     "d3": "3.5.17",
     "highlight.js": "9.0.0",
     "history": "2.1.1",
+    "icon-library": "git+https://github.com/smaato/icon-library.git#v1.0.0",
     "jquery": "2.1.4",
     "keymirror": "0.1.1",
     "moment": "2.17.1",
