@@ -3,9 +3,8 @@ $ctaButtonColor: #35d0a0;
 
 .button {
   @include button;
-}
 
-  .button__icon {
+  &__icon {
     $iconSize: 8px;
     display: inline-block;
     vertical-align: middle;
@@ -30,14 +29,83 @@ $ctaButtonColor: #35d0a0;
     }
   }
 
-  .button__label {
+  &__label {
     display: inline-block;
     vertical-align: middle;
   }
 
-  .button__icon + .button__label {
+  &__icon + &__label {
     margin-left: 5px;
   }
+
+  &--hollow {
+    background: transparent;
+    color: #517582;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  &--basic {
+    background: #f0f3f4;
+    color: #7c8e94;
+    border-color: #dae3e6;
+  }
+
+  /**
+  * 1. Fill in the background with the top gradient color to fix an IE11 bug
+  *    where the transparent background color was showing through at the top.
+  */
+  &--alert {
+    background: #f43434;
+    color: #ffffff;
+    border-color: #d03535;
+  }
+
+  &--primary {
+    background: linear-gradient(#54baef, #43b4ef) #54baef; /* 1 */
+    color: #ffffff;
+    border-color: #2ca7e8;
+  }
+
+  &--callOut {
+    background: $ctaButtonColor;
+    color: #ffffff;
+    border-color: $ctaButtonColor;
+  }
+
+  /**
+  * 1. Allow the focused button to be on the top of the others, so the focused
+  *    state doesn't looks strange.
+  */
+  &--grouped {
+    background: #fafcfd;
+    border-color: #cad4da;
+    color: #434749;
+    margin: 0;
+    position: relative; /* 1 */
+    vertical-align: middle;
+
+    &:focus {
+      z-index: 1; /* 1 */
+    }
+
+    &.is-button-selected {
+      background: #e9f0f4;
+      color: #8d9aa6;
+      pointer-events: none;
+
+      .icon {
+        opacity: 0.4;
+      }
+    }
+
+    .icon {
+      opacity: 0.75;
+    }
+  }
+}
 
   .icon-plus-white {
     opacity: 0.7;
@@ -51,71 +119,3 @@ $ctaButtonColor: #35d0a0;
   .icon-history-blue + .button__label {
     color: $blue;
   }
-
-.button--hollow {
-  background: transparent;
-  color: #517582;
-
-  &:hover {
-    box-shadow: none;
-  }
-}
-
-.button--basic {
-  background: #f0f3f4;
-  color: #7c8e94;
-  border-color: #dae3e6;
-}
-
-/**
- * 1. Fill in the background with the top gradient color to fix an IE11 bug
- *    where the transparent background color was showing through at the top.
- */
-.button--alert {
-  background: #f43434;
-  color: #ffffff;
-  border-color: #d03535;
-}
-
-.button--primary {
-  background: linear-gradient(#54baef, #43b4ef) #54baef; /* 1 */
-  color: #ffffff;
-  border-color: #2ca7e8;
-}
-
-.button--callOut {
-  background: $ctaButtonColor;
-  color: #ffffff;
-  border-color: $ctaButtonColor;
-}
-
-/**
- * 1. Allow the focused button to be on the top of the others, so the focused
- *    state doesn't looks strange.
- */
-.button--grouped {
-  background: #fafcfd;
-  border-color: #cad4da;
-  color: #434749;
-  margin: 0;
-  position: relative; /* 1 */
-  vertical-align: middle;
-
-  &:focus {
-    z-index: 1; /* 1 */
-  }
-
-  &.is-button-selected {
-    background: #e9f0f4;
-    color: #8d9aa6;
-    pointer-events: none;
-
-    .icon {
-      opacity: 0.4;
-    }
-  }
-
-  .icon {
-    opacity: 0.75;
-  }
-}

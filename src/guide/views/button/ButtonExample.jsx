@@ -83,11 +83,11 @@ export default class ButtonExample extends Component {
         <Example title="AlertButton">
           <Text>
             This button lets the user perform a special action, like
-            &quot;Cancel&quot;. It&apos;s higher in the UI hierarchy than the
+            &quot;Delete&quot;. It&apos;s higher in the UI hierarchy than the
             BasicButton.
           </Text>
           <AlertButton>
-            Cancel
+            Delete
           </AlertButton>
         </Example>
 
