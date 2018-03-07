@@ -101,6 +101,10 @@ export default Button;
 // We need to export these components after the default export because they
 // depend on it.
 export {
+  default as AlertButton,
+} from './AlertButton.jsx';
+
+export {
   default as BasicButton,
 } from './BasicButton.jsx';
 

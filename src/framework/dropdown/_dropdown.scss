@@ -2,7 +2,8 @@
 /**
  * 1. Make sure dropdown doesn't exceed the width of its container, e.g. modal.
  */
-.dropdown {
+.dropdown,
+.dropdownGroup {
   @include baseDropdown;
   display: inline-block;
   max-width: 100%; /* 1 */

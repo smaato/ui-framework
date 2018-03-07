@@ -16,7 +16,7 @@ describe('Dropdown', () => {
     it('is a BaseDropdown', () => {
       const props = Object.assign({}, requiredProps);
       const testCase = TestCaseFactory.create(Dropdown, props);
-      expect(testCase.findComponents(BaseDropdown)).toBeDefined();
+      expect(testCase.firstComponent(BaseDropdown)).toBeDefined();
     });
   });
 
