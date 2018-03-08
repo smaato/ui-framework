@@ -8,24 +8,6 @@ import {
 
 describe('InputFilterForm', () => {
   describe('Props', () => {
-    describe('filterOption', () => {
-      it('name is rendered', () => {
-        const props = {
-          filterOption: new FilterOption({
-            comparisonType: '',
-            name: 'testFilterOption',
-          }),
-          onAddFilter: () => undefined,
-        };
-
-        const testCase =
-          TestCaseFactory.create(InputFilterForm, props);
-
-        expect(testCase.first('.inputFilterForm__filterName').textContent)
-          .toContain(props.filterOption.name);
-      });
-    });
-
     describe('onAddFilter', () => {
       function clickAddButton(testCase) {
         testCase.trigger('click', testCase.find('button')[0]);

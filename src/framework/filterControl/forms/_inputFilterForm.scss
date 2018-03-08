@@ -1,13 +1,16 @@
 
-.inputFilterForm__filterName {
-  font-weight: 400;
-}
+.inputFilterForm {
+  &__filterName {
+    font-weight: 400;
+  }
 
-.inputFilterForm__filterName,
-.inputFilterForm__filterValueWrapper {
-  padding: 6px 6px 0 6px;
-}
+  &__filterName,
+  &__filterValueWrapper {
+    padding: 10px 6px 6px;
+  }
 
-.inputFilterForm__enteredValue {
-  width: 100%;
+  &__enteredValue {
+    padding: 4px;
+    width: 100%;
+  }
 }
