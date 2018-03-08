@@ -10,6 +10,7 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
+  AlertButton,
   BasicButton,
   Button,
   CallOutButton,
@@ -77,6 +78,17 @@ export default class ButtonExample extends Component {
           <PrimaryButton>
             Save
           </PrimaryButton>
+        </Example>
+
+        <Example title="AlertButton">
+          <Text>
+            This button lets the user perform a special action, like
+            &quot;Delete&quot;. It&apos;s higher in the UI hierarchy than the
+            BasicButton.
+          </Text>
+          <AlertButton>
+            Delete
+          </AlertButton>
         </Example>
 
         <Example title="CallOutButton">
