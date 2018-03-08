@@ -5,10 +5,10 @@
  */
 
 const del = require('del');
+const ghPages = require('gh-pages');
 const gulp = require('gulp');
 const gulpReplace = require('gulp-replace');
 const gulpTasks = require('gulp-tasks');
-const ghPages = require('gulp-gh-pages');
 const runSequence = require('run-sequence');
 
 const DISTRIBUTION_DIR = './dist';
@@ -39,8 +39,7 @@ gulp.task('deployToAws', gulpTasks.deploy({
 }).task);
 
 gulp.task('deployToGitHubPages', () => (
-  gulp.src(`${DISTRIBUTION_DIR}/**/*`)
-    .pipe(ghPages())
+  ghPages.publish(DISTRIBUTION_DIR)
 ));
 
 gulp.task('deploy', (done) => {
