@@ -23,6 +23,7 @@ const Card = (props) => {
     <div className='card__info'>
       <Label>{props.title}</Label>
       <SubLabel>{props.subtitle}</SubLabel>
+      <SubLabel>{props.description}</SubLabel>
     </div>
     <div className='card__footer'>
       <div>
@@ -38,6 +39,7 @@ Card.propTypes = {
   imageSrc: PropTypes.string,
   title: PropTypes.string,
   subtitle: PropTypes.string,
+  description: PropTypes.string,
   hightlightText: PropTypes.string,
   tooltipText: PropTypes.string,
   width: PropTypes.string,

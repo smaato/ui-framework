@@ -21,6 +21,7 @@ export default class CardExample extends Component {
           imageSrc='https://www.monkeyworlds.com/wp-content/uploads/capuchin_species.jpg'
           title='This is a title'
           subtitle='This is a subtitle'
+          description='BOOM BOOM BOOM'
           hightlightText='Highlight'
           tooltipText='BOOM!'
           width='200px'
