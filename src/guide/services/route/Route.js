@@ -90,10 +90,10 @@ const components = [{
   name: 'ButtonGroup',
   source: 'views/buttonGroup/ButtonGroupExample.jsx',
   component: ButtonGroupExample,
-},{
+}, {
   name: 'Card',
   source: 'views/card/Card.jsx',
-  component: CardExample
+  component: CardExample,
 }, {
   name: 'Chart',
   source: 'views/chart/ChartExample.jsx',

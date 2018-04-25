@@ -1,26 +1,35 @@
 .card {
+  height: fit-content;
+  overflow: hidden;
   width: fit-content;
 
+  .card__wrapper {
+    margin-bottom: 10px;
+  }
+
   .image {
-    background-size: cover;
     background-repeat: no-repeat;
+    background-size: cover;
     min-height: 150px;
     height: 50%;
     overflow: hidden;
   }
 
   &__footer {
-    min-height: 30px;
-    margin: 0 15px 5px 15px;
+    margin: 10px 15px 15px 15px;
   }
 
   &__info {
-    min-height: 70px;
     margin: 15px 15px 0 15px;
   }
 
-  .label,.subLabel {
+  .label,
+  .subLabel {
     margin: 5px 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    line-height: 1.2em;
 
     &.green {
     	color: $green;

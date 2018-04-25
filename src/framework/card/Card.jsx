@@ -1,6 +1,5 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
@@ -12,30 +11,31 @@ import {
 } from '../framework';
 
 const Card = (props) => {
+  const wrapperStyle = {
+    height: props.height ? props.height : '250px',
+    width: props.width ? props.width : '210px',
+  };
+
   return (
-    <Box classes='card' roundedCorners>
-      <div style={{width: props.width}}>
-        <div className='image' style={{backgroundImage:`url(${props.imageSrc})`}} />
-        <div className='card__info'>
+    <Box classes="card" roundedCorners>
+      <div style={wrapperStyle} className="card__wrapper">
+        <div
+          className="image"
+          style={{ backgroundImage: `url(${props.imageSrc})` }}
+        />
+        <div className="card__info">
           <Label>{props.title}</Label>
           <SubLabel>{props.subtitle}</SubLabel>
           <SubLabel>{props.description}</SubLabel>
         </div>
-        <div className='card__footer'>
-          <div>
-            <Tooltip message={props.tooltipText} width='200px;'>
-              <Label className='green'>{props.hightlightText}</Label>
-            </Tooltip>
-          </div>
+        <div className="card__footer">
+          <Tooltip message={props.tooltipText} width="80px">
+            <Label className="green">{props.hightlightText}</Label>
+          </Tooltip>
         </div>
       </div>
     </Box>
   );
-};
-
-Card.defaultProps = {
-  height: '250px;',
-  width: '210px;'
 };
 
 Card.propTypes = {
@@ -46,7 +46,7 @@ Card.propTypes = {
   hightlightText: PropTypes.string,
   tooltipText: PropTypes.string,
   width: PropTypes.string,
-  height: PropTypes.string
+  height: PropTypes.string,
 };
 
 export default Card;

@@ -17,7 +17,6 @@ export { default as Button } from './button/Button.jsx';
 
 export { default as ButtonGroup } from './buttonGroup/ButtonGroup.jsx';
 
-export * from './card/Card.jsx';
 export { default as Card } from './card/Card.jsx';
 
 export * from './chart/Chart.jsx';

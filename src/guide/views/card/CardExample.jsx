@@ -1,33 +1,50 @@
 
 import React, {
-  Component,
   PropTypes,
 } from 'react';
 
 import Page, {
   Example,
-  Text,
 } from '../../components/page/Page.jsx';
 
 import {
-  Card
+  Card,
 } from '../../../framework/framework';
 
-export default class CardExample extends Component {
-  render() {
-    return <Page title={this.props.route.name}>
+const CardExample = (props) => {
+  const longDescription = `Do not go gentle into that good night,
+  Old age should burn and
+  rave at close of day;
+  Rage, rage against the dying of the light.`;
+
+  return (
+    <Page title={props.route.name}>
       <Example>
         <Card
-          imageSrc='http://pipsum.com/210x150.jpg'
-          title='This is a title'
-          subtitle='This is a subtitle'
-          description='BOOM BOOM BOOM'
-          hightlightText='Highlight'
-          tooltipText='BOOM!'
-          width='200px'
-          height='300px'
+          imageSrc="http://pipsum.com/210x150.jpg"
+          title="This is a title"
+          subtitle="This is a subtitle and this is also a part of the same"
+          description={longDescription}
+          hightlightText="Highlight"
+          tooltipText="Tooltip"
+        />
+      </Example>
+      <Example>
+        <Card
+          imageSrc="http://pipsum.com/210x150.jpg"
+          title="This is a title"
+          subtitle="This is a subtitle"
+          description="Do not go gentle"
+          hightlightText="Highlight"
+          tooltipText="Tooltip Text and its a long one"
         />
       </Example>
     </Page>
-  }
-}
+  );
+};
+
+CardExample.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+export default CardExample;
