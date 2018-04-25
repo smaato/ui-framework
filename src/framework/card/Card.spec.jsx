@@ -49,5 +49,5 @@ describe('Card', () => {
 
       expect(imageDiv.style.backgroundImage).toEqual('url(http://localhost:9876/bam/bam)');
     });
-  })
+  });
 });
