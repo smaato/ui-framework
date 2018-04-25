@@ -1,27 +1,29 @@
 .card {
-  border: 1px solid #D4D4D4;;
-  border-radius: 3px;
   width: fit-content;
 
-  figure {
-    width: 100%;
-    min-height: 125px;
+  .image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 150px;
     height: 50%;
-  }
-
-  .label,.subLabel {
-    margin: 6px 0;
-
-    &.green {
-    	color: #41B586;
-    }
+    overflow: hidden;
   }
 
   &__footer {
-     padding: 0 15px 15px 15px;
+    min-height: 30px;
+    margin: 0 15px 5px 15px;
   }
 
   &__info {
-    padding: 15px 15px 0 15px;
+    min-height: 70px;
+    margin: 15px 15px 0 15px;
+  }
+
+  .label,.subLabel {
+    margin: 5px 0;
+
+    &.green {
+    	color: $green;
+    }
   }
 }

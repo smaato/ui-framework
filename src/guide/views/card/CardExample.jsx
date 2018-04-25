@@ -18,7 +18,7 @@ export default class CardExample extends Component {
     return <Page title={this.props.route.name}>
       <Example>
         <Card
-          imageSrc='https://www.monkeyworlds.com/wp-content/uploads/capuchin_species.jpg'
+          imageSrc='http://pipsum.com/210x150.jpg'
           title='This is a title'
           subtitle='This is a subtitle'
           description='BOOM BOOM BOOM'
