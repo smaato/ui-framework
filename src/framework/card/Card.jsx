@@ -29,7 +29,7 @@ const Card = (props) => {
           <SubLabel>{props.description}</SubLabel>
         </div>
         <div className="card__footer">
-          <Tooltip message={props.tooltipText} width="80px">
+          <Tooltip message={props.tooltipText} width="150px">
             <Label className="green">{props.hightlightText}</Label>
           </Tooltip>
         </div>
