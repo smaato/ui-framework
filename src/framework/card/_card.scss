@@ -18,6 +18,11 @@
 
   &__footer {
     margin: 10px 15px 15px 15px;
+
+    &__left {
+      display: inline-block;
+      position: absolute;
+    }
   }
 
   &__info {
