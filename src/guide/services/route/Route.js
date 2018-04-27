@@ -92,7 +92,7 @@ const components = [{
   component: ButtonGroupExample,
 }, {
   name: 'Card',
-  source: 'views/card/Card.jsx',
+  source: 'views/card/CardExample.jsx',
   component: CardExample,
 }, {
   name: 'Chart',
