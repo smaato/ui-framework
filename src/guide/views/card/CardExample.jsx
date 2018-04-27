@@ -19,7 +19,7 @@ const CardExample = (props) => {
 
   return (
     <Page title={props.route.name}>
-      <Example>
+      <Example title="Card with long text">
         <Card
           imageSrc="http://pipsum.com/210x150.jpg"
           title="This is a title"
@@ -29,7 +29,7 @@ const CardExample = (props) => {
           tooltipText="Tooltip"
         />
       </Example>
-      <Example>
+      <Example title="Card without long text">
         <Card
           imageSrc="http://pipsum.com/210x150.jpg"
           title="This is a title"

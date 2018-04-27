@@ -4,49 +4,51 @@
   overflow: hidden;
   width: fit-content;
 
-  .card__wrapper {
-    margin-bottom: 10px;
-  }
-
-  .image {
+  &-image {
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 150px;
     height: 50%;
+    min-height: 150px;
     overflow: hidden;
   }
 
-  &__footer {
-    margin: 10px 15px 15px 15px;
+  &-label.label,
+  &-sub-label.subLabel {
+    line-height: 1.2em;
+    margin: 5px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
-    &__left {
+  &-text {
+    &--green.label {
+      color: $green;
+    }
+
+    &--mediumgrey.subLabel {
+      color: $mediumGrey;
+    }
+
+    &--lightgrey.subLabel {
+      color: $ultraLightGrey;
+    }
+  }
+
+  &-footer {
+    margin: 10px 15px 15px;
+
+    &-left {
       display: inline-block;
       position: absolute;
     }
   }
 
-  &__info {
-    margin: 15px 15px 0 15px;
+  &-info {
+    margin: 15px 15px 0;
   }
 
-  .label,
-  .subLabel {
-    margin: 5px 0;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow-x: hidden;
-    line-height: 1.2em;
-
-    &.green {
-    	color: $green;
-    }
-
-    &.lightgrey {
-      color: #a4a4a4;
-    }
-
-    &.mediumgrey {
-    	color: #7a898e;
-    }
+  &-wrapper {
+    margin-bottom: 10px;
   }
 }

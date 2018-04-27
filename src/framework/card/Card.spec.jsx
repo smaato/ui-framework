@@ -20,7 +20,7 @@ describe('Card', () => {
         height: '200px',
         width: '150px',
       });
-      const wrapperDiv = testCase.dom.querySelectorAll('div.card__wrapper')[0];
+      const wrapperDiv = testCase.dom.querySelectorAll('div.card-wrapper')[0];
 
       expect(wrapperDiv.style.height).toEqual('200px');
       expect(wrapperDiv.style.width).toEqual('150px');
@@ -31,7 +31,7 @@ describe('Card', () => {
         title: 'Bla Bla',
         imageSrc: '/bam/bam',
       });
-      const wrapperDiv = testCase.dom.querySelectorAll('div.card__wrapper')[0];
+      const wrapperDiv = testCase.dom.querySelectorAll('div.card-wrapper')[0];
 
       expect(wrapperDiv.style.height).toEqual('250px');
       expect(wrapperDiv.style.width).toEqual('210px');
@@ -45,7 +45,7 @@ describe('Card', () => {
         imageSrc: '/bam/bam',
       });
 
-      const imageDiv = testCase.dom.querySelectorAll('div.image')[0];
+      const imageDiv = testCase.dom.querySelectorAll('div.card-image')[0];
 
       expect(imageDiv.style.backgroundImage).toEqual('url(http://localhost:9876/bam/bam)');
     });
