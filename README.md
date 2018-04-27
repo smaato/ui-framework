@@ -43,6 +43,7 @@ import {
   ButtonGroup,
   CallOutButton,
   Card,
+  CardHolder,
   Chart,
   ChartDot,
   CheckBox,
