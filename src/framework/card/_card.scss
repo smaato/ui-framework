@@ -6,7 +6,9 @@
   &-image {
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 4px 4px 0 0;
     height: 50%;
+    margin: 1px;
     min-height: 150px;
     overflow: hidden;
   }
