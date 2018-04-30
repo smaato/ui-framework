@@ -42,6 +42,7 @@ import {
   Button,
   ButtonGroup,
   CallOutButton,
+  Card,
   Chart,
   ChartDot,
   CheckBox,

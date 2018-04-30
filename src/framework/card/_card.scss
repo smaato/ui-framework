@@ -1,0 +1,55 @@
+.card {
+  height: fit-content;
+  overflow: hidden;
+  width: fit-content;
+
+  &-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 4px 4px 0 0;
+    height: 50%;
+    margin: 1px;
+    min-height: 150px;
+    overflow: hidden;
+  }
+
+  &-label.label,
+  &-sub-label.subLabel {
+    line-height: 1.2em;
+    margin: 5px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &-text {
+    &--green.label {
+      color: $green;
+    }
+
+    &--mediumgrey.subLabel {
+      color: $mediumGrey;
+    }
+
+    &--lightgrey.subLabel {
+      color: $ultraLightGrey;
+    }
+  }
+
+  &-footer {
+    margin: 10px 15px 15px;
+
+    &-left {
+      display: inline-block;
+      position: absolute;
+    }
+  }
+
+  &-info {
+    margin: 15px 15px 0;
+  }
+
+  &-wrapper {
+    margin-bottom: 10px;
+  }
+}

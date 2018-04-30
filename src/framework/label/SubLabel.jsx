@@ -4,13 +4,14 @@ import React, {
 } from 'react';
 
 const SubLabel = props => (
-  <div className="subLabel">
+  <div className={`subLabel ${props.className ? props.className : ''}`}>
     {props.children}
   </div>
 );
 
 SubLabel.propTypes = {
   children: PropTypes.any,
+  className: PropTypes.string,
 };
 
 export default SubLabel;
