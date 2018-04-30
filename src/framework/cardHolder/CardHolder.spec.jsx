@@ -40,7 +40,7 @@ describe('CardHolder', () => {
           ],
         });
         expect(testCase.dom.style.gridTemplateColumns)
-          .toEqual('repeat(auto-fit, minmax(240px, 1fr))');
+          .toEqual('repeat(auto-fit, minmax(220px, 1fr))');
       });
     });
   });

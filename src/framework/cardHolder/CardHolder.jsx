@@ -4,7 +4,7 @@ import React, {
 
 const CardHolder = (props) => {
   const childrenMinWidth = props.childrenMinWidth
-  ? props.childrenMinWidth : '240px';
+  ? props.childrenMinWidth : '220px';
 
   const holderStyle = {
     gridTemplateColumns: `repeat(auto-fit, minmax(${childrenMinWidth}, 1fr))`,
