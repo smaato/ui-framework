@@ -1,0 +1,9 @@
+.card-holder {
+  display: grid;
+
+  &-card-wrapper {
+    justify-self: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+}

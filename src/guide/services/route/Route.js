@@ -11,6 +11,7 @@ import BoxExample from '../../views/box/BoxExample.jsx';
 import ButtonExample from '../../views/button/ButtonExample.jsx';
 import ButtonGroupExample from '../../views/buttonGroup/ButtonGroupExample.jsx';
 import CardExample from '../../views/card/CardExample.jsx';
+import CardHolderExample from '../../views/cardHolder/CardHolderExample.jsx';
 import ChartExample from '../../views/chart/ChartExample.jsx';
 import CheckBoxExample from '../../views/checkBox/CheckBoxExample.jsx';
 import ColumnLayoutExample
@@ -94,6 +95,10 @@ const components = [{
   name: 'Card',
   source: 'views/card/CardExample.jsx',
   component: CardExample,
+}, {
+  name: 'CardHolder',
+  source: 'views/cardHolder/CardHolderExample.jsx',
+  component: CardHolderExample,
 }, {
   name: 'Chart',
   source: 'views/chart/ChartExample.jsx',
