@@ -2,6 +2,7 @@
 import { slugifyEach } from '../string/Slug';
 
 // Components
+import AccordionExample from '../../views/accordion/AccordionExample.jsx';
 import AddOnControlExample
   from '../../views/addOnControl/AddOnControlExample.jsx';
 import AlertExample from '../../views/alert/AlertExample.jsx';
@@ -64,6 +65,10 @@ import TitledViewExample from '../../views/titledView/TitledViewExample.jsx';
 
 // Component route names should match the component name exacty.
 const components = [{
+  name: 'Accordion',
+  source: 'views/accordion/AccordionExample.jsx',
+  component: AccordionExample,
+}, {
   name: 'AddOnControl',
   source: 'views/addOnControl/AddOnControlExample.jsx',
   component: AddOnControlExample,

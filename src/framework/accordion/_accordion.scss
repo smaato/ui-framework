@@ -1,0 +1,44 @@
+
+.accordion-item {
+  border: 1px solid #d4d8db;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+
+  &__title {
+    align-items: center;
+    background-color: #e9f2f7;
+    border-bottom: 1px solid #d4d8db;
+    display: flex;
+    flex: 0 0 auto;
+    font-size: 13px;
+    height: 30px;
+    justify-content: space-between;
+    line-height: $lineHeight;
+    padding: 0 10px;
+  }
+
+  &__content {
+    background-color: #ffffff;
+    display: none;
+    flex: 1 1 auto;
+    line-height: $lineHeight;
+    opacity: 0;
+    overflow-y: auto;
+    padding: 5px 10px;
+
+    &--active {
+      animation: display-none-transition 1s both;
+      display: block;
+      opacity: 1;
+      -webkit-animation: display-none-transition 1s both; // scss-lint:disable VendorPrefix
+    }
+
+    @keyframes display-none-transition { // scss-lint:disable VendorPrefix
+      0% {
+        opacity: 0;
+      }
+    }
+  }
+}
