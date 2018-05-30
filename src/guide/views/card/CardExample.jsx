@@ -9,6 +9,7 @@ import Page, {
 
 import {
   Card,
+  CardHolder,
 } from '../../../framework/framework';
 
 const CardExample = (props) => {
@@ -17,27 +18,22 @@ const CardExample = (props) => {
   rave at close of day;
   Rage, rage against the dying of the light.`;
 
+  const arr = [1, 2, 3, 4, 5, 6];
+
   return (
     <Page title={props.route.name}>
-      <Example title="Card with long text">
-        <Card
-          imageSrc="http://pipsum.com/210x150.jpg"
-          title="This is a title"
-          subtitle="This is a subtitle and this is also a part of the same"
-          description={longDescription}
-          hightlightText="Highlight"
-          tooltipText="Tooltip"
-        />
-      </Example>
-      <Example title="Card without long text">
-        <Card
-          imageSrc="http://pipsum.com/210x150.jpg"
-          title="This is a title"
-          subtitle="This is a subtitle"
-          description="Do not go gentle"
-          hightlightText="Highlight"
-          tooltipText="Tooltip Text and its a long one"
-        />
+      <Example>
+        <CardHolder>
+          {arr.map(i => <Card
+            description={longDescription}
+            hightlightText={`Highlight ${i}`}
+            imageSrc="http://pipsum.com/210x150.jpg"
+            key={i}
+            subtitle="This is a subtitle and this is also a part of the same"
+            title={`Card ${i}`}
+            tooltipText={`Tooltip ${i}`}
+          />)}
+        </CardHolder>
       </Example>
     </Page>
   );

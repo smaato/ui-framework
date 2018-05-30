@@ -1,19 +1,18 @@
+
 import React, {
   PropTypes,
 } from 'react';
 
 const CardHolder = (props) => {
-  const childrenMinWidth = props.childrenMinWidth
-  ? props.childrenMinWidth : '220px';
-
   const holderStyle = {
-    gridTemplateColumns: `repeat(auto-fit, minmax(${childrenMinWidth}, 1fr))`,
+    gridTemplateColumns:
+      `repeat(auto-fit, minmax(${props.childrenMinWidth}, 1fr))`,
   };
 
   return (
-    <div className="card-holder" style={holderStyle}>
+    <div className="cardHolder" style={holderStyle}>
       {props.children.map((child, index) => (
-        <div key={index} className="card-holder-card-wrapper">
+        <div key={index} className="cardHolder__wrapper">
           {child}
         </div>
       ))}
@@ -24,6 +23,10 @@ const CardHolder = (props) => {
 CardHolder.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element),
   childrenMinWidth: PropTypes.string,
+};
+
+CardHolder.defaultProps = {
+  childrenMinWidth: '220px',
 };
 
 export default CardHolder;

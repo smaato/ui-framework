@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
 
@@ -8,64 +9,47 @@ describe('CardHolder', () => {
     it('has the appropriate class', () => {
       const testCase = TestCaseFactory.create(CardHolder, {
         children: [
-          <p />,
-          <p />,
+          <div />,
+          <div />,
         ],
       });
-      expect(testCase.dom.getAttribute('class')).toContain('card-holder');
+      expect(testCase.dom.className).toContain('cardHolder');
     });
   });
 
   describe('props', () => {
-    describe('is childrenMinWidth is provided', () => {
-      it('it should have that as style', () => {
+    describe('children', () => {
+      it('are rendered inside cardHolder__wrapper div', () => {
+        const children = [
+          <div>Hello</div>,
+          <div>World!</div>,
+        ];
+        const testCase = TestCaseFactory.create(CardHolder, {
+          children,
+        });
+
+        expect(
+          testCase.find('.cardHolder__wrapper').length
+        ).toEqual(children.length);
+
+        expect(testCase.dom.textContent).toContain('Hello');
+        expect(testCase.dom.textContent).toContain('World');
+      });
+    });
+
+    describe('childrenMinWidth', () => {
+      it('is applied', () => {
         const testCase = TestCaseFactory.create(CardHolder, {
           children: [
-            <p />,
-            <p />,
+            <div />,
+            <div />,
           ],
           childrenMinWidth: '100px',
         });
-        expect(testCase.dom.style.gridTemplateColumns)
-          .toEqual('repeat(auto-fit, minmax(100px, 1fr))');
+        expect(
+          testCase.dom.style.gridTemplateColumns
+        ).toEqual('repeat(auto-fit, minmax(100px, 1fr))');
       });
-    });
-
-    describe('is childrenMinWidth is not provided', () => {
-      it('it should have default', () => {
-        const testCase = TestCaseFactory.create(CardHolder, {
-          children: [
-            <p />,
-            <p />,
-          ],
-        });
-        expect(testCase.dom.style.gridTemplateColumns)
-          .toEqual('repeat(auto-fit, minmax(220px, 1fr))');
-      });
-    });
-  });
-
-  describe('children', () => {
-    it('should wrap all children in a card-holder-card-wrapper div', () => {
-      const testCase = TestCaseFactory.create(CardHolder, {
-        children: [
-          <p>Hello</p>,
-          <p>World!</p>,
-        ],
-      });
-
-      expect(testCase.dom.querySelectorAll('.card-holder-card-wrapper').length)
-        .toEqual(2);
-
-      expect(
-        testCase.dom
-          .querySelectorAll('.card-holder-card-wrapper p')[0].innerHTML
-      ).toEqual('Hello');
-
-      expect(
-        testCase.dom
-          .querySelectorAll('.card-holder-card-wrapper p')[1].innerHTML
-      ).toEqual('World!');
     });
   });
 });
