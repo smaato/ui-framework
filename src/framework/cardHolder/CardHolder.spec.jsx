@@ -18,19 +18,27 @@ describe('CardHolder', () => {
   });
 
   describe('props', () => {
+    const children = [
+      <div key={0}>Hello</div>,
+      <div key={1}>World!</div>,
+    ];
+
+    describe('amountPerRow', () => {
+      it('adds divs when content is shorter', () => {
+        const amountPerRow = 4;
+        const testCase = TestCaseFactory.create(CardHolder, {
+          amountPerRow,
+          children,
+        });
+        expect(testCase.find('.cardHolder__wrapper').length).toBe(amountPerRow);
+      });
+    });
+
     describe('children', () => {
       it('are rendered inside cardHolder__wrapper div', () => {
-        const children = [
-          <div>Hello</div>,
-          <div>World!</div>,
-        ];
         const testCase = TestCaseFactory.create(CardHolder, {
           children,
         });
-
-        expect(
-          testCase.find('.cardHolder__wrapper').length
-        ).toEqual(children.length);
 
         expect(testCase.dom.textContent).toContain('Hello');
         expect(testCase.dom.textContent).toContain('World');

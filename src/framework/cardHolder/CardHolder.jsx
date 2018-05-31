@@ -8,19 +8,28 @@ const CardHolder = (props) => {
     gridTemplateColumns:
       `repeat(auto-fit, minmax(${props.childrenMinWidth}, 1fr))`,
   };
+  const content = props.children.map((child, index) => (
+    <div className="cardHolder__wrapper" key={index}>
+      {child}
+    </div>
+  ));
+  if (props.amountPerRow) {
+    while (content.length < props.amountPerRow) {
+      content.push(
+        <div className="cardHolder__wrapper" key={content.length} />
+      );
+    }
+  }
 
   return (
     <div className="cardHolder" style={holderStyle}>
-      {props.children.map((child, index) => (
-        <div key={index} className="cardHolder__wrapper">
-          {child}
-        </div>
-      ))}
+      {content}
     </div>
   );
 };
 
 CardHolder.propTypes = {
+  amountPerRow: PropTypes.number,
   children: PropTypes.arrayOf(PropTypes.element),
   childrenMinWidth: PropTypes.string,
 };

@@ -18,12 +18,12 @@ const CardExample = (props) => {
   rave at close of day;
   Rage, rage against the dying of the light.`;
 
-  const arr = [1, 2, 3, 4, 5, 6];
+  const arr = [1, 2, 3];
 
   return (
     <Page title={props.route.name}>
       <Example>
-        <CardHolder>
+        <CardHolder amountPerRow={4}>
           {arr.map(i => <Card
             description={longDescription}
             hightlightText={`Highlight ${i}`}
