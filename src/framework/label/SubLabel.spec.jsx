@@ -33,8 +33,7 @@ describe('SubLabel', () => {
             children: 'Sub-label text',
           };
           const testCase = TestCaseFactory.create(SubLabel, props);
-          expect(testCase.dom.getAttribute('class'))
-            .toEqual('subLabel ');
+          expect(testCase.dom.getAttribute('class')).toEqual('subLabel');
         });
       });
     });

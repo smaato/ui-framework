@@ -12,30 +12,32 @@ import {
 
 const Card = (props) => {
   const wrapperStyle = {
-    height: props.height ? props.height : '250px',
-    width: props.width ? props.width : '210px',
+    height: props.height,
+    width: props.width,
   };
 
   return (
     <Box classes="card" roundedCorners>
-      <div style={wrapperStyle} className="card-wrapper">
+      <div className="card__wrapper" style={wrapperStyle}>
         <div
-          className="card-image"
+          className="card__image"
           style={{ backgroundImage: `url(${props.imageSrc})` }}
         />
-        <div className="card-info">
+
+        <div className="card__info">
           <Label>{props.title}</Label>
-          <SubLabel className="card-sub-label card-text--mediumgrey">
+          <SubLabel className="card__info__subLabel card__text--mediumgrey">
             {props.subtitle}
           </SubLabel>
-          <SubLabel className="card-sub-label card-text--lightgrey">
+          <SubLabel className="card__info__subLabel card__text--lightgrey">
             {props.description}
           </SubLabel>
         </div>
-        <div className="card-footer">
-          <div className="card-footer-left">
+
+        <div className="card__footer">
+          <div className="card__footer--left">
             <Tooltip message={props.tooltipText} width="150px">
-              <Label className="card-label card-text--green">
+              <Label className="card__footer__label card__text--green">
                 {props.hightlightText}
               </Label>
             </Tooltip>
@@ -47,14 +49,19 @@ const Card = (props) => {
 };
 
 Card.propTypes = {
-  imageSrc: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string,
   description: PropTypes.string,
+  height: PropTypes.string,
   hightlightText: PropTypes.string,
+  imageSrc: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  title: PropTypes.string.isRequired,
   tooltipText: PropTypes.string,
   width: PropTypes.string,
-  height: PropTypes.string,
+};
+
+Card.defaultProps = {
+  height: '250px',
+  width: '210px',
 };
 
 export default Card;

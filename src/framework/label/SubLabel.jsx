@@ -1,13 +1,18 @@
 
+import classNames from 'classnames';
 import React, {
   PropTypes,
 } from 'react';
 
-const SubLabel = props => (
-  <div className={`subLabel ${props.className ? props.className : ''}`}>
-    {props.children}
-  </div>
-);
+const SubLabel = (props) => {
+  const classes = classNames('subLabel', props.className);
+
+  return (
+    <div className={classes} title={props.children}>
+      {props.children}
+    </div>
+  );
+};
 
 SubLabel.propTypes = {
   children: PropTypes.any,
