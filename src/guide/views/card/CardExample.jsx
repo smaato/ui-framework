@@ -18,7 +18,7 @@ const CardExample = (props) => {
   rave at close of day;
   Rage, rage against the dying of the light.`;
 
-  const arr = [1, 2, 3];
+  const arr = [1, 2, 3, 4, 5, 6];
 
   return (
     <Page title={props.route.name}>
