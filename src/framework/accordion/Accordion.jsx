@@ -3,7 +3,8 @@ import React, {
   Component,
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
+
+import AccordionItem from './../accordionItem/AccordionItem.jsx';
 
 export default class Accordion extends Component {
 
@@ -11,7 +12,7 @@ export default class Accordion extends Component {
     super(props);
 
     this.state = {
-      activeID: this.props.activeID ? this.props.activeID : 0,
+      activeID: !isNaN(this.props.activeID) ? this.props.activeID : null,
     };
 
     this.onTitleClick = this.onTitleClick.bind(this);
@@ -25,40 +26,33 @@ export default class Accordion extends Component {
     }
   }
 
-  classNameContent(index) {
-    return classNames('accordion-item__content', {
-      'accordion-item__content--active': index === this.state.activeID,
-    });
-  }
-
   render() {
     const wrapperStyle = {
-      maxHeight: this.props.maxHeight ? this.props.maxHeight : '250px',
-      width: this.props.width ? this.props.width : '210px',
+      width: this.props.width,
     };
 
     return (
-      <div className="accordion">
+      <div className="accordion" style={wrapperStyle}>
         {this.props.children.map((child, index) => (
-          <div key={index} style={wrapperStyle} className="accordion-item">
-            <div
-              className="accordion-item__title"
-              onClick={() => (this.onTitleClick(index))}
-            >
-              {child.title}
-            </div>
-
-            <div
-              className={this.classNameContent(index)}
-            >
-              {child.content}
-            </div>
-          </div>
+          <AccordionItem
+            index={index}
+            isActive={this.state.activeID === index}
+            key={index}
+            maxHeight={this.props.maxHeight}
+            onTitleClick={this.onTitleClick}
+            title={child.props.title}
+          >
+            {child.props.children}
+          </AccordionItem>
         ))}
       </div>
     );
   }
 }
+
+Accordion.defaultProps = {
+  width: '210px',
+};
 
 Accordion.propTypes = {
   activeID: PropTypes.number,

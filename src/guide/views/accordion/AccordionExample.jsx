@@ -9,6 +9,7 @@ import Page, {
 
 import {
   Accordion,
+  AccordionItem,
   Text,
 } from '../../../framework/framework';
 
@@ -29,16 +30,19 @@ const AccordionExample = (props) => {
   const arrayComponents = [];
   arrayComponents.push(<Text>This is some text.</Text>);
   arrayComponents.push(results);
-  return (<Page title={props.route.name}>
-    <Example title="Accordion">
-      <Accordion activeID={0} maxHeight="100px">
-        {[0, 1, 2, 3].map(i => ({
-          title: i,
-          content: arrayComponents[i % 2],
-        }))}
-      </Accordion>
-    </Example>
-  </Page>);
+  return (
+    <Page title={props.route.name}>
+      <Example title="Accordion">
+        <Accordion activeID={0} maxHeight="100px">
+          {[0, 1, 2, 3].map(i => (
+            <AccordionItem key={i} title={i}>
+              {arrayComponents[i % 2]}
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </Example>
+    </Page>
+  );
 };
 
 AccordionExample.propTypes = {
