@@ -1,9 +1,9 @@
 
+import classNames from 'classnames';
 import React, {
   Component,
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
 
 export default class AccordionItem extends Component {
 
@@ -42,7 +42,7 @@ export default class AccordionItem extends Component {
 }
 
 AccordionItem.defaultProps = {
-  height: '250px',
+  maxHeight: '250px',
 };
 
 AccordionItem.propTypes = {

@@ -22,6 +22,11 @@ describe('Accordion', () => {
   };
 
   describe('DOM structure', () => {
+    it('Accordion class is rendered', () => {
+      const testCase = TestCaseFactory.create(Accordion, props);
+      expect(testCase.dom.className).toContain('accordion');
+    });
+
     it('AccordionItem is rendered', () => {
       const testCase = TestCaseFactory.create(Accordion, props);
       expect(testCase.first('.accordion__item')).toBeDefined();
@@ -52,10 +57,12 @@ describe('Accordion', () => {
           '.accordion__item__title'
         )[1]);
 
-        expect(testCase.find(
-          '.accordion__item__content'
-        )[1].getAttribute('class'))
-        .toContain('accordion__item__content--active');
+        expect(testCase.find('.accordion__item__content')[0]
+          .getAttribute('class'))
+          .not.toContain('accordion__item__content--active');
+        expect(testCase.find('.accordion__item__content')[1]
+          .getAttribute('class'))
+          .toContain('accordion__item__content--active');
       });
     });
 

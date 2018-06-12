@@ -33,7 +33,7 @@ const AccordionExample = (props) => {
   return (
     <Page title={props.route.name}>
       <Example title="Accordion">
-        <Accordion activeID={0} maxHeight="100px">
+        <Accordion activeId={0} maxHeight="100px">
           {[0, 1, 2, 3].map(i => (
             <AccordionItem key={i} title={i}>
               {arrayComponents[i % 2]}

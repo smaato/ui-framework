@@ -12,16 +12,16 @@ export default class Accordion extends Component {
     super(props);
 
     this.state = {
-      activeID: !isNaN(this.props.activeID) ? this.props.activeID : null,
+      activeId: this.props.activeId,
     };
 
     this.onTitleClick = this.onTitleClick.bind(this);
   }
 
   onTitleClick(currentId) {
-    if (currentId !== this.state.activeID) {
+    if (currentId !== this.state.activeId) {
       this.setState({
-        activeID: currentId,
+        activeId: currentId,
       });
     }
   }
@@ -36,7 +36,7 @@ export default class Accordion extends Component {
         {this.props.children.map((child, index) => (
           <AccordionItem
             index={index}
-            isActive={this.state.activeID === index}
+            isActive={this.state.activeId === index}
             key={index}
             maxHeight={this.props.maxHeight}
             onTitleClick={this.onTitleClick}
@@ -55,7 +55,7 @@ Accordion.defaultProps = {
 };
 
 Accordion.propTypes = {
-  activeID: PropTypes.number,
+  activeId: PropTypes.number,
   children: PropTypes.array,
   maxHeight: PropTypes.string,
   width: PropTypes.string,

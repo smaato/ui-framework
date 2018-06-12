@@ -28,23 +28,21 @@ describe('AccordionItem', () => {
     describe('children', () => {
       it('is rendered', () => {
         const testCase = TestCaseFactory.create(AccordionItem, props);
-        expect(testCase.dom.textContent).toContain('testing');
+        expect(testCase.dom.textContent).toContain(props.children);
       });
     });
 
     describe('maxHeight', () => {
       it('is added', () => {
         const testCase = TestCaseFactory.create(AccordionItem, props);
-        expect(
-          testCase.dom.style.cssText
-        ).toContain('max-height: 100px');
+        expect(testCase.dom.style.cssText).toContain('max-height: 100px');
       });
     });
 
-    describe('Title', () => {
+    describe('title', () => {
       it('is rendered', () => {
         const testCase = TestCaseFactory.create(AccordionItem, props);
-        expect(testCase.dom.textContent).toContain('Test');
+        expect(testCase.dom.textContent).toContain(props.title);
       });
     });
   });
