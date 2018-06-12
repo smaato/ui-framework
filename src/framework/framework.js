@@ -1,4 +1,7 @@
 
+export { default as Accordion } from './accordion/Accordion.jsx';
+export { default as AccordionItem } from './accordionItem/AccordionItem.jsx';
+
 export * from './addOnControl/AddOnControl.jsx';
 export { default as AddOnControl } from './addOnControl/AddOnControl.jsx';
 
