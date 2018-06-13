@@ -5,7 +5,6 @@ import AccordionItem from './AccordionItem.jsx';
 describe('AccordionItem', () => {
   describe('Props', () => {
     const props = {
-      index: 0,
       isActive: true,
       children: 'testing',
       maxHeight: '100px',
@@ -14,14 +13,20 @@ describe('AccordionItem', () => {
     };
 
     describe('isActive', () => {
-      it('it has the proper class when it is active', () => {
+      it('is true then the component has proper class', () => {
         const testCase = TestCaseFactory.create(AccordionItem, props);
-        expect(
-          testCase.find(
-            '.accordion__item__content--active'
-          ).length
-        )
-        .toEqual(1);
+        expect(testCase.find('.accordion__item__content--active').length)
+          .toEqual(1);
+      });
+
+      it('is false then the component has proper class', () => {
+        const newProps = Object.assign({}, props, {
+          isActive: false,
+        });
+
+        const testCase = TestCaseFactory.create(AccordionItem, newProps);
+        expect(testCase.find('.accordion__item__content--active').length)
+          .toEqual(0);
       });
     });
 
@@ -43,6 +48,38 @@ describe('AccordionItem', () => {
       it('is rendered', () => {
         const testCase = TestCaseFactory.create(AccordionItem, props);
         expect(testCase.dom.textContent).toContain(props.title);
+      });
+    });
+
+    describe('onTitleClick', () => {
+      it('is called when it is passed on', () => {
+        const newProps = Object.assign({}, props, {
+          onTitleClick: jasmine.createSpy(),
+        });
+
+        const testCase = TestCaseFactory.create(AccordionItem, newProps);
+        testCase.trigger('click', testCase.first('.accordion__item__title'));
+        expect(newProps.onTitleClick).toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('User events', () => {
+    const props = {
+      isActive: false,
+      children: 'testing',
+      maxHeight: '100px',
+      title: 'Test',
+    };
+
+    describe('on click ofn the title', () => {
+      it('the component becomes active', () => {
+        const testCase = TestCaseFactory.create(AccordionItem, props);
+        expect(testCase.find('.accordion__item__content--active').length)
+          .toEqual(0);
+        testCase.trigger('click', testCase.first('.accordion__item__title'));
+        expect(testCase.find('.accordion__item__content--active').length)
+          .toEqual(1);
       });
     });
   });
