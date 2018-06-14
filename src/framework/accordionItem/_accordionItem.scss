@@ -36,7 +36,7 @@
 
     &--active {
       animation: display-none-transition 1s both;
-      display: block;
+      display: flex;
       opacity: 1;
     }
 
