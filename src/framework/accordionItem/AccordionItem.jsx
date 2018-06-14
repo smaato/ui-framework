@@ -23,13 +23,13 @@ export default class AccordionItem extends Component {
     });
   }
 
-  onTitleClick() {
+  onTitleClick(e) {
     this.setState({
       isActive: !this.state.isActive,
     });
 
     if (this.props.onTitleClick) {
-      this.props.onTitleClick();
+      this.props.onTitleClick(e);
     }
   }
 
