@@ -15,8 +15,9 @@ describe('AccordionItem', () => {
     describe('isActive', () => {
       it('when true then the component has proper class', () => {
         const testCase = TestCaseFactory.create(AccordionItem, props);
-        expect(testCase.find('.accordion__item__content--active').length)
-          .toEqual(1);
+        expect(
+          testCase.first('.accordion__item__content--active')
+        ).toBeDefined();
       });
 
       it('when false then the component has proper class', () => {
@@ -25,8 +26,9 @@ describe('AccordionItem', () => {
         });
 
         const testCase = TestCaseFactory.create(AccordionItem, newProps);
-        expect(testCase.find('.accordion__item__content--active').length)
-          .toEqual(0);
+        expect(
+          testCase.first('.accordion__item__content--active')
+        ).not.toBeDefined();
       });
     });
 
