@@ -13,13 +13,13 @@ describe('AccordionItem', () => {
     };
 
     describe('isActive', () => {
-      it('is true then the component has proper class', () => {
+      it('when true then the component has proper class', () => {
         const testCase = TestCaseFactory.create(AccordionItem, props);
         expect(testCase.find('.accordion__item__content--active').length)
           .toEqual(1);
       });
 
-      it('is false then the component has proper class', () => {
+      it('when false then the component has proper class', () => {
         const newProps = Object.assign({}, props, {
           isActive: false,
         });
@@ -72,14 +72,16 @@ describe('AccordionItem', () => {
       title: 'Test',
     };
 
-    describe('on click ofn the title', () => {
+    describe('on click on the title', () => {
       it('the component becomes active', () => {
         const testCase = TestCaseFactory.create(AccordionItem, props);
-        expect(testCase.find('.accordion__item__content--active').length)
-          .toEqual(0);
+        expect(
+          testCase.first('.accordion__item__content--active')
+        ).not.toBeDefined();
         testCase.trigger('click', testCase.first('.accordion__item__title'));
-        expect(testCase.find('.accordion__item__content--active').length)
-          .toEqual(1);
+        expect(
+          testCase.first('.accordion__item__content--active')
+        ).toBeDefined();
       });
     });
   });

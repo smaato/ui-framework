@@ -18,18 +18,20 @@ export default class AccordionItem extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      isActive: nextProps.isActive,
-    });
+    if (this.props.isActive !== nextProps.isActive) {
+      this.setState({
+        isActive: nextProps.isActive,
+      });
+    }
   }
 
-  onTitleClick(e) {
+  onTitleClick(event) {
     this.setState({
       isActive: !this.state.isActive,
     });
 
     if (this.props.onTitleClick) {
-      this.props.onTitleClick(e);
+      this.props.onTitleClick(event);
     }
   }
 
