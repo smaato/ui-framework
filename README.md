@@ -22,6 +22,8 @@ In your JS:
 import {
   AccountNav,
   AccountPicture,
+  Accordion,
+  AccordionItem,
   AddOnControl,
   AddOnDropdown,
   AddOnDropdownOption,

@@ -8,7 +8,6 @@ import {
 
 describe('Accordion', () => {
   const props = {
-    activeId: 0,
     children: [
       <AccordionItem key={0} title={'title1'}>
         {'test1'}
@@ -17,7 +16,6 @@ describe('Accordion', () => {
         {'test2'}
       </AccordionItem>,
     ],
-    maxHeight: '100px',
     width: '100px',
   };
 
@@ -34,40 +32,8 @@ describe('Accordion', () => {
   });
 
   describe('Props', () => {
-    describe('activeId', () => {
-      it('only one is active', () => {
-        const testCase = TestCaseFactory.create(Accordion, props);
-
-        testCase.trigger('click', testCase.find(
-          '.accordion__item__title'
-        )[1]);
-
-        expect(
-          testCase.find(
-            '.accordion__item__content--active'
-          ).length
-        )
-        .toEqual(1);
-      });
-
-      it('second is active if you click in the title', () => {
-        const testCase = TestCaseFactory.create(Accordion, props);
-
-        testCase.trigger('click', testCase.find(
-          '.accordion__item__title'
-        )[1]);
-
-        expect(testCase.find('.accordion__item__content')[0]
-          .getAttribute('class'))
-          .not.toContain('accordion__item__content--active');
-        expect(testCase.find('.accordion__item__content')[1]
-          .getAttribute('class'))
-          .toContain('accordion__item__content--active');
-      });
-    });
-
     describe('children', () => {
-      it('AccordionItem is called', () => {
+      it('is rendered', () => {
         const testCase = TestCaseFactory.create(Accordion, props);
 
         expect(testCase.dom.textContent).toContain('test');

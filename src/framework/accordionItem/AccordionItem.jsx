@@ -10,12 +10,34 @@ export default class AccordionItem extends Component {
   constructor(props) {
     super(props);
 
-    this.onTitleClick = this.props.onTitleClick.bind(this);
+    this.state = {
+      isActive: props.isActive,
+    };
+
+    this.onTitleClick = this.onTitleClick.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.isActive !== nextProps.isActive) {
+      this.setState({
+        isActive: nextProps.isActive,
+      });
+    }
+  }
+
+  onTitleClick(event) {
+    this.setState({
+      isActive: !this.state.isActive,
+    });
+
+    if (this.props.onTitleClick) {
+      this.props.onTitleClick(event);
+    }
   }
 
   classNameContent() {
     return classNames('accordion__item__content', {
-      'accordion__item__content--active': this.props.isActive,
+      'accordion__item__content--active': this.state.isActive,
     });
   }
 
@@ -28,7 +50,7 @@ export default class AccordionItem extends Component {
       <div className="accordion__item" style={wrapperStyle}>
         <div
           className="accordion__item__title"
-          onClick={() => (this.onTitleClick(this.props.index))}
+          onClick={this.onTitleClick}
         >
           {this.props.title}
         </div>
@@ -47,7 +69,6 @@ AccordionItem.defaultProps = {
 
 AccordionItem.propTypes = {
   children: PropTypes.any,
-  index: PropTypes.number,
   isActive: PropTypes.bool,
   maxHeight: PropTypes.string,
   onTitleClick: PropTypes.func,
