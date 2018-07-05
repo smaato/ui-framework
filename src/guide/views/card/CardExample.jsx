@@ -26,7 +26,7 @@ const CardExample = (props) => {
         <CardHolder amountPerRow={4}>
           {arr.map(i => <Card
             description={longDescription}
-            hightlightText={`Highlight ${i}`}
+            highlightText={`Highlight ${i}`}
             imageSrc="http://pipsum.com/210x150.jpg"
             key={i}
             subtitle="This is a subtitle and this is also a part of the same"

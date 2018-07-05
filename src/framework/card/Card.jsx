@@ -17,8 +17,12 @@ const Card = (props) => {
   };
 
   return (
-    <Box classes="card" roundedCorners>
-      <div className="card__wrapper" style={wrapperStyle}>
+    <Box classes="card" roundedCorners >
+      <div
+        className="card__wrapper"
+        onClick={props.onClick}
+        style={wrapperStyle}
+      >
         <div
           className="card__image"
           style={{ backgroundImage: `url(${props.imageSrc})` }}
@@ -38,7 +42,7 @@ const Card = (props) => {
           <div className="card__footer--left">
             <Tooltip message={props.tooltipText} width="150px">
               <Label className="card__footer__label card__text--green">
-                {props.hightlightText}
+                {props.highlightText}
               </Label>
             </Tooltip>
           </div>
@@ -51,8 +55,9 @@ const Card = (props) => {
 Card.propTypes = {
   description: PropTypes.string,
   height: PropTypes.string,
-  hightlightText: PropTypes.string,
+  highlightText: PropTypes.string,
   imageSrc: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
   subtitle: PropTypes.string,
   title: PropTypes.string.isRequired,
   tooltipText: PropTypes.string,
