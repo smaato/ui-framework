@@ -28,6 +28,8 @@ export default class StatusDropdownExample extends Component {
       StatusDropdown.OPTIONS.ACTIVATE,
       StatusDropdown.OPTIONS.DEACTIVATE,
       StatusDropdown.OPTIONS.ARCHIVE,
+      StatusDropdown.OPTIONS.PUBLISHED,
+      StatusDropdown.OPTIONS.UNPUBLISHED,
     ];
   }
 

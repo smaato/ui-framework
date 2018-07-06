@@ -35,15 +35,35 @@
     }
 
     &__footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
       margin: 10px 15px 15px;
 
       &__label.label {
         @include textContent;
       }
 
-      &__left {
-        display: inline-block;
-        position: absolute;
+      &--left {
+        // display: inline-block;
+        // width: 50%;
+        // flex-grow: 1;
+        // align-content: center;
+        flex-basis: 50%;
+        text-align: left;
+      }
+
+      &--right {
+        // display: inline-block;
+        // width: 50%;
+        // flex-grow: 1;
+        // align-content: center;
+        flex-basis: 50%;
+
+        &__status {
+          position: absolute;
+        }
       }
     }
 

@@ -62,6 +62,22 @@ export default class StatusDropdown extends Component {
           active: 'Disabled',
         },
       },
+      [StatusDropdown.OPTIONS.PUBLISHED]: {
+        dropdownDotColor: DropdownDot.COLOR.GREEN,
+        labelClass: 'statusDropdownLabel--green',
+        name: {
+          active: 'Published',
+          inactive: 'Published',
+        },
+      },
+      [StatusDropdown.OPTIONS.UNPUBLISHED]: {
+        dropdownDotColor: DropdownDot.COLOR.GREY,
+        labelClass: 'statusDropdownLabel--grey',
+        name: {
+          active: 'Unpublished',
+          inactive: 'Unpublished',
+        },
+      },
     };
   }
 
@@ -105,14 +121,17 @@ export default class StatusDropdown extends Component {
       name = this.optionToMetaDataMap[option].name.inactive;
     }
 
-    return [
+    const iconAvailable = !!this.optionToMetaDataMap[option].iconType;
+
+    return iconAvailable ? [
       <StatusDropdownOptionIcon
         key={0}
         type={type}
       />,
       <span key={1}>{name}</span>,
       selectedIcon,
-    ];
+    ] :
+    [<span key={1}>{name}</span>];
   }
 
   render() {
@@ -165,6 +184,8 @@ StatusDropdown.OPTIONS = keyMirror({
   ARCHIVE: null,
   DEACTIVATE: null,
   DISABLED: null,
+  PUBLISHED: null,
+  UNPUBLISHED: null,
 });
 
 StatusDropdown.propTypes = {
