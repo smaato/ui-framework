@@ -40,28 +40,27 @@
       justify-content: center;
       text-align: center;
       margin: 10px 15px 15px;
+      height: 24px;
 
       &__label.label {
         @include textContent;
       }
 
       &--left {
-        // display: inline-block;
-        // width: 50%;
-        // flex-grow: 1;
-        // align-content: center;
         flex-basis: 50%;
         text-align: left;
+
+        &__tooltip {
+          height: 100%;
+        }
       }
 
       &--right {
-        // display: inline-block;
-        // width: 50%;
-        // flex-grow: 1;
-        // align-content: center;
         flex-basis: 50%;
+        line-height: 1.5;
 
         &__status {
+          height: 24px;
           position: absolute;
         }
       }

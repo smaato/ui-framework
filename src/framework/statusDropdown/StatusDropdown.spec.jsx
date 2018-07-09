@@ -8,6 +8,9 @@ describe('StatusDropdown', () => {
     StatusDropdown.OPTIONS.ACTIVATE,
     StatusDropdown.OPTIONS.ARCHIVE,
     StatusDropdown.OPTIONS.DEACTIVATE,
+    StatusDropdown.OPTIONS.DISABLED,
+    StatusDropdown.OPTIONS.PUBLISHED,
+    StatusDropdown.OPTIONS.UNPUBLISHED,
   ];
   const defaultProps = {
     onSelect: () => undefined,
@@ -16,34 +19,41 @@ describe('StatusDropdown', () => {
 
   describe('DOM structure', () => {
     it('renders BaseDropdown', () => {
-      const props = Object.assign({}, defaultProps);
+      const testCase = TestCaseFactory.create(StatusDropdown, defaultProps);
+
+      expect(testCase.findComponents(BaseDropdown)).toBeDefined();
+    });
+
+    it('renders StatusDropdownOptionIcon when iconType is provided', () => {
+      const props = Object.assign({}, defaultProps, {
+        selectedOption: StatusDropdown.OPTIONS.ACTIVATE,
+      });
 
       const testCase = TestCaseFactory.create(StatusDropdown, props);
 
-      expect(testCase.findComponents(BaseDropdown)).toBeDefined();
+      const statusDropdownLabel = testCase.find('.statusDropdownLabel')[0];
+      testCase.trigger('click', statusDropdownLabel);
+
+      expect(testCase.first('.statusDropdownOptionIcon')).toBeDefined();
     });
   });
 
   describe('Props', () => {
     describe('onSelect', () => {
       it('is passed to BaseDropdown', () => {
-        const props = Object.assign({}, defaultProps);
-
-        const testCase = TestCaseFactory.create(StatusDropdown, props);
+        const testCase = TestCaseFactory.create(StatusDropdown, defaultProps);
 
         const baseDropdown = testCase.findComponents(BaseDropdown)[0];
-        expect(baseDropdown.props.onSelect).toBe(props.onSelect);
+        expect(baseDropdown.props.onSelect).toBe(defaultProps.onSelect);
       });
     });
 
     describe('options', () => {
       it('is passed to BaseDropdown', () => {
-        const props = Object.assign({}, defaultProps);
-
-        const testCase = TestCaseFactory.create(StatusDropdown, props);
+        const testCase = TestCaseFactory.create(StatusDropdown, defaultProps);
 
         const baseDropdown = testCase.findComponents(BaseDropdown)[0];
-        expect(baseDropdown.props.options).toBe(props.options);
+        expect(baseDropdown.props.options).toBe(defaultProps.options);
       });
     });
 
@@ -97,6 +107,28 @@ describe('StatusDropdown', () => {
       it('when DISABLED renders a grey DropdownDot and grey label', () => {
         const props = Object.assign({}, defaultProps, {
           selectedOption: StatusDropdown.OPTIONS.DISABLED,
+        });
+
+        const testCase = TestCaseFactory.create(StatusDropdown, props);
+
+        expect(testCase.first('.dropdownDot--grey')).toBeDefined();
+        expect(testCase.first('.statusDropdownLabel--grey')).toBeDefined();
+      });
+
+      it('when PUBLISH renders a green DropdownDot and green label', () => {
+        const props = Object.assign({}, defaultProps, {
+          selectedOption: StatusDropdown.OPTIONS.PUBLISHED,
+        });
+
+        const testCase = TestCaseFactory.create(StatusDropdown, props);
+
+        expect(testCase.first('.dropdownDot--green')).toBeDefined();
+        expect(testCase.first('.statusDropdownLabel--green')).toBeDefined();
+      });
+
+      it('when UNPUBLISHED renders a grey DropdownDot and grey label', () => {
+        const props = Object.assign({}, defaultProps, {
+          selectedOption: StatusDropdown.OPTIONS.UNPUBLISHED,
         });
 
         const testCase = TestCaseFactory.create(StatusDropdown, props);

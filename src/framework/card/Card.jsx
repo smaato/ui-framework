@@ -59,7 +59,7 @@ export default class Card extends Component {
 
           <div className="card__footer">
             <div className="card__footer--left">
-              <div>
+              <div className="card__footer--left__tooltip">
                 <Tooltip message={this.props.tooltipText} width="150px">
                   <Label className="card__footer__label card__text--green">
                     {this.props.hightlightText}
