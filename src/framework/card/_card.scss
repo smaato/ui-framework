@@ -37,13 +37,14 @@
     &__footer {
       display: flex;
       flex-direction: row;
+      height: 24px;
       justify-content: center;
       text-align: center;
       margin: 10px 15px 15px;
-      height: 24px;
 
       &__label.label {
         @include textContent;
+        margin: 0;
       }
 
       &--left {
@@ -51,7 +52,9 @@
         text-align: left;
 
         &__tooltip {
-          height: 100%;
+          align-items: flex-end;
+          display: flex;
+          height: 20px;
         }
       }
 
