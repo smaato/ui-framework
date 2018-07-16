@@ -6,7 +6,6 @@ import React, {
 
 import {
   Box,
-  StatusDropdown,
   Label,
   SubLabel,
   Tooltip,
@@ -20,22 +19,6 @@ export default class Card extends Component {
       height: props.height,
       width: props.width,
     };
-    this.dropdownItems = [
-      StatusDropdown.OPTIONS.PUBLISHED,
-      StatusDropdown.OPTIONS.UNPUBLISHED,
-    ];
-
-    this.state = {
-      selectedOption: undefined,
-    };
-
-    this.onSelectOption = this.onSelectOption.bind(this);
-  }
-
-  onSelectOption(option) {
-    this.setState({
-      selectedOption: option,
-    });
   }
 
   render() {
@@ -69,11 +52,7 @@ export default class Card extends Component {
             </div>
             <div className="card__footer--right">
               <div className="card__footer--right__status">
-                <StatusDropdown
-                  onSelect={this.onSelectOption}
-                  options={this.dropdownItems}
-                  selectedOption={this.state.selectedOption}
-                />
+                {this.props.footerRight}
               </div>
             </div>
           </div>
@@ -85,6 +64,7 @@ export default class Card extends Component {
 
 Card.propTypes = {
   description: PropTypes.string,
+  footerRight: PropTypes.element,
   height: PropTypes.string,
   hightlightText: PropTypes.string,
   imageSrc: PropTypes.string.isRequired,

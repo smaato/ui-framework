@@ -115,7 +115,7 @@ describe('StatusDropdown', () => {
         expect(testCase.first('.statusDropdownLabel--grey')).toBeDefined();
       });
 
-      it('when PUBLISH renders a green DropdownDot and green label', () => {
+      it('when PUBLISHED renders a green DropdownDot and green label', () => {
         const props = Object.assign({}, defaultProps, {
           selectedOption: StatusDropdown.OPTIONS.PUBLISHED,
         });

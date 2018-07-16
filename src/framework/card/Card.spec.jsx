@@ -34,11 +34,6 @@ describe('Card', () => {
         const testCase = TestCaseFactory.create(Card, defaultProps);
         expect(testCase.first('.card__footer .tooltip')).toBeDefined();
       });
-
-      it('contains a StatusDropdown', () => {
-        const testCase = TestCaseFactory.create(Card, defaultProps);
-        expect(testCase.first('.card__footer .statusDropdown')).toBeDefined();
-      });
     });
   });
 

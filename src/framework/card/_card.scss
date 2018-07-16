@@ -37,9 +37,6 @@
     &__footer {
       display: flex;
       flex-direction: row;
-      height: 24px;
-      justify-content: center;
-      text-align: center;
       margin: 10px 15px 15px;
 
       &__label.label {
@@ -62,8 +59,8 @@
         flex-basis: 50%;
         line-height: 1.5;
 
-        &__status {
-          height: 24px;
+        &__status .statusDropdown {
+          text-align: center;
         }
       }
     }

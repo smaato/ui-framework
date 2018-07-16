@@ -1,5 +1,6 @@
 
 import React, {
+  Component,
   PropTypes,
 } from 'react';
 
@@ -10,37 +11,71 @@ import Page, {
 import {
   Card,
   CardHolder,
+  StatusDropdown,
 } from '../../../framework/framework';
 
-const CardExample = (props) => {
-  const longDescription = `Do not go gentle into that good night,
-  Old age should burn and
-  rave at close of day;
-  Rage, rage against the dying of the light.`;
+export default class CardExample extends Component {
 
-  const arr = [1, 2, 3, 4, 5, 6];
+  constructor(props) {
+    super(props);
 
-  return (
-    <Page title={props.route.name}>
-      <Example>
-        <CardHolder amountPerRow={4}>
-          {arr.map(i => <Card
-            description={longDescription}
-            hightlightText={`Highlight ${i}`}
-            imageSrc="http://pipsum.com/210x150.jpg"
-            key={i}
-            subtitle="This is a subtitle and this is also a part of the same"
-            title={`Card ${i}`}
-            tooltipText={`Tooltip ${i}`}
-          />)}
-        </CardHolder>
-      </Example>
-    </Page>
-  );
-};
+    this.longDescription = `Do not go gentle into that good night,
+    Old age should burn and
+    rave at close of day;
+    Rage, rage against the dying of the light.`;
+
+    this.arr = [1, 2, 3, 4, 5, 6];
+
+    this.statusOptions = [
+      StatusDropdown.OPTIONS.PUBLISHED,
+      StatusDropdown.OPTIONS.UNPUBLISHED,
+    ];
+
+    this.state = {
+      selectedOption: undefined,
+    };
+
+    this.onSelectOption = this.onSelectOption.bind(this);
+  }
+
+  onSelectOption(option) {
+    this.setState({
+      selectedOption: option,
+    });
+  }
+
+  render() {
+    const dropdownOnEven = (position) => {
+      if (position % 2 === 0) {
+        return (<StatusDropdown
+          onSelect={this.onSelectOption}
+          options={this.statusOptions}
+          selectedOption={this.state.selectedOption}
+        />);
+      }
+    };
+
+    return (
+      <Page title={this.props.route.name}>
+        <Example>
+          <CardHolder amountPerRow={4}>
+            {this.arr.map(i => <Card
+              description={this.longDescription}
+              footerRight={dropdownOnEven(i)}
+              hightlightText={`Highlight ${i}`}
+              imageSrc="http://pipsum.com/210x150.jpg"
+              key={i}
+              subtitle="This is a subtitle and this is also a part of the same"
+              title={`Card ${i}`}
+              tooltipText={`Tooltip ${i}`}
+            />)}
+          </CardHolder>
+        </Example>
+      </Page>
+    );
+  }
+}
 
 CardExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default CardExample;
