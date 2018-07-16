@@ -45,15 +45,13 @@ export default class Card extends Component {
               <div className="card__footer--left__tooltip">
                 <Tooltip message={this.props.tooltipText} width="150px">
                   <Label className="card__footer__label card__text--green">
-                    {this.props.hightlightText}
+                    {this.props.highlightText}
                   </Label>
                 </Tooltip>
               </div>
             </div>
             <div className="card__footer--right">
-              <div className="card__footer--right__status">
-                {this.props.footerRight}
-              </div>
+              {this.props.footerRight}
             </div>
           </div>
         </div>
@@ -64,9 +62,9 @@ export default class Card extends Component {
 
 Card.propTypes = {
   description: PropTypes.string,
-  footerRight: PropTypes.element,
+  footerRight: PropTypes.any,
   height: PropTypes.string,
-  hightlightText: PropTypes.string,
+  highlightText: PropTypes.string,
   imageSrc: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
   title: PropTypes.string.isRequired,

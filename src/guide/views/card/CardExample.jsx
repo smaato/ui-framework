@@ -47,11 +47,15 @@ export default class CardExample extends Component {
   render() {
     const dropdownOnEven = (position) => {
       if (position % 2 === 0) {
-        return (<StatusDropdown
-          onSelect={this.onSelectOption}
-          options={this.statusOptions}
-          selectedOption={this.state.selectedOption}
-        />);
+        return (
+          <div className="card__footer--right__status">
+            <StatusDropdown
+              onSelect={this.onSelectOption}
+              options={this.statusOptions}
+              selectedOption={this.state.selectedOption}
+            />
+          </div>
+        );
       }
     };
 
@@ -62,7 +66,7 @@ export default class CardExample extends Component {
             {this.arr.map(i => <Card
               description={this.longDescription}
               footerRight={dropdownOnEven(i)}
-              hightlightText={`Highlight ${i}`}
+              highlightText={`Highlight ${i}`}
               imageSrc="http://pipsum.com/210x150.jpg"
               key={i}
               subtitle="This is a subtitle and this is also a part of the same"

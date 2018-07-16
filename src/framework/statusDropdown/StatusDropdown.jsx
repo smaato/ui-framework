@@ -121,9 +121,7 @@ export default class StatusDropdown extends Component {
       name = this.optionToMetaDataMap[option].name.inactive;
     }
 
-    const iconAvailable = !!this.optionToMetaDataMap[option].iconType;
-
-    if (iconAvailable) {
+    if (this.optionToMetaDataMap[option].iconType) {
       return [
         <StatusDropdownOptionIcon
           key={0}
