@@ -23,11 +23,17 @@ export default class StatusDropdownExample extends Component {
     };
 
     this.onSelectOption = this.onSelectOption.bind(this);
+    this.onSelectOptionPublished = this.onSelectOptionPublished.bind(this);
 
     this.options = [
       StatusDropdown.OPTIONS.ACTIVATE,
       StatusDropdown.OPTIONS.DEACTIVATE,
       StatusDropdown.OPTIONS.ARCHIVE,
+    ];
+
+    this.optionsPublished = [
+      StatusDropdown.OPTIONS.PUBLISHED,
+      StatusDropdown.OPTIONS.UNPUBLISHED,
     ];
   }
 
@@ -37,15 +43,29 @@ export default class StatusDropdownExample extends Component {
     });
   }
 
+  onSelectOptionPublished(option) {
+    this.setState({
+      selectedOptionPublished: option,
+    });
+  }
+
   render() {
     return (
       <Page title={this.props.route.name}>
 
-        <Example>
+        <Example title="With Icons">
           <StatusDropdown
             onSelect={this.onSelectOption}
             options={this.options}
             selectedOption={this.state.selectedOption}
+          />
+        </Example>
+
+        <Example title="Without Icons">
+          <StatusDropdown
+            onSelect={this.onSelectOptionPublished}
+            options={this.optionsPublished}
+            selectedOption={this.state.selectedOptionPublished}
           />
         </Example>
 

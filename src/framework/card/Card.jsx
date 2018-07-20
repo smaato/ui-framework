@@ -1,59 +1,72 @@
 
 import React, {
+  Component,
   PropTypes,
 } from 'react';
 
 import {
+  Box,
   Label,
   SubLabel,
   Tooltip,
-  Box,
 } from '../framework';
 
-const Card = (props) => {
-  const wrapperStyle = {
-    height: props.height,
-    width: props.width,
-  };
+export default class Card extends Component {
 
-  return (
-    <Box classes="card" roundedCorners >
-      <div
-        className="card__wrapper"
-        onClick={props.onClick}
-        style={wrapperStyle}
-      >
+  constructor(props) {
+    super(props);
+    this.wrapperStyle = {
+      height: props.height,
+      width: props.width,
+    };
+  }
+
+  render() {
+    return (
+      <Box classes="card" roundedCorners>
         <div
-          className="card__image"
-          style={{ backgroundImage: `url(${props.imageSrc})` }}
-        />
+          className="card__wrapper"
+          style={this.wrapperStyle}
+          onClick={this.props.onClick}
+        >
+          <div
+            className="card__image"
+            style={{ backgroundImage: `url(${this.props.imageSrc})` }}
+          />
 
-        <div className="card__info">
-          <Label>{props.title}</Label>
-          <SubLabel className="card__info__subLabel card__text--mediumgrey">
-            {props.subtitle}
-          </SubLabel>
-          <SubLabel className="card__info__subLabel card__text--lightgrey">
-            {props.description}
-          </SubLabel>
-        </div>
+          <div className="card__info">
+            <Label>{this.props.title}</Label>
+            <SubLabel className="card__info__subLabel card__text--mediumgrey">
+              {this.props.subtitle}
+            </SubLabel>
+            <SubLabel className="card__info__subLabel card__text--lightgrey">
+              {this.props.description}
+            </SubLabel>
+          </div>
 
-        <div className="card__footer">
-          <div className="card__footer--left">
-            <Tooltip message={props.tooltipText} width="150px">
-              <Label className="card__footer__label card__text--green">
-                {props.highlightText}
-              </Label>
-            </Tooltip>
+          <div className="card__footer">
+            <div className="card__footer--left">
+              <div className="card__footer--left__tooltip">
+                <Tooltip message={this.props.tooltipText} width="150px">
+                  <Label className="card__footer__label card__text--green">
+                    {this.props.highlightText}
+                  </Label>
+                </Tooltip>
+              </div>
+            </div>
+            <div className="card__footer--right">
+              {this.props.footerRight}
+            </div>
           </div>
         </div>
-      </div>
-    </Box>
-  );
-};
+      </Box>
+    );
+  }
+}
 
 Card.propTypes = {
   description: PropTypes.string,
+  footerRight: PropTypes.any,
   height: PropTypes.string,
   highlightText: PropTypes.string,
   imageSrc: PropTypes.string.isRequired,
@@ -69,4 +82,3 @@ Card.defaultProps = {
   width: '210px',
 };
 
-export default Card;

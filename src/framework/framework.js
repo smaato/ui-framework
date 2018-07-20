@@ -15,8 +15,7 @@ export { default as Body } from './body/Body.jsx';
 
 export { default as Box } from './box/Box.jsx';
 
-export * from './button/Button.jsx';
-export { default as Button } from './button/Button.jsx';
+export * from './button/index.jsx';
 
 export { default as ButtonGroup } from './buttonGroup/ButtonGroup.jsx';
 
@@ -49,8 +48,7 @@ export { default as Grid } from './grid/Grid.jsx';
 
 export { default as HorizontalLine } from './horizontalLine/HorizontalLine.jsx';
 
-export * from './kpi/Kpi.jsx';
-export { default as Kpi } from './kpi/Kpi.jsx';
+export * from './kpi/index.jsx';
 
 export * from './label/Label.jsx';
 export { default as Label } from './label/Label.jsx';

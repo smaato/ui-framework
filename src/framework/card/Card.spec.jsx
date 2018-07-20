@@ -4,6 +4,7 @@ import Card from './Card.jsx';
 
 describe('Card', () => {
   const defaultProps = {
+    footerRight: 'test',
     imageSrc: './image.jpg',
     title: 'title',
   };
@@ -52,6 +53,14 @@ describe('Card', () => {
   });
 
   describe('props', () => {
+    describe('footerRight', () => {
+      it('is rendered', () => {
+        const testCase = TestCaseFactory.create(Card, defaultProps);
+
+        expect(testCase.dom.textContent).toContain(defaultProps.footerRight);
+      });
+    });
+
     describe('height', () => {
       it('is set as inline style height', () => {
         const props = Object.assign({}, defaultProps, {
