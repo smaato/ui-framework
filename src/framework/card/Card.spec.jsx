@@ -38,6 +38,18 @@ describe('Card', () => {
     });
   });
 
+  describe('actions', () => {
+    it('upon clicking should call the click handler thats passed on', () => {
+      const propsWithClickHandler = Object.assign({}, defaultProps, {
+        onClick: jasmine.createSpy(),
+      });
+      const testCase = TestCaseFactory.create(Card, propsWithClickHandler);
+      const cardWrapperDiv = testCase.first('.card__wrapper');
+      testCase.trigger('click', cardWrapperDiv);
+      expect(propsWithClickHandler.onClick).toHaveBeenCalled();
+    });
+  });
+
   describe('props', () => {
     describe('footerRight', () => {
       it('is rendered', () => {

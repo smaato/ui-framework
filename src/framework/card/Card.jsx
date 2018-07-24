@@ -24,7 +24,11 @@ export default class Card extends Component {
   render() {
     return (
       <Box classes="card" roundedCorners>
-        <div className="card__wrapper" style={this.wrapperStyle}>
+        <div
+          className="card__wrapper"
+          onClick={this.props.onClick}
+          style={this.wrapperStyle}
+        >
           <div
             className="card__image"
             style={{ backgroundImage: `url(${this.props.imageSrc})` }}
@@ -66,6 +70,7 @@ Card.propTypes = {
   height: PropTypes.string,
   highlightText: PropTypes.string,
   imageSrc: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
   subtitle: PropTypes.string,
   title: PropTypes.string.isRequired,
   tooltipText: PropTypes.string,
