@@ -26,8 +26,8 @@ export default class Card extends Component {
       <Box classes="card" roundedCorners>
         <div
           className="card__wrapper"
-          style={this.wrapperStyle}
           onClick={this.props.onClick}
+          style={this.wrapperStyle}
         >
           <div
             className="card__image"
