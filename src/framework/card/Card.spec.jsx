@@ -39,16 +39,14 @@ describe('Card', () => {
   });
 
   describe('actions', () => {
-    it('upon clicking should call ' +
-    'the click handler thats passed on', () => {
-      const clickSpy = jasmine.createSpy();
+    it('upon clicking should call the click handler thats passed on', () => {
       const propsWithClickHandler = Object.assign({}, defaultProps, {
-        onClick: clickSpy,
+        onClick: jasmine.createSpy(),
       });
       const testCase = TestCaseFactory.create(Card, propsWithClickHandler);
       const cardWrapperDiv = testCase.first('.card__wrapper');
       testCase.trigger('click', cardWrapperDiv);
-      expect(clickSpy).toHaveBeenCalled();
+      expect(propsWithClickHandler.onClick).toHaveBeenCalled();
     });
   });
 
