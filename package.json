@@ -69,7 +69,7 @@
     "karma-threshold-reporter": "0.1.15",
     "numeral": "1.5.3",
     "pre-commit": "1.1.2",
-    "react-test-kit": "git+https://github.com/smaato/react-test-kit.git#v0.2.0",
+    "react-test-kit": "git+https://github.com/smaato/react-test-kit.git#dafb9bd731e85ac642f38f1dfd0c08b390758f58",
     "react-transform-hmr": "1.0.1",
     "reconnectingwebsocket": "1.0.0",
     "run-sequence": "1.1.2",
