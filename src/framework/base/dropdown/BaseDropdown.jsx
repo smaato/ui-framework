@@ -248,7 +248,7 @@ export default class BaseDropdown extends Component {
         React.createElement(
           this.props.optionType,
           {
-            classes: option.classes,
+            classes: option && option.classes,
             hasFocus: this.state.focusedOptionIndex === index,
             index,
             isSelected: this.props.selectedOption === option,
