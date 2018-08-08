@@ -2,8 +2,8 @@
 import classNames from 'classnames';
 import React, {
   Component,
-  PropTypes,
 } from 'react';
+import PropTypes from 'prop-types';
 
 export default class CheckBox extends Component {
 

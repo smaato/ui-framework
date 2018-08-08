@@ -1,9 +1,8 @@
 
 import React, {
-  Component,
-  PropTypes,
+  Component
 } from 'react';
-
+import PropTypes from 'prop-types';
 import $ from 'jquery';
 import Portal from '../../../../node_modules/react-portal/lib/portal';
 

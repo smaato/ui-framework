@@ -3,9 +3,9 @@ import d3 from 'd3';
 import $ from 'jquery';
 import React, {
   Component,
-  PropTypes,
 } from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 import ThrottledEventDispatcher
   from '../services/event/ThrottledEventDispatcher';

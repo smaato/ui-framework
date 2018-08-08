@@ -3,9 +3,9 @@ import $ from 'jquery';
 import numeral from 'numeral';
 import React, {
   Component,
-  PropTypes,
 } from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 import Page, {
   Example,

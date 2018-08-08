@@ -1,8 +1,7 @@
 
 import classNames from 'classnames';
-import React, {
-  PropTypes,
-} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Box = (props) => {
   const classes = classNames('box', props.classes, {

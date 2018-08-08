@@ -1,9 +1,9 @@
 
 import React, {
   Component,
-  PropTypes,
 } from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import BaseDropdown from '../base/dropdown/BaseDropdown.jsx';
 import DropdownDot from './dropdownDot/DropdownDot.jsx';

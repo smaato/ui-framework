@@ -1,7 +1,6 @@
 
-import React, {
-  PropTypes,
-} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const SubTitle = props => (
   <div className="examplePageSubTitle">

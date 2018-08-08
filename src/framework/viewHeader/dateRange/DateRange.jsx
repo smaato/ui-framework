@@ -3,9 +3,9 @@ import classNames from 'classnames';
 import moment from 'moment';
 import React, {
   Component,
-  PropTypes,
 } from 'react';
 import { DateRange as ReactDateRange } from 'react-date-range';
+import PropTypes from 'prop-types';
 
 import {
   EscapeKeyHandler,

@@ -1,9 +1,8 @@
 
 import React, {
   Component,
-  PropTypes,
 } from 'react';
-
+import PropTypes from 'prop-types';
 import $ from 'jquery';
 
 import SearchBox from '../searchBox/SearchBox.jsx';
