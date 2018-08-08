@@ -33,7 +33,7 @@ const GridBody = (props) => {
 };
 
 GridBody.propTypes = {
-  children:  PropTypes.any,
+  children: PropTypes.any,
   // Initial loading state
   initialLoadingRow: PropTypes.element,
   // Empty state
