@@ -10,8 +10,8 @@
 
 import React, {
   Component,
-  PropTypes,
 } from 'react';
+import PropTypes from 'prop-types';
 
 export default class RecycledList extends Component {
 
@@ -230,8 +230,8 @@ export default class RecycledList extends Component {
 }
 
 RecycledList.propTypes = {
-  rootElement: React.PropTypes.element.isRequired,
-  fakeItemElement: React.PropTypes.element,
+  rootElement: PropTypes.element.isRequired,
+  fakeItemElement: PropTypes.element,
   // NOTE: The render method of the owner component should provide an original
   // array, as expected by componentWillReceiveProps.
   items: PropTypes.array.isRequired,

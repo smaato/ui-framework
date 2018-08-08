@@ -1,8 +1,8 @@
 
 import React, {
   Component,
-  PropTypes,
 } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   ComparisonTypes,
@@ -43,7 +43,7 @@ export default class FilterForm extends Component {
 
 FilterForm.propTypes = {
   comparisonValue: PropTypes.oneOfType([
-    PropTypes.string, PropTypes.number, React.PropTypes.array,
+    PropTypes.string, PropTypes.number, PropTypes.array,
   ]),
   filterOption: PropTypes.instanceOf(FilterOption),
   onAddFilter: PropTypes.func.isRequired,

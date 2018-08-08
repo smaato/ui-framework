@@ -1,9 +1,8 @@
 
 // Import exports from various modules.
-import React, {
-  PropTypes,
-} from 'react';
+import React from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 // Define stateless functional component.
 const StickyGrid = (props) => {

@@ -1,8 +1,8 @@
 
 import React, {
   Component,
-  PropTypes,
 } from 'react';
+import PropTypes from 'prop-types';
 
 import Page from '../../components/page/Page.jsx';
 

@@ -3,8 +3,8 @@ import d3 from 'd3';
 
 import React, {
   Component,
-  PropTypes,
 } from 'react';
+import PropTypes from 'prop-types';
 
 import Page, {
   Example,
