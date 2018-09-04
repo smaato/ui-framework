@@ -1,7 +1,7 @@
-import React from 'react';
 import classNames from 'classnames';
 import keyMirror from 'keymirror';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const Heading = (props) => {
   const sizeClassMap = {

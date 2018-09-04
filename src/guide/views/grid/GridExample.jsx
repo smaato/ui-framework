@@ -1,11 +1,11 @@
 
 import $ from 'jquery';
 import numeral from 'numeral';
+import PropTypes from 'prop-types';
 import React, {
   Component,
 } from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 
 import Page, {
   Example,

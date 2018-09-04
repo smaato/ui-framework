@@ -1,6 +1,6 @@
 
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const GridBodyEditableCell = (props) => {
   const onClick = props.onClick.bind(this);

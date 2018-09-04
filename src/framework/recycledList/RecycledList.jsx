@@ -8,10 +8,10 @@
  * list items as the user scrolls.
  */
 
+import PropTypes from 'prop-types';
 import React, {
   Component,
 } from 'react';
-import PropTypes from 'prop-types';
 
 export default class RecycledList extends Component {
 

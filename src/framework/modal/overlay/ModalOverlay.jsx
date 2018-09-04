@@ -1,9 +1,10 @@
 
+import $ from 'jquery';
+import PropTypes from 'prop-types';
 import React, {
   Component,
 } from 'react';
-import PropTypes from 'prop-types';
-import $ from 'jquery';
+
 import Portal from '../../../../node_modules/react-portal/lib/portal';
 
 export default class ModalOverlay extends Component {

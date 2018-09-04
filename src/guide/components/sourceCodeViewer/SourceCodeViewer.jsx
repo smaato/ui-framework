@@ -1,11 +1,11 @@
 
-import React, {
-  Component,
-} from 'react';
-import PropTypes from 'prop-types';
 import $ from 'jquery';
 import classNames from 'classnames';
 import hljs from 'highlight.js';
+import PropTypes from 'prop-types';
+import React, {
+  Component,
+} from 'react';
 
 export default class SourceCodeViewer extends Component {
 

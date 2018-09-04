@@ -1,7 +1,7 @@
 
-import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const Column = (props) => {
   const classes = classNames('column', `column--${props.width}`);

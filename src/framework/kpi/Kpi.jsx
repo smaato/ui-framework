@@ -1,7 +1,7 @@
 
-import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const Kpi = (props) => {
   const className = classNames('kpi', props.className);

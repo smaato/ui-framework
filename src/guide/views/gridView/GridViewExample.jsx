@@ -1,8 +1,8 @@
 
+import PropTypes from 'prop-types';
 import React, {
   Component,
 } from 'react';
-import PropTypes from 'prop-types';
 
 import Page from '../../components/page/Page.jsx';
 
@@ -245,9 +245,9 @@ export default class GridViewExample extends Component {
       <Page isFullScreen>
         <Body>
 
-          { this.renderAppHeader() }
+          {this.renderAppHeader()}
 
-          { this.renderViewHeader() }
+          {this.renderViewHeader()}
 
           <BodyPanel isTopFlush>
             <BodyPanelItem>

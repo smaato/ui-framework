@@ -1,12 +1,12 @@
 
 import classNames from 'classnames';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import React, {
   Component,
 } from 'react';
-import { DateRange as ReactDateRange } from 'react-date-range';
-import PropTypes from 'prop-types';
 
+import { DateRange as ReactDateRange } from 'react-date-range';
 import {
   EscapeKeyHandler,
 } from '../../../framework/services';

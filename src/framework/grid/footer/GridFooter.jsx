@@ -1,7 +1,7 @@
 
 import classNames from 'classnames';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import GridFooterCell from './GridFooterCell.jsx';
 
