@@ -3,8 +3,8 @@
 // NOTE: `import` allows us to tersely specify the individual members we want
 // to import from a module with the curly brace syntax and by delimiting
 // them with commas.
-import $ from 'jquery';
 import classNames from 'classnames';
+import $ from 'jquery';
 import PropTypes from 'prop-types';
 import React, {
   Component,

@@ -12,8 +12,8 @@
  * 7. Press enter (if focused) to CLOSE.
  */
 
-import $ from 'jquery';
 import classNames from 'classnames';
+import $ from 'jquery';
 import PropTypes from 'prop-types';
 import React, {
   Component,
