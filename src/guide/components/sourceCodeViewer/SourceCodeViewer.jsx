@@ -1,7 +1,7 @@
 
 import classNames from 'classnames';
-import $ from 'jquery';
 import hljs from 'highlight.js';
+import $ from 'jquery';
 import PropTypes from 'prop-types';
 import React, {
   Component,
