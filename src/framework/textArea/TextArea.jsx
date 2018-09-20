@@ -1,8 +1,7 @@
 
-import React, {
-  PropTypes,
-} from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const TextArea = (props) => {
   const { dataId, isError, isFullWidth, isResizable, ...reducedProps } = props;

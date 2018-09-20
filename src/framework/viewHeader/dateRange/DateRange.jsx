@@ -1,9 +1,9 @@
 
 import classNames from 'classnames';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import React, {
   Component,
-  PropTypes,
 } from 'react';
 import { DateRange as ReactDateRange } from 'react-date-range';
 

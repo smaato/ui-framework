@@ -3,13 +3,13 @@
 // NOTE: `import` allows us to tersely specify the individual members we want
 // to import from a module with the curly brace syntax and by delimiting
 // them with commas.
+import classNames from 'classnames';
+import $ from 'jquery';
+import PropTypes from 'prop-types';
 import React, {
   Component,
-  PropTypes,
 } from 'react';
 import { Link } from 'react-router';
-import $ from 'jquery';
-import classNames from 'classnames';
 
 import Navigation from '../components/navigation/Navigation.jsx';
 import SourceCodeViewer
