@@ -1,8 +1,7 @@
 
-import React, {
-  PropTypes,
-} from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const Kpi = (props) => {
   const className = classNames('kpi', props.className);
@@ -24,11 +23,3 @@ Kpi.propTypes = {
 };
 
 export default Kpi;
-
-export {
-  default as KpiPositive,
-} from './KpiPositive.jsx';
-
-export {
-  default as KpiNegative,
-} from './KpiNegative.jsx';

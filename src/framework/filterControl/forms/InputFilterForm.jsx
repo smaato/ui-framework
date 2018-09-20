@@ -1,7 +1,7 @@
 
+import PropTypes from 'prop-types';
 import React, {
   Component,
-  PropTypes,
 } from 'react';
 
 import {
@@ -47,9 +47,6 @@ export default class InputFilterForm extends Component {
   render() {
     return (
       <div className="inputFilterForm">
-        <div className="inputFilterForm__filterName">
-          {this.props.filterOption.name}
-        </div>
         <div className="inputFilterForm__filterValueWrapper">
           <input
             className="inputFilterForm__enteredValue"

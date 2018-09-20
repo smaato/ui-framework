@@ -1,9 +1,8 @@
 
 import classNames from 'classnames';
 import keyMirror from 'keymirror';
-import React, {
-  PropTypes,
-} from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const Button = (props) => {
   function onClick(event) {
@@ -97,29 +96,3 @@ Button.propTypes = {
 };
 
 export default Button;
-
-// We need to export these components after the default export because they
-// depend on it.
-export {
-  default as AlertButton,
-} from './AlertButton.jsx';
-
-export {
-  default as BasicButton,
-} from './BasicButton.jsx';
-
-export {
-  default as CallOutButton,
-} from './CallOutButton.jsx';
-
-export {
-  default as GroupedButton,
-} from './GroupedButton.jsx';
-
-export {
-  default as HollowButton,
-} from './HollowButton.jsx';
-
-export {
-  default as PrimaryButton,
-} from './PrimaryButton.jsx';

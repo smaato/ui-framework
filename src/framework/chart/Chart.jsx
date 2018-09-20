@@ -1,9 +1,9 @@
 
 import classNames from 'classnames';
 import d3 from 'd3';
+import PropTypes from 'prop-types';
 import React, {
   Component,
-  PropTypes,
 } from 'react';
 
 import { Number } from '../services';

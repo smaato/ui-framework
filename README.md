@@ -22,6 +22,8 @@ In your JS:
 import {
   AccountNav,
   AccountPicture,
+  Accordion,
+  AccordionItem,
   AddOnControl,
   AddOnDropdown,
   AddOnDropdownOption,
@@ -42,6 +44,8 @@ import {
   Button,
   ButtonGroup,
   CallOutButton,
+  Card,
+  CardHolder,
   Chart,
   ChartDot,
   CheckBox,
@@ -167,6 +171,7 @@ Work on framework components in the `src/framework` directory.
 #### Setup & Run
 
 ```bash
+gem install sass; gem install compass
 npm install
 npm install -g gulp
 gulp
