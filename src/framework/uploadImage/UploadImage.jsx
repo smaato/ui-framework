@@ -19,6 +19,9 @@ class UploadImage extends React.Component {
   }
 
   onCloseImage() {
+    // As default browser behaviour it doesnt allow you to reset what you selected
+    // by resetting the value you are able to reload the same image selected
+    document.getElementById('fileUploadInput').value = '';
     this.setState({
       file: null,
       isloaded: false,
@@ -53,13 +56,14 @@ class UploadImage extends React.Component {
   }
 
   render() {
+    const imageReady = !this.state.isloaded || this.state.hasErrors;
     const previewImage = (<PreviewImage
       hasLoaded={this.hasLoaded}
       imageBinaryUrl={this.state.file}
     />);
 
     const uploadImageClasses = classNames('uploadImage', {
-      hidden: (!this.state.isloaded || this.state.hasErrors),
+      hidden: imageReady,
     });
 
     const uploadImage = (<div className={uploadImageClasses}>
@@ -68,12 +72,13 @@ class UploadImage extends React.Component {
     </div>);
 
     const inputClasses = classNames('uploadImage', {
-      hidden: !(!this.state.isloaded || this.state.hasErrors),
+      hidden: !imageReady,
     });
 
     return (
       <div>
         <input
+          id="fileUploadInput"
           type="file"
           onChange={this.handleChange}
           className={inputClasses}
