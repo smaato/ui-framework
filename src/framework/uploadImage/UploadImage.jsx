@@ -1,18 +1,20 @@
 
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {
-  FieldMessage,
-} from './../framework.js';
+
+import PreviewImage from './PreviewImage.jsx';
 
 class UploadImage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isloaded: false,
+      hasErrors: false,
       file: null,
-      validation: '',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.hasLoaded = this.hasLoaded.bind(this);
     this.onCloseImage = this.onCloseImage.bind(this);
   }
 
@@ -20,7 +22,20 @@ class UploadImage extends React.Component {
     this.setState({
       file: null,
       isloaded: false,
+      hasErrors: false,
     });
+  }
+
+  hasLoaded(image) {
+    const hasErrors =
+      this.props.validateImage !== undefined && this.props.validateImage(image);
+    this.setState({
+      isloaded: true,
+      hasErrors,
+    });
+    if (!hasErrors) {
+      this.props.onChange(this.state.file);
+    }
   }
 
   handleChange(event) {
@@ -28,30 +43,6 @@ class UploadImage extends React.Component {
 
     fr.onload = () => {
       const imageBinaryUrl = fr.result;
-      const image = new Image();
-
-      image.onload = () => {
-        let validation = '';
-        if (
-          image.width !== this.props.requiredWidth ||
-          image.height !== this.props.requiredHeight
-        ) {
-          validation =
-            `The required size is ${this.props.requiredWidth}x` +
-            `${this.props.requiredHeight}`;
-        }
-
-        this.setState({
-          validation,
-          isloaded: true,
-        });
-        if (!this.hasErrors()) {
-          this.props.onChange(imageBinaryUrl);
-        }
-      };
-
-      image.src = imageBinaryUrl;
-
       this.setState({
         file: imageBinaryUrl,
         isloaded: false,
@@ -61,42 +52,41 @@ class UploadImage extends React.Component {
     fr.readAsDataURL(event.target.files[0]);
   }
 
-  hasErrors() {
-    return !!this.state.validation && this.state.validation.length > 0;
-  }
-
   render() {
-    const uploadImage = (!this.state.isloaded || this.hasErrors()) ?
-      <input type="file" onChange={this.handleChange} /> :
-      (<div className="uploadImage">
-        <img alt="test" data-id={this.props.dataId} src={this.state.file} />
-        <div className="uploadImage__closeButton" onClick={this.onCloseImage} />
-      </div>);
-    let validation;
+    const previewImage = (<PreviewImage
+      hasLoaded={this.hasLoaded}
+      imageBinaryUrl={this.state.file}
+    />);
 
-    if (this.hasErrors()) {
-      validation = <FieldMessage message={this.state.validation} />;
-    }
+    const uploadImageClasses = classNames('uploadImage', {
+      hidden: (!this.state.isloaded || this.state.hasErrors),
+    });
+
+    const uploadImage = (<div className={uploadImageClasses}>
+      {previewImage}
+      <div className="uploadImage__closeButton" onClick={this.onCloseImage} />
+    </div>);
+
+    const inputClasses = classNames('uploadImage', {
+      hidden: !(!this.state.isloaded || this.state.hasErrors),
+    });
 
     return (
       <div>
+        <input
+          type="file"
+          onChange={this.handleChange}
+          className={inputClasses}
+        />
         {uploadImage}
-        {validation}
       </div>
     );
   }
 }
 
-UploadImage.defaultProps = {
-  requiredHeight: 150,
-  requiredWidth: 210,
-};
-
 UploadImage.propTypes = {
-  dataId: PropTypes.string,
-  requiredHeight: PropTypes.number,
-  requiredWidth: PropTypes.number,
   onChange: PropTypes.func,
+  validateImage: PropTypes.func,
 };
 
 export default UploadImage;

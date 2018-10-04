@@ -3,6 +3,10 @@
     display: table;
     position: relative;
 
+    &.hidden {
+      display: none;
+    }
+
     &__closeButton {
       @include crossIcon($marginTop: 4px, $marginLeft: 9px);
 
