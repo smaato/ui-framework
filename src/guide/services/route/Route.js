@@ -54,6 +54,7 @@ import TextInputExample from '../../views/textInput/TextInputExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
 import ToggleExample from '../../views/toggle/ToggleExample.jsx';
 import TooltipExample from '../../views/tooltip/TooltipExample.jsx';
+import UploadImageExample from '../../views/uploadImage/UploadImageExample.jsx';
 import VerticalLayoutExample
   from '../../views/verticalLayout/VerticalLayoutExample.jsx';
 import ViewHeaderExample from '../../views/viewHeader/ViewHeaderExample.jsx';
@@ -219,6 +220,10 @@ const components = [{
   name: 'Tooltip',
   source: 'views/tooltip/TooltipExample.jsx',
   component: TooltipExample,
+}, {
+  name: 'UploadImage',
+  source: 'views/uploadImage/UploadImageExample.jsx',
+  component: UploadImageExample,
 }, {
   name: 'VerticalLayout',
   source: 'views/verticalLayout/VerticalLayoutExample.jsx',
