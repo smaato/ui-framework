@@ -9,9 +9,9 @@ class UploadImage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isloaded: false,
-      hasErrors: false,
       file: null,
+      hasErrors: false,
+      isloaded: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.hasLoaded = this.hasLoaded.bind(this);
@@ -24,8 +24,8 @@ class UploadImage extends React.Component {
     document.getElementById('fileUploadInput').value = '';
     this.setState({
       file: null,
-      isloaded: false,
       hasErrors: false,
+      isloaded: false,
     });
   }
 
@@ -33,8 +33,8 @@ class UploadImage extends React.Component {
     const hasErrors =
       this.props.validateImage !== undefined && this.props.validateImage(image);
     this.setState({
-      isloaded: true,
       hasErrors,
+      isloaded: true,
     });
     if (!hasErrors) {
       this.props.onChange(this.state.file);
@@ -78,10 +78,10 @@ class UploadImage extends React.Component {
     return (
       <div>
         <input
-          id="fileUploadInput"
-          type="file"
-          onChange={this.handleChange}
           className={inputClasses}
+          id="fileUploadInput"
+          onChange={this.handleChange}
+          type="file"
         />
         {uploadImage}
       </div>

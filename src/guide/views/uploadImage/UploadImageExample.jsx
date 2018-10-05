@@ -15,9 +15,9 @@ class UploadImageExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      requiredWidth: 210,
-      requiredHeight: 150,
       hasErrors: false,
+      requiredHeight: 150,
+      requiredWidth: 210,
     };
     this.validateImage = this.validateImage.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
