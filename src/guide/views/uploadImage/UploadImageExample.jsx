@@ -23,8 +23,9 @@ class UploadImageExample extends React.Component {
     this.onChangeHandler = this.onChangeHandler.bind(this);
   }
 
-  onChangeHandler(image) {
-    console.log('this is the imagefile', image); // eslint-disable-line
+  onChangeHandler(file, image) {
+    console.log('this is the file', file); // eslint-disable-line
+    console.log('this is the image', image); // eslint-disable-line
   }
 
   validateImage(image) {

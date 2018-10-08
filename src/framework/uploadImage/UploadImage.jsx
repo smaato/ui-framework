@@ -10,6 +10,7 @@ class UploadImage extends React.Component {
     super(props);
     this.state = {
       file: null,
+      image: null,
       hasErrors: false,
       isloaded: false,
     };
@@ -25,8 +26,10 @@ class UploadImage extends React.Component {
     this.setState({
       file: null,
       hasErrors: false,
+      image: null,
       isloaded: false,
     });
+    this.props.onChange();
   }
 
   hasLoaded(image) {
@@ -37,7 +40,7 @@ class UploadImage extends React.Component {
       isloaded: true,
     });
     if (!hasErrors) {
-      this.props.onChange(this.state.file);
+      this.props.onChange(this.state.file, this.state.image);
     }
   }
 
@@ -47,11 +50,13 @@ class UploadImage extends React.Component {
     fr.onload = () => {
       const imageBinaryUrl = fr.result;
       this.setState({
-        file: imageBinaryUrl,
+        image: imageBinaryUrl,
         isloaded: false,
       });
     };
-
+    this.setState({
+      file: event.target.files[0],
+    });
     fr.readAsDataURL(event.target.files[0]);
   }
 
@@ -59,7 +64,7 @@ class UploadImage extends React.Component {
     const imageReady = !this.state.isloaded || this.state.hasErrors;
     const previewImage = (<PreviewImage
       hasLoaded={this.hasLoaded}
-      imageBinaryUrl={this.state.file}
+      imageBinaryUrl={this.state.image}
     />);
 
     const uploadImageClasses = classNames('uploadImage', {

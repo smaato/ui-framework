@@ -10,7 +10,7 @@ class PreviewImage extends React.Component {
     const image = new Image();
 
     image.onload = () => {
-      this.props.hasLoaded(this.props.imageBinaryUrl);
+      this.props.hasLoaded(image);
     };
 
     image.src = this.props.imageBinaryUrl;
