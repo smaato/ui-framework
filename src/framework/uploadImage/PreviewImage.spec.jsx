@@ -10,6 +10,25 @@ describe('PreviewImage', () => {
     });
   });
   describe('Props', () => {
+    describe('children', () => {
+      it('is rendered when imageBinaryUrl is not passed', () => {
+        const props = {
+          children: 'test',
+        };
+
+        const testCase = TestCaseFactory.create(PreviewImage, props);
+        expect(testCase.dom.src).toContain(props.children);
+      });
+      it('is not rendered when imageBinaryUrl is passed', () => {
+        const props = {
+          children: 'childrentest',
+          imageBinaryUrl: 'imagetest',
+        };
+
+        const testCase = TestCaseFactory.create(PreviewImage, props);
+        expect(testCase.dom.src).not.toContain(props.children);
+      });
+    });
     it('imageBinaryUrl', () => {
       const props = {
         imageBinaryUrl: 'test',

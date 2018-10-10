@@ -16,6 +16,7 @@ class UploadImageExample extends React.Component {
     super(props);
     this.state = {
       hasErrors: false,
+      image: 'http://pipsum.com/210x150.jpg',
       requiredHeight: 150,
       requiredWidth: 210,
     };
@@ -60,6 +61,15 @@ class UploadImageExample extends React.Component {
             onChange={this.onChangeHandler}
             validateImage={this.validateImage}
           />
+          {this.renderErrorMessage()}
+        </Example>
+        <Example title="Image provided already">
+          <UploadImage
+            onChange={this.onChangeHandler}
+            validateImage={this.validateImage}
+          >
+            {this.state.image}
+          </UploadImage>
           {this.renderErrorMessage()}
         </Example>
 

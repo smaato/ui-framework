@@ -16,6 +16,19 @@ describe('UploadImage', () => {
     });
   });
   describe('Props', () => {
+    describe('children', () => {
+      it('shows preview image', () => {
+        const props = {
+          children: 'test',
+          onChange: () => null,
+        };
+
+        const testCase = TestCaseFactory.create(UploadImage, props);
+
+        expect(testCase.dom.children[1].className).toBe('uploadImage');
+        expect(testCase.dom.children[1].className).not.toContain('hidden');
+      });
+    });
     it('onChange', () => {
       const props = {
         onChange: jasmine.createSpy('onChange'),

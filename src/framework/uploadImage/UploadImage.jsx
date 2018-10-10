@@ -19,6 +19,14 @@ class UploadImage extends React.Component {
     this.onCloseImage = this.onCloseImage.bind(this);
   }
 
+  componentWillMount() {
+    if (this.props.children) {
+      this.setState({
+        isloaded: true,
+      });
+    }
+  }
+
   onCloseImage() {
     // As default browser behaviour it doesnt allow you to reset what you selected
     // by resetting the value you are able to reload the same image selected
@@ -61,14 +69,17 @@ class UploadImage extends React.Component {
   }
 
   render() {
-    const imageReady = !this.state.isloaded || this.state.hasErrors;
-    const previewImage = (<PreviewImage
-      hasLoaded={this.hasLoaded}
-      imageBinaryUrl={this.state.image}
-    />);
+    const imageHidden = !this.state.isloaded || this.state.hasErrors;
+    const previewImage = (
+      <PreviewImage
+        hasLoaded={this.hasLoaded}
+        imageBinaryUrl={this.state.image}
+      >
+        {this.props.children}
+      </PreviewImage>);
 
     const uploadImageClasses = classNames('uploadImage', {
-      hidden: imageReady,
+      hidden: imageHidden,
     });
 
     const uploadImage = (<div className={uploadImageClasses}>
@@ -77,7 +88,7 @@ class UploadImage extends React.Component {
     </div>);
 
     const inputClasses = classNames('uploadImage', {
-      hidden: !imageReady,
+      hidden: !imageHidden,
     });
 
     return (
@@ -95,6 +106,7 @@ class UploadImage extends React.Component {
 }
 
 UploadImage.propTypes = {
+  children: PropTypes.string,
   onChange: PropTypes.func,
   validateImage: PropTypes.func,
 };
