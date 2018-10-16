@@ -33,6 +33,7 @@
 
       &__subLabel {
         @include textContent;
+        min-height: 1.2em;
       }
     }
 
