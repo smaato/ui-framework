@@ -59,6 +59,8 @@ export default class Card extends Component {
             </div>
           </div>
         </div>
+
+        {this.props.children}
       </Box>
     );
   }
@@ -75,10 +77,10 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
   tooltipText: PropTypes.string,
   width: PropTypes.string,
+  children: PropTypes.element,
 };
 
 Card.defaultProps = {
   height: '250px',
   width: '210px',
 };
-

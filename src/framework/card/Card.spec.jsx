@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
 import Card from './Card.jsx';
 
@@ -7,6 +8,7 @@ describe('Card', () => {
     footerRight: 'test',
     imageSrc: './image.jpg',
     title: 'title',
+    children: [<div className="child" />, <div className="child" />],
   };
 
   describe('DOM structure', () => {
@@ -23,6 +25,11 @@ describe('Card', () => {
     it('card info is rendered', () => {
       const testCase = TestCaseFactory.create(Card, defaultProps);
       expect(testCase.first('.card__info')).toBeDefined();
+    });
+
+    it('card children are rendered', () => {
+      const testCase = TestCaseFactory.create(Card, defaultProps);
+      expect(testCase.find('.child').length).toEqual(2);
     });
 
     describe('footer', () => {

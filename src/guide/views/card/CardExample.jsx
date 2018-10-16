@@ -11,6 +11,7 @@ import Page, {
 import {
   Card,
   CardHolder,
+  CardRibbon,
   StatusDropdown,
 } from '../../../framework/framework';
 
@@ -63,7 +64,7 @@ export default class CardExample extends Component {
       <Page title={this.props.route.name}>
         <Example>
           <CardHolder amountPerRow={4}>
-            {this.arr.map(i => <Card
+            {this.arr.map((i, index) => <Card
               description={this.longDescription}
               footerRight={dropdownOnEven(i)}
               highlightText={`Highlight ${i}`}
@@ -72,7 +73,14 @@ export default class CardExample extends Component {
               subtitle="This is a subtitle and this is also a part of the same"
               title={`Card ${i}`}
               tooltipText={`Tooltip ${i}`}
-            />)}
+            >
+              {
+                (
+                  index % 2 ?
+                    <CardRibbon imageSrc="https://raw.githubusercontent.com/smaato/ui-framework/103eddd2dd967ab39de6db939c26aa5afe0673c4/src/guide/views/card/blueRibbon.png" /> : null
+                )
+              }
+            </Card>)}
           </CardHolder>
         </Example>
       </Page>
