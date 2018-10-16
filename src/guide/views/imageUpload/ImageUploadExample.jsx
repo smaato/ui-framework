@@ -33,8 +33,10 @@ class ImageUploadExample extends Component {
   }
 
   validateImage(image) {
-    const hasErrors = (image.width !== this.WIDTH ||
-          image.height !== this.HEIGHT);
+    const hasErrors = (
+      image.width !== this.WIDTH ||
+      image.height !== this.HEIGHT
+    );
 
     this.setState({
       hasErrors,
@@ -45,7 +47,7 @@ class ImageUploadExample extends Component {
 
   renderErrorMessage() {
     const message = `The required size is ${this.WIDTH}x` +
-    `${this.HEIGHT}`;
+      `${this.HEIGHT}`;
     if (this.state.hasErrors) {
       return (<FieldMessage message={message} />);
     }

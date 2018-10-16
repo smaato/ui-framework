@@ -11,8 +11,8 @@ class ImageUpload extends React.Component {
     this.state = {
       file: null,
       image: null,
-      hasErrors: false,
       isLoaded: false,
+      hasErrors: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.hasLoaded = this.hasLoaded.bind(this);
@@ -76,9 +76,10 @@ class ImageUpload extends React.Component {
         imageBinaryUrl={this.state.image}
       >
         {this.props.children}
-      </ImagePreview>);
+      </ImagePreview>
+    );
 
-    const imageUploadClasses = classNames('', {
+    const imageUploadClasses = classNames({
       'uploadImage--hidden': imageHidden,
     });
 
@@ -92,7 +93,7 @@ class ImageUpload extends React.Component {
       </div>
     );
 
-    const inputClasses = classNames('', {
+    const inputClasses = classNames({
       'uploadImage--hidden': !imageHidden,
     });
 

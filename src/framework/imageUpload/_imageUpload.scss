@@ -3,7 +3,7 @@
     display: table;
     position: relative;
 
-    .uploadImage--hidden {
+    &--hidden {
       display: none;
     }
 

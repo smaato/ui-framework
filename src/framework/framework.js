@@ -48,6 +48,8 @@ export { default as Grid } from './grid/Grid.jsx';
 
 export { default as HorizontalLine } from './horizontalLine/HorizontalLine.jsx';
 
+export { default as ImageUpload } from './imageUpload/ImageUpload.jsx';
+
 export * from './kpi/index.jsx';
 
 export * from './label/Label.jsx';
@@ -106,8 +108,6 @@ export { default as TitleBar } from './titleBar/TitleBar.jsx';
 export { default as Toggle } from './toggle/Toggle.jsx';
 
 export { default as Tooltip } from './tooltip/Tooltip.jsx';
-
-export { default as ImageUpload } from './imageUpload/ImageUpload.jsx';
 
 export { default as VerticalLayout } from './verticalLayout/VerticalLayout.jsx';
 

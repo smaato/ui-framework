@@ -137,6 +137,10 @@ const components = [{
   source: 'views/htmlElements/htmlElementsExample.jsx',
   component: HtmlElementsExample,
 }, {
+  name: 'ImageUpload',
+  source: 'views/imageUpload/ImageUploadExample.jsx',
+  component: ImageUploadExample,
+}, {
   name: 'Kpi',
   source: 'views/kpi/KpiExample.jsx',
   component: KpiExample,
@@ -220,10 +224,6 @@ const components = [{
   name: 'Tooltip',
   source: 'views/tooltip/TooltipExample.jsx',
   component: TooltipExample,
-}, {
-  name: 'ImageUpload',
-  source: 'views/imageUpload/ImageUploadExample.jsx',
-  component: ImageUploadExample,
 }, {
   name: 'VerticalLayout',
   source: 'views/verticalLayout/VerticalLayoutExample.jsx',
