@@ -81,7 +81,7 @@ describe('ImageUpload', () => {
       const testCase = TestCaseFactory.create(ImageUpload, props);
       testCase.element.hasLoaded('test');
 
-      expect(testCase.first('.uploadImage--hidden').tagName).toBe('INPUT');
+      expect(testCase.first('.imageUpload--hidden').tagName).toBe('INPUT');
     });
     it('should show img when isloaded is true and hasErrors is false', () => {
       const props = {

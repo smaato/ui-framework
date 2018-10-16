@@ -80,7 +80,7 @@ class ImageUpload extends React.Component {
     );
 
     const imageUploadClasses = classNames({
-      'uploadImage--hidden': imageHidden,
+      'imageUpload--hidden': imageHidden,
     });
 
     const imagePreviewBlock = (
@@ -94,7 +94,7 @@ class ImageUpload extends React.Component {
     );
 
     const inputClasses = classNames({
-      'uploadImage--hidden': !imageHidden,
+      'imageUpload--hidden': !imageHidden,
     });
 
     return (
