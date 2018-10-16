@@ -1,6 +1,8 @@
 
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, {
+  Component,
+  PropTypes,
+} from 'react';
 
 import Page, {
   Example,
@@ -8,17 +10,18 @@ import Page, {
 
 import {
   FieldMessage,
-  UploadImage,
+  ImageUpload,
 } from '../../../framework/framework';
 
-class UploadImageExample extends React.Component {
+class ImageUploadExample extends Component {
   constructor(props) {
     super(props);
+
+    this.IMAGE = 'http://pipsum.com/210x150.jpg';
+    this.HEIGHT = 150;
+    this.WIDTH = 210;
     this.state = {
       hasErrors: false,
-      image: 'http://pipsum.com/210x150.jpg',
-      requiredHeight: 150,
-      requiredWidth: 210,
     };
     this.validateImage = this.validateImage.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -30,8 +33,8 @@ class UploadImageExample extends React.Component {
   }
 
   validateImage(image) {
-    const hasErrors = (image.width !== this.state.requiredWidth ||
-          image.height !== this.state.requiredHeight);
+    const hasErrors = (image.width !== this.WIDTH ||
+          image.height !== this.HEIGHT);
 
     this.setState({
       hasErrors,
@@ -41,8 +44,8 @@ class UploadImageExample extends React.Component {
   }
 
   renderErrorMessage() {
-    const message = `The required size is ${this.state.requiredWidth}x` +
-    `${this.state.requiredHeight}`;
+    const message = `The required size is ${this.WIDTH}x` +
+    `${this.HEIGHT}`;
     if (this.state.hasErrors) {
       return (<FieldMessage message={message} />);
     }
@@ -52,24 +55,24 @@ class UploadImageExample extends React.Component {
     return (
       <Page title={this.props.route.name}>
         <Example title="Without Validation">
-          <UploadImage
+          <ImageUpload
             onChange={this.onChangeHandler}
           />
         </Example>
         <Example title="With Validation">
-          <UploadImage
+          <ImageUpload
             onChange={this.onChangeHandler}
             validateImage={this.validateImage}
           />
           {this.renderErrorMessage()}
         </Example>
         <Example title="Image provided already">
-          <UploadImage
+          <ImageUpload
             onChange={this.onChangeHandler}
             validateImage={this.validateImage}
           >
-            {this.state.image}
-          </UploadImage>
+            {this.IMAGE}
+          </ImageUpload>
           {this.renderErrorMessage()}
         </Example>
 
@@ -78,8 +81,8 @@ class UploadImageExample extends React.Component {
   }
 }
 
-UploadImageExample.propTypes = {
+ImageUploadExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
 
-export default UploadImageExample;
+export default ImageUploadExample;

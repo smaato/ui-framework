@@ -1,11 +1,11 @@
 
 import { TestCaseFactory } from 'react-test-kit';
-import PreviewImage from './PreviewImage.jsx';
+import ImagePreview from './ImagePreview.jsx';
 
-describe('PreviewImage', () => {
+describe('ImagePreview', () => {
   describe('DOM structure', () => {
     it('is an image', () => {
-      const testCase = TestCaseFactory.create(PreviewImage);
+      const testCase = TestCaseFactory.create(ImagePreview);
       expect(testCase.dom.tagName).toBe('IMG');
     });
   });
@@ -16,7 +16,7 @@ describe('PreviewImage', () => {
           children: 'test',
         };
 
-        const testCase = TestCaseFactory.create(PreviewImage, props);
+        const testCase = TestCaseFactory.create(ImagePreview, props);
         expect(testCase.dom.src).toContain(props.children);
       });
       it('is not rendered when imageBinaryUrl is passed', () => {
@@ -25,7 +25,7 @@ describe('PreviewImage', () => {
           imageBinaryUrl: 'imagetest',
         };
 
-        const testCase = TestCaseFactory.create(PreviewImage, props);
+        const testCase = TestCaseFactory.create(ImagePreview, props);
         expect(testCase.dom.src).not.toContain(props.children);
       });
     });
@@ -34,7 +34,7 @@ describe('PreviewImage', () => {
         imageBinaryUrl: 'test',
       };
 
-      const testCase = TestCaseFactory.create(PreviewImage, props);
+      const testCase = TestCaseFactory.create(ImagePreview, props);
       expect(testCase.dom.src).toContain(props.imageBinaryUrl);
     });
   });

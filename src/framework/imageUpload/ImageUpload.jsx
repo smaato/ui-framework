@@ -3,39 +3,39 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import PreviewImage from './PreviewImage.jsx';
+import ImagePreview from './ImagePreview.jsx';
 
-class UploadImage extends React.Component {
+class ImageUpload extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       file: null,
       image: null,
       hasErrors: false,
-      isloaded: false,
+      isLoaded: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.hasLoaded = this.hasLoaded.bind(this);
-    this.onCloseImage = this.onCloseImage.bind(this);
+    this.onRemoveImage = this.onRemoveImage.bind(this);
   }
 
   componentWillMount() {
     if (this.props.children) {
       this.setState({
-        isloaded: true,
+        isLoaded: true,
       });
     }
   }
 
-  onCloseImage() {
+  onRemoveImage() {
     // As default browser behaviour it doesnt allow you to reset what you selected
     // by resetting the value you are able to reload the same image selected
-    document.getElementById('fileUploadInput').value = '';
+    this.refs.fileUploadInput.value = '';
     this.setState({
       file: null,
       hasErrors: false,
       image: null,
-      isloaded: false,
+      isLoaded: false,
     });
     this.props.onChange();
   }
@@ -45,7 +45,7 @@ class UploadImage extends React.Component {
       this.props.validateImage !== undefined && this.props.validateImage(image);
     this.setState({
       hasErrors,
-      isloaded: true,
+      isLoaded: true,
     });
     if (!hasErrors) {
       this.props.onChange(this.state.file, this.state.image);
@@ -53,62 +53,67 @@ class UploadImage extends React.Component {
   }
 
   handleChange(event) {
-    const fr = new FileReader();
+    const fileReader = new FileReader();
 
-    fr.onload = () => {
-      const imageBinaryUrl = fr.result;
+    fileReader.onload = () => {
+      const imageBinaryUrl = fileReader.result;
       this.setState({
         image: imageBinaryUrl,
-        isloaded: false,
+        isLoaded: false,
       });
     };
     this.setState({
       file: event.target.files[0],
     });
-    fr.readAsDataURL(event.target.files[0]);
+    fileReader.readAsDataURL(event.target.files[0]);
   }
 
   render() {
-    const imageHidden = !this.state.isloaded || this.state.hasErrors;
-    const previewImage = (
-      <PreviewImage
+    const imageHidden = !this.state.isLoaded || this.state.hasErrors;
+    const imagePreview = (
+      <ImagePreview
         hasLoaded={this.hasLoaded}
         imageBinaryUrl={this.state.image}
       >
         {this.props.children}
-      </PreviewImage>);
+      </ImagePreview>);
 
-    const uploadImageClasses = classNames('uploadImage', {
-      hidden: imageHidden,
+    const imageUploadClasses = classNames('', {
+      'uploadImage--hidden': imageHidden,
     });
 
-    const uploadImage = (<div className={uploadImageClasses}>
-      {previewImage}
-      <div className="uploadImage__closeButton" onClick={this.onCloseImage} />
-    </div>);
+    const imagePreviewBlock = (
+      <div className={imageUploadClasses}>
+        {imagePreview}
+        <div
+          className="imageUpload__closeButton"
+          onClick={this.onRemoveImage}
+        />
+      </div>
+    );
 
-    const inputClasses = classNames('uploadImage', {
-      hidden: !imageHidden,
+    const inputClasses = classNames('', {
+      'uploadImage--hidden': !imageHidden,
     });
 
     return (
-      <div>
+      <div className="imageUpload">
         <input
           className={inputClasses}
-          id="fileUploadInput"
+          ref="fileUploadInput"
           onChange={this.handleChange}
           type="file"
         />
-        {uploadImage}
+        {imagePreviewBlock}
       </div>
     );
   }
 }
 
-UploadImage.propTypes = {
+ImageUpload.propTypes = {
   children: PropTypes.string,
   onChange: PropTypes.func,
   validateImage: PropTypes.func,
 };
 
-export default UploadImage;
+export default ImageUpload;

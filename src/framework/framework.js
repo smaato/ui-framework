@@ -107,7 +107,7 @@ export { default as Toggle } from './toggle/Toggle.jsx';
 
 export { default as Tooltip } from './tooltip/Tooltip.jsx';
 
-export { default as UploadImage } from './uploadImage/UploadImage.jsx';
+export { default as ImageUpload } from './imageUpload/ImageUpload.jsx';
 
 export { default as VerticalLayout } from './verticalLayout/VerticalLayout.jsx';
 

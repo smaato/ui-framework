@@ -1,9 +1,9 @@
 
-  .uploadImage {
+  .imageUpload {
     display: table;
     position: relative;
 
-    &.hidden {
+    .uploadImage--hidden {
       display: none;
     }
 

@@ -22,9 +22,10 @@ import FieldMessageExample
 import FormExample from '../../views/form/FormExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
 import HorizontalLineExample
-  from '../../views/horizontalLine/HorizontalLineExample.jsx';
+from '../../views/horizontalLine/HorizontalLineExample.jsx';
 import HtmlElementsExample
-  from '../../views/htmlElements/HtmlElementsExample.jsx';
+from '../../views/htmlElements/HtmlElementsExample.jsx';
+import ImageUploadExample from '../../views/imageUpload/ImageUploadExample.jsx';
 import KpiExample from '../../views/kpi/KpiExample.jsx';
 import LabeledFieldExample
   from '../../views/labeledField/LabeledFieldExample.jsx';
@@ -54,7 +55,6 @@ import TextInputExample from '../../views/textInput/TextInputExample.jsx';
 import TitleBarExample from '../../views/titleBar/TitleBarExample.jsx';
 import ToggleExample from '../../views/toggle/ToggleExample.jsx';
 import TooltipExample from '../../views/tooltip/TooltipExample.jsx';
-import UploadImageExample from '../../views/uploadImage/UploadImageExample.jsx';
 import VerticalLayoutExample
   from '../../views/verticalLayout/VerticalLayoutExample.jsx';
 import ViewHeaderExample from '../../views/viewHeader/ViewHeaderExample.jsx';
@@ -221,9 +221,9 @@ const components = [{
   source: 'views/tooltip/TooltipExample.jsx',
   component: TooltipExample,
 }, {
-  name: 'UploadImage',
-  source: 'views/uploadImage/UploadImageExample.jsx',
-  component: UploadImageExample,
+  name: 'ImageUpload',
+  source: 'views/imageUpload/ImageUploadExample.jsx',
+  component: ImageUploadExample,
 }, {
   name: 'VerticalLayout',
   source: 'views/verticalLayout/VerticalLayoutExample.jsx',

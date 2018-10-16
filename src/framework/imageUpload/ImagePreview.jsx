@@ -1,8 +1,10 @@
 
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, {
+  Component,
+  PropTypes,
+} from 'react';
 
-class PreviewImage extends React.Component {
+class ImagePreview extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.imageBinaryUrl === prevProps.imageBinaryUrl) {
       return null;
@@ -24,10 +26,10 @@ class PreviewImage extends React.Component {
   }
 }
 
-PreviewImage.propTypes = {
+ImagePreview.propTypes = {
   children: PropTypes.string,
   hasLoaded: PropTypes.func,
   imageBinaryUrl: PropTypes.any,
 };
 
-export default PreviewImage;
+export default ImagePreview;

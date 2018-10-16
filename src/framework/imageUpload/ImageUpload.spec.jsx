@@ -1,18 +1,18 @@
 
 import { TestCaseFactory } from 'react-test-kit';
-import UploadImage from './UploadImage.jsx';
+import ImageUpload from './ImageUpload.jsx';
 
-describe('UploadImage', () => {
+describe('ImageUpload', () => {
   describe('DOM structure', () => {
     it('is an div element that contains an input', () => {
-      const testCase = TestCaseFactory.create(UploadImage);
+      const testCase = TestCaseFactory.create(ImageUpload);
       expect(testCase.dom.tagName).toBe('DIV');
       expect(testCase.dom.children[0].tagName).toBe('INPUT');
     });
 
     it('close button is defined', () => {
-      const testCase = TestCaseFactory.create(UploadImage);
-      expect(testCase.first('.uploadImage__closeButton')).toBeDefined();
+      const testCase = TestCaseFactory.create(ImageUpload);
+      expect(testCase.first('.imageUpload__closeButton')).toBeDefined();
     });
   });
   describe('Props', () => {
@@ -23,9 +23,9 @@ describe('UploadImage', () => {
           onChange: () => null,
         };
 
-        const testCase = TestCaseFactory.create(UploadImage, props);
+        const testCase = TestCaseFactory.create(ImageUpload, props);
 
-        expect(testCase.dom.children[1].className).toBe('uploadImage');
+        expect(testCase.dom.className).toBe('imageUpload');
         expect(testCase.dom.children[1].className).not.toContain('hidden');
       });
     });
@@ -34,7 +34,7 @@ describe('UploadImage', () => {
         onChange: jasmine.createSpy('onChange'),
       };
 
-      const testCase = TestCaseFactory.create(UploadImage, props);
+      const testCase = TestCaseFactory.create(ImageUpload, props);
       testCase.element.hasLoaded('test');
 
       expect(props.onChange).toHaveBeenCalled();
@@ -45,7 +45,7 @@ describe('UploadImage', () => {
         validateImage: jasmine.createSpy('validateImage'),
       };
 
-      const testCase = TestCaseFactory.create(UploadImage, props);
+      const testCase = TestCaseFactory.create(ImageUpload, props);
       testCase.element.hasLoaded('test');
 
       expect(props.validateImage).toHaveBeenCalled();
@@ -59,7 +59,7 @@ describe('UploadImage', () => {
       };
       const spy = spyOn(FileReader.prototype, 'readAsDataURL');
 
-      const testCase = TestCaseFactory.create(UploadImage, props);
+      const testCase = TestCaseFactory.create(ImageUpload, props);
 
       testCase.trigger('change',
         testCase.first('input'),
@@ -78,20 +78,20 @@ describe('UploadImage', () => {
         onChange: () => null,
       };
 
-      const testCase = TestCaseFactory.create(UploadImage, props);
+      const testCase = TestCaseFactory.create(ImageUpload, props);
       testCase.element.hasLoaded('test');
 
-      expect(testCase.first('.hidden').tagName).toBe('INPUT');
+      expect(testCase.first('.uploadImage--hidden').tagName).toBe('INPUT');
     });
     it('should show img when isloaded is true and hasErrors is false', () => {
       const props = {
         onChange: () => null,
       };
 
-      const testCase = TestCaseFactory.create(UploadImage, props);
+      const testCase = TestCaseFactory.create(ImageUpload, props);
       testCase.element.hasLoaded('test');
 
-      expect(testCase.dom.children[1].className).toBe('uploadImage');
+      expect(testCase.dom.className).toBe('imageUpload');
       expect(testCase.dom.children[1].className).not.toContain('hidden');
     });
   });
