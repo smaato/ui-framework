@@ -50,6 +50,8 @@ export { default as Grid } from './grid/Grid.jsx';
 
 export { default as HorizontalLine } from './horizontalLine/HorizontalLine.jsx';
 
+export { default as ImageUpload } from './imageUpload/ImageUpload.jsx';
+
 export * from './kpi/index.jsx';
 
 export * from './label/Label.jsx';

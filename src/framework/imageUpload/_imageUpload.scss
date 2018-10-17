@@ -1,0 +1,35 @@
+
+  .imageUpload {
+    display: table;
+    position: relative;
+
+    &--hidden {
+      display: none;
+    }
+
+    &__closeButton {
+      @include crossIcon($marginTop: 4px, $marginLeft: 9px);
+
+      $closeButtonSide: 20px;
+      background-image: linear-gradient(#e9f0f2, #e2ebee);
+      border-radius: 2px;
+      border: 1px solid #bbced6;
+      color: #517582;
+      display: block;
+      height: $closeButtonSide;
+      opacity: 0.7;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: $closeButtonSide;
+
+      &:before,
+      &:after {
+        background-color: #517582;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
