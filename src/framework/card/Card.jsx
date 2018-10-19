@@ -67,6 +67,7 @@ export default class Card extends Component {
 }
 
 Card.propTypes = {
+  children: PropTypes.element,
   description: PropTypes.string,
   footerRight: PropTypes.any,
   height: PropTypes.string,
@@ -77,7 +78,6 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
   tooltipText: PropTypes.string,
   width: PropTypes.string,
-  children: PropTypes.element,
 };
 
 Card.defaultProps = {

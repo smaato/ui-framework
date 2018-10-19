@@ -11,7 +11,7 @@ import Page, {
 import {
   Card,
   CardHolder,
-  CardRibbon,
+  Ribbon,
   StatusDropdown,
 } from '../../../framework/framework';
 
@@ -77,7 +77,7 @@ export default class CardExample extends Component {
               {
                 (
                   index % 2 ?
-                    <CardRibbon imageSrc="https://raw.githubusercontent.com/smaato/ui-framework/103eddd2dd967ab39de6db939c26aa5afe0673c4/src/guide/views/card/blueRibbon.png" /> : null
+                    <Ribbon imageSrc="https://raw.githubusercontent.com/smaato/ui-framework/103eddd2dd967ab39de6db939c26aa5afe0673c4/src/guide/views/card/blueRibbon.png" /> : null
                 )
               }
             </Card>)}
