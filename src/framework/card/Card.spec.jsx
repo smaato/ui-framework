@@ -3,6 +3,8 @@ import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
 import Card from './Card.jsx';
 
+import { Ribbon } from '../framework';
+
 describe('Card', () => {
   const defaultProps = {
     footerRight: 'test',
@@ -25,11 +27,6 @@ describe('Card', () => {
     it('card info is rendered', () => {
       const testCase = TestCaseFactory.create(Card, defaultProps);
       expect(testCase.first('.card__info')).toBeDefined();
-    });
-
-    it('card children are rendered', () => {
-      const testCase = TestCaseFactory.create(Card, defaultProps);
-      expect(testCase.find('.child').length).toEqual(2);
     });
 
     describe('footer', () => {
@@ -75,6 +72,18 @@ describe('Card', () => {
         const wrapperDiv = testCase.first('.card__wrapper');
 
         expect(wrapperDiv.style.height).toEqual('200px');
+      });
+    });
+
+    describe('ribbon', () => {
+      it('renders the card ribbon when there is a ribbon passed', () => {
+        it('is set as inline style height', () => {
+          const props = Object.assign({}, defaultProps, {
+            ribbon: <Ribbon imageSrc="image" />,
+          });
+          const testCase = TestCaseFactory.create(Card, props);
+          expect(testCase.first('.ribbon')).toBeDefined();
+        });
       });
     });
 

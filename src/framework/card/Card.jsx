@@ -9,6 +9,7 @@ import {
   Label,
   SubLabel,
   Tooltip,
+  Ribbon,
 } from '../framework';
 
 export default class Card extends Component {
@@ -58,22 +59,23 @@ export default class Card extends Component {
               {this.props.footerRight}
             </div>
           </div>
-        </div>
 
-        {this.props.children}
+          {this.props.ribbon || null}
+
+        </div>
       </Box>
     );
   }
 }
 
 Card.propTypes = {
-  children: PropTypes.element,
   description: PropTypes.string,
   footerRight: PropTypes.any,
   height: PropTypes.string,
   highlightText: PropTypes.string,
   imageSrc: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  ribbon: PropTypes.instanceOf(Ribbon),
   subtitle: PropTypes.string,
   title: PropTypes.string.isRequired,
   tooltipText: PropTypes.string,
