@@ -73,7 +73,7 @@ export default class CardExample extends Component {
                 key={i}
                 ribbon={(
                   i % 2 ?
-                    <Ribbon imageSrc="https://raw.githubusercontent.com/smaato/ui-framework/103eddd2dd967ab39de6db939c26aa5afe0673c4/src/guide/views/card/blueRibbon.png" /> : null
+                    <Ribbon imageSrc="https://raw.githubusercontent.com/smaato/ui-framework/24d28f36e1dbdee1140697f5f5d1031f1d5dd681/src/guide/views/card/blueRibbon.png" /> : null
                 )}
                 subtitle={i % 3 === 0 ? this.subTitle : null}
                 title={`Card ${i + 1}`}
