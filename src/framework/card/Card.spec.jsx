@@ -10,7 +10,6 @@ describe('Card', () => {
     footerRight: 'test',
     imageSrc: './image.jpg',
     title: 'title',
-    children: [<div className="child" />, <div className="child" />],
   };
 
   describe('DOM structure', () => {
