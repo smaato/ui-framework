@@ -11,6 +11,7 @@ import Page, {
 import {
   Card,
   CardHolder,
+  Ribbon,
   StatusDropdown,
 } from '../../../framework/framework';
 
@@ -70,6 +71,10 @@ export default class CardExample extends Component {
                 highlightText={`Highlight ${i + 1}`}
                 imageSrc="http://pipsum.com/210x150.jpg"
                 key={i}
+                ribbon={(
+                  i % 2 ?
+                    <Ribbon imageSrc="https://raw.githubusercontent.com/smaato/ui-framework/24d28f36e1dbdee1140697f5f5d1031f1d5dd681/src/guide/views/card/blueRibbon.png" /> : null
+                )}
                 subtitle={i % 3 === 0 ? this.subTitle : null}
                 title={`Card ${i + 1}`}
                 tooltipText={`Tooltip ${i + 1}`}

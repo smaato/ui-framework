@@ -23,6 +23,8 @@ export { default as Card } from './card/Card.jsx';
 
 export { default as CardHolder } from './cardHolder/CardHolder.jsx';
 
+export { default as Ribbon } from './ribbon/Ribbon.jsx';
+
 export * from './chart/Chart.jsx';
 export { default as Chart } from './chart/Chart.jsx';
 
