@@ -9,7 +9,6 @@ import {
   Label,
   SubLabel,
   Tooltip,
-  Ribbon,
 } from '../framework';
 
 export default class Card extends Component {
@@ -75,7 +74,7 @@ Card.propTypes = {
   highlightText: PropTypes.string,
   imageSrc: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  ribbon: PropTypes.instanceOf(Ribbon),
+  ribbon: PropTypes.element,
   subtitle: PropTypes.string,
   title: PropTypes.string.isRequired,
   tooltipText: PropTypes.string,
