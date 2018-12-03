@@ -1,7 +1,5 @@
 'use strict';
 
-var istanbul = require('browserify-istanbul');
-
 module.exports = function(config) {
   config.set({
     frameworks: [
@@ -54,7 +52,7 @@ module.exports = function(config) {
     // Configuration for the above `browserify` preprocessor.
     browserify: {
       debug: true,
-      transform: ['babelify', 'browserify-istanbul']
+      transform: ['babelify']
     }
   });
 };
