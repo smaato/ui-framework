@@ -73,8 +73,8 @@
     "selenium-standalone": "6.15.3",
     "sizzle": "2.2.0",
     "vinyl-source-stream": "1.1.0",
-    "watchify": "3.5.0",
-    "ws": "0.8.1"
+    "watchify": "^3.11.0",
+    "ws": "^6.1.2"
   },
   "pre-commit": [
     "test"
