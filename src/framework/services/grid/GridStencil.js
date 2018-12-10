@@ -135,7 +135,7 @@ export default class GridStencil {
     }
 
     // This is the container we'll store the media queries in.
-    const $grid = $(workingNode).children('#gridStencil');
+    const grid = document.querySelector(`${workingNode} > #gridStencil`);
 
     // Now we iterate through our columns, in the order in which they'll be hidden,
     // and measure the width at which the grid requires the column to be hidden.
@@ -143,7 +143,7 @@ export default class GridStencil {
     for (let i = 0; i < columnsByPriority.length; i += 1) {
       // We care about browser width, not grid width, so we need to take into
       // account the space between the grid and the browser's left and right sides.
-      const browserWidth = $grid.width() + this.spaceToBothSidesOfGrid;
+      const browserWidth = grid.style.width + this.spaceToBothSidesOfGrid;
 
       // CSS children are 1-indexed.
       const childNumber = columnsByPriority[i].index + 1;
