@@ -1,7 +1,6 @@
 
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import $ from 'jquery';
 
 import GridBody from '../../grid/body/GridBody.jsx';
 import GridRow from '../../grid/body/GridRow.jsx';
@@ -95,7 +94,7 @@ export default class GridStencil {
       // We set max-widths in case a row gets loaded with an extremely larger
       // amount of content than that of our original sample. This max-width
       // will truncate the content, allowing for text with ellipsis.
-      const columnWidth = $(cell).outerWidth();
+      const columnWidth = document.querySelector(cell).offsetWidth;
       return (
         `#${this.gridId} thead th:nth-child(${childNumber}) {
           max-width: ${columnWidth}px;
