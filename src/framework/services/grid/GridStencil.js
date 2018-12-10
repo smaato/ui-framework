@@ -155,7 +155,7 @@ export default class GridStencil {
         );
 
       hiddenHeaderCells.forEach((headerCell) => { // eslint-disable-line no-loop-func
-        $(headerCell).hide();
+        document.querySelector(headerCell).style.display = 'none';
       });
 
       // Hide the column's body row cells.
@@ -165,7 +165,7 @@ export default class GridStencil {
         );
 
       hiddenRowCells.forEach((rowCell) => { // eslint-disable-line no-loop-func
-        $(rowCell).hide();
+        document.querySelector(rowCell).style.display = 'none';
       });
 
       // Store media query.
