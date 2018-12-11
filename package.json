@@ -53,7 +53,7 @@
     "gh-pages": "1.1.0",
     "gulp": "3.9.0",
     "gulp-replace": "0.5.4",
-    "gulp-tasks": "git+https://github.com/smaato/gulp-tasks.git#cf3a0c1e3ace9bdd714f99b31d5751caa05e1d5e",
+    "gulp-tasks": "git+https://github.com/smaato/gulp-tasks.git#v0.9.0",
     "jasmine-core": "2.3.4",
     "karma": "0.13.19",
     "karma-browserify": "4.2.2",
