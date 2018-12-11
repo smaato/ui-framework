@@ -188,11 +188,11 @@ export default class BaseDropdown extends Component {
   }
 
   enableScrolling() {
-    $('body').removeClass('body--noscroll');
+    document.querySelector('body').classList.remove('body--noscroll');
   }
 
   disableScrolling() {
-    $('body').addClass('body--noscroll');
+    document.querySelector('body').classList.add('body--noscroll');
   }
 
   focusNextOption() {
