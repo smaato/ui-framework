@@ -5,7 +5,7 @@ import React, {
   Component,
 } from 'react';
 
-import Portal from 'react-portal';
+import Portal from '../../../../node_modules/react-portal/lib/portal';
 
 export default class ModalOverlay extends Component {
 

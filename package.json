@@ -41,6 +41,7 @@
     "babelify": "6.1.2",
     "browserify": "10.2.4",
     "browserify-hmr": "0.3.1",
+    "browserify-istanbul": "0.2.1",
     "del": "1.2.1",
     "envify": "3.4.0",
     "eslint": "3.19.0",
@@ -53,7 +54,8 @@
     "gh-pages": "1.1.0",
     "gulp": "3.9.0",
     "gulp-replace": "0.5.4",
-    "gulp-tasks": "git+https://github.com/smaato/gulp-tasks.git#cf3a0c1e3ace9bdd714f99b31d5751caa05e1d5e",
+    "gulp-tasks": "git+https://github.com/smaato/gulp-tasks.git#v0.7.0",
+    "istanbul": "gotwarlost/istanbul#source-map",
     "jasmine-core": "2.3.4",
     "karma": "0.13.19",
     "karma-browserify": "4.2.2",
@@ -73,8 +75,8 @@
     "selenium-standalone": "6.15.3",
     "sizzle": "2.2.0",
     "vinyl-source-stream": "1.1.0",
-    "watchify": "^3.11.0",
-    "ws": "^6.1.2"
+    "watchify": "3.5.0",
+    "ws": "0.8.1"
   },
   "pre-commit": [
     "test"
