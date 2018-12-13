@@ -34,6 +34,7 @@ import MenuExample from '../../views/menu/MenuExample.jsx';
 import ModalExample from '../../views/modal/ModalExample.jsx';
 import OrganizationSwitcherExample
   from '../../views/organizationSwitcher/OrganizationSwitcherExample.jsx';
+import PaginationExample from '../../views/pagination/PaginationExample.jsx';
 import PanelExample from '../../views/panel/PanelExample.jsx';
 import PickedListExample from '../../views/pickedList/PickedListExample.jsx';
 import PickedSummaryExample
@@ -157,6 +158,10 @@ const components = [{
   name: 'OrganizationSwitcher',
   source: 'views/organizationSwitcher/OrganizationSwitcherExample.jsx',
   component: OrganizationSwitcherExample,
+}, {
+  name: 'Pagination',
+  source: 'views/pagination/PaginationExample.jsx',
+  component: PaginationExample,
 }, {
   name: 'Panel',
   source: 'views/panel/PanelExample.jsx',
