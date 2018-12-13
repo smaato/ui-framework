@@ -22,6 +22,8 @@ In your JS:
 import {
   AccountNav,
   AccountPicture,
+  Accordion,
+  AccordionItem,
   AddOnControl,
   AddOnDropdown,
   AddOnDropdownOption,
@@ -42,6 +44,8 @@ import {
   Button,
   ButtonGroup,
   CallOutButton,
+  Card,
+  CardHolder,
   Chart,
   ChartDot,
   CheckBox,

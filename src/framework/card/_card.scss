@@ -1,0 +1,63 @@
+
+.card {
+  @mixin textContent {
+    line-height: 1.2em;
+    margin: 5px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  height: fit-content;
+  overflow: hidden;
+  width: fit-content;
+
+  &__wrapper {
+    margin-bottom: 10px;
+  }
+
+    &__image {
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 4px 4px 0 0;
+      height: 50%;
+      margin: 1px;
+      min-height: 150px;
+      overflow: hidden;
+    }
+
+    &__info {
+      margin: 15px 15px 0;
+
+      &__subLabel {
+        @include textContent;
+      }
+    }
+
+    &__footer {
+      margin: 10px 15px 15px;
+
+      &__label.label {
+        @include textContent;
+      }
+
+      &__left {
+        display: inline-block;
+        position: absolute;
+      }
+    }
+
+  &__text {
+    &--green.label {
+      color: $green;
+    }
+
+    &--mediumgrey.subLabel {
+      color: $mediumGrey;
+    }
+
+    &--lightgrey.subLabel {
+      color: $ultraLightGrey;
+    }
+  }
+}

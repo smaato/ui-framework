@@ -1,4 +1,7 @@
 
+export { default as Accordion } from './accordion/Accordion.jsx';
+export { default as AccordionItem } from './accordionItem/AccordionItem.jsx';
+
 export * from './addOnControl/AddOnControl.jsx';
 export { default as AddOnControl } from './addOnControl/AddOnControl.jsx';
 
@@ -12,10 +15,13 @@ export { default as Body } from './body/Body.jsx';
 
 export { default as Box } from './box/Box.jsx';
 
-export * from './button/Button.jsx';
-export { default as Button } from './button/Button.jsx';
+export * from './button/index.jsx';
 
 export { default as ButtonGroup } from './buttonGroup/ButtonGroup.jsx';
+
+export { default as Card } from './card/Card.jsx';
+
+export { default as CardHolder } from './cardHolder/CardHolder.jsx';
 
 export * from './chart/Chart.jsx';
 export { default as Chart } from './chart/Chart.jsx';
@@ -42,8 +48,7 @@ export { default as Grid } from './grid/Grid.jsx';
 
 export { default as HorizontalLine } from './horizontalLine/HorizontalLine.jsx';
 
-export * from './kpi/Kpi.jsx';
-export { default as Kpi } from './kpi/Kpi.jsx';
+export * from './kpi/index.jsx';
 
 export * from './label/Label.jsx';
 export { default as Label } from './label/Label.jsx';
