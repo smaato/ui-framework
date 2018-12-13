@@ -4,58 +4,26 @@ import React, {
 } from 'react';
 
 const propTypes = {
-  page: PropTypes.number,
-  pages: PropTypes.number,
-  maxVisiblePages: PropTypes.number,
+  currentPage: PropTypes.number,
   onChangePage: PropTypes.func.isRequired,
+  totalPages: PropTypes.number,
+  visiblePages: PropTypes.number,
 };
 
 const defaultProps = {
-  page: 0,
-  pages: 100,
-  maxVisiblePages: 7,
+  currentPage: 0,
+  totalPages: 100,
+  visiblePages: 7,
 };
 
 class Pagination extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { options: {} };
-  }
-
-  componentWillMount() {
-    // set page if items array isn't empty
-    const {
-      pages,
-      maxVisiblePages,
-    } = this.props;
-
-    const page = this.validatePage(this.props.page, pages);
-
-    this.setState({
-      options: {
-        page,
-        pages,
-        maxVisiblePages,
-      },
-    });
-  }
-
-  setPage(pageNext) {
-    const page = this.validatePage(pageNext);
-    if (this.state.options.page !== page) {
-      this.setState({ options: { ...this.state.options, page } });
-      this.props.onChangePage(page);
-    }
-  }
-
   getPageList() {
-    const { maxVisiblePages, page, pages } = this.state.options;
+    const { visiblePages, currentPage, totalPages } = this.props;
 
-    const pagesToDisplay = Math.min(maxVisiblePages, pages);
+    const pagesToDisplay = Math.min(visiblePages, totalPages);
 
     const till = this.validatePage(
-      page + Math.floor(pagesToDisplay / 2)
+      currentPage + Math.floor(pagesToDisplay / 2)
     ) + 1;
 
     const from = this.validatePage(
@@ -67,68 +35,67 @@ class Pagination extends Component {
     return result;
   }
 
-  validatePage(page, pages = this.state.options.pages) {
-    return Math.min(Math.max(0, page), pages - 1);
+  validatePage(currentPage, totalPages = this.props.totalPages) {
+    return Math.min(Math.max(0, currentPage), totalPages - 1);
+  }
+
+  triggerClick(page) {
+    const validatedPage = this.validatePage(page);
+
+    if (this.props.currentPage !== validatedPage) {
+      this.props.onChangePage(validatedPage);
+    }
+  }
+
+  renderLink(className, text, onClick) {
+    return (<li key={text} className={className}>
+      <a onClick={onClick}>{text}</a>
+    </li>);
   }
 
   render() {
-    const options = this.state.options;
+    const firstPage = 0;
+    const prevPage = this.props.currentPage - 1;
+    const currPage = this.props.currentPage;
+    const nextPage = this.props.currentPage + 1;
+    const lastPage = this.props.totalPages - 1;
+
+    const firstPageClassName = currPage === 0
+    ? 'pagination__disabled'
+    : 'pagination__enabled';
+
+    const lastPageClassName = currPage === this.props.totalPages - 1
+    ? 'pagination__disabled'
+    : 'pagination__enabled';
 
     return (
       <nav className="pagination">
         <ul>
-          <li
-            className={
-              options.page === 0
-                ? 'pagination__disabled'
-                : 'pagination__enabled'
-            }
-          >
-            <a onClick={() => this.setPage(0)}>&lt;</a>
-          </li>
-
-          <li
-            className={
-              options.page === 0
-                ? 'pagination__disabled'
-                : 'pagination__enabled'
-            }
-          >
-            <a onClick={() => this.setPage(options.page - 1)}>
-              Prev
-            </a>
-          </li>
-
-          {this.getPageList().map(page =>
-            <li
-              key={page}
-              className={
-                options.page === page
-                  ? 'pagination__page pagination__disabled'
-                  : 'pagination__page pagination__enabled'
-              }
-            >
-              <a onClick={() => this.setPage(page)}>{page + 1}</a>
-            </li>
+          {this.renderLink(
+            firstPageClassName, '<', () => this.triggerClick(firstPage)
           )}
-          <li
-            className={
-              options.page === options.pages - 1
-                ? 'pagination__disabled'
-                : 'pagination__enabled'
-            }
-          >
-            <a onClick={() => this.setPage(options.page + 1)}>Next</a>
-          </li>
-          <li
-            className={
-              options.page === options.pages - 1
-                ? 'pagination__disabled'
-                : 'pagination__enabled'
-            }
-          >
-            <a onClick={() => this.setPage(options.pages - 1)}>&gt;</a>
-          </li>
+
+          {this.renderLink(
+            firstPageClassName, 'Prev', () => this.triggerClick(prevPage)
+          )}
+
+          {this.getPageList().map(
+            page => this.renderLink(
+              currPage === page
+              ? 'pagination__page pagination__disabled'
+              : 'pagination__page pagination__enabled',
+              page + 1,
+              () => this.triggerClick(page)
+            )
+          )}
+
+          {this.renderLink(
+            lastPageClassName, 'Next', () => this.triggerClick(nextPage)
+          )}
+
+          {this.renderLink(
+            lastPageClassName, '>', () => this.triggerClick(lastPage)
+          )}
         </ul>
       </nav>
     );

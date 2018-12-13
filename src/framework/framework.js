@@ -72,7 +72,6 @@ export {
   default as OrganizationSwitcher,
 } from './organizationSwitcher/OrganizationSwitcher.jsx';
 
-// export * from './pagination/Pagination.jsx';
 export { default as Pagination } from './pagination/Pagination.jsx';
 
 export * from './panel/Panel.jsx';

@@ -18,14 +18,14 @@ export default class PaginationExample extends Component {
     super();
 
     this.state = {
-      page: 3,
+      currentPage: 7,
     };
 
     this.onChangePage = this.onChangePage.bind(this);
   }
 
-  onChangePage(page) {
-    this.setState({ page });
+  onChangePage(currentPage) {
+    this.setState({ currentPage });
   }
 
   render() {
@@ -35,13 +35,13 @@ export default class PaginationExample extends Component {
         <Example title="Pagination">
 
           A zero-based index of a current pagination page is:&nbsp;
-          { this.state.page }
+          { this.state.currentPage }
 
           <Pagination
-            page={this.state.page}
-            pages={15}
-            maxVisiblePages={3}
+            currentPage={this.state.currentPage}
             onChangePage={this.onChangePage}
+            totalPages={15}
+            visiblePages={5}
           />
 
         </Example>
@@ -49,7 +49,6 @@ export default class PaginationExample extends Component {
       </Page>
     );
   }
-
 }
 
 PaginationExample.propTypes = {

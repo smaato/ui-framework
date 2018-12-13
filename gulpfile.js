@@ -177,6 +177,6 @@ gulp.task('testUnit', gulpTasks.testUnit({
 
 gulp.task('test', [
   'lintJs',
-  // 'lintScss',
+  'lintScss',
   'testUnit',
 ]);

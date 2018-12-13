@@ -7,9 +7,9 @@ describe('Pagination', () => {
     describe('page, pages and maxVisiblePages', () => {
       it('are rendered accordingly', () => {
         const props = {
-          page: 3,
-          pages: 123,
-          maxVisiblePages: 3,
+          currentPage: 3,
+          totalPages: 123,
+          visiblePages: 3,
         };
 
         const testCase = TestCaseFactory.create(Pagination, props);
@@ -22,9 +22,9 @@ describe('Pagination', () => {
     describe('First selected page', () => {
       it('is rendered properly', () => {
         const props = {
-          page: 0,
-          pages: 123,
-          maxVisiblePages: 3,
+          currentPage: 0,
+          totalPages: 123,
+          visiblePages: 3,
         };
 
         const testCase = TestCaseFactory.create(Pagination, props);
@@ -35,9 +35,9 @@ describe('Pagination', () => {
     describe('Last selected page', () => {
       it('is rendered properly', () => {
         const props = {
-          page: 122,
-          pages: 123,
-          maxVisiblePages: 3,
+          currentPage: 122,
+          totalPages: 123,
+          visiblePages: 3,
         };
 
         const testCase = TestCaseFactory.create(Pagination, props);
@@ -48,9 +48,9 @@ describe('Pagination', () => {
     describe('Small amount of pages', () => {
       it('should be rendered properly', () => {
         const props = {
-          page: 2,
-          pages: 3,
-          maxVisiblePages: 5,
+          currentPage: 2,
+          totalPages: 3,
+          visiblePages: 5,
         };
 
         const testCase = TestCaseFactory.create(Pagination, props);
@@ -61,9 +61,9 @@ describe('Pagination', () => {
     describe('Active page', () => {
       it('should be decorated with proper class names', () => {
         const props = {
-          page: 2,
-          pages: 15,
-          maxVisiblePages: 3,
+          currentPage: 2,
+          totalPages: 15,
+          visiblePages: 3,
         };
 
         const testCase = TestCaseFactory.create(Pagination, props);
