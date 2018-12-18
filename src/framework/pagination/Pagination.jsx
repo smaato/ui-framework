@@ -4,9 +4,9 @@ import React, {
 } from 'react';
 
 const propTypes = {
-  currentPage: PropTypes.number,
+  currentPage: PropTypes.number.isRequired,
   onChangePage: PropTypes.func.isRequired,
-  totalPages: PropTypes.number,
+  totalPages: PropTypes.number.isRequired,
   visiblePages: PropTypes.number,
 };
 
@@ -22,11 +22,11 @@ class Pagination extends Component {
 
     const pagesToDisplay = Math.min(visiblePages, totalPages);
 
-    const till = this.validatePage(
+    const till = this.limitPageIndex(
       currentPage + Math.floor(pagesToDisplay / 2)
     ) + 1;
 
-    const from = this.validatePage(
+    const from = this.limitPageIndex(
       till - pagesToDisplay
     );
 
@@ -35,12 +35,12 @@ class Pagination extends Component {
     return result;
   }
 
-  validatePage(currentPage, totalPages = this.props.totalPages) {
-    return Math.min(Math.max(0, currentPage), totalPages - 1);
+  limitPageIndex(pageIndex, totalPages = this.props.totalPages) {
+    return Math.min(Math.max(0, pageIndex), totalPages - 1);
   }
 
   triggerClick(page) {
-    const validatedPage = this.validatePage(page);
+    const validatedPage = this.limitPageIndex(page);
 
     if (this.props.currentPage !== validatedPage) {
       this.props.onChangePage(validatedPage);

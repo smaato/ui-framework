@@ -144,6 +144,31 @@ describe('Pagination', () => {
     });
   });
 
+  describe('Regular pagination page', () => {
+    it('should be decorated with proper class names', () => {
+      const { element } = render({
+        currentPage: 2,
+        totalPages: 15,
+        visiblePages: 3,
+      }, '2');
+
+      expect(element.className).toBe('pagination__page pagination__enabled');
+    });
+
+    it('should be clickable', () => {
+      const { props, testCase, element } = render({
+        currentPage: 2,
+        onChangePage: jasmine.createSpy('onChangePage'),
+        totalPages: 15,
+        visiblePages: 3,
+      }, '2');
+
+      testCase.trigger('click', element);
+
+      expect(props.onChangePage).toHaveBeenCalled();
+    });
+  });
+
   describe('Current selected page', () => {
     it('should be decorated with proper class names', () => {
       const { element } = render({
