@@ -13,9 +13,8 @@ import {
 } from '../../../framework/framework';
 
 export default class PaginationExample extends Component {
-
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       currentPage: 7,
