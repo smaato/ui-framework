@@ -14,12 +14,12 @@ class OrganizationSwitcher extends Component {
 
   componentWillMount() {
     document.querySelector('body')
-    .classList.add('is-organization-switcher-open');
+      .classList.add('is-organization-switcher-open');
   }
 
   componentWillUnmount() {
     document.querySelector('body')
-    .classList.remove('is-organization-switcher-open');
+      .classList.remove('is-organization-switcher-open');
   }
 
   render() {
