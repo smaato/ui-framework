@@ -48,8 +48,8 @@ class Pagination extends Component {
   }
 
   renderLink(className, text, onClick) {
-    return (<li key={text} className={className}>
-      <a onClick={onClick}>{text}</a>
+    return (<li key={text} className={className} onClick={onClick}>
+      <a>{text}</a>
     </li>);
   }
 
