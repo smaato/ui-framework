@@ -68,8 +68,8 @@ export default class LineChart extends Component {
     let minDistance;
     let preferredDotX;
 
-    dataSetDots.forEach((index) => {
-      const dotX = parseInt(index.getAttribute('cx'), 10);
+    dataSetDots.forEach((dot) => {
+      const dotX = parseInt(dot.getAttribute('cx'), 10);
       const distance = Math.abs(mouseX - dotX);
       if (isNaN(minDistance) || (distance < minDistance)) {
         minDistance = distance;
@@ -81,10 +81,10 @@ export default class LineChart extends Component {
           preferredDotX = dotX;
         }
         if (dotX === preferredDotX) {
-          closestDots.push(index);
+          closestDots.push(dot);
         }
       }
-      d3.select(index).style('opacity', 0);
+      d3.select(dot).style('opacity', 0);
     });
 
     d3.selectAll(closestDots).style('opacity', 1);
