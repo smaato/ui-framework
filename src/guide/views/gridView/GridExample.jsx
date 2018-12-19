@@ -517,8 +517,7 @@ export default class GridExample extends Component {
       column.clientWidth
     ));
     this.stickyHeaderColumnElements.forEach((element, index) => {
-      const e = element;
-      e.style.width = `${columnWidths[index]}px`;
+      element.style.width = `${columnWidths[index]}px`; // eslint-disable-line no-param-reassign
     });
   }
 

@@ -154,8 +154,7 @@ export default class GridStencil {
         );
 
       hiddenHeaderCells.forEach((headerCell) => { // eslint-disable-line no-loop-func
-        const x = headerCell;
-        x.style.display = 'none';
+        headerCell.style.display = 'none'; // eslint-disable-line no-param-reassign
       });
 
       // Hide the column's body row cells.
@@ -165,8 +164,7 @@ export default class GridStencil {
         );
 
       hiddenRowCells.forEach((rowCell) => { // eslint-disable-line no-loop-func
-        const x = rowCell;
-        x.style.display = 'none';
+        rowCell.style.display = 'none'; // eslint-disable-line no-param-reassign
       });
 
       // Store media query.
