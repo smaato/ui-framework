@@ -444,12 +444,15 @@ export default class GridExample extends Component {
     this.gridHeaderColumns = Array.from(
       this.grid.querySelectorAll('thead th') || []
     );
-    this.stickyHeaderColumns = this
-      .grid.querySelectorAll('.stickyGridHeaderCell');
-    this.gridFooter = this.grid.querySelectorAll('.grid__footer');
-    this.gridFooterColumns = this.gridFooter || this
-      .gridFooter.querySelectorAll('.grid__footer__cell');
-
+    this.stickyHeaderColumns = Array.from(
+      this.grid.querySelectorAll('.stickyGridHeaderCell')
+    );
+    this.gridFooter = Array.from(this.grid.querySelectorAll('.grid__footer'));
+    this.gridFooterColumns = this.gridFooter.reduce((acc, gridFooterItem) => (
+      acc.concat(
+        Array.from(gridFooterItem.querySelectorAll('.grid__footer__cell'))
+      )
+    ), []);
     this.updateStickyElements();
     this.lazyLoadBodyRows();
   }
@@ -644,11 +647,15 @@ export default class GridExample extends Component {
       if (isFooterFixed) {
         this.grid.style.paddingBottom = `${this.gridFooter.offsetHeight}px`;
         if (this.gridFooter) {
-          this.gridFooter.classList.add('grid__footer--sticky');
+          this.gridFooter.forEach((footerElement) => {
+            footerElement.classList.add('grid__footer--sticky');
+          });
         }
       } else {
         if (this.gridFooter) {
-          this.gridFooter.classList.remove('grid__footer--sticky');
+          this.gridFooter.forEach((footerElement) => {
+            footerElement.classList.remove('grid__footer--sticky');
+          });
         }
         this.grid.style.paddingBottom = 0;
       }
