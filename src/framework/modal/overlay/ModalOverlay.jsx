@@ -1,5 +1,4 @@
 
-import $ from 'jquery';
 import PropTypes from 'prop-types';
 import React, {
   Component,
@@ -24,14 +23,14 @@ export default class ModalOverlay extends Component {
   componentWillUnmount() {
     // Perform cleanup in case this overlay is removed by unmounting it,
     // instead of using the isOpen prop.
-    $('body').removeClass('is-modal-overlay-open');
+    document.querySelector('body').classList.remove('is-modal-overlay-open');
   }
 
   updateBackgroundBlur(props = this.props) {
     if (props.isOpen) {
-      $('body').addClass('is-modal-overlay-open');
+      document.querySelector('body').classList.add('is-modal-overlay-open');
     } else {
-      $('body').removeClass('is-modal-overlay-open');
+      document.querySelector('body').classList.remove('is-modal-overlay-open');
     }
   }
 

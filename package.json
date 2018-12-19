@@ -36,6 +36,7 @@
     "redux-thunk": "0.1.0"
   },
   "devDependencies": {
+    "axios": "^0.18.0",
     "babel-eslint": "4.1.7",
     "babel-plugin-react-transform": "1.1.1",
     "babelify": "6.1.2",
