@@ -94,7 +94,7 @@ export default class GridStencil {
       // We set max-widths in case a row gets loaded with an extremely larger
       // amount of content than that of our original sample. This max-width
       // will truncate the content, allowing for text with ellipsis.
-      const columnWidth = document.querySelector(cell).offsetWidth;
+      const columnWidth = cell.offsetWidth;
       return (
         `#${this.gridId} thead th:nth-child(${childNumber}) {
           max-width: ${columnWidth}px;
@@ -134,7 +134,7 @@ export default class GridStencil {
     }
 
     // This is the container we'll store the media queries in.
-    const grid = document.querySelector(`${workingNode} > #gridStencil`);
+    const grid = workingNode.querySelector('#gridStencil');
 
     // Now we iterate through our columns, in the order in which they'll be hidden,
     // and measure the width at which the grid requires the column to be hidden.
@@ -154,7 +154,8 @@ export default class GridStencil {
         );
 
       hiddenHeaderCells.forEach((headerCell) => { // eslint-disable-line no-loop-func
-        document.querySelector(headerCell).style.display = 'none';
+        const x = headerCell;
+        x.style.display = 'none';
       });
 
       // Hide the column's body row cells.
@@ -164,7 +165,8 @@ export default class GridStencil {
         );
 
       hiddenRowCells.forEach((rowCell) => { // eslint-disable-line no-loop-func
-        document.querySelector(rowCell).style.display = 'none';
+        const x = rowCell;
+        x.style.display = 'none';
       });
 
       // Store media query.

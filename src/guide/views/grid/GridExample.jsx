@@ -1,5 +1,4 @@
 
-import $ from 'jquery';
 import numeral from 'numeral';
 import PropTypes from 'prop-types';
 import React, {
@@ -441,12 +440,15 @@ export default class GridExample extends Component {
     );
 
     // Cache references to DOM elements.
-    this.$window = $(window);
-    this.$grid = $(`#${this.GRID_ID}`);
-    this.$gridHeaderColumns = this.$grid.find('thead th');
-    this.$stickyHeaderColumns = this.$grid.find('.stickyGridHeaderCell');
-    this.$gridFooter = this.$grid.find('.grid__footer');
-    this.$gridFooterColumns = this.$gridFooter.find('.grid__footer__cell');
+    this.grid = document.querySelector(`#${this.GRID_ID}`);
+    this.gridHeaderColumns = Array.from(
+      this.grid.querySelectorAll('thead th') || []
+    );
+    this.stickyHeaderColumns = this
+      .grid.querySelectorAll('.stickyGridHeaderCell');
+    this.gridFooter = this.grid.querySelectorAll('.grid__footer');
+    this.gridFooterColumns = this.gridFooter || this
+      .gridFooter.querySelectorAll('.grid__footer__cell');
 
     this.updateStickyElements();
     this.lazyLoadBodyRows();
@@ -607,17 +609,18 @@ export default class GridExample extends Component {
   updateStickyColumnWidths() {
     // Set sticky header column widths to match whatever they currently are
     // in the real table.
-    const columnWidths = this.$gridHeaderColumns.map((index, column) => (
-      $(column).innerWidth()
+    const columnWidths = this.gridHeaderColumns.map(column => (
+      column.clientWidth
     ));
     const stickyColumnsList = [
-      this.$stickyHeaderColumns,
-      this.$gridFooterColumns,
+      this.stickyHeaderColumns,
+      this.gridFooterColumns,
     ];
 
-    stickyColumnsList.forEach(($elements) => {
-      $elements.each((index, element) => {
-        $(element).css('width', `${columnWidths[index]}px`);
+    stickyColumnsList.forEach((elements) => {
+      elements.forEach((element, index) => {
+        const e = element;
+        e.style.width = `${columnWidths[index]}px`;
       });
     });
   }
@@ -628,23 +631,27 @@ export default class GridExample extends Component {
     if (isHeaderFixed !== this.isHeaderFixed) {
       this.isHeaderFixed = isHeaderFixed;
       if (isHeaderFixed) {
-        this.$grid.addClass('is-grid-header-stuck');
+        this.grid.classList.add('is-grid-header-stuck');
       } else {
-        this.$grid.removeClass('is-grid-header-stuck');
+        this.grid.classList.remove('is-grid-header-stuck');
       }
     }
 
     const isFooterFixed =
-      this.$grid.position().top + this.$grid.outerHeight() >
-      this.scrollPosition.current + this.$window.height();
+      this.grid.offsetTop + this.grid.offsetHeight >
+      this.scrollPosition.current + document.querySelector('body').style.height;
     if (isFooterFixed !== this.isFooterFixed) {
       this.isFooterFixed = isFooterFixed;
       if (isFooterFixed) {
-        this.$grid.css('padding-bottom', `${this.$gridFooter.outerHeight()}px`);
-        this.$gridFooter.addClass('grid__footer--sticky');
+        this.grid.style.paddingBottom = `${this.gridFooter.offsetHeight}px`;
+        if (this.gridFooter) {
+          this.gridFooter.classList.add('grid__footer--sticky');
+        }
       } else {
-        this.$gridFooter.removeClass('grid__footer--sticky');
-        this.$grid.css('padding-bottom', 0);
+        if (this.gridFooter) {
+          this.gridFooter.classList.remove('grid__footer--sticky');
+        }
+        this.grid.style.paddingBottom = 0;
       }
     }
 
@@ -653,7 +660,8 @@ export default class GridExample extends Component {
 
   measureColumnWidths(items) {
     // This is the container we'll store the styles in.
-    this.$stylesContainer = $('<style />').appendTo($('body'));
+    this.stylesContainer = document.createElement('style');
+    document.querySelector('body').appendChild(this.stylesContainer);
     // Create and store media queries and column widths.
     const gridStencil = new GridStencil({
       gridId: this.GRID_ID,
@@ -669,8 +677,8 @@ export default class GridExample extends Component {
       mediaQueries,
       columnWidths,
     } = gridStencil.createWithNode(node);
-    this.$stylesContainer.append(mediaQueries.join('\n'));
-    this.$stylesContainer.append(columnWidths.join('\n'));
+    this.stylesContainer.innerText += (mediaQueries.join('\n'));
+    this.stylesContainer.innerText += (columnWidths.join('\n'));
   }
 
   lazyLoadBodyRows() {

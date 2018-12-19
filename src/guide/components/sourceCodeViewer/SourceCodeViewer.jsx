@@ -36,9 +36,9 @@ export default class SourceCodeViewer extends Component {
   loadSource(source) {
     if (source) {
       const self = this;
-      axios.get(`./assets/source/${source}`).then((data) => {
+      axios.get(`./assets/source/${source}`).then((response) => {
         self.setState({
-          code: data,
+          code: response.data,
         });
       });
     }

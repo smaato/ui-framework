@@ -4,7 +4,6 @@ import React, {
   Component,
 } from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
 
 import {
   CheckBox,
@@ -382,7 +381,7 @@ export default class GridExample extends Component {
     );
 
     // Cache references to DOM elements.
-    this.gridElement = $(`#${this.GRID_ID}`);
+    this.gridElement = document.querySelector(`#${this.GRID_ID}`);
     this.refreshHeaderColumnElementReferences();
 
     // Update the sticky header with column widths.
@@ -417,8 +416,8 @@ export default class GridExample extends Component {
     this.resizeEventDispatcher.teardown();
 
     // Clean up the DOM element we've created.
-    if (this.$stylesContainer) {
-      this.$stylesContainer.remove();
+    if (this.stylesContainer) {
+      this.stylesContainer.remove();
     }
 
     window.clearTimeout(this.state.lazyLoadingTimeoutId);
@@ -436,9 +435,9 @@ export default class GridExample extends Component {
     if (isHeaderFixed !== this.isHeaderFixed) {
       this.isHeaderFixed = isHeaderFixed;
       if (isHeaderFixed) {
-        this.gridElement.addClass('is-grid-header-stuck');
+        this.gridElement.classList.add('is-grid-header-stuck');
       } else {
-        this.gridElement.removeClass('is-grid-header-stuck');
+        this.gridElement.classList.remove('is-grid-header-stuck');
       }
     }
   }
@@ -503,26 +502,30 @@ export default class GridExample extends Component {
 
   refreshHeaderColumnElementReferences() {
     // Cache references to DOM elements.
-    this.headerColumnElements = $(`#${this.GRID_ID} thead th`);
+    this.headerColumnElements = Array.from(document
+      .querySelectorAll(`#${this.GRID_ID} thead th`));
     this.stickyHeaderColumnElements =
-      $(`#${this.GRID_ID} .stickyGridHeaderCell`);
+      Array.from(
+        document.querySelectorAll(`#${this.GRID_ID} .stickyGridHeaderCell`)
+      );
   }
 
   updateStickyHeaderColumnWidths() {
     // Set sticky header column widths to match whatever they currently are
     // in the real table.
-    const columnWidths = this.headerColumnElements.map((index, column) => (
-      $(column).innerWidth()
+    const columnWidths = this.headerColumnElements.map(column => (
+      column.clientWidth
     ));
-
-    this.stickyHeaderColumnElements.each((index, element) => {
-      $(element).css('width', `${columnWidths[index]}px`);
+    this.stickyHeaderColumnElements.forEach((element, index) => {
+      const e = element;
+      e.style.width = `${columnWidths[index]}px`;
     });
   }
 
   measureColumnWidths(items) {
     // This is the container we'll store the styles in.
-    this.$stylesContainer = $('<style />').appendTo($('body'));
+    this.stylesContainer = document.createElement('style');
+    document.querySelector('body').appendChild(this.stylesContainer);
     // Create and store media queries and column widths.
     const gridStencil = new GridStencil({
       gridId: this.GRID_ID,
@@ -538,8 +541,8 @@ export default class GridExample extends Component {
       mediaQueries,
       columnWidths,
     } = gridStencil.createWithNode(node);
-    this.$stylesContainer.append(mediaQueries.join('\n'));
-    this.$stylesContainer.append(columnWidths.join('\n'));
+    this.stylesContainer.innerText += (mediaQueries.join('\n'));
+    this.stylesContainer.innerText += (columnWidths.join('\n'));
   }
 
   lazyLoadBodyRows() {
