@@ -1,0 +1,41 @@
+.pagination {
+  line-height: 1;
+  margin: 1em auto;
+  text-align: center;
+
+  ul {
+    user-select: none;
+    list-style-type: none;
+    display: inline;
+    font-size: 100%;
+    margin: 0;
+    padding: .5em;
+  
+    a {
+      color: #2799C4;
+      font-family: Roboto;
+      font-size: 13px;
+      line-height: 15px;
+    
+      padding: .25em;
+    }
+  
+    li {
+      display: inline-block;
+      border-radius: 3px;
+    }
+  
+    li.pagination__enabled { 
+      cursor: pointer;
+    }
+  
+    li.pagination__page{  
+      min-width: 28px;
+    }
+  
+    a:focus, a:hover,
+    li.pagination__disabled a {
+      color: #526770;
+    }
+  }  
+}

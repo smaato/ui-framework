@@ -101,6 +101,7 @@ import {
   ModalStack,
   OrganizationSwitcher,
   OrganizationSwitcherItem,
+  Pagination,
   Panel,
   PanelLayout,
   PanelProgress,
