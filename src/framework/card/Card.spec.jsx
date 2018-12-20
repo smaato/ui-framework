@@ -1,9 +1,13 @@
 
+import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
 import Card from './Card.jsx';
 
+import { Ribbon } from '../framework';
+
 describe('Card', () => {
   const defaultProps = {
+    footerRight: 'test',
     imageSrc: './image.jpg',
     title: 'title',
   };
@@ -37,7 +41,27 @@ describe('Card', () => {
     });
   });
 
+  describe('actions', () => {
+    it('upon clicking should call the click handler thats passed on', () => {
+      const propsWithClickHandler = Object.assign({}, defaultProps, {
+        onClick: jasmine.createSpy(),
+      });
+      const testCase = TestCaseFactory.create(Card, propsWithClickHandler);
+      const cardWrapperDiv = testCase.first('.card__wrapper');
+      testCase.trigger('click', cardWrapperDiv);
+      expect(propsWithClickHandler.onClick).toHaveBeenCalled();
+    });
+  });
+
   describe('props', () => {
+    describe('footerRight', () => {
+      it('is rendered', () => {
+        const testCase = TestCaseFactory.create(Card, defaultProps);
+
+        expect(testCase.dom.textContent).toContain(defaultProps.footerRight);
+      });
+    });
+
     describe('height', () => {
       it('is set as inline style height', () => {
         const props = Object.assign({}, defaultProps, {
@@ -47,6 +71,18 @@ describe('Card', () => {
         const wrapperDiv = testCase.first('.card__wrapper');
 
         expect(wrapperDiv.style.height).toEqual('200px');
+      });
+    });
+
+    describe('ribbon', () => {
+      it('renders the card ribbon when there is a ribbon passed', () => {
+        it('is set as inline style height', () => {
+          const props = Object.assign({}, defaultProps, {
+            ribbon: <Ribbon imageSrc="image" />,
+          });
+          const testCase = TestCaseFactory.create(Card, props);
+          expect(testCase.first('.ribbon')).toBeDefined();
+        });
       });
     });
 

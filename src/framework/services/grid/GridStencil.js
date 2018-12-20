@@ -1,7 +1,6 @@
 
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import $ from 'jquery';
 
 import GridBody from '../../grid/body/GridBody.jsx';
 import GridRow from '../../grid/body/GridRow.jsx';
@@ -95,7 +94,7 @@ export default class GridStencil {
       // We set max-widths in case a row gets loaded with an extremely larger
       // amount of content than that of our original sample. This max-width
       // will truncate the content, allowing for text with ellipsis.
-      const columnWidth = $(cell).outerWidth();
+      const columnWidth = cell.offsetWidth;
       return (
         `#${this.gridId} thead th:nth-child(${childNumber}) {
           max-width: ${columnWidth}px;
@@ -135,7 +134,7 @@ export default class GridStencil {
     }
 
     // This is the container we'll store the media queries in.
-    const $grid = $(workingNode).children('#gridStencil');
+    const grid = workingNode.querySelector('#gridStencil');
 
     // Now we iterate through our columns, in the order in which they'll be hidden,
     // and measure the width at which the grid requires the column to be hidden.
@@ -143,7 +142,7 @@ export default class GridStencil {
     for (let i = 0; i < columnsByPriority.length; i += 1) {
       // We care about browser width, not grid width, so we need to take into
       // account the space between the grid and the browser's left and right sides.
-      const browserWidth = $grid.width() + this.spaceToBothSidesOfGrid;
+      const browserWidth = grid.style.width + this.spaceToBothSidesOfGrid;
 
       // CSS children are 1-indexed.
       const childNumber = columnsByPriority[i].index + 1;
@@ -155,7 +154,7 @@ export default class GridStencil {
         );
 
       hiddenHeaderCells.forEach((headerCell) => { // eslint-disable-line no-loop-func
-        $(headerCell).hide();
+        headerCell.style.display = 'none'; // eslint-disable-line no-param-reassign
       });
 
       // Hide the column's body row cells.
@@ -165,7 +164,7 @@ export default class GridStencil {
         );
 
       hiddenRowCells.forEach((rowCell) => { // eslint-disable-line no-loop-func
-        $(rowCell).hide();
+        rowCell.style.display = 'none'; // eslint-disable-line no-param-reassign
       });
 
       // Store media query.

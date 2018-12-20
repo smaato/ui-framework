@@ -3,13 +3,12 @@
 // NOTE: `import` allows us to tersely specify the individual members we want
 // to import from a module with the curly brace syntax and by delimiting
 // them with commas.
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import React, {
   Component,
-  PropTypes,
 } from 'react';
 import { Link } from 'react-router';
-import $ from 'jquery';
-import classNames from 'classnames';
 
 import Navigation from '../components/navigation/Navigation.jsx';
 import SourceCodeViewer
@@ -35,9 +34,9 @@ export default class AppView extends Component {
 
   componentDidMount() {
     const self = this;
-    $(document).keypress((event) => {
+    document.addEventListener('keypress', (event) => {
       // Toggle source code viewer with ~, or ALT/OPTION + 1.
-      if ((event.charCode === 96) || (event.altKey && event.charCode === 161)) {
+      if ((event.char === 96) || (event.altKey && event.char === 161)) {
         self.onToggleSourceCodeViewer();
       }
     });

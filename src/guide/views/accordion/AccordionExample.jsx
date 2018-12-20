@@ -1,6 +1,6 @@
 
+import PropTypes from 'prop-types';
 import React, {
-  PropTypes,
   Component,
 } from 'react';
 

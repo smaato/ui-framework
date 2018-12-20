@@ -1,11 +1,11 @@
 
-import React, {
-  Component,
-  PropTypes,
-} from 'react';
-import $ from 'jquery';
+import axios from 'axios';
 import classNames from 'classnames';
 import hljs from 'highlight.js';
+import PropTypes from 'prop-types';
+import React, {
+  Component,
+} from 'react';
 
 export default class SourceCodeViewer extends Component {
 
@@ -36,12 +36,10 @@ export default class SourceCodeViewer extends Component {
   loadSource(source) {
     if (source) {
       const self = this;
-      $.ajax(`./assets/source/${source}`, {
-        success: function success(data) {
-          self.setState({
-            code: data,
-          });
-        },
+      axios.get(`./assets/source/${source}`).then((response) => {
+        self.setState({
+          code: response.data,
+        });
       });
     }
   }

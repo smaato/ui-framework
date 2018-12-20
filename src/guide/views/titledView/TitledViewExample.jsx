@@ -1,7 +1,7 @@
 
+import PropTypes from 'prop-types';
 import React, {
   Component,
-  PropTypes,
 } from 'react';
 
 import Page from '../../components/page/Page.jsx';
@@ -236,7 +236,7 @@ export default class TitledViewExample extends Component {
       <Page isFullScreen>
         <Body>
 
-          { appHeader }
+          {appHeader}
 
           <BodyPanel>
             <BodyPanelItem>

@@ -1,10 +1,8 @@
 
+import PropTypes from 'prop-types';
 import React, {
   Component,
-  PropTypes,
 } from 'react';
-
-import $ from 'jquery';
 
 import SearchBox from '../searchBox/SearchBox.jsx';
 
@@ -15,11 +13,13 @@ export {
 class OrganizationSwitcher extends Component {
 
   componentWillMount() {
-    $('body').addClass('is-organization-switcher-open');
+    document.querySelector('body')
+      .classList.add('is-organization-switcher-open');
   }
 
   componentWillUnmount() {
-    $('body').removeClass('is-organization-switcher-open');
+    document.querySelector('body')
+      .classList.remove('is-organization-switcher-open');
   }
 
   render() {

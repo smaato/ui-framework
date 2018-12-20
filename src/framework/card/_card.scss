@@ -8,15 +8,17 @@
     white-space: nowrap;
   }
 
+  cursor: pointer;
   height: fit-content;
-  overflow: hidden;
   width: fit-content;
+  position: relative;
 
   &__wrapper {
     margin-bottom: 10px;
   }
 
     &__image {
+      background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       border-radius: 4px 4px 0 0;
@@ -31,19 +33,34 @@
 
       &__subLabel {
         @include textContent;
+        min-height: 1.2em;
       }
     }
 
     &__footer {
+      display: flex;
+      flex-direction: row;
       margin: 10px 15px 15px;
 
       &__label.label {
         @include textContent;
+        margin: 0;
       }
 
-      &__left {
-        display: inline-block;
-        position: absolute;
+      &--left {
+        flex-basis: 50%;
+        text-align: left;
+
+        &__tooltip {
+          align-items: flex-end;
+          display: flex;
+          height: 20px;
+        }
+      }
+
+      &--right {
+        flex-basis: 50%;
+        line-height: 1.5;
       }
     }
 

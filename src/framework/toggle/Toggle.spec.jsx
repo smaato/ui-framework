@@ -17,10 +17,10 @@ describe('Toggle', () => {
   });
 
   describe('Props', () => {
-    describe('isDefaultChecked', () => {
+    describe('checked', () => {
       it('when true toggle is checked', () => {
         const props = {
-          isDefaultChecked: true,
+          checked: true,
           onChange: () => undefined,
         };
 
@@ -30,7 +30,7 @@ describe('Toggle', () => {
 
       it('when false toggle isn\'t checked', () => {
         const props = {
-          isDefaultChecked: false,
+          checked: false,
           onChange: () => undefined,
         };
 

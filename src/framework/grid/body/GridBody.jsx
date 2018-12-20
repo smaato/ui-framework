@@ -1,8 +1,7 @@
 
-import React, {
-  PropTypes,
-} from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const GridBody = (props) => {
   const {
@@ -34,7 +33,7 @@ const GridBody = (props) => {
 };
 
 GridBody.propTypes = {
-  children: React.PropTypes.any,
+  children: PropTypes.any,
   // Initial loading state
   initialLoadingRow: PropTypes.element,
   // Empty state

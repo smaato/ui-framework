@@ -1,9 +1,8 @@
 
-import React, {
-  PropTypes,
-} from 'react';
 import classNames from 'classnames';
 import keyMirror from 'keymirror';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const Progress = (props) => {
   const sizeToClassMap = {

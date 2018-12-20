@@ -12,12 +12,11 @@
  * 7. Press enter (if focused) to CLOSE.
  */
 
-import $ from 'jquery';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import React, {
   Component,
-  PropTypes,
 } from 'react';
-import classNames from 'classnames';
 
 export default class BaseDropdown extends Component {
 
@@ -158,41 +157,31 @@ export default class BaseDropdown extends Component {
 
   chooseOpeningDirection() {
     const EXTRA_SPACE = 10;
-    const $input = $(this.refs.input);
+    const dropdown = this.refs.input.parentElement;
+    const dropdownList = this.refs.optionList;
 
-    if (!$input.offset()) {
-      return;
-    }
+    const roomBelow = window.innerHeight -
+      dropdown.getBoundingClientRect().top -
+      dropdown.offsetHeight - document.body.scrollTop;
 
-    const $optionList = $(this.refs.optionList);
-
-    const roomBelow =
-      (
-        $(window).height() - $input.offset().top - $input.parent().outerHeight()
-      ) + $(window).scrollTop();
-
-    if (roomBelow < $optionList.outerHeight()) {
-      const roomAbove = $input.offset().top - $(window).scrollTop();
+    if (roomBelow < dropdownList.clientHeight) {
+      const roomAbove = dropdown.getBoundingClientRect().top;
       if (roomBelow < roomAbove) {
-        $optionList.css({
-          top: 'inherit',
-          bottom: 'calc(100% - 1px)',
-          'max-height': roomAbove - EXTRA_SPACE,
-        });
+        dropdownList.style.top = 'inherit';
+        dropdownList.style.bottom = 'calc(100% - 1px)';
+        dropdownList.style.maxHeight = `${roomAbove - EXTRA_SPACE}px`;
       } else {
-        $optionList.css({
-          'max-height': roomBelow - EXTRA_SPACE,
-        });
+        dropdownList.style.maxHeight = `${roomBelow - EXTRA_SPACE}px`;
       }
     }
   }
 
   enableScrolling() {
-    $('body').removeClass('body--noscroll');
+    document.querySelector('body').classList.remove('body--noscroll');
   }
 
   disableScrolling() {
-    $('body').addClass('body--noscroll');
+    document.querySelector('body').classList.add('body--noscroll');
   }
 
   focusNextOption() {
@@ -248,7 +237,7 @@ export default class BaseDropdown extends Component {
         React.createElement(
           this.props.optionType,
           {
-            classes: option.classes,
+            classes: option && option.classes,
             hasFocus: this.state.focusedOptionIndex === index,
             index,
             isSelected: this.props.selectedOption === option,

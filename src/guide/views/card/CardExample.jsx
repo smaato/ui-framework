@@ -1,6 +1,7 @@
 
+import PropTypes from 'prop-types';
 import React, {
-  PropTypes,
+  Component,
 } from 'react';
 
 import Page, {
@@ -10,37 +11,82 @@ import Page, {
 import {
   Card,
   CardHolder,
+  Ribbon,
+  StatusDropdown,
 } from '../../../framework/framework';
 
-const CardExample = (props) => {
-  const longDescription = `Do not go gentle into that good night,
-  Old age should burn and
-  rave at close of day;
-  Rage, rage against the dying of the light.`;
+export default class CardExample extends Component {
 
-  const arr = [1, 2, 3, 4, 5, 6];
+  constructor(props) {
+    super(props);
 
-  return (
-    <Page title={props.route.name}>
-      <Example>
-        <CardHolder amountPerRow={4}>
-          {arr.map(i => <Card
-            description={longDescription}
-            hightlightText={`Highlight ${i}`}
-            imageSrc="http://pipsum.com/210x150.jpg"
-            key={i}
-            subtitle="This is a subtitle and this is also a part of the same"
-            title={`Card ${i}`}
-            tooltipText={`Tooltip ${i}`}
-          />)}
-        </CardHolder>
-      </Example>
-    </Page>
-  );
-};
+    this.array = [0, 1, 2, 3, 4, 5];
+    this.longDescription = `Do not go gentle into that good night,
+    Old age should burn and
+    rave at close of day;
+    Rage, rage against the dying of the light.`;
+    this.subTitle = 'This is a subtitle and this is also a part of the same';
+
+    this.statusOptions = [
+      StatusDropdown.OPTIONS.PUBLISHED,
+      StatusDropdown.OPTIONS.UNPUBLISHED,
+    ];
+
+    this.state = {
+      selectedOption: undefined,
+    };
+
+    this.onSelectOption = this.onSelectOption.bind(this);
+  }
+
+  onSelectOption(option) {
+    this.setState({
+      selectedOption: option,
+    });
+  }
+
+  render() {
+    const dropdownOnEven = (position) => {
+      if (position % 2 === 0) {
+        return (
+          <div className="card__footer--right__status">
+            <StatusDropdown
+              onSelect={this.onSelectOption}
+              options={this.statusOptions}
+              selectedOption={this.state.selectedOption}
+            />
+          </div>
+        );
+      }
+    };
+
+    return (
+      <Page title={this.props.route.name}>
+        <Example>
+          <CardHolder amountPerRow={4}>
+            {this.array.map(i =>
+              <Card
+                description={i % 2 === 0 ? this.longDescription : null}
+                footerRight={dropdownOnEven(i)}
+                highlightText={`Highlight ${i + 1}`}
+                imageSrc="http://pipsum.com/210x150.jpg"
+                key={i}
+                ribbon={(
+                  i % 2 ?
+                    <Ribbon imageSrc="https://raw.githubusercontent.com/smaato/ui-framework/24d28f36e1dbdee1140697f5f5d1031f1d5dd681/src/guide/views/card/blueRibbon.png" /> : null
+                )}
+                subtitle={i % 3 === 0 ? this.subTitle : null}
+                title={`Card ${i + 1}`}
+                tooltipText={`Tooltip ${i + 1}`}
+              />
+            )}
+          </CardHolder>
+        </Example>
+      </Page>
+    );
+  }
+}
 
 CardExample.propTypes = {
   route: PropTypes.object.isRequired,
 };
-
-export default CardExample;

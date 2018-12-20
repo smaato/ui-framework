@@ -1,8 +1,7 @@
 
-import React, {
-  PropTypes,
-} from 'react';
 import keyMirror from 'keymirror';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import Progress from './Progress.jsx';
 import ProgressSuccess from './ProgressSuccess.jsx';

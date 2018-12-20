@@ -1,7 +1,6 @@
 
-import React, {
-  PropTypes,
-} from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import ReactToggle from 'react-toggle';
 
 const Toggle = (props) => {
@@ -20,7 +19,7 @@ const Toggle = (props) => {
 
   return (
     <ReactToggle
-      defaultChecked={props.isDefaultChecked}
+      checked={props.checked}
       icons={icons}
       onChange={onChange}
     />
@@ -28,7 +27,7 @@ const Toggle = (props) => {
 };
 
 Toggle.propTypes = {
-  isDefaultChecked: PropTypes.bool,
+  checked: PropTypes.bool,
   isLabel: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
 };
