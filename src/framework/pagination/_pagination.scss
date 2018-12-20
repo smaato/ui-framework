@@ -9,33 +9,40 @@
     display: inline;
     font-size: 100%;
     margin: 0;
-    padding: .5em;
-  
+    padding: 0.5em;
+
     a {
-      color: #2799C4;
+      color: #2799c4;
       font-family: Roboto;
       font-size: 13px;
       line-height: 15px;
-    
-      padding: .25em;
+
+      padding: 0.25em;
     }
-  
+
     li {
       display: inline-block;
       border-radius: 3px;
     }
-  
-    li.pagination__enabled { 
+
+    .pagination__enabled {
       cursor: pointer;
     }
-  
-    li.pagination__page{  
+
+    .pagination__page {
       min-width: 28px;
     }
-  
-    a:focus, a:hover,
-    li.pagination__disabled a {
+
+    a:focus {
       color: #526770;
     }
-  }  
+
+    a:hover {
+      color: #526770;
+    }
+  }
+
+  .pagination__disabled a {
+    color: #526770;
+  }
 }
