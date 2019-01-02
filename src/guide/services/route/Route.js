@@ -22,9 +22,10 @@ import FieldMessageExample
 import FormExample from '../../views/form/FormExample.jsx';
 import GridExample from '../../views/grid/GridExample.jsx';
 import HorizontalLineExample
-  from '../../views/horizontalLine/HorizontalLineExample.jsx';
+from '../../views/horizontalLine/HorizontalLineExample.jsx';
 import HtmlElementsExample
-  from '../../views/htmlElements/HtmlElementsExample.jsx';
+from '../../views/htmlElements/HtmlElementsExample.jsx';
+import ImageUploadExample from '../../views/imageUpload/ImageUploadExample.jsx';
 import KpiExample from '../../views/kpi/KpiExample.jsx';
 import LabeledFieldExample
   from '../../views/labeledField/LabeledFieldExample.jsx';
@@ -36,6 +37,7 @@ import MenuExample from '../../views/menu/MenuExample.jsx';
 import ModalExample from '../../views/modal/ModalExample.jsx';
 import OrganizationSwitcherExample
   from '../../views/organizationSwitcher/OrganizationSwitcherExample.jsx';
+import PaginationExample from '../../views/pagination/PaginationExample.jsx';
 import PanelExample from '../../views/panel/PanelExample.jsx';
 import PickedListExample from '../../views/pickedList/PickedListExample.jsx';
 import PickedSummaryExample
@@ -136,6 +138,10 @@ const components = [{
   source: 'views/htmlElements/htmlElementsExample.jsx',
   component: HtmlElementsExample,
 }, {
+  name: 'ImageUpload',
+  source: 'views/imageUpload/ImageUploadExample.jsx',
+  component: ImageUploadExample,
+}, {
   name: 'Kpi',
   source: 'views/kpi/KpiExample.jsx',
   component: KpiExample,
@@ -167,6 +173,10 @@ const components = [{
   name: 'OrganizationSwitcher',
   source: 'views/organizationSwitcher/OrganizationSwitcherExample.jsx',
   component: OrganizationSwitcherExample,
+}, {
+  name: 'Pagination',
+  source: 'views/pagination/PaginationExample.jsx',
+  component: PaginationExample,
 }, {
   name: 'Panel',
   source: 'views/panel/PanelExample.jsx',

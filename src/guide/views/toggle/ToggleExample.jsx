@@ -33,14 +33,14 @@ export default class ToggleExample extends Component {
       <Page title={this.props.route.name}>
         <Example>
           <Toggle
-            isDefaultChecked
+            checked={this.state.isChecked}
             onChange={this.onChange}
           />
         </Example>
 
         <Example title="With labels">
           <Toggle
-            isDefaultChecked
+            checked={this.state.isChecked}
             isLabel
             onChange={this.onChange}
           />

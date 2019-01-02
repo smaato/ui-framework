@@ -10,8 +10,8 @@
 
   cursor: pointer;
   height: fit-content;
-  overflow: hidden;
   width: fit-content;
+  position: relative;
 
   &__wrapper {
     margin-bottom: 10px;
@@ -33,6 +33,7 @@
 
       &__subLabel {
         @include textContent;
+        min-height: 1.2em;
       }
     }
 

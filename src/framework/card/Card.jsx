@@ -58,6 +58,9 @@ export default class Card extends Component {
               {this.props.footerRight}
             </div>
           </div>
+
+          {this.props.ribbon || null}
+
         </div>
       </Box>
     );
@@ -71,6 +74,7 @@ Card.propTypes = {
   highlightText: PropTypes.string,
   imageSrc: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  ribbon: PropTypes.element,
   subtitle: PropTypes.string,
   title: PropTypes.string.isRequired,
   tooltipText: PropTypes.string,
@@ -81,4 +85,3 @@ Card.defaultProps = {
   height: '250px',
   width: '210px',
 };
-

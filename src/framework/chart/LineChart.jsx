@@ -1,6 +1,5 @@
 
 import d3 from 'd3';
-import $ from 'jquery';
 import PropTypes from 'prop-types';
 import React, {
   Component,
@@ -24,7 +23,7 @@ export default class LineChart extends Component {
   }
 
   componentDidMount() {
-    this.$lineChart = $(this.refs.lineChart);
+    this.lineChart = this.refs.lineChart;
 
     this.lineChartSvg = d3.select(this.refs.lineChartSvg);
 
@@ -62,14 +61,14 @@ export default class LineChart extends Component {
   }
 
   onMousemove() {
-    const $dataSetDots = this.$lineChart.find(this.DOT_SELECTOR);
+    const dataSetDots = this.lineChart.querySelectorAll(this.DOT_SELECTOR);
     const mouseX = d3.mouse(this.refs.lineChartSvg)[0];
 
     let closestDots = [];
     let minDistance;
     let preferredDotX;
 
-    $dataSetDots.each((index, dot) => {
+    dataSetDots.forEach((dot) => {
       const dotX = parseInt(dot.getAttribute('cx'), 10);
       const distance = Math.abs(mouseX - dotX);
       if (isNaN(minDistance) || (distance < minDistance)) {
@@ -122,7 +121,7 @@ export default class LineChart extends Component {
 
     const duration = updateImmediately ? 0 : transitionDuration;
     const marginTop = 5;
-    const width = this.$lineChart.width();
+    const width = this.lineChart.offsetWidth;
     const yAxisMax = height - xAxisLabelHeight;
     const yAxisTickSize = width - yAxisLabelWidth;
 
@@ -137,7 +136,7 @@ export default class LineChart extends Component {
     const xAxisMax = width - marginRight;
 
     // Set the correct dimensions.
-    this.$lineChart.css('height', height);
+    this.lineChart.style.height = height;
 
     // Set dimensions of the SVG to fill containing element.
     this.lineChartSvg.attr('width', width).attr('height', height);

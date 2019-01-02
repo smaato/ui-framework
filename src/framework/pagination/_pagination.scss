@@ -1,0 +1,48 @@
+.pagination {
+  line-height: 1;
+  margin: 1em auto;
+  text-align: center;
+
+  ul {
+    user-select: none;
+    list-style-type: none;
+    display: inline;
+    font-size: 100%;
+    margin: 0;
+    padding: 0.5em;
+
+    a {
+      color: #2799c4;
+      font-family: Roboto;
+      font-size: 13px;
+      line-height: 15px;
+
+      padding: 0.25em;
+    }
+
+    li {
+      display: inline-block;
+      border-radius: 3px;
+    }
+
+    .pagination__enabled {
+      cursor: pointer;
+    }
+
+    .pagination__page {
+      min-width: 28px;
+    }
+
+    a:focus {
+      color: #526770;
+    }
+
+    a:hover {
+      color: #526770;
+    }
+  }
+
+  .pagination__disabled a {
+    color: #526770;
+  }
+}

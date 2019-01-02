@@ -4,7 +4,6 @@
 // to import from a module with the curly brace syntax and by delimiting
 // them with commas.
 import classNames from 'classnames';
-import $ from 'jquery';
 import PropTypes from 'prop-types';
 import React, {
   Component,
@@ -35,9 +34,9 @@ export default class AppView extends Component {
 
   componentDidMount() {
     const self = this;
-    $(document).keypress((event) => {
+    document.addEventListener('keypress', (event) => {
       // Toggle source code viewer with ~, or ALT/OPTION + 1.
-      if ((event.charCode === 96) || (event.altKey && event.charCode === 161)) {
+      if ((event.char === 96) || (event.altKey && event.char === 161)) {
         self.onToggleSourceCodeViewer();
       }
     });
