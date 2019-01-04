@@ -19,17 +19,10 @@ const defaultProps = {
 class Pagination extends Component {
   getPageList() {
     const { visiblePages, currentPage, totalPages } = this.props;
-
     const pagesToDisplay = Math.min(visiblePages, totalPages);
-
-    const till = this.limitPageIndex(
-      currentPage + Math.floor(pagesToDisplay / 2)
-    ) + 1;
-
-    const from = this.limitPageIndex(
-      till - pagesToDisplay
-    );
-
+    const pageIndex = currentPage + Math.floor(pagesToDisplay / 2);
+    const till = this.limitPageIndex(pageIndex) + 1;
+    const from = this.limitPageIndex(till - pagesToDisplay);
     const result = [...Array(pagesToDisplay).keys()].map(x => x + from);
 
     return result;
@@ -47,8 +40,12 @@ class Pagination extends Component {
     }
   }
 
-  renderLink(className, text, onClick) {
-    return (<li key={text} className={className} onClick={onClick}>
+  renderLink(className, text, page) {
+    return (<li
+      key={text}
+      className={className}
+      onClick={() => this.triggerClick(page)}
+    >
       <a>{text}</a>
     </li>);
   }
@@ -71,31 +68,19 @@ class Pagination extends Component {
     return (
       <nav className="pagination">
         <ul>
-          {this.renderLink(
-            firstPageClassName, '<', () => this.triggerClick(firstPage)
-          )}
-
-          {this.renderLink(
-            firstPageClassName, 'Prev', () => this.triggerClick(prevPage)
-          )}
-
+          {this.renderLink(firstPageClassName, '<<First', firstPage)}
+          {this.renderLink(firstPageClassName, '<Prev', prevPage)}
           {this.getPageList().map(
             page => this.renderLink(
               currPage === page
               ? 'pagination__page pagination__disabled'
               : 'pagination__page pagination__enabled',
               page + 1,
-              () => this.triggerClick(page)
+              page
             )
           )}
-
-          {this.renderLink(
-            lastPageClassName, 'Next', () => this.triggerClick(nextPage)
-          )}
-
-          {this.renderLink(
-            lastPageClassName, '>', () => this.triggerClick(lastPage)
-          )}
+          {this.renderLink(lastPageClassName, 'Next>', nextPage)}
+          {this.renderLink(lastPageClassName, 'Last>>', lastPage)}
         </ul>
       </nav>
     );
