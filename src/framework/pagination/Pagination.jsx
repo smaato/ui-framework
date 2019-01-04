@@ -50,6 +50,18 @@ class Pagination extends Component {
     </li>);
   }
 
+  renderNumbers() {
+    const { currentPage } = this.props;
+
+    return this.getPageList().map((page) => {
+      const className = currentPage === page
+        ? 'pagination__page pagination__disabled'
+        : 'pagination__page pagination__enabled';
+
+      return this.renderLink(className, page + 1, page);
+    });
+  }
+
   render() {
     const firstPage = 0;
     const prevPage = this.props.currentPage - 1;
@@ -57,11 +69,11 @@ class Pagination extends Component {
     const nextPage = this.props.currentPage + 1;
     const lastPage = this.props.totalPages - 1;
 
-    const firstPageClassName = currPage === 0
+    const firstPageClassName = currPage === firstPage
     ? 'pagination__disabled'
     : 'pagination__enabled';
 
-    const lastPageClassName = currPage === this.props.totalPages - 1
+    const lastPageClassName = currPage === lastPage
     ? 'pagination__disabled'
     : 'pagination__enabled';
 
@@ -70,15 +82,7 @@ class Pagination extends Component {
         <ul>
           {this.renderLink(firstPageClassName, '<<First', firstPage)}
           {this.renderLink(firstPageClassName, '<Prev', prevPage)}
-          {this.getPageList().map(
-            page => this.renderLink(
-              currPage === page
-              ? 'pagination__page pagination__disabled'
-              : 'pagination__page pagination__enabled',
-              page + 1,
-              page
-            )
-          )}
+          {this.renderNumbers()}
           {this.renderLink(lastPageClassName, 'Next>', nextPage)}
           {this.renderLink(lastPageClassName, 'Last>>', lastPage)}
         </ul>
