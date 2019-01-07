@@ -25,7 +25,7 @@ describe('Pagination', () => {
           visiblePages: 3,
         });
 
-        expect(testCase.dom.textContent).toBe('<Prev345Next>');
+        expect(testCase.dom.textContent).toBe('<<First<Prev345Next>Last>>');
       });
     });
   });
@@ -38,7 +38,7 @@ describe('Pagination', () => {
         visiblePages: 3,
       });
 
-      expect(testCase.dom.textContent).toBe('<Prev123Next>');
+      expect(testCase.dom.textContent).toBe('<<First<Prev123Next>Last>>');
     });
   });
 
@@ -50,7 +50,7 @@ describe('Pagination', () => {
         visiblePages: 3,
       });
 
-      expect(testCase.dom.textContent).toBe('<Prev121122123Next>');
+      expect(testCase.dom.textContent).toBe('<<First<Prev121122123Next>Last>>');
     });
   });
 
@@ -62,7 +62,7 @@ describe('Pagination', () => {
         visiblePages: 5,
       });
 
-      expect(testCase.dom.textContent).toBe('<Prev123Next>');
+      expect(testCase.dom.textContent).toBe('<<First<Prev123Next>Last>>');
     });
   });
 
@@ -72,7 +72,7 @@ describe('Pagination', () => {
         currentPage: 0,
         totalPages: 15,
         visiblePages: 3,
-      }, '<');
+      }, '<<First');
 
       testCase.trigger('click', element);
 
@@ -85,7 +85,7 @@ describe('Pagination', () => {
         onChangePage: jasmine.createSpy('onChangePage'),
         totalPages: 15,
         visiblePages: 3,
-      }, '<');
+      }, '<<First');
 
       testCase.trigger('click', element);
 
@@ -98,7 +98,7 @@ describe('Pagination', () => {
         onChangePage: jasmine.createSpy('onChangePage'),
         totalPages: 15,
         visiblePages: 3,
-      }, '<');
+      }, '<<First');
 
       testCase.trigger('click', element);
 
@@ -112,7 +112,7 @@ describe('Pagination', () => {
         currentPage: 0,
         totalPages: 15,
         visiblePages: 3,
-      }, 'Prev');
+      }, '<Prev');
 
       expect(element.className).toBe('pagination__disabled');
     });
@@ -123,7 +123,7 @@ describe('Pagination', () => {
         onChangePage: jasmine.createSpy('onChangePage'),
         totalPages: 15,
         visiblePages: 3,
-      }, 'Prev');
+      }, '<Prev');
 
       testCase.trigger('click', element);
 
@@ -136,7 +136,7 @@ describe('Pagination', () => {
         onChangePage: jasmine.createSpy('onChangePage'),
         totalPages: 15,
         visiblePages: 3,
-      }, 'Prev');
+      }, '<Prev');
 
       testCase.trigger('click', element);
 
@@ -200,7 +200,7 @@ describe('Pagination', () => {
         currentPage: 14,
         totalPages: 15,
         visiblePages: 3,
-      }, 'Next');
+      }, 'Next>');
 
       expect(element.className).toBe('pagination__disabled');
     });
@@ -211,7 +211,7 @@ describe('Pagination', () => {
         onChangePage: jasmine.createSpy('onChangePage'),
         totalPages: 15,
         visiblePages: 3,
-      }, 'Next');
+      }, 'Next>');
 
       testCase.trigger('click', element);
 
@@ -224,7 +224,7 @@ describe('Pagination', () => {
         onChangePage: jasmine.createSpy('onChangePage'),
         totalPages: 15,
         visiblePages: 3,
-      }, 'Next');
+      }, 'Next>');
 
       testCase.trigger('click', element);
 
@@ -238,7 +238,7 @@ describe('Pagination', () => {
         currentPage: 14,
         totalPages: 15,
         visiblePages: 3,
-      }, '>');
+      }, 'Last>>');
 
       expect(element.className).toBe('pagination__disabled');
     });
@@ -249,7 +249,7 @@ describe('Pagination', () => {
         onChangePage: jasmine.createSpy('onChangePage'),
         totalPages: 15,
         visiblePages: 3,
-      }, '>');
+      }, 'Last>>');
 
       testCase.trigger('click', element);
 
@@ -262,7 +262,7 @@ describe('Pagination', () => {
         onChangePage: jasmine.createSpy('onChangePage'),
         totalPages: 15,
         visiblePages: 3,
-      }, '>');
+      }, 'Last>>');
 
       testCase.trigger('click', element);
 
