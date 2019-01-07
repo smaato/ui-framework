@@ -19,17 +19,10 @@ const defaultProps = {
 class Pagination extends Component {
   getPageList() {
     const { visiblePages, currentPage, totalPages } = this.props;
-
     const pagesToDisplay = Math.min(visiblePages, totalPages);
-
-    const till = this.limitPageIndex(
-      currentPage + Math.floor(pagesToDisplay / 2)
-    ) + 1;
-
-    const from = this.limitPageIndex(
-      till - pagesToDisplay
-    );
-
+    const pageIndex = currentPage + Math.floor(pagesToDisplay / 2);
+    const till = this.limitPageIndex(pageIndex) + 1;
+    const from = this.limitPageIndex(till - pagesToDisplay);
     const result = [...Array(pagesToDisplay).keys()].map(x => x + from);
 
     return result;
@@ -47,10 +40,26 @@ class Pagination extends Component {
     }
   }
 
-  renderLink(className, text, onClick) {
-    return (<li key={text} className={className} onClick={onClick}>
+  renderLink(className, text, page) {
+    return (<li
+      key={text}
+      className={className}
+      onClick={() => this.triggerClick(page)}
+    >
       <a>{text}</a>
     </li>);
+  }
+
+  renderNumbers() {
+    const { currentPage } = this.props;
+
+    return this.getPageList().map((page) => {
+      const className = currentPage === page
+        ? 'pagination__page pagination__disabled'
+        : 'pagination__page pagination__enabled';
+
+      return this.renderLink(className, page + 1, page);
+    });
   }
 
   render() {
@@ -60,42 +69,22 @@ class Pagination extends Component {
     const nextPage = this.props.currentPage + 1;
     const lastPage = this.props.totalPages - 1;
 
-    const firstPageClassName = currPage === 0
+    const firstPageClassName = currPage === firstPage
     ? 'pagination__disabled'
     : 'pagination__enabled';
 
-    const lastPageClassName = currPage === this.props.totalPages - 1
+    const lastPageClassName = currPage === lastPage
     ? 'pagination__disabled'
     : 'pagination__enabled';
 
     return (
       <nav className="pagination">
         <ul>
-          {this.renderLink(
-            firstPageClassName, '<', () => this.triggerClick(firstPage)
-          )}
-
-          {this.renderLink(
-            firstPageClassName, 'Prev', () => this.triggerClick(prevPage)
-          )}
-
-          {this.getPageList().map(
-            page => this.renderLink(
-              currPage === page
-              ? 'pagination__page pagination__disabled'
-              : 'pagination__page pagination__enabled',
-              page + 1,
-              () => this.triggerClick(page)
-            )
-          )}
-
-          {this.renderLink(
-            lastPageClassName, 'Next', () => this.triggerClick(nextPage)
-          )}
-
-          {this.renderLink(
-            lastPageClassName, '>', () => this.triggerClick(lastPage)
-          )}
+          {this.renderLink(firstPageClassName, '<<First', firstPage)}
+          {this.renderLink(firstPageClassName, '<Prev', prevPage)}
+          {this.renderNumbers()}
+          {this.renderLink(lastPageClassName, 'Next>', nextPage)}
+          {this.renderLink(lastPageClassName, 'Last>>', lastPage)}
         </ul>
       </nav>
     );
