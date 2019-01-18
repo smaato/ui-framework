@@ -31,7 +31,7 @@
     "react-redux": "4.4.5",
     "react-router": "2.0.0",
     "react-router-redux": "4.0.4",
-    "react-toggle": "2.2.1",
+    "react-toggle": "^4.0.0",
     "redux": "3.0.0",
     "redux-thunk": "0.1.0"
   },
