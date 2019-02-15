@@ -2,9 +2,10 @@
 import PropTypes from 'prop-types';
 import React, {
   Component,
+  Portal,
 } from 'react';
 
-import Portal from '../../../../node_modules/react-portal/lib/portal';
+// import Portal from '../../../../node_modules/react-portal/lib/portal';
 
 export default class ModalOverlay extends Component {
 
