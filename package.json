@@ -27,7 +27,7 @@
     "react-addons-test-utils": "15.4.2",
     "react-date-range": "^0.9.4",
     "react-dom": "^16.8.2",
-    "react-portal": "3.0.0",
+    "react-portal": "^4.2.0",
     "react-redux": "^6.0.0",
     "react-router-redux": "4.0.4",
     "react-toggle": "^4.0.2",

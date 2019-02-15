@@ -2,13 +2,11 @@
 import PropTypes from 'prop-types';
 import React, {
   Component,
-  Portal,
 } from 'react';
 
-// import Portal from '../../../../node_modules/react-portal/lib/portal';
+import Portal from '../../../../node_modules/react-portal/lib/portal';
 
 export default class ModalOverlay extends Component {
-
   componentWillMount() {
     this.updateBackgroundBlur();
   }
@@ -37,7 +35,7 @@ export default class ModalOverlay extends Component {
 
   render() {
     return (
-      <Portal isOpened={this.props.isOpen}>
+      <Portal isOpen={this.props.isOpen}>
         <div className="modalOverlay">
           {this.props.children}
         </div>
