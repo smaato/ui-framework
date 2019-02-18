@@ -158,6 +158,9 @@ In your SCSS:
 Keep in mind that you will be expected to use PostCSS and Autoprefixer to
 add vendor-prefixed properties to your compiled CSS.
 
+Also keep in mind in order to use the `ModalOverlay` component, you need to have
+a `div#portal-div` inside your HTML `<body />`.
+
 #### As a CSS library
 
 This is not yet supported but we can add the compiled CSS file to the repo, so

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
-import { CommonAssertions } from '../services';
+import CommonAssertions from '../services/test/CommonAssertions';
 import Grid from './Grid.jsx';
 
 describe('Grid', () => {

@@ -3,7 +3,6 @@ import {
   EscapeKeyHandler,
   polyfillCustomEvent,
   ThrottledEventDispatcher,
-  CommonAssertions,
   ComparisonTypes,
   Filter,
   FilterOption,
@@ -31,12 +30,6 @@ describe('UI Framework services', () => {
   describe('ThrottledEventDispatcher', () => {
     it('is exported', () => {
       expect(ThrottledEventDispatcher).toEqual(jasmine.any(Function));
-    });
-  });
-
-  describe('CommonAssertions', () => {
-    it('is exported', () => {
-      expect(CommonAssertions).toEqual(jasmine.any(Object));
     });
   });
 
