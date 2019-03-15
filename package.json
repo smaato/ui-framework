@@ -1,7 +1,7 @@
 {
   "name": "ui-framework",
   "private": true,
-  "version": "0.20.0",
+  "version": "0.21.1",
   "description": "Smaato UI Framework",
   "main": "src/framework/framework.js",
   "browserify": {
@@ -33,9 +33,9 @@
     "redux-thunk": "0.1.0"
   },
   "peerDependencies": {
-    "react": "15.4.2",
-    "react-addons-test-utils": "15.4.2",
-    "react-dom": "15.4.2"
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2"
   },
   "devDependencies": {
     "axios": "^0.18.0",
