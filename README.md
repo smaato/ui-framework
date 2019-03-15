@@ -175,6 +175,7 @@ Work on framework components in the `src/framework` directory.
 gem install sass; gem install compass
 npm install
 npm install -g gulp
+npm run install-peers
 gulp
 ```
 
