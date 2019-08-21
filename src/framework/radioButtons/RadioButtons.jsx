@@ -1,8 +1,8 @@
-
 import React, {
   Component,
 } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import { Text } from '../framework';
 
@@ -30,16 +30,24 @@ export default class RadioButtons extends Component {
     const radioElements = this.props.elements.map((element, index) => {
       const checked = element === this.state.selectedOption;
 
+      const classesForRadioButton = classNames({
+        'radioButtons--inputRadioButton': true,
+        'radioButtons--inputRadioButton-active': checked,
+      });
+
       return (
-        <div className="radioButtons--element" key={index}>
-          <input
-            className="radioButtons--inputRadio"
-            type="radio"
+        <div
+          className="radioButtons--element"
+          key={index}
+          onClick={onSelectCreator(element)}
+        >
+          <div
+            className={classesForRadioButton}
             name={this.props.name}
-            onChange={onSelectCreator(element)}
-            checked={checked}
           />
-          <div className="radioButtons--label">
+          <div
+            className="radioButtons--label"
+          >
             <Text>{element.label}</Text>
           </div>
         </div>
@@ -47,7 +55,11 @@ export default class RadioButtons extends Component {
     });
 
     return (
-      <div className={`radioButtons ${this.props.className}`}>
+      <div
+        className={
+          `radioButtons ${this.props.className ? this.props.className : ''}`
+        }
+      >
         {radioElements}
       </div>
     );
