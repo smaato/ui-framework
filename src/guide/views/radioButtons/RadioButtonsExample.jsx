@@ -1,5 +1,6 @@
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Page, {
   Example,
@@ -9,7 +10,7 @@ import {
   RadioButtons,
 } from '../../../framework/framework';
 
-const RadioButtonsExample = () => {
+const RadioButtonsExample = (props) => {
   const elements = [
     {
       label: 'Label 1',
@@ -28,7 +29,7 @@ const RadioButtonsExample = () => {
   const onSelect = () => null;
 
   return (
-    <Page title={this.props.route.name}>
+    <Page title={props.route.name}>
       <Example>
         <RadioButtons
           elements={elements}
@@ -47,6 +48,10 @@ const RadioButtonsExample = () => {
       </Example>
     </Page>
   );
+};
+
+RadioButtonsExample.propTypes = {
+  route: PropTypes.any,
 };
 
 export default RadioButtonsExample;
