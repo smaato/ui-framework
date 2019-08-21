@@ -30,7 +30,7 @@ const RadioButtonsExample = (props) => {
 
   return (
     <Page title={props.route.name}>
-      <Example>
+      <Example title="RadioButtons">
         <RadioButtons
           elements={elements}
           onSelect={onSelect}

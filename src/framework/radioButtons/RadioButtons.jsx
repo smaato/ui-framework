@@ -29,7 +29,7 @@ export default class RadioButtons extends Component {
       const checked = element === this.state.selectedOption;
 
       return (
-        <React.Fragment key={index}>
+        <div key={index}>
           <input
             type="radio"
             name={this.props.name}
@@ -37,20 +37,20 @@ export default class RadioButtons extends Component {
             checked={checked}
           />
           {element.label}
-          <br />
-        </React.Fragment>
+        </div>
       );
     });
 
     return (
-      <React.Fragment>
+      <div className={this.props.className}>
         {radioElements}
-      </React.Fragment>
+      </div>
     );
   }
 }
 
 RadioButtons.propTypes = {
+  className: PropTypes.string,
   elements: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,
     value: PropTypes.any,
