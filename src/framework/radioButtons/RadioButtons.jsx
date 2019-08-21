@@ -4,6 +4,8 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 
+import { Text } from '../framework';
+
 export default class RadioButtons extends Component {
   constructor(props) {
     super(props);
@@ -29,20 +31,23 @@ export default class RadioButtons extends Component {
       const checked = element === this.state.selectedOption;
 
       return (
-        <div key={index}>
+        <div className="radioButtons--element" key={index}>
           <input
+            className="radioButtons--inputRadio"
             type="radio"
             name={this.props.name}
             onChange={onSelectCreator(element)}
             checked={checked}
           />
-          {element.label}
+          <div className="radioButtons--label">
+            <Text>{element.label}</Text>
+          </div>
         </div>
       );
     });
 
     return (
-      <div className={this.props.className}>
+      <div className={`radioButtons ${this.props.className}`}>
         {radioElements}
       </div>
     );
