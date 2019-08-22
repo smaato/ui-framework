@@ -32,7 +32,8 @@
     "react-router-redux": "4.0.4",
     "react-toggle": "^4.0.2",
     "redux": "^4.0.1",
-    "redux-thunk": "0.1.0"
+    "redux-thunk": "0.1.0",
+    "sass": "^1.22.10"
   },
   "devDependencies": {
     "axios": "^0.18.0",

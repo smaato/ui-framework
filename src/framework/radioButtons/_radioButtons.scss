@@ -2,24 +2,25 @@
   &--element {
     display: flex;
     align-items: center;
-    margin-bottom: 8px;
+    cursor: pointer;
   }
 
-  &--element:last-child {
-    margin-bottom: 0;
+  &--element:not(:last-child) {
+    margin-bottom: 8px;
   }
 
   &--inputRadioButton {
     display: inline-block;
     width: 1em;
     height: 1em;
-    border: 1px $lightGrey solid;
+    border: 1px #D4DADC solid;
     border-radius: 50%;
-    background: grey;
-    cursor: pointer;
+    background: #fff;
 
     &-active {
-      background-color: blue;
+      background-color: #47B6F0;
+      border: 1px solid #D4DADC;
+      box-shadow: inset 0 0 0 3px #fff;
     }
   }
 
