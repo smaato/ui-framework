@@ -12,14 +12,14 @@
   &--inputRadioButton {
     background: #ffffff;
     border-radius: 50%;
-    border: 1px #d4dadc solid;
+    border: 1px $borderGrey solid;
     display: inline-block;
     height: 1em;
     width: 1em;
 
     &-active {
       background-color: #47b6f0;
-      border: 1px solid #d4dadc;
+      border: 1px solid $borderGrey;
       box-shadow: inset 0 0 0 3px #ffffff;
     }
   }
