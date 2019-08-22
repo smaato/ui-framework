@@ -1,8 +1,9 @@
+
 import React, {
   Component,
 } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import { Text } from '../framework';
 
@@ -73,7 +74,6 @@ RadioButtons.propTypes = {
     value: PropTypes.any,
   })).isRequired,
   onSelect: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
   selectedElement: PropTypes.shape({
     label: PropTypes.string,
     value: PropTypes.any,
