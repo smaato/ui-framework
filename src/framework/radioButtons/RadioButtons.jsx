@@ -18,6 +18,26 @@ export default class RadioButtons extends Component {
     this.onSelectOption = this.onSelectOption.bind(this);
   }
 
+  componentDidMount() {
+    if (this.state.selectedOption !== this.props.selectedElement) {
+      // https://reactjs.org/docs/react-component.html#componentdidmount
+      // eslint-disable-next-line react/no-did-mount-set-state
+      this.setState({
+        selectedOption: this.props.selectedElement
+      });
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.state.selectedOption !== this.props.selectedElement) {
+      // https://reactjs.org/docs/react-component.html#componentdidupdate
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({
+        selectedOption: this.props.selectedElement
+      });
+    }
+  }
+
   onSelectOption(element) {
     this.setState({
       selectedOption: element,
