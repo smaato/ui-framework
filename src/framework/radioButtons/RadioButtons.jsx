@@ -1,91 +1,36 @@
-
-import React, {
-  Component,
-} from 'react';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-import { Text } from '../framework';
+import RadioButtonItem from '../radioButtonItem/RadioButtonItem.jsx';
 
-export default class RadioButtons extends Component {
-  constructor(props) {
-    super(props);
+const RadioButtons = ({
+  className,
+  elements,
+  name,
+  onSelect,
+  selectedElement,
+}) => {
+  const radioElements = elements.map((element, index) => (
+    <RadioButtonItem
+      element={element}
+      index={index}
+      isActive={selectedElement === index}
+      key={index}
+      name={name}
+      onSelect={onSelect}
+    />
+  ));
 
-    this.state = {
-      selectedOption: this.props.selectedElement,
-    };
-
-    this.onSelectOption = this.onSelectOption.bind(this);
-  }
-
-  componentDidMount() {
-    if (this.state.selectedOption !== this.props.selectedElement) {
-      // https://reactjs.org/docs/react-component.html#componentdidmount
-      // eslint-disable-next-line react/no-did-mount-set-state
-      this.setState({
-        selectedOption: this.props.selectedElement
-      });
-    }
-  }
-
-  componentDidUpdate() {
-    if (this.state.selectedOption !== this.props.selectedElement) {
-      // https://reactjs.org/docs/react-component.html#componentdidupdate
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({
-        selectedOption: this.props.selectedElement
-      });
-    }
-  }
-
-  onSelectOption(element) {
-    this.setState({
-      selectedOption: element,
-    });
-    this.props.onSelect(element.value);
-  }
-
-  render() {
-    const onSelectCreator = value => () => this.onSelectOption(value);
-
-    const radioElements = this.props.elements.map((element, index) => {
-      const checked = element === this.state.selectedOption;
-
-      const classesForRadioButton = classNames({
-        'radioButtons--inputRadioButton': true,
-        'radioButtons--inputRadioButton-active': checked,
-      });
-
-      return (
-        <div
-          className="radioButtons--element"
-          key={index}
-          onClick={onSelectCreator(element)}
-        >
-          <div
-            className={classesForRadioButton}
-            name={this.props.name}
-          />
-          <div
-            className="radioButtons--label"
-          >
-            <Text>{element.label}</Text>
-          </div>
-        </div>
-      );
-    });
-
-    return (
-      <div
-        className={
-          `radioButtons ${this.props.className ? this.props.className : ''}`
-        }
-      >
-        {radioElements}
-      </div>
-    );
-  }
-}
+  return (
+    <div
+      className={
+        `radioButtons${className ? ` ${className}` : ''}`
+      }
+    >
+      {radioElements}
+    </div>
+  );
+};
 
 RadioButtons.propTypes = {
   className: PropTypes.string,
@@ -93,9 +38,9 @@ RadioButtons.propTypes = {
     label: PropTypes.string,
     value: PropTypes.any,
   })).isRequired,
+  name: PropTypes.string,
   onSelect: PropTypes.func.isRequired,
-  selectedElement: PropTypes.shape({
-    label: PropTypes.string,
-    value: PropTypes.any,
-  }),
+  selectedElement: PropTypes.number,
 };
+
+export default RadioButtons;

@@ -3,7 +3,7 @@ import { TestCaseFactory } from 'react-test-kit';
 
 import RadioButtons from './RadioButtons.jsx';
 
-describe('RadioButtons', () => {
+fdescribe('RadioButtons', () => {
   let props;
 
   beforeEach(() => {
@@ -20,33 +20,36 @@ describe('RadioButtons', () => {
 
     props = {
       elements,
-      selectedElement: elements[0],
+      selectedElement: 0,
       onSelect: jasmine.createSpy('onSelect'),
-      className: 'radioButtons',
+      className: '',
     };
   });
 
   describe('Props', () => {
-    describe('radio buttons', () => {
-      it('are rendered', () => {
+    describe('elements', () => {
+      it('should render the parent correctly', () => {
         const testCase = TestCaseFactory.create(RadioButtons, props);
-        expect(
-          testCase.find('.radioButtons--element').length
-        ).toEqual(2);
+        expect(testCase.dom.className).toEqual('radioButtons');
+      });
+
+      it('should render the children correctly', () => {
+        const testCase = TestCaseFactory.create(RadioButtons, props);
+        expect(testCase.find('.radioButtonItem--element').length).toEqual(2);
       });
     });
   });
 
   describe('Actions', () => {
-    describe('upon clicking of a option', () => {
+    describe('upon selecting an option', () => {
       it('the callback is called with the right value', () => {
         const testCase = TestCaseFactory.create(RadioButtons, props);
 
         const secondOption =
-          testCase.find('.radioButtons--element')[1];
+          testCase.find('.radioButtonItem--element')[1];
         testCase.trigger('click', secondOption);
 
-        expect(props.onSelect).toHaveBeenCalledWith(props.elements[1].value);
+        expect(props.onSelect).toHaveBeenCalledWith(1);
       });
     });
   });

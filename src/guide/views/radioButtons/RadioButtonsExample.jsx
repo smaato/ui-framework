@@ -1,5 +1,7 @@
 
-import React from 'react';
+import React, {
+  Component,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import Page, {
@@ -10,48 +12,55 @@ import {
   RadioButtons,
 } from '../../../framework/framework';
 
-const RadioButtonsExample = (props) => {
-  const elements = [
-    {
-      label: 'Label 1',
-      value: 1,
-    },
-    {
-      label: 'Label 2',
-      value: 2,
-    },
-    {
-      label: 'Label 3',
-      value: 3,
-    },
-  ];
+export default class RadioButtonsExample extends Component {
 
-  const onSelect = () => null;
+  constructor(props) {
+    super(props);
 
-  return (
-    <Page title={props.route.name}>
-      <Example title="RadioButtons">
-        <RadioButtons
-          elements={elements}
-          onSelect={onSelect}
-          name="radioButtons"
-        />
-      </Example>
+    this.state = {
+      selectedElement: 0,
+    };
 
-      <Example title="RadioButtons with something selected">
-        <RadioButtons
-          elements={elements}
-          onSelect={onSelect}
-          name="radioButtonsWithPreselection"
-          selectedElement={elements[1]}
-        />
-      </Example>
-    </Page>
-  );
-};
+    this.onSelect = this.onSelect.bind(this);
+  }
+
+  onSelect(newElementIndex) {
+    this.setState({
+      selectedElement: newElementIndex,
+    });
+  }
+
+  render() {
+    const elements = [
+      {
+        label: 'Label 1',
+        value: 1,
+      },
+      {
+        label: 'Label 2',
+        value: 2,
+      },
+      {
+        label: 'Label 3',
+        value: 3,
+      },
+    ];
+
+    return (
+      <Page title={this.props.route.name}>
+        <Example>
+          <RadioButtons
+            elements={elements}
+            onSelect={this.onSelect}
+            name="radioButtonsWithPreselection"
+            selectedElement={this.state.selectedElement}
+          />
+        </Example>
+      </Page>
+    );
+  }
+}
 
 RadioButtonsExample.propTypes = {
   route: PropTypes.any,
 };
-
-export default RadioButtonsExample;
