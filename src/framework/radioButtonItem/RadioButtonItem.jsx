@@ -40,8 +40,8 @@ RadioButtonItem.propTypes = {
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element,
   ]),
-  isActive: PropTypes.bool,
   element: PropTypes.any,
+  isActive: PropTypes.bool,
   onSelect: PropTypes.func.isRequired,
 };
 
