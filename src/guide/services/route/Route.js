@@ -50,6 +50,8 @@ import StatusDropdownExample
   from '../../views/statusDropdown/StatusDropdownExample.jsx';
 import SummaryControlExample
   from '../../views/summaryControl/SummaryControlExample.jsx';
+import RadioButtonsExample
+  from '../../views/radioButtons/RadioButtonsExample.jsx';
 import TextExample from '../../views/text/TextExample.jsx';
 import TextAreaExample from '../../views/textArea/TextAreaExample.jsx';
 import TextInputExample from '../../views/textInput/TextInputExample.jsx';
@@ -193,6 +195,10 @@ const components = [{
   name: 'Progress',
   source: 'views/progress/ProgressExample.jsx',
   component: ProgressExample,
+}, {
+  name: 'RadioButtons',
+  source: 'views/radioButtons/RadioButtonsExample.jsx',
+  component: RadioButtonsExample,
 }, {
   name: 'SearchBox',
   source: 'views/searchBox/SearchBoxExample.jsx',

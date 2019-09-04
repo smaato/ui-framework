@@ -89,6 +89,11 @@ export { default as PickedSummary } from './pickedSummary/PickedSummary.jsx';
 export * from './progress/Progress.jsx';
 export { default as Progress } from './progress/Progress.jsx';
 
+export { default as RadioButtons } from './radioButtons/RadioButtons.jsx';
+
+export { default as RadioButtonItem }
+  from './radioButtonItem/RadioButtonItem.jsx';
+
 export { default as RecycledList } from './recycledList/RecycledList.jsx';
 
 export { default as SearchBox } from './searchBox/SearchBox.jsx';
