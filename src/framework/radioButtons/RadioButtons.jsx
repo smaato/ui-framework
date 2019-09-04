@@ -1,24 +1,17 @@
-import PropTypes from 'prop-types';
-import React from 'react';
 
-import RadioButtonItem from '../radioButtonItem/RadioButtonItem.jsx';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const RadioButtons = ({
   className,
   elements,
-  name,
+  elementProvider,
   onSelect,
-  selectedElement,
 }) => {
   const radioElements = elements.map((element, index) => (
-    <RadioButtonItem
-      element={element}
-      index={index}
-      isActive={selectedElement === index}
-      key={index}
-      name={name}
-      onSelect={onSelect}
-    />
+    <React.Fragment key={index}>
+      {elementProvider(element, onSelect)}
+    </React.Fragment>
   ));
 
   return (
@@ -38,9 +31,8 @@ RadioButtons.propTypes = {
     label: PropTypes.string,
     value: PropTypes.any,
   })).isRequired,
-  name: PropTypes.string,
+  elementProvider: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
-  selectedElement: PropTypes.number,
 };
 
 export default RadioButtons;

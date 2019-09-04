@@ -3,13 +3,10 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Text from '../text/Text.jsx';
-
 const RadioButtonItem = ({
+  children,
   element,
-  index,
   isActive,
-  name,
   onSelect,
 }) => {
   const classesForRadioButton = classNames({
@@ -20,16 +17,15 @@ const RadioButtonItem = ({
   return (
     <div
       className="radioButtonItem--element"
-      onClick={() => onSelect(index)}
+      onClick={() => onSelect(element)}
     >
       <div
         className={classesForRadioButton}
-        name={name}
       />
       <div
         className="radioButtonItem--label"
       >
-        <Text>{element.label}</Text>
+        {children}
       </div>
     </div>
   );
@@ -40,12 +36,12 @@ RadioButtonItem.defaultProps = {
 };
 
 RadioButtonItem.propTypes = {
-  element: PropTypes.shape({
-    label: PropTypes.string,
-  }).isRequired,
-  index: PropTypes.number.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element,
+  ]),
   isActive: PropTypes.bool,
-  name: PropTypes.string,
+  element: PropTypes.any,
   onSelect: PropTypes.func.isRequired,
 };
 

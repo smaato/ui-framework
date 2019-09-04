@@ -1,20 +1,21 @@
 
+import React from 'react';
 import { TestCaseFactory } from 'react-test-kit';
 
 import RadioButtonItem from './RadioButtonItem.jsx';
+import Text from '../text/Text.jsx';
 
 describe('RadioButtonItem', () => {
   let props;
 
   beforeEach(() => {
     props = {
+      children: (<Text>Label 1</Text>),
       element: {
         label: 'Label 1',
         value: 'value-1',
       },
-      index: 0,
       isActive: false,
-      name: 'test-name',
       onSelect: jasmine.createSpy('onSelect'),
     };
   });
@@ -63,7 +64,7 @@ describe('RadioButtonItem', () => {
         const item = testCase.find('.radioButtonItem--inputRadioButton')[0];
         testCase.trigger('click', item);
 
-        expect(props.onSelect).toHaveBeenCalledWith(props.index);
+        expect(props.onSelect).toHaveBeenCalledWith(props.element);
       });
     });
 
@@ -73,7 +74,7 @@ describe('RadioButtonItem', () => {
         const item = testCase.find('.radioButtonItem--label')[0];
         testCase.trigger('click', item);
 
-        expect(props.onSelect).toHaveBeenCalledWith(props.index);
+        expect(props.onSelect).toHaveBeenCalledWith(props.element);
       });
     });
   });

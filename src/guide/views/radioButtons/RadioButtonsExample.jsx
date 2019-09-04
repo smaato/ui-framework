@@ -9,7 +9,9 @@ import Page, {
 } from '../../components/page/Page.jsx';
 
 import {
+  Text,
   RadioButtons,
+  RadioButtonItem,
 } from '../../../framework/framework';
 
 export default class RadioButtonsExample extends Component {
@@ -18,20 +20,10 @@ export default class RadioButtonsExample extends Component {
     super(props);
 
     this.state = {
-      selectedElement: 0,
+      selectedElement: null,
     };
 
-    this.onSelect = this.onSelect.bind(this);
-  }
-
-  onSelect(newElementIndex) {
-    this.setState({
-      selectedElement: newElementIndex,
-    });
-  }
-
-  render() {
-    const elements = [
+    this.elements = [
       {
         label: 'Label 1',
         value: 1,
@@ -46,14 +38,36 @@ export default class RadioButtonsExample extends Component {
       },
     ];
 
+    this.onSelect = this.onSelect.bind(this);
+    this.renderChildItem = this.renderChildItem.bind(this);
+  }
+
+  onSelect(element) {
+    this.setState({
+      selectedElement: element,
+    });
+  }
+
+  renderChildItem(element, onSelect) {
+    return (
+      <RadioButtonItem
+        element={element}
+        isActive={this.state.selectedElement === element}
+        onSelect={onSelect}
+      >
+        <Text>{element.label}</Text>
+      </RadioButtonItem>
+    );
+  }
+
+  render() {
     return (
       <Page title={this.props.route.name}>
         <Example>
           <RadioButtons
-            elements={elements}
+            elements={this.elements}
             onSelect={this.onSelect}
-            name="radioButtonsWithPreselection"
-            selectedElement={this.state.selectedElement}
+            elementProvider={this.renderChildItem}
           />
         </Example>
       </Page>
