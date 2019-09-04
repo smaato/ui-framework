@@ -6,7 +6,7 @@ import RadioButtons from './RadioButtons.jsx';
 import RadioButtonItem from '../radioButtonItem/RadioButtonItem.jsx';
 import Text from '../text/Text.jsx';
 
-fdescribe('RadioButtons', () => {
+describe('RadioButtons', () => {
   let props;
 
   beforeEach(() => {
