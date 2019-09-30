@@ -26,7 +26,7 @@ export default function createRows(indexStart, newRowsCount) {
       registered: getRandomInteger(0, 2000000000),
       kpiSold: getRandomInteger(0, 100),
       kpiRegistered: getRandomInteger(0, 100),
-      releaseDate: getRandomDate(new Date(2019, 9, 9), new Date()),
+      releaseDate: getRandomDate(new Date(2019, 6, 1), new Date()),
     });
   }
 

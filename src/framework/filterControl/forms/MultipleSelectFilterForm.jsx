@@ -88,7 +88,7 @@ export default class MultipleSelectFilterForm extends Component {
 }
 
 MultipleSelectFilterForm.propTypes = {
-  comparisonValue: PropTypes.object,
+  comparisonValue: PropTypes.array,
   filterOption: PropTypes.instanceOf(FilterOption),
   onAddFilter: PropTypes.func.isRequired,
 };

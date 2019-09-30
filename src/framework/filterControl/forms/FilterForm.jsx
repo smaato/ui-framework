@@ -9,9 +9,9 @@ import {
   FilterOption,
 } from '../../services';
 
+import DateRangeFilterForm from './DateRangeFilterForm.jsx';
 import InputFilterForm from './InputFilterForm.jsx';
 import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
-import DateRangeFilterForm from './DateRangeFilterForm.jsx';
 
 export default class FilterForm extends Component {
 
@@ -20,10 +20,10 @@ export default class FilterForm extends Component {
 
     const COMPARISON_TYPE_TO_FORM_MAP = {
       [ComparisonTypes.CONTAINS]: InputFilterForm,
+      [ComparisonTypes.DATE_RANGE]: DateRangeFilterForm,
       [ComparisonTypes.MAX]: InputFilterForm,
       [ComparisonTypes.MIN]: InputFilterForm,
       [ComparisonTypes.ONE_OF]: MultipleSelectFilterForm,
-      [ComparisonTypes.DATE_RANGE]: DateRangeFilterForm,
     };
 
     this.formClass =

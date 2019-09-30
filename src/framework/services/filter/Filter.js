@@ -13,8 +13,8 @@ export default class Filter {
       return this.comparisonValue.map(option => option.label).join(', ');
     } else if (
       this.filterOption.comparisonType === ComparisonTypes.DATE_RANGE) {
-      return `${this.comparisonValue.startDate.toLocaleDateString('de-DE')} - 
-        ${this.comparisonValue.endDate.toLocaleDateString('de-DE')}`;
+      return `${this.comparisonValue.startDate.toLocaleDateString('de-DE')
+         } - ${this.comparisonValue.endDate.toLocaleDateString('de-DE')}`;
     }
     return this.comparisonValue;
   }

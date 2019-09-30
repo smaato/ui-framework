@@ -5,6 +5,7 @@ import {
   FilterOption,
 } from '../../services';
 
+import DateRangeFilterForm from './DateRangeFilterForm.jsx';
 import FilterForm from './FilterForm.jsx';
 import InputFilterForm from './InputFilterForm.jsx';
 import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
@@ -82,6 +83,24 @@ describe('FilterForm', () => {
 
       const checkerFormProps =
         testCase.firstComponent(MultipleSelectFilterForm).props;
+      expect(checkerFormProps.filterOption).toBe(props.filterOption);
+      expect(checkerFormProps.onAddFilter).toBe(props.onAddFilter);
+    });
+
+    it('"date range" comparison', () => {
+      const props = {
+        filterOption: new FilterOption({
+          comparisonType: ComparisonTypes.DATE_RANGE,
+        }),
+        onAddFilter: () => undefined,
+      };
+
+      const testCase = TestCaseFactory.create(FilterForm, props);
+
+      expect(testCase.findComponents(DateRangeFilterForm));
+
+      const checkerFormProps =
+        testCase.firstComponent(DateRangeFilterForm).props;
       expect(checkerFormProps.filterOption).toBe(props.filterOption);
       expect(checkerFormProps.onAddFilter).toBe(props.onAddFilter);
     });

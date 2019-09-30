@@ -102,7 +102,7 @@ export default class DateRangeFilterForm extends Component {
 }
 
 DateRangeFilterForm.propTypes = {
-  comparisonValue: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
+  comparisonValue: PropTypes.object,
   filterOption: PropTypes.instanceOf(FilterOption).isRequired,
   onAddFilter: PropTypes.func.isRequired,
 };

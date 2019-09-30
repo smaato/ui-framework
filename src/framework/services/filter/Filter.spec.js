@@ -58,6 +58,21 @@ describe('Filter', () => {
         const filter = new Filter(filterOption, normalizedComparisonValues);
         expect(filter.humanizeComparisonValue()).toBe('5, 6');
       });
+
+      it('returns joined string with DATE_RANGE comparisonType', () => {
+        const filterOption = {
+          comparisonType: ComparisonTypes.DATE_RANGE,
+        };
+        const normalizedComparisonValues = {
+          startDate: new Date(1989, 10, 30),
+          endDate: new Date(2019, 10, 30),
+        };
+        const filter = new Filter(filterOption, normalizedComparisonValues);
+        // The PhantomJS toLocaleDateString does not have the same default options as chrome
+        expect(filter.humanizeComparisonValue())
+          .toBe('30. November 1989 - 30. November 2019');
+          // .toBe('30.11.1989 - 30.11.2019');
+      });
     });
 
     describe('doesValuePass method', () => {
