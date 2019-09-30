@@ -60,4 +60,9 @@ export default [
     getValue: item => item.kpiRegistered,
     comparisonType: ComparisonTypes.CONTAINS,
   }),
+  new FilterOption({
+    name: 'Release Date Range',
+    getValue: item => item.releaseDate,
+    comparisonType: ComparisonTypes.DATE_RANGE,
+  }),
 ];

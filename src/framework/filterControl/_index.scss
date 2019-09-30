@@ -1,9 +1,10 @@
 
 @import 'filterControl';
-@import 'filterItem';
-@import 'filterDropdown/filterFormDropdown';
 @import 'filterDropdown/filterDropdown';
+@import 'filterDropdown/filterFormDropdown';
 @import 'filterDropdown/filterOptions/filterOptionList';
+@import 'filterItem';
+@import 'forms/dateRangeFilterForm';
 @import 'forms/filterForm';
 @import 'forms/inputFilterForm';
 @import 'forms/multipleSelectFilterForm';
