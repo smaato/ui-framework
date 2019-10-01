@@ -69,9 +69,14 @@ describe('Filter', () => {
         };
         const filter = new Filter(filterOption, normalizedComparisonValues);
         // The PhantomJS toLocaleDateString does not have the same default options as chrome
-        expect(filter.humanizeComparisonValue())
-          .toBe('30. November 1989 - 30. November 2019');
-          // .toBe('30.11.1989 - 30.11.2019');
+        expect(filter.humanizeComparisonValue()).toBe(
+          `${
+            normalizedComparisonValues.startDate.toLocaleDateString('de-DE')
+          } - ${
+            normalizedComparisonValues.endDate.toLocaleDateString('de-DE')
+          }`
+        );
+        // .toBe('30.11.1989 - 30.11.2019');
       });
     });
 
