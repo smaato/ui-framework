@@ -1,10 +1,8 @@
 
-import PropTypes from 'prop-types';
-import moment from 'moment';
+import React, { Component } from 'react';
 import { DateRange as ReactDateRange } from 'react-date-range';
-import React, {
-  Component,
-} from 'react';
+import moment from 'moment';
+import PropTypes from 'prop-types';
 
 import {
   Filter,
@@ -20,18 +18,17 @@ export default class DateRangeFilterForm extends Component {
 
     this.onChange = this.onChange.bind(this);
     this.onClickAddButton = this.onClickAddButton.bind(this);
-    this.onKeyUp = this.onKeyUp.bind(this);
 
     let dateRange;
-    if (this.props.comparisonValue === undefined) {
-      dateRange = {
-        startDate: moment(new Date()),
-        endDate: moment(new Date()),
-      };
-    } else {
+    if (this.props.comparisonValue) {
       dateRange = {
         startDate: moment(this.props.comparisonValue.startDate),
         endDate: moment(this.props.comparisonValue.endDate),
+      };
+    } else {
+      dateRange = {
+        startDate: moment(new Date()),
+        endDate: moment(new Date()),
       };
     }
 
@@ -50,11 +47,6 @@ export default class DateRangeFilterForm extends Component {
       dateRange
     );
     this.props.onAddFilter(filter);
-  }
-
-  onKeyUp(event) {
-    if (event.key !== 'Enter') return;
-    this.onClickAddButton();
   }
 
   onChange(range) {

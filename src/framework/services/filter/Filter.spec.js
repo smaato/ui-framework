@@ -68,7 +68,11 @@ describe('Filter', () => {
           endDate: new Date(2019, 10, 30),
         };
         const filter = new Filter(filterOption, normalizedComparisonValues);
-        // The PhantomJS toLocaleDateString does not have the same default options as chrome
+        /**
+         * The PhantomJS toLocaleDateString does not have the same default options as chrome
+         * The test should look as follows:
+         * expect(filter.humanizeComparisonValue()).toBe('30.11.1989 - 30.11.2019');
+         */
         expect(filter.humanizeComparisonValue()).toBe(
           `${
             normalizedComparisonValues.startDate.toLocaleDateString('de-DE')
@@ -76,7 +80,6 @@ describe('Filter', () => {
             normalizedComparisonValues.endDate.toLocaleDateString('de-DE')
           }`
         );
-        // .toBe('30.11.1989 - 30.11.2019');
       });
     });
 
