@@ -5,6 +5,11 @@ export default function createRows(indexStart, newRowsCount) {
     return Math.floor(Math.random() * ((max - min) + 1)) + min;
   }
 
+  function getRandomDate(start, end) {
+    return new Date(start.getTime() +
+      (Math.random() * (end.getTime() - start.getTime())));
+  }
+
   const newRows = [];
   const statuses = ['Active', 'Stopped', 'Archived'];
   const indexEnd = indexStart + newRowsCount;
@@ -21,6 +26,7 @@ export default function createRows(indexStart, newRowsCount) {
       registered: getRandomInteger(0, 2000000000),
       kpiSold: getRandomInteger(0, 100),
       kpiRegistered: getRandomInteger(0, 100),
+      releaseDate: getRandomDate(new Date(2019, 6, 1), new Date()),
     });
   }
 
