@@ -72,7 +72,8 @@ export default class DateRangeFilterForm extends Component {
         <div className="dateRangeFilterForm__filterValueWrapper">
           <ReactDateRange
             onChange={this.onChange}
-            startDate={this.state.startDate}
+            startDate={this.state.dateRange.startDate}
+            endDate={this.state.dateRange.endDate}
             theme={{
               DayInRange: {
                 background: '#2D9BC4',
