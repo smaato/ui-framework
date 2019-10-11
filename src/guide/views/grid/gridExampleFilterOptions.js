@@ -2,7 +2,13 @@
 import {
   ComparisonTypes,
   FilterOption,
+  OneOfOption,
 } from '../../../framework/services.js';
+
+const cylinderOptions = {
+  xl: new OneOfOption('xl engine', 'XL Engine'),
+  xxl: new OneOfOption('xxl engine', 'XXL Engine'),
+};
 
 export default [
   new FilterOption({
@@ -39,6 +45,12 @@ export default [
     name: 'Cylinders',
     getValue: item => item.cylinders,
     comparisonType: ComparisonTypes.MIXED_TYPE_VALUE,
+    comparisonParameters: {
+      options: [
+        cylinderOptions.xl,
+        cylinderOptions.xxl,
+      ],
+    },
   }),
   new FilterOption({
     name: 'Fuel Economy',

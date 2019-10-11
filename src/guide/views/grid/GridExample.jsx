@@ -49,18 +49,11 @@ import {
 
 import createRows from './createRows';
 import GridExampleFilterOptions from './gridExampleFilterOptions';
-import MixedTypeValueFilter
-  from '../../../framework/services/filter/MixedTypeValueFilter.js';
 
 const oneOptions = {
   active: new OneOfOption('Active'),
   stopped: new OneOfOption('Stopped'),
   archived: new OneOfOption('Archived'),
-};
-
-const cylinderOptions = {
-  xl: new OneOfOption('xl engine', 'XL Engine'),
-  xxl: new OneOfOption('xxl engine', 'XXL Engine'),
 };
 
 const defaultState = {
@@ -98,26 +91,6 @@ const defaultState = {
         oneOptions.active,
         oneOptions.stopped,
       ]
-    ),
-    new Filter(
-      new FilterOption({
-        name: 'Cylinders',
-        getValue: item => item.cylinders,
-        isRemovable: false,
-        comparisonType: ComparisonTypes.MIXED_TYPE_VALUE,
-        comparisonParameters: {
-          options: [
-            cylinderOptions.xl,
-            cylinderOptions.xxl,
-          ],
-        },
-      }),
-      new MixedTypeValueFilter(
-        [
-          cylinderOptions.xl,
-        ],
-        ''
-      )
     ),
   ],
 };

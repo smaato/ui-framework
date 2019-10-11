@@ -25,14 +25,14 @@ export default class MixedTypeValueFilterForm extends Component {
     this.options = props.filterOption.comparisonParameters.options;
 
     let selectedOptions;
-    if (this.props.comparisonValue.discreteValues === undefined) {
-      selectedOptions = (new Array(this.options.length)).fill(false);
-    } else {
+    if (this.props.comparisonValue) {
       selectedOptions = this.options.map(option =>
         Boolean(props.comparisonValue.discreteValues.find(
           element => element.value === option.value)
         )
       );
+    } else {
+      selectedOptions = (new Array(this.options.length)).fill(false);
     }
 
     this.state = {
@@ -86,13 +86,16 @@ export default class MixedTypeValueFilterForm extends Component {
       </div>
     ));
 
+    const inputDefaultValue = this.props.comparisonValue ?
+      this.props.comparisonValue.inputValue : '';
+
     return (
       <div className="filterForm filterForm--multiSelect">
         {options}
         <div className="inputFilterForm__filterValueWrapper">
           <input
             className="inputFilterForm__enteredValue"
-            defaultValue={this.props.comparisonValue.inputValue}
+            defaultValue={inputDefaultValue}
             onKeyUp={this.onKeyUp}
             ref="inputValue"
             type="text"
