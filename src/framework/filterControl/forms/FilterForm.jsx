@@ -11,6 +11,7 @@ import {
 
 import DateRangeFilterForm from './DateRangeFilterForm.jsx';
 import InputFilterForm from './InputFilterForm.jsx';
+import MixedTypeValueFilterForm from './MixedTypeValueFilterForm.jsx';
 import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
 
 export default class FilterForm extends Component {
@@ -23,6 +24,7 @@ export default class FilterForm extends Component {
       [ComparisonTypes.DATE_RANGE]: DateRangeFilterForm,
       [ComparisonTypes.MAX]: InputFilterForm,
       [ComparisonTypes.MIN]: InputFilterForm,
+      [ComparisonTypes.MIXED_TYPE_VALUE]: MixedTypeValueFilterForm,
       [ComparisonTypes.ONE_OF]: MultipleSelectFilterForm,
     };
 

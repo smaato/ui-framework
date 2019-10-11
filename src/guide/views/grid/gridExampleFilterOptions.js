@@ -36,14 +36,9 @@ export default [
     comparisonType: ComparisonTypes.MIN,
   }),
   new FilterOption({
-    name: 'Maximum Number of Cylinders',
+    name: 'Cylinders',
     getValue: item => item.cylinders,
-    comparisonType: ComparisonTypes.MAX,
-  }),
-  new FilterOption({
-    name: 'Minimum Number of Cylinders',
-    getValue: item => item.cylinders,
-    comparisonType: ComparisonTypes.MIN,
+    comparisonType: ComparisonTypes.MIXED_TYPE_VALUE,
   }),
   new FilterOption({
     name: 'Fuel Economy',
