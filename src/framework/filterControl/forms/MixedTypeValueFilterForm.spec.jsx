@@ -15,7 +15,7 @@ describe('MixedTypeValueFilterForm', () => {
   ];
   const filterOption = new FilterOption({
     name: 'testFilterOption',
-    comparisonType: ComparisonTypes.DATE_RANGE,
+    comparisonType: ComparisonTypes.MIXED_TYPE_VALUE,
     comparisonParameters: {
       options,
     },
@@ -46,6 +46,22 @@ describe('MixedTypeValueFilterForm', () => {
       const testCase = TestCaseFactory.create(MixedTypeValueFilterForm, props);
 
       expect(testCase.find('button')[0]).toBeDefined();
+    });
+
+    describe('initial state', () => {
+      it('should disply a diabled button', () => {
+        const props = {
+          filterOption,
+          onAddFilter: () => undefined,
+        };
+
+        const testCase =
+          TestCaseFactory.create(MixedTypeValueFilterForm, props);
+
+        expect(
+          testCase.find('button')[0].className
+        ).toContain('is-button-disabled');
+      });
     });
   });
 
@@ -136,33 +152,6 @@ describe('MixedTypeValueFilterForm', () => {
 
         expect(filter.filterOption).toBe(props.filterOption);
         expect(filter.comparisonValue.discreteValues.length).toBe(2);
-      });
-    });
-
-    describe('when two discrete values and an input value are selected', () => {
-      it('is called when "Update Results" button is clicked', () => {
-        const props = {
-          filterOption,
-          onAddFilter: jasmine.createSpy('onAddFilter'),
-        };
-        const testCase =
-          TestCaseFactory.create(MixedTypeValueFilterForm, props);
-
-        expect(props.onAddFilter).not.toHaveBeenCalled();
-
-        testCase.trigger('change', testCase.find('input[type=checkbox]')[0]);
-        testCase.trigger('change', testCase.find('input[type=checkbox]')[1]);
-        testCase.first('.inputFilterForm__enteredValue').value = '42';
-        testCase.trigger('click', testCase.find('button')[0]);
-
-        expect(props.onAddFilter).toHaveBeenCalled();
-
-        const filter = props.onAddFilter.calls.argsFor(0)[0];
-        expect(filter instanceof Filter).toBe(true);
-
-        expect(filter.filterOption).toBe(props.filterOption);
-        expect(filter.comparisonValue.discreteValues.length).toBe(2);
-        expect(filter.comparisonValue.inputValue).toBe('42');
       });
     });
   });

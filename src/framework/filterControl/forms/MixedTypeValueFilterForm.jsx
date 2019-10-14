@@ -25,19 +25,35 @@ export default class MixedTypeValueFilterForm extends Component {
     this.options = props.filterOption.comparisonParameters.options;
 
     let selectedOptions;
+    let inputValue;
     if (this.props.comparisonValue) {
       selectedOptions = this.options.map(option =>
         Boolean(props.comparisonValue.discreteValues.find(
           element => element.value === option.value)
         )
       );
+      inputValue = this.props.comparisonValue.inputValue;
     } else {
       selectedOptions = (new Array(this.options.length)).fill(false);
+      inputValue = '';
     }
 
     this.state = {
+      inputValue,
       selectedOptions,
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.comparisonValue) {
+      if (!this.deepEqualsProps(
+          this.props.comparisonValue, prevProps.comparisonValue)) {
+        // eslint-disable-next-line react/no-did-update-set-state
+        this.setState({
+          inputValue: this.props.comparisonValue.inputValue,
+        });
+      }
+    }
   }
 
   onCheckBoxClick(index) {
@@ -49,14 +65,10 @@ export default class MixedTypeValueFilterForm extends Component {
   }
 
   onClickAddButton() {
-    const inputValue = this.refs.inputValue.value;
+    const inputValue = this.state.inputValue;
     const discreteValues = this.options.filter(
       (value, index) => this.state.selectedOptions[index]
     );
-
-    if (!inputValue.trim() && !discreteValues.length) {
-      return;
-    }
 
     const filter = new Filter(
       this.props.filterOption,
@@ -67,8 +79,13 @@ export default class MixedTypeValueFilterForm extends Component {
   }
 
   onKeyUp(event) {
-    if (event.key !== 'Enter') return;
-    this.onClickAddButton();
+    this.setState({
+      inputValue: event.target.value,
+    });
+  }
+
+  deepEqualsProps(object1, object2) {
+    return JSON.stringify(object1) === JSON.stringify(object2);
   }
 
   render() {
@@ -86,8 +103,8 @@ export default class MixedTypeValueFilterForm extends Component {
       </div>
     ));
 
-    const inputDefaultValue = this.props.comparisonValue ?
-      this.props.comparisonValue.inputValue : '';
+    const disableInputField = !this.state.selectedOptions
+        .reduce((acc, option) => acc || option, !!this.state.inputValue.trim());
 
     return (
       <div className="filterForm filterForm--multiSelect">
@@ -95,14 +112,14 @@ export default class MixedTypeValueFilterForm extends Component {
         <div className="inputFilterForm__filterValueWrapper">
           <input
             className="inputFilterForm__enteredValue"
-            defaultValue={inputDefaultValue}
-            onKeyUp={this.onKeyUp}
-            ref="inputValue"
+            onChange={this.onKeyUp}
+            value={this.state.inputValue}
             type="text"
           />
         </div>
         <div className="filterForm__buttons">
           <PrimaryButton
+            disabled={disableInputField}
             onClick={this.onClickAddButton}
           >
             Update Results

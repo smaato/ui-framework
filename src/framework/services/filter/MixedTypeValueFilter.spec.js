@@ -5,7 +5,7 @@ describe('MixedTypeValueFilter', () => {
   describe('interface', () => {
     describe('constructor method', () => {
       it(
-        'accepts discreeteValues and an inputValue and surfaces them',
+        'accepts discreteValues and an inputValue and surfaces them',
         () => {
           const discreteValues = [{ label: 'Test', value: 'test' }];
           const inputValue = '42';
