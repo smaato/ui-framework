@@ -49,7 +49,7 @@ describe('MixedTypeValueFilterForm', () => {
     });
 
     describe('initial state', () => {
-      it('should disply a disabled button', () => {
+      it('should display a disabled button', () => {
         const props = {
           filterOption,
           onAddFilter: () => undefined,
