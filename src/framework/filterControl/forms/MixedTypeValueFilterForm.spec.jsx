@@ -22,7 +22,7 @@ describe('MixedTypeValueFilterForm', () => {
   });
 
   describe('initial state', () => {
-    it('has options unselected', () => {
+    it('has unselected options', () => {
       const props = {
         filterOption,
         onAddFilter: () => undefined,
@@ -49,7 +49,7 @@ describe('MixedTypeValueFilterForm', () => {
     });
 
     describe('initial state', () => {
-      it('should disply a diabled button', () => {
+      it('should disply a disabled button', () => {
         const props = {
           filterOption,
           onAddFilter: () => undefined,
