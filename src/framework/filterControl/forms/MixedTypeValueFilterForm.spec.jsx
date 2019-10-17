@@ -30,7 +30,7 @@ describe('MixedTypeValueFilterForm', () => {
 
       const testCase = TestCaseFactory.create(MixedTypeValueFilterForm, props);
 
-      expect(testCase.element.options)
+      expect(testCase.element.state.options)
         .toBe(filterOption.comparisonParameters.options);
       testCase.element.state.selectedOptions.forEach((value) => {
         expect(value).toBe(false);
