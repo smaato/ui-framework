@@ -47,8 +47,8 @@ import {
   ThrottledEventDispatcher,
 } from '../../../framework/services';
 
-import GridExampleFilterOptions from './gridExampleFilterOptions';
 import createRows from './createRows';
+import GridExampleFilterOptions from './gridExampleFilterOptions';
 
 const oneOptions = {
   active: new OneOfOption('Active'),
@@ -91,7 +91,8 @@ const defaultState = {
         oneOptions.active,
         oneOptions.stopped,
       ]
-    )],
+    ),
+  ],
 };
 
 export default class GridExample extends Component {

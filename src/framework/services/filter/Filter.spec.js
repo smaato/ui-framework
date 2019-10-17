@@ -1,6 +1,7 @@
 
 import ComparisonTypes from './ComparisonTypes';
 import Filter from './Filter';
+import MixedTypeValueFilter from './MixedTypeValueFilter';
 import OneOfOption from './OneOfOption';
 
 describe('Filter', () => {
@@ -80,6 +81,18 @@ describe('Filter', () => {
             normalizedComparisonValues.endDate.toLocaleDateString('de-DE')
           }`
         );
+      });
+
+      it('returns joined string with MIXED_TYPE_VALUE comparisonType', () => {
+        const filterOption = {
+          comparisonType: ComparisonTypes.MIXED_TYPE_VALUE,
+        };
+        const normalizedComparisonValues = new MixedTypeValueFilter(
+          [{ label: 'Test', value: 'test' }],
+          '5'
+        );
+        const filter = new Filter(filterOption, normalizedComparisonValues);
+        expect(filter.humanizeComparisonValue()).toBe('Test, 5');
       });
     });
 

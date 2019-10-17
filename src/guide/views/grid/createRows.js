@@ -10,6 +10,17 @@ export default function createRows(indexStart, newRowsCount) {
       (Math.random() * (end.getTime() - start.getTime())));
   }
 
+  function getRandomCylinders() {
+    const random = getRandomInteger(1, 16);
+    if (random < 9) {
+      return random;
+    }
+    if (random < 13) {
+      return 'XL engine';
+    }
+    return 'XXL engine';
+  }
+
   const newRows = [];
   const statuses = ['Active', 'Stopped', 'Archived'];
   const indexEnd = indexStart + newRowsCount;
@@ -20,7 +31,7 @@ export default function createRows(indexStart, newRowsCount) {
       status: statuses[getRandomInteger(0, 2)],
       fuel: 'Diesel, Unleaded',
       passengers: getRandomInteger(0, 100),
-      cylinders: getRandomInteger(0, 8),
+      cylinders: getRandomCylinders(),
       fuelEconomy: getRandomInteger(0, 200000),
       sold: getRandomInteger(0, 2000000000),
       registered: getRandomInteger(0, 2000000000),

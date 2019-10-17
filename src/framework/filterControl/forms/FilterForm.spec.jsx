@@ -8,6 +8,7 @@ import {
 import DateRangeFilterForm from './DateRangeFilterForm.jsx';
 import FilterForm from './FilterForm.jsx';
 import InputFilterForm from './InputFilterForm.jsx';
+import MixedTypeValueFilterForm from './MixedTypeValueFilterForm.jsx';
 import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
 
 describe('FilterForm', () => {
@@ -101,6 +102,27 @@ describe('FilterForm', () => {
 
       const checkerFormProps =
         testCase.firstComponent(DateRangeFilterForm).props;
+      expect(checkerFormProps.filterOption).toBe(props.filterOption);
+      expect(checkerFormProps.onAddFilter).toBe(props.onAddFilter);
+    });
+
+    it('"mixed type value" comparison', () => {
+      const props = {
+        filterOption: new FilterOption({
+          comparisonType: ComparisonTypes.MIXED_TYPE_VALUE,
+          comparisonParameters: {
+            options: [],
+          },
+        }),
+        onAddFilter: () => undefined,
+      };
+
+      const testCase = TestCaseFactory.create(FilterForm, props);
+
+      expect(testCase.findComponents(MixedTypeValueFilterForm));
+
+      const checkerFormProps =
+        testCase.firstComponent(MixedTypeValueFilterForm).props;
       expect(checkerFormProps.filterOption).toBe(props.filterOption);
       expect(checkerFormProps.onAddFilter).toBe(props.onAddFilter);
     });
