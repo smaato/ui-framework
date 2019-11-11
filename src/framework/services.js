@@ -35,6 +35,10 @@ export {
   default as OneOfOption,
 } from './services/filter/OneOfOption';
 
+export {
+  default as MixedTypeValueFilterForm,
+} from './services/filter/MixedTypeValueFilter';
+
 // Grid
 
 export {
