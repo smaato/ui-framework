@@ -59,7 +59,7 @@
     "gh-pages": "1.1.0",
     "gulp": "3.9.0",
     "gulp-replace": "0.5.4",
-    "gulp-tasks": "git+https://github.com/smaato/gulp-tasks.git#v0.7.0",
+    "gulp-tasks": "git+https://github.com/smaato/gulp-tasks.git#b29ec6881206569b9f7e0fa743eaca883caca177",
     "npm-install-peers": "^1.2.1",
     "istanbul": "gotwarlost/istanbul#source-map",
     "jasmine-core": "2.3.4",
