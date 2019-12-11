@@ -22,6 +22,7 @@
     "icon-library": "git+https://github.com/smaato/icon-library.git#v1.0.0",
     "jquery": "3.3.1",
     "keymirror": "0.1.1",
+    "mathsass": "^0.11.0",
     "moment": "2.22.2",
     "prop-types": "15.6.1",
     "react-date-range": "0.9.2",
