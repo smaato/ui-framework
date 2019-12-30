@@ -9,7 +9,11 @@ const ghPages = require('gh-pages');
 const gulp = require('gulp');
 const gulpReplace = require('gulp-replace');
 const gulpTasks = require('gulp-tasks');
+const gulpAwsPublish = require('gulp-awspublish');
 const runSequence = require('run-sequence');
+const sass = require('gulp-sass');
+const sassLint = require('sass-lint');
+const sourcemaps = require('gulp-sourcemaps');
 
 const DISTRIBUTION_DIR = './dist';
 const CSS_DST = `${DISTRIBUTION_DIR}/css`;
@@ -21,6 +25,25 @@ const FRAMEWORK_SCSS_SRC = `${SOURCE_DIR}/framework/**/*.scss`;
 const GUIDE_SCSS_SRC = `${SOURCE_DIR}/guide/**/*.scss`;
 const TEMPLATES_SRC = `${SOURCE_DIR}/guide/index.jade`;
 
+const SCSS_INCLUDES = [
+  './node_modules/',
+  './node_modules/compass-mixins/lib',
+  './node_modules/mathsass/dist',
+];
+
+const createAwsPublisher = (config) => {
+  const publisherConfiguration = [
+    ['params', { Bucket: config.bucketName }],
+    ['accessKeyId', config.accessKeyId],
+    ['secretAccessKey', config.secretAccessKey],
+  ].reduce((acc, item) => {
+    const [key, value] = item;
+    return value ? Object.assign(acc, { [key]: value }) : acc;
+  }, {});
+
+  return gulpAwsPublish.create(publisherConfiguration);
+};
+
 /**
  * @description Main tasks
  *******************************************************************************
@@ -31,12 +54,16 @@ gulp.task('copySource', gulpTasks.copy({
   src: `${SOURCE_DIR}/guide/**/*.jsx`,
 }).task);
 
-gulp.task('deployToAws', gulpTasks.deploy({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID || 'No ENV',
-  bucketName: process.env.AWS_BUCKET_UI_FRAMEWORK || 'No ENV',
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || 'No ENV',
-  src: `${DISTRIBUTION_DIR}/**/*.*`,
-}).task);
+gulp.task('deployToAws', () => {
+  const publisher = createAwsPublisher({
+    bucketName: process.env.AWS_BUCKET_UI_FRAMEWORK || 'No ENV',
+  });
+
+  return gulp.src(`${DISTRIBUTION_DIR}/index.html`).pipe(publisher.publish({
+    'Cache-Control': 'no-cache, no-store, must-revalidate',
+    Expires: 0,
+  })).pipe(gulpAwsPublish.reporter());
+});
 
 gulp.task('deployToGitHubPages', () => (
   ghPages.publish(DISTRIBUTION_DIR)
@@ -55,12 +82,18 @@ gulp.task('scripts', gulpTasks.compileJs({
   src: JS_SRC,
 }).task);
 
-gulp.task('styles', gulpTasks.compileCss({
-  compassSassDir: `${SOURCE_DIR}/guide`,
-  dst: CSS_DST,
-  src: GUIDE_SCSS_SRC,
-  subTaskPrefix: 'styles',
-}).task);
+gulp.task('styles', () => (
+  gulp.src([
+    FRAMEWORK_SCSS_SRC,
+    GUIDE_SCSS_SRC,
+  ])
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+      includePaths: SCSS_INCLUDES,
+    }).on('error', sass.logError))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(CSS_DST))
+));
 
 gulp.task('templates', gulpTasks.compileHtml({
   dst: DISTRIBUTION_DIR,
@@ -163,13 +196,9 @@ gulp.task('lintJs', gulpTasks.lintJs({
   ],
 }).task);
 
-gulp.task('lintScss', gulpTasks.lintScss({
-  file: './scss-lint.yml',
-  src: [
-    FRAMEWORK_SCSS_SRC,
-    GUIDE_SCSS_SRC,
-  ],
-}).task);
+gulp.task('lintSass', () => (
+  sassLint()
+));
 
 gulp.task('testUnit', gulpTasks.testUnit({
   configFile: `${__dirname}/karma.conf.js`,
@@ -177,6 +206,6 @@ gulp.task('testUnit', gulpTasks.testUnit({
 
 gulp.task('test', [
   'lintJs',
-  'lintScss',
+  'lintSass',
   'testUnit',
 ]);
