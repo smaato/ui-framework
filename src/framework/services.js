@@ -35,6 +35,10 @@ export {
   default as OneOfOption,
 } from './services/filter/OneOfOption';
 
+export {
+  default as MixedTypeValueFilter,
+} from './services/filter/MixedTypeValueFilter';
+
 // Grid
 
 export {
@@ -71,6 +75,6 @@ export {
 
 // Test
 
-export {
-  default as CommonAssertions,
-} from './services/test/CommonAssertions';
+// export {
+//   default as CommonAssertions,
+// } from './services/test/CommonAssertions';

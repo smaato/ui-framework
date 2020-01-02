@@ -2,7 +2,13 @@
 import {
   ComparisonTypes,
   FilterOption,
+  OneOfOption,
 } from '../../../framework/services.js';
+
+const cylinderOptions = {
+  xl: new OneOfOption('xl engine', 'XL Engine'),
+  xxl: new OneOfOption('xxl engine', 'XXL Engine'),
+};
 
 export default [
   new FilterOption({
@@ -36,14 +42,15 @@ export default [
     comparisonType: ComparisonTypes.MIN,
   }),
   new FilterOption({
-    name: 'Maximum Number of Cylinders',
+    name: 'Cylinders',
     getValue: item => item.cylinders,
-    comparisonType: ComparisonTypes.MAX,
-  }),
-  new FilterOption({
-    name: 'Minimum Number of Cylinders',
-    getValue: item => item.cylinders,
-    comparisonType: ComparisonTypes.MIN,
+    comparisonType: ComparisonTypes.MIXED_TYPE_VALUE,
+    comparisonParameters: {
+      options: [
+        cylinderOptions.xl,
+        cylinderOptions.xxl,
+      ],
+    },
   }),
   new FilterOption({
     name: 'Fuel Economy',
@@ -59,5 +66,10 @@ export default [
     name: 'Kpi Registered',
     getValue: item => item.kpiRegistered,
     comparisonType: ComparisonTypes.CONTAINS,
+  }),
+  new FilterOption({
+    name: 'Release Date Range',
+    getValue: item => item.releaseDate,
+    comparisonType: ComparisonTypes.DATE_RANGE,
   }),
 ];

@@ -36,7 +36,6 @@ module.exports = function(config) {
     // The reporters with which to surface test results.
     reporters: [
       'spec',
-      'coverage',
       'junit'
     ],
     coverageReporter: {
@@ -54,7 +53,7 @@ module.exports = function(config) {
     // Configuration for the above `browserify` preprocessor.
     browserify: {
       debug: true,
-      transform: ['babelify', 'browserify-istanbul']
+      transform: ['babelify']
     }
   });
 };

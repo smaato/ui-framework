@@ -47,8 +47,8 @@ import {
   ThrottledEventDispatcher,
 } from '../../../framework/services';
 
-import GridExampleFilterOptions from './gridExampleFilterOptions';
 import createRows from './createRows';
+import GridExampleFilterOptions from './gridExampleFilterOptions';
 
 const oneOptions = {
   active: new OneOfOption('Active'),
@@ -91,7 +91,8 @@ const defaultState = {
         oneOptions.active,
         oneOptions.stopped,
       ]
-    )],
+    ),
+  ],
 };
 
 export default class GridExample extends Component {
@@ -133,6 +134,7 @@ export default class GridExample extends Component {
       2,
       1,
       0,
+      8,
       8,
     ];
 
@@ -278,6 +280,17 @@ export default class GridExample extends Component {
         ),
       }), () => ({
         children: 'Registered',
+      }), index => ({
+        children: (
+          <GridHeaderSortableCell
+            onSort={this.onSort}
+            index={index}
+            isSelected={this.state.sortedColumnIndex === index}
+            isSortDescending={this.state.isSortDescending}
+          >
+            Release Date
+          </GridHeaderSortableCell>
+        ),
       }), () => undefined,
     ];
 
@@ -292,7 +305,9 @@ export default class GridExample extends Component {
       () => undefined,
       () => ({
         children: '152.1m',
-      }), () => ({
+      }),
+      () => undefined,
+      () => ({
         children: 'Registered',
       }), () => undefined,
     ];
@@ -308,6 +323,7 @@ export default class GridExample extends Component {
       item => item.fuelEconomy,
       item => item.sold,
       item => item.registered,
+      item => item.releaseDate,
       () => undefined,
     ];
 
@@ -409,6 +425,8 @@ export default class GridExample extends Component {
             </KpiNegative>
           </div>
         ),
+      }), item => ({
+        children: item.releaseDate.toLocaleDateString('de-DE'),
       }), item => ({
         /* eslint-disable react/jsx-no-bind */
         children: (
