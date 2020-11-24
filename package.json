@@ -19,7 +19,7 @@
     "compass-mixins": "^0.12.10",
     "d3": "3.5.17",
     "gulp-sass": "^4.0.2",
-    "highlight.js": "9.0.0",
+    "highlight.js": "10.1.2",
     "history": "2.1.1",
     "icon-library": "git+https://github.com/smaato/icon-library.git#v1.0.0",
     "jquery": "3.3.1",
