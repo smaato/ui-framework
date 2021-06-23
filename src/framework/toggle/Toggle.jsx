@@ -1,7 +1,7 @@
 
-import PropTypes from 'prop-types';
 import React from 'react';
 import ReactToggle from 'react-toggle';
+import PropTypes from 'prop-types';
 
 const Toggle = (props) => {
   let icons = false;

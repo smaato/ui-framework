@@ -1,6 +1,6 @@
 
 import { TestCaseFactory } from 'react-test-kit';
-import { CommonAssertions } from '../services';
+import CommonAssertions from '../services/test/CommonAssertions';
 import Link from './Link.jsx';
 
 describe('Link', () => {

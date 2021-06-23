@@ -11,7 +11,7 @@ html(lang='en')
 
     link(
       rel='stylesheet'
-      href='./css/dist.css?v=#{DATE_TIME}'
+      href='./css/index.css?v=#{DATE_TIME}'
     )
 
     //- Fonts
@@ -22,7 +22,10 @@ html(lang='en')
     )
 
   body
-    #app
+    div
+      #app
+    div
+      #portal-div
     script(
       src='./js/dist.js?v=#{DATE_TIME}'
     )

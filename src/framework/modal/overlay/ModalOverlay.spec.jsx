@@ -5,6 +5,8 @@ import { TestCaseFactory } from 'react-test-kit';
 import ModalOverlay from './ModalOverlay.jsx';
 
 describe('ModalOverlay', () => {
+  let portalDiv;
+
   function createWrappedTestCase(props) {
     const testCase = TestCaseFactory.createFromElement(
       <div>
@@ -33,6 +35,16 @@ describe('ModalOverlay', () => {
       },
     };
   }
+
+  beforeAll(() => {
+    portalDiv = document.createElement('div');
+    portalDiv.setAttribute('id', 'portal-div');
+    document.body.appendChild(portalDiv);
+  });
+
+  afterAll(() => {
+    document.body.removeChild(portalDiv);
+  });
 
   afterEach(() => {
     // Clean up by manually resetting the body classes.
