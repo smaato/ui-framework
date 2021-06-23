@@ -9,7 +9,9 @@ import {
   FilterOption,
 } from '../../services';
 
+import DateRangeFilterForm from './DateRangeFilterForm.jsx';
 import InputFilterForm from './InputFilterForm.jsx';
+import MixedTypeValueFilterForm from './MixedTypeValueFilterForm.jsx';
 import MultipleSelectFilterForm from './MultipleSelectFilterForm.jsx';
 
 export default class FilterForm extends Component {
@@ -19,8 +21,10 @@ export default class FilterForm extends Component {
 
     const COMPARISON_TYPE_TO_FORM_MAP = {
       [ComparisonTypes.CONTAINS]: InputFilterForm,
+      [ComparisonTypes.DATE_RANGE]: DateRangeFilterForm,
       [ComparisonTypes.MAX]: InputFilterForm,
       [ComparisonTypes.MIN]: InputFilterForm,
+      [ComparisonTypes.MIXED_TYPE_VALUE]: MixedTypeValueFilterForm,
       [ComparisonTypes.ONE_OF]: MultipleSelectFilterForm,
     };
 
@@ -43,7 +47,7 @@ export default class FilterForm extends Component {
 
 FilterForm.propTypes = {
   comparisonValue: PropTypes.oneOfType([
-    PropTypes.string, PropTypes.number, PropTypes.array,
+    PropTypes.string, PropTypes.number, PropTypes.array, PropTypes.object,
   ]),
   filterOption: PropTypes.instanceOf(FilterOption),
   onAddFilter: PropTypes.func.isRequired,

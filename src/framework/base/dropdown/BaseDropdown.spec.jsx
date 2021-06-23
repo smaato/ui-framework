@@ -1,6 +1,8 @@
 
 import { TestCaseFactory } from 'react-test-kit';
-import { CommonAssertions } from '../../services';
+// TODO Maybe use this in .babelrc
+// https://babeljs.io/docs/en/babel-plugin-proposal-export-default-from#via-babelrc-recommended
+import CommonAssertions from '../../services/test/CommonAssertions';
 import BaseDropdown from './BaseDropdown.jsx';
 import BaseDropdownOption from './BaseDropdownOption.jsx';
 

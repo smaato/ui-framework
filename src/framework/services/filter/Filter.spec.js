@@ -1,6 +1,7 @@
 
 import ComparisonTypes from './ComparisonTypes';
 import Filter from './Filter';
+import MixedTypeValueFilter from './MixedTypeValueFilter';
 import OneOfOption from './OneOfOption';
 
 describe('Filter', () => {
@@ -57,6 +58,41 @@ describe('Filter', () => {
           [new OneOfOption(5), new OneOfOption(6)];
         const filter = new Filter(filterOption, normalizedComparisonValues);
         expect(filter.humanizeComparisonValue()).toBe('5, 6');
+      });
+
+      it('returns joined string with DATE_RANGE comparisonType', () => {
+        const filterOption = {
+          comparisonType: ComparisonTypes.DATE_RANGE,
+        };
+        const normalizedComparisonValues = {
+          startDate: new Date(1989, 10, 30),
+          endDate: new Date(2019, 10, 30),
+        };
+        const filter = new Filter(filterOption, normalizedComparisonValues);
+        /**
+         * The PhantomJS toLocaleDateString does not have the same default options as chrome
+         * The test should look as follows:
+         * expect(filter.humanizeComparisonValue()).toBe('30.11.1989 - 30.11.2019');
+         */
+        expect(filter.humanizeComparisonValue()).toBe(
+          `${
+            normalizedComparisonValues.startDate.toLocaleDateString('de-DE')
+          } - ${
+            normalizedComparisonValues.endDate.toLocaleDateString('de-DE')
+          }`
+        );
+      });
+
+      it('returns joined string with MIXED_TYPE_VALUE comparisonType', () => {
+        const filterOption = {
+          comparisonType: ComparisonTypes.MIXED_TYPE_VALUE,
+        };
+        const normalizedComparisonValues = new MixedTypeValueFilter(
+          [{ label: 'Test', value: 'test' }],
+          '5'
+        );
+        const filter = new Filter(filterOption, normalizedComparisonValues);
+        expect(filter.humanizeComparisonValue()).toBe('Test, 5');
       });
     });
 

@@ -1,0 +1,31 @@
+.radioButtonItem {
+  &--element {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+  }
+
+  &--element:not(:last-child) {
+    margin-bottom: 8px;
+  }
+
+  &--inputRadioButton {
+    background: #ffffff;
+    border-radius: 50%;
+    border: 1px $borderGrey solid;
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+
+    &-active {
+      background-color: #47b6f0;
+      border: 1px solid $borderGrey;
+      box-shadow: inset 0 0 0 3px #ffffff;
+    }
+  }
+
+  &--label {
+    display: inline-block;
+    margin-left: 8px;
+  }
+}

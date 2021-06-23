@@ -52,6 +52,10 @@ export default class BaseDropdown extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.enableScrolling();
+  }
+
   onBlur() {
     this.setState({
       hasFocus: false,

@@ -23,7 +23,6 @@ module.exports = function(config) {
         served: true,
         nocache: false
       },
-      'node_modules/react/dist/react-with-addons.js',
       'node_modules/babel-core/browser-polyfill.js',
       'src/framework/**/*.jsx',
       'src/framework/**/*.js'
@@ -36,7 +35,6 @@ module.exports = function(config) {
     // The reporters with which to surface test results.
     reporters: [
       'spec',
-      'coverage',
       'junit'
     ],
     coverageReporter: {
@@ -54,7 +52,7 @@ module.exports = function(config) {
     // Configuration for the above `browserify` preprocessor.
     browserify: {
       debug: true,
-      transform: ['babelify', 'browserify-istanbul']
+      transform: ['babelify']
     }
   });
 };
