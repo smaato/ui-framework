@@ -1,4 +1,3 @@
-
 /**
  * @description Constants
  *******************************************************************************
@@ -10,7 +9,6 @@ const gulp = require('gulp');
 const gulpReplace = require('gulp-replace');
 const gulpTasks = require('gulp-tasks');
 const gulpAwsPublish = require('gulp-awspublish');
-const runSequence = require('run-sequence');
 const sass = require('gulp-sass');
 const sassLint = require('sass-lint');
 const sourcemaps = require('gulp-sourcemaps');
@@ -65,17 +63,16 @@ gulp.task('deployToAws', () => {
   })).pipe(gulpAwsPublish.reporter());
 });
 
-gulp.task('deployToGitHubPages', () => (
-  ghPages.publish(DISTRIBUTION_DIR)
-));
+gulp.task('deployToGitHubPages', (done) => {
+  ghPages.publish(DISTRIBUTION_DIR, {}, done);
+});
 
-gulp.task('deploy', (done) => {
-  runSequence(
+gulp.task('deploy', async () =>
+  gulp.series(
     'production',
     'deployToGitHubPages',
-    done
-  );
-});
+  )()
+);
 
 gulp.task('scripts', gulpTasks.compileJs({
   dst: JS_DST,
@@ -87,12 +84,12 @@ gulp.task('styles', () => (
     FRAMEWORK_SCSS_SRC,
     GUIDE_SCSS_SRC,
   ])
-    .pipe(sourcemaps.init())
-    .pipe(sass({
-      includePaths: SCSS_INCLUDES,
-    }).on('error', sass.logError))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(CSS_DST))
+  .pipe(sourcemaps.init())
+  .pipe(sass({
+    includePaths: SCSS_INCLUDES,
+  }).on('error', sass.logError))
+  .pipe(sourcemaps.write())
+  .pipe(gulp.dest(CSS_DST))
 ));
 
 gulp.task('templates', gulpTasks.compileHtml({
@@ -118,25 +115,26 @@ gulp.task('serveLocally', gulpTasks.serve({
   root: DISTRIBUTION_DIR,
 }).task);
 
-gulp.task('watch', [
-  'templates',
-  'copySource',
-  'styles',
-  'scriptsThenWatch',
-  'serveLocally',
-], () => {
-  gulp.watch([TEMPLATES_SRC], ['templates']);
-  gulp.watch([`${SOURCE_DIR}/guide/**/*.jsx`], ['copySource']);
-  gulp.watch([
-    FRAMEWORK_SCSS_SRC,
-    GUIDE_SCSS_SRC,
-  ], ['styles']);
-});
+gulp.task('watch',
+  gulp.series(
+    'templates',
+    'copySource',
+    'styles',
+    'scriptsThenWatch',
+    'serveLocally',
+    () => {
+      gulp.watch([TEMPLATES_SRC], ['templates']);
+      gulp.watch([`${SOURCE_DIR}/guide/**/*.jsx`], ['copySource']);
+      gulp.watch([
+        FRAMEWORK_SCSS_SRC,
+        GUIDE_SCSS_SRC,
+      ], ['styles']);
+    })
+);
 
-gulp.task('default', () => {
+gulp.task('default', async () => {
   process.env.NODE_ENV = 'developmentWithHmr';
-
-  gulp.start('watch');
+  return gulp.series('watch')();
 });
 
 /**
@@ -154,31 +152,31 @@ gulp.task('minifyJs', gulpTasks.minifyJs({
 
 gulp.task('replace', () => (
   gulp.src([`${DISTRIBUTION_DIR}/index.html`])
-    .pipe(gulpReplace(/\.css/, '.min.css'))
-    .pipe(gulpReplace(/\.js/, '.min.js'))
-    .pipe(gulp.dest(DISTRIBUTION_DIR))
+  .pipe(gulpReplace(/\.css/, '.min.css'))
+  .pipe(gulpReplace(/\.js/, '.min.js'))
+  .pipe(gulp.dest(DISTRIBUTION_DIR))
 ));
 
-gulp.task('clean', done => (
+gulp.task('clean', done =>
   del([
     `${CSS_DST}/dist.css`,
     `${JS_DST}/dist.js`,
   ], done)
-));
+);
 
-gulp.task('production', (done) => {
+gulp.task('production', async () => {
   process.env.NODE_ENV = 'production';
 
-  runSequence(
+  return gulp.series(
     'templates',
     'copySource',
     'styles',
     'scripts',
-    ['minifyCss', 'minifyJs'],
+    'minifyCss',
+    'minifyJs',
     'replace',
-    'clean',
-    done
-  );
+    'clean'
+  )();
 });
 
 /**
@@ -196,7 +194,7 @@ gulp.task('lintJs', gulpTasks.lintJs({
   ],
 }).task);
 
-gulp.task('lintSass', () => (
+gulp.task('lintSass', async () => (
   sassLint()
 ));
 
@@ -204,8 +202,10 @@ gulp.task('testUnit', gulpTasks.testUnit({
   configFile: `${__dirname}/karma.conf.js`,
 }).task);
 
-gulp.task('test', [
-  'lintJs',
-  'lintSass',
-  'testUnit',
-]);
+gulp.task('test', async () =>
+  gulp.series(
+    'lintJs',
+    'lintSass',
+    'testUnit'
+  )()
+);
