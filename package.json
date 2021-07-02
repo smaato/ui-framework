@@ -78,7 +78,7 @@
     "numeral": "1.5.3",
     "pre-commit": "1.1.2",
     "react-router": "^3.2.1",
-    "react-test-kit": "git+https://github.com/smaato/react-test-kit.git#27f4ee1c4963e824776d844209f2d51d92c3f188",
+    "react-test-kit": "git+https://github.com/smaato/react-test-kit.git#v0.3.0",
     "react-transform-hmr": "1.0.1",
     "reconnectingwebsocket": "1.0.0",
     "run-sequence": "1.1.2",

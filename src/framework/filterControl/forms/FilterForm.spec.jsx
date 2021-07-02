@@ -23,7 +23,7 @@ describe('FilterForm', () => {
 
       const testCase = TestCaseFactory.create(FilterForm, props);
 
-      expect(testCase.findComponents(InputFilterForm));
+      expect(testCase.findComponents(InputFilterForm)).toBeTruthy();
 
       const checkerFormProps =
         testCase.firstComponent(InputFilterForm).props;
@@ -41,7 +41,7 @@ describe('FilterForm', () => {
 
       const testCase = TestCaseFactory.create(FilterForm, props);
 
-      expect(testCase.findComponents(InputFilterForm));
+      expect(testCase.findComponents(InputFilterForm)).toBeTruthy();
 
       const checkerFormProps =
         testCase.firstComponent(InputFilterForm).props;
@@ -59,7 +59,7 @@ describe('FilterForm', () => {
 
       const testCase = TestCaseFactory.create(FilterForm, props);
 
-      expect(testCase.findComponents(InputFilterForm));
+      expect(testCase.findComponents(InputFilterForm)).toBeTruthy();
 
       const checkerFormProps =
         testCase.firstComponent(InputFilterForm).props;
@@ -80,7 +80,7 @@ describe('FilterForm', () => {
 
       const testCase = TestCaseFactory.create(FilterForm, props);
 
-      expect(testCase.findComponents(MultipleSelectFilterForm));
+      expect(testCase.findComponents(MultipleSelectFilterForm)).toBeTruthy();
 
       const checkerFormProps =
         testCase.firstComponent(MultipleSelectFilterForm).props;
@@ -98,7 +98,7 @@ describe('FilterForm', () => {
 
       const testCase = TestCaseFactory.create(FilterForm, props);
 
-      expect(testCase.findComponents(DateRangeFilterForm));
+      expect(testCase.findComponents(DateRangeFilterForm)).toBeTruthy();
 
       const checkerFormProps =
         testCase.firstComponent(DateRangeFilterForm).props;
@@ -119,7 +119,7 @@ describe('FilterForm', () => {
 
       const testCase = TestCaseFactory.create(FilterForm, props);
 
-      expect(testCase.findComponents(MixedTypeValueFilterForm));
+      expect(testCase.findComponents(MixedTypeValueFilterForm)).toBeTruthy();
 
       const checkerFormProps =
         testCase.firstComponent(MixedTypeValueFilterForm).props;
