@@ -87,7 +87,7 @@
     "sizzle": "2.2.0",
     "vinyl-source-stream": "1.1.0",
     "watchify": "3.5.0",
-    "ws": "0.8.1"
+    "ws": "5.2.3"
   },
   "pre-commit": [
     "test"
