@@ -40,7 +40,7 @@
     "sass": "^1.22.10"
   },
   "devDependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-eslint": "4.1.7",
     "babel-plugin-react-transform": "1.1.1",
     "babelify": "6.1.2",
