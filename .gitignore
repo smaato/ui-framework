@@ -7,3 +7,4 @@ dist
 reports
 *.log
 .idea/
+*.iml
