@@ -60,6 +60,16 @@ describe('Filter', () => {
         expect(filter.humanizeComparisonValue()).toBe('5, 6');
       });
 
+      it('returns joined string with ONE_OF_SEARCH comparisonType', () => {
+        const filterOption = {
+          comparisonType: ComparisonTypes.ONE_OF_SEARCH,
+        };
+        const normalizedComparisonValues =
+          [new OneOfOption(5), new OneOfOption(6)];
+        const filter = new Filter(filterOption, normalizedComparisonValues);
+        expect(filter.humanizeComparisonValue()).toBe('5, 6');
+      });
+
       it('returns joined string with DATE_RANGE comparisonType', () => {
         const filterOption = {
           comparisonType: ComparisonTypes.DATE_RANGE,

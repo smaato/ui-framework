@@ -12,6 +12,8 @@ export default class Filter {
     switch (this.filterOption.comparisonType) {
       case ComparisonTypes.ONE_OF:
         return this.comparisonValue.map(option => option.label).join(', ');
+      case ComparisonTypes.ONE_OF_SEARCH:
+        return this.comparisonValue.map(option => option.label).join(', ');
       case ComparisonTypes.DATE_RANGE:
         return `${this.comparisonValue.startDate.toLocaleDateString('de-DE')
           } - ${this.comparisonValue.endDate.toLocaleDateString('de-DE')}`;
