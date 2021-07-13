@@ -6,4 +6,5 @@ export default {
   MIN: 'min',
   MIXED_TYPE_VALUE: 'mixed type value',
   ONE_OF: 'one of',
+  ONE_OF_SEARCH: 'one of search',
 };
