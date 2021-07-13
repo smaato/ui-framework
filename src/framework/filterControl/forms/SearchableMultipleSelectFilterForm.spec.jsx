@@ -125,6 +125,35 @@ describe('SearchableMultipleSelectFilterForm', () => {
     });
   });
 
+  describe('searching', () => {
+    it('only render filtered items', (done) => {
+      const props = {
+        filterOption,
+        onAddFilter: () => undefined,
+        timeout: 0,
+      };
+
+      const testCase =
+        TestCaseFactory.create(SearchableMultipleSelectFilterForm, props);
+
+      const input = testCase.first('.searchBox__input');
+      input.value = 'running';
+
+      expect(testCase.find('input[type=checkbox]').length).toBe(3);
+
+      testCase.trigger('change', input);
+      testCase.trigger('keyUp', input, { key: 'Enter' });
+
+      setTimeout(() => {
+        const checkbox = testCase.first('.filterForm--multiSelect__checkbox');
+        expect(testCase.find('input[type=checkbox]').length).toBe(1);
+        expect(checkbox.textContent).toBe('Running');
+
+        done();
+      }, props.timeout);
+    });
+  });
+
   describe('selected options', () => {
     it('are changed when a checkbox is clicked', () => {
       const props = {

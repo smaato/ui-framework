@@ -80,9 +80,9 @@ export default class SearchableMultipleSelectFilterForm extends Component {
 
     return (
       <div className="filterForm filterForm--multiSelect">
-        <div className={'fitlerForm__search'}>
+        <div className={'filterForm__search'}>
           <SearchBox
-            isImmediate
+            isImmediate={this.props.isImmediate}
             onSearch={this.onSearch}
           />
         </div>
@@ -104,4 +104,5 @@ SearchableMultipleSelectFilterForm.propTypes = {
   comparisonValue: PropTypes.array,
   filterOption: PropTypes.instanceOf(FilterOption),
   onAddFilter: PropTypes.func.isRequired,
+  isImmediate: PropTypes.bool.isOptional,
 };
