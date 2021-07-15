@@ -61,20 +61,25 @@ export default class SearchableMultipleSelectFilterForm extends Component {
 
   render() {
     const options = this.options
-    .filter(option => (
-      option.label.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
-    ))
-    .map((option, index) => (
-      <div className="filterForm--multiSelect__checkbox" key={index}>
+    .map((option, index) => ({
+      option,
+      index,
+    }))
+    .filter((item) => {
+      const label = item.option.label.toLowerCase();
+      return label.indexOf(this.state.search.toLowerCase()) > -1;
+    })
+    .map(item => (
+      <div className="filterForm--multiSelect__checkbox" key={item.index}>
         <CheckBox
-          checked={this.state.selectedOptions[index]}
-          id={index}
-          key={index}
+          checked={this.state.selectedOptions[item.index]}
+          id={item.index}
+          key={item.index}
           name="option_checkbox"
-          onClick={() => this.onCheckBoxClick(index)}
+          onClick={() => this.onCheckBoxClick(item.index)}
           type="checkbox"
         />
-        {option.label}
+        {item.option.label}
       </div>
     ));
 
