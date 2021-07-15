@@ -152,6 +152,34 @@ describe('SearchableMultipleSelectFilterForm', () => {
         done();
       }, props.timeout);
     });
+
+    it('when filter present select the right items', (done) => {
+      const props = {
+        filterOption,
+        onAddFilter: jasmine.createSpy('onAddFilter'),
+        timeout: 0,
+      };
+
+      const testCase =
+        TestCaseFactory.create(SearchableMultipleSelectFilterForm, props);
+
+      const input = testCase.first('.searchBox__input');
+
+      input.value = 'archive';
+      testCase.trigger('change', input);
+      testCase.trigger('keyUp', input, { key: 'Enter' });
+      testCase.trigger('change', testCase.find('input[type=checkbox]')[0]);
+      testCase.trigger('click', testCase.find('button')[0]);
+
+      setTimeout(() => {
+        const filter = props.onAddFilter.calls.argsFor(0)[0];
+        expect(filter instanceof Filter).toBe(true);
+
+        expect(filter.comparisonValue.length).toBe(1);
+        expect(filter.comparisonValue[0].label).toBe('Archive');
+        done();
+      }, props.timeout);
+    });
   });
 
   describe('selected options', () => {
