@@ -22,7 +22,7 @@
     "highlight.js": "9.0.0",
     "history": "2.1.1",
     "icon-library": "git+https://github.com/smaato/icon-library.git#v1.0.0",
-    "jquery": "3.3.1",
+    "jquery": "3.5.0",
     "keymirror": "0.1.1",
     "mathsass": "^0.11.0",
     "moment": "2.22.2",
