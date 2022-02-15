@@ -8,7 +8,6 @@ import ReactDOM from 'react-dom';
 export default class ModalOverlay extends Component {
   constructor(props) {
     super(props);
-    this.portalDom = document.getElementById('portal-div');
   }
 
   componentWillMount() {
@@ -41,7 +40,7 @@ export default class ModalOverlay extends Component {
     return this.props.isOpen ?
       ReactDOM.createPortal(
         (<div className="modalOverlay">{this.props.children}</div>),
-        this.portalDom
+        document.getElementById('portal-div')
       ) : null;
   }
 }
