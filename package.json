@@ -25,7 +25,7 @@
     "jquery": "3.3.1",
     "keymirror": "0.1.1",
     "mathsass": "^0.11.0",
-    "moment": "2.22.2",
+    "moment": "2.29.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-addons-test-utils": "15.4.2",
