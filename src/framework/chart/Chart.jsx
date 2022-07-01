@@ -117,7 +117,7 @@ export default class Chart extends Component {
     }
 
     return (
-      <Box classes="chart" roundedCorners>
+      <Box data-testid="Chart" classes="chart" roundedCorners>
         <Heading size={Heading.SIZE.SMALL}>
           {this.props.title}{this.renderLegend()}
         </Heading>

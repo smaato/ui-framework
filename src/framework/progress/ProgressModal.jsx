@@ -23,7 +23,7 @@ const ProgressModal = (props) => {
   }
 
   return (
-    <div className="progressModal">
+    <div data-testid="ProgressModal" className="progressModal">
       {content}
     </div>
   );

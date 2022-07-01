@@ -21,7 +21,7 @@ const Body = (props) => {
   });
 
   return (
-    <div className={classes}>
+    <div data-testid="Body" className={classes}>
       {props.children}
     </div>
   );

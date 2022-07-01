@@ -148,6 +148,7 @@ export default class Tooltip extends Component {
 
     return (
       <div
+        data-testid="Tooltip"
         className="tooltip"
         ref={(div) => { this.tooltip = div; }}
       >

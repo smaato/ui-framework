@@ -127,7 +127,7 @@ export default class DateRange extends Component {
     }
 
     return (
-      <div className="dateRange">
+      <div data-testid="DateRange" className="dateRange">
         <div
           className={dateRangeRangeClasses}
           onClick={this.onClick}

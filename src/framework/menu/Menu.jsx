@@ -7,7 +7,7 @@ export {
 } from './MenuItem.jsx';
 
 const Menu = props => (
-  <div data-id={props.dataId}>
+  <div data-testid="Menu" data-id={props.dataId}>
     {props.children}
   </div>
 );

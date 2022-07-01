@@ -280,6 +280,7 @@ export default class LineChart extends Component {
     // Render will only be called once, after the component mounts.
     return (
       <div
+        data-testid="LineChart"
         className="lineChart"
         ref="lineChart"
       >

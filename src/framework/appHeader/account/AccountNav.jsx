@@ -20,7 +20,7 @@ const AccountNav = (props) => {
   }
 
   return (
-    <div className="accountNav">
+    <div data-testid="AccountNav" className="accountNav">
       <a
         className={accountNavUserClasses}
         onClick={props.onClick}

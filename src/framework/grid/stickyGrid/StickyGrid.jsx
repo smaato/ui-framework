@@ -26,6 +26,7 @@ const StickyGrid = (props) => {
 
   return (
     <div
+      data-testid="StickyGrid"
       id={props.id}
       className="stickyGrid"
     >

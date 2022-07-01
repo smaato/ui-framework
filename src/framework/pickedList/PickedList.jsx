@@ -7,7 +7,7 @@ export {
 } from './PickedListItem.jsx';
 
 const PickedList = props => (
-  <div className="pickedListContainer">
+  <div data-testid="PickedList" className="pickedListContainer">
     <div className="pickedListTitle">
       {props.title}
     </div>

@@ -39,7 +39,7 @@ class OrganizationSwitcher extends Component {
     }
 
     return (
-      <div className="organizationSwitcher">
+      <div data-testid="OrganizationSwitcher" className="organizationSwitcher">
         <div className="organizationSwitcher__title">
           {this.props.title}
           <div

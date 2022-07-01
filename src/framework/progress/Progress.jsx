@@ -15,7 +15,7 @@ const Progress = (props) => {
   );
 
   return (
-    <div className={classes}>
+    <div data-testid="Progress" className={classes}>
       <div className="progress__dot" />
       <div className="progress__dot" />
       <div className="progress__dot" />

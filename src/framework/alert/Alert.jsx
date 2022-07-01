@@ -19,7 +19,7 @@ const Alert = (props) => {
   );
 
   return (
-    <div className={classes}>
+    <div data-testid="Alert" className={classes}>
       {props.children}
     </div>
   );

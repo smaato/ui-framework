@@ -101,6 +101,7 @@ export default class Modal extends Component {
 
     return (
       <div
+        data-testid="Modal"
         className={classes}
         data-id={this.props.dataId}
         onClick={this.onClick}

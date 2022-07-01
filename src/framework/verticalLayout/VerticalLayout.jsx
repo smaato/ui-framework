@@ -23,7 +23,7 @@ const VerticalLayout = (props) => {
   }
 
   return (
-    <div>
+    <div data-testid="VerticalLayout">
       {children}
     </div>
   );

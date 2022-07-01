@@ -34,6 +34,7 @@ const SummaryControl = (props) => {
 
   return (
     <div
+      data-testid="SummaryControl"
       data-id={props.dataId}
       className={classes}
       onClick={props.isStatic ? undefined : props.onClick}

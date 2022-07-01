@@ -19,6 +19,7 @@ const Toggle = (props) => {
 
   return (
     <ReactToggle
+      data-testid="Toggle"
       checked={props.checked}
       icons={icons}
       onChange={onChange}

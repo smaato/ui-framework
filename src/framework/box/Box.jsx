@@ -10,6 +10,7 @@ const Box = (props) => {
 
   return (
     <div
+      data-testid={props["data-testid"] ?? "Box"}
       className={classes}
       data-id={props.dataId}
     >
@@ -21,6 +22,7 @@ const Box = (props) => {
 Box.propTypes = {
   children: PropTypes.any,
   classes: PropTypes.string,
+  "data-testid": PropTypes.string,
   dataId: PropTypes.string,
   roundedCorners: PropTypes.bool,
 };

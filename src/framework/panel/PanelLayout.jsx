@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const PanelLayout = props => (
-  <div className="panelLayout">
+  <div data-testid="PanelLayout" className="panelLayout">
     {props.children}
   </div>
 );

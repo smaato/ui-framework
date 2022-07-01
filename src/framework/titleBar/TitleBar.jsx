@@ -14,7 +14,7 @@ const TitleBar = (props) => {
   }
 
   return (
-    <div className="titleBar">
+    <div data-testid="TitleBar" className="titleBar">
       <span className="titleBar__title">
         {props.label}
       </span>

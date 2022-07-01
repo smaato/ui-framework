@@ -222,6 +222,7 @@ export default class BaseDropdown extends Component {
     if (this.props.isReadonly) {
       return (
         <div
+          data-testid="Dropdown"
           data-id={this.props.dataId}
           className={this.props.classes}
         >
@@ -266,6 +267,7 @@ export default class BaseDropdown extends Component {
 
     return (
       <div
+        data-testid="Dropdown"
         data-id={this.props.dataId}
         className={this.props.classes}
       >

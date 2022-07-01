@@ -39,7 +39,7 @@ export default class ModalOverlay extends Component {
   render() {
     return this.props.isOpen ?
       ReactDOM.createPortal(
-        (<div className="modalOverlay">{this.props.children}</div>),
+        (<div data-testid="ModalOverlay" className="modalOverlay">{this.props.children}</div>),
         document.getElementById('portal-div')
       ) : null;
   }

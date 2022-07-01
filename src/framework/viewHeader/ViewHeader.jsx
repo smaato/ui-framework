@@ -11,7 +11,7 @@ export {
 } from './dateRange/DateRange.jsx';
 
 const ViewHeader = props => (
-  <div className="viewHeader">
+  <div data-testid="ViewHeader" className="viewHeader">
     <div className="viewHeader__liner">
       {props.left}
       {props.right}
