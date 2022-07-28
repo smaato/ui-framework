@@ -38,16 +38,11 @@ export default class BaseDropdown extends Component {
     this.onMouseOverOption = this.onMouseOverOption.bind(this);
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    if (this.state.isOpen && !nextState.isOpen) {
-      this.enableScrolling();
-    } else if (!this.state.isOpen && nextState.isOpen) {
-      this.disableScrolling();
-    }
-  }
-
   componentDidUpdate(prevProps, prevState) {
-    if (!prevState.isOpen && this.state.isOpen) {
+    if (prevState.isOpen && !this.state.isOpen) {
+      this.enableScrolling();
+    } else if (!prevState.isOpen && this.state.isOpen) {
+      this.disableScrolling();
       this.chooseOpeningDirection();
     }
   }

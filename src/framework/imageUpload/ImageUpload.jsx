@@ -19,7 +19,7 @@ class ImageUpload extends React.Component {
     this.onRemoveImage = this.onRemoveImage.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.children) {
       this.setState({
         isLoaded: true,

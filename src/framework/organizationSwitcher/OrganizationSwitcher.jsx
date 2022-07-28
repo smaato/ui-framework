@@ -12,7 +12,7 @@ export {
 
 class OrganizationSwitcher extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     document.querySelector('body')
       .classList.add('is-organization-switcher-open');
   }

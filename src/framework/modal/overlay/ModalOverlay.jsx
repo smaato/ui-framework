@@ -1,8 +1,5 @@
-
 import PropTypes from 'prop-types';
-import React, {
-  Component,
-} from 'react';
+import React, {Component,} from 'react';
 import ReactDOM from 'react-dom';
 
 export default class ModalOverlay extends Component {
@@ -10,15 +7,15 @@ export default class ModalOverlay extends Component {
     super(props);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.updateBackgroundBlur();
   }
 
-  componentWillUpdate(nextProps) {
+  componentDidUpdate(prevProps) {
     // Only a modalOverlay instance that is being interacted with (i.e. the user
     // is changing its isOpen state) should be able to update the background.
-    if (nextProps.isOpen !== this.props.isOpen) {
-      this.updateBackgroundBlur(nextProps);
+    if (this.props.isOpen !== prevProps.isOpen) {
+      this.updateBackgroundBlur();
     }
   }
 
@@ -28,8 +25,8 @@ export default class ModalOverlay extends Component {
     document.querySelector('body').classList.remove('is-modal-overlay-open');
   }
 
-  updateBackgroundBlur(props = this.props) {
-    if (props.isOpen) {
+  updateBackgroundBlur() {
+    if (this.props.isOpen) {
       document.querySelector('body').classList.add('is-modal-overlay-open');
     } else {
       document.querySelector('body').classList.remove('is-modal-overlay-open');

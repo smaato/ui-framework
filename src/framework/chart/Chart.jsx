@@ -25,15 +25,19 @@ export default class Chart extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      data: []
+    };
+
     this.COLORS = ['#2799C4', '#35D0A0'];
     this.HEIGHT = 520;
 
     this.setData(this.props.data);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (JSON.stringify(this.props.data) !== JSON.stringify(nextProps.data)) {
-      this.setData(nextProps.data);
+  componentDidUpdate(prevProps) {
+    if (JSON.stringify(prevProps.data) !== JSON.stringify(this.props.data)) {
+      this.setData(this.props.data);
     }
   }
 
@@ -65,6 +69,11 @@ export default class Chart extends Component {
         this.minY = Math.min(yValue, this.minY) || yValue;
         this.maxY = Math.max(yValue, this.maxY) || yValue;
       });
+    });
+
+    // update dummy state to trigger a new render
+    this.setState({
+      data: this.data
     });
   }
 
