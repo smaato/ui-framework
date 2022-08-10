@@ -7,7 +7,7 @@ export {
 } from './Column.jsx';
 
 const ColumnLayout = props => (
-  <div>
+  <div data-testid="ColumnLayout">
     {props.children}
   </div>
 );

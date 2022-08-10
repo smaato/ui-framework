@@ -21,7 +21,7 @@ const CardHolder = (props) => {
   }
 
   return (
-    <div className="cardHolder" style={holderStyle}>
+    <div data-testid="CardHolder" className="cardHolder" style={holderStyle}>
       {content}
     </div>
   );

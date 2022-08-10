@@ -4,6 +4,7 @@ import React from 'react';
 
 const AppLogo = (props) => {
   const attributes = {
+    "data-testid": "AppLogo",
     className: 'appLogo',
     title: props.text,
   };

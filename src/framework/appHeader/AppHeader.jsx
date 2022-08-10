@@ -35,7 +35,7 @@ export {
 } from './title/AppTitleContainer.jsx';
 
 const AppHeader = props => (
-  <div className="appHeader">
+  <div data-testid="AppHeader" className="appHeader">
     <div className="appHeader__liner">
       {props.left}
       {props.center}

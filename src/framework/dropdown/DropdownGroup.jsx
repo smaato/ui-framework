@@ -33,6 +33,7 @@ const DropdownGroup = (props) => {
 
   return (
     <Dropdown
+      data-testid="DropdownGroup"
       {...extendedProps}
     />
   );

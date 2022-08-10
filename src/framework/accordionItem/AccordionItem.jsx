@@ -17,10 +17,10 @@ export default class AccordionItem extends Component {
     this.onTitleClick = this.onTitleClick.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.isActive !== nextProps.isActive) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.isActive !== this.props.isActive) {
       this.setState({
-        isActive: nextProps.isActive,
+        isActive: this.props.isActive,
       });
     }
   }

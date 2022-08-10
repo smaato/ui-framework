@@ -4,6 +4,7 @@ import React from 'react';
 
 const Ribbon = props =>
   (<div
+    data-testid="Ribbon"
     className="ribbon"
     style={{
       backgroundImage: `url(${props.imageSrc})`,

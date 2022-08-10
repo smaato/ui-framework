@@ -41,7 +41,7 @@ export default class SearchBox extends Component {
     });
 
     return (
-      <span className="searchBox">
+      <span data-testid="SearchBox" className="searchBox">
         <input
           className={classes}
           defaultValue={this.props.defaultValue}

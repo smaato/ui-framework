@@ -18,7 +18,7 @@ const AccountPicture = (props) => {
   );
 
   return (
-    <span className="accountPicture">
+    <span data-testid="AccountPicture" className="accountPicture">
       {picture}
     </span>
   );

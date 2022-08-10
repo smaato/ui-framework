@@ -10,7 +10,7 @@ const Accordion = (props) => {
   };
 
   return (
-    <div className="accordion" style={wrapperStyle}>
+    <div data-testid="Accordion" className="accordion" style={wrapperStyle}>
       {props.children}
     </div>
   );

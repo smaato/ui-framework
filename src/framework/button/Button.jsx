@@ -61,6 +61,7 @@ const Button = (props) => {
   return React.createElement(
     linkType,
     {
+      "data-testid": "Button",
       'data-id': props.dataId,
       className: classes,
       href: props.href,

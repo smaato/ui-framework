@@ -15,7 +15,7 @@ export {
 } from './label/AddOnLabel.jsx';
 
 const AddOnControl = props => (
-  <div className="addOnControl">
+  <div data-testid="AddOnControl" className="addOnControl">
     {props.children}
   </div>
 );

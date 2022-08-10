@@ -25,27 +25,33 @@ export default class Chart extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      data: []
+    };
+
     this.COLORS = ['#2799C4', '#35D0A0'];
     this.HEIGHT = 520;
+  }
 
+  componentDidMount() {
     this.setData(this.props.data);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (JSON.stringify(this.props.data) !== JSON.stringify(nextProps.data)) {
-      this.setData(nextProps.data);
+  componentDidUpdate(prevProps) {
+    if (JSON.stringify(prevProps.data) !== JSON.stringify(this.props.data)) {
+      this.setData(this.props.data);
     }
   }
 
   setData(data) {
-    this.data = [];
+    let newData = [];
     this.minDate = undefined;
     this.maxDate = undefined;
     this.minY = undefined;
     this.maxY = undefined;
 
     data.forEach((dataSet, index) => {
-      this.data.push({
+      newData.push({
         color: this.COLORS[index],
         id: index,
         name: this.props.legendLabelProvider(dataSet),
@@ -56,7 +62,7 @@ export default class Chart extends Component {
         const date = dataPoint.date;
         const yValue = dataPoint.value;
 
-        this.data[index].values.push({
+        newData[index].values.push({
           date,
           yValue,
         });
@@ -66,10 +72,14 @@ export default class Chart extends Component {
         this.maxY = Math.max(yValue, this.maxY) || yValue;
       });
     });
+
+    this.setState({
+      data: newData
+    });
   }
 
   renderLegend() {
-    const legendItems = this.data.map(item => (
+    const legendItems = this.state.data.map(item => (
       <span key={item.id}><ChartDot color={item.color} /> {item.name}</span>
     ));
 
@@ -91,7 +101,7 @@ export default class Chart extends Component {
     return (
       <div className={lineChartClasses}>
         <LineChart
-          data={this.data}
+          data={this.state.data}
           dateFormat={d3.time.days}
           dateRange={[this.minDate, this.maxDate]}
           height={this.HEIGHT}
@@ -117,7 +127,7 @@ export default class Chart extends Component {
     }
 
     return (
-      <Box classes="chart" roundedCorners>
+      <Box data-testid="Chart" classes="chart" roundedCorners>
         <Heading size={Heading.SIZE.SMALL}>
           {this.props.title}{this.renderLegend()}
         </Heading>

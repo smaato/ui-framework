@@ -13,6 +13,7 @@ const BodyPanel = (props) => {
 
   return (
     <Box
+      data-testid="BodyPanel"
       classes={classes}
       roundedCorners={props.roundedCorners}
     >

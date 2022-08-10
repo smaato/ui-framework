@@ -50,11 +50,11 @@ export default class Modal extends Component {
     this.onMouseOut = this.onMouseOut.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate() {
     // To address the Chrome/Safari bug, we need to force this modal to act as
     // if the mouse is no longer over it if it's about to be placed behind a
     // new top-most modal.
-    if (this.isNextInStack(nextProps)) {
+    if (this.state.isMouseOver && this.isNextInStack()) {
       this.setState({
         isMouseOver: false,
       });
@@ -101,6 +101,7 @@ export default class Modal extends Component {
 
     return (
       <div
+        data-testid="Modal"
         className={classes}
         data-id={this.props.dataId}
         onClick={this.onClick}

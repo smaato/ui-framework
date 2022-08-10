@@ -22,7 +22,7 @@ const PickedSummary = (props) => {
   }
 
   return (
-    <div className="pickedSummary">
+    <div data-testid="PickedSummary" className="pickedSummary">
       {icon}
       <div className="pickedSummary__label">
         {props.children}

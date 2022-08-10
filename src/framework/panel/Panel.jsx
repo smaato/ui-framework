@@ -27,7 +27,7 @@ const Panel = (props) => {
   });
 
   return (
-    <div className={classes}>
+    <div data-testid="Panel" className={classes}>
       <div className="panel__title">
         <div className={labelClasses}>
           {props.title}

@@ -2,7 +2,7 @@
 import React from 'react';
 
 const ProgressSuccess = () => (
-  <div className="progressSuccess icon icon-check-green" />
+  <div data-testid="ProgressSuccess" className="progressSuccess icon icon-check-green" />
 );
 
 export default ProgressSuccess;

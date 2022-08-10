@@ -16,6 +16,7 @@ const RadioButtons = ({
 
   return (
     <div
+      data-testid="RadioButtons"
       className={
         `radioButtons${className ? ` ${className}` : ''}`
       }

@@ -73,7 +73,7 @@ export default class GridStencil {
 
     // Replace React node tree for our own node tree.
     workingNode.innerHTML = ReactDOMServer.renderToStaticMarkup(
-      <table id="gridStencil" className="gridStencil">
+      <table data-testid="GridStencil" id="gridStencil" className="gridStencil">
         <GridHeader headerCellPropsProviders={this.headerCellPropsProviders} />
         <GridBody
           columnsCount={this.columnCount}

@@ -23,7 +23,7 @@ export default class Card extends Component {
 
   render() {
     return (
-      <Box classes="card" roundedCorners>
+      <Box data-testid="Card" classes="card" roundedCorners>
         <div
           className="card__wrapper"
           onClick={this.props.onClick}

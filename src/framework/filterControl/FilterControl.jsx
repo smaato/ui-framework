@@ -172,7 +172,7 @@ export default class FilterControl extends Component {
     }
 
     return (
-      <div className="filterControl">
+      <div data-testid="FilterControl" className="filterControl">
         {this.renderFilterItems()}
         {addButton}
       </div>

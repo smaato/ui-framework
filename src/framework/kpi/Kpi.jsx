@@ -8,6 +8,7 @@ const Kpi = (props) => {
 
   return (
     <span
+      data-testid="Kpi"
       className={className}
       title={props.title}
     >

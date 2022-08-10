@@ -5,7 +5,7 @@ import React from 'react';
 import AppTitle from './AppTitle.jsx';
 
 const AppTitleContainer = props => (
-  <div className="appTitleContainer">
+  <div data-testid="AppTitleContainer" className="appTitleContainer">
     <div
       className="appTitleContainer__title"
       onClick={props.onClick}

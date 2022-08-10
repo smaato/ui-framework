@@ -78,6 +78,7 @@ export default class CheckBox extends Component {
 
     return (
       <span
+        data-testid="CheckBox"
         className={wrapperClasses}
         onClick={this.onClick}
       >

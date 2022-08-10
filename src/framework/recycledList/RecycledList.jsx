@@ -9,9 +9,7 @@
  */
 
 import PropTypes from 'prop-types';
-import React, {
-  Component,
-} from 'react';
+import React, {Component,} from 'react';
 
 export default class RecycledList extends Component {
 
@@ -28,18 +26,15 @@ export default class RecycledList extends Component {
     this.onScroll = this.onScroll.bind(this);
   }
 
-  componentWillMount() {
-    this.updateItemPositions();
-  }
-
   componentDidMount() {
+    this.updateItemPositions();
     this.props.scrollPosition.addListener(this.onScroll);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     // When we receive more items, we need to update the recycled rows.
-    if (nextProps.items !== this.props.items) {
-      this.updateItemPositions(nextProps.items);
+    if (this.props.items !== prevProps.items) {
+      this.updateItemPositions();
     }
   }
 
@@ -176,15 +171,15 @@ export default class RecycledList extends Component {
     });
   }
 
-  updateItemPositions(items = this.props.items) {
+  updateItemPositions() {
     const firstItemState = this.getFirstItemState(
-      items,
+      this.props.items,
       this.state.firstItemIndex,
       this.state.firstItemOffset
     );
 
     const lastItemState = this.getLastItemState(
-      items,
+      this.props.items,
       firstItemState.firstItemIndex
     );
 
@@ -233,7 +228,7 @@ RecycledList.propTypes = {
   rootElement: PropTypes.element.isRequired,
   fakeItemElement: PropTypes.element,
   // NOTE: The render method of the owner component should provide an original
-  // array, as expected by componentWillReceiveProps.
+  // array, as expected by componentDidUpdate.
   items: PropTypes.array.isRequired,
   overflowDistance: PropTypes.number.isRequired,
   recycledItemsCount: PropTypes.number.isRequired,

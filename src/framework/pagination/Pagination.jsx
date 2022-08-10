@@ -79,7 +79,7 @@ class Pagination extends Component {
     : 'pagination__enabled';
 
     return (
-      <nav className="pagination">
+      <nav data-testid="Pagination" className="pagination">
         <ul>
           {this.renderLink(firstPageClassName, '<<First', firstPage)}
           {this.renderLink(firstPageClassName, '<Prev', prevPage)}
