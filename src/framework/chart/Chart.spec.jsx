@@ -32,7 +32,7 @@ describe('Chart', () => {
       const testCase = TestCaseFactory.create(Chart, props);
 
       it('is used to compute this.data', () => {
-        const data = testCase.element.data;
+        const data = testCase.element.state.data;
 
         expect(data.length).toBe(2);
 
@@ -114,7 +114,7 @@ describe('Chart', () => {
         });
 
         const testCase = TestCaseFactory.create(Chart, props);
-        const data = testCase.element.data;
+        const data = testCase.element.state.data;
 
         expect(props.legendLabelProvider).toHaveBeenCalledWith(props.data[0]);
         expect(data[0].name).toBe('label');

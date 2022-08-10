@@ -31,7 +31,9 @@ export default class Chart extends Component {
 
     this.COLORS = ['#2799C4', '#35D0A0'];
     this.HEIGHT = 520;
+  }
 
+  componentDidMount() {
     this.setData(this.props.data);
   }
 
@@ -42,14 +44,14 @@ export default class Chart extends Component {
   }
 
   setData(data) {
-    this.data = [];
+    let newData = [];
     this.minDate = undefined;
     this.maxDate = undefined;
     this.minY = undefined;
     this.maxY = undefined;
 
     data.forEach((dataSet, index) => {
-      this.data.push({
+      newData.push({
         color: this.COLORS[index],
         id: index,
         name: this.props.legendLabelProvider(dataSet),
@@ -60,7 +62,7 @@ export default class Chart extends Component {
         const date = dataPoint.date;
         const yValue = dataPoint.value;
 
-        this.data[index].values.push({
+        newData[index].values.push({
           date,
           yValue,
         });
@@ -71,14 +73,13 @@ export default class Chart extends Component {
       });
     });
 
-    // update dummy state to trigger a new render
     this.setState({
-      data: this.data
+      data: newData
     });
   }
 
   renderLegend() {
-    const legendItems = this.data.map(item => (
+    const legendItems = this.state.data.map(item => (
       <span key={item.id}><ChartDot color={item.color} /> {item.name}</span>
     ));
 
@@ -100,7 +101,7 @@ export default class Chart extends Component {
     return (
       <div className={lineChartClasses}>
         <LineChart
-          data={this.data}
+          data={this.state.data}
           dateFormat={d3.time.days}
           dateRange={[this.minDate, this.maxDate]}
           height={this.HEIGHT}

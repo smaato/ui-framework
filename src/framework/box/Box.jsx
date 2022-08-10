@@ -10,7 +10,7 @@ const Box = (props) => {
 
   return (
     <div
-      data-testid={props["data-testid"] ?? "Box"}
+      data-testid={props["data-testid"] ? props["data-testid"] : "Box"}
       className={classes}
       data-id={props.dataId}
     >
