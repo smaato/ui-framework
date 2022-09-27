@@ -19,10 +19,6 @@ const ViewHeaderNav = (props) => {
 };
 
 ViewHeaderNav.propTypes = {
-  linkType: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-  ]).isRequired,
   links: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

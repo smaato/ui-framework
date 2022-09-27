@@ -20,10 +20,7 @@ const AppNav = (props) => {
 };
 
 AppNav.propTypes = {
-  linkType: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-  ]).isRequired,
+  linkType: PropTypes.object,
   links: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

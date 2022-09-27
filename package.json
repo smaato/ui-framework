@@ -21,7 +21,7 @@
     "gulp": "^3.9.1",
     "gulp-sass": "^5.0.0",
     "highlight.js": "^11.6.0",
-    "history": "2.1.1",
+    "history": "5.3.0",
     "icon-library": "git+https://github.com/smaato/icon-library.git#v1.0.0",
     "jquery": "^3.6.1",
     "keymirror": "0.1.1",
