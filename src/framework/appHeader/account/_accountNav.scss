@@ -1,7 +1,7 @@
 $accountPicture_side: 22px;
 $accountNav_padding: 2px;
 $accountNav_height: $accountPicture_side + $accountNav_padding * 2;
-$accountNav_borderRadius: $accountNav_height / 2;
+$accountNav_borderRadius: calc($accountNav_height / 2);
 
 .accountNav {
   display: flex;

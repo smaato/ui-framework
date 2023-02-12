@@ -12,6 +12,6 @@ $numColumns: 12;
   .column--#{$i} {
     display: inline-block; /* 1 */
     vertical-align: top; /* 2 */
-    width: $i / $numColumns * 100%;
+    width: calc($i / $numColumns * 100%);
   }
 }

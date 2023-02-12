@@ -32,7 +32,7 @@ $searchBoxHeight: 23px;
  */
 .searchBox__icon {
   $searchBoxIconSize: 11px;
-  $searchBoxIconOffset: ($searchBoxHeight - $searchBoxIconSize) / 2;
+  $searchBoxIconOffset: calc(($searchBoxHeight - $searchBoxIconSize) / 2);
   position: absolute; /* 1 */
   top: $searchBoxIconOffset; /* 1 */
   right: $searchBoxIconOffset; /* 1 */

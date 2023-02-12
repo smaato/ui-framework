@@ -37,8 +37,8 @@
     background-color: #517582;
     content: '';
     height: $dropdownArrow_height;
-    margin-left: -$dropdownArrow_width / 2;
-    margin-top: -$dropdownArrow_height / 2;
+    margin-left: -(calc($dropdownArrow_width / 2));
+    margin-top: -(calc($dropdownArrow_height / 2));
     position: absolute;
     right: 10px;
     top: 50%;

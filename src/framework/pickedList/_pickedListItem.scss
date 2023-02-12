@@ -58,7 +58,7 @@
       background-color: #517582;
       content: '';
       height: $closeButtonSize;
-      margin-left: -$closeButtonSize / 2;
+      margin-left: -(calc($closeButtonSize / 2));
       position: absolute;
       width: 2px;
     }
