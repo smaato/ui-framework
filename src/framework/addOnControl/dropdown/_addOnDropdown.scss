@@ -1,4 +1,4 @@
-
+@use "sass:math";
 .addOnDropdown {
   @include baseDropdown;
   @include addOnLabelDimension;
@@ -26,8 +26,8 @@
     position: absolute;
     top: 50%;
     right: 10px;
-    margin-top: -(calc($dropdownArrow_height / 2));
-    margin-left: -(calc($dropdownArrow_width / 2));
+    margin-top: math.div(-$dropdownArrow_height, 2);
+    margin-left: math.div(-$dropdownArrow_width, 2);
   }
 
   &:before {

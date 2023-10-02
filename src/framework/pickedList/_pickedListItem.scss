@@ -1,4 +1,4 @@
-
+@use "sass:math";
 .pickedListItem {
   @include listItem;
   align-items: center;
@@ -58,7 +58,7 @@
       background-color: #517582;
       content: '';
       height: $closeButtonSize;
-      margin-left: -(calc($closeButtonSize / 2));
+      margin-left: math.div(-$closeButtonSize, 2);
       position: absolute;
       width: 2px;
     }

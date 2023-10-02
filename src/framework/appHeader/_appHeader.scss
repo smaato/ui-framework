@@ -1,3 +1,4 @@
+@use "sass:math";
 .appHeader {
   width: 100%;
   background: $appHeaderNav_backgroundColor;
@@ -26,7 +27,7 @@ $appHeaderDropdownArrowSide: 7px;
 // sqrt(2) = 1.41421
 $appHeaderDropdownArrowHypotenuse: 1.41421 * $appHeaderDropdownArrowSide;
 // Divide hypotenuse by 4 to get a half of a projection of cathetus to hypotenuse.
-$appHeaderDropdownArrowTop: calc($appHeaderDropdownArrowHypotenuse / 4);
+$appHeaderDropdownArrowTop: math.div($appHeaderDropdownArrowHypotenuse, 4);
 
 .appHeaderDropdownArrow {
   display: inline-block;

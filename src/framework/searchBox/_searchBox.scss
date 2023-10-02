@@ -1,4 +1,4 @@
-
+@use "sass:math";
 /**
  * 1. Ensure we don't inherit anything from containing elements.
  */
@@ -32,7 +32,7 @@ $searchBoxHeight: 23px;
  */
 .searchBox__icon {
   $searchBoxIconSize: 11px;
-  $searchBoxIconOffset: calc(($searchBoxHeight - $searchBoxIconSize) / 2);
+  $searchBoxIconOffset: math.div($searchBoxHeight - $searchBoxIconSize, 2);
   position: absolute; /* 1 */
   top: $searchBoxIconOffset; /* 1 */
   right: $searchBoxIconOffset; /* 1 */

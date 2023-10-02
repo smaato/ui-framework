@@ -30,7 +30,7 @@ const store = configureStore();
 const browserHistory = useRouterHistory(createHashHistory)({
   queryKey: false,
 });
-const history = createBrowserHistory();//syncHistoryWithStore(browserHistory, store);
+const history = createBrowserHistory();
 
 const childRoutes = Route.getAppRoutes();
 childRoutes.push({

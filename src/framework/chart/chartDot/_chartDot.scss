@@ -1,8 +1,8 @@
-
+@use "sass:math";
 $chartDotSize: 10px;
 
 .chartDot {
-  border-radius: calc($chartDotSize / 2);
+  border-radius: math.div($chartDotSize, 2);
   display: inline-block;
   height: $chartDotSize;
   width: $chartDotSize;

@@ -5,12 +5,11 @@ import React from 'react';
 import BaseDropdownOption from '../base/dropdown/BaseDropdownOption.jsx';
 
 const DropdownOption = (props) => {
-  console.log("dropdown props ",props);
   const classes = classNames('dropdownOption', props.classes);
   const extendedProps = Object.assign({}, props, {
     classes,
   });
-  console.log("dropdown extendedProps ",extendedProps);
+
   return (
     <BaseDropdownOption
       {...extendedProps}
