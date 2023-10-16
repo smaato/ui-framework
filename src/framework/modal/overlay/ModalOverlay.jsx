@@ -6,10 +6,6 @@ import React, {
 import ReactDOM from 'react-dom';
 
 export default class ModalOverlay extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
     this.updateBackgroundBlur();
   }
