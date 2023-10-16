@@ -50,34 +50,29 @@ export default class DateRangeFilterForm extends Component {
   }
 
   onChange(range) {
-    this.setState({
-      dateRange: {
-        startDate: range.startDate,
-        endDate: range.endDate,
-      },
-    });
+    const dateRange = {
+      startDate: moment(range.dateRange.startDate),
+      endDate: moment(range.dateRange.endDate),
+    };
+    this.setState({ dateRange });
   }
 
   render() {
+    const ranges = [
+      {
+        startDate: this.state.dateRange.startDate.toDate(),
+        endDate: this.state.dateRange.endDate.toDate(),
+        key: 'dateRange',
+      },
+    ];
+    const dateColor = '#38BAEB';
     return (
       <div className="dateRangeFilterForm">
         <div className="dateRangeFilterForm__filterValueWrapper">
           <ReactDateRange
             onChange={this.onChange}
-            startDate={this.state.dateRange.startDate}
-            endDate={this.state.dateRange.endDate}
-            theme={{
-              DayInRange: {
-                background: '#2D9BC4',
-                color: '#FFFFFF',
-                fontWeight: 400,
-              },
-              DaySelected: {
-                background: '#3CCEA3',
-                color: '#FFFFFF',
-                fontWeight: 400,
-              },
-            }}
+            ranges={ranges}
+            rangeColors={[dateColor]}
           />
         </div>
         <div className="dateRangeFilterForm__buttons">

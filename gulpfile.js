@@ -9,7 +9,7 @@ const gulp = require('gulp');
 const gulpReplace = require('gulp-replace');
 const gulpTasks = require('gulp-tasks');
 const gulpAwsPublish = require('gulp-awspublish');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const sassLint = require('sass-lint');
 const sourcemaps = require('gulp-sourcemaps');
 
@@ -27,6 +27,7 @@ const SCSS_INCLUDES = [
   './node_modules/',
   './node_modules/compass-mixins/lib',
   './node_modules/mathsass/dist',
+  './node_modules/react-date-range/dist',
 ];
 
 const createAwsPublisher = (config) => {

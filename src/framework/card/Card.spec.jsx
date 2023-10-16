@@ -106,8 +106,9 @@ describe('Card', () => {
         });
 
         const imageDiv = testCase.dom.querySelectorAll('div.card__image')[0];
+        const bgURLRegex = /url\(http:\/\/localhost:\d+\/image\.jpg\)/;
 
-        expect(imageDiv.style.backgroundImage).toEqual('url(http://localhost:9876/image.jpg)');
+        expect(bgURLRegex.test(imageDiv.style.backgroundImage)).toEqual(true);
       });
     });
   });

@@ -41,14 +41,15 @@ export default class DateRange extends Component {
   }
 
   onChange(range) {
+    const transformedRange = {
+      endDate: moment(range.dateRange.endDate),
+      startDate: moment(range.dateRange.startDate),
+    };
     if (this.props.onChange) {
-      this.props.onChange(range);
+      this.props.onChange(transformedRange);
     }
 
-    this.setState({
-      endDate: range.endDate,
-      startDate: range.startDate,
-    });
+    this.setState(transformedRange);
   }
 
   onClick() {
@@ -100,25 +101,24 @@ export default class DateRange extends Component {
       dateRangeArrow = (
         <div className="dateRange__arrow" />
       );
+
+      const ranges = [
+        {
+          startDate: this.state.startDate.toDate(),
+          endDate: this.state.endDate.toDate(),
+          key: 'dateRange',
+        },
+      ];
+      const dateColor = '#38BAEB';
       dateRangePicker = (
         <ReactDateRange
-          endDate={this.state.endDate}
-          maxDate={this.props.maxDate}
-          minDate={this.props.minDate}
+          ranges={ranges}
+          rangeColors={[dateColor]}
+          maxDate={this.props.maxDate && this.props.maxDate.toDate()}
+          minDate={this.props.minDate && this.props.minDate.toDate()}
+          months={2}
+          direction="horizontal"
           onChange={this.onChange}
-          startDate={this.state.startDate}
-          theme={{
-            DayInRange: {
-              background: '#2D9BC4',
-              color: '#FFFFFF',
-              fontWeight: 400,
-            },
-            DaySelected: {
-              background: '#3CCEA3',
-              color: '#FFFFFF',
-              fontWeight: 400,
-            },
-          }}
         />
       );
       dateRangePickerStyle = {
