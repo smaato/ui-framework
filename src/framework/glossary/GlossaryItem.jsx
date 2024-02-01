@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useMemo } from 'react';
-import GlossaryContext from './GlossaryContext';
+import { GlossaryContext } from './GlossaryContext';
 import GlossaryTooltip from './GlossaryTooltip';
 
 function GlossaryItem({ id }) {
