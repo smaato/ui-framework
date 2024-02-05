@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types';
-import React, { useContext, useMemo } from 'react';
-import { GlossaryContext } from './GlossaryContext';
+import React, { useState, useEffect } from 'react';
+import GlossaryProvider from './GlossaryProvider';
 import GlossaryTooltip from './GlossaryTooltip';
 
 function GlossaryItem({ id }) {
-  const glossary = useContext(GlossaryContext);
-  const glossaryItem = useMemo(
-    () => glossary.find(item => item.identifier === id),
-    [id, glossary]
-  );
+  const [glossaryItem, setGlossaryItem] = useState();
+
+  useEffect(() => {
+    const onGlossaryLoad = glossary => setGlossaryItem(glossary[id]);
+    GlossaryProvider.subscribe(onGlossaryLoad);
+    return () => GlossaryProvider.unsubscribe(onGlossaryLoad);
+  }, [id]);
 
   if (glossaryItem) {
     return (

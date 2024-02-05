@@ -45,7 +45,7 @@ export { default as FilterControl } from './filterControl/FilterControl.jsx';
 export * from './form/Form.jsx';
 export { default as Form } from './form/Form.jsx';
 
-export * from './glossary/GlossaryContext.jsx';
+export { default as GlossaryProvider } from './glossary/GlossaryProvider.jsx';
 export { default as GlossaryItem } from './glossary/GlossaryItem.jsx';
 
 export * from './grid/Grid.jsx';
