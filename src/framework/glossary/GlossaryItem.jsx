@@ -1,27 +1,44 @@
 import PropTypes from 'prop-types';
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import GlossaryProvider from './GlossaryProvider';
 import GlossaryTooltip from './GlossaryTooltip';
 
-function GlossaryItem({ id }) {
-  const [glossaryItem, setGlossaryItem] = useState();
+class GlossaryItem extends Component {
+  state = {
+    glossaryItem: null,
+  };
 
-  useEffect(() => {
-    const onGlossaryLoad = glossary => setGlossaryItem(glossary[id]);
-    GlossaryProvider.subscribe(onGlossaryLoad);
-    return () => GlossaryProvider.unsubscribe(onGlossaryLoad);
-  }, [id]);
+  onGlossaryLoad = glossary => this.setState({ glossaryItem: glossary[id] });
 
-  if (glossaryItem) {
-    return (
-      <GlossaryTooltip
-        message={glossaryItem.definition}
-        link={glossaryItem.link}
-      />
-    );
+  componentDidMount() {
+    GlossaryProvider.subscribe(this.onGlossaryLoad);
   }
 
-  return null;
+  componentDidUpdate(prevProps) {
+    if (this.props.id !== prevProps.id) {
+      GlossaryProvider.unsubscribe(this.onGlossaryLoad);
+      GlossaryProvider.subscribe(this.onGlossaryLoad);
+    }
+  }
+
+  componentWillUnmount() {
+    GlossaryProvider.unsubscribe(this.onGlossaryLoad);
+  }
+
+  render() {
+    const { glossaryItem } = this.state;
+
+    if (glossaryItem) {
+      return (
+        <GlossaryTooltip
+          message={glossaryItem.definition}
+          link={glossaryItem.link}
+        />
+      );
+    }
+  
+    return null;
+  }
 }
 
 GlossaryItem.propTypes = {
