@@ -8,7 +8,7 @@ class GlossaryItem extends Component {
     glossaryItem: null,
   };
 
-  onGlossaryLoad = glossary => this.setState({ glossaryItem: glossary[id] });
+  onGlossaryLoad = glossary => this.setState({ glossaryItem: glossary[this.props.id] });
 
   componentDidMount() {
     GlossaryProvider.subscribe(this.onGlossaryLoad);

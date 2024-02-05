@@ -9,24 +9,24 @@ const GLOSSARY_STATUS = {
   FAILED: 'FAILED',
 };
 
-class GlossaryProvider extends React.Component {
-  static data = {};
-  static status = GLOSSARY_STATUS.UNLOADED;
+window.__GLOSSARY_DATA = {};
+window.__GLOSSARY_STATUS = GLOSSARY_STATUS.UNLOADED;
 
+class GlossaryProvider extends React.Component {
   componentDidMount() {
     const fetchGlossary = async () => {
-      GlossaryProvider.status = GLOSSARY_STATUS.LOADING;
+      window.__GLOSSARY_STATUS = GLOSSARY_STATUS.LOADING;
 
       const data = await this.props.queryFn();
 
-      GlossaryProvider.status = GLOSSARY_STATUS.LOADED;
-      GlossaryProvider.data = data;
+      window.__GLOSSARY_STATUS = GLOSSARY_STATUS.LOADED;
+      window.__GLOSSARY_DATA = data;
 
-      const event = new CustomEvent(GLOSSARY_LOADED_EVENT, { detail: GlossaryProvider.data });
+      const event = new CustomEvent(GLOSSARY_LOADED_EVENT, { detail: window.__GLOSSARY_DATA });
       document.dispatchEvent(event);
     };
 
-    fetchGlossary().catch(() => GlossaryProvider.status = GLOSSARY_STATUS.FAILED);
+    fetchGlossary().catch(() => window.__GLOSSARY_STATUS = GLOSSARY_STATUS.FAILED);
   }
 
   static subscribe = (listener) => {
@@ -34,8 +34,8 @@ class GlossaryProvider extends React.Component {
       throw new Error('Listener function not passed to subscribe.');
     }
 
-    if (GlossaryProvider.status === GLOSSARY_STATUS.LOADED) {
-      listener(GlossaryProvider.data);
+    if (window.__GLOSSARY_STATUS === GLOSSARY_STATUS.LOADED) {
+      listener(window.__GLOSSARY_DATA);
     }
 
     document.addEventListener(GLOSSARY_LOADED_EVENT, listener);
