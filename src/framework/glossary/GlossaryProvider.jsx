@@ -9,7 +9,7 @@ const GLOSSARY_STATUS = {
   FAILED: 'FAILED',
 };
 
-export class GlossaryProvider extends React.Component {
+class GlossaryProvider extends React.Component {
   static data = {};
   static status = GLOSSARY_STATUS.UNLOADED;
 
@@ -58,3 +58,5 @@ GlossaryProvider.propTypes = {
   queryFn: PropTypes.func.isRequired,
   children: PropTypes.any,
 };
+
+export default GlossaryProvider;
