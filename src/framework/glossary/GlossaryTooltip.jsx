@@ -57,6 +57,7 @@ function GlossaryTooltip({ message, link }) {
       {isOpen && (
         <FloatingPortal>
           <div
+            onClick={(e) => e.stopPropagation()}
             className="glossaryTooltip__tooltip"
             ref={refs.setFloating}
             style={floatingStyles}
