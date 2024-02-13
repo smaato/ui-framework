@@ -1,0 +1,19 @@
+.glossaryTooltip__icon {
+  background-color: transparent;
+  border: none;
+  display: inline-block;
+  height: 16px;
+  margin: 0 5px 0 0;
+  padding: 0;
+  vertical-align: middle;
+  width: 16px;
+}
+
+.glossaryTooltip__tooltip {
+  background: white;
+  box-shadow: 0 2px 4px 0 rgba(189, 189, 189, 0.5);
+  font-size: 13px;
+  padding: 15px 13px;
+  width: 300px;
+  z-index: 9999;
+}
