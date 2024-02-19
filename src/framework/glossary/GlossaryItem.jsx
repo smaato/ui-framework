@@ -26,14 +26,20 @@ class GlossaryItem extends Component {
   }
 
   render() {
+    const { children, dataId, iconPosition = 'before' } = this.props;
     const { glossaryItem } = this.state;
 
     if (glossaryItem) {
       return (
         <GlossaryTooltip
-          message={glossaryItem.definition}
+          dataId={dataId}
           link={glossaryItem.link}
-        />
+          linkText={glossaryItem.linkText}
+          message={glossaryItem.definition}
+          iconPosition={glossaryItem.iconPosition || iconPosition}
+        >
+          {children}
+        </GlossaryTooltip>
       );
     }
   
@@ -42,7 +48,10 @@ class GlossaryItem extends Component {
 }
 
 GlossaryItem.propTypes = {
+  children: PropTypes.any,
+  dataId: PropTypes.string,
   id: PropTypes.string.isRequired,
+  iconPosition: PropTypes.string,
 };
 
 export default GlossaryItem;

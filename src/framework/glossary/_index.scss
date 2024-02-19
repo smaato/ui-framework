@@ -1,12 +1,26 @@
 .glossaryTooltip__icon {
   background-color: transparent;
   border: none;
+  color: inherit;
   display: inline-block;
-  height: 16px;
-  margin: 0 5px 0 0;
+  height: 13px;
+  line-height: 13px;
   padding: 0;
   vertical-align: middle;
-  width: 16px;
+  width: 13px;
+
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+
+  &.icon-pos-before {
+    margin: 0 5px 0 0;
+  }
+
+  &.icon-pos-after {
+    margin: 0 0 0 5px;
+  }
 }
 
 .glossaryTooltip__tooltip {
