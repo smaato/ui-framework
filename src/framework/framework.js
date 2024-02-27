@@ -23,6 +23,10 @@ export { default as Card } from './card/Card.jsx';
 
 export { default as CardHolder } from './cardHolder/CardHolder.jsx';
 
+export * from './changeLog/ChangeLogService.js';
+export { default as ChangeLogLink } from './changeLog/ChangeLogLink.jsx';
+export { default as ChangeLogModal } from './changeLog/ChangeLogModal.jsx';
+
 export { default as Ribbon } from './ribbon/Ribbon.jsx';
 
 export * from './chart/Chart.jsx';

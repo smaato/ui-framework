@@ -72,3 +72,9 @@ export {
 export {
   default as Entity,
 } from './services/string/Entity';
+
+// Object
+
+export {
+  default as ObjectUtil,
+} from './services/object/ObjectUtil';
